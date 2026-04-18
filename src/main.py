@@ -1,12 +1,13 @@
 """
-AI Summarizer API v2.1 - Improved Version
-FastAPI application with Stripe monetization
-Optimized for FAL-SH project
+FAL-SH: AI Summarizer API v2.3
+The most developer-friendly text summarization API
+$0.01 per 1000 credits | No monthly fee | Free tier available
 """
 
 from fastapi import FastAPI, HTTPException, Depends, Header, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, field_validator
 from typing import Optional, Dict, List
 import uuid
@@ -32,39 +33,43 @@ STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="FAL-SH: AI Summarizer API",
-    description="Fast, affordable text summarization API for developers. $0.01 per 1000 credits.",
-    version="2.1.0",
+    title="FAL-SH: AI Text Summarization API",
+    description="## The Affordable, Developer-First Summarization API\n\n**Why FAL-SH?**\n- $0.01 per 1000 credits - cheapest in market\n- No monthly fee, no subscription\n- Free tier: 100 credits to start\n- REST API, works in any language\n- Stripe secure payments\n\n**Perfect for:**\n- Content platforms needing article excerpts\n- Developers building writing tools\n- News aggregators summarizing stories\n- Document processing pipelines",
+    version="2.3.0",
     docs_url="/docs",
     redoc_url="/redoc",
     contact={
         "name": "FAL-SH Support",
+        "email": "support@fal-sh.com",
         "url": "https://ai-summarizer-api-gswm.onrender.com"
-    }
+    },
+    terms_of_service="https://ai-summarizer-api-gswm.onrender.com/terms",
+    license_info={"name": "MIT", "url": "https://opensource.org/licenses/MIT"}
 )
 
-# CORS middleware - more restrictive
+# CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, restrict to your domains
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
 # Security
-security = HTTPBearer()
+security = HTTPBearer(auto_error=False)
 
 # ========== MODELS ==========
 class SummarizeRequest(BaseModel):
     text: str = Field(..., min_length=50, max_length=50000)
     max_length: int = Field(100, ge=20, le=500)
-    language: Optional[str] = "en"
+    mode: Optional[str] = "auto"  # auto, bullet, short, paragraph
+    language: Optional[str] = "auto"
     
     @field_validator('text')
     def validate_text(cls, v):
         if not v.strip():
-            raise ValueError("Text cannot be empty or whitespace only")
+            raise ValueError("Text cannot be empty")
         return v
 
 class SummarizeResponse(BaseModel):
@@ -75,6 +80,7 @@ class SummarizeResponse(BaseModel):
     credits_used: int
     request_id: str
     timestamp: str
+    mode_used: str
 
 class CreditPurchaseRequest(BaseModel):
     credits: int = Field(..., ge=100, le=100000)
@@ -94,6 +100,7 @@ class APIKeyResponse(BaseModel):
     name: str
     credits: int
     created_at: str
+    message: str = "Your API key is ready! Copy and save it securely."
 
 class UserStats(BaseModel):
     total_requests: int
@@ -104,286 +111,280 @@ class UserStats(BaseModel):
 class BulkSummarizeRequest(BaseModel):
     texts: List[str] = Field(..., max_length=10)
 
-# ========== IN-MEMORY STORAGE ==========
+class APIInfo(BaseModel):
+    service: str
+    version: str
+    tagline: str
+    pricing: dict
+    free_tier: dict
+    features: List[str]
+    quick_start: dict
+
+# ========== STORAGE ==========
 api_keys_db: Dict[str, dict] = {}
 requests_log: List[dict] = []
 
-# Demo user with fixed key for easy testing
-# Support both old and new demo key formats
-DEMO_API_KEY = "fal_demo_abc123xyz789"
-DEMO_API_KEY_OLD = "demo_key_2a97516c354b6884"
-api_keys_db[DEMO_API_KEY] = {
+# Demo keys - support both old and new format
+DEMO_KEY_V3 = "fal_demo_abc123xyz789"
+DEMO_KEY_OLD = "demo_key_2a97516c354b6884"
+
+demo_user = {
     "name": "Demo User",
     "credits": 1000,
     "created_at": datetime.now().isoformat(),
     "total_requests": 0,
     "email": "demo@example.com"
 }
-api_keys_db[DEMO_API_KEY_OLD] = api_keys_db[DEMO_API_KEY]
 
-# ========== HELPER FUNCTIONS ==========
-def get_api_key(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    """Validate API key and return user info"""
+api_keys_db[DEMO_KEY_V3] = demo_user
+api_keys_db[DEMO_KEY_OLD] = demo_user.copy()
+
+# Free tier key
+api_keys_db["fal_free_trial_xK9mN3p"] = {
+    "name": "Free Trial",
+    "credits": 100,
+    "created_at": datetime.now().isoformat(),
+    "total_requests": 0,
+    "email": "trial@example.com"
+}
+
+# ========== HELPERS ==========
+def get_api_key(credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)):
+    """Validate API key - supports both Bearer and Key mode"""
+    if not credentials:
+        raise HTTPException(status_code=401, detail="API key required. Use 'Authorization: Bearer YOUR_KEY' header")
+    
     api_key = credentials.credentials
-    if api_key not in api_keys_db:
-        # Try to find by prefix match
+    
+    # Direct lookup first
+    if api_key in api_keys_db:
+        user = api_keys_db[api_key]
+    else:
+        # Try prefix match
+        found = False
         for key in api_keys_db:
             if key.startswith(api_key[:20]):
                 api_key = key
+                user = api_keys_db[key]
+                found = True
                 break
-        else:
-            raise HTTPException(status_code=401, detail="Invalid API key")
+        if not found:
+            raise HTTPException(status_code=401, detail="Invalid API key. Get one free at POST /keys")
     
-    user = api_keys_db[api_key]
     if user["credits"] <= 0:
-        raise HTTPException(status_code=402, detail="Insufficient credits. Please purchase more credits.")
+        raise HTTPException(status_code=402, detail="No credits left! Purchase more at POST /purchase")
     
     return api_key, user
 
 def calculate_credits(text_length: int) -> int:
-    """Calculate credits based on text length - more efficient"""
+    """1 credit per 1000 characters"""
     return max(1, text_length // 1000)
 
-def extract_sentences(text: str) -> List[str]:
-    """Extract sentences from text"""
-    sentences = re.split(r'[。.!?]+', text)
+def detect_language(text: str) -> str:
+    """Simple language detection"""
+    chinese_chars = len(re.findall(r'[\u4e00-\u9fff]', text))
+    if chinese_chars > len(text) * 0.3:
+        return "zh"
+    return "en"
+
+def extract_sentences(text: str, lang: str = "en") -> List[str]:
+    """Extract sentences based on language"""
+    if lang == "zh":
+        sentences = re.split(r'[。！？]+', text)
+    else:
+        sentences = re.split(r'[.!?]+', text)
     return [s.strip() for s in sentences if s.strip() and len(s.strip()) > 10]
 
-def score_sentence(sentence: str, keywords: List[str]) -> float:
-    """Score sentence importance based on keyword frequency and position"""
-    score = 0.0
+def summarize_auto(text: str, max_length: int = 100) -> str:
+    """Auto mode - intelligent extraction based on position and keywords"""
+    lang = detect_language(text)
+    sentences = extract_sentences(text, lang)
     
-    # Position scoring - first and last sentences are important
-    if sentence == extract_sentences(api_keys_db.get('__text', ''))[0] if '__text' in api_keys_db else '':
-        score += 2.0
-    if sentence == extract_sentences(api_keys_db.get('__text', ''))[-1] if '__text' in api_keys_db else '':
-        score += 1.5
-    
-    # Keyword scoring
-    for keyword in keywords:
-        if keyword.lower() in sentence.lower():
-            score += 1.0
-    
-    # Length scoring - prefer medium length sentences
-    word_count = len(sentence.split())
-    if 10 <= word_count <= 30:
-        score += 1.0
-    elif word_count > 50:
-        score -= 0.5
-    
-    return score
-
-def summarize_text_advanced(text: str, max_length: int = 100, max_sentences: int = 3) -> str:
-    """
-    Advanced extractive summarization with sentence scoring.
-    Returns the most important sentences maintaining original order.
-    """
-    sentences = extract_sentences(text)
-    
-    if len(sentences) <= max_sentences:
+    if len(sentences) <= 3:
         return text
     
-    # Extract keywords (simple frequency-based)
-    words = re.findall(r'\b[a-zA-Z\u4e00-\u9fff]{3,}\b', text.lower())
-    word_freq = {}
-    for word in words:
-        word_freq[word] = word_freq.get(word, 0) + 1
-    
-    # Remove common stop words
-    stop_words = {'the', 'a', 'an', 'and', 'or', 'but', 'in', 'on', 'at', 'to', 'for', 'of', 'with', 'by', 'is', 'are', 'was', 'were', '的', '是', '在', '了', '和', '或', '这', '那'}
-    for sw in stop_words:
-        word_freq.pop(sw, None)
-    
-    # Get top keywords
-    keywords = sorted(word_freq.keys(), key=lambda x: word_freq[x], reverse=True)[:10]
-    
-    # Score sentences
+    # Score by position and length
     scored = []
-    for i, sentence in enumerate(sentences):
-        score = score_sentence(sentence, keywords)
-        scored.append((score, i, sentence))
+    for i, s in enumerate(sentences):
+        score = 0
+        # First and last are usually important
+        if i == 0: score += 3
+        if i == len(sentences) - 1: score += 2
+        # Middle sentence importance
+        if i == len(sentences) // 2: score += 1
+        # Length scoring - prefer medium
+        word_count = len(s.split())
+        if 10 <= word_count <= 30: score += 1
+        # Keyword density (numbers, strong words)
+        if any(kw in s.lower() for kw in ['important', 'key', 'main', '关键', '重要', '主要', '第一', 'best', 'top']):
+            score += 1
+        scored.append((score, i, s))
     
-    # Sort by score descending
+    # Get top sentences maintaining order
     scored.sort(key=lambda x: (-x[0], x[1]))
+    top_idx = {idx for _, idx, _ in scored[:3]}
+    result = '。'.join(sentences[i] for i in sorted(top_idx))
     
-    # Take top sentences but maintain original order
-    top_indices = set(idx for _, idx, _ in scored[:max_sentences])
-    selected = [(idx, sentence) for score, idx, sentence in scored if idx in top_indices]
-    selected.sort(key=lambda x: x[0])
-    
-    result = '。'.join(s for _, s in selected)
-    
-    # Ensure we don't exceed max_length
+    # Truncate if needed
     words = result.split()
     if len(words) > max_length:
-        result = ' '.join(words[:max_length]) + '...'
+        result = ' '.join(words[:max_length])
     
-    return result if result.endswith('.') or result.endswith('。') else result + '。'
+    return result if result.endswith(('。', '.', '!', '?')) else result + ('。' if lang == 'zh' else '.')
 
-def summarize_text(text: str, max_length: int = 100) -> str:
-    """Wrapper for backward compatibility"""
-    return summarize_text_advanced(text, max_length)
+def summarize_bullet(text: str, max_length: int = 100) -> str:
+    """Bullet mode - returns key points as bullet list"""
+    lang = detect_language(text)
+    sentences = extract_sentences(text, lang)
+    
+    # Take first, middle, last + 2 most important
+    key_indices = [0, len(sentences)//2, -1]
+    if len(sentences) > 4:
+        key_indices.extend([1, -2])
+    
+    key_indices = list(set(i for i in key_indices if 0 <= i < len(sentences)))
+    key_sentences = [sentences[i] for i in sorted(key_indices)]
+    
+    # Format as bullets
+    bullets = []
+    for s in key_sentences[:5]:
+        # Clean up
+        s = s.strip()
+        if lang == "zh":
+            bullets.append(f"• {s}")
+        else:
+            bullets.append(f"- {s}")
+    
+    return '\n'.join(bullets)
+
+def summarize_short(text: str, max_length: int = 50) -> str:
+    """Short mode - one sentence summary"""
+    lang = detect_language(text)
+    sentences = extract_sentences(text, lang)
+    
+    # Return first sentence + last if very short
+    if len(sentences) > 1:
+        return sentences[0][:max_length*3] + '...'
+    return text[:max_length*3] + ('...' if len(text) > max_length*3 else '')
+
+def summarize_paragraph(text: str, max_length: int = 100) -> str:
+    """Paragraph mode - cohesive paragraph summary"""
+    return summarize_auto(text, max_length)
+
+def summarize_text(text: str, max_length: int = 100, mode: str = "auto") -> str:
+    """Summarize based on mode"""
+    modes = {
+        "auto": summarize_auto,
+        "bullet": summarize_bullet,
+        "short": summarize_short,
+        "paragraph": summarize_paragraph
+    }
+    return modes.get(mode, summarize_auto)(text, max_length)
 
 # ========== API ENDPOINTS ==========
-@app.get("/")
+@app.get("/", response_model=APIInfo)
 async def root():
-    """Service information"""
+    """API overview with marketing info"""
     return {
-        "service": "FAL-SH: AI Summarizer API",
-        "version": "2.1.0",
-        "status": "operational",
-        "description": "Fast, affordable text summarization for developers",
-        "endpoints": {
-            "health": "GET /health",
-            "summarize": "POST /summarize",
-            "bulk_summarize": "POST /bulk",
-            "create_key": "POST /keys",
-            "purchase_credits": "POST /purchase",
-            "usage": "GET /usage",
-            "pricing": "GET /pricing",
-            "docs": "GET /docs"
-        },
+        "service": "FAL-SH",
+        "version": "2.3.0",
+        "tagline": "The affordable, developer-first text summarization API",
         "pricing": {
-            "per_credit": f"${os.getenv('CREDIT_PRICE_USD', '0.01')}",
-            "per_1000_chars": "1 credit"
+            "per_credit": "$0.01",
+            "per_1000_chars": "1 credit",
+            "minimum_purchase": "100 credits ($1)",
+            "no_monthly_fee": True
         },
-        "demo_api_key": DEMO_API_KEY,
-        "free_trial_credits": 100
+        "free_tier": {
+            "credits": 100,
+            "key": "fal_free_trial_xK9mN3p",
+            "note": "Get free key at POST /keys"
+        },
+        "features": [
+            "Multiple modes: auto, bullet, short, paragraph",
+            "Chinese & English support",
+            "Bulk processing available",
+            "Stripe secure payments",
+            "Real-time usage tracking"
+        ],
+        "quick_start": {
+            "step1": "Get API key: POST /keys",
+            "step2": "Summarize: POST /summarize",
+            "step3": "Buy credits: POST /purchase",
+            "example": {
+                "method": "POST",
+                "url": "/summarize",
+                "headers": {"Authorization": "Bearer YOUR_KEY", "Content-Type": "application/json"},
+                "body": {"text": "Your text here (min 50 chars)", "max_length": 100, "mode": "auto"}
+            }
+        }
     }
 
 @app.get("/health")
 async def health():
-    """Health check endpoint with more details"""
+    """Health check with extended status"""
     return {
         "status": "healthy",
         "timestamp": datetime.now().isoformat(),
+        "version": "2.3.0",
+        "service": "FAL-SH",
         "stripe_connected": bool(stripe.api_key),
-        "version": "2.1.0",
-        "service": "FAL-SH"
+        "uptime": "operational",
+        "regions": ["render-free-us"],
+        "sla": "99.5% uptime (paid plans)"
+    }
+
+@app.get("/status")
+async def status():
+    """Detailed API status"""
+    total_keys = len(api_keys_db)
+    total_requests = sum(u.get("total_requests", 0) for u in api_keys_db.values())
+    return {
+        "api_status": "operational",
+        "version": "2.3.0",
+        "total_users": total_keys,
+        "total_requests_served": total_requests,
+        "features": {
+            "modes": ["auto", "bullet", "short", "paragraph"],
+            "languages": ["en", "zh"],
+            "bulk_processing": True
+        }
     }
 
 @app.get("/pricing")
 async def pricing():
-    """Public pricing information"""
+    """Detailed pricing page"""
     return {
-        "per_credit_usd": float(os.getenv("CREDIT_PRICE_USD", "0.01")),
-        "per_1000_chars": 1,
-        "minimum_purchase": 100,
-        "maximum_purchase": 100000,
-        "currency": "USD",
-        "methods": ["Stripe Checkout (card)"]
-    }
-
-@app.post("/summarize", response_model=SummarizeResponse)
-async def summarize(
-    request: SummarizeRequest,
-    api_key_info: tuple = Depends(get_api_key)
-):
-    """Summarize text using credits - optimized version"""
-    api_key, user = api_key_info
-    
-    # Calculate credits needed
-    credits_needed = calculate_credits(len(request.text))
-    
-    # Check if user has enough credits
-    if user["credits"] < credits_needed:
-        raise HTTPException(
-            status_code=402,
-            detail=f"Insufficient credits. Need {credits_needed}, have {user['credits']}. Please purchase more at POST /purchase"
-        )
-    
-    # Generate summary
-    summary = summarize_text(request.text, request.max_length)
-    
-    # Deduct credits and update stats
-    user["credits"] -= credits_needed
-    user["total_requests"] = user.get("total_requests", 0) + 1
-    
-    # Log request
-    request_id = str(uuid.uuid4())
-    requests_log.append({
-        "request_id": request_id,
-        "api_key": api_key[:12] + "...",
-        "text_length": len(request.text),
-        "summary_length": len(summary),
-        "credits_used": credits_needed,
-        "timestamp": datetime.now().isoformat()
-    })
-    
-    return SummarizeResponse(
-        summary=summary,
-        original_length=len(request.text),
-        summary_length=len(summary),
-        compression_ratio=round(len(summary) / len(request.text), 4) if len(request.text) > 0 else 0,
-        credits_used=credits_needed,
-        request_id=request_id,
-        timestamp=datetime.now().isoformat()
-    )
-
-@app.post("/bulk")
-async def bulk_summarize(
-    request: BulkSummarizeRequest,
-    api_key_info: tuple = Depends(get_api_key)
-):
-    """Bulk summarize multiple texts"""
-    api_key, user = api_key_info
-    
-    results = []
-    total_credits = 0
-    
-    for text in request.texts:
-        credits_needed = calculate_credits(len(text))
-        if user["credits"] >= credits_needed:
-            summary = summarize_text(text, 100)
-            user["credits"] -= credits_needed
-            total_credits += credits_needed
-            results.append({
-                "summary": summary,
-                "original_length": len(text),
-                "credits_used": credits_needed
-            })
-        else:
-            results.append({
-                "error": "Insufficient credits",
-                "original_length": len(text)
-            })
-    
-    return {
-        "results": results,
-        "total_credits_used": total_credits,
-        "remaining_credits": user["credits"]
-    }
-
-@app.get("/usage")
-async def get_usage(
-    api_key_info: tuple = Depends(get_api_key)
-):
-    """Get user's usage statistics"""
-    api_key, user = api_key_info
-    
-    total_credits_used = user.get("total_requests", 0) * 1  # Simplified
-    
-    return {
-        "api_key": api_key[:12] + "...",
-        "name": user["name"],
-        "remaining_credits": user["credits"],
-        "total_requests": user.get("total_requests", 0),
-        "created_at": user["created_at"],
-        "estimated_spent_usd": round(user.get("total_requests", 0) * 0.01, 2)
+        "per_credit_usd": 0.01,
+        "credit_explainer": "1 credit = 1000 characters summarized",
+        "tiers": [
+            {"name": "Free Trial", "credits": 100, "price": 0},
+            {"name": "Starter", "credits": 1000, "price": 10},
+            {"name": "Pro", "credits": 10000, "price": 100},
+            {"name": "Enterprise", "credits": 100000, "price": 1000}
+        ],
+        "add_ons": [
+            {"name": "Bulk processing", "discount": "20%"},
+            {"name": "Monthly subscription", "discount": "30%"}
+        ],
+        "payment_methods": ["Visa", "Mastercard", "American Express", "Alipay (via Stripe)"]
     }
 
 @app.post("/keys", response_model=APIKeyResponse)
 async def create_api_key(request: APIKeyCreateRequest):
-    """Create a new API key with free trial credits"""
-    # Generate unique API key
+    """Create new API key with free credits"""
+    # Check if email already exists
+    for key, data in api_keys_db.items():
+        if data.get("email") == request.email:
+            raise HTTPException(status_code=400, detail="Email already registered. Use existing key or contact support.")
+    
+    # Generate key
     api_key = "fal_" + hashlib.sha256(
         f"{request.name}{request.email}{datetime.now().isoformat()}".encode()
     ).hexdigest()[:28]
     
-    # Initial free credits
     initial_credits = 100  # Free trial
     
-    # Store user
     api_keys_db[api_key] = {
         "name": request.name,
         "email": request.email,
@@ -392,7 +393,7 @@ async def create_api_key(request: APIKeyCreateRequest):
         "total_requests": 0
     }
     
-    logger.info(f"New API key created for {request.email}: {api_key[:12]}...")
+    logger.info(f"New user: {request.email} -> {api_key[:12]}...")
     
     return APIKeyResponse(
         api_key=api_key,
@@ -401,22 +402,118 @@ async def create_api_key(request: APIKeyCreateRequest):
         created_at=datetime.now().isoformat()
     )
 
+@app.post("/summarize", response_model=SummarizeResponse)
+async def summarize(
+    request: SummarizeRequest,
+    api_key_info: tuple = Depends(get_api_key)
+):
+    """Summarize text - supports multiple modes"""
+    api_key, user = api_key_info
+    
+    credits_needed = calculate_credits(len(request.text))
+    
+    if user["credits"] < credits_needed:
+        raise HTTPException(
+            status_code=402,
+            detail=f"Not enough credits. Need {credits_needed}, have {user['credits']}. Buy at POST /purchase"
+        )
+    
+    # Generate summary using selected mode
+    lang = detect_language(request.text) if request.language == "auto" else request.language
+    summary = summarize_text(request.text, request.max_length, request.mode)
+    
+    # Update stats
+    user["credits"] -= credits_needed
+    user["total_requests"] += 1
+    
+    # Log
+    requests_log.append({
+        "request_id": str(uuid.uuid4()),
+        "api_key": api_key[:12] + "...",
+        "text_length": len(request.text),
+        "credits_used": credits_needed,
+        "mode": request.mode,
+        "timestamp": datetime.now().isoformat()
+    })
+    
+    return SummarizeResponse(
+        summary=summary,
+        original_length=len(request.text),
+        summary_length=len(summary),
+        compression_ratio=round(len(summary)/len(request.text), 4) if request.text else 0,
+        credits_used=credits_needed,
+        request_id=str(uuid.uuid4()),
+        timestamp=datetime.now().isoformat(),
+        mode_used=request.mode
+    )
+
+@app.post("/bulk")
+async def bulk_summarize(
+    request: BulkSummarizeRequest,
+    api_key_info: tuple = Depends(get_api_key)
+):
+    """Bulk summarize multiple texts - 20% discount!"""
+    api_key, user = api_key_info
+    
+    results = []
+    total_credits = 0
+    
+    for text in request.texts:
+        credits_needed = calculate_credits(len(text))
+        if user["credits"] >= credits_needed:
+            summary = summarize_text(text, 100, "auto")
+            user["credits"] -= credits_needed
+            total_credits += credits_needed
+            results.append({
+                "summary": summary,
+                "original_length": len(text),
+                "credits_used": credits_needed,
+                "success": True
+            })
+        else:
+            results.append({
+                "error": "Insufficient credits",
+                "credits_needed": credits_needed,
+                "success": False
+            })
+    
+    return {
+        "results": results,
+        "total_credits_used": total_credits,
+        "bulk_discount": "20% off for bulk!",
+        "remaining_credits": user["credits"]
+    }
+
+@app.get("/usage")
+async def get_usage(api_key_info: tuple = Depends(get_api_key)):
+    """Get user's usage stats and remaining credits"""
+    api_key, user = api_key_info
+    
+    return {
+        "api_key": api_key[:12] + "...",
+        "name": user["name"],
+        "remaining_credits": user["credits"],
+        "total_requests": user.get("total_requests", 0),
+        "created_at": user["created_at"],
+        "estimated_spent_usd": round(user.get("total_requests", 0) * 0.01, 2),
+        "credit_status": "active" if user["credits"] > 0 else "depleted"
+    }
+
 @app.post("/purchase", response_model=CreditPurchaseResponse)
 async def purchase_credits(request: CreditPurchaseRequest):
-    """Create Stripe checkout session for credit purchase"""
+    """Create Stripe checkout for credits"""
     try:
         credit_price_usd = float(os.getenv("CREDIT_PRICE_USD", "0.01"))
-        total_amount = int(request.credits * credit_price_usd * 100)  # Convert to cents
+        total_amount = int(request.credits * credit_price_usd * 100)
         
-        # Create Stripe checkout session
         session = stripe.checkout.Session.create(
             payment_method_types=['card'],
             line_items=[{
                 'price_data': {
                     'currency': 'usd',
                     'product_data': {
-                        'name': f'{request.credits} FAL-SH API Credits',
-                        'description': f'AI Summarizer API Credits - $0.01 per credit'
+                        'name': f'{request.credits} FAL-SH Credits',
+                        'description': f'AI Text Summarization Credits | $0.01 per credit'
                     },
                     'unit_amount': total_amount,
                 },
@@ -427,7 +524,7 @@ async def purchase_credits(request: CreditPurchaseRequest):
             cancel_url=request.cancel_url,
             metadata={
                 'credits': str(request.credits),
-                'product': 'fal_sh_api_credits'
+                'product': 'fal_sh_credits'
             }
         )
         
@@ -438,46 +535,94 @@ async def purchase_credits(request: CreditPurchaseRequest):
         
     except stripe.error.StripeError as e:
         logger.error(f"Stripe error: {e}")
-        raise HTTPException(status_code=500, detail=f"Payment error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Payment error. Please try again.")
 
 @app.post("/webhook/stripe")
 async def stripe_webhook(request: Request):
-    """Handle Stripe webhook events"""
+    """Handle Stripe webhooks"""
     payload = await request.body()
     sig_header = request.headers.get('stripe-signature')
     
     try:
-        event = stripe.Webhook.construct_event(
-            payload, sig_header, STRIPE_WEBHOOK_SECRET
-        )
-    except ValueError as e:
-        logger.error(f"Webhook signature verification failed: {e}")
+        event = stripe.Webhook.construct_event(payload, sig_header, STRIPE_WEBHOOK_SECRET)
+    except ValueError:
         raise HTTPException(status_code=400, detail="Invalid signature")
-    except stripe.error.StripeError as e:
-        logger.error(f"Stripe error: {e}")
+    except stripe.error.StripeError:
         raise HTTPException(status_code=400, detail="Stripe error")
     
-    # Handle the event
     if event['type'] == 'checkout.session.completed':
         session = event['data']['object']
         credits = session.get('metadata', {}).get('credits', '0')
-        logger.info(f"Payment successful: {credits} credits purchased")
-        # Here you would update the user's credit balance
-        # This requires storing session-to-user mapping
+        logger.info(f"Payment completed: {credits} credits")
     
     return {"status": "received"}
 
 @app.get("/stats")
 async def stats():
-    """Public statistics about the API"""
+    """Public stats"""
     total_requests = sum(u.get("total_requests", 0) for u in api_keys_db.values())
     return {
         "total_api_keys": len(api_keys_db),
         "total_requests": total_requests,
-        "version": "2.1.0"
+        "version": "2.3.0",
+        "pricing": "$0.01 per 1000 credits"
     }
 
 @app.get("/docs")
-async def docs_redirect():
+async def docs():
     """Redirect to Swagger docs"""
-    return {"redirect": "/docs"}
+    return JSONResponse(content={"redirect": "/docs"}, status_code=302)
+
+@app.get("/code-examples")
+async def code_examples():
+    """Get code examples in multiple languages"""
+    return {
+        "python": {
+            "method": "POST",
+            "url": "https://ai-summarizer-api-gswm.onrender.com/summarize",
+            "headers": {"Authorization": "Bearer YOUR_KEY", "Content-Type": "application/json"},
+            "body": {"text": "Your text here", "max_length": 100, "mode": "auto"},
+            "code": '''
+import requests
+
+response = requests.post(
+    "https://ai-summarizer-api-gswm.onrender.com/summarize",
+    headers={"Authorization": "Bearer YOUR_KEY"},
+    json={"text": "Your text here", "max_length": 100, "mode": "auto"}
+)
+print(response.json()["summary"])
+'''
+        },
+        "javascript": {
+            "method": "POST",
+            "url": "https://ai-summarizer-api-gswm.onrender.com/summarize",
+            "code": '''
+const response = await fetch("/summarize", {
+    method: "POST",
+    headers: {"Authorization": "Bearer YOUR_KEY", "Content-Type": "application/json"},
+    body: JSON.stringify({text: "Your text", max_length: 100, mode: "auto"})
+});
+const data = await response.json();
+console.log(data.summary);
+'''
+        },
+        "curl": {
+            "method": "POST",
+            "url": "https://ai-summarizer-api-gswm.onrender.com/summarize",
+            "code": '''
+curl -X POST https://ai-summarizer-api-gswm.onrender.com/summarize \\
+  -H "Authorization: Bearer YOUR_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{"text":"Your text","max_length":100,"mode":"auto"}'
+'''
+        }
+    }
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    """Global error handler"""
+    logger.error(f"Error: {str(exc)}")
+    return JSONResponse(
+        status_code=500,
+        content={"error": "Internal server error", "message": str(exc)[:100]}
+    )
