@@ -109,7 +109,9 @@ api_keys_db: Dict[str, dict] = {}
 requests_log: List[dict] = []
 
 # Demo user with fixed key for easy testing
+# Support both old and new demo key formats
 DEMO_API_KEY = "fal_demo_abc123xyz789"
+DEMO_API_KEY_OLD = "demo_key_2a97516c354b6884"
 api_keys_db[DEMO_API_KEY] = {
     "name": "Demo User",
     "credits": 1000,
@@ -117,6 +119,7 @@ api_keys_db[DEMO_API_KEY] = {
     "total_requests": 0,
     "email": "demo@example.com"
 }
+api_keys_db[DEMO_API_KEY_OLD] = api_keys_db[DEMO_API_KEY]
 
 # ========== HELPER FUNCTIONS ==========
 def get_api_key(credentials: HTTPAuthorizationCredentials = Depends(security)):
