@@ -1,0 +1,35 @@
+# render.yaml - Render Blueprint for AI Summarizer API
+# https://render.com/docs/blueprints
+
+services:
+  - type: web
+    name: ai-summarizer-api
+    env: python
+    region: singapore  # Close to Hong Kong for low latency
+    buildCommand: |
+      pip install -r requirements.txt
+    startCommand: uvicorn src.main:app --host 0.0.0.0 --port $PORT
+    plan: free
+    autoDeploy: true
+    
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_PUBLIC_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: CREDIT_PRICE_USD
+        value: "0.01"
+      - key: CREDITS_PER_CHARACTER
+        value: "1"
+      - key: LOG_LEVEL
+        value: INFO
+      - key: ADMIN_API_KEY
+        generateValue: true
+      - key: ADMIN_EMAIL
+        value: admin@example.com
