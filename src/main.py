@@ -120,6 +120,31 @@ class APIInfo(BaseModel):
     features: List[str]
     quick_start: dict
 
+# ========== LEAD STORAGE ==========
+LEADS_FILE = "/home/mac2018/.openclaw/workspace/secure/fal_sh_leads.jsonl"
+
+def append_lead(email: str, name: str, api_key: str, credits: int):
+    """Append new lead to leads file for email marketing"""
+    import os
+    os.makedirs(os.path.dirname(LEADS_FILE), exist_ok=True)
+    with open(LEADS_FILE, "a") as f:
+        f.write(json.dumps({
+            "email": email,
+            "name": name,
+            "api_key": api_key,
+            "credits": credits,
+            "created_at": datetime.now().isoformat()
+        }) + "\n")
+
+
+def get_leads_count() -> int:
+    """Count total leads"""
+    import os
+    if not os.path.exists(LEADS_FILE):
+        return 0
+    with open(LEADS_FILE) as f:
+        return sum(1 for _ in f)
+
 # ========== STORAGE ==========
 api_keys_db: Dict[str, dict] = {}
 requests_log: List[dict] = []
@@ -484,13 +509,15 @@ async def status():
     total_requests = sum(u.get("total_requests", 0) for u in api_keys_db.values())
     return {
         "api_status": "operational",
-        "version": "2.3.0",
+        "version": "2.5.0",
         "total_users": total_keys,
         "total_requests_served": total_requests,
+        "total_leads_captured": get_leads_count(),
         "features": {
             "modes": ["auto", "bullet", "short", "paragraph"],
             "languages": ["en", "zh"],
-            "bulk_processing": True
+            "bulk_processing": True,
+            "lead_capture": True
         }
     }
 
@@ -536,6 +563,8 @@ async def create_api_key(request: APIKeyCreateRequest):
         "total_requests": 0
     }
     
+    # Capture lead for email marketing
+    append_lead(request.email, request.name, api_key, initial_credits)
     logger.info(f"New user: {request.email} -> {api_key[:12]}...")
     
     return APIKeyResponse(
