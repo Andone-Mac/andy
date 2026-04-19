@@ -7,7 +7,7 @@ $0.01 per 1000 credits | No monthly fee | Free tier available
 from fastapi import FastAPI, HTTPException, Depends, Header, Request, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from pydantic import BaseModel, Field, field_validator
 from typing import Optional, Dict, List
 import uuid
@@ -282,43 +282,186 @@ def summarize_text(text: str, max_length: int = 100, mode: str = "auto") -> str:
     return modes.get(mode, summarize_auto)(text, max_length)
 
 # ========== API ENDPOINTS ==========
-@app.get("/", response_model=APIInfo)
+@app.get("/", response_class=HTMLResponse)
 async def root():
-    """API overview with marketing info"""
-    return {
-        "service": "FAL-SH",
-        "version": "2.3.0",
-        "tagline": "The affordable, developer-first text summarization API",
-        "pricing": {
-            "per_credit": "$0.01",
-            "per_1000_chars": "1 credit",
-            "minimum_purchase": "100 credits ($1)",
-            "no_monthly_fee": True
-        },
-        "free_tier": {
-            "credits": 100,
-            "key": "fal_free_trial_xK9mN3p",
-            "note": "Get free key at POST /keys"
-        },
-        "features": [
-            "Multiple modes: auto, bullet, short, paragraph",
-            "Chinese & English support",
-            "Bulk processing available",
-            "Stripe secure payments",
-            "Real-time usage tracking"
-        ],
-        "quick_start": {
-            "step1": "Get API key: POST /keys",
-            "step2": "Summarize: POST /summarize",
-            "step3": "Buy credits: POST /purchase",
-            "example": {
-                "method": "POST",
-                "url": "/summarize",
-                "headers": {"Authorization": "Bearer YOUR_KEY", "Content-Type": "application/json"},
-                "body": {"text": "Your text here (min 50 chars)", "max_length": 100, "mode": "auto"}
+    """Landing page - HTML for human visitors"""
+    html = """
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FAL-SH - AI Text Summarization API</title>
+        <style>
+            * { margin: 0; padding: 0; box-sizing: border-box; }
+            body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; min-height: 100vh; }
+            .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+            .hero { text-align: center; padding: 60px 0; }
+            .hero h1 { font-size: 3.5em; font-weight: 800; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; }
+            .hero .tagline { font-size: 1.4em; color: #888; margin-bottom: 30px; }
+            .price-badge { display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); padding: 12px 30px; border-radius: 50px; font-size: 1.3em; font-weight: 700; margin-bottom: 40px; }
+            .demo-box { background: #16161e; border: 1px solid #2a2a3a; border-radius: 16px; padding: 30px; margin: 40px 0; }
+            .demo-box h3 { color: #667eea; margin-bottom: 15px; }
+            .demo-input { width: 100%; background: #0a0a0f; border: 1px solid #333; border-radius: 8px; padding: 15px; color: #fff; font-size: 1em; resize: vertical; min-height: 120px; margin-bottom: 15px; }
+            .demo-input:focus { outline: none; border-color: #667eea; }
+            .demo-btn { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px 40px; border-radius: 8px; font-size: 1.1em; font-weight: 600; cursor: pointer; width: 100%; transition: transform 0.2s; }
+            .demo-btn:hover { transform: scale(1.02); }
+            .demo-result { margin-top: 20px; padding: 20px; background: #0a0a0f; border-radius: 8px; border-left: 4px solid #667eea; display: none; }
+            .demo-result.show { display: block; }
+            .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+            .feature { background: #16161e; border: 1px solid #2a2a3a; border-radius: 12px; padding: 25px; }
+            .feature h4 { color: #667eea; font-size: 1.1em; margin-bottom: 8px; }
+            .feature p { color: #888; line-height: 1.6; }
+            .pricing { background: #16161e; border: 1px solid #2a2a3a; border-radius: 16px; padding: 40px; margin: 40px 0; text-align: center; }
+            .pricing h2 { font-size: 2em; margin-bottom: 30px; }
+            .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+            .price-card { background: #0a0a0f; border-radius: 12px; padding: 25px; }
+            .price-card .amount { font-size: 2.5em; font-weight: 700; color: #667eea; }
+            .price-card .credits { color: #888; margin: 10px 0; }
+            .price-card .per { color: #555; font-size: 0.9em; }
+            .cta-section { text-align: center; padding: 40px 0; }
+            .cta-btn { display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; text-decoration: none; padding: 18px 50px; border-radius: 50px; font-size: 1.2em; font-weight: 700; margin: 10px; transition: transform 0.2s; }
+            .cta-btn:hover { transform: scale(1.05); }
+            .cta-btn.secondary { background: transparent; border: 2px solid #667eea; color: #667eea; }
+            .code-example { background: #16161e; border-radius: 12px; padding: 25px; margin: 20px 0; font-family: 'Monaco', 'Consolas', monospace; font-size: 0.9em; overflow-x: auto; }
+            .code-example .comment { color: #6a9955; }
+            .code-example .keyword { color: #c586c0; }
+            .code-example .string { color: #ce9178; }
+            footer { text-align: center; padding: 40px 0; color: #555; border-top: 1px solid #1a1a2a; margin-top: 40px; }
+            .stats { display: flex; justify-content: center; gap: 40px; margin: 30px 0; flex-wrap: wrap; }
+            .stat { text-align: center; }
+            .stat .number { font-size: 2em; font-weight: 700; color: #667eea; }
+            .stat .label { color: #888; font-size: 0.9em; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero">
+                <h1>FAL-SH</h1>
+                <p class="tagline">AI Text Summarization API</p>
+                <div class="price-badge">$0.01 per 1,000 credits</div>
+                <div class="stats">
+                    <div class="stat"><div class="number">4</div><div class="label">Summarize Modes</div></div>
+                    <div class="stat"><div class="number">2</div><div class="label">Languages</div></div>
+                    <div class="stat"><div class="number">100</div><div class="label">Free Credits</div></div>
+                    <div class="stat"><div class="number">0</div><div class="label">Monthly Fee</div></div>
+                </div>
+            </div>
+
+            <div class="demo-box">
+                <h3>🚀 Try It Now - Live Demo</h3>
+                <textarea class="demo-input" id="demoText" placeholder="Paste your text here... (minimum 50 characters)">Artificial intelligence is transforming the way businesses operate in the 21st century. From automating routine tasks to providing deep insights through data analysis, AI tools are becoming essential for companies of all sizes. Small businesses can now access powerful AI capabilities through affordable APIs, leveling the playing field with larger competitors. The key to successful AI adoption lies in choosing the right tools that integrate seamlessly with existing workflows. Start small, measure results, and scale up as you see tangible benefits in your operations.</textarea>
+                <button class="demo-btn" onclick="runDemo()">Generate Summary</button>
+                <div class="demo-result" id="demoResult"></div>
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <h4>⚡ 4 Summarize Modes</h4>
+                    <p>Auto, Bullet points, Short summary, or Paragraph format. Choose the perfect output for your use case.</p>
+                </div>
+                <div class="feature">
+                    <h4>🌏 Chinese & English</h4>
+                    <p>Native support for both Chinese and English text. Auto-detects language and processes accordingly.</p>
+                </div>
+                <div class="feature">
+                    <h4>📦 Bulk Processing</h4>
+                    <p>Process up to 10 texts at once with 20% bulk discount. Perfect for content platforms.</p>
+                </div>
+                <div class="feature">
+                    <h4>💳 Simple Pricing</h4>
+                    <p>Pay only for what you use. No monthly fees, no subscriptions. Just $0.01 per 1,000 characters.</p>
+                </div>
+            </div>
+
+            <div class="pricing">
+                <h2>Simple, Transparent Pricing</h2>
+                <div class="pricing-grid">
+                    <div class="price-card">
+                        <div class="amount">FREE</div>
+                        <div class="credits">100 credits</div>
+                        <div class="per">No credit card needed</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="amount">$10</div>
+                        <div class="credits">1,000 credits</div>
+                        <div class="per">$0.01 per credit</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="amount">$100</div>
+                        <div class="credits">10,000 credits</div>
+                        <div class="per">$0.01 per credit</div>
+                    </div>
+                    <div class="price-card">
+                        <div class="amount">$1000</div>
+                        <div class="credits">100,000 credits</div>
+                        <div class="per">$0.01 per credit</div>
+                    </div>
+                </div>
+            </div>
+
+            <h2 style="margin: 40px 0 20px;">Quick Start</h2>
+            <div class="code-example">
+                <span class="comment"># 1. Get your free API key</span><br>
+                <span class="keyword">curl</span> -X POST https://ai-summarizer-api-gswm.onrender.com/keys \\\<br>
+                &nbsp;&nbsp;-H <span class="string">"Content-Type: application/json"</span> \\\<br>
+                &nbsp;&nbsp;-d <span class="string">'{"name":"Your Name","email":"you@example.com"}'</span><br><br>
+                <span class="comment"># 2. Summarize text</span><br>
+                <span class="keyword">curl</span> -X POST https://ai-summarizer-api-gswm.onrender.com/summarize \\\<br>
+                &nbsp;&nbsp;-H <span class="string">"Authorization: Bearer YOUR_API_KEY"</span> \\\<br>
+                &nbsp;&nbsp;-H <span class="string">"Content-Type: application/json"</span> \\\<br>
+                &nbsp;&nbsp;-d <span class="string">'{"text":"Your text here...","max_length":100,"mode":"auto"}'</span>
+            </div>
+
+            <div class="cta-section">
+                <a href="#/docs" class="cta-btn">📖 Read Full Docs</a>
+                <a href="javascript:void(0)" onclick="document.getElementById('demoText').focus();" class="cta-btn secondary">⚡ Try Live Demo</a>
+            </div>
+        </div>
+
+        <script>
+            async function runDemo() {
+                const text = document.getElementById('demoText').value;
+                const result = document.getElementById('demoResult');
+                
+                if (text.length < 50) {
+                    result.innerHTML = '<strong style="color:#f5576c;">Please enter at least 50 characters.</strong>';
+                    result.classList.add('show');
+                    return;
+                }
+                
+                result.innerHTML = '<strong style="color:#667eea;">⏳ Processing...</strong>';
+                result.classList.add('show');
+                
+                try {
+                    const response = await fetch('/summarize', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer fal_demo_abc123xyz789',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            text: text,
+                            max_length: 100,
+                            mode: 'auto'
+                        })
+                    });
+                    const data = await response.json();
+                    
+                    if (response.ok) {
+                        result.innerHTML = `<strong style="color:#4ade80;">✅ Summary:</strong><br><br>${data.summary}<br><br><small style="color:#888;">📊 Compression: ${Math.round(data.compression_ratio * 100)}% | Used ${data.credits_used} credit(s)</small>`;
+                    } else {
+                        result.innerHTML = `<strong style="color:#f5576c;">❌ Error:</strong> ${data.detail || 'Something went wrong'}`;
+                    }
+                } catch (e) {
+                    result.innerHTML = `<strong style="color:#f5576c;">❌ Network error:</strong> ${e.message}`;
+                }
             }
-        }
-    }
+        </script>
+    </body>
+    </html>
+    """
+    return HTMLResponse(content=html)
 
 @app.get("/health")
 async def health():
