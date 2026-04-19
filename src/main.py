@@ -901,7 +901,7 @@ async def api_info():
     """JSON API info for developers - programmatic access"""
     return {
         "service": "FAL-SH",
-        "version": "2.4.0",
+        "version": "2.5.1",
         "tagline": "The affordable, developer-first text summarization API",
         "pricing": {
             "per_credit": "$0.01",
