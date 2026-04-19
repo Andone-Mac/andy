@@ -716,6 +716,44 @@ async def docs():
     """Redirect to Swagger docs"""
     return JSONResponse(content={"redirect": "/docs"}, status_code=302)
 
+@app.get("/info", response_model=APIInfo)
+async def api_info():
+    """JSON API info for developers - programmatic access"""
+    return {
+        "service": "FAL-SH",
+        "version": "2.4.0",
+        "tagline": "The affordable, developer-first text summarization API",
+        "pricing": {
+            "per_credit": "$0.01",
+            "per_1000_chars": "1 credit",
+            "minimum_purchase": "100 credits ($1)",
+            "no_monthly_fee": True
+        },
+        "free_tier": {
+            "credits": 100,
+            "key": "fal_free_trial_xK9mN3p",
+            "note": "Get free key at POST /keys"
+        },
+        "features": [
+            "Multiple modes: auto, bullet, short, paragraph",
+            "Chinese & English support",
+            "Bulk processing available",
+            "Stripe secure payments",
+            "Real-time usage tracking"
+        ],
+        "quick_start": {
+            "step1": "Get API key: POST /keys",
+            "step2": "Summarize: POST /summarize",
+            "step3": "Buy credits: POST /purchase",
+            "example": {
+                "method": "POST",
+                "url": "/summarize",
+                "headers": {"Authorization": "Bearer YOUR_KEY", "Content-Type": "application/json"},
+                "body": {"text": "Your text here (min 50 chars)", "max_length": 100, "mode": "auto"}
+            }
+        }
+    }
+
 @app.get("/code-examples")
 async def code_examples():
     """Get code examples in multiple languages"""
