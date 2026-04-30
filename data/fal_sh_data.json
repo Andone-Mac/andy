@@ -1,0 +1,29 @@
+{
+  "api_keys": {
+    "fal_c3fa86491bd76a9afe84f236f61b": {
+      "name": "Test User",
+      "email": "test@example.com",
+      "credits": 99,
+      "created_at": "2026-04-26T23:36:42.111531",
+      "total_requests": 1,
+      "total_credits_used": 1
+    }
+  },
+  "requests_log": [
+    {
+      "request_id": "790dbf4a-550c-4c81-925f-ce2b86b29d1a",
+      "api_key": "fal_c3fa8649...",
+      "text_length": 479,
+      "credits_used": 1,
+      "mode": "auto",
+      "timestamp": "2026-04-26T23:36:51.959511"
+    }
+  ],
+  "payments_log": [],
+  "stats": {
+    "total_requests": 1,
+    "total_credits_purchased": 0,
+    "total_credits_used": 1,
+    "created_at": "2026-04-26T23:36:01.524352"
+  }
+}
