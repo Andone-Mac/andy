@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>甲维思 JAVIS · 机悟政企超脑 — 涉密单位上 AI，最大的坑不是不会用，是被追责</title>
+<meta name="description" content="甲维思（JAVIS）· 机悟政企超脑：为「数据不能出门、业务又必须用上 AI」的单位，在完全断网的内网里部署大模型——数据不出域、结论可溯源、全程可审计，每个结论带原文出处，有人长期运维。40 分钟免费评估，两周试点见效再谈合同。">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<style>
+  :root{
+    --navy:#16295e;
+    --navy-deep:#0e1c42;
+    --navy-soft:#3a4a75;
+    --cyan:#22a7dd;
+    --cyan-deep:#1878c8;
+    --ink:#1d2433;
+    --ink-soft:#48536a;
+    --muted:#7b8499;
+    --paper:#ffffff;
+    --wash:#f5f7fb;
+    --wash-2:#eef2f9;
+    --line:#dfe5ef;
+    --band:#101f47;
+    --band-ink:#c4cfe6;
+    --sans:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
+    --mono:"SF Mono","JetBrains Mono",Consolas,"Noto Sans Mono CJK SC",monospace;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  section{padding:92px 0}
+  h2{font-size:clamp(1.55rem,3vw,2.2rem);font-weight:800;line-height:1.4;letter-spacing:.01em}
+  .kicker{display:flex;align-items:center;gap:12px;font-size:.78rem;font-weight:700;letter-spacing:.26em;color:var(--cyan-deep);text-transform:uppercase;margin-bottom:16px}
+  .kicker::after{content:"";width:46px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--navy))}
+  .lead{color:var(--ink-soft);font-size:1.06rem;max-width:38em;margin-top:14px}
+
+  /* ---------- nav ---------- */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .brand img{height:44px;width:auto;display:block}
+  nav.links{display:flex;gap:28px;align-items:center}
+  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:.92rem;padding:6px 2px;border-bottom:2px solid transparent}
+  nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
+  .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s}
+  .btn-solid{background:var(--navy);color:#fff}
+  .btn-solid:hover{background:var(--navy-deep);transform:translateY(-1px)}
+  .btn-ghost{border:1.5px solid var(--navy);color:var(--navy)}
+  .btn-ghost:hover{background:var(--navy);color:#fff}
+  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{padding:84px 0 92px;background:linear-gradient(180deg,var(--wash) 0%,var(--paper) 100%);position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 340px at 85% 12%,rgba(34,167,221,.07),transparent 65%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;position:relative}
+  .hero .tag{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:600;letter-spacing:.08em;color:var(--navy);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 16px 5px 8px;margin-bottom:22px}
+  .hero .tag img{height:20px;width:auto;border-radius:3px}
+  .hero .hook{font-size:clamp(1.1rem,2.2vw,1.42rem);font-weight:800;color:var(--navy);line-height:1.55;margin-bottom:14px;padding-left:16px;border-left:4px solid var(--cyan);letter-spacing:.02em}
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.38;font-weight:900;letter-spacing:.01em;color:var(--navy-deep)}
+  .hero h1 .accent{background:linear-gradient(92deg,var(--cyan-deep),var(--navy));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.sub{margin-top:22px;color:var(--ink-soft);font-size:1.06rem;max-width:31em}
+  .hero .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero .cta-note{font-size:.84rem;color:var(--muted)}
+  .trustline{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .chip{font-size:.84rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;color:var(--ink-soft);display:inline-flex;gap:7px;align-items:center}
+  .chip b{color:var(--navy-deep)}
+  .chip.todo{background:#fdf6e3;border:1px dashed #d8c48f;color:#8a743c;border-radius:6px}
+  /* terminal card */
+  .term{background:var(--band);border-radius:10px;box-shadow:0 26px 52px -20px rgba(14,28,66,.5);overflow:hidden;font-family:var(--mono);font-size:.8rem;line-height:1.85;color:var(--band-ink)}
+  .term .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:.72rem;color:#7f8db0}
+  .term .dot{width:10px;height:10px;border-radius:50%;background:#2b3c6b}
+  .term .dot.g{background:#3f7d62}
+  .term .bar span.ip{margin-left:auto}
+  .term .body{padding:18px 20px 22px}
+  .term .u{color:#a8bcdf}
+  .term .u::before{content:"▸ ";color:var(--cyan)}
+  .term .a{color:#e3eaf7;margin:4px 0 14px}
+  .term .a::before{content:"机悟 ";color:#6f86ae}
+  .term .ok{color:#7fbf8f}
+  .term .warn{color:#e0b45f}
+  .cursor{display:inline-block;width:8px;height:1em;background:#7f95bd;vertical-align:-2px;animation:blink 1.1s step-end infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+
+  /* brand film (hero right visual) */
+  .video-box{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 26px 52px -20px rgba(14,28,66,.5);border:1px solid var(--line);background:#000}
+  .video-box video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#000}
+  .vb-cap{display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--band);color:#a9b7d8;font-size:.78rem;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .vb-cap .rec{flex:none;width:8px;height:8px;border-radius:50%;background:#e05a5a;animation:blink 1.6s step-end infinite}
+  .vb-cap .dim{color:#6f7f9f;margin-left:auto;overflow:hidden;text-overflow:ellipsis}
+  @media (prefers-reduced-motion:reduce){.vb-cap .rec{animation:none}}
+
+  /* ---------- pain (why now) ---------- */
+  .why{background:var(--navy-deep);color:#dbe3f4}
+  .why h2{color:#fff}
+  .why .kicker{color:var(--cyan)}
+  .why .lead{color:#aebbdd}
+  .whips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+  .whips span{font-size:.85rem;border:1px solid rgba(255,255,255,.22);border-radius:4px;padding:6px 14px;color:#c6d2ee}
+  .pain{margin-top:38px;display:grid;grid-template-columns:1fr 1fr;gap:30px 46px;counter-reset:p}
+  .pitem{position:relative;padding-left:58px;counter-increment:p}
+  .pitem::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:0;font-family:var(--mono);font-size:1.45rem;font-weight:800;color:var(--cyan)}
+  .pitem b{display:block;color:#fff;font-size:1.03rem;margin-bottom:6px}
+  .pitem span{font-size:.92rem;color:#9fadd3;line-height:1.75}
+  .why .punch{margin-top:38px;font-size:1.12rem;font-weight:700;color:#fff;line-height:1.85;max-width:46em;border-top:1px solid rgba(255,255,255,.12);padding-top:28px}
+  .why .punch em{font-style:normal;color:var(--cyan)}
+
+  /* ---------- cards trio (three main cards) ---------- */
+  .trio .main-card{margin-top:46px;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr;background:var(--wash)}
+  .trio .main-copy{padding:44px 46px}
+  .trio .badge{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.18em;color:var(--cyan-deep);border:1px solid var(--cyan);border-radius:999px;padding:3px 12px;margin-bottom:16px}
+  .trio h3{font-size:1.4rem;font-weight:800;line-height:1.5;color:var(--navy-deep)}
+  .trio .main-copy p{margin-top:14px;color:var(--ink-soft);font-size:.98rem}
+  .trio .quote{margin-top:22px;padding-left:16px;border-left:3px solid var(--cyan);font-weight:700;color:var(--navy);font-size:1.02rem;line-height:1.7}
+  .prov{background:var(--band);padding:34px 30px;font-family:var(--mono);font-size:.76rem;line-height:1.8;color:#aebdd9}
+  .prov .lbl{font-size:.66rem;letter-spacing:.2em;color:#66779f;margin-bottom:10px}
+  .prov .q{color:#e6ecf8;font-size:.84rem}
+  .prov .step{display:flex;gap:10px;margin-top:14px;align-items:flex-start}
+  .prov .step .n{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid #3d5488;text-align:center;line-height:21px;font-size:.68rem;color:var(--cyan)}
+  .prov .hit{color:#7fbf8f}
+  .prov .stop{color:#e0b45f}
+  .trio .sub-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+  .tcard{border:1px solid var(--line);border-radius:12px;padding:30px 30px 26px;background:#fff}
+  .tcard h4{font-size:1.06rem;font-weight:800;color:var(--navy-deep);margin-bottom:8px}
+  .tcard .no{font-family:var(--mono);font-size:.72rem;color:var(--cyan-deep);letter-spacing:.14em;display:block;margin-bottom:10px;font-weight:700}
+  .tcard p{font-size:.92rem;color:var(--ink-soft)}
+  .tcard .line{margin-top:14px;font-size:.9rem;font-weight:700;color:var(--navy);padding-top:12px;border-top:1px dashed var(--line)}
+
+  /* ---------- product rows ---------- */
+  .product{background:var(--wash)}
+  .rows{margin-top:46px;border-top:1px solid var(--line)}
+  .row{display:grid;grid-template-columns:64px 1fr 1.35fr;gap:24px;padding:28px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+  .row .no{font-family:var(--mono);color:var(--cyan-deep);font-weight:700;font-size:.95rem}
+  .row h3{font-size:1.18rem;font-weight:800;color:var(--navy-deep)}
+  .row p{color:var(--ink-soft);font-size:.96rem}
+  .row .note{color:var(--muted);font-size:.85rem;display:block;margin-top:4px}
+
+  /* ---------- roles tabs ---------- */
+  .roles .tabbar{display:flex;gap:8px;margin-top:40px;flex-wrap:wrap}
+  .roles .tab{border:1px solid var(--line);background:#fff;border-radius:8px;padding:12px 22px;font-size:.95rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .15s}
+  .roles .tab:hover{border-color:var(--cyan)}
+  .roles .tab.sel{background:var(--navy);border-color:var(--navy);color:#fff}
+  .role-panel{display:none;margin-top:26px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:40px 44px}
+  .role-panel.show{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .role-panel .q{font-size:1.3rem;font-weight:800;line-height:1.65;color:var(--navy-deep)}
+  .role-panel .who{font-size:.84rem;color:var(--muted);margin-top:10px}
+  .role-panel ul{list-style:none}
+  .role-panel li{padding:12px 0 12px 30px;border-bottom:1px solid var(--line);position:relative;font-size:.97rem;color:var(--ink-soft)}
+  .role-panel li:last-child{border-bottom:none}
+  .role-panel li::before{content:"";position:absolute;left:2px;top:22px;width:12px;height:12px;background:linear-gradient(135deg,var(--cyan),var(--cyan-deep));clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+  .role-panel li b{color:var(--ink)}
+
+  /* ---------- industries ---------- */
+  .ind{background:var(--band);color:var(--band-ink)}
+  .ind h2{color:#fff}
+  .ind .kicker{color:var(--cyan)}
+  .ind .lead{color:#9fadd3}
+  .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;margin-top:46px}
+  .icell{background:var(--band);padding:26px 22px 22px}
+  .icell b{display:block;color:#fff;font-size:1.02rem;margin-bottom:8px}
+  .icell p{font-size:.85rem;color:#93a2c8;line-height:1.65}
+  .icell .cards{margin-top:12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--cyan)}
+  .sme{margin-top:22px;border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:22px 26px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+  .sme b{display:block;color:#fff;font-size:1rem;margin-bottom:4px}
+  .sme span{font-size:.88rem;color:#9fadd3;line-height:1.7}
+  .sme .sme-cards{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--cyan);flex:none}
+
+  /* ---------- compare ---------- */
+  .compare table{width:100%;border-collapse:collapse;margin-top:42px;font-size:.95rem}
+  .compare th,.compare td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  .compare thead th{font-size:.8rem;letter-spacing:.14em;color:var(--muted);font-weight:700;border-bottom:2px solid var(--navy-deep)}
+  .compare thead th.us{color:var(--navy-deep)}
+  .compare td.dim{color:var(--muted)}
+  .compare td.win{color:var(--ink);font-weight:600;background:rgba(34,167,221,.05)}
+  .compare td.win::before{content:"✓ ";color:var(--cyan-deep);font-weight:800}
+  .compare td.dim::before{content:"✕ ";color:#c08686}
+  .compare td.mid::before{content:"◐ ";color:var(--muted)}
+  .compare tbody th{font-weight:700;width:11em;color:var(--navy-deep)}
+  .tco{margin-top:26px;font-size:.88rem;color:var(--muted)}
+
+  /* ---------- process ---------- */
+  .steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:52px;counter-reset:s}
+  .step{position:relative;padding:0 22px 0 0;counter-increment:s}
+  .step::after{content:"";position:absolute;top:15px;right:-9px;left:34px;height:1px;background:repeating-linear-gradient(90deg,#4d5c78 0 6px,transparent 6px 12px)}
+  .step:last-child::after{display:none}
+  .step::before{content:counter(s,decimal-leading-zero);display:block;width:32px;height:32px;border-radius:50%;border:1px solid #5a6c8f;color:#cfd9ea;font-family:var(--mono);font-size:.78rem;line-height:32px;text-align:center;margin-bottom:18px;background:var(--band)}
+  .step b{display:block;color:#fff;font-size:1rem;margin-bottom:6px}
+  .step span{font-size:.88rem;color:#93a2bd;line-height:1.65}
+  .trial{margin-top:44px;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:26px 30px;background:rgba(255,255,255,.04);font-size:.98rem;color:var(--band-ink)}
+  .trial b{color:#fff}
+  .trial .line{color:var(--cyan);font-weight:800;font-size:1.05rem;margin-bottom:8px}
+
+  /* ---------- case ---------- */
+  .case-card{margin-top:46px;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1.4fr;background:#fff}
+  .case-side{background:var(--band);padding:40px 36px;color:var(--band-ink)}
+  .case-side .no{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--cyan);display:block;margin-bottom:12px}
+  .case-side h3{color:#fff;font-size:1.32rem;font-weight:800;line-height:1.6}
+  .case-side p{margin-top:14px;font-size:.92rem;color:#9fadd3;line-height:1.8}
+  .case-body{padding:38px 42px}
+  .case-row{display:grid;grid-template-columns:92px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)}
+  .case-row:last-child{border-bottom:none}
+  .case-row .k{font-size:.8rem;font-weight:800;color:var(--muted);letter-spacing:.12em;padding-top:3px}
+  .case-row .v{font-size:.96rem;color:var(--ink);line-height:1.85}
+  .case-quote{margin-top:26px;background:var(--wash-2);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:16px 20px;font-size:.92rem;color:var(--ink-soft)}
+  .placeholder{background:#fdf6e3;border:1px dashed #d8c48f;border-radius:6px;padding:12px 16px;font-size:.82rem;color:#8a743c;margin-top:22px}
+
+  /* ---------- trust ---------- */
+  .trust{background:var(--wash)}
+  .trust-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:46px;align-items:stretch}
+  .trust-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px 30px;display:flex;flex-direction:column}
+  .trust-card .no{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--cyan-deep);font-weight:700;margin-bottom:12px}
+  .trust-card h3{font-size:1.12rem;font-weight:800;color:var(--navy-deep);margin-bottom:10px}
+  .trust-card p{font-size:.92rem;color:var(--ink-soft);flex:1}
+  .trust-card .foot{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--muted)}
+
+  /* ---------- cta ---------- */
+  .cta{text-align:center}
+  .cta .big{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:900;color:var(--navy-deep);line-height:1.5}
+  .cta .lead{margin:16px auto 0;text-align:center}
+  .cta .row2{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cta .note{margin-top:18px;font-size:.84rem;color:var(--muted)}
+
+  /* ---------- contact / footer ---------- */
+  .contact{background:var(--wash)}
+  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:42px}
+  .cbox{border:1px solid var(--line);border-radius:10px;padding:26px 24px;background:#fff}
+  .cbox b{font-size:.8rem;letter-spacing:.16em;color:var(--muted);display:block;margin-bottom:10px;font-weight:700}
+  .cbox p{font-size:1.05rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
+  .cbox small{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
+  footer{background:var(--band);color:#7f8db0;padding:42px 0 36px;font-size:.84rem}
+  footer .top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:center;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08)}
+  footer .logo-w{height:40px;width:auto}
+  footer .slogan{color:#a9b7d8;font-weight:700;letter-spacing:.06em}
+  footer .comply{color:#8b99bd;font-size:.8rem;margin-top:10px;max-width:52em}
+  footer .bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:20px;align-items:center}
+  footer a{color:#a9b7d8;text-decoration:none;margin-left:20px}
+  footer a:hover{color:#fff}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.on{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:960px){
+    .ind-grid{grid-template-columns:1fr 1fr}
+    .trust-grid{grid-template-columns:1fr}
+    .role-panel.show{grid-template-columns:1fr;gap:22px}
+  }
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .trio .main-card{grid-template-columns:1fr}
+    .trio .sub-cards{grid-template-columns:1fr}
+    .pain{grid-template-columns:1fr}
+    .case-card{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr;gap:36px 0}
+    .step::after{display:none}
+    .compare table,.compare tbody,.compare tr,.compare td,.compare th{display:block;width:auto}
+    .compare thead{display:none}
+    .compare tbody th{width:auto;border-bottom:none;padding-bottom:2px}
+    .compare td{border-bottom:none;padding-top:0}
+    .compare td.win{background:none}
+    .row{grid-template-columns:44px 1fr;gap:14px}
+    .row p{grid-column:2}
+    .cgrid{grid-template-columns:1fr}
+    nav.links{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:18px 28px;gap:6px;align-items:flex-start}
+    nav.links.open{display:flex}
+    nav.links a{padding:10px 0;width:100%}
+    .nav-cta{display:none}
+    .menu-toggle{display:block}
+    section{padding:66px 0}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="甲维思 JAVIS 首页">
+      <img src="assets/logo.png" alt="甲维思 JAVIS">
+    </a>
+    <nav class="links" id="menu">
+      <a href="#why">为什么是现在</a>
+      <a href="#product">机悟超脑</a>
+      <a href="#compare">算明白账</a>
+      <a href="#process">怎么落地</a>
+      <a href="#case">案例</a>
+      <a href="#trust">信任状</a>
+      <a href="#contact">联系我们</a>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="#contact">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<div class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="tag"><img src="assets/logo_mark.png" alt="">机悟 · 政企超脑</span>
+      <p class="hook">数据不能出门，业务又必须上 AI。</p>
+      <h1>涉密单位上 AI，<br>不是能不能的问题，<br>而是如何<span class="accent">本地离线部署</span>。</h1>
+      <p class="sub">机悟·政企超脑——大模型断网部署在单位内网：本地知识库、卷宗梳理、文书初稿、OCR 全都数据不出域、结论可溯源、全程可审计；合规、提效、国产化、利旧一肩挑。更多更强实时功能，更新中……</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="#contact">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-ghost" href="#trust">预约断网演示</a>
+        <span class="cta-note">先试后买 · 两周试点见效再谈合同</span>
+      </div>
+      <div class="trustline">
+        <span class="chip"><b>某省级政法机关</b> · 生产环境运行中</span>
+        <span class="chip todo">上线前后效果数据 · 与项目方核对后发布</span>
+      </div>
+    </div>
+    <div class="video-box reveal">
+      <video class="brand-video" src="assets/javis_pro.mp4" poster="assets/javis_pro_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="机悟·政企超脑 品牌宣传片" disablepictureinpicture></video>
+      <div class="vb-cap"><span class="rec"></span>机悟 · 政企超脑 · 品牌片<span class="dim">　数据不出域，单位有超脑，个人得助手</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WHY / PAIN ================= -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="kicker reveal">WHY NOW · 为什么是现在</div>
+    <h2 class="reveal">公版云 AI 对您不成立，<br>不是因为落后，而是因为四件事</h2>
+    <div class="whips reveal">
+      <span>数据安全法</span><span>保守国家秘密法</span><span>数据出境安全评估办法</span><span>政务领域 AI 部署应用指引</span><span>等保 · 密评</span>
+    </div>
+    <div class="pain">
+      <div class="pitem reveal"><b>法规鞭子</b><span>《数据安全法》《保守国家秘密法》《数据出境安全评估办法》：执法司法数据、未公开政务数据、工作秘密属于重要数据——只能域内处理，出境须申报评估。</span></div>
+      <div class="pitem reveal"><b>已有通报</b><span>国家安全部连续两年点名通报 AI 泄密：用 AI 应用上传核心数据致泄密被严肃处理；拍密件发朋友圈被处分。官方建议：私有化部署、切断互联网连接。</span></div>
+      <div class="pitem reveal"><b>物理事实</b><span>涉密内网与外网物理隔离，云端再强也够不到——不是敢不敢上云的问题，是您的内网，云端根本进不来。</span></div>
+      <div class="pitem reveal"><b>幻觉代价</b><span>AI 一本正经编依据、张冠李戴——错一句话，影响一件案子、一笔审批。敢用于办案，每个结论必须指得到原文。</span></div>
+    </div>
+    <p class="punch reveal">对涉密政企来说，最大的痛点不是「不会用 AI」，而是<em>「用错了被追责」</em>。机悟卖的不是模型，是<em>「敢用、合规、可交账」的确定性</em>。</p>
+  </div>
+</section>
+
+<!-- ================= THREE CARDS ================= -->
+<section class="trio" id="proof">
+  <div class="wrap">
+    <div class="kicker reveal">CORE · 为什么敢用</div>
+    <h2 class="reveal">业务人员最怕的不是慢，是 AI 一本正经地编依据</h2>
+    <p class="lead reveal">所以机悟把「可溯源」做成产品的骨头，而不是卖点装饰——错一句话，影响的是一件案子、一笔审批。</p>
+
+    <div class="main-card reveal">
+      <div class="main-copy">
+        <span class="badge">第一牌 · 可溯源 · 防幻觉</span>
+        <h3>每个结论都能指到卷宗、法条、手册的原文；<br>查不到，就明说「未找到依据」。</h3>
+        <p>结论 → 引用 → 原文，三步点击穿核验；引用对不上自动标注「需人工核对」；宁可拒答，绝不编造。敢用于办案，可进卷。</p>
+        <div class="quote">「别的 AI 会编条文，机悟每个结论都能指到原文——宁可不答，也不骗你。」</div>
+      </div>
+      <div class="prov">
+        <div class="lbl">核验路径演示 · 三击到原文</div>
+        <div class="q">问：盗窃案的数额较大起点，本单位适用口径？</div>
+        <div class="step"><span class="n">1</span><span>结论：按 ×× 标准执行，起点为×万元<br><span class="hit">〔引用 #law-204〕</span></span></div>
+        <div class="step"><span class="n">2</span><span>点开引用 → 条文全文 + 生效日期 + 来源库</span></div>
+        <div class="step"><span class="n">3</span><span>定位原文 → 扫描件第 3 页高亮原句</span></div>
+        <div class="step"><span class="n">✕</span><span>换一道库里没有的题：<span class="stop">「未找到依据」</span>＋建议人工核对，<span class="stop">不生成答案</span></span></div>
+      </div>
+    </div>
+
+    <div class="sub-cards">
+      <div class="tcard reveal">
+        <span class="no">第二牌 · 数据不出域（底座）</span>
+        <h4>不是敢不敢上云，是内网物理上就够不到云端</h4>
+        <p>只有本地能干活。机悟在完全断网的环境里全功能运行，数据主权 100% 留在贵单位域内——这是入场券，不是我们的全部。</p>
+        <div class="line">断网演示可当场复跑（含拔网线镜头的实录）</div>
+      </div>
+      <div class="tcard reveal">
+        <span class="no">第三牌 · 国产化 + 旧设备利旧</span>
+        <h4>从芯片到底座全国产，现有机房就能跑</h4>
+        <p>断供、禁运、增购风险与您无关：全开源组件栈、商用许可清晰、国产操作系统已实测；存量旧卡旧服务器先用足，不做「推荐买新卡」的方案。</p>
+        <div class="line">国产适配报告 + 开源许可清单，可交付可查验</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCT ================= -->
+<section class="product" id="product">
+  <div class="wrap">
+    <div class="kicker reveal">PRODUCT · 产品</div>
+    <h2 class="reveal">机悟·政企超脑：一套搬进内网的完整 AI 生产力</h2>
+    <div class="rows">
+      <div class="row reveal"><span class="no">01</span><h3>本地大模型部署</h3><p>按数据量级、并发人数和存量硬件选型部署，支持 AMD、NVIDIA 多卡混合与显存极限优化，国产系统实测可用。<span class="note">同型号旧显卡实测优化：推理速度提升一倍以上。</span></p></div>
+      <div class="row reveal"><span class="no">02</span><h3>单位知识库 · 带出处问答</h3><p>规章制度、历史案卷、业务文档变成可检索可追问的「单位记忆」，回答附原文出处；行业黑话、口径标准张嘴就来——通用大模型是全科医生，机悟是用贵单位语料喂出来的专科医生。</p></div>
+      <div class="row reveal"><span class="no">03</span><h3>文书与卷宗助手</h3><p>卷宗时间线梳理、类案检索、文书初稿、笔录摘要——一线重复劳动整体交给 AI，人只做判断和签发。</p></div>
+      <div class="row reveal"><span class="no">04</span><h3>会议纪要 · 第一天见效</h3><p>一小时讨论会，约半小时出结构化纪要：谁说了什么、分歧在哪、结论是什么、谁去落实，一条不落。全程断网、转完即删不留盘。</p></div>
+      <div class="row reveal"><span class="no">05</span><h3>沉睡资产活化</h3><p>识别扫描件、照片、旧档案，让纸堆变成可检索、可复用的数据资产；老师傅的经验沉淀进库，新人上岗就有「随身师父」。</p></div>
+      <div class="row reveal"><span class="no">06</span><h3>全程留痕 · 审计可回放</h3><p>谁查了什么、模型怎么答的，权限分级、日志回放，随手交审计、过等保密评——不做「事后无法举证」的黑盒。</p></div>
+      <div class="row reveal"><span class="no">07</span><h3>运维与陪跑</h3><p>自动备份、监控、模型升级、新机器适配，外加对业务人员的上手培训——部署完成只是服务的开始。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ROLES ================= -->
+<section class="roles" id="roles">
+  <div class="wrap">
+    <div class="kicker reveal">ROLES · 按角色看机悟</div>
+    <h2 class="reveal">一个系统，四类人各有各的理由</h2>
+    <div class="tabbar reveal" role="tablist">
+      <button class="tab sel" role="tab" aria-selected="true" onclick="pickRole(0,this)">一把手</button>
+      <button class="tab" role="tab" aria-selected="false" onclick="pickRole(1,this)">保密 / 合规条线</button>
+      <button class="tab" role="tab" aria-selected="false" onclick="pickRole(2,this)">信息科 / 财务</button>
+      <button class="tab" role="tab" aria-selected="false" onclick="pickRole(3,this)">业务骨干 / 机要</button>
+    </div>
+
+    <div class="role-panel show" role="tabpanel">
+      <div>
+        <p class="q">「机悟是能写进年度工作报告的成果。」</p>
+        <p class="who">数字化转型 / AI+ 是硬指标，机悟让指标落成可演示、可交账的实体。</p>
+      </div>
+      <ul>
+        <li><b>不掉队：</b>同行单位已用 AI 压缩业务周期，差距是按月拉开的。</li>
+        <li><b>有成果：</b>呼应司法责任制/终身责任制——哈希链留痕，建设成效直接进报告。</li>
+        <li><b>买一次，全集团用：</b>总部定标准、基层跟着跑，一套知识库多级共用。</li>
+        <li><b>人走经验留：</b>几十年积累沉淀进库，不再随人员退休调岗流失。</li>
+      </ul>
+    </div>
+    <div class="role-panel" role="tabpanel">
+      <div>
+        <p class="q">「公版 AI 进不了的门，机悟把 AI 搬进门内。」</p>
+        <p class="who">底线守得住，创新才谈得上——检查来了，随手交得出账。</p>
+      </div>
+      <ul>
+        <li><b>物理断网全功能：</b>不是「敢不敢上云」的问题——涉密内网，云端本来就不许够到。</li>
+        <li><b>全程留痕、权限分级：</b>每一次查询、每一个答案可回放，随手交审计。</li>
+        <li><b>对照清单随交付：</b>等保/密评对照项、开源许可清单，逐条可查验。</li>
+        <li><b>等保密评不是黑盒：</b>模型行为有日志、有版本、有验收集。</li>
+      </ul>
+    </div>
+    <div class="role-panel" role="tabpanel">
+      <div>
+        <p class="q">「一张三年总账：断网买断 + 旧设备利旧，三年回本。」</p>
+        <p class="who">预算问得出答案，供应链扛得住风浪，采购评审每层有答卷。</p>
+      </div>
+      <ul>
+        <li><b>利旧优先：</b>存量服务器和显卡先用足，不做「推荐你买新卡」的方案。</li>
+        <li><b>不养天价团队：</b>把「微调工程师×2 + 数据清洗×3 人半年」换成一份可复算的服务账单。</li>
+        <li><b>不绑死单一芯片生态：</b>AMD/N 卡混跑、国产 OS 实测记录在手。</li>
+        <li><b>合同写明支持范围：</b>开源可交接，不绑架、不怕人走楼空。</li>
+      </ul>
+    </div>
+    <div class="role-panel" role="tabpanel">
+      <div>
+        <p class="q">「你的专属外脑，睡在你自己的机房。」</p>
+        <p class="who">最懂单位自己规矩的助理——而且它宁可不答，也不骗你。</p>
+      </div>
+      <ul>
+        <li><b>带出处答本单位制度：</b>规章、口径、纪要全部附原文，敢碰最敏感的材料。</li>
+        <li><b>结论可进卷：</b>引用核验不上就标「需人工核对」，查不到就明说，不背锅。</li>
+        <li><b>第一天见效：</b>一小时会议半小时纪要，从每天的高频痛点用起来。</li>
+        <li><b>嵌进现有流程：</b>不做第二块没人点的屏幕——照干老活，只是更快。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INDUSTRIES ================= -->
+<section class="ind" id="ind">
+  <div class="wrap">
+    <div class="kicker">INDUSTRIES · 服务行业</div>
+    <h2>只要「数据不能出门，业务必须上 AI」，场景我们都有解法</h2>
+    <div class="ind-grid">
+      <div class="icell reveal"><b>政法 · 检纪</b><p>卷宗时间线梳理、文书初稿、类案检索、检委会纪要</p><div class="cards">主打：可溯源 + 合规 + 审计留痕</div></div>
+      <div class="icell reveal"><b>党政机关</b><p>公文初稿、规章问答、档案扫描件活化</p><div class="cards">主打：合规 + 自主可控 + 内事</div></div>
+      <div class="icell reveal"><b>国企 · 集团</b><p>经营数据问答、制度全集团统一、生产调度纪要</p><div class="cards">主打：资产沉淀 + 三年总账</div></div>
+      <div class="icell reveal"><b>医院 · 疾控</b><p>病历科研辅助、文献综述、院内制度问答</p><div class="cards">主打：数据不出院 + 不编指南</div></div>
+      <div class="icell reveal"><b>金融</b><p>监管条文带出处问答、内审辅助、合规培训</p><div class="cards">主打：可溯源 + 分类分级</div></div>
+      <div class="icell reveal"><b>高校 · 科研</b><p>未发表数据沉淀分析、论文辅助、课题组知识库传承</p><div class="cards">主打：数据资产 + 合规</div></div>
+      <div class="icell reveal"><b>能源 · 制造</b><p>设备手册秒答、故障案例库、班组会议纪要</p><div class="cards">主打：OT/IT 隔离下的即时见效</div></div>
+      <div class="icell reveal"><b>涉密资质单位</b><p>内网知识库、涉密文书辅助（只谈能力，不谈细节）</p><div class="cards">物理隔离是采购前提，也是一票通过项</div></div>
+    </div>
+    <div class="sme reveal">
+      <div>
+        <b>中小企业 · 数据不想出公司？</b>
+        <span>律所、咨询、软件、贸易、诊所、设计工作室……同样的私有化，更轻的落地：数据不出公司、一张三年总账、旧机器先试两周。</span>
+      </div>
+      <div class="sme-cards">主打：数据不出公司 + 三年总账 + 先试后买</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPARE ================= -->
+<section class="compare" id="compare">
+  <div class="wrap">
+    <div class="kicker reveal">COMPARE · 算一笔明白账</div>
+    <h2 class="reveal">同一件事的三种做法</h2>
+    <table class="reveal">
+      <thead><tr><th></th><th>公版云端大模型</th><th>自建团队从零搞</th><th class="us">机悟超脑</th></tr></thead>
+      <tbody>
+        <tr><th>数据安全</th><td class="dim">数据出境入云，触碰红线；涉密内网物理够不到</td><td class="win">域内，但要自己一路踩坑</td><td class="win">域内，且有已验证的成熟路径</td></tr>
+        <tr><th>结论可信</th><td class="dim">一本正经编依据，无法进卷</td><td class="mid">取决于自研质量，周期以年计</td><td class="win">每条结论带原文出处，查不到即拒答</td></tr>
+        <tr><th>模型能力</th><td class="win">旗舰模型最新版，能力最强</td><td class="dim">受限于团队投入</td><td class="mid">开源旗舰模型本地运行，够用且可控</td></tr>
+        <tr><th>见效周期</th><td class="dim">开通即用，但敏感业务不敢用</td><td class="dim">招聘 + 试错，常以年计</td><td class="win">评估后数周内在内网跑起来</td></tr>
+        <tr><th>存量硬件</th><td class="dim">与己无关</td><td class="dim">容易变成「先买新卡」</td><td class="win">旧卡、异构双卡混跑是日常功课</td></tr>
+        <tr><th>持续成本</th><td class="dim">按 token 计费，越用越贵</td><td class="dim">微调工程师 50–100 万/年 ×2，数据组另算</td><td class="win">一次投入用满三年，报价＝可复算账单</td></tr>
+        <tr><th>供应链</th><td class="dim">闭源模型版权/停服风险</td><td class="dim">依赖个别核心人员</td><td class="win">全开源组件栈，合同写明可交接</td></tr>
+      </tbody>
+    </table>
+    <p class="tco reveal">※ 三年总账口径：日均调用量 × 云 API 单价 × 36 个月，对照「买断 + 旧设备利旧 + 电费折旧」；评估时按贵单位真实用量出表，不拿均值糊弄。</p>
+  </div>
+</section>
+
+<!-- ================= PROCESS + TRIAL ================= -->
+<section class="ind" id="process" style="background:var(--band)">
+  <div class="wrap">
+    <div class="kicker">HOW WE WORK · 服务流程</div>
+    <h2>五步，从「想用」到「用起来」</h2>
+    <div class="steps">
+      <div class="step"><b>免费评估</b><span>40 分钟：现有设备能跑什么、缺什么、多少钱、多久能用，给书面结论。</span></div>
+      <div class="step"><b>两周试点</b><span>一台现有服务器 + 一个业务科室 + 两个高频场景（纪要 + 知识问答），提前锁定验收口径。</span></div>
+      <div class="step"><b>部署上线</b><span>内网安装、知识库增量入库手册、业务系统对接，全程数据不出域。</span></div>
+      <div class="step"><b>调优定制</b><span>按业务语料微调提示词与知识库，必要时做定制模型；可测 KPI + 可复跑验收集交付。</span></div>
+      <div class="step"><b>培训陪跑</b><span>教会业务人员用起来，长期运维备份与能力升级；省级/集团统采放大。</span></div>
+    </div>
+    <div class="trial reveal">
+      <div class="line">「先别立项。拿一台旧机器试两周。」</div>
+      不卖天价盒子、不留烂尾项目：两周试点见效再走小额采购；系统嵌进现有流程，员工照干老活，只是更快。合同写明支持范围，开源可交接。
+    </div>
+  </div>
+</section>
+
+<!-- ================= CASE ================= -->
+<section class="case" id="case">
+  <div class="wrap">
+    <div class="kicker reveal">CASE · 案例锚点</div>
+    <h2 class="reveal">某省级政法机关，生产环境运行中</h2>
+    <div class="case-card reveal">
+      <div class="case-side">
+        <span class="no">唯一但过硬的案例</span>
+        <h3>从选型、异构双卡优化到分库交付，跑在完全断网的办案区内</h3>
+        <p>「线索梳理和文书初稿的准备时间被大幅压缩——AI 不在云端，而在办案区内。」</p>
+      </div>
+      <div class="case-body">
+        <div class="case-row"><div class="k">客户</div><div class="v">某省级政法机关（按合规口径脱敏表述；未经书面确认不出现单位名称）</div></div>
+        <div class="case-row"><div class="k">做了什么</div><div class="v">大模型断网私有化部署：本地知识库带出处问答、卷宗时间线梳理、文书初稿、会议纪要；业务知识分库建设；全程审计留痕</div></div>
+        <div class="case-row"><div class="k">成效</div><div class="v">【发布前请确认】上线前后效果数字（梳理效率、文书产出时长等）以项目方书面确认口径为准，确认后填入</div></div>
+      </div>
+    </div>
+    <div class="case-quote">写案例的三件套：客户（脱敏）+ 做了什么 + 量化成效——上线前 vs 上线后，数字从试点环境实测而来，宁可保守也不口头承诺。</div>
+  </div>
+</section>
+
+<!-- ================= TRUST ================= -->
+<section class="trust" id="trust">
+  <div class="wrap">
+    <div class="kicker reveal">PROOF · 信任状</div>
+    <h2 class="reveal">新品牌没有 Logo 墙，就给你当场可复跑的证据</h2>
+    <div class="trust-grid">
+      <div class="trust-card reveal">
+        <span class="no">证据一 · 可当场验证</span>
+        <h3>所有承诺，演示现场复跑</h3>
+        <p>国产 OS 适配运行记录、开源模型商用许可清单、拒答率验收集（随机抽题看它「编不编」）、等保/密评对照清单——不靠嘴说。</p>
+        <div class="foot">欢迎带着贵单位的真题来测。</div>
+      </div>
+      <div class="trust-card reveal">
+        <span class="no">证据二 · 盲测对比</span>
+        <h3>和公版大模型同台，用真题说话</h3>
+        <p>我们正在建设一套政企真题评测集：私有化机悟 vs 公有云 API，双匿名评审，结果公开发布。</p>
+        <div class="foot">【进行中】首期对比页完成后可约看。</div>
+      </div>
+      <div class="trust-card reveal">
+        <span class="no">证据三 · 合规答卷</span>
+        <h3>审计问起，每层都拿得出答卷</h3>
+        <p>开源组件清单、商用许可说明、模型版本与行为日志、权限分级记录——从芯片到底座，逐条可查验、可交付。</p>
+        <div class="foot">无第三方埋点，无数据采集——网站本身也「不出域」。</div>
+      </div>
+    </div>
+    <div class="placeholder reveal">【发布前请确认】① 案例数字与项目方口径核对后方可填入案例屏；② 盲测集上线前保持「进行中」措辞；③ 如需实名案例，须取得对方书面确认。</div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta">
+  <div class="wrap">
+    <p class="big reveal">把您的问题带到内网来。</p>
+    <p class="lead reveal" style="margin-left:auto;margin-right:auto">一次 40 分钟的免费评估，我们会告诉您：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。</p>
+    <div class="row2 reveal">
+      <a class="btn btn-solid" href="#contact">申请 40 分钟免费部署评估</a>
+      <a class="btn btn-ghost" href="#case">先看案例</a>
+    </div>
+    <p class="note reveal">评估不收费、不留资料：沟通内容按保密要求处理。</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="kicker reveal">CONTACT · 联系</div>
+    <h2 class="reveal">预约评估与断网演示</h2>
+    <div class="cgrid">
+      <div class="cbox reveal"><b>邮箱</b><p>hello@javis.org.cn</p><small>【待填：实际接收邮箱】</small></div>
+      <div class="cbox reveal"><b>电话 / 微信</b><p>【待填】</p><small>工作日 9:00–18:00，注明「单位 + 需求」优先安排。</small></div>
+      <div class="cbox reveal"><b>适合谁</b><p>政法、党政、国企、医院、金融、高校、能源制造、涉密资质单位，以及有本地部署诉求的中小企业</p><small>政企要合规与可溯源，中小企业要数据不出公司与成本可控——我们都谈。</small></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工办案与审核。案例信息按合规要求脱敏。</p>
+    <div class="bottom">
+      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn　|　【备案号待工信部备案后填写】</div>
+      <div><a href="#why">为什么</a><a href="#product">产品</a><a href="#compare">算账</a><a href="#process">流程</a><a href="#case">案例</a><a href="#contact">联系</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+  }), { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  // 尊重「减少动态」偏好：系统开启时不自动播放品牌片（显示封面帧）
+  const bv = document.querySelector('.brand-video');
+  if (bv && matchMedia('(prefers-reduced-motion: reduce)').matches) { bv.pause(); }
+
+  function pickRole(i, btn){
+    document.querySelectorAll('.roles .tab').forEach((t,k)=>{t.classList.toggle('sel',k===i);t.setAttribute('aria-selected',k===i)});
+    document.querySelectorAll('.role-panel').forEach((p,k)=>p.classList.toggle('show',k===i));
+  }
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => {
+    document.getElementById('menu').classList.remove('open');
+  }));
+</script>
+</body>
+</html>
