@@ -250,8 +250,16 @@
   .cbox b{font-size:.8rem;letter-spacing:.16em;color:var(--muted);display:block;margin-bottom:10px;font-weight:700}
   .cbox p{font-size:1.05rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
   .cbox small{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
-  .cbox .qr{width:220px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff}
+  .cbox .qr{width:220px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff;cursor:zoom-in}
   .cbox .qr-tip{display:block;color:var(--cyan-deep);font-weight:800;font-size:.9rem;margin-bottom:2px}
+  .mqr img,.qr2{cursor:zoom-in}
+  /* ---- 二维码点击放大（lightbox） ---- */
+  .zoomer{position:fixed;inset:0;background:rgba(8,14,30,.85);display:none;align-items:center;justify-content:center;z-index:220;cursor:zoom-out;padding:26px}
+  .zoomer.open{display:flex}
+  .zoomer img{max-width:min(86vw,560px);max-height:84vh;background:#fff;border-radius:12px;padding:14px;box-shadow:0 18px 70px rgba(0,0,0,.55);cursor:zoom-out}
+  .zoomer .z-x{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+  .zoomer .z-x:hover{background:#d64541}
+  .zoomer .z-tip{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,.8);font-size:.9rem;letter-spacing:.02em}
   footer{background:var(--band);color:#7f8db0;padding:42px 0 36px;font-size:.84rem}
   footer .top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:center;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08)}
   footer .logo-w{height:40px;width:auto}
@@ -715,6 +723,13 @@
   </div>
 </div>
 
+<!-- ================= 二维码点击放大（lightbox） ================= -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+
 <script>
   const io = new IntersectionObserver(es => es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
@@ -840,6 +855,25 @@
     mmsg.textContent = t;
     mmsg.className = isErr ? 'mmsg err' : 'mmsg ok';
   }
+
+  // ================= 二维码点击放大（lightbox） =================
+  const zoomer = document.getElementById('zoomer');
+  const zimg = document.getElementById('zimg');
+  function openZoom(src){
+    zimg.src = src;
+    zoomer.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeZoom(){
+    zoomer.classList.remove('open');
+    document.body.style.overflow = mback.classList.contains('open') ? 'hidden' : '';
+  }
+  document.querySelectorAll('.cbox .qr, .mqr img, .qr2').forEach(img => {
+    img.addEventListener('click', e => { e.stopPropagation(); openZoom(img.src); });
+  });
+  zoomer.addEventListener('click', closeZoom);          // 点击任意处关闭
+  zclose.addEventListener('click', e => { e.stopPropagation(); closeZoom(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && zoomer.classList.contains('open')) closeZoom(); });
 </script>
 </body>
 </html>
