@@ -321,9 +321,9 @@
 
 <!-- ================= FULLSCREEN FILM (参考 zkedugroup:视频铺满首屏) ================= -->
 <section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片,全屏播放">
-  <video poster="assets/javis_pro_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
-    <source src="assets/javis_pro_mobile.mp4" type="video/mp4" media="(max-width:768px)">
-    <source src="assets/javis_pro.mp4" type="video/mp4">
+  <video poster="assets/JAVIS_door_v2_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+    <source src="assets/JAVIS_door_v2_portrait.mp4" type="video/mp4" media="(max-width:767px) and (orientation: portrait)">
+    <source src="assets/JAVIS_door_v2.mp4" type="video/mp4">
   </video>
   <div class="shade" aria-hidden="true"></div>
   <button class="play" type="button" aria-label="播放品牌片"><span class="ptri" aria-hidden="true"></span></button>
@@ -653,6 +653,9 @@
   const fv = document.querySelector('.film video');
   const playBtn = document.querySelector('.film .play');
   function needTap(){ film && film.classList.add('needs-tap'); }
+  if (fv && matchMedia('(max-width:767px) and (orientation: portrait)').matches) {
+    fv.poster = 'assets/JAVIS_door_v2_portrait_poster.jpg';
+  }
   if (fv) {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       fv.pause(); needTap();                        // 尊重「减少动态」：不自动播，保留封面+播放键
