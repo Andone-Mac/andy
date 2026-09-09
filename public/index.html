@@ -52,11 +52,11 @@
   header.nav.solid .nav-cta{background:var(--navy);color:#fff}
   header.nav:not(.solid) .menu-toggle{border-color:rgba(255,255,255,.5);color:#fff}
   header.nav.solid .menu-toggle{border-color:var(--line);color:var(--ink)}
-  section[id]{scroll-margin-top:98px}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:84px}
-  .brand img{height:66px;width:auto;display:block}
-  nav.links{display:flex;gap:22px;align-items:center}
-  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.38rem;padding:6px 2px;border-bottom:2px solid transparent}
+  section[id]{scroll-margin-top:90px}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .brand img{height:53px;width:auto;display:block}
+  nav.links{display:flex;gap:26px;align-items:center}
+  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.1rem;padding:6px 2px;border-bottom:2px solid transparent}
   nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
   .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s}
   .btn-solid{background:var(--navy);color:#fff}
@@ -250,7 +250,7 @@
   .cbox b{font-size:.8rem;letter-spacing:.16em;color:var(--muted);display:block;margin-bottom:10px;font-weight:700}
   .cbox p{font-size:1.05rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
   .cbox small{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
-  .cbox .qr{width:170px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff}
+  .cbox .qr{width:220px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff}
   .cbox .qr-tip{display:block;color:var(--cyan-deep);font-weight:800;font-size:.9rem;margin-bottom:2px}
   footer{background:var(--band);color:#7f8db0;padding:42px 0 36px;font-size:.84rem}
   footer .top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:center;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08)}
@@ -289,7 +289,7 @@
     .row{grid-template-columns:44px 1fr;gap:14px}
     .row p{grid-column:2}
     .cgrid{grid-template-columns:1fr}
-    nav.links{display:none;position:absolute;top:84px;left:0;right:0;background:rgba(12,22,54,.97);border-bottom:1px solid rgba(255,255,255,.12);flex-direction:column;padding:18px 28px;gap:6px;align-items:flex-start}
+    nav.links{display:none;position:absolute;top:80px;left:0;right:0;background:rgba(12,22,54,.97);border-bottom:1px solid rgba(255,255,255,.12);flex-direction:column;padding:18px 28px;gap:6px;align-items:flex-start}
     nav.links.open{display:flex}
     nav.links.open a{color:#eef2fb !important;text-shadow:none}
     nav.links.open a:hover{color:#fff !important;border-bottom-color:transparent}
@@ -302,7 +302,8 @@
   .mback{position:fixed;inset:0;background:rgba(14,28,66,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:120;padding:18px}
   .mback.open{display:flex}
   .mcard{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 60px rgba(14,28,66,.35);padding:26px 26px 20px;position:relative}
-  .mcard .m-close{position:absolute;top:10px;right:14px;border:0;background:0;font-size:1.6rem;line-height:1;color:var(--muted);cursor:pointer;padding:4px}
+  .mcard .m-close{position:absolute;top:10px;right:12px;width:42px;height:42px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(14,28,66,.28);transition:background .15s,transform .15s}
+  .mcard .m-close:hover{background:#d64541;transform:scale(1.06)}
   .mcard h3{color:var(--navy);font-size:1.3rem;margin:2px 0 4px}
   .mcard .m-sub{color:var(--muted);font-size:.9rem;margin:0 0 14px}
   .mf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -313,12 +314,12 @@
   .fld .hint{font-size:.72rem;color:var(--muted);font-weight:400}
   .inp{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.93rem;color:var(--ink);background:#fbfcfe;width:100%;box-sizing:border-box;font-family:inherit}
   .inp:focus{outline:none;border-color:var(--cyan);background:#fff;box-shadow:0 0 0 3px rgba(34,167,221,.14)}
-  textarea.inp{resize:vertical;min-height:64px}
-  .mqr{display:flex;align-items:center;gap:14px;background:#f4f8fd;border:1px dashed var(--cyan-deep);border-radius:10px;padding:10px 14px;margin-top:14px}
-  .mqr img{width:88px;height:88px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:3px;flex:none}
-  .mqr b{color:var(--navy);font-size:.95rem;display:block}
-  .mqr p{margin:5px 0 0;font-size:.8rem;color:var(--muted);line-height:1.5}
-  .mqr .go{color:var(--cyan-deep);font-weight:800;font-size:.85rem;display:block;margin-top:6px}
+  textarea.inp{resize:vertical;min-height:128px}
+  .mqr{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#eef7fd,#f7fbff);border:2px solid var(--cyan-deep);border-radius:12px;padding:18px 16px;margin-top:16px;box-shadow:0 3px 10px rgba(24,120,200,.12)}
+  .mqr img{width:112px;height:112px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:4px;flex:none}
+  .mqr b{color:var(--navy);font-size:1.08rem;display:block}
+  .mqr p{margin:6px 0 0;font-size:.88rem;color:var(--ink-soft);line-height:1.6}
+  .mqr .go{color:var(--cyan-deep);font-weight:800;font-size:.98rem;display:block;margin-top:8px}
   .msubmit{margin-top:16px;width:100%;border:0;background:linear-gradient(90deg,var(--navy),var(--cyan-deep));color:#fff;font-size:1rem;font-weight:800;padding:13px;border-radius:8px;cursor:pointer}
   .msubmit:disabled{opacity:.6;cursor:not-allowed}
   .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
@@ -673,9 +674,9 @@
       <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
       <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
     </div>
-    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工办案与审核。案例信息按合规要求脱敏。</p>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。</p>
     <div class="bottom">
-      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn　|　【备案号待工信部备案后填写】</div>
+      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn　|　【备案号00000000】</div>
       <div><a href="#why">为什么</a><a href="#product">产品</a><a href="#compare">算账</a><a href="#process">流程</a><a href="#case">案例</a><a href="#contact">联系</a></div>
     </div>
   </div>
@@ -690,11 +691,9 @@
       <p class="m-sub" id="msub">提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
       <form id="mform-el" novalidate>
         <div class="mf">
-          <div class="fld full"><label>公司 / 单位名称 <em>*</em></label><input class="inp" name="company" required maxlength="80" placeholder="例：某某科技有限公司"></div>
-          <div class="fld"><label>联系人 <em>*</em></label><input class="inp" name="contact" required maxlength="30" placeholder="怎么称呼您"></div>
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
           <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：IT 负责人"></div>
-          <div class="fld"><label>电话 <em>*</em> <span class="hint">电话 / 微信至少一项</span></label><input class="inp" name="phone" maxlength="20" placeholder="手机或座机"></div>
-          <div class="fld"><label>微信号 <em>*</em> <span class="hint">电话 / 微信至少一项</span></label><input class="inp" name="wechat" maxlength="40" placeholder="微信号"></div>
           <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" required maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
         </div>
         <div class="mqr">
@@ -772,6 +771,8 @@
   const msub = document.getElementById('msub');
   const mmsg = document.getElementById('mmsg');
   const msubmitBtn = document.getElementById('msubmit');
+  const mclose = document.getElementById('mclose');
+  const mokClose = document.getElementById('mok-close');
   const KINDS = {
     eval: { title: '申请 40 分钟免费部署评估', sub: '提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。' },
     demo: { title: '预约演示 · 跑本地 AI', sub: '约 30 分钟远程演示：在您的设备上真跑一遍断网大模型。提交后 1 个工作日内联系您安排时间。' }
@@ -804,11 +805,13 @@
     e.preventDefault();
     mmsg.className = 'mmsg'; mmsg.textContent = '';
     const val = n => (mformEl.querySelector('[name="' + n + '"]').value || '').trim();
-    const company = val('company'), contact = val('contact'), need = val('need'),
-          phone = val('phone'), wechat = val('wechat');
+    const ccRaw = val('cc'), pw = val('pw'), need = val('need');
+    // 「单位 + 联系人」合并栏：以空白分隔，最后一段视为联系人姓名，其余为公司/单位名称
+    const ccParts = ccRaw.split(/\s+/).filter(Boolean);
+    const company = ccParts.length > 1 ? ccParts.slice(0, -1).join(' ') : ccRaw;
+    const contact = ccParts.length > 1 ? ccParts[ccParts.length - 1] : '';
     if (!company) return showMsg('请填写公司 / 单位名称', true);
-    if (!contact) return showMsg('请填写联系人', true);
-    if (!phone && !wechat) return showMsg('电话和微信号至少填写一项，方便我们联系您', true);
+    if (!pw) return showMsg('请填写电话或微信号（至少一项），方便我们联系您', true);
     if (!need) return showMsg('请简单介绍一下需求', true);
     if (need.length < 4) return showMsg('需求介绍再详细一点会更高效（4 字以上即可）', true);
     msubmitBtn.disabled = true;
@@ -818,7 +821,7 @@
       const resp = await fetch(API_BASE + '/api/lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone, wechat, need })
+        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need })
       });
       const data = await resp.json().catch(() => ({}));
       if (resp.ok && data.ok) {

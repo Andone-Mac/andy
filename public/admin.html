@@ -84,7 +84,7 @@
     <div style="overflow-x:auto">
       <table>
         <thead><tr>
-          <th>时间</th><th>类型</th><th>公司 / 单位</th><th>联系人</th><th>电话</th><th>微信</th><th class="hide-s">需求简介</th><th>状态</th>
+          <th>时间</th><th>类型</th><th>公司 / 单位</th><th>联系人</th><th>电话 / 微信</th><th class="hide-s">需求简介</th><th>状态</th>
         </tr></thead>
         <tbody id="rows"></tbody>
       </table>
@@ -147,15 +147,13 @@
     else if (curFilter === 'signed') list = ALL.filter(l => l.status === 'signed');
     rows.innerHTML = list.map(l => {
       const t = (l.created_at || '').replace('T', ' ').slice(0, 16);
-      const phone = l.phone || '—';
-      const wechat = l.wechat || '—';
+      const phone = l.phone || l.wechat || '—';
       return '<tr>' +
         '<td class="time">' + t + '</td>' +
         '<td><span class="tag ' + l.type + '">' + (l.type === 'demo' ? '演示' : '评估') + '</span></td>' +
         '<td><b>' + esc(l.company) + '</b></td>' +
-        '<td>' + esc(l.contact) + (l.title ? '<div class="time">' + esc(l.title) + '</div>' : '') + '</td>' +
+        '<td>' + esc(contact) + (l.title ? '<div class="time">' + esc(l.title) + '</div>' : '') + '</td>' +
         '<td>' + esc(phone) + '</td>' +
-        '<td>' + esc(wechat) + '</td>' +
         '<td class="need hide-s">' + esc(l.need || '') + '</td>' +
         '<td><span class="tag ' + (l.status || 'new') + '">' + stName(l.status) + '</span><div style="margin-top:5px"><select onchange="setStatus(\'' + l.id + '\', this.value)">' +
           '<option value="new"' + (l.status === 'new' ? ' selected' : '') + '>新提交</option>' +
