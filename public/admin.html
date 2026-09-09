@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>机悟线索管理后台 · javis.org.cn</title>
+<style>
+  :root{--navy:#16295e;--navy-deep:#0e1c42;--cyan:#22a7dd;--cyan-deep:#1878c8;--ink:#22304a;--muted:#7b8499;--line:#dfe5ef;--bg:#f4f7fb}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);font-size:14px}
+  header{background:linear-gradient(90deg,var(--navy),var(--cyan-deep));color:#fff;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+  header b{font-size:16px;letter-spacing:.02em}
+  header .hint{opacity:.75;font-size:12px;font-weight:400}
+  .wrap{max-width:1080px;margin:22px auto;padding:0 16px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+  .login{max-width:340px;margin:90px auto;text-align:center}
+  .login .logo{width:64px;margin-bottom:10px}
+  .login h1{font-size:18px;color:var(--navy);margin-bottom:4px}
+  .login p{color:var(--muted);font-size:12.5px;margin-bottom:18px}
+  input[type=password]{width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:8px;font-size:14px;margin-bottom:10px}
+  input:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(34,167,221,.15)}
+  button{background:linear-gradient(90deg,var(--navy),var(--cyan-deep));color:#fff;border:0;border-radius:8px;padding:11px 18px;font-size:14px;font-weight:700;cursor:pointer}
+  button.ghost{background:#fff;color:var(--navy);border:1px solid var(--line)}
+  .err{color:#a93226;font-size:12.5px;margin-top:8px;display:none}
+  .toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+  .toolbar .sp{flex:1}
+  .filters{display:flex;gap:6px}
+  .filters button{background:#fff;color:var(--navy);border:1px solid var(--line);padding:7px 14px;font-weight:600;border-radius:20px}
+  .filters button.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .count{color:var(--muted);font-size:12.5px}
+  table{width:100%;border-collapse:collapse}
+  th{text-align:left;font-size:12px;color:var(--muted);font-weight:700;padding:8px 10px;border-bottom:2px solid var(--line);white-space:nowrap}
+  td{padding:11px 10px;border-bottom:1px solid #eef2f8;vertical-align:top}
+  tr:hover td{background:#fafcff}
+  .tag{display:inline-block;padding:2px 9px;border-radius:12px;font-size:11.5px;font-weight:700;white-space:nowrap}
+  .tag.eval{background:#e7f2fe;color:#1878c8}
+  .tag.demo{background:#eafaf1;color:#1e8449}
+  .tag.new{background:#fdf1e1;color:#b9770e}
+  .tag.contacted{background:#e7f2fe;color:#1878c8}
+  .tag.signed{background:#efe7fd;color:#6c3483}
+  .st-actions select{padding:4px 6px;border:1px solid var(--line);border-radius:6px;font-size:12px;background:#fff;color:var(--ink)}
+  .need{max-width:340px;line-height:1.55;color:#3d4c6b}
+  .time{color:var(--muted);font-size:12px;white-space:nowrap}
+  .empty{text-align:center;color:var(--muted);padding:48px 0}
+  .bar{display:none}
+  .bar.show{display:block}
+  footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0 40px}
+  @media(max-width:720px){.hide-s{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div><b>机悟 · 线索管理后台</b> <span class="hint">官网 javis.org.cn 留资数据 · 数据存于 Cloudflare D1</span></div>
+  <button class="ghost" id="logout" style="display:none;color:#fff;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.35)">退出登录</button>
+</header>
+
+<div class="wrap" id="loginView">
+  <div class="card login">
+    <img class="logo" src="assets/logo_mark.png" alt="机悟">
+    <h1>机悟线索管理后台</h1>
+    <p>仅限管理员登录查看官网留资</p>
+    <input type="password" id="pass" placeholder="管理员密码" autocomplete="current-password">
+    <button id="loginBtn" style="width:100%">登 录</button>
+    <div class="err" id="loginErr">密码错误，请重试</div>
+  </div>
+</div>
+
+<div class="wrap" id="listView" style="display:none">
+  <div class="card">
+    <div class="toolbar">
+      <b style="color:var(--navy)">留资列表</b>
+      <span class="count" id="totalCount"></span>
+      <span class="sp"></span>
+      <button class="ghost" id="refreshBtn">刷新</button>
+      <span class="filters" id="filters">
+        <button data-f="all" class="sel">全部</button>
+        <button data-f="new">新提交</button>
+        <button data-f="eval">评估</button>
+        <button data-f="demo">演示</button>
+        <button data-f="contacted">已联系</button>
+        <button data-f="signed">已签约</button>
+      </span>
+    </div>
+    <div style="overflow-x:auto">
+      <table>
+        <thead><tr>
+          <th>时间</th><th>类型</th><th>公司 / 单位</th><th>联系人</th><th>电话</th><th>微信</th><th class="hide-s">需求简介</th><th>状态</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty" id="emptyBox">暂无留资数据</div>
+    </div>
+  </div>
+</div>
+
+<footer>机悟（JAVIS）· 数据不出域，单位有超脑，个人得助手。</footer>
+
+<script>
+  const API = 'https://javis-api.wanyejiang2018.workers.dev';
+  const loginView = document.getElementById('loginView');
+  const listView = document.getElementById('listView');
+  const errBox = document.getElementById('loginErr');
+  let ALL = [];
+  let curFilter = 'all';
+
+  async function api(path, opts = {}) {
+    const res = await fetch(API + path, opts);
+    return { status: res.status, data: await res.json().catch(() => ({})) };
+  }
+  const passIn = document.getElementById('pass');
+  async function doLogin() {
+    errBox.style.display = 'none';
+    const { status, data } = await api('/api/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pass: passIn.value })
+    });
+    if (status === 200 && data.token) {
+      localStorage.setItem('javis_token', data.token);
+      showList();
+    } else errBox.style.display = 'block';
+  }
+  document.getElementById('loginBtn').addEventListener('click', doLogin);
+  passIn.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+  document.getElementById('logout').addEventListener('click', () => {
+    localStorage.removeItem('javis_token'); location.reload();
+  });
+
+  async function load() {
+    const t = localStorage.getItem('javis_token');
+    const { status, data } = await api('/api/leads', { headers: { 'X-Auth': t } });
+    if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
+    if (status === 200 && data.ok) {
+      ALL = data.leads || [];
+      render();
+    }
+  }
+  function render() {
+    const total = document.getElementById('totalCount');
+    const rows = document.getElementById('rows');
+    const empty = document.getElementById('emptyBox');
+    total.textContent = '共 ' + ALL.length + ' 条';
+    let list = ALL;
+    if (curFilter === 'new') list = ALL.filter(l => l.status === 'new');
+    else if (curFilter === 'eval') list = ALL.filter(l => l.type === 'eval');
+    else if (curFilter === 'demo') list = ALL.filter(l => l.type === 'demo');
+    else if (curFilter === 'contacted') list = ALL.filter(l => l.status === 'contacted');
+    else if (curFilter === 'signed') list = ALL.filter(l => l.status === 'signed');
+    rows.innerHTML = list.map(l => {
+      const t = (l.created_at || '').replace('T', ' ').slice(0, 16);
+      const phone = l.phone || '—';
+      const wechat = l.wechat || '—';
+      return '<tr>' +
+        '<td class="time">' + t + '</td>' +
+        '<td><span class="tag ' + l.type + '">' + (l.type === 'demo' ? '演示' : '评估') + '</span></td>' +
+        '<td><b>' + esc(l.company) + '</b></td>' +
+        '<td>' + esc(l.contact) + (l.title ? '<div class="time">' + esc(l.title) + '</div>' : '') + '</td>' +
+        '<td>' + esc(phone) + '</td>' +
+        '<td>' + esc(wechat) + '</td>' +
+        '<td class="need hide-s">' + esc(l.need || '') + '</td>' +
+        '<td><span class="tag ' + (l.status || 'new') + '">' + stName(l.status) + '</span><div style="margin-top:5px"><select onchange="setStatus(\'' + l.id + '\', this.value)">' +
+          '<option value="new"' + (l.status === 'new' ? ' selected' : '') + '>新提交</option>' +
+          '<option value="contacted"' + (l.status === 'contacted' ? ' selected' : '') + '>已联系</option>' +
+          '<option value="signed"' + (l.status === 'signed' ? ' selected' : '') + '>已签约</option>' +
+        '</select></div></td></tr>';
+    }).join('');
+    empty.style.display = list.length ? 'none' : 'block';
+  }
+  function stName(s){ return s === 'signed' ? '已签约' : s === 'contacted' ? '已联系' : '新提交'; }
+  function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  async function setStatus(id, status) {
+    const t = localStorage.getItem('javis_token');
+    await api('/api/lead/status', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Auth': t },
+      body: JSON.stringify({ id, status })
+    });
+    load();
+  }
+  document.getElementById('refreshBtn').addEventListener('click', load);
+  document.getElementById('filters').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#filters button').forEach(x => x.classList.remove('sel'));
+    b.classList.add('sel'); curFilter = b.dataset.f; render();
+  });
+
+  function showList(){ loginView.style.display = 'none'; listView.style.display = 'block'; document.getElementById('logout').style.display = 'inline-block'; load(); }
+  function showLogin(){ loginView.style.display = 'block'; listView.style.display = 'none'; document.getElementById('logout').style.display = 'none'; }
+  if (localStorage.getItem('javis_token')) showList(); else showLogin();
+  load();
+</script>
+</body>
+</html>

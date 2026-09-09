@@ -298,6 +298,41 @@
     .menu-toggle{display:block}
     section{padding:66px 0}
   }
+  /* ---- 留资弹窗（评估 / 演示） ---- */
+  .mback{position:fixed;inset:0;background:rgba(14,28,66,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:120;padding:18px}
+  .mback.open{display:flex}
+  .mcard{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 60px rgba(14,28,66,.35);padding:26px 26px 20px;position:relative}
+  .mcard .m-close{position:absolute;top:10px;right:14px;border:0;background:0;font-size:1.6rem;line-height:1;color:var(--muted);cursor:pointer;padding:4px}
+  .mcard h3{color:var(--navy);font-size:1.3rem;margin:2px 0 4px}
+  .mcard .m-sub{color:var(--muted);font-size:.9rem;margin:0 0 14px}
+  .mf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .mf .full{grid-column:1/-1}
+  .fld{display:flex;flex-direction:column;gap:5px}
+  .fld label{font-size:.82rem;font-weight:700;color:var(--navy)}
+  .fld label em{font-style:normal;color:#d64541;font-weight:800}
+  .fld .hint{font-size:.72rem;color:var(--muted);font-weight:400}
+  .inp{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.93rem;color:var(--ink);background:#fbfcfe;width:100%;box-sizing:border-box;font-family:inherit}
+  .inp:focus{outline:none;border-color:var(--cyan);background:#fff;box-shadow:0 0 0 3px rgba(34,167,221,.14)}
+  textarea.inp{resize:vertical;min-height:64px}
+  .mqr{display:flex;align-items:center;gap:14px;background:#f4f8fd;border:1px dashed var(--cyan-deep);border-radius:10px;padding:10px 14px;margin-top:14px}
+  .mqr img{width:88px;height:88px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:3px;flex:none}
+  .mqr b{color:var(--navy);font-size:.95rem;display:block}
+  .mqr p{margin:5px 0 0;font-size:.8rem;color:var(--muted);line-height:1.5}
+  .mqr .go{color:var(--cyan-deep);font-weight:800;font-size:.85rem;display:block;margin-top:6px}
+  .msubmit{margin-top:16px;width:100%;border:0;background:linear-gradient(90deg,var(--navy),var(--cyan-deep));color:#fff;font-size:1rem;font-weight:800;padding:13px;border-radius:8px;cursor:pointer}
+  .msubmit:disabled{opacity:.6;cursor:not-allowed}
+  .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
+  .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
+  .mmsg.ok{display:block;background:#eafaf1;color:#1e8449;border:1px solid #b7e3c9}
+  .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
+  .m-okcard.on{display:block}
+  .m-okcard .big{font-size:2.4rem;line-height:1}
+  .m-okcard h4{color:var(--navy);font-size:1.2rem;margin:10px 0 6px}
+  .m-okcard p{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 auto 6px;max-width:420px}
+  .m-okcard .qr2{width:150px;height:150px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:6px;margin:10px auto 2px;display:block}
+  .m-okcard .go{color:var(--cyan-deep);font-weight:800;font-size:.9rem}
+  .m-okcard .msubmit{max-width:220px}
+  @media(max-width:600px){.mf{grid-template-columns:1fr}.mcard{padding:20px 16px 16px}}
 </style>
 </head>
 <body>
@@ -317,7 +352,7 @@
       <a href="#trust">信任状</a>
       <a href="#contact">联系我们</a>
     </nav>
-    <a class="btn btn-solid nav-cta" href="#contact">免费部署评估</a>
+    <a class="btn btn-solid nav-cta" href="#contact" data-open="eval">免费部署评估</a>
     <button class="menu-toggle" aria-label="菜单" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
   </div>
 </header>
@@ -341,8 +376,8 @@
     <h1 class="reveal">数据不能出门，业务又必须上 AI，<br>如何应用 AI 提效，<span class="accent">跟上科技潮流</span>。</h1>
     <p class="sub reveal">机悟·政企超脑——大模型断网部署在单位内网：本地知识库、卷宗梳理、文书初稿、OCR 全都数据不出域、结论可溯源、全程可审计；合规、提效、国产化、利旧一肩挑。更多更强实时功能，更新中……</p>
     <div class="cta-row reveal">
-      <a class="btn btn-solid" href="#contact">申请 40 分钟免费部署评估</a>
-      <a class="btn btn-ghost" href="#contact">预约演示跑本地 AI</a>
+      <a class="btn btn-solid" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
+      <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示跑本地 AI</a>
       <span class="cta-note">先试后买 · 两周试点见效再谈合同</span>
     </div>
     <div class="trustline reveal">
@@ -612,7 +647,7 @@
     <p class="big reveal">把您的问题带到内网来。</p>
     <p class="lead reveal" style="margin-left:auto;margin-right:auto">一次 40 分钟的免费评估，我们会告诉您：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。</p>
     <div class="row2 reveal">
-      <a class="btn btn-solid" href="#contact">申请 40 分钟免费部署评估</a>
+      <a class="btn btn-solid" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
       <a class="btn btn-ghost" href="#case">先看案例</a>
     </div>
     <p class="note reveal">评估不收费、不留资料：沟通内容按保密要求处理。</p>
@@ -645,6 +680,41 @@
     </div>
   </div>
 </footer>
+
+<!-- ================= 留资弹窗（申请评估 / 预约演示） ================= -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+    <div id="mform">
+      <h3 id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="m-sub" id="msub">提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form id="mform-el" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位名称 <em>*</em></label><input class="inp" name="company" required maxlength="80" placeholder="例：某某科技有限公司"></div>
+          <div class="fld"><label>联系人 <em>*</em></label><input class="inp" name="contact" required maxlength="30" placeholder="怎么称呼您"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：IT 负责人"></div>
+          <div class="fld"><label>电话 <em>*</em> <span class="hint">电话 / 微信至少一项</span></label><input class="inp" name="phone" maxlength="20" placeholder="手机或座机"></div>
+          <div class="fld"><label>微信号 <em>*</em> <span class="hint">电话 / 微信至少一项</span></label><input class="inp" name="wechat" maxlength="40" placeholder="微信号"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" required maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →</span></div>
+        </div>
+        <button class="msubmit" type="submit" id="msubmit">提交申请</button>
+      </form>
+      <div class="mmsg" id="mmsg" role="status"></div>
+    </div>
+    <div class="m-okcard" id="mok">
+      <div class="big">✓</div>
+      <h4 id="mok-title">已收到您的申请</h4>
+      <p id="mok-sub">工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+      <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+      <p><span class="go">加官方微信更快对接</span></p>
+      <button class="msubmit" type="button" id="mok-close">好的</button>
+    </div>
+  </div>
+</div>
 
 <script>
   const io = new IntersectionObserver(es => es.forEach(e => {
@@ -691,6 +761,82 @@
   document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => {
     document.getElementById('menu').classList.remove('open');
   }));
+
+  // ================= 留资弹窗（评估 / 演示） =================
+  const API_BASE = 'https://javis-api.wanyejiang2018.workers.dev';
+  const mback = document.getElementById('mback');
+  const mformBox = document.getElementById('mform');
+  const mokBox = document.getElementById('mok');
+  const mformEl = document.getElementById('mform-el');
+  const mtitle = document.getElementById('mtitle');
+  const msub = document.getElementById('msub');
+  const mmsg = document.getElementById('mmsg');
+  const msubmitBtn = document.getElementById('msubmit');
+  const KINDS = {
+    eval: { title: '申请 40 分钟免费部署评估', sub: '提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。' },
+    demo: { title: '预约演示 · 跑本地 AI', sub: '约 30 分钟远程演示：在您的设备上真跑一遍断网大模型。提交后 1 个工作日内联系您安排时间。' }
+  };
+  let curKind = 'eval';
+  function openForm(kind){
+    curKind = KINDS[kind] ? kind : 'eval';
+    mtitle.textContent = KINDS[curKind].title;
+    msub.textContent = KINDS[curKind].sub;
+    msubmitBtn.textContent = curKind === 'demo' ? '预约演示' : '提交申请';
+    mformEl.reset(); mmsg.className = 'mmsg'; mmsg.textContent = '';
+    mformBox.style.display = 'block'; mokBox.classList.remove('on');
+    mback.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    const f = mformEl.querySelector('input[name=company]'); if (f) setTimeout(() => f.focus(), 60);
+  }
+  function closeForm(){
+    mback.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('[data-open]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); openForm(a.dataset.open);
+  }));
+  mclose.addEventListener('click', closeForm);
+  mokClose.addEventListener('click', closeForm);
+  mback.addEventListener('click', e => { if (e.target === mback) closeForm(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && mback.classList.contains('open')) closeForm(); });
+
+  mformEl.addEventListener('submit', async e => {
+    e.preventDefault();
+    mmsg.className = 'mmsg'; mmsg.textContent = '';
+    const val = n => (mformEl.querySelector('[name="' + n + '"]').value || '').trim();
+    const company = val('company'), contact = val('contact'), need = val('need'),
+          phone = val('phone'), wechat = val('wechat');
+    if (!company) return showMsg('请填写公司 / 单位名称', true);
+    if (!contact) return showMsg('请填写联系人', true);
+    if (!phone && !wechat) return showMsg('电话和微信号至少填写一项，方便我们联系您', true);
+    if (!need) return showMsg('请简单介绍一下需求', true);
+    if (need.length < 4) return showMsg('需求介绍再详细一点会更高效（4 字以上即可）', true);
+    msubmitBtn.disabled = true;
+    const old = msubmitBtn.textContent;
+    msubmitBtn.textContent = '提交中…';
+    try {
+      const resp = await fetch(API_BASE + '/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone, wechat, need })
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (resp.ok && data.ok) {
+        mformBox.style.display = 'none';
+        mokBox.classList.add('on');
+      } else {
+        showMsg((data && data.error) || '提交失败，请稍后再试，或直接加官方微信', true);
+      }
+    } catch (err) {
+      showMsg('网络开小差了，请稍后再试，或直接加官方微信（二维码见右）', true);
+    }
+    msubmitBtn.disabled = false;
+    msubmitBtn.textContent = old;
+  });
+  function showMsg(t, isErr){
+    mmsg.textContent = t;
+    mmsg.className = isErr ? 'mmsg err' : 'mmsg ok';
+  }
 </script>
 </body>
 </html>
