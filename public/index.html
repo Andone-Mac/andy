@@ -103,6 +103,9 @@
   .film{position:relative;width:100%;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#04070f}
   .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
   .film .shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,14,33,.55) 0%,rgba(8,14,33,0) 24%,rgba(8,14,33,0) 58%,rgba(8,14,33,.5) 100%)}
+  .film .play{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;background:rgba(4,7,15,.18);border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .film.needs-tap .play{display:flex}
+  .film .ptri{width:0;height:0;border-style:solid;border-width:26px 0 26px 42px;border-color:transparent transparent transparent rgba(255,255,255,.95);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55))}
   .film .cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:#dfe7f6;text-decoration:none;font-size:.78rem;letter-spacing:.3em;text-shadow:0 1px 4px rgba(0,0,0,.6);padding:6px 14px}
   .film .cue .chev{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.95);border-bottom:2px solid rgba(255,255,255,.95);transform:rotate(45deg);animation:cue 1.7s ease-in-out infinite;opacity:.9}
   @keyframes cue{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
@@ -318,8 +321,12 @@
 
 <!-- ================= FULLSCREEN FILM (参考 zkedugroup:视频铺满首屏) ================= -->
 <section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片,全屏播放">
-  <video src="assets/javis_pro.mp4" poster="assets/javis_pro_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <video poster="assets/javis_pro_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
+    <source src="assets/javis_pro_mobile.mp4" type="video/mp4" media="(max-width:768px)">
+    <source src="assets/javis_pro.mp4" type="video/mp4">
+  </video>
   <div class="shade" aria-hidden="true"></div>
+  <button class="play" type="button" aria-label="播放品牌片"><span class="ptri" aria-hidden="true"></span></button>
   <a class="cue" href="#intro"><span class="chev" aria-hidden="true"></span><span>向下滚动</span></a>
 </section>
 
@@ -641,9 +648,25 @@
     if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
   }), { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  // 尊重「减少动态」偏好：系统开启时不自动播放品牌片（停在封面帧）
+  // 品牌片自动播放 + 降级：无法自动播（iOS 省电模式/数据保护、部分安卓）时显示封面帧与「点按播放」
+  const film = document.querySelector('.film');
   const fv = document.querySelector('.film video');
-  if (fv && matchMedia('(prefers-reduced-motion: reduce)').matches) { fv.pause(); }
+  const playBtn = document.querySelector('.film .play');
+  function needTap(){ film && film.classList.add('needs-tap'); }
+  if (fv) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      fv.pause(); needTap();                        // 尊重「减少动态」：不自动播，保留封面+播放键
+    } else {
+      const tryPlay = () => { const p = fv.play(); if (p && p.catch) p.catch(needTap); };
+      if (fv.readyState >= 3) { tryPlay(); }
+      else { fv.addEventListener('loadeddata', tryPlay, { once:true }); fv.addEventListener('canplay', tryPlay, { once:true }); }
+    }
+  }
+  if (playBtn) playBtn.addEventListener('click', () => {
+    fv.muted = true; fv.setAttribute('playsinline','');
+    const p = fv.play();
+    if (p && p.then) p.then(() => film && film.classList.remove('needs-tap')).catch(() => {});
+  });
 
   // 透明导航状态机：全屏影片仍在视口→压片显示（白字/白标）；滑过影片→白底深字
   const nav = document.querySelector('header.nav');
