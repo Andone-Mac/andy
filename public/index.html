@@ -38,7 +38,21 @@
   .lead{color:var(--ink-soft);font-size:1.06rem;max-width:38em;margin-top:14px}
 
   /* ---------- nav ---------- */
-  header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background .25s,border-color .25s,box-shadow .25s}
+  header.nav.solid{background:rgba(255,255,255,.97);border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(14,28,66,.04)}
+  .brand .lg-white{display:none}
+  header.nav:not(.solid) .brand .lg-dark{display:none}
+  header.nav:not(.solid) .brand .lg-white{display:block}
+  header.nav:not(.solid) nav.links a{color:#eef2fb;text-shadow:0 1px 4px rgba(8,14,33,.55)}
+  header.nav:not(.solid) nav.links a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.9)}
+  header.nav.solid nav.links a{color:var(--ink-soft);text-shadow:none}
+  header.nav.solid nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
+  header.nav:not(.solid) .nav-cta{background:#fff;color:var(--navy)}
+  header.nav:not(.solid) .nav-cta:hover{background:#eaf1fb;color:var(--navy);transform:translateY(-1px)}
+  header.nav.solid .nav-cta{background:var(--navy);color:#fff}
+  header.nav:not(.solid) .menu-toggle{border-color:rgba(255,255,255,.5);color:#fff}
+  header.nav.solid .menu-toggle{border-color:var(--line);color:var(--ink)}
+  section[id]{scroll-margin-top:76px}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:70px}
   .brand img{height:44px;width:auto;display:block}
   nav.links{display:flex;gap:28px;align-items:center}
@@ -52,19 +66,19 @@
   .nav-cta{padding:10px 20px;font-size:.88rem}
   .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
 
-  /* ---------- hero ---------- */
-  .hero{padding:84px 0 92px;background:linear-gradient(180deg,var(--wash) 0%,var(--paper) 100%);position:relative;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(720px 340px at 85% 12%,rgba(34,167,221,.07),transparent 65%);pointer-events:none}
-  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center;position:relative}
-  .hero .tag{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:600;letter-spacing:.08em;color:var(--navy);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 16px 5px 8px;margin-bottom:22px}
+  /* ---------- hero copy (cinematic intro, 全屏影片之后) ---------- */
+  .hero{padding:104px 0 108px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--wash) 0%,var(--paper) 100%)}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(760px 360px at 50% 0%,rgba(34,167,221,.07),transparent 65%);pointer-events:none}
+  .hero .wrap{position:relative}
+  .hero .tag{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:600;letter-spacing:.08em;color:var(--navy);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 16px 5px 8px;margin-bottom:24px}
   .hero .tag img{height:20px;width:auto;border-radius:3px}
-  .hero .hook{font-size:clamp(1.1rem,2.2vw,1.42rem);font-weight:800;color:var(--navy);line-height:1.55;margin-bottom:14px;padding-left:16px;border-left:4px solid var(--cyan);letter-spacing:.02em}
+  .hero .hook{font-size:clamp(1.08rem,2.1vw,1.4rem);font-weight:800;color:var(--navy);line-height:1.6;letter-spacing:.02em;margin-bottom:14px}
   .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.38;font-weight:900;letter-spacing:.01em;color:var(--navy-deep)}
   .hero h1 .accent{background:linear-gradient(92deg,var(--cyan-deep),var(--navy));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.sub{margin-top:22px;color:var(--ink-soft);font-size:1.06rem;max-width:31em}
-  .hero .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-  .hero .cta-note{font-size:.84rem;color:var(--muted)}
-  .trustline{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .hero p.sub{margin:22px auto 0;color:var(--ink-soft);font-size:1.06rem;max-width:34em}
+  .hero .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
+  .hero .cta-note{font-size:.84rem;color:var(--muted);width:100%;text-align:center}
+  .trustline{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
   .chip{font-size:.84rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;color:var(--ink-soft);display:inline-flex;gap:7px;align-items:center}
   .chip b{color:var(--navy-deep)}
   .chip.todo{background:#fdf6e3;border:1px dashed #d8c48f;color:#8a743c;border-radius:6px}
@@ -85,13 +99,14 @@
   @keyframes blink{50%{opacity:0}}
   @media (prefers-reduced-motion:reduce){.cursor{animation:none}}
 
-  /* brand film (hero right visual) */
-  .video-box{position:relative;border-radius:12px;overflow:hidden;box-shadow:0 26px 52px -20px rgba(14,28,66,.5);border:1px solid var(--line);background:#000}
-  .video-box video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;background:#000}
-  .vb-cap{display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--band);color:#a9b7d8;font-size:.78rem;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .vb-cap .rec{flex:none;width:8px;height:8px;border-radius:50%;background:#e05a5a;animation:blink 1.6s step-end infinite}
-  .vb-cap .dim{color:#6f7f9f;margin-left:auto;overflow:hidden;text-overflow:ellipsis}
-  @media (prefers-reduced-motion:reduce){.vb-cap .rec{animation:none}}
+  /* ---------- fullscreen film opener (zkedugroup 式:视频=首屏整幅) ---------- */
+  .film{position:relative;width:100%;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#04070f}
+  .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .film .shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,14,33,.55) 0%,rgba(8,14,33,0) 24%,rgba(8,14,33,0) 58%,rgba(8,14,33,.5) 100%)}
+  .film .cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:#dfe7f6;text-decoration:none;font-size:.78rem;letter-spacing:.3em;text-shadow:0 1px 4px rgba(0,0,0,.6);padding:6px 14px}
+  .film .cue .chev{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.95);border-bottom:2px solid rgba(255,255,255,.95);transform:rotate(45deg);animation:cue 1.7s ease-in-out infinite;opacity:.9}
+  @keyframes cue{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
+  @media (prefers-reduced-motion:reduce){.film .cue .chev{animation:none}}
 
   /* ---------- pain (why now) ---------- */
   .why{background:var(--navy-deep);color:#dbe3f4}
@@ -252,7 +267,8 @@
     .role-panel.show{grid-template-columns:1fr;gap:22px}
   }
   @media (max-width:900px){
-    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .hero{padding:78px 0 86px}
+    .film{min-height:480px}
     .trio .main-card{grid-template-columns:1fr}
     .trio .sub-cards{grid-template-columns:1fr}
     .pain{grid-template-columns:1fr}
@@ -267,8 +283,10 @@
     .row{grid-template-columns:44px 1fr;gap:14px}
     .row p{grid-column:2}
     .cgrid{grid-template-columns:1fr}
-    nav.links{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);flex-direction:column;padding:18px 28px;gap:6px;align-items:flex-start}
+    nav.links{display:none;position:absolute;top:70px;left:0;right:0;background:rgba(12,22,54,.97);border-bottom:1px solid rgba(255,255,255,.12);flex-direction:column;padding:18px 28px;gap:6px;align-items:flex-start}
     nav.links.open{display:flex}
+    nav.links.open a{color:#eef2fb !important;text-shadow:none}
+    nav.links.open a:hover{color:#fff !important;border-bottom-color:transparent}
     nav.links a{padding:10px 0;width:100%}
     .nav-cta{display:none}
     .menu-toggle{display:block}
@@ -281,7 +299,8 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="甲维思 JAVIS 首页">
-      <img src="assets/logo.png" alt="甲维思 JAVIS">
+      <img class="lg-dark" src="assets/logo.png" alt="甲维思 JAVIS">
+      <img class="lg-white" src="assets/logo_white.png" alt="甲维思 JAVIS">
     </a>
     <nav class="links" id="menu">
       <a href="#why">为什么是现在</a>
@@ -297,30 +316,31 @@
   </div>
 </header>
 
-<!-- ================= HERO ================= -->
-<div class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="tag"><img src="assets/logo_mark.png" alt="">机悟 · 政企超脑</span>
-      <p class="hook">数据不能出门，业务又必须上 AI。</p>
-      <h1>涉密单位上 AI，<br>不是能不能的问题，<br>而是如何<span class="accent">本地离线部署</span>。</h1>
-      <p class="sub">机悟·政企超脑——大模型断网部署在单位内网：本地知识库、卷宗梳理、文书初稿、OCR 全都数据不出域、结论可溯源、全程可审计；合规、提效、国产化、利旧一肩挑。更多更强实时功能，更新中……</p>
-      <div class="cta-row">
-        <a class="btn btn-solid" href="#contact">申请 40 分钟免费部署评估</a>
-        <a class="btn btn-ghost" href="#trust">预约断网演示</a>
-        <span class="cta-note">先试后买 · 两周试点见效再谈合同</span>
-      </div>
-      <div class="trustline">
-        <span class="chip"><b>某省级政法机关</b> · 生产环境运行中</span>
-        <span class="chip todo">上线前后效果数据 · 与项目方核对后发布</span>
-      </div>
+<!-- ================= FULLSCREEN FILM (参考 zkedugroup:视频铺满首屏) ================= -->
+<section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片,全屏播放">
+  <video src="assets/javis_pro.mp4" poster="assets/javis_pro_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <div class="shade" aria-hidden="true"></div>
+  <a class="cue" href="#intro"><span class="chev" aria-hidden="true"></span><span>向下滚动</span></a>
+</section>
+
+<!-- ================= HERO 文案(品牌片之后) ================= -->
+<section class="hero" id="intro">
+  <div class="wrap">
+    <span class="tag reveal"><img src="assets/logo_mark.png" alt="">机悟 · 政企超脑</span>
+    <p class="hook reveal">数据不能出门，业务又必须上 AI。</p>
+    <h1 class="reveal">涉密单位上 AI，<br>不是能不能的问题，<br>而是如何<span class="accent">本地离线部署</span>。</h1>
+    <p class="sub reveal">机悟·政企超脑——大模型断网部署在单位内网：本地知识库、卷宗梳理、文书初稿、OCR 全都数据不出域、结论可溯源、全程可审计；合规、提效、国产化、利旧一肩挑。更多更强实时功能，更新中……</p>
+    <div class="cta-row reveal">
+      <a class="btn btn-solid" href="#contact">申请 40 分钟免费部署评估</a>
+      <a class="btn btn-ghost" href="#trust">预约断网演示</a>
+      <span class="cta-note">先试后买 · 两周试点见效再谈合同</span>
     </div>
-    <div class="video-box reveal">
-      <video class="brand-video" src="assets/javis_pro.mp4" poster="assets/javis_pro_poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="机悟·政企超脑 品牌宣传片" disablepictureinpicture></video>
-      <div class="vb-cap"><span class="rec"></span>机悟 · 政企超脑 · 品牌片<span class="dim">　数据不出域，单位有超脑，个人得助手</span></div>
+    <div class="trustline reveal">
+      <span class="chip"><b>某省级政法机关</b> · 生产环境运行中</span>
+      <span class="chip todo">上线前后效果数据 · 与项目方核对后发布</span>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ================= WHY / PAIN ================= -->
 <section class="why" id="why">
@@ -621,9 +641,19 @@
     if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
   }), { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  // 尊重「减少动态」偏好：系统开启时不自动播放品牌片（显示封面帧）
-  const bv = document.querySelector('.brand-video');
-  if (bv && matchMedia('(prefers-reduced-motion: reduce)').matches) { bv.pause(); }
+  // 尊重「减少动态」偏好：系统开启时不自动播放品牌片（停在封面帧）
+  const fv = document.querySelector('.film video');
+  if (fv && matchMedia('(prefers-reduced-motion: reduce)').matches) { fv.pause(); }
+
+  // 透明导航状态机：全屏影片仍在视口→压片显示（白字/白标）；滑过影片→白底深字
+  const nav = document.querySelector('header.nav');
+  const filmEl = document.querySelector('.film');
+  function syncNav(){
+    if (!filmEl || !nav) return;
+    nav.classList.toggle('solid', filmEl.getBoundingClientRect().bottom < 88);
+  }
+  addEventListener('scroll', syncNav, { passive: true });
+  syncNav();
 
   function pickRole(i, btn){
     document.querySelectorAll('.roles .tab').forEach((t,k)=>{t.classList.toggle('sel',k===i);t.setAttribute('aria-selected',k===i)});
