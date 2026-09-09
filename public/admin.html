@@ -159,12 +159,21 @@
           '<option value="new"' + (l.status === 'new' ? ' selected' : '') + '>新提交</option>' +
           '<option value="contacted"' + (l.status === 'contacted' ? ' selected' : '') + '>已联系</option>' +
           '<option value="signed"' + (l.status === 'signed' ? ' selected' : '') + '>已签约</option>' +
-        '</select></div></td></tr>';
+        '</select></div><div style="margin-top:4px"><a href="#" onclick="delLead(\'' + l.id + '\');return false;" style="color:#c0392b;font-size:12px">删除</a></div></td></tr>';
     }).join('');
     empty.style.display = list.length ? 'none' : 'block';
   }
   function stName(s){ return s === 'signed' ? '已签约' : s === 'contacted' ? '已联系' : '新提交'; }
   function esc(s){ return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  async function delLead(id) {
+    if (!confirm('确认删除该条线索？删除后不可恢复。')) return;
+    const t = localStorage.getItem('javis_token');
+    await api('/api/lead/delete', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Auth': t },
+      body: JSON.stringify({ id })
+    });
+    load();
+  }
   async function setStatus(id, status) {
     const t = localStorage.getItem('javis_token');
     await api('/api/lead/status', {
