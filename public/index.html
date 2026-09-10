@@ -3,310 +3,197 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>甲维思 JAVIS · 机悟政企超脑 — 数据不能出门，业务又必须上 AI</title>
-<meta name="description" content="甲维思（JAVIS）· 机悟政企超脑：为「数据不能出门、业务又必须用上 AI」的单位，在完全断网的内网里部署大模型——数据不出域、结论可溯源、全程可审计，每个结论带原文出处，有人长期运维。40 分钟免费评估，两周试点见效再谈合同。">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<title>机悟·政企超脑 — 大模型断网部署在单位内网 | 数据不出域 · 甲维思 JAVIS</title>
+<meta name="description" content="机悟·政企超脑：为「数据不能出门、业务又必须上 AI」的政企单位提供大模型断网私有化部署——本地知识库、卷宗梳理、文书初稿、OCR，全部数据不出域、结论可溯源、全程可审计、国产化利旧。申请 40 分钟免费部署评估，预约断网演示。">
+<meta name="keywords" content="大模型私有化部署,断网大模型,本地部署大模型,政企大模型,内网大模型,数据不出域,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,涉密单位AI,离线大模型部署">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/">
+<link rel="icon" href="assets/favicon.png">
+<!-- Open Graph（微信/企微/FB 分享卡片） -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
+<meta property="og:title" content="机悟·政企超脑 — 数据不能出门，业务又必须上 AI，机悟把大模型搬进您的内网">
+<meta property="og:description" content="大模型断网部署在单位内网：数据不出域、结论可溯源、全程可审计、国产化。某省级政法机关生产环境运行中。申请 40 分钟免费部署评估。">
+<meta property="og:url" content="https://javis.org.cn/">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:image:alt" content="机悟·政企超脑 品牌视觉">
+<meta property="og:locale" content="zh_CN">
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="机悟·政企超脑 — 大模型断网部署在单位内网">
+<meta name="twitter:description" content="数据不出域、结论可溯源、全程可审计、国产化。为「数据不能出门」的政企单位而生。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<!-- 结构化数据：Organization + Service + FAQ（搜索引擎/AI 富摘要） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://javis.org.cn/#org",
+      "name": "甲维思 JAVIS",
+      "alternateName": "机悟",
+      "url": "https://javis.org.cn/",
+      "logo": "https://javis.org.cn/assets/logo.png",
+      "email": "info@javis.org.cn",
+      "slogan": "数据不出域，单位有超脑，个人得助手",
+      "description": "为有本地/内网部署大模型需求的公司或组织，提供专业大模型断网私有化部署服务。"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://javis.org.cn/#service",
+      "name": "机悟·政企超脑 — 大模型断网私有化部署",
+      "serviceType": "大模型本地部署与私有化交付",
+      "provider": { "@id": "https://javis.org.cn/#org" },
+      "areaServed": "CN",
+      "audience": { "@type": "Audience", "audienceType": "政企单位与有本地部署诉求的中小企业" },
+      "description": "大模型断网部署在单位内网：本地知识库、卷宗梳理、文书初稿、OCR 手稿处理，全部数据不出域、结论可溯源、全程可审计；国产化、旧设备利旧。",
+      "offers": {
+        "@type": "Offer",
+        "name": "40 分钟免费部署评估",
+        "price": "0",
+        "priceCurrency": "CNY",
+        "description": "现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://javis.org.cn/#website",
+      "url": "https://javis.org.cn/",
+      "name": "机悟·政企超脑官网",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://javis.org.cn/#org" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://javis.org.cn/#faq",
+      "mainEntity": [
+        {"@type":"Question","name":"内网部署大模型贵吗？","acceptedAnswer":{"@type":"Answer","text":"报价等于可复算账单，含运维。云 API 按 token 计费越用越贵，自建团队人力先花两三百万；机悟买断式部署一次投入用满三年，旧服务器和显卡先用足，三年回本。"}},
+        {"@type":"Question","name":"AI 答错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"交付时附拒答率验收集：查不到依据的问题，机悟明确回复未找到依据、建议人工核对，不生成答案。每个结论都能指到原文，可当场复跑验证。宁可不答，也不骗您。"}},
+        {"@type":"Question","name":"可以先试用再决定吗？","acceptedAnswer":{"@type":"Answer","text":"先试后买：拿一台旧服务器、一个业务科室、两个高频场景试两周，验收口径提前定好，两周试点见效再谈合同，不满意不立项。"}},
+        {"@type":"Question","name":"有实际落地案例吗？","acceptedAnswer":{"@type":"Answer","text":"某省级政法机关生产环境运行中（按保密要求脱敏）。想看真实效果，可带着贵单位的真题来，当场在您的设备上复跑断网大模型演示。"}},
+        {"@type":"Question","name":"旧设备能跑大模型吗？","acceptedAnswer":{"@type":"Answer","text":"先诊断再出方案：存量服务器和显卡先用足，跑量化模型。实测国产芯片与 UOS 系统可支撑 70B 级模型私有化推理部署，旧机器就能跑。"}},
+        {"@type":"Question","name":"涉密单位能用 AI 吗？","acceptedAnswer":{"@type":"Answer","text":"能。保密法要求涉密系统与互联网物理隔离，机悟为完全断网环境而生：大模型和知识库全部部署在隔离网络内，结论可溯源、查询留痕，全程无外网请求。"}}
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root{
-    --navy:#16295e;
-    --navy-deep:#0e1c42;
-    --navy-soft:#3a4a75;
-    --cyan:#22a7dd;
-    --cyan-deep:#1878c8;
-    --ink:#1d2433;
-    --ink-soft:#48536a;
-    --muted:#7b8499;
-    --paper:#ffffff;
-    --wash:#f5f7fb;
-    --wash-2:#eef2f9;
-    --line:#dfe5ef;
-    --band:#101f47;
-    --band-ink:#c4cfe6;
-    --sans:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC","Source Han Sans SC",sans-serif;
-    --mono:"SF Mono","JetBrains Mono",Consolas,"Noto Sans Mono CJK SC",monospace;
-    --maxw:1140px;
+    --navy:#16295e;--navy-deep:#0e1c42;--cyan:#22a7dd;--cyan-deep:#1878c8;
+    --ink:#22304a;--ink-soft:#3d4c6b;--muted:#7b8499;--line:#dfe5ef;--bg:#fff;--band:#0e1c42;
+    --maxw:1080px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.7;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
-  section{padding:92px 0}
-  h2{font-size:clamp(1.55rem,3vw,2.2rem);font-weight:800;line-height:1.4;letter-spacing:.01em}
-  .kicker{display:flex;align-items:center;gap:12px;font-size:.78rem;font-weight:700;letter-spacing:.26em;color:var(--cyan-deep);text-transform:uppercase;margin-bottom:16px}
-  .kicker::after{content:"";width:46px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--navy))}
-  .lead{color:var(--ink-soft);font-size:1.06rem;max-width:38em;margin-top:14px}
-
-  /* ---------- nav ---------- */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:transparent;border-bottom:1px solid transparent;transition:background .25s,border-color .25s,box-shadow .25s}
-  header.nav.solid{background:rgba(255,255,255,.97);border-bottom-color:var(--line);box-shadow:0 1px 0 rgba(14,28,66,.04)}
-  .brand .lg-white{display:none}
-  header.nav:not(.solid) .brand .lg-dark{display:none}
-  header.nav:not(.solid) .brand .lg-white{display:block}
-  header.nav:not(.solid) nav.links a{color:#eef2fb;text-shadow:0 1px 4px rgba(8,14,33,.55)}
-  header.nav:not(.solid) nav.links a:hover{color:#fff;border-bottom-color:rgba(255,255,255,.9)}
-  header.nav.solid nav.links a{color:var(--ink-soft);text-shadow:none}
-  header.nav.solid nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
-  header.nav:not(.solid) .nav-cta{background:#fff;color:var(--navy)}
-  header.nav:not(.solid) .nav-cta:hover{background:#eaf1fb;color:var(--navy);transform:translateY(-1px)}
-  header.nav.solid .nav-cta{background:var(--navy);color:#fff}
-  header.nav:not(.solid) .menu-toggle{border-color:rgba(255,255,255,.5);color:#fff}
-  header.nav.solid .menu-toggle{border-color:var(--line);color:var(--ink)}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
   section[id]{scroll-margin-top:90px}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:80px}
-  .brand img{height:53px;width:auto;display:block}
+  section{padding:72px 0}
+  a{color:var(--cyan-deep)}
+  h2{color:var(--navy);font-size:clamp(1.45rem,3vw,1.9rem);line-height:1.4;margin-bottom:12px;letter-spacing:.01em}
+  .kicker{display:flex;align-items:center;gap:12px;font-size:.76rem;font-weight:700;letter-spacing:.24em;color:var(--cyan-deep);text-transform:uppercase;margin-bottom:14px}
+  .kicker::after{content:"";width:42px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--navy))}
+  .lead{color:var(--ink-soft);font-size:1.02rem;max-width:760px}
+  .center{text-align:center}.center .kicker{justify-content:center}.center .lead{margin:0 auto}
+
+  /* nav */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(14,28,66,.04)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
+  .brand img{height:48px;width:auto;display:block}
   nav.links{display:flex;gap:26px;align-items:center}
-  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.1rem;padding:6px 2px;border-bottom:2px solid transparent}
+  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.02rem;padding:6px 2px;border-bottom:2px solid transparent}
   nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
-  .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s}
+  .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s;cursor:pointer}
   .btn-solid{background:var(--navy);color:#fff}
   .btn-solid:hover{background:var(--navy-deep);transform:translateY(-1px)}
-  .btn-ghost{border:1.5px solid var(--navy);color:var(--navy)}
-  .btn-ghost:hover{background:var(--navy);color:#fff}
-  .nav-cta{padding:10px 20px;font-size:.88rem}
+  .btn-ghost{border:1.5px solid #fff;color:#fff;background:transparent}
+  .btn-ghost:hover{background:rgba(255,255,255,.14)}
+  .btn-line{border:1.5px solid var(--navy);color:var(--navy)}
+  .btn-line:hover{background:var(--navy);color:#fff}
+  .nav-cta{padding:10px 18px;font-size:.88rem}
   .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
 
-  /* ---------- hero copy (cinematic intro, 全屏影片之后) ---------- */
-  .hero{padding:104px 0 108px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--wash) 0%,var(--paper) 100%)}
-  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(760px 360px at 50% 0%,rgba(34,167,221,.07),transparent 65%);pointer-events:none}
-  .hero .wrap{position:relative}
-  .hero .tag{display:inline-flex;align-items:center;gap:9px;font-size:.82rem;font-weight:600;letter-spacing:.08em;color:var(--navy);border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 16px 5px 8px;margin-bottom:24px}
-  .hero .tag img{height:20px;width:auto;border-radius:3px}
-  .hero .hook{font-size:clamp(1.08rem,2.1vw,1.4rem);font-weight:800;color:var(--navy);line-height:1.6;letter-spacing:.02em;margin-bottom:14px}
-  .hero .hook .hook-accent{color:var(--cyan-deep);font-weight:800;white-space:nowrap}
-  .hero h1{font-size:clamp(2.1rem,4.6vw,3.3rem);line-height:1.38;font-weight:900;letter-spacing:.01em;color:var(--navy-deep)}
-  .hero h1 .accent{background:linear-gradient(92deg,var(--cyan-deep),var(--navy));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p.sub{margin:22px auto 0;color:var(--ink-soft);font-size:1.06rem;max-width:34em}
+  /* hero */
+  .hero{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 55%,#1c3c86 100%);color:#fff;padding:158px 0 96px;text-align:center;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,rgba(34,167,221,.22),transparent 65%);pointer-events:none}
+  .hero .wrap{position:relative;z-index:1}
+  .hero .tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:7px 18px;font-size:.86rem;letter-spacing:.06em;color:#dfe9ff;margin-bottom:24px}
+  .hero .tag img{width:22px;height:22px}
+  .hero h1{font-size:clamp(1.7rem,4.6vw,2.9rem);line-height:1.35;font-weight:800;letter-spacing:.01em}
+  .hero h1 .hl{color:#5cc6ff}
+  .hero .sub{margin:20px auto 0;max-width:780px;color:#c9d6f2;font-size:clamp(.98rem,1.6vw,1.1rem)}
   .hero .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
-  .hero .cta-note{font-size:.84rem;color:var(--muted);width:100%;text-align:center}
-  .trustline{margin-top:28px;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
-  .chip{font-size:.84rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;color:var(--ink-soft);display:inline-flex;gap:7px;align-items:center}
-  .chip b{color:var(--navy-deep)}
-  .chip.todo{background:#fdf6e3;border:1px dashed #d8c48f;color:#8a743c;border-radius:6px}
-  /* terminal card */
-  .term{background:var(--band);border-radius:10px;box-shadow:0 26px 52px -20px rgba(14,28,66,.5);overflow:hidden;font-family:var(--mono);font-size:.8rem;line-height:1.85;color:var(--band-ink)}
-  .term .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-size:.72rem;color:#7f8db0}
-  .term .dot{width:10px;height:10px;border-radius:50%;background:#2b3c6b}
-  .term .dot.g{background:#3f7d62}
-  .term .bar span.ip{margin-left:auto}
-  .term .body{padding:18px 20px 22px}
-  .term .u{color:#a8bcdf}
-  .term .u::before{content:"▸ ";color:var(--cyan)}
-  .term .a{color:#e3eaf7;margin:4px 0 14px}
-  .term .a::before{content:"机悟 ";color:#6f86ae}
-  .term .ok{color:#7fbf8f}
-  .term .warn{color:#e0b45f}
-  .cursor{display:inline-block;width:8px;height:1em;background:#7f95bd;vertical-align:-2px;animation:blink 1.1s step-end infinite}
-  @keyframes blink{50%{opacity:0}}
-  @media (prefers-reduced-motion:reduce){.cursor{animation:none}}
+  .hero .cta-note{font-size:.85rem;color:#9fb2dd;width:100%}
+  .hero .chips{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .hero .chip{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);border-radius:8px;padding:7px 16px;font-size:.88rem;color:#e6eefc}
+  .hero .slogan{margin-top:40px;font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:800;letter-spacing:.04em;color:#fff}
+  .hero .slogan span{color:#5cc6ff}
 
-  /* ---------- fullscreen film opener (zkedugroup 式:视频=首屏整幅) ---------- */
-  .film{position:relative;width:100%;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#04070f}
-  .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#000}
-  .film .shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,14,33,.55) 0%,rgba(8,14,33,0) 24%,rgba(8,14,33,0) 58%,rgba(8,14,33,.5) 100%)}
-  .film .play{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;background:rgba(4,7,15,.18);border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
-  .film.needs-tap .play{display:flex}
-  .film .ptri{width:0;height:0;border-style:solid;border-width:26px 0 26px 42px;border-color:transparent transparent transparent rgba(255,255,255,.95);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55))}
-  .film .cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:#dfe7f6;text-decoration:none;font-size:.78rem;letter-spacing:.3em;text-shadow:0 1px 4px rgba(0,0,0,.6);padding:6px 14px}
-  .film .cue .chev{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.95);border-bottom:2px solid rgba(255,255,255,.95);transform:rotate(45deg);animation:cue 1.7s ease-in-out infinite;opacity:.9}
-  @keyframes cue{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
-  @media (prefers-reduced-motion:reduce){.film .cue .chev{animation:none}}
+  /* cards */
+  .grid{display:grid;gap:18px;margin-top:34px}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .card{border:1px solid var(--line);border-radius:12px;padding:22px 20px;background:#fff;transition:box-shadow .18s,transform .18s}
+  .card:hover{box-shadow:0 10px 26px rgba(14,28,66,.08);transform:translateY(-2px)}
+  .card b.t{display:block;color:var(--navy);font-size:1.06rem;margin:10px 0 8px}
+  .card p{font-size:.92rem;color:var(--ink-soft)}
+  .card .icon{width:40px;height:40px;border-radius:9px;background:#eaf3fc;color:var(--cyan-deep);display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:800}
+  .quote{display:block;margin-top:10px;font-size:.85rem;color:var(--cyan-deep);font-weight:700}
 
-  /* ---------- pain (why now) ---------- */
-  .why{background:var(--navy-deep);color:#dbe3f4}
-  .why h2{color:#fff}
-  .why .kicker{color:var(--cyan)}
-  .why .lead{color:#aebbdd}
-  .whips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-  .whips span{font-size:.85rem;border:1px solid rgba(255,255,255,.22);border-radius:4px;padding:6px 14px;color:#c6d2ee}
-  .pain{margin-top:38px;display:grid;grid-template-columns:1fr 1fr;gap:30px 46px;counter-reset:p}
-  .pitem{position:relative;padding-left:58px;counter-increment:p}
-  .pitem::before{content:counter(p,decimal-leading-zero);position:absolute;left:0;top:0;font-family:var(--mono);font-size:1.45rem;font-weight:800;color:var(--cyan)}
-  .pitem b{display:block;color:#fff;font-size:1.03rem;margin-bottom:6px}
-  .pitem span{font-size:.92rem;color:#9fadd3;line-height:1.75}
-  .why .punch{margin-top:38px;font-size:1.12rem;font-weight:700;color:#fff;line-height:1.85;max-width:46em;border-top:1px solid rgba(255,255,255,.12);padding-top:28px}
-  .why .punch em{font-style:normal;color:var(--cyan)}
+  /* scenes */
+  .scenes{background:#f7f9fd}
+  .scene{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:18px;background:#fff}
+  .scene h3{color:var(--navy);font-size:1rem;margin-bottom:6px}
+  .scene p{font-size:.88rem;color:var(--ink-soft)}
+  .scene .m{display:inline-block;margin-top:8px;background:#eaf3fc;color:var(--cyan-deep);border-radius:6px;padding:2px 8px;font-size:.78rem;font-weight:700}
+  .scene-note{margin-top:20px;font-size:.84rem;color:var(--muted)}
 
-  /* ---------- cards trio (three main cards) ---------- */
-  .trio .main-card{margin-top:46px;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1.25fr 1fr;background:var(--wash)}
-  .trio .main-copy{padding:44px 46px}
-  .trio .badge{display:inline-block;font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.18em;color:var(--cyan-deep);border:1px solid var(--cyan);border-radius:999px;padding:3px 12px;margin-bottom:16px}
-  .trio h3{font-size:1.4rem;font-weight:800;line-height:1.5;color:var(--navy-deep)}
-  .trio .main-copy p{margin-top:14px;color:var(--ink-soft);font-size:.98rem}
-  .trio .quote{margin-top:22px;padding-left:16px;border-left:3px solid var(--cyan);font-weight:700;color:var(--navy);font-size:1.02rem;line-height:1.7}
-  .prov{background:var(--band);padding:34px 30px;font-family:var(--mono);font-size:.76rem;line-height:1.8;color:#aebdd9}
-  .prov .lbl{font-size:.66rem;letter-spacing:.2em;color:#66779f;margin-bottom:10px}
-  .prov .q{color:#e6ecf8;font-size:.84rem}
-  .prov .step{display:flex;gap:10px;margin-top:14px;align-items:flex-start}
-  .prov .step .n{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid #3d5488;text-align:center;line-height:21px;font-size:.68rem;color:var(--cyan)}
-  .prov .hit{color:#7fbf8f}
-  .prov .stop{color:#e0b45f}
-  .trio .sub-cards{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
-  .tcard{border:1px solid var(--line);border-radius:12px;padding:30px 30px 26px;background:#fff}
-  .tcard h4{font-size:1.06rem;font-weight:800;color:var(--navy-deep);margin-bottom:8px}
-  .tcard .no{font-family:var(--mono);font-size:.72rem;color:var(--cyan-deep);letter-spacing:.14em;display:block;margin-bottom:10px;font-weight:700}
-  .tcard p{font-size:.92rem;color:var(--ink-soft)}
-  .tcard .line{margin-top:14px;font-size:.9rem;font-weight:700;color:var(--navy);padding-top:12px;border-top:1px dashed var(--line)}
+  /* ledger */
+  .ledger table{width:100%;border-collapse:collapse;margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .ledger th,.ledger td{padding:13px 16px;text-align:left;border-bottom:1px solid #eef2f8;font-size:.93rem;vertical-align:top}
+  .ledger thead th{background:var(--navy);color:#fff;font-size:.9rem;letter-spacing:.02em}
+  .ledger td.win{background:#f0f9ff;font-weight:700;color:var(--navy)}
+  .ledger .cap{margin-top:12px;font-size:.85rem;color:var(--muted)}
 
-  /* ---------- product rows ---------- */
-  .product{background:var(--wash)}
-  .rows{margin-top:46px;border-top:1px solid var(--line)}
-  .row{display:grid;grid-template-columns:64px 1fr 1.35fr;gap:24px;padding:28px 4px;border-bottom:1px solid var(--line);align-items:baseline}
-  .row .no{font-family:var(--mono);color:var(--cyan-deep);font-weight:700;font-size:.95rem}
-  .row h3{font-size:1.18rem;font-weight:800;color:var(--navy-deep)}
-  .row p{color:var(--ink-soft);font-size:.96rem}
-  .row .note{color:var(--muted);font-size:.85rem;display:block;margin-top:4px}
+  /* faq */
+  details{border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:10px;overflow:hidden}
+  summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:700;color:var(--navy);font-size:.99rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+";font-size:1.35rem;color:var(--cyan-deep);font-weight:800;line-height:1;transition:transform .15s}
+  details[open] summary::after{content:"–"}
+  details .a{padding:0 18px 16px;color:var(--ink-soft);font-size:.93rem}
 
-  /* ---------- roles tabs ---------- */
-  .roles .tabbar{display:flex;gap:8px;margin-top:40px;flex-wrap:wrap}
-  .roles .tab{border:1px solid var(--line);background:#fff;border-radius:8px;padding:12px 22px;font-size:.95rem;font-weight:700;color:var(--ink-soft);cursor:pointer;transition:all .15s}
-  .roles .tab:hover{border-color:var(--cyan)}
-  .roles .tab.sel{background:var(--navy);border-color:var(--navy);color:#fff}
-  .role-panel{display:none;margin-top:26px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:40px 44px}
-  .role-panel.show{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;animation:fade .25s ease}
-  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .role-panel .q{font-size:1.3rem;font-weight:800;line-height:1.65;color:var(--navy-deep)}
-  .role-panel .who{font-size:.84rem;color:var(--muted);margin-top:10px}
-  .role-panel ul{list-style:none}
-  .role-panel li{padding:12px 0 12px 30px;border-bottom:1px solid var(--line);position:relative;font-size:.97rem;color:var(--ink-soft)}
-  .role-panel li:last-child{border-bottom:none}
-  .role-panel li::before{content:"";position:absolute;left:2px;top:22px;width:12px;height:12px;background:linear-gradient(135deg,var(--cyan),var(--cyan-deep));clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
-  .role-panel li b{color:var(--ink)}
+  /* cta band */
+  .cta-band{background:linear-gradient(135deg,var(--navy-deep),var(--navy) 55%,#1c3c86);color:#fff;text-align:center;border-radius:16px;padding:52px 28px}
+  .cta-band h2{color:#fff}
+  .cta-band p{color:#c9d6f2;max-width:660px;margin:0 auto 26px}
 
-  /* ---------- industries ---------- */
-  .ind{background:var(--band);color:var(--band-ink)}
-  .ind h2{color:#fff}
-  .ind .kicker{color:var(--cyan)}
-  .ind .lead{color:#9fadd3}
-  .ind-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.1);border-radius:12px;overflow:hidden;margin-top:46px}
-  .icell{background:var(--band);padding:26px 22px 22px}
-  .icell b{display:block;color:#fff;font-size:1.02rem;margin-bottom:8px}
-  .icell p{font-size:.85rem;color:#93a2c8;line-height:1.65}
-  .icell .cards{margin-top:12px;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;color:var(--cyan)}
-  .sme{margin-top:22px;border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:22px 26px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
-  .sme b{display:block;color:#fff;font-size:1rem;margin-bottom:4px}
-  .sme span{font-size:.88rem;color:#9fadd3;line-height:1.7}
-  .sme .sme-cards{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--cyan);flex:none}
-
-  /* ---------- compare ---------- */
-  .compare table{width:100%;border-collapse:collapse;margin-top:42px;font-size:.95rem}
-  .compare th,.compare td{padding:15px 18px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-  .compare thead th{font-size:.8rem;letter-spacing:.14em;color:var(--muted);font-weight:700;border-bottom:2px solid var(--navy-deep)}
-  .compare thead th.us{color:var(--navy-deep)}
-  .compare td.dim{color:var(--muted)}
-  .compare td.win{color:var(--ink);font-weight:600;background:rgba(34,167,221,.05)}
-  .compare td.win::before{content:"✓ ";color:var(--cyan-deep);font-weight:800}
-  .compare td.dim::before{content:"✕ ";color:#c08686}
-  .compare td.mid::before{content:"◐ ";color:var(--muted)}
-  .compare tbody th{font-weight:700;width:11em;color:var(--navy-deep)}
-  .tco{margin-top:26px;font-size:.88rem;color:var(--muted)}
-
-  /* ---------- process ---------- */
-  .steps{display:grid;grid-template-columns:repeat(5,1fr);margin-top:52px;counter-reset:s}
-  .step{position:relative;padding:0 22px 0 0;counter-increment:s}
-  .step::after{content:"";position:absolute;top:15px;right:-9px;left:34px;height:1px;background:repeating-linear-gradient(90deg,#4d5c78 0 6px,transparent 6px 12px)}
-  .step:last-child::after{display:none}
-  .step::before{content:counter(s,decimal-leading-zero);display:block;width:32px;height:32px;border-radius:50%;border:1px solid #5a6c8f;color:#cfd9ea;font-family:var(--mono);font-size:.78rem;line-height:32px;text-align:center;margin-bottom:18px;background:var(--band)}
-  .step b{display:block;color:#fff;font-size:1rem;margin-bottom:6px}
-  .step span{font-size:.88rem;color:#93a2bd;line-height:1.65}
-  .trial{margin-top:44px;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:26px 30px;background:rgba(255,255,255,.04);font-size:.98rem;color:var(--band-ink)}
-  .trial b{color:#fff}
-  .trial .line{color:var(--cyan);font-weight:800;font-size:1.05rem;margin-bottom:8px}
-
-  /* ---------- case ---------- */
-  .case-card{margin-top:46px;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1.4fr;background:#fff}
-  .case-side{background:var(--band);padding:40px 36px;color:var(--band-ink)}
-  .case-side .no{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;color:var(--cyan);display:block;margin-bottom:12px}
-  .case-side h3{color:#fff;font-size:1.32rem;font-weight:800;line-height:1.6}
-  .case-side p{margin-top:14px;font-size:.92rem;color:#9fadd3;line-height:1.8}
-  .case-body{padding:38px 42px}
-  .case-row{display:grid;grid-template-columns:92px 1fr;gap:18px;padding:17px 0;border-bottom:1px solid var(--line)}
-  .case-row:last-child{border-bottom:none}
-  .case-row .k{font-size:.8rem;font-weight:800;color:var(--muted);letter-spacing:.12em;padding-top:3px}
-  .case-row .v{font-size:.96rem;color:var(--ink);line-height:1.85}
-  .case-quote{margin-top:26px;background:var(--wash-2);border-left:3px solid var(--cyan);border-radius:0 8px 8px 0;padding:16px 20px;font-size:.92rem;color:var(--ink-soft)}
-  .placeholder{background:#fdf6e3;border:1px dashed #d8c48f;border-radius:6px;padding:12px 16px;font-size:.82rem;color:#8a743c;margin-top:22px}
-
-  /* ---------- trust ---------- */
-  .trust{background:var(--wash)}
-  .trust-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:46px;align-items:stretch}
-  .trust-card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:32px 30px;display:flex;flex-direction:column}
-  .trust-card .no{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;color:var(--cyan-deep);font-weight:700;margin-bottom:12px}
-  .trust-card h3{font-size:1.12rem;font-weight:800;color:var(--navy-deep);margin-bottom:10px}
-  .trust-card p{font-size:.92rem;color:var(--ink-soft);flex:1}
-  .trust-card .foot{margin-top:16px;padding-top:12px;border-top:1px dashed var(--line);font-size:.82rem;color:var(--muted)}
-
-  /* ---------- cta ---------- */
-  .cta{text-align:center}
-  .cta .big{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:900;color:var(--navy-deep);line-height:1.5}
-  .cta .lead{margin:16px auto 0;text-align:center}
-  .cta .row2{margin-top:36px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .cta .note{margin-top:18px;font-size:.84rem;color:var(--muted)}
-
-  /* ---------- contact / footer ---------- */
-  .contact{background:var(--wash)}
-  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:42px}
-  .cbox{border:1px solid var(--line);border-radius:10px;padding:26px 24px;background:#fff}
+  /* contact */
+  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .cbox{border:1px solid var(--line);border-radius:12px;padding:22px;background:#fff}
   .cbox b{font-size:.8rem;letter-spacing:.16em;color:var(--muted);display:block;margin-bottom:10px;font-weight:700}
-  .cbox p{font-size:1.05rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
+  .cbox p{font-size:1.02rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
   .cbox small{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
   .cbox .qr{width:220px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff;cursor:zoom-in}
   .cbox .qr-tip{display:block;color:var(--cyan-deep);font-weight:800;font-size:.9rem;margin-bottom:2px}
   .mqr img,.qr2{cursor:zoom-in}
-  /* ---- 二维码点击放大（lightbox） ---- */
+
+  /* lightbox */
   .zoomer{position:fixed;inset:0;background:rgba(8,14,30,.85);display:none;align-items:center;justify-content:center;z-index:220;cursor:zoom-out;padding:26px}
   .zoomer.open{display:flex}
   .zoomer img{max-width:min(86vw,560px);max-height:84vh;background:#fff;border-radius:12px;padding:14px;box-shadow:0 18px 70px rgba(0,0,0,.55);cursor:zoom-out}
   .zoomer .z-x{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
   .zoomer .z-x:hover{background:#d64541}
-  .zoomer .z-tip{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,.8);font-size:.9rem;letter-spacing:.02em}
-  footer{background:var(--band);color:#7f8db0;padding:42px 0 36px;font-size:.84rem}
-  footer .top{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:center;padding-bottom:26px;border-bottom:1px solid rgba(255,255,255,.08)}
-  footer .logo-w{height:40px;width:auto}
-  footer .slogan{color:#a9b7d8;font-weight:700;letter-spacing:.06em}
-  footer .comply{color:#8b99bd;font-size:.8rem;margin-top:10px;max-width:52em}
-  footer .bottom{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding-top:20px;align-items:center}
-  footer a{color:#a9b7d8;text-decoration:none;margin-left:20px}
-  footer a:hover{color:#fff}
+  .zoomer .z-tip{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,.8);font-size:.9rem}
 
-  /* ---------- reveal ---------- */
-  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
-  .reveal.on{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
-
-  /* ---------- responsive ---------- */
-  @media (max-width:960px){
-    .ind-grid{grid-template-columns:1fr 1fr}
-    .trust-grid{grid-template-columns:1fr}
-    .role-panel.show{grid-template-columns:1fr;gap:22px}
-  }
-  @media (max-width:900px){
-    .hero{padding:78px 0 86px}
-    .film{min-height:480px}
-    .trio .main-card{grid-template-columns:1fr}
-    .trio .sub-cards{grid-template-columns:1fr}
-    .pain{grid-template-columns:1fr}
-    .case-card{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr 1fr;gap:36px 0}
-    .step::after{display:none}
-    .compare table,.compare tbody,.compare tr,.compare td,.compare th{display:block;width:auto}
-    .compare thead{display:none}
-    .compare tbody th{width:auto;border-bottom:none;padding-bottom:2px}
-    .compare td{border-bottom:none;padding-top:0}
-    .compare td.win{background:none}
-    .row{grid-template-columns:44px 1fr;gap:14px}
-    .row p{grid-column:2}
-    .cgrid{grid-template-columns:1fr}
-    nav.links{display:none;position:absolute;top:80px;left:0;right:0;background:rgba(12,22,54,.97);border-bottom:1px solid rgba(255,255,255,.12);flex-direction:column;padding:18px 28px;gap:6px;align-items:flex-start}
-    nav.links.open{display:flex}
-    nav.links.open a{color:#eef2fb !important;text-shadow:none}
-    nav.links.open a:hover{color:#fff !important;border-bottom-color:transparent}
-    nav.links a{padding:10px 0;width:100%;font-size:1.02rem}
-    .nav-cta{display:none}
-    .menu-toggle{display:block}
-    section{padding:66px 0}
-  }
-  /* ---- 留资弹窗（评估 / 演示） ---- */
+  /* modal form */
   .mback{position:fixed;inset:0;background:rgba(14,28,66,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:120;padding:18px}
   .mback.open{display:flex}
   .mcard{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 60px rgba(14,28,66,.35);padding:26px 26px 20px;position:relative}
@@ -332,7 +219,6 @@
   .msubmit:disabled{opacity:.6;cursor:not-allowed}
   .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
   .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
-  .mmsg.ok{display:block;background:#eafaf1;color:#1e8449;border:1px solid #b7e3c9}
   .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
   .m-okcard.on{display:block}
   .m-okcard .big{font-size:2.4rem;line-height:1}
@@ -342,23 +228,40 @@
   .m-okcard .go{color:var(--cyan-deep);font-weight:800;font-size:.9rem}
   .m-okcard .msubmit{max-width:220px}
   @media(max-width:600px){.mf{grid-template-columns:1fr}.mcard{padding:20px 16px 16px}}
+
+  footer{background:var(--band);color:#7f8db0;padding:38px 0 32px;font-size:.84rem}
+  footer .top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.08)}
+  footer .logo-w{height:36px;width:auto}
+  footer .slogan{color:#dfe9ff;font-weight:700;letter-spacing:.03em}
+  footer .comply{margin-top:16px;line-height:1.7}
+  footer .bottom{margin-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+  @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
+  @media (max-width:900px){
+    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:rgba(12,22,54,.97);flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start}
+    nav.links.open{display:flex}
+    nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1rem}
+    .menu-toggle{display:block}
+    .g4,.g3,.cgrid{grid-template-columns:1fr}
+    .hero{padding:128px 0 72px}
+    section{padding:56px 0}
+    .ledger table,.ledger thead,.ledger tbody,.ledger tr,.ledger th,.ledger td{display:block;width:100%}
+    .ledger thead{display:none}
+    .ledger td{border-bottom:none;padding:6px 16px}
+    .ledger tr{border-bottom:1px solid #eef2f8;padding:8px 0}
+  }
 </style>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top" aria-label="甲维思 JAVIS 首页">
-      <img class="lg-dark" src="assets/logo.png" alt="甲维思 JAVIS">
-      <img class="lg-white" src="assets/logo_white.png" alt="甲维思 JAVIS">
-    </a>
+    <a class="brand" href="#top" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
     <nav class="links" id="menu">
-      <a href="#why">为什么是现在</a>
-      <a href="#product">机悟超脑</a>
-      <a href="#compare">算明白账</a>
-      <a href="#process">怎么落地</a>
-      <a href="#case">案例</a>
-      <a href="#trust">信任状</a>
+      <a href="#why">机悟是什么</a>
+      <a href="#scenes">用在哪</a>
+      <a href="#ledger">算三年账</a>
+      <a href="#faq">常见顾虑</a>
       <a href="#contact">联系我们</a>
     </nav>
     <a class="btn btn-solid nav-cta" href="#contact" data-open="eval">免费部署评估</a>
@@ -366,312 +269,109 @@
   </div>
 </header>
 
-<!-- ================= FULLSCREEN FILM (参考 zkedugroup:视频铺满首屏) ================= -->
-<section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片,全屏播放">
-  <video poster="assets/JAVIS_door_v2_poster.jpg" autoplay muted loop playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture>
-    <source src="assets/JAVIS_door_v2_portrait.mp4" type="video/mp4" media="(max-width:767px) and (orientation: portrait)">
-    <source src="assets/JAVIS_door_v2.mp4" type="video/mp4">
-  </video>
-  <div class="shade" aria-hidden="true"></div>
-  <button class="play" type="button" aria-label="播放品牌片"><span class="ptri" aria-hidden="true"></span></button>
-  <a class="cue" href="#intro"><span class="chev" aria-hidden="true"></span><span>向下滚动</span></a>
-</section>
-
-<!-- ================= HERO 文案(品牌片之后) ================= -->
-<section class="hero" id="intro">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" style="padding-bottom:88px">
   <div class="wrap">
-    <span class="tag reveal"><img src="assets/logo_mark.png" alt="">机悟 · 政企超脑</span>
-    <p class="hook reveal">私有数据 + 保密数据如何上 AI——不是能不能的问题，而是如何<span class="hook-accent">本地离线部署</span>。</p>
-    <h1 class="reveal">数据不能出门，业务又必须上 AI，<br>如何应用 AI 提效，<span class="accent">跟上科技潮流</span>。</h1>
-    <p class="sub reveal">机悟·政企超脑——大模型断网部署在单位内网：本地知识库、卷宗梳理、文书初稿、OCR 全都数据不出域、结论可溯源、全程可审计；合规、提效、国产化、利旧一肩挑。更多更强实时功能，更新中……</p>
-    <div class="cta-row reveal">
-      <a class="btn btn-solid" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
-      <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示跑本地 AI</a>
-      <span class="cta-note">先试后买 · 两周试点见效再谈合同</span>
+    <span class="tag"><img src="assets/logo_mark.png" alt="">机悟 · 政企超脑</span>
+    <h1>数据不能出门，业务又必须上 AI——<br><span class="hl">机悟把大模型搬进您的内网。</span></h1>
+    <p class="sub">公版 AI 进不了的门，机悟把 AI 搬进门内：大模型断网部署在单位内网，本地知识库、卷宗梳理、文书初稿、OCR 手稿处理，全部数据不出域、结论可溯源、全程可审计；合规、提效、国产化。</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
+      <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示 · 跑本地 AI</a>
+      <span class="cta-note">先试后买 · 两周试点见效再谈合同 · 不满意，不立项</span>
     </div>
-    <div class="trustline reveal">
-      <span class="chip"><b>某省级政法机关</b> · 生产环境运行中</span>
-      <span class="chip todo">上线前后效果数据 · 与项目方核对后发布</span>
+    <div class="chips">
+      <span class="chip">某省级政法机关 · 生产环境运行中</span>
+      <span class="chip">所有承诺，演示现场复跑</span>
+      <span class="chip">带着贵单位的真题来测</span>
     </div>
+    <p class="slogan">数据不出域 · 单位有<span>超脑</span> · 个人得<span>助手</span></p>
   </div>
 </section>
 
-<!-- ================= WHY / PAIN ================= -->
-<section class="why" id="why">
+<!-- ============ WHY ============ -->
+<section id="why">
   <div class="wrap">
-    <div class="kicker reveal">WHY NOW · 为什么是现在</div>
-    <h2 class="reveal">公版云 AI 对您不成立，<br>不是因为落后，而是因为四件事</h2>
-    <div class="whips reveal">
-      <span>数据安全法</span><span>保守国家秘密法</span><span>数据出境安全评估办法</span><span>政务领域 AI 部署应用指引</span><span>等保 · 密评</span>
+    <div class="kicker">WHY · 为什么敢用</div>
+    <h2>不是敢不敢上云，<br>是您的内网物理上就够不到云端。</h2>
+    <p class="lead">国家安全部已连续两年通报 AI 泄密案例；数据安全法对核心数据违规最高处一千万元罚款，保密法第三十一条明确涉密系统必须与互联网物理隔离。对保护私密数据和涉密事务的单位来说，上 AI 最大的坑不是思想「保守」，而是「不会本地化部署」。</p>
+    <div class="grid g4">
+      <div class="card"><div class="icon">域</div><b class="t">数据不出域</b><p>大模型和知识库全部部署在单位内网，完全断网也能全功能运行，演示全程无外网请求。</p></div>
+      <div class="card"><div class="icon">源</div><b class="t">结论可溯源</b><p>别的 AI 会编条文，机悟每个结论都能指到原文，三步点击穿核验。</p><span class="quote">「宁可不答，也不骗您。」</span></div>
+      <div class="card"><div class="icon">审</div><b class="t">全程可审计</b><p>每一次查询、每一个答案全程留痕可回放，权限分级、哈希链锁证，审计随手交。</p></div>
+      <div class="card"><div class="icon">产</div><b class="t">国产化 · 利旧</b><p>组件全开源栈，国产芯片与 UOS 已实测运行；先诊断再出方案，旧机器就能跑。</p></div>
     </div>
-    <div class="pain">
-      <div class="pitem reveal"><b>法规鞭子</b><span>《数据安全法》《保守国家秘密法》《数据出境安全评估办法》：执法司法数据、未公开政务数据、工作秘密属于重要数据——只能域内处理，出境须申报评估。</span></div>
-      <div class="pitem reveal"><b>已有通报</b><span>国家安全部连续两年点名通报 AI 泄密：用 AI 应用上传核心数据致泄密被严肃处理；拍密件发朋友圈被处分。官方建议：私有化部署、切断互联网连接。</span></div>
-      <div class="pitem reveal"><b>物理事实</b><span>涉密内网与外网物理隔离，云端再强也够不到——不是敢不敢上云的问题，是您的内网，云端根本进不来。</span></div>
-      <div class="pitem reveal"><b>幻觉代价</b><span>AI 一本正经编依据、张冠李戴——错一句话，影响一件案子、一笔审批。敢用于办案，每个结论必须指得到原文。</span></div>
-    </div>
-    <p class="punch reveal">对涉密政企来说，最大的痛点不是「不会用 AI」，而是<em>「用错了被追责」</em>。机悟卖的不是模型，是<em>「敢用、合规、可交账」的确定性</em>。</p>
+    <p class="scene-note">产品定位：机悟·政企超脑是为政企单位私有化部署的本地大模型平台——数据不出域、安全可信，让每一位工作人员拥有自己的得力助手。不是聊天机器人，是机要事务助理。亦师亦助手，AI，能！</p>
   </div>
 </section>
 
-<!-- ================= THREE CARDS ================= -->
-<section class="trio" id="proof">
+<!-- ============ SCENES ============ -->
+<section class="scenes" id="scenes">
   <div class="wrap">
-    <div class="kicker reveal">CORE · 为什么敢用</div>
-    <h2 class="reveal">业务人员最怕的不是慢，是 AI 一本正经地编依据</h2>
-    <p class="lead reveal">所以机悟把「可溯源」做成产品的骨头，而不是卖点装饰——错一句话，影响的是一件案子、一笔审批。</p>
-
-    <div class="main-card reveal">
-      <div class="main-copy">
-        <span class="badge">第一牌 · 可溯源 · 防幻觉</span>
-        <h3>每个结论都能指到卷宗、法条、手册的原文；<br>查不到，就明说「未找到依据」。</h3>
-        <p>结论 → 引用 → 原文，三步点击穿核验；引用对不上自动标注「需人工核对」；宁可拒答，绝不编造。敢用于办案，可进卷。</p>
-        <div class="quote">「别的 AI 会编条文，机悟每个结论都能指到原文——宁可不答，也不骗你。」</div>
-      </div>
-      <div class="prov">
-        <div class="lbl">核验路径演示 · 三击到原文</div>
-        <div class="q">问：盗窃案的数额较大起点，本单位适用口径？</div>
-        <div class="step"><span class="n">1</span><span>结论：按 ×× 标准执行，起点为×万元<br><span class="hit">〔引用 #law-204〕</span></span></div>
-        <div class="step"><span class="n">2</span><span>点开引用 → 条文全文 + 生效日期 + 来源库</span></div>
-        <div class="step"><span class="n">3</span><span>定位原文 → 扫描件第 3 页高亮原句</span></div>
-        <div class="step"><span class="n">✕</span><span>换一道库里没有的题：<span class="stop">「未找到依据」</span>＋建议人工核对，<span class="stop">不生成答案</span></span></div>
-      </div>
+    <div class="kicker">SCENES · 用在哪</div>
+    <h2>每个行业都有「不能出门」的数据，<br>每份数据都该产生生产力。</h2>
+    <div class="grid g3">
+      <div class="scene"><h3>政法 · 检纪</h3><p>卷宗自动梳理时间线、文书初稿、类案检索、串并案线索提示。承办人只做修改与签发，AI 只做辅助。</p><span class="m">实测：几百页卷宗 → 10 分钟时间线；初稿 2 小时 → 20 分钟</span></div>
+      <div class="scene"><h3>党政机关</h3><p>学本单位文风生成公文初稿；制度问答问了就答、附原文出处；纸质档案 OCR 变随问随答的数字资产。</p><span class="m">文稿不出内网 · 纸不翻新，资产还在</span></div>
+      <div class="scene"><h3>国企 · 集团</h3><p>对接财务/ERP，问一句话秒出数据、来源可查；老师傅经验沉淀进知识库，新人随身带师父。</p><span class="m">人不在了经验还在 · 权限分级留痕</span></div>
+      <div class="scene"><h3>医疗</h3><p>院内网部署：病历自动结构化、科研统计分析、文献综述初稿，患者数据一步都不出院。诊断由医生说了算。</p><span class="m">科研数据不出院 · AI 只做辅助</span></div>
+      <div class="scene"><h3>金融</h3><p>监管文件全部入库，问答带原文与生效日期；异常交易自动标注、审计报告初稿；合规问题随时请教。</p><span class="m">宁可不答，绝不编造</span></div>
+      <div class="scene"><h3>高校 · 科研</h3><p>未发表数据不出实验室：分析、综述、格式检查全在内网；课题组代码与实验记录入库，新人上来就能查。</p><span class="m">知识不断档，数据不外流</span></div>
+      <div class="scene"><h3>能源 · 制造</h3><p>设备手册入库秒答、附原文页码；历史故障沉淀成案例库；可部署进 OT 网，不碰生产安全。</p><span class="m">实测：提问 3 秒给出处理方法</span></div>
+      <div class="scene"><h3>涉密 · 国防</h3><p>为完全断网环境而生：隔离网络内全功能运行，结论可溯源、查询留痕，涉密不上网，AI 照样用。</p><span class="m">全程无外网请求</span></div>
+      <div class="scene"><h3>中小企业</h3><p>律所、咨询、设计、诊所的客户数据就是命脉：判例检索、文书初稿、项目分析轻量本地部署。</p><span class="m">实测：旧电脑就能起步</span></div>
     </div>
-
-    <div class="sub-cards">
-      <div class="tcard reveal">
-        <span class="no">第二牌 · 数据不出域（底座）</span>
-        <h4>不是敢不敢上云，是内网物理上就够不到云端</h4>
-        <p>只有本地能干活。机悟在完全断网的环境里全功能运行，数据主权 100% 留在贵单位域内——这是入场券，不是我们的全部。</p>
-        <div class="line">断网演示可当场复跑（含拔网线镜头的实录）</div>
-      </div>
-      <div class="tcard reveal">
-        <span class="no">第三牌 · 国产化 + 旧设备利旧</span>
-        <h4>从芯片到底座全国产，现有机房就能跑</h4>
-        <p>断供、禁运、增购风险与您无关：全开源组件栈、商用许可清晰、国产操作系统已实测；存量旧卡旧服务器先用足，不做「推荐买新卡」的方案。</p>
-        <div class="line">国产适配报告 + 开源许可清单，可交付可查验</div>
-      </div>
-    </div>
+    <p class="scene-note">效果均表述为「辅助、提效」，不替代人工审核；数字为实测环境数据，发布口径与项目方核对。会议场景另备：一小时会议，半小时纪要，谁定了什么、谁去落实，一条不落。</p>
   </div>
 </section>
 
-<!-- ================= PRODUCT ================= -->
-<section class="product" id="product">
+<!-- ============ LEDGER ============ -->
+<section class="ledger" id="ledger">
   <div class="wrap">
-    <div class="kicker reveal">PRODUCT · 产品</div>
-    <h2 class="reveal">机悟·政企超脑：一套搬进内网的完整 AI 生产力</h2>
-    <div class="rows">
-      <div class="row reveal"><span class="no">01</span><h3>本地大模型部署</h3><p>按数据量级、并发人数和存量硬件选型部署，支持 AMD、NVIDIA 多卡混合与显存极限优化，国产系统实测可用。<span class="note">同型号旧显卡实测优化：推理速度提升一倍以上。</span></p></div>
-      <div class="row reveal"><span class="no">02</span><h3>单位知识库 · 带出处问答</h3><p>规章制度、历史案卷、业务文档变成可检索可追问的「单位记忆」，回答附原文出处；行业黑话、口径标准张嘴就来——通用大模型是全科医生，机悟是用贵单位语料喂出来的专科医生。</p></div>
-      <div class="row reveal"><span class="no">03</span><h3>文书与卷宗助手</h3><p>卷宗时间线梳理、类案检索、文书初稿、笔录摘要——一线重复劳动整体交给 AI，人只做判断和签发。</p></div>
-      <div class="row reveal"><span class="no">04</span><h3>会议纪要 · 第一天见效</h3><p>一小时讨论会，约半小时出结构化纪要：谁说了什么、分歧在哪、结论是什么、谁去落实，一条不落。全程断网、转完即删不留盘。</p></div>
-      <div class="row reveal"><span class="no">05</span><h3>沉睡资产活化</h3><p>识别扫描件、照片、旧档案，让纸堆变成可检索、可复用的数据资产；老师傅的经验沉淀进库，新人上岗就有「随身师父」。</p></div>
-      <div class="row reveal"><span class="no">06</span><h3>全程留痕 · 审计可回放</h3><p>谁查了什么、模型怎么答的，权限分级、日志回放，随手交审计、过等保密评——不做「事后无法举证」的黑盒。</p></div>
-      <div class="row reveal"><span class="no">07</span><h3>运维与陪跑</h3><p>自动备份、监控、模型升级、新机器适配，外加对业务人员的上手培训——部署完成只是服务的开始。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= ROLES ================= -->
-<section class="roles" id="roles">
-  <div class="wrap">
-    <div class="kicker reveal">ROLES · 按角色看机悟</div>
-    <h2 class="reveal">一个系统，四类人各有各的理由</h2>
-    <div class="tabbar reveal" role="tablist">
-      <button class="tab sel" role="tab" aria-selected="true" onclick="pickRole(0,this)">一把手</button>
-      <button class="tab" role="tab" aria-selected="false" onclick="pickRole(1,this)">保密 / 合规条线</button>
-      <button class="tab" role="tab" aria-selected="false" onclick="pickRole(2,this)">信息科 / 财务</button>
-      <button class="tab" role="tab" aria-selected="false" onclick="pickRole(3,this)">业务骨干 / 机要</button>
-    </div>
-
-    <div class="role-panel show" role="tabpanel">
-      <div>
-        <p class="q">「机悟是能写进年度工作报告的成果。」</p>
-        <p class="who">数字化转型 / AI+ 是硬指标，机悟让指标落成可演示、可交账的实体。</p>
-      </div>
-      <ul>
-        <li><b>不掉队：</b>同行单位已用 AI 压缩业务周期，差距是按月拉开的。</li>
-        <li><b>有成果：</b>呼应司法责任制/终身责任制——哈希链留痕，建设成效直接进报告。</li>
-        <li><b>买一次，全集团用：</b>总部定标准、基层跟着跑，一套知识库多级共用。</li>
-        <li><b>人走经验留：</b>几十年积累沉淀进库，不再随人员退休调岗流失。</li>
-      </ul>
-    </div>
-    <div class="role-panel" role="tabpanel">
-      <div>
-        <p class="q">「公版 AI 进不了的门，机悟把 AI 搬进门内。」</p>
-        <p class="who">底线守得住，创新才谈得上——检查来了，随手交得出账。</p>
-      </div>
-      <ul>
-        <li><b>物理断网全功能：</b>不是「敢不敢上云」的问题——涉密内网，云端本来就不许够到。</li>
-        <li><b>全程留痕、权限分级：</b>每一次查询、每一个答案可回放，随手交审计。</li>
-        <li><b>对照清单随交付：</b>等保/密评对照项、开源许可清单，逐条可查验。</li>
-        <li><b>等保密评不是黑盒：</b>模型行为有日志、有版本、有验收集。</li>
-      </ul>
-    </div>
-    <div class="role-panel" role="tabpanel">
-      <div>
-        <p class="q">「一张三年总账：断网买断 + 旧设备利旧，三年回本。」</p>
-        <p class="who">预算问得出答案，供应链扛得住风浪，采购评审每层有答卷。</p>
-      </div>
-      <ul>
-        <li><b>利旧优先：</b>存量服务器和显卡先用足，不做「推荐你买新卡」的方案。</li>
-        <li><b>不养天价团队：</b>把「微调工程师×2 + 数据清洗×3 人半年」换成一份可复算的服务账单。</li>
-        <li><b>不绑死单一芯片生态：</b>AMD/N 卡混跑、国产 OS 实测记录在手。</li>
-        <li><b>合同写明支持范围：</b>开源可交接，不绑架、不怕人走楼空。</li>
-      </ul>
-    </div>
-    <div class="role-panel" role="tabpanel">
-      <div>
-        <p class="q">「你的专属外脑，睡在你自己的机房。」</p>
-        <p class="who">最懂单位自己规矩的助理——而且它宁可不答，也不骗你。</p>
-      </div>
-      <ul>
-        <li><b>带出处答本单位制度：</b>规章、口径、纪要全部附原文，敢碰最敏感的材料。</li>
-        <li><b>结论可进卷：</b>引用核验不上就标「需人工核对」，查不到就明说，不背锅。</li>
-        <li><b>第一天见效：</b>一小时会议半小时纪要，从每天的高频痛点用起来。</li>
-        <li><b>嵌进现有流程：</b>不做第二块没人点的屏幕——照干老活，只是更快。</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ================= INDUSTRIES ================= -->
-<section class="ind" id="ind">
-  <div class="wrap">
-    <div class="kicker">INDUSTRIES · 服务行业</div>
-    <h2>只要「数据不能出门，业务必须上 AI」，场景我们都有解法</h2>
-    <div class="ind-grid">
-      <div class="icell reveal"><b>政法 · 检纪</b><p>卷宗时间线梳理、文书初稿、类案检索、检委会纪要</p><div class="cards">主打：可溯源 + 合规 + 审计留痕</div></div>
-      <div class="icell reveal"><b>党政机关</b><p>公文初稿、规章问答、档案扫描件活化</p><div class="cards">主打：合规 + 自主可控 + 内事</div></div>
-      <div class="icell reveal"><b>国企 · 集团</b><p>经营数据问答、制度全集团统一、生产调度纪要</p><div class="cards">主打：资产沉淀 + 三年总账</div></div>
-      <div class="icell reveal"><b>医院 · 疾控</b><p>病历科研辅助、文献综述、院内制度问答</p><div class="cards">主打：数据不出院 + 不编指南</div></div>
-      <div class="icell reveal"><b>金融</b><p>监管条文带出处问答、内审辅助、合规培训</p><div class="cards">主打：可溯源 + 分类分级</div></div>
-      <div class="icell reveal"><b>高校 · 科研</b><p>未发表数据沉淀分析、论文辅助、课题组知识库传承</p><div class="cards">主打：数据资产 + 合规</div></div>
-      <div class="icell reveal"><b>能源 · 制造</b><p>设备手册秒答、故障案例库、班组会议纪要</p><div class="cards">主打：OT/IT 隔离下的即时见效</div></div>
-      <div class="icell reveal"><b>涉密资质单位</b><p>内网知识库、涉密文书辅助（只谈能力，不谈细节）</p><div class="cards">物理隔离是采购前提，也是一票通过项</div></div>
-    </div>
-    <div class="sme reveal">
-      <div>
-        <b>中小企业 · 数据不想出公司？</b>
-        <span>律所、咨询、软件、贸易、诊所、设计工作室……同样的私有化，更轻的落地：数据不出公司、一张三年总账、旧机器先试两周。</span>
-      </div>
-      <div class="sme-cards">主打：数据不出公司 + 三年总账 + 先试后买</div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= COMPARE ================= -->
-<section class="compare" id="compare">
-  <div class="wrap">
-    <div class="kicker reveal">COMPARE · 算一笔明白账</div>
-    <h2 class="reveal">同一件事的三种做法</h2>
-    <table class="reveal">
-      <thead><tr><th></th><th>公版云端大模型</th><th>自建团队从零搞</th><th class="us">机悟超脑</th></tr></thead>
+    <div class="kicker">LEDGER · 算三年账</div>
+    <h2>一张三年总账：哪本账贵，算完您来定。</h2>
+    <table>
+      <thead><tr><th style="width:24%">方案</th><th>三年总成本逻辑</th><th>关键风险</th></tr></thead>
       <tbody>
-        <tr><th>数据安全</th><td class="dim">数据出境入云，触碰红线；涉密内网物理够不到</td><td class="win">域内，但要自己一路踩坑</td><td class="win">域内，且有已验证的成熟路径</td></tr>
-        <tr><th>结论可信</th><td class="dim">一本正经编依据，无法进卷</td><td class="mid">取决于自研质量，周期以年计</td><td class="win">每条结论带原文出处，查不到即拒答</td></tr>
-        <tr><th>模型能力</th><td class="win">旗舰模型最新版，能力最强</td><td class="dim">受限于团队投入</td><td class="mid">开源旗舰模型本地运行，够用且可控</td></tr>
-        <tr><th>见效周期</th><td class="dim">开通即用，但敏感业务不敢用</td><td class="dim">招聘 + 试错，常以年计</td><td class="win">评估后数周内在内网跑起来</td></tr>
-        <tr><th>存量硬件</th><td class="dim">与己无关</td><td class="dim">容易变成「先买新卡」</td><td class="win">旧卡、异构双卡混跑是日常功课</td></tr>
-        <tr><th>持续成本</th><td class="dim">按 token 计费，越用越贵</td><td class="dim">微调工程师 50–100 万/年 ×2，数据组另算</td><td class="win">一次投入用满三年，报价＝可复算账单</td></tr>
-        <tr><th>供应链</th><td class="dim">闭源模型版权/停服风险</td><td class="dim">依赖个别核心人员</td><td class="win">全开源组件栈，合同写明可交接</td></tr>
+        <tr><td><b>云 API 按量付费</b></td><td>按 token 计费，越用越贵没有头——IDC 数据显示 2025 年企业级调用量同比增长约 16 倍。</td><td>数据出门即违规；涨价与断供不可控。</td></tr>
+        <tr><td><b>自建算法团队</b></td><td>微调算法工程师年薪 50–100 万一位、起步两位，再配数据团队干半年，人力先花两三百万。</td><td>人走楼空，经验不沉淀。</td></tr>
+        <tr><td class="win">机悟 · 买断部署</td><td>一次投入用满三年，带调优、带运维；旧服务器和显卡先用足——把「养团队」换成「买服务」。</td><td class="win">报价＝可复算账单，每一行您都能核对。</td></tr>
       </tbody>
     </table>
-    <p class="tco reveal">※ 三年总账口径：日均调用量 × 云 API 单价 × 36 个月，对照「买断 + 旧设备利旧 + 电费折旧」；评估时按贵单位真实用量出表，不拿均值糊弄。</p>
+    <p class="cap">先诊断再出方案，不做「推荐您买新卡」的方案。评估不收费：现有设备能跑什么、缺什么、多少钱、多久能用，白纸黑字。</p>
   </div>
 </section>
 
-<!-- ================= PROCESS + TRIAL ================= -->
-<section class="ind" id="process" style="background:var(--band)">
+<!-- ============ FAQ ============ -->
+<section id="faq" style="padding-top:0">
   <div class="wrap">
-    <div class="kicker">HOW WE WORK · 服务流程</div>
-    <h2>五步，从「想用」到「用起来」</h2>
-    <div class="steps">
-      <div class="step"><b>免费评估</b><span>40 分钟：现有设备能跑什么、缺什么、多少钱、多久能用，给书面结论。</span></div>
-      <div class="step"><b>两周试点</b><span>一台现有服务器 + 一个业务科室 + 两个高频场景（纪要 + 知识问答），提前锁定验收口径。</span></div>
-      <div class="step"><b>部署上线</b><span>内网安装、知识库增量入库手册、业务系统对接，全程数据不出域。</span></div>
-      <div class="step"><b>调优定制</b><span>按业务语料微调提示词与知识库，必要时做定制模型；可测 KPI + 可复跑验收集交付。</span></div>
-      <div class="step"><b>培训陪跑</b><span>教会业务人员用起来，长期运维备份与能力升级；省级/集团统采放大。</span></div>
-    </div>
-    <div class="trial reveal">
-      <div class="line">「先别立项。拿一台旧机器试两周。」</div>
-      不卖天价盒子、不留烂尾项目：两周试点见效再走小额采购；系统嵌进现有流程，员工照干老活，只是更快。合同写明支持范围，开源可交接。
-    </div>
+    <div class="kicker">FAQ · 常见顾虑</div>
+    <h2>您问得最多的七件事。</h2>
+    <details><summary>「太贵了」？</summary><div class="a">报价＝可复算账单，含运维。我们先算三年总账：云 API 年年涨，买断＋旧设备利旧三年回本——哪本账贵，算完您来定。</div></details>
+    <details><summary>「答错了怎么办」？</summary><div class="a">交付时附拒答率验收集：查不到依据的问题，机悟明确回「未找到依据，建议人工核对」，不生成答案，您可以当场复跑。宁可不答，也不骗您。</div></details>
+    <details><summary>「再等等、明年再说」？</summary><div class="a">先别立项。拿一台旧服务器、一个业务科室、两个高频场景，试两周——验收口径提前定好，满意了再谈合同。</div></details>
+    <details><summary>「有什么案例」？</summary><div class="a">政法项目按保密要求一律脱敏，只能讲「某省级政法机关」。想看真的？带着贵单位的真题来，我们当场在您设备上复跑——比任何 PPT 都可靠。</div></details>
+    <details><summary>「为什么不找大厂」？</summary><div class="a">大厂重心在省市级大项目，打法重、周期长。区县的轻量私有化场景，恰恰是我们的主战场：交付标准、两周见效、当场复跑。</div></details>
+    <details><summary>「我们旧设备能行吗」？</summary><div class="a">先诊断再出方案。存量服务器和显卡先用足，跑量化模型；上来就让您买新卡的方案，建议多留个心眼。</div></details>
+    <details><summary>「员工不会用怎么办」？</summary><div class="a">我们不做第二块没人点的屏幕。机悟嵌进您现有的卷宗、文书、审批流程，员工照干老活，只是干得更快。</div></details>
   </div>
 </section>
 
-<!-- ================= CASE ================= -->
-<section class="case" id="case">
+<!-- ============ CTA + CONTACT ============ -->
+<section id="contact" style="padding-top:8px">
   <div class="wrap">
-    <div class="kicker reveal">CASE · 案例锚点</div>
-    <h2 class="reveal">某省级政法机关，生产环境运行中</h2>
-    <div class="case-card reveal">
-      <div class="case-side">
-        <span class="no">唯一但过硬的案例</span>
-        <h3>从选型、异构双卡优化到分库交付，跑在完全断网的办案区内</h3>
-        <p>「线索梳理和文书初稿的准备时间被大幅压缩——AI 不在云端，而在办案区内。」</p>
-      </div>
-      <div class="case-body">
-        <div class="case-row"><div class="k">客户</div><div class="v">某省级政法机关（按合规口径脱敏表述；未经书面确认不出现单位名称）</div></div>
-        <div class="case-row"><div class="k">做了什么</div><div class="v">大模型断网私有化部署：本地知识库带出处问答、卷宗时间线梳理、文书初稿、会议纪要；业务知识分库建设；全程审计留痕</div></div>
-        <div class="case-row"><div class="k">成效</div><div class="v">【发布前请确认】上线前后效果数字（梳理效率、文书产出时长等）以项目方书面确认口径为准，确认后填入</div></div>
-      </div>
+    <div class="cta-band">
+      <h2>把您的问题带到内网来。</h2>
+      <p>一次 40 分钟的免费评估：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。也可以约 30 分钟远程演示，在您的设备上真跑一遍断网大模型。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示 · 跑本地 AI</a>
+      </div></div>
     </div>
-    <div class="case-quote">写案例的三件套：客户（脱敏）+ 做了什么 + 量化成效——上线前 vs 上线后，数字从试点环境实测而来，宁可保守也不口头承诺。</div>
-  </div>
-</section>
-
-<!-- ================= TRUST ================= -->
-<section class="trust" id="trust">
-  <div class="wrap">
-    <div class="kicker reveal">PROOF · 信任状</div>
-    <h2 class="reveal">新品牌没有 Logo 墙，就给你当场可复跑的证据</h2>
-    <div class="trust-grid">
-      <div class="trust-card reveal">
-        <span class="no">证据一 · 可当场验证</span>
-        <h3>所有承诺，演示现场复跑</h3>
-        <p>国产 OS 适配运行记录、开源模型商用许可清单、拒答率验收集（随机抽题看它「编不编」）、等保/密评对照清单——不靠嘴说。</p>
-        <div class="foot">欢迎带着贵单位的真题来测。</div>
-      </div>
-      <div class="trust-card reveal">
-        <span class="no">证据二 · 盲测对比</span>
-        <h3>和公版大模型同台，用真题说话</h3>
-        <p>我们正在建设一套政企真题评测集：私有化机悟 vs 公有云 API，双匿名评审，结果公开发布。</p>
-        <div class="foot">【进行中】首期对比页完成后可约看。</div>
-      </div>
-      <div class="trust-card reveal">
-        <span class="no">证据三 · 合规答卷</span>
-        <h3>审计问起，每层都拿得出答卷</h3>
-        <p>开源组件清单、商用许可说明、模型版本与行为日志、权限分级记录——从芯片到底座，逐条可查验、可交付。</p>
-        <div class="foot">无第三方埋点，无数据采集——网站本身也「不出域」。</div>
-      </div>
-    </div>
-    <div class="placeholder reveal">【发布前请确认】① 案例数字与项目方口径核对后方可填入案例屏；② 盲测集上线前保持「进行中」措辞；③ 如需实名案例，须取得对方书面确认。</div>
-  </div>
-</section>
-
-<!-- ================= CTA ================= -->
-<section class="cta">
-  <div class="wrap">
-    <p class="big reveal">把您的问题带到内网来。</p>
-    <p class="lead reveal" style="margin-left:auto;margin-right:auto">一次 40 分钟的免费评估，我们会告诉您：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。</p>
-    <div class="row2 reveal">
-      <a class="btn btn-solid" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
-      <a class="btn btn-ghost" href="#case">先看案例</a>
-    </div>
-    <p class="note reveal">评估不收费、不留资料：沟通内容按保密要求处理。</p>
-  </div>
-</section>
-
-<!-- ================= CONTACT ================= -->
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="kicker reveal">CONTACT · 联系</div>
-    <h2 class="reveal">预约评估与本地 AI 演示</h2>
     <div class="cgrid">
-      <div class="cbox reveal"><b>邮箱</b><p>info@javis.org.cn</p><small>评估与演示预约可直接来信，工作日 9:00–18:00 回复。</small></div>
-      <div class="cbox reveal"><b>官方微信 · 扫码直聊</b><img class="qr" src="assets/QR_official.png" alt="机悟官方微信二维码"><small>长按识别或扫一扫加官方微信，备注「单位 + 需求」优先安排。</small></div>
-      <div class="cbox reveal"><b>适合谁</b><p>政法、党政、国企、医院、金融、高校、能源制造、涉密资质单位，以及有本地部署诉求的中小企业</p><small>政企要合规与可溯源，中小企业要数据不出公司与成本可控——我们都谈。</small></div>
+      <div class="cbox"><b>邮箱</b><p>info@javis.org.cn</p><small>评估与演示预约可直接来信，工作日 9:00–18:00 回复。</small></div>
+      <div class="cbox"><b>官方微信 · 扫码直聊</b><span class="qr-tip">不想等？直接加官方微信最快</span><img class="qr" src="assets/QR_official.png" alt="机悟官方微信二维码"><small>长按识别或扫一扫，备注「单位 + 需求」优先安排。点击二维码可看大图。</small></div>
+      <div class="cbox"><b>适合谁</b><p>政企 + 中小企业</p><small>政法、党政、国企、医院、金融、高校、能源制造、涉密资质单位，以及有本地部署诉求的中小企业——我们都谈。</small></div>
     </div>
   </div>
 </section>
@@ -682,15 +382,15 @@
       <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
       <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
     </div>
-    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。</p>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。网站本身也不出域——无第三方埋点、无数据采集。</p>
     <div class="bottom">
-      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn　|　【备案号00000000】</div>
-      <div><a href="#why">为什么</a><a href="#product">产品</a><a href="#compare">算账</a><a href="#process">流程</a><a href="#case">案例</a><a href="#contact">联系</a></div>
+      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn</div>
+      <div><a style="color:#7f8db0" href="#why">机悟是什么</a>　<a style="color:#7f8db0" href="#scenes">用在哪</a>　<a style="color:#7f8db0" href="#ledger">算三年账</a>　<a style="color:#7f8db0" href="#faq">常见顾虑</a>　<a style="color:#7f8db0" href="#contact">联系我们</a></div>
     </div>
   </div>
 </footer>
 
-<!-- ================= 留资弹窗（申请评估 / 预约演示） ================= -->
+<!-- ============ 留资弹窗 ============ -->
 <div class="mback" id="mback" role="dialog" aria-modal="true" aria-labelledby="mtitle">
   <div class="mcard">
     <button class="m-close" id="mclose" aria-label="关闭">×</button>
@@ -706,7 +406,7 @@
         </div>
         <div class="mqr">
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
-          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →</span></div>
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
         </div>
         <button class="msubmit" type="submit" id="msubmit">提交申请</button>
       </form>
@@ -714,8 +414,8 @@
     </div>
     <div class="m-okcard" id="mok">
       <div class="big">✓</div>
-      <h4 id="mok-title">已收到您的申请</h4>
-      <p id="mok-sub">工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+      <h4>已收到您的申请</h4>
+      <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
       <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
       <p><span class="go">加官方微信更快对接</span></p>
       <button class="msubmit" type="button" id="mok-close">好的</button>
@@ -723,7 +423,7 @@
   </div>
 </div>
 
-<!-- ================= 二维码点击放大（lightbox） ================= -->
+<!-- ============ 二维码放大 ============ -->
 <div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
   <button class="z-x" id="zclose" aria-label="关闭">×</button>
   <img id="zimg" alt="机悟官方微信二维码（放大）">
@@ -731,52 +431,20 @@
 </div>
 
 <script>
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-  }), { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-  // 品牌片自动播放 + 降级：无法自动播（iOS 省电模式/数据保护、部分安卓）时显示封面帧与「点按播放」
-  const film = document.querySelector('.film');
-  const fv = document.querySelector('.film video');
-  const playBtn = document.querySelector('.film .play');
-  function needTap(){ film && film.classList.add('needs-tap'); }
-  if (fv && matchMedia('(max-width:767px) and (orientation: portrait)').matches) {
-    fv.poster = 'assets/JAVIS_door_v2_portrait_poster.jpg';
-  }
-  if (fv) {
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      fv.pause(); needTap();                        // 尊重「减少动态」：不自动播，保留封面+播放键
-    } else {
-      const tryPlay = () => { const p = fv.play(); if (p && p.catch) p.catch(needTap); };
-      if (fv.readyState >= 3) { tryPlay(); }
-      else { fv.addEventListener('loadeddata', tryPlay, { once:true }); fv.addEventListener('canplay', tryPlay, { once:true }); }
-    }
-  }
-  if (playBtn) playBtn.addEventListener('click', () => {
-    fv.muted = true; fv.setAttribute('playsinline','');
-    const p = fv.play();
-    if (p && p.then) p.then(() => film && film.classList.remove('needs-tap')).catch(() => {});
-  });
+  // ---- 自建访问统计（无第三方埋点，数据存自家 D1）----
+  (function(){
+    try {
+      var API = 'https://javis-api.wanyejiang2018.workers.dev';
+      var dev = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+      var ref = document.referrer ? new URL(document.referrer).host : '';
+      var img = new Image(1,1);
+      img.src = API + '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
+    } catch(e){}
+  })();
+  // 导航
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
 
-  // 透明导航状态机：全屏影片仍在视口→压片显示（白字/白标）；滑过影片→白底深字
-  const nav = document.querySelector('header.nav');
-  const filmEl = document.querySelector('.film');
-  function syncNav(){
-    if (!filmEl || !nav) return;
-    nav.classList.toggle('solid', filmEl.getBoundingClientRect().bottom < 88);
-  }
-  addEventListener('scroll', syncNav, { passive: true });
-  syncNav();
-
-  function pickRole(i, btn){
-    document.querySelectorAll('.roles .tab').forEach((t,k)=>{t.classList.toggle('sel',k===i);t.setAttribute('aria-selected',k===i)});
-    document.querySelectorAll('.role-panel').forEach((p,k)=>p.classList.toggle('show',k===i));
-  }
-  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => {
-    document.getElementById('menu').classList.remove('open');
-  }));
-
-  // ================= 留资弹窗（评估 / 演示） =================
+  // ---- 留资弹窗 ----
   const API_BASE = 'https://javis-api.wanyejiang2018.workers.dev';
   const mback = document.getElementById('mback');
   const mformBox = document.getElementById('mform');
@@ -789,8 +457,8 @@
   const mclose = document.getElementById('mclose');
   const mokClose = document.getElementById('mok-close');
   const KINDS = {
-    eval: { title: '申请 40 分钟免费部署评估', sub: '提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。' },
-    demo: { title: '预约演示 · 跑本地 AI', sub: '约 30 分钟远程演示：在您的设备上真跑一遍断网大模型。提交后 1 个工作日内联系您安排时间。' }
+    eval: { title: '申请 40 分钟免费部署评估', sub: '现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。' },
+    demo: { title: '预约演示 · 跑本地 AI', sub: '约 30 分钟远程演示：在您的设备上真跑一遍断网大模型，全程无外网请求。提交后 1 个工作日内联系您安排时间。' }
   };
   let curKind = 'eval';
   function openForm(kind){
@@ -802,15 +470,10 @@
     mformBox.style.display = 'block'; mokBox.classList.remove('on');
     mback.classList.add('open');
     document.body.style.overflow = 'hidden';
-    const f = mformEl.querySelector('input[name=company]'); if (f) setTimeout(() => f.focus(), 60);
+    const f = mformEl.querySelector('input[name=cc]'); if (f) setTimeout(() => f.focus(), 60);
   }
-  function closeForm(){
-    mback.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  document.querySelectorAll('[data-open]').forEach(a => a.addEventListener('click', e => {
-    e.preventDefault(); openForm(a.dataset.open);
-  }));
+  function closeForm(){ mback.classList.remove('open'); document.body.style.overflow = ''; }
+  document.querySelectorAll('[data-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openForm(a.dataset.open); }));
   mclose.addEventListener('click', closeForm);
   mokClose.addEventListener('click', closeForm);
   mback.addEventListener('click', e => { if (e.target === mback) closeForm(); });
@@ -821,7 +484,6 @@
     mmsg.className = 'mmsg'; mmsg.textContent = '';
     const val = n => (mformEl.querySelector('[name="' + n + '"]').value || '').trim();
     const ccRaw = val('cc'), pw = val('pw'), need = val('need');
-    // 「单位 + 联系人」合并栏：以空白分隔，最后一段视为联系人姓名，其余为公司/单位名称
     const ccParts = ccRaw.split(/\s+/).filter(Boolean);
     const company = ccParts.length > 1 ? ccParts.slice(0, -1).join(' ') : ccRaw;
     const contact = ccParts.length > 1 ? ccParts[ccParts.length - 1] : '';
@@ -834,45 +496,29 @@
     msubmitBtn.textContent = '提交中…';
     try {
       const resp = await fetch(API_BASE + '/api/lead', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need })
       });
       const data = await resp.json().catch(() => ({}));
-      if (resp.ok && data.ok) {
-        mformBox.style.display = 'none';
-        mokBox.classList.add('on');
-      } else {
-        showMsg((data && data.error) || '提交失败，请稍后再试，或直接加官方微信', true);
-      }
+      if (resp.ok && data.ok) { mformBox.style.display = 'none'; mokBox.classList.add('on'); }
+      else showMsg((data && data.error) || '提交失败，请稍后再试，或直接加官方微信', true);
     } catch (err) {
       showMsg('网络开小差了，请稍后再试，或直接加官方微信（二维码见右）', true);
     }
-    msubmitBtn.disabled = false;
-    msubmitBtn.textContent = old;
+    msubmitBtn.disabled = false; msubmitBtn.textContent = old;
   });
-  function showMsg(t, isErr){
-    mmsg.textContent = t;
-    mmsg.className = isErr ? 'mmsg err' : 'mmsg ok';
-  }
+  function showMsg(t, isErr){ mmsg.textContent = t; mmsg.className = isErr ? 'mmsg err' : 'mmsg ok'; }
 
-  // ================= 二维码点击放大（lightbox） =================
+  // ---- 二维码放大 ----
   const zoomer = document.getElementById('zoomer');
   const zimg = document.getElementById('zimg');
-  function openZoom(src){
-    zimg.src = src;
-    zoomer.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeZoom(){
-    zoomer.classList.remove('open');
-    document.body.style.overflow = mback.classList.contains('open') ? 'hidden' : '';
-  }
+  function openZoom(src){ zimg.src = src; zoomer.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeZoom(){ zoomer.classList.remove('open'); document.body.style.overflow = mback.classList.contains('open') ? 'hidden' : ''; }
   document.querySelectorAll('.cbox .qr, .mqr img, .qr2').forEach(img => {
     img.addEventListener('click', e => { e.stopPropagation(); openZoom(img.src); });
   });
-  zoomer.addEventListener('click', closeZoom);          // 点击任意处关闭
-  zclose.addEventListener('click', e => { e.stopPropagation(); closeZoom(); });
+  zoomer.addEventListener('click', closeZoom);
+  document.getElementById('zclose').addEventListener('click', e => { e.stopPropagation(); closeZoom(); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && zoomer.classList.contains('open')) closeZoom(); });
 </script>
 </body>

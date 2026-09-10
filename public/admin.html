@@ -44,6 +44,25 @@
   .empty{text-align:center;color:var(--muted);padding:48px 0}
   .bar{display:none}
   .bar.show{display:block}
+  /* tabs + stats */
+  .tabs{display:flex;gap:8px;margin-bottom:16px}
+  .tabs button{background:#fff;color:var(--navy);border:1px solid var(--line);padding:9px 20px;font-weight:700;border-radius:8px}
+  .tabs button.sel{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .stat-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+  .stat-card{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:#fbfcfe}
+  .stat-card .n{font-size:26px;font-weight:800;color:var(--navy);line-height:1.2}
+  .stat-card .l{font-size:12px;color:var(--muted);margin-top:2px}
+  .chart{display:flex;align-items:flex-end;gap:4px;height:140px;padding:10px 4px 0;border-bottom:1px solid var(--line);margin-bottom:6px}
+  .chart .col{flex:1;background:linear-gradient(180deg,var(--cyan),var(--cyan-deep));border-radius:4px 4px 0 0;min-height:2px;position:relative;cursor:default}
+  .chart .col:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:11px;padding:3px 8px;border-radius:5px;white-space:nowrap;z-index:5}
+  .chart-x{display:flex;gap:4px;font-size:10.5px;color:var(--muted);margin-bottom:18px}
+  .chart-x span{flex:1;text-align:center;overflow:hidden;white-space:nowrap}
+  .rank{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .rank table{width:100%}
+  .rank h4{color:var(--navy);font-size:13px;margin-bottom:8px}
+  .rank td{padding:7px 8px;font-size:12.5px}
+  .stats-note{color:var(--muted);font-size:12px;margin-top:14px}
+  @media(max-width:720px){.hide-s{display:none}.stat-cards{grid-template-columns:1fr 1fr}.rank{grid-template-columns:1fr}}
   footer{text-align:center;color:var(--muted);font-size:12px;padding:26px 0 40px}
   @media(max-width:720px){.hide-s{display:none}}
 </style>
@@ -66,7 +85,11 @@
 </div>
 
 <div class="wrap" id="listView" style="display:none">
-  <div class="card">
+  <div class="tabs">
+    <button id="tabLeads" class="sel" onclick="switchTab('leads')">留资线索</button>
+    <button id="tabStats" onclick="switchTab('stats')">访问统计</button>
+  </div>
+  <div class="card" id="leadsCard">
     <div class="toolbar">
       <b style="color:var(--navy)">留资列表</b>
       <span class="count" id="totalCount"></span>
@@ -90,6 +113,33 @@
       </table>
       <div class="empty" id="emptyBox">暂无留资数据</div>
     </div>
+  </div>
+
+  <div class="card" id="statsCard" style="display:none">
+    <div class="toolbar">
+      <b style="color:var(--navy)">官网访问统计</b>
+      <span class="count" id="statsRange">近 30 天</span>
+      <span class="sp"></span>
+      <span class="filters">
+        <button data-d="7" onclick="loadStats(7,this)">7天</button>
+        <button data-d="30" class="sel" onclick="loadStats(30,this)">30天</button>
+        <button data-d="60" onclick="loadStats(60,this)">60天</button>
+      </span>
+      <button class="ghost" onclick="loadStats(curDays)">刷新</button>
+    </div>
+    <div class="stat-cards">
+      <div class="stat-card"><div class="n" id="stTodayPv">–</div><div class="l">今日浏览 (PV)</div></div>
+      <div class="stat-card"><div class="n" id="stTodayUv">–</div><div class="l">今日访客 (UV)</div></div>
+      <div class="stat-card"><div class="n" id="stTotalPv">–</div><div class="l">累计浏览 (PV)</div></div>
+      <div class="stat-card"><div class="n" id="stTotalUv">–</div><div class="l">累计访客 (UV)</div></div>
+    </div>
+    <div class="chart" id="chart"></div>
+    <div class="chart-x" id="chartX"></div>
+    <div class="rank">
+      <div><h4>访问来源 TOP</h4><table><tbody id="refRows"></tbody></table></div>
+      <div><h4>设备分布</h4><table><tbody id="devRows"></tbody></table></div>
+    </div>
+    <p class="stats-note">自建统计，无第三方埋点：不采集个人信息，IP 仅存哈希；已自动过滤爬虫与机器人，统计的是真实访问。</p>
   </div>
 </div>
 
@@ -188,6 +238,51 @@
     document.querySelectorAll('#filters button').forEach(x => x.classList.remove('sel'));
     b.classList.add('sel'); curFilter = b.dataset.f; render();
   });
+
+  // ---- 访问统计 tab ----
+  let curDays = 30;
+  function switchTab(which){
+    document.getElementById('tabLeads').classList.toggle('sel', which === 'leads');
+    document.getElementById('tabStats').classList.toggle('sel', which === 'stats');
+    document.getElementById('leadsCard').style.display = which === 'leads' ? 'block' : 'none';
+    document.getElementById('statsCard').style.display = which === 'stats' ? 'block' : 'none';
+    if (which === 'stats') loadStats(curDays);
+  }
+  async function loadStats(days, btn){
+    curDays = days || curDays;
+    if (btn) { document.querySelectorAll('#statsCard .filters button').forEach(x => x.classList.remove('sel')); btn.classList.add('sel'); }
+    document.getElementById('statsRange').textContent = '近 ' + curDays + ' 天';
+    const t = localStorage.getItem('javis_token');
+    const { status, data } = await api('/api/stats?days=' + curDays, { headers: { 'X-Auth': t } });
+    if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
+    if (!data.ok) return;
+    document.getElementById('stTodayPv').textContent = data.today.pv;
+    document.getElementById('stTodayUv').textContent = data.today.uv;
+    document.getElementById('stTotalPv').textContent = data.total.pv;
+    document.getElementById('stTotalUv').textContent = data.total.uv;
+    // 补全日期序列（无数据的日期补 0）
+    const byDay = {};
+    (data.byDay || []).forEach(r => byDay[r.day] = r);
+    const daysArr = [];
+    for (let i = curDays - 1; i >= 0; i--) {
+      const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
+      daysArr.push({ day: d, pv: (byDay[d] || {}).pv || 0, uv: (byDay[d] || {}).uv || 0 });
+    }
+    const maxPv = Math.max(1, ...daysArr.map(d => d.pv));
+    document.getElementById('chart').innerHTML = daysArr.map(d =>
+      '<div class="col" style="height:' + Math.max(2, Math.round(d.pv / maxPv * 100)) + '%" data-tip="' + d.day + '：' + d.pv + ' PV / ' + d.uv + ' UV"></div>'
+    ).join('');
+    const step = Math.max(1, Math.floor(curDays / 8));
+    document.getElementById('chartX').innerHTML = daysArr.map((d, i) =>
+      '<span>' + (i % step === 0 || i === daysArr.length - 1 ? d.day.slice(5) : '') + '</span>'
+    ).join('');
+    document.getElementById('refRows').innerHTML = (data.byRef || []).map(r =>
+      '<tr><td>' + esc(r.ref) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td></tr>'
+    ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';
+    document.getElementById('devRows').innerHTML = (data.byDev || []).map(r =>
+      '<tr><td>' + esc(r.dev === 'mobile' ? '手机' : r.dev === 'desktop' ? '电脑' : r.dev) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td></tr>'
+    ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';
+  }
 
   function showList(){ loginView.style.display = 'none'; listView.style.display = 'block'; document.getElementById('logout').style.display = 'inline-block'; load(); }
   function showLogin(){ loginView.style.display = 'block'; listView.style.display = 'none'; document.getElementById('logout').style.display = 'none'; }
