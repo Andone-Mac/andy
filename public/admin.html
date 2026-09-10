@@ -132,12 +132,17 @@
       <div class="stat-card"><div class="n" id="stTodayUv">–</div><div class="l">今日访客 (UV)</div></div>
       <div class="stat-card"><div class="n" id="stTotalPv">–</div><div class="l">累计浏览 (PV)</div></div>
       <div class="stat-card"><div class="n" id="stTotalUv">–</div><div class="l">累计访客 (UV)</div></div>
+      <div class="stat-card" style="background:#fdf6ec"><div class="n" id="stBotToday" style="color:#b9770e">–</div><div class="l">今日爬虫/机器人 (PV/UV)</div></div>
+      <div class="stat-card" style="background:#fdf6ec"><div class="n" id="stBotTotal" style="color:#b9770e">–</div><div class="l">累计爬虫/机器人 (PV/UV)</div></div>
     </div>
     <div class="chart" id="chart"></div>
     <div class="chart-x" id="chartX"></div>
     <div class="rank">
       <div><h4>访问来源 TOP</h4><table><tbody id="refRows"></tbody></table></div>
       <div><h4>设备分布</h4><table><tbody id="devRows"></tbody></table></div>
+    </div>
+    <div style="margin-top:18px"><h4 style="color:var(--navy);font-size:13px;margin-bottom:8px">爬虫 / 机器人 TOP（不计入上方真实访问，供比对）</h4>
+      <table><tbody id="botRows"></tbody></table>
     </div>
     <p class="stats-note">自建统计，无第三方埋点：不采集个人信息，IP 仅存哈希；已自动过滤爬虫与机器人，统计的是真实访问。</p>
   </div>
@@ -260,6 +265,8 @@
     document.getElementById('stTodayUv').textContent = data.today.uv;
     document.getElementById('stTotalPv').textContent = data.total.pv;
     document.getElementById('stTotalUv').textContent = data.total.uv;
+    document.getElementById('stBotToday').textContent = (data.botToday || {}).pv + ' / ' + (data.botToday || {}).uv;
+    document.getElementById('stBotTotal').textContent = (data.botTotal || {}).pv + ' / ' + (data.botTotal || {}).uv;
     // 补全日期序列（无数据的日期补 0）
     const byDay = {};
     (data.byDay || []).forEach(r => byDay[r.day] = r);
@@ -282,6 +289,9 @@
     document.getElementById('devRows').innerHTML = (data.byDev || []).map(r =>
       '<tr><td>' + esc(r.dev === 'mobile' ? '手机' : r.dev === 'desktop' ? '电脑' : r.dev) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td></tr>'
     ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';
+    document.getElementById('botRows').innerHTML = (data.topBots || []).map(r =>
+      '<tr><td style="word-break:break-all;font-size:12px">' + esc(r.ua) + '</td><td style="text-align:right;white-space:nowrap"><b>' + r.pv + '</b></td></tr>'
+    ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无爬虫/机器人访问</td></tr>';
   }
 
   function showList(){ loginView.style.display = 'none'; listView.style.display = 'block'; document.getElementById('logout').style.display = 'inline-block'; load(); }
