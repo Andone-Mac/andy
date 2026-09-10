@@ -152,7 +152,7 @@
         '<td class="time">' + t + '</td>' +
         '<td><span class="tag ' + l.type + '">' + (l.type === 'demo' ? '演示' : '评估') + '</span></td>' +
         '<td><b>' + esc(l.company) + '</b></td>' +
-        '<td>' + esc(contact) + (l.title ? '<div class="time">' + esc(l.title) + '</div>' : '') + '</td>' +
+        '<td>' + esc(l.contact || '—') + (l.title ? '<div class="time">' + esc(l.title) + '</div>' : '') + '</td>' +
         '<td>' + esc(phone) + '</td>' +
         '<td class="need hide-s">' + esc(l.need || '') + '</td>' +
         '<td><span class="tag ' + (l.status || 'new') + '">' + stName(l.status) + '</span><div style="margin-top:5px"><select onchange="setStatus(\'' + l.id + '\', this.value)">' +
