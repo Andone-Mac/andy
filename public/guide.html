@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>政企大模型私有化部署避坑指南：从选型到落地的完整路径 | 机悟·政企超脑</title>
-<meta name="description" content="政企大模型私有化部署完整避坑指南：为什么必须断网部署（保密法第三十一条、数据安全法最高一千万罚款）、模型与硬件选型、三条路径三年账、落地四个坑、验收口径与自检清单。机悟·政企超脑，数据不出域，单位有超脑。">
+<meta name="description" content="政企大模型私有化部署完整避坑指南：必须上本地 AI 的理由（保密法第三十一条、数据安全法最高一千万罚款）、模型与硬件选型、三条路径三年账、落地四个坑、验收口径与自检清单。机悟·政企超脑，数据不出域，单位有超脑。">
 <meta name="keywords" content="大模型私有化部署,政企大模型部署,断网大模型,本地部署大模型选型,私有化部署成本,大模型部署避坑,国产化大模型,内网大模型部署,量化模型,数据不出域,机悟,政企超脑,甲维思,JAVIS">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
 <meta property="og:title" content="政企大模型私有化部署避坑指南：从选型到落地的完整路径">
-<meta property="og:description" content="为什么必须断网部署、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径——一篇讲透政企大模型私有化部署。">
+<meta property="og:description" content="必须上本地 AI 的理由、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径——一篇讲透政企大模型私有化部署。">
 <meta property="og:url" content="https://javis.org.cn/guide.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
@@ -25,7 +25,7 @@
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="政企大模型私有化部署避坑指南：从选型到落地">
-<meta name="twitter:description" content="为什么必须断网部署、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径。">
+<meta name="twitter:description" content="必须上本地 AI 的理由、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <!-- 结构化数据：Article + FAQ + Organization（搜索引擎/AI 富摘要） -->
@@ -37,7 +37,7 @@
       "@type": "Article",
       "@id": "https://javis.org.cn/guide.html#article",
       "headline": "政企大模型私有化部署避坑指南：从选型到落地的完整路径",
-      "description": "为什么必须断网部署、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径与自检清单——一篇讲透政企大模型私有化部署。",
+      "description": "必须上本地 AI 的理由、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径与自检清单——一篇讲透政企大模型私有化部署。",
       "inLanguage": "zh-CN",
       "author": { "@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/" },
       "publisher": {
@@ -71,7 +71,7 @@
       "@type": "FAQPage",
       "@id": "https://javis.org.cn/guide.html#faq",
       "mainEntity": [
-        {"@type":"Question","name":"政企为什么必须私有化部署大模型？","acceptedAnswer":{"@type":"Answer","text":"保密法第三十一条要求涉密系统与互联网物理隔离；数据安全法对核心数据违规最高可处一千万元罚款；国家安全部已连续两年通报 AI 泄密案例。对保护私密数据与涉密事务的单位，上 AI 的前提是数据不出域。大模型与知识库全部部署在单位内网，断网也能全功能运行。"}},
+        {"@type":"Question","name":"政企必须上本地 AI 的理由是什么？","acceptedAnswer":{"@type":"Answer","text":"保密法第三十一条要求涉密系统与互联网物理隔离；数据安全法对核心数据违规最高可处一千万元罚款；国家安全部已连续两年通报 AI 泄密案例。对保护私密数据与涉密事务的单位，上 AI 的前提是数据不出域。大模型与知识库全部部署在单位内网，断网也能全功能运行。"}},
         {"@type":"Question","name":"私有化部署大模型怎么选型？","acceptedAnswer":{"@type":"Answer","text":"先诊断再选型：存量服务器和显卡先用足，跑量化模型；模型按场景选（本地知识库、卷宗梳理、文书初稿、OCR），不是越大越好。组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片与 UOS 系统均已实测可跑。"}},
         {"@type":"Question","name":"大模型私有化部署贵吗？","acceptedAnswer":{"@type":"Answer","text":"报价等于可复算账单，含运维。云 API 按 token 计费越用越贵，自建团队人力先花两三百万；买断式部署一次投入用满三年，旧服务器和显卡先用足，三年回本。"}},
         {"@type":"Question","name":"AI 答错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"交付时附拒答率验收集：查不到依据的问题，机悟明确回复未找到依据、建议人工核对，不生成答案。每个结论都能指到原文，可当场复跑验证。宁可不答，也不骗您。"}}
@@ -119,7 +119,7 @@
     .nav-item{display:block;width:100%}
     .nav-item > a{display:inline-block}
     .nav-item .caret{display:none}
-    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px}
+    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px;background:transparent}
     .nav-sub a{padding:8px 0;font-size:.95rem;color:#dfe9ff;border-bottom:none!important}
     .nav-sub a:hover{background:none;color:#fff}
   }
@@ -250,7 +250,8 @@
 
   @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
   @media (max-width:900px){
-    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:rgba(12,22,54,.97);flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start}
+    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:#0b1530;flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start;max-height:calc(100vh - 74px);max-height:calc(100dvh - 74px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:0 16px 34px rgba(0,0,0,.32);z-index:60;transform:translateZ(0)}
+    body.menu-open{overflow:hidden}
     nav.links.open{display:flex}
     nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1.15rem}
     .menu-toggle{display:block}
@@ -291,7 +292,7 @@
       <div class="nav-item">
         <a href="guide.html" class="active">部署指南<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="#why">为什么必须私有化</a>
+          <a href="#why">必须上本地AI理由</a>
           <a href="#select">怎么选型</a>
           <a href="#ledger">算三年账</a>
           <a href="#pitfalls">落地避坑</a>
@@ -311,7 +312,7 @@
       <a href="#contact">联系我们</a>
     </nav>
     <a class="btn btn-solid nav-cta" href="#contact" data-open="eval">免费部署评估</a>
-    <button class="menu-toggle" aria-label="菜单" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
 
@@ -333,7 +334,7 @@
 <!-- ============ WHY ============ -->
 <section id="why">
   <div class="wrap">
-    <div class="kicker">STEP 1 · 为什么必须私有化</div>
+    <div class="kicker">STEP 1 · 必须上本地AI理由</div>
     <h2>不是敢不敢上云，<br>是您的内网物理上就够不到云端。</h2>
     <p class="lead">很多单位的第一反应是「等公版 AI 更好用、更便宜了再说」。但这个等待在政企语境里不成立——因为有三条硬约束，跟 AI 好不好用无关，跟数据能不能出门有关：</p>
     <div class="grid g4">
@@ -495,8 +496,18 @@
       img.src = API + '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
     } catch(e){}
   })();
-  // 导航
-  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+  // 导航（移动端抽屉：点链接/点外部/Esc 都能关，关闭时恢复页面滚动）
+  const _menu = document.getElementById('menu');
+  const _mtog = document.querySelector('.menu-toggle');
+  function _closeMenu(){ _menu.classList.remove('open'); document.body.classList.remove('menu-open'); }
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', _closeMenu));
+  document.addEventListener('click', e => {
+    if (!_menu.classList.contains('open')) return;
+    if (_menu.contains(e.target)) return;
+    if (_mtog && _mtog.contains(e.target)) return;
+    _closeMenu();
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') _closeMenu(); });
 
   // ---- 留资弹窗 ----
   const API_BASE = 'https://javis-api.wanyejiang2018.workers.dev';

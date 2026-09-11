@@ -123,7 +123,7 @@
     .nav-item{display:block;width:100%}
     .nav-item > a{display:inline-block}
     .nav-item .caret{display:none}
-    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px}
+    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px;background:transparent}
     .nav-sub a{padding:8px 0;font-size:.95rem;color:#dfe9ff;border-bottom:none!important}
     .nav-sub a:hover{background:none;color:#fff}
   }
@@ -270,7 +270,8 @@
 
   @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
   @media (max-width:900px){
-    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:rgba(12,22,54,.97);flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start}
+    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:#0b1530;flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start;max-height:calc(100vh - 74px);max-height:calc(100dvh - 74px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:0 16px 34px rgba(0,0,0,.32);z-index:60;transform:translateZ(0)}
+    body.menu-open{overflow:hidden}
     nav.links.open{display:flex}
     nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1.15rem}
     .menu-toggle{display:block}
@@ -311,7 +312,7 @@
       <div class="nav-item">
         <a href="guide.html">部署指南<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="guide.html#why">为什么必须私有化</a>
+          <a href="guide.html#why">必须上本地AI理由</a>
           <a href="guide.html#select">怎么选型</a>
           <a href="guide.html#ledger">算三年账</a>
           <a href="guide.html#pitfalls">落地避坑</a>
@@ -331,7 +332,7 @@
       <a href="#contact">联系我们</a>
     </nav>
     <a class="btn btn-solid nav-cta" href="#contact" data-open="eval">免费部署评估</a>
-    <button class="menu-toggle" aria-label="菜单" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
 
@@ -614,8 +615,18 @@
     play(0, autoPlay);
   })();
 
-  // 导航
-  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
+  // 导航（移动端抽屉：点链接/点外部/Esc 都能关，关闭时恢复页面滚动）
+  const _menu = document.getElementById('menu');
+  const _mtog = document.querySelector('.menu-toggle');
+  function _closeMenu(){ _menu.classList.remove('open'); document.body.classList.remove('menu-open'); }
+  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', _closeMenu));
+  document.addEventListener('click', e => {
+    if (!_menu.classList.contains('open')) return;
+    if (_menu.contains(e.target)) return;
+    if (_mtog && _mtog.contains(e.target)) return;
+    _closeMenu();
+  });
+  addEventListener('keydown', e => { if (e.key === 'Escape') _closeMenu(); });
 
   // ---- 留资弹窗 ----
   const API_BASE = 'https://javis-api.wanyejiang2018.workers.dev';
