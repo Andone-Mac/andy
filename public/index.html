@@ -107,9 +107,26 @@
   header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(14,28,66,.04)}
   .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
   .brand img{height:48px;width:auto;display:block}
-  nav.links{display:flex;gap:26px;align-items:center}
-  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.02rem;padding:6px 2px;border-bottom:2px solid transparent}
+  nav.links{display:flex;gap:26px;align-items:center;flex:1;justify-content:space-evenly}
+  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.17rem;font-weight:700;padding:6px 2px;border-bottom:2px solid transparent}
   nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
+  nav.links a.active{color:var(--navy);font-weight:800;border-bottom-color:var(--cyan)}
+  .nav-item{position:relative}
+  .nav-item > a{display:flex;align-items:center;gap:4px}
+  .nav-item .caret{font-size:.62rem;color:var(--cyan-deep);transition:transform .2s}
+  .nav-item:hover .caret{transform:rotate(180deg)}
+  .nav-sub{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 34px rgba(14,28,66,.14);min-width:206px;padding:8px;opacity:0;visibility:hidden;transition:opacity .18s,visibility .18s;z-index:60}
+  .nav-item:hover .nav-sub{opacity:1;visibility:visible}
+  .nav-sub a{display:block;padding:10px 14px;border-radius:7px;font-size:.92rem;color:var(--ink-soft);border-bottom:none!important;white-space:nowrap}
+  .nav-sub a:hover{background:#eef5fd;color:var(--navy)}
+  @media(max-width:900px){
+    .nav-item{display:block;width:100%}
+    .nav-item > a{display:inline-block}
+    .nav-item .caret{display:none}
+    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px}
+    .nav-sub a{padding:8px 0;font-size:.95rem;color:#dfe9ff;border-bottom:none!important}
+    .nav-sub a:hover{background:none;color:#fff}
+  }
   .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s;cursor:pointer}
   .btn-solid{background:var(--navy);color:#fff}
   .btn-solid:hover{background:var(--navy-deep);transform:translateY(-1px)}
@@ -120,8 +137,24 @@
   .nav-cta{padding:10px 18px;font-size:.88rem}
   .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
 
+  /* ---------- 全屏影片首屏（zkedugroup 式：视频铺满首屏，5 套横/竖轮插） ---------- */
+  .film{position:relative;width:100%;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#04070f}
+  .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#04070f}
+  .film .shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,14,33,.55) 0%,rgba(8,14,33,0) 24%,rgba(8,14,33,0) 58%,rgba(8,14,33,.5) 100%)}
+  .film .play{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;background:rgba(4,7,15,.18);border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+  .film.needs-tap .play{display:flex}
+  .film .ptri{width:0;height:0;border-style:solid;border-width:26px 0 26px 42px;border-color:transparent transparent transparent rgba(255,255,255,.95);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55))}
+  .film .cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:#dfe7f6;text-decoration:none;font-size:.78rem;letter-spacing:.3em;text-shadow:0 1px 4px rgba(0,0,0,.6);padding:6px 14px}
+  .film .cue .chev{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.95);border-bottom:2px solid rgba(255,255,255,.95);transform:rotate(45deg);animation:cue 1.7s ease-in-out infinite;opacity:.9}
+  @keyframes cue{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
+  .film .dots{position:absolute;right:26px;bottom:26px;z-index:2;display:flex;gap:9px}
+  .film .dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);padding:0;background:transparent;cursor:pointer;transition:background .2s,transform .2s}
+  .film .dots button.on{background:#fff;transform:scale(1.28)}
+  @media (prefers-reduced-motion:reduce){.film .cue .chev{animation:none}}
+  @media (max-width:900px){.film .dots{right:16px;bottom:18px}}
+
   /* hero */
-  .hero{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 55%,#1c3c86 100%);color:#fff;padding:158px 0 96px;text-align:center;position:relative;overflow:hidden}
+  .hero{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 55%,#1c3c86 100%);color:#fff;padding:96px 0 88px;text-align:center;position:relative;overflow:hidden}
   .hero::after{content:"";position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,rgba(34,167,221,.22),transparent 65%);pointer-events:none}
   .hero .wrap{position:relative;z-index:1}
   .hero .tag{display:inline-flex;align-items:center;border:1.5px solid #e6b34d;border-radius:999px;padding:9px 26px;font-size:1.29rem;font-weight:700;letter-spacing:.06em;color:#f5d78e;margin-bottom:24px;box-shadow:0 0 18px rgba(230,179,77,.25)}
@@ -237,9 +270,9 @@
 
   @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
   @media (max-width:900px){
-    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:rgba(12,22,54,.97);flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start}
+    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:rgba(12,22,54,.97);flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start}
     nav.links.open{display:flex}
-    nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1rem}
+    nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1.15rem}
     .menu-toggle{display:block}
     .g4,.g3,.cgrid{grid-template-columns:1fr}
     .hero{padding:128px 0 72px}
@@ -257,12 +290,44 @@
   <div class="wrap nav-inner">
     <a class="brand" href="#top" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
     <nav class="links" id="menu">
-      <a href="#top">首页</a>
-      <a href="#why">机悟是什么</a>
-      <a href="#scenes">用在哪</a>
-      <a href="#ledger">算三年账</a>
-      <a href="#faq">常见顾虑</a>
-      <a href="about.html">关于我们</a>
+      <div class="nav-item">
+        <a href="#top">首页<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="#why">机悟·甲维思</a>
+          <a href="guide.html">部署指南</a>
+          <a href="about.html">关于我们</a>
+          <a href="#contact">联系我们</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="#why">机悟·甲维思<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="#why">机悟是什么</a>
+          <a href="#scenes">用在哪</a>
+          <a href="#ledger">算三年账</a>
+          <a href="#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="guide.html">部署指南<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="guide.html#why">为什么必须私有化</a>
+          <a href="guide.html#select">怎么选型</a>
+          <a href="guide.html#ledger">算三年账</a>
+          <a href="guide.html#pitfalls">落地避坑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html#preface">序 · 一个时代的悖论</a>
+          <a href="about.html#mission">我们的使命</a>
+          <a href="about.html#vision">愿景 · 百年传承</a>
+          <a href="about.html#values">价值观 · 定位</a>
+          <a href="about.html#rules">行为准则 · 取舍</a>
+          <a href="about.html#identity">我们的样子</a>
+        </div>
+      </div>
       <a href="#contact">联系我们</a>
     </nav>
     <a class="btn btn-solid nav-cta" href="#contact" data-open="eval">免费部署评估</a>
@@ -270,8 +335,17 @@
   </div>
 </header>
 
+<!-- ================= 全屏轮播影片（zkedugroup 式：视频铺满首屏；5 套横/竖版轮插） ================= -->
+<section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片，全屏轮播">
+  <video poster="assets/videos/v1_poster.jpg" autoplay muted playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <div class="shade" aria-hidden="true"></div>
+  <button class="play" type="button" aria-label="播放品牌片"><span class="ptri" aria-hidden="true"></span></button>
+  <div class="dots" id="filmDots" role="tablist" aria-label="切换影片"></div>
+  <a class="cue" href="#intro"><span class="chev" aria-hidden="true"></span><span>向下滚动</span></a>
+</section>
+
 <!-- ============ HERO ============ -->
-<section class="hero" id="top" style="padding-bottom:88px">
+<section class="hero" id="intro" style="padding-bottom:88px">
   <div class="wrap">
     <span class="tag">机悟 · 政企超脑</span>
     <h1>数据不能出门，业务又必须上 AI——<br><span class="hl">机悟把大模型搬进您的内网。</span></h1>
@@ -386,7 +460,7 @@
     <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。网站本身也不出域——无第三方埋点、无数据采集。</p>
     <div class="bottom">
       <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn</div>
-      <div><a style="color:#7f8db0" href="#top">首页</a>　<a style="color:#7f8db0" href="#why">机悟是什么</a>　<a style="color:#7f8db0" href="#scenes">用在哪</a>　<a style="color:#7f8db0" href="#ledger">算三年账</a>　<a style="color:#7f8db0" href="#faq">常见顾虑</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="#contact">联系我们</a></div>
+      <div><a style="color:#7f8db0" href="#top">首页</a>　<a style="color:#7f8db0" href="#why">机悟是什么</a>　<a style="color:#7f8db0" href="#scenes">用在哪</a>　<a style="color:#7f8db0" href="#ledger">算三年账</a>　<a style="color:#7f8db0" href="#faq">常见顾虑</a>　<a style="color:#7f8db0" href="guide.html">部署指南</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="#contact">联系我们</a></div>
     </div>
   </div>
 </footer>
@@ -442,6 +516,104 @@
       img.src = API + '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
     } catch(e){}
   })();
+  // ---- 首屏影片轮播（5 套横/竖版轮插；下一套预加载，切换无缓冲空档）----
+  (function(){
+    var film = document.querySelector('.film');
+    if (!film) return;
+    var v = film.querySelector('video');
+    var dots = document.getElementById('filmDots');
+    var BASE = 'assets/videos/';
+    var LAND = ['v1.mp4','v2.mp4','v3.mp4','v4.mp4','v5.mp4'];
+    var PORT = ['v1_p.mp4','v2_p.mp4','v3_p.mp4','v4_p.mp4','v5_p.mp4'];
+    var i = 0, mode = null, timer = null;
+    // 预加载器：把下一套提前拉进缓存，切换时不出现「缓冲等待」
+    var pre = document.createElement('video');
+    pre.muted = true; pre.preload = 'auto'; pre.setAttribute('playsinline','');
+    pre.style.cssText = 'position:absolute;top:0;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none';
+    function isPortrait(){ return window.matchMedia('(max-width:767px) and (orientation: portrait)').matches; }
+    function list(){ return isPortrait() ? PORT : LAND; }
+    function posterOf(n){ return BASE + n.replace(/\.mp4$/, '_poster.jpg'); }
+    function saveData(){
+      try {
+        var c = navigator.connection;
+        if (c && c.saveData) return true;
+        if (c && /(^|-)2g$/.test(c.effectiveType || '')) return true;
+      } catch(e){}
+      return false;
+    }
+    function calmMotion(){ try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){ return false; } }
+    function markDots(){
+      var bs = dots.querySelectorAll('button');
+      for (var k = 0; k < bs.length; k++){
+        bs[k].classList.toggle('on', k === i);
+        bs[k].setAttribute('aria-selected', k === i ? 'true' : 'false');
+      }
+    }
+    function buildDots(){
+      dots.innerHTML = '';
+      for (var k = 0; k < LAND.length; k++){
+        var b = document.createElement('button');
+        b.type = 'button'; b.setAttribute('role','tab');
+        b.setAttribute('aria-label', '第 ' + (k + 1) + ' 套影片（共 ' + LAND.length + ' 套轮播）');
+        (function(kk){ b.addEventListener('click', function(){ play(kk); }); })(k);
+        dots.appendChild(b);
+      }
+    }
+    function primeNext(){
+      var l = list();
+      pre.src = BASE + l[(i + 1) % l.length];
+      try { pre.load(); } catch(e){}
+    }
+    function play(idx, doPlay){
+      var l = list(), n = l.length;
+      i = ((idx % n) + n) % n;
+      var name = l[i];
+      v.poster = posterOf(name);
+      v.muted = true; v.setAttribute('playsinline','');
+      v.src = BASE + name;
+      try { v.load(); } catch (e) {}
+      if (doPlay !== false){
+        var p = v.play();
+        if (p && p.catch) p.catch(function(){ film.classList.add('needs-tap'); });
+      }
+      markDots();
+      clearTimeout(timer);
+      // 当前起播 3 秒后再预热下一套，避免抢当前视频的带宽
+      if (doPlay !== false) timer = setTimeout(primeNext, 3000);
+    }
+    v.addEventListener('ended', function(){ play(i + 1); });
+    film.querySelector('.play').addEventListener('click', function(){
+      film.classList.remove('needs-tap'); v.muted = true;
+      var p = v.play(); if (p && p.catch) p.catch(function(){});
+      primeNext();
+    });
+    // 滚出视口 / 切到后台标签 → 暂停；回来再继续（省流量、省电）
+    if ('IntersectionObserver' in window){
+      new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if (e.isIntersecting){
+            if (v.paused && !film.classList.contains('needs-tap')) v.play().catch(function(){});
+          } else { try { v.pause(); } catch(err){} }
+        });
+      }, {threshold: .05}).observe(film);
+    }
+    document.addEventListener('visibilitychange', function(){
+      if (document.hidden){ try { v.pause(); } catch(e){} }
+      else if (v.paused && !film.classList.contains('needs-tap')) v.play().catch(function(){});
+    });
+    mode = isPortrait();
+    window.addEventListener('resize', function(){
+      var m = isPortrait();
+      if (m !== mode){ mode = m; play(0); }
+    });
+    document.body.appendChild(pre);
+    buildDots();
+    // 省流量模式（saveData / 2G）或系统「减少动态效果」→ 不自动播，先给封面帧＋播放按钮
+    var autoPlay = !saveData() && !calmMotion();
+    if (!autoPlay) film.classList.add('needs-tap');
+    play(0, autoPlay);
+  })();
+
   // 导航
   document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => document.getElementById('menu').classList.remove('open')));
 
