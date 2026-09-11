@@ -37,3 +37,5 @@ User-agent: Sogou web spider
 Allow: /
 
 Sitemap: https://javis.org.cn/sitemap.xml
+
+# AI 引擎全量正文：https://javis.org.cn/llms-full.txt
