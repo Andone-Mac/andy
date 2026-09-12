@@ -77,7 +77,7 @@
         {"@type":"Question","name":"AI 答错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"交付时附拒答率验收集：查不到依据的问题，机悟明确回复未找到依据、建议人工核对，不生成答案。每个结论都能指到原文，可当场复跑验证。宁可不答，也不骗您。"}},
         {"@type":"Question","name":"可以先试用再决定吗？","acceptedAnswer":{"@type":"Answer","text":"先试后买：拿一台旧服务器、一个业务科室、两个高频场景试两周，验收口径提前定好，两周试点见效再谈合同，不满意不立项。"}},
         {"@type":"Question","name":"有实际落地案例吗？","acceptedAnswer":{"@type":"Answer","text":"某省级政法机关生产环境运行中（按保密要求脱敏）。想看真实效果，可带着贵单位的真题来，当场在您的设备上复跑断网大模型演示。"}},
-        {"@type":"Question","name":"旧设备能跑大模型吗？","acceptedAnswer":{"@type":"Answer","text":"先诊断再出方案：存量服务器和显卡先用足，跑量化模型。实测国产芯片与 UOS 系统可支撑 70B 级模型私有化推理部署，旧机器就能跑。"}},
+        {"@type":"Question","name":"旧设备能跑大模型吗？","acceptedAnswer":{"@type":"Answer","text":"先诊断再出方案：存量服务器和显卡先用足，跑量化模型。JAVIS原生支持国产信创系统，可支撑 70B 级模型私有化推理部署，旧机器就能跑。"}},
         {"@type":"Question","name":"涉密单位能用 AI 吗？","acceptedAnswer":{"@type":"Answer","text":"能。保密法要求涉密系统与互联网物理隔离，机悟为完全断网环境而生：大模型和知识库全部部署在隔离网络内，结论可溯源、查询留痕，全程无外网请求。"}}
       ]
     }
@@ -375,7 +375,7 @@
       <div class="card"><div class="icon">域</div><b class="t">数据不出域</b><p>大模型和知识库全部部署在单位内网，完全断网也能全功能运行，演示全程无外网请求。</p></div>
       <div class="card"><div class="icon">源</div><b class="t">结论可溯源</b><p>别的 AI 会编条文，机悟每个结论都能指到原文，三步点击穿核验。</p><span class="quote">「宁可不答，也不骗您。」</span></div>
       <div class="card"><div class="icon">审</div><b class="t">全程可审计</b><p>每一次查询、每一个答案全程留痕可回放，权限分级、哈希链锁证，审计随手交。</p></div>
-      <div class="card"><div class="icon">产</div><b class="t">国产化 · 利旧</b><p>组件全开源栈，国产芯片与 UOS 已实测运行；先诊断再出方案，旧机器就能跑。</p></div>
+      <div class="card"><div class="icon">产</div><b class="t">国产化 · 利旧</b><p>组件全开源栈，JAVIS原生支持国产信创系统；先诊断再出方案，旧机器就能跑。</p></div>
     </div>
     <p class="scene-note">产品定位：机悟·政企超脑是为政企单位私有化部署的本地大模型平台——数据不出域、安全可信，让每一位工作人员拥有自己的得力助手。不是聊天机器人，是机要事务助理。亦师亦助手，AI，能！</p>
   </div>
@@ -524,8 +524,8 @@
     var v = film.querySelector('video');
     var dots = document.getElementById('filmDots');
     var BASE = 'assets/videos/';
-    var LAND = ['v1.mp4','v2.mp4','v3.mp4','v4.mp4','v5.mp4'];
-    var PORT = ['v1_p.mp4','v2_p.mp4','v3_p.mp4','v4_p.mp4','v5_p.mp4'];
+    var LAND = ['v6.mp4','v1.mp4','v2.mp4','v3.mp4','v4.mp4','v5.mp4'];
+    var PORT = ['v6_p.mp4','v1_p.mp4','v2_p.mp4','v3_p.mp4','v4_p.mp4','v5_p.mp4'];
     var i = 0, mode = null, timer = null;
     // 预加载器：把下一套提前拉进缓存，切换时不出现「缓冲等待」
     var pre = document.createElement('video');

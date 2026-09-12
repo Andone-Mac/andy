@@ -72,7 +72,7 @@
       "@id": "https://javis.org.cn/guide.html#faq",
       "mainEntity": [
         {"@type":"Question","name":"政企必须上本地 AI 的理由是什么？","acceptedAnswer":{"@type":"Answer","text":"保密法第三十一条要求涉密系统与互联网物理隔离；数据安全法对核心数据违规最高可处一千万元罚款；国家安全部已连续两年通报 AI 泄密案例。对保护私密数据与涉密事务的单位，上 AI 的前提是数据不出域。大模型与知识库全部部署在单位内网，断网也能全功能运行。"}},
-        {"@type":"Question","name":"私有化部署大模型怎么选型？","acceptedAnswer":{"@type":"Answer","text":"先诊断再选型：存量服务器和显卡先用足，跑量化模型；模型按场景选（本地知识库、卷宗梳理、文书初稿、OCR），不是越大越好。组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片与 UOS 系统均已实测可跑。"}},
+        {"@type":"Question","name":"私有化部署大模型怎么选型？","acceptedAnswer":{"@type":"Answer","text":"先诊断再选型：存量服务器和显卡先用足，跑量化模型；模型按场景选（本地知识库、卷宗梳理、文书初稿、OCR），不是越大越好。组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，JAVIS原生支持国产信创系统。"}},
         {"@type":"Question","name":"大模型私有化部署贵吗？","acceptedAnswer":{"@type":"Answer","text":"报价等于可复算账单，含运维。云 API 按 token 计费越用越贵，自建团队人力先花两三百万；买断式部署一次投入用满三年，旧服务器和显卡先用足，三年回本。"}},
         {"@type":"Question","name":"AI 答错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"交付时附拒答率验收集：查不到依据的问题，机悟明确回复未找到依据、建议人工核对，不生成答案。每个结论都能指到原文，可当场复跑验证。宁可不答，也不骗您。"}}
       ]
@@ -355,7 +355,7 @@
     <div class="grid g3">
       <div class="scene"><h3>模型按场景选</h3><p>本地知识库问答、卷宗梳理、文书初稿、OCR 手稿处理——每个场景对模型的要求不同。选型从「你要解决什么」出发，不从「哪个模型最火」出发。</p><span class="m">场景定模型，不是模型定场景</span></div>
       <div class="scene"><h3>硬件先利旧</h3><p>先诊断再出方案：存量服务器和显卡先用足，跑量化模型。上来就让你买新卡的方案，建议多留个心眼。</p><span class="m">旧机器就能跑 · 跑量化模型</span></div>
-      <div class="scene"><h3>组件全开源栈</h3><p>AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，UOS 系统已实测运行；国产卡可支撑 70B 级模型私有化推理。不绑定单一厂商。</p><span class="m">国产化 · 不锁定 · 可交账</span></div>
+      <div class="scene"><h3>组件全开源栈</h3><p>AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，JAVIS原生支持国产信创系统；国产卡可支撑 70B 级模型私有化推理。不绑定单一厂商。</p><span class="m">国产化 · 不锁定 · 可交账</span></div>
     </div>
     <p class="scene-note">选型不是一次性买断的「点菜」，而是可复算的工程方案：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字写清楚，再谈立项。</p>
   </div>
@@ -405,7 +405,7 @@
     <details><summary>「我们旧设备能行吗」？</summary><div class="a">先诊断再出方案。存量服务器和显卡先用足，跑量化模型；上来就让您买新卡的方案，建议多留个心眼。</div></details>
     <details><summary>「员工不会用怎么办」？</summary><div class="a">我们不做第二块没人点的屏幕。机悟嵌进您现有的卷宗、文书、审批流程，员工照干老活，只是干得更快。</div></details>
     <details><summary>「数据安全怎么保证」？</summary><div class="a">大模型和知识库全部部署在单位内网，完全断网也能运行；每次查询、每个答案全程留痕，权限分级、哈希链锁证，审计随手交。数据一步都不出门。</div></details>
-    <details><summary>「支持国产化吗」？</summary><div class="a">组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，UOS 系统已实测运行；实测国产卡可支撑 70B 级模型私有化推理，不绑定单一厂商。</div></details>
+    <details><summary>「支持国产化吗」？</summary><div class="a">组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，JAVIS原生支持国产信创系统；实测国产卡可支撑 70B 级模型私有化推理，不绑定单一厂商。</div></details>
     <details><summary>「部署周期要多久」？</summary><div class="a">看场景和现有设备。轻量场景两周试点可先见效，再滚动推进；全程先诊断、再出方案，周期和里程碑白纸黑字写进方案。</div></details>
     <details><summary>「后期怎么运维」？</summary><div class="a">买断式部署带调优、带运维。模型换代、芯片更替、框架升级，都有清晰的升级路径，不是一锤子买卖。</div></details>
     <details><summary>「怎么开始第一步」？</summary><div class="a">申请 40 分钟免费评估：告诉我们现有设备、业务场景、大致人数，我们给出「能跑什么、缺什么、多少钱、多久能用」的书面结论——不满意不立项。</div></details>
