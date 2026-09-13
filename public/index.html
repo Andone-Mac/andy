@@ -269,6 +269,21 @@
   footer .bottom{margin-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
   @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
+  /* ===== NEWS 新闻动态 ===== */
+  .news-grid{display:grid;grid-template-columns:5fr 6fr;gap:28px;align-items:start;margin-top:8px}
+  .news-video{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px rgba(22,41,94,.10);background:#050a18}
+  .news-video video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+  .news-items{display:flex;flex-direction:column;gap:16px}
+  .news-card{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:18px 20px;background:#fff}
+  .news-card .n-date{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;color:#fff;background:var(--navy-deep);border-radius:20px;padding:3px 12px;margin-bottom:10px}
+  .news-card .n-tag{display:inline-block;font-size:.72rem;font-weight:700;color:#b45309;background:#fef3e2;border:1px solid #f3d9a8;border-radius:20px;padding:3px 12px;margin-left:8px}
+  .news-card h3{color:var(--navy);font-size:1.12rem;line-height:1.45;margin-bottom:8px}
+  .news-card p{color:var(--ink-soft);font-size:.94rem;margin-bottom:8px}
+  .news-card .n-src{font-size:.8rem;color:var(--muted)}
+  .news-card ul{margin:8px 0 4px 18px;color:var(--ink-soft);font-size:.92rem}
+  .news-card ul li{margin-bottom:4px}
+  .news-cta{margin-top:10px}
+  @media (max-width:900px){.news-grid{grid-template-columns:1fr}}
   @media (max-width:900px){
     nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:#0b1530;flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start;max-height:calc(100vh - 74px);max-height:calc(100dvh - 74px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:0 16px 34px rgba(0,0,0,.32);z-index:60;transform:translateZ(0)}
     body.menu-open{overflow:hidden}
@@ -297,6 +312,7 @@
           <a href="#why">机悟·甲维思</a>
           <a href="guide.html">部署指南</a>
           <a href="about.html">关于我们</a>
+          <a href="#news">行业动态</a>
           <a href="#contact">联系我们</a>
         </div>
       </div>
@@ -378,6 +394,41 @@
       <div class="card"><div class="icon">产</div><b class="t">国产化 · 利旧</b><p>组件全开源栈，JAVIS原生支持国产信创系统；先诊断再出方案，旧机器就能跑。</p></div>
     </div>
     <p class="scene-note">产品定位：机悟·政企超脑是为政企单位私有化部署的本地大模型平台——数据不出域、安全可信，让每一位工作人员拥有自己的得力助手。不是聊天机器人，是机要事务助理。亦师亦助手，AI，能！</p>
+  </div>
+</section>
+
+<!-- ============ NEWS 行业动态 ============ -->
+<section id="news">
+  <div class="wrap">
+    <div class="kicker">NEWS · 行业动态</div>
+    <h2>AI 数据「出海」传闻：您以为它在本地，<br>其实它已出海。</h2>
+    <div class="news-grid">
+      <div class="news-video">
+        <video controls preload="metadata" poster="assets/videos/v7_poster.jpg" aria-label="机悟官方解读：AI 数据出海传闻">
+          <source src="assets/videos/v7.mp4" type="video/mp4">
+          您的浏览器不支持视频播放。
+        </video>
+      </div>
+      <div class="news-items">
+        <article class="news-card">
+          <span class="n-date">2026-09-13</span><span class="n-tag">重大 · 关联解读</span>
+          <h3>多家国产大模型被曝将用户对话转发境外 Claude 模型「蒸馏」，含疑似敏感信息</h3>
+          <p>据公开报道，Anthropic 发布威胁情报报告，指多家中资 AI 服务商把用户在中国产品界面的提问，在后台转发给境外 Claude 模型做「蒸馏」训练——用户以为在跟国产模型对话，数据其实已经出境。涉及对话量被披露达千万至亿级，其中包含疑似军警及国企内部信息。</p>
+          <p>我们无意评判厂商，只提醒一个事实：<b>数据去了哪里，不由对话框上的 logo 决定，由部署方式决定。</b>只要模型运行在别人的机房，您的卷宗、台账、对话记录就脱离您的控制。</p>
+          <ul>
+            <li>您以为它在本地，其实它已出海。</li>
+            <li>机密数据，在别人的机房里过夜。</li>
+            <li>公版 AI 进不了的门，机悟把 AI 搬进门内：断网部署、数据不出域、结论可溯源、全程可审计。</li>
+          </ul>
+          <p class="n-src">来源：Anthropic 威胁情报报告（2026-09-11）；本产品与报告所述厂商无任何关联，文中不预设对任何厂商的法律定性。</p>
+          <div class="news-cta">
+            <a class="btn btn-ghost" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
+            <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示 · 看数据如何不出域</a>
+          </div>
+        </article>
+      </div>
+    </div>
+    <p class="scene-note">本板块收录与「数据安全、私有化部署、国产信创」密切相关的重大公开事件及机悟的合规解读，持续更新。</p>
   </div>
 </section>
 
