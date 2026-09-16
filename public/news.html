@@ -13,14 +13,14 @@
 <link rel="icon" href="assets/favicon.png">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
-<meta property="og:title" content="行业动态 — 多家国产大模型被曝转发用户对话出境，含疑似敏感信息">
-<meta property="og:description" content="据公开报道，Anthropic 威胁情报报告披露多家中资 AI 服务商将用户对话转发境外 Claude 模型蒸馏。数据去了哪里，不由对话框上的 logo 决定，由部署方式决定。">
+<meta property="og:title" content="行业动态 — 云端大模型九月接连掉线：算力在别人机房，停下来的却是您的业务">
+<meta property="og:description" content="9 月官方公告一次部分中断，第三方监测另记录两次异常；一年内 API 调价、模型名停用、版本反复。当 AI 进入生产流程，可用性、单价、接口版本都由别人决定。">
 <meta property="og:url" content="https://javis.org.cn/news.html">
 <meta property="og:image" content="https://javis.org.cn/assets/videos/v7_poster.jpg">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="行业动态 — AI 数据出海传闻与机悟解读">
-<meta name="twitter:description" content="您以为它在本地，其实它已出海。数据不出域 · 机悟政企超脑">
+<meta name="twitter:description" content="云端 AI 的三个变量都不写在您的合同里。数据不出域 · 断网可用 · 机悟政企超脑">
 <meta name="twitter:image" content="https://javis.org.cn/assets/videos/v7_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <style>
@@ -320,6 +320,24 @@
         </video>
       </div>
       <div class="news-items">
+        <article class="news-card">
+          <span class="n-date">2026-09-16</span><span class="n-tag">可用性 · 关联解读</span>
+          <h3>云端大模型九月接连「掉线」：算力长在别人的机房，停下来的却是您的业务</h3>
+          <p>9 月 2 日，DeepSeek 官方状态页发布「网页/API 部分中断」公告，涉及 V4 Pro、V4 Flash 两个 API 与对话服务，约半小时后恢复。此后不到两周，第三方可用性监测又连续记录到异常：9 月 14 日晚「消息延迟、无法发送」，用户报告短时间内集中涌入；9 月 15 日又记录到约 33 分钟的访问中断——这两次，官方状态页均未发布公告。有开源社区 9 月 15 日的技术文章写到，故障发生在深夜闲时，对夜里无人值守跑任务的人来说，等于一整晚白跑，第二天的工作跟着往后拖。</p>
+          <p>这不是某一家厂商的问题，而是「把 AI 放在公共云上」这件事的结构性代价：<b>当 AI 进入生产流程，可用性、单价、接口版本就不再是您能安排的参数，而是别人公告里的一行字。</b>即便按其自己公布的 8 月数据，其 API 与对话服务可用性在 99.76%–99.92% 之间——换算下来，每个月依然有约 35 分钟到 1 小时 44 分钟处于不可用状态，落在哪一天、哪一小时，用户无从选择。</p>
+          <p>一年之内，依赖方还要跟着改代码、改预算：7 月 24 日旧模型名 deepseek-chat / deepseek-reasoner 停用；8 月 17 日 API 调价并改为峰谷定价，部分计费项涨幅达 1100%；9 月 10 日 Flash 系列部分回调，但输出价仍是 4 月统一价的 2 倍、高峰时段为 4 倍，Pro 未参与降价；同一天发布 V4.1 Flash 并公告将有序下线 V4 Pro 的 API，次日又改为继续提供。往前看，3 月 29 日至 30 日其对话服务曾中断近 12 小时，5 月又连续四次出现异常；公开报道显示，其日活用户一年内从约 1.2 亿增长到约 2 亿，同期算力储备只增长约 8.3%——供需缺口是结构性的，不是打一个补丁就能解决。</p>
+          <ul>
+            <li>云端 AI 的三个变量——可用性、单价、接口版本——都不写在您的合同里，只写在别人的公告里。</li>
+            <li>机悟·政企超脑把模型装进您的内网：断网可用、数据不出域、结论可溯源、全程可审计；版本冻结在您验收的那一版，不随厂商公告变动。</li>
+            <li>存量服务器和显卡先利旧跑通，再谈扩容——本地推理的成本是一次性、可折旧的投入，不是一张每月波动的账单。</li>
+          </ul>
+          <p class="n-src">来源：DeepSeek 官方状态页与开放平台公告（2026-09-02、08-13、09-10）；第三方可用性监测 StatusGator、DownForEveryoneOrJustMe 记录（2026-09-14、09-15）；OSCHINA 技术文章《DeepSeek 又又又崩了？教你怎么做模型故障转移》（2026-09-15）；北京商报、界面新闻关于 API 调价与版本公告的报道（2026-08-17、09-14、09-15）。本产品与上述厂商无任何关联，文中不预设对任何厂商的法律定性。</p>
+          <div class="news-cta">
+            <a class="btn btn-ghost" href="index.html#contact" data-open="eval">申请 40 分钟免费部署评估</a>
+            <a class="btn btn-ghost" href="index.html#contact" data-open="demo">预约演示 · 跑断网本地 AI</a>
+          </div>
+        </article>
+
         <article class="news-card">
           <span class="n-date">2026-09-13</span><span class="n-tag">重大 · 关联解读</span>
           <h3>多家国产大模型被曝将用户对话转发境外 Claude 模型「蒸馏」，含疑似敏感信息</h3>
