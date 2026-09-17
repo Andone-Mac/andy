@@ -503,11 +503,15 @@
   // ---- 自建访问统计（无第三方埋点，数据存自家 D1）----
   (function(){
     try {
-      var API = 'https://javis-api.wanyejiang2018.workers.dev';
+      // 双通道：主用自有域名（大陆可达），失败自动退回 workers.dev
+      var APIH = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
       var dev = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
       var ref = document.referrer ? new URL(document.referrer).host : '';
+      var qs = '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
+      var hi = 0;
       var img = new Image(1,1);
-      img.src = API + '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
+      img.onerror = function(){ if (++hi < APIH.length) img.src = APIH[hi] + qs; };
+      img.src = APIH[0] + qs;
     } catch(e){}
   })();
   // 导航（移动端抽屉：点链接/点外部/Esc 都能关，关闭时恢复页面滚动）
@@ -524,7 +528,21 @@
   addEventListener('keydown', e => { if (e.key === 'Escape') _closeMenu(); });
 
   // ---- 留资弹窗 ----
-  const API_BASE = 'https://javis-api.wanyejiang2018.workers.dev';
+  // 双通道：主用自有域名（大陆可达），失败自动退回 workers.dev
+  const API_HOSTS = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
+  async function apiFetch(path, opts){
+    let lastErr;
+    for (const base of API_HOSTS){
+      try {
+        const ctl = new AbortController();
+        const to = setTimeout(() => ctl.abort(), 8000);
+        const r = await fetch(base + path, Object.assign({}, opts, { signal: ctl.signal }));
+        clearTimeout(to);
+        return r;
+      } catch(e){ lastErr = e; }
+    }
+    throw lastErr || new Error('network');
+  }
   const mback = document.getElementById('mback');
   const mformBox = document.getElementById('mform');
   const mokBox = document.getElementById('mok');
@@ -574,7 +592,7 @@
     const old = msubmitBtn.textContent;
     msubmitBtn.textContent = '提交中…';
     try {
-      const resp = await fetch(API_BASE + '/api/lead', {
+      const resp = await apiFetch('/api/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need })
       });

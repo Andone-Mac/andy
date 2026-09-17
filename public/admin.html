@@ -151,7 +151,8 @@
 <footer>机悟（JAVIS）· 数据不出域，单位有超脑，个人得助手。</footer>
 
 <script>
-  const API = 'https://javis-api.wanyejiang2018.workers.dev';
+  // 双通道：主用自有域名（大陆可达），失败自动退回 workers.dev
+  const API_HOSTS = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
   const loginView = document.getElementById('loginView');
   const listView = document.getElementById('listView');
   const errBox = document.getElementById('loginErr');
@@ -159,20 +160,41 @@
   let curFilter = 'all';
 
   async function api(path, opts = {}) {
-    const res = await fetch(API + path, opts);
-    return { status: res.status, data: await res.json().catch(() => ({})) };
+    let lastErr;
+    for (const base of API_HOSTS) {
+      try {
+        const ctl = new AbortController();
+        const to = setTimeout(() => ctl.abort(), 8000);
+        const res = await fetch(base + path, Object.assign({}, opts, { signal: ctl.signal }));
+        clearTimeout(to);
+        return { status: res.status, data: await res.json().catch(() => ({})) };
+      } catch (e) { lastErr = e; }
+    }
+    throw lastErr || new Error('network');
   }
   const passIn = document.getElementById('pass');
   async function doLogin() {
     errBox.style.display = 'none';
-    const { status, data } = await api('/api/login', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pass: passIn.value })
-    });
+    let r;
+    try {
+      r = await api('/api/login', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pass: passIn.value })
+      });
+    } catch (e) {
+      // 网络层失败 ≠ 密码错误：分开提示，避免误导排查方向
+      errBox.textContent = '网络不通：当前网络访问不到后台接口。请挂上代理后重试，或联系管理员处理。';
+      errBox.style.display = 'block';
+      return;
+    }
+    const { status, data } = r;
     if (status === 200 && data.token) {
       localStorage.setItem('javis_token', data.token);
       showList();
-    } else errBox.style.display = 'block';
+    } else {
+      errBox.textContent = '密码错误，请重试';
+      errBox.style.display = 'block';
+    }
   }
   document.getElementById('loginBtn').addEventListener('click', doLogin);
   passIn.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
