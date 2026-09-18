@@ -88,6 +88,7 @@
   <div class="tabs">
     <button id="tabLeads" class="sel" onclick="switchTab('leads')">留资线索</button>
     <button id="tabStats" onclick="switchTab('stats')">访问统计</button>
+    <button id="tabNotify" onclick="switchTab('notify')">通知设置</button>
   </div>
   <div class="card" id="leadsCard">
     <div class="toolbar">
@@ -145,6 +146,43 @@
       <table><tbody id="botRows"></tbody></table>
     </div>
     <p class="stats-note">自建统计，无第三方埋点：不采集个人信息，IP 仅存哈希；已自动过滤爬虫与机器人，统计的是真实访问。</p>
+  </div>
+
+  <!-- ============ 通知设置（企业微信 Webhook 自助配置 + 自检） ============ -->
+  <div class="card" id="notifyCard" style="display:none">
+    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+      <h3 style="margin:0;color:var(--navy);font-size:15px">企业微信通知</h3>
+      <span id="whState" style="font-size:13px;color:var(--muted)">读取中…</span>
+      <button class="ghost" id="whRefresh" style="margin-left:auto">刷新</button>
+    </div>
+
+    <div style="margin-top:14px;padding:14px 16px;background:#f7faff;border:1px solid var(--line);border-radius:10px;line-height:1.9;font-size:13px">
+      <b style="color:var(--navy)">怎么拿到 Webhook 地址（3 步）</b>
+      <ol style="margin:8px 0 0 20px;padding:0">
+        <li>在企业微信里建一个<b>只有内部同事</b>的群 —— <b style="color:#a93226">含外部联系人的客户群不支持添加机器人</b>，这是"找不到入口"的头号原因</li>
+        <li>手机端：进该群 → 右上角「…」→ <b>群机器人 → 添加机器人</b>（电脑端：在群聊上右键 → 添加群机器人）</li>
+        <li>添加成功后点<b>「复制」</b>按钮整条复制（别手动拖选、别从右键菜单复制），形如 <code style="font-size:12px">https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=…</code></li>
+      </ol>
+      <div style="margin-top:10px;padding:9px 11px;background:#fdf6ec;border-radius:8px;color:#8a6100">
+        看不到「添加机器人」一般两个原因：① 群里含外部联系人（客户群）；② 管理员在企业微信管理后台限制了成员添加机器人（应用管理 → 消息推送/群机器人）。两条都属企业微信侧设置，与网站无关。
+      </div>
+      <div style="margin-top:8px;color:var(--muted)">
+        配置存进数据库，<b>保存后立即生效、不用重新部署</b>。消息格式、请求头、内容长度上限（text 2048 字节）本程序已按官方规范处理。
+      </div>
+    </div>
+
+    <div style="margin-top:16px">
+      <label style="font-weight:700;color:var(--navy);font-size:13px">Webhook 地址</label>
+      <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap">
+        <input type="text" id="whUrl" placeholder="https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=…" style="flex:1;min-width:260px">
+        <button id="whSave">保存</button>
+        <button class="ghost" id="whTest">发送测试消息</button>
+        <button class="ghost" id="whClear">清除</button>
+      </div>
+      <div class="err" id="whMsg"></div>
+    </div>
+
+    <div id="whResult" style="display:none;margin-top:14px;padding:14px 16px;border-radius:10px;border:1px solid var(--line)"></div>
   </div>
 </div>
 
@@ -271,10 +309,86 @@
   function switchTab(which){
     document.getElementById('tabLeads').classList.toggle('sel', which === 'leads');
     document.getElementById('tabStats').classList.toggle('sel', which === 'stats');
+    document.getElementById('tabNotify').classList.toggle('sel', which === 'notify');
     document.getElementById('leadsCard').style.display = which === 'leads' ? 'block' : 'none';
     document.getElementById('statsCard').style.display = which === 'stats' ? 'block' : 'none';
+    document.getElementById('notifyCard').style.display = which === 'notify' ? 'block' : 'none';
     if (which === 'stats') loadStats(curDays);
+    if (which === 'notify') loadNotify();
   }
+
+  // ---- 通知设置 tab ----
+  function whMsg(text, ok){
+    const el = document.getElementById('whMsg');
+    if (!text) { el.style.display = 'none'; return; }
+    el.textContent = text;
+    el.style.color = ok ? '#1e7a46' : '#a93226';
+    el.style.display = 'block';
+  }
+  function renderLast(last){
+    const box = document.getElementById('whResult');
+    if (!last) { box.style.display = 'none'; return; }
+    const dg = last.diagnose || {};
+    const tone = dg.level === 'good' ? ['#eaf7ef', '#1e7a46'] : dg.level === 'warn' ? ['#fdf6ec', '#b9770e'] : ['#fdecea', '#a93226'];
+    box.style.display = 'block';
+    box.style.background = tone[0];
+    box.style.borderColor = tone[1] + '55';
+    box.innerHTML =
+      '<b style="color:' + tone[1] + '">' + esc(dg.title || '—') + '</b>'
+      + '<div style="margin-top:6px;font-size:13px;line-height:1.75;color:#33415c">' + esc(dg.detail || '') + '</div>'
+      + '<div style="margin-top:8px;font-size:12px;color:#66779b">'
+        + esc((last.kind || '') + ' · ' + String(last.t || '').replace('T', ' ').slice(0, 19))
+        + (last.http !== undefined ? ' · HTTP ' + last.http : '')
+        + (last.ms !== undefined ? ' · ' + last.ms + 'ms' : '')
+      + '</div>'
+      + (last.raw ? '<pre style="margin:8px 0 0;font-size:11.5px;white-space:pre-wrap;word-break:break-all;color:#33415c">' + esc(last.raw) + '</pre>' : '');
+  }
+  async function loadNotify(){
+    const st = document.getElementById('whState');
+    try {
+      const r = await api('/api/settings/notify');
+      if (r.status !== 200 || !r.data.ok) { st.textContent = '读取失败'; st.style.color = '#a93226'; return; }
+      const d = r.data;
+      st.textContent = d.set ? ('已配置（' + d.source + '）：' + d.masked) : '未配置 —— 留资不会推送到群里';
+      st.style.color = d.set ? '#1e7a46' : '#a93226';
+      document.getElementById('whUrl').placeholder = d.set ? d.masked : 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=…';
+      renderLast(d.last);
+    } catch (e) {
+      st.textContent = '读取失败：网络不通';
+      st.style.color = '#a93226';
+    }
+  }
+  async function saveWebhook(){
+    whMsg('');
+    const url = document.getElementById('whUrl').value.trim();
+    if (!url) { whMsg('请先粘贴 Webhook 地址', false); return; }
+    try {
+      const r = await api('/api/settings/notify', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ url }) });
+      if (r.status === 200 && r.data.ok) { whMsg('已保存：' + r.data.masked + '（建议接着点「发送测试消息」验证）', true); document.getElementById('whUrl').value = ''; loadNotify(); }
+      else whMsg((r.data && r.data.error) || '保存失败', false);
+    } catch (e) { whMsg('保存失败：网络不通（检查是否已挂代理）', false); }
+  }
+  async function testWebhook(){
+    const btn = document.getElementById('whTest');
+    const old = btn.textContent;
+    btn.disabled = true; btn.textContent = '发送中…'; whMsg('');
+    try {
+      const r = await api('/api/settings/notify/test', { method: 'POST' });
+      if (r.status === 200) { whMsg(r.data.ok ? '测试消息已发出，请看群是否收到' : '测试未通过，下方是原因', r.data.ok); loadNotify(); }
+      else whMsg((r.data && r.data.error) || '测试失败', false);
+    } catch (e) { whMsg('测试失败：网络不通', false); }
+    btn.disabled = false; btn.textContent = old;
+  }
+  document.getElementById('whRefresh').addEventListener('click', loadNotify);
+  document.getElementById('whSave').addEventListener('click', saveWebhook);
+  document.getElementById('whTest').addEventListener('click', testWebhook);
+  document.getElementById('whClear').addEventListener('click', async () => {
+    if (!confirm('确定清除已保存的 Webhook 地址？清除后不再推送。')) return;
+    try {
+      await api('/api/settings/notify', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ clear: true }) });
+      whMsg('已清除', true); loadNotify();
+    } catch (e) { whMsg('清除失败：网络不通', false); }
+  });
   async function loadStats(days, btn){
     curDays = days || curDays;
     if (btn) { document.querySelectorAll('#statsCard .filters button').forEach(x => x.classList.remove('sel')); btn.classList.add('sel'); }
