@@ -11,6 +11,8 @@
 <meta name="format-detection" content="telephone=no,email=no">
 <link rel="canonical" href="https://javis.org.cn/">
 <link rel="icon" href="assets/favicon.png">
+<!-- 首屏封面帧优先加载（LCP 元素）：影片本身延后起播，避免 10MB+ 视频抢首屏带宽 -->
+<link rel="preload" as="image" href="assets/videos/v6_poster.jpg" fetchpriority="high">
 <!-- Open Graph（微信/企微/FB 分享卡片） -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
@@ -443,7 +445,7 @@
 
 <!-- ================= 全屏轮播影片（zkedugroup 式：视频铺满首屏；5 套横/竖版轮插） ================= -->
 <section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片，全屏轮播">
-  <video poster="assets/videos/v1_poster.jpg" autoplay muted playsinline preload="auto" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <video poster="assets/videos/v6_poster.jpg" autoplay muted playsinline preload="none" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
   <div class="shade" aria-hidden="true"></div>
   <button class="play" type="button" aria-label="播放品牌片"><span class="ptri" aria-hidden="true"></span></button>
   <div class="dots" id="filmDots" role="tablist" aria-label="切换影片"></div>
@@ -708,6 +710,8 @@
     v.addEventListener('ended', function(){ play(i + 1); });
     film.querySelector('.play').addEventListener('click', function(){
       film.classList.remove('needs-tap'); v.muted = true;
+      // 用户主动点击 = 最强意图：无论是否已到延后起播时间，立刻起播
+      if (!film.dataset.started){ film.dataset.started = '1'; play(0, true); return; }
       var p = v.play(); if (p && p.catch) p.catch(function(){});
       primeNext();
     });
@@ -735,7 +739,18 @@
     // 省流量模式（saveData / 2G）或系统「减少动态效果」→ 不自动播，先给封面帧＋播放按钮
     var autoPlay = !saveData() && !calmMotion();
     if (!autoPlay) film.classList.add('needs-tap');
-    play(0, autoPlay);
+    // 延后到首屏渲染完成再起播：封面帧先 paint，10MB 级影片随后加载，不抢首屏带宽
+    // （爬虫/截图机器人不执行这段脚本，拿到的是封面帧 + 完整文案，不影响收录）
+    function startFilm(){
+      if (film.dataset.started) return;
+      film.dataset.started = '1';
+      play(0, autoPlay);
+    }
+    if (document.readyState === 'complete') startFilm();
+    else {
+      window.addEventListener('load', function(){ setTimeout(startFilm, 120); }, { once: true });
+      setTimeout(startFilm, 3500);   // 兜底：个别资源卡住导致 load 迟到，最多等 3.5s
+    }
   })();
 
   // 导航（移动端抽屉：点链接/点外部/Esc 都能关，关闭时恢复页面滚动）
