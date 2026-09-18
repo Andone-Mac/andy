@@ -57,6 +57,17 @@
   .chart .col:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:11px;padding:3px 8px;border-radius:5px;white-space:nowrap;z-index:5}
   .chart-x{display:flex;gap:4px;font-size:10.5px;color:var(--muted);margin-bottom:18px}
   .chart-x span{flex:1;text-align:center;overflow:hidden;white-space:nowrap}
+  /* 堆叠柱：下半真实访问、上半爬虫/机器人（同一把尺子，一眼看出抓取量级） */
+  .chart .col.stack{display:flex;flex-direction:column;justify-content:flex-end;background:none;overflow:hidden}
+  .legend{font-size:11.5px;color:var(--muted);margin:-12px 0 16px}
+  .legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin:0 5px 0 0;vertical-align:-1px}
+  .kbadge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;white-space:nowrap}
+  .k-search{background:#e7f2fe;color:#1878c8}
+  .k-ai_index{background:#efe7fd;color:#6c3483}
+  .k-ai_live{background:#eafaf1;color:#1e8449}
+  .k-ai_train{background:#fdf1e1;color:#b9770e}
+  .k-script{background:#f2f4f8;color:#5b6478}
+  .ua{color:#9aa3b5;font-size:11px;word-break:break-all;margin-top:3px;max-width:460px}
   .rank{display:grid;grid-template-columns:1fr 1fr;gap:18px}
   .rank table{width:100%}
   .rank h4{color:var(--navy);font-size:13px;margin-bottom:8px}
@@ -138,12 +149,30 @@
     </div>
     <div class="chart" id="chart"></div>
     <div class="chart-x" id="chartX"></div>
+    <div class="legend">
+      <i style="background:linear-gradient(180deg,#22a7dd,#1878c8)"></i>真实访问
+      <i style="background:#e0a83e;margin-left:14px"></i>爬虫 / 机器人
+    </div>
     <div class="rank">
       <div><h4>访问来源 TOP</h4><table><tbody id="refRows"></tbody></table></div>
       <div><h4>设备分布</h4><table><tbody id="devRows"></tbody></table></div>
     </div>
-    <div style="margin-top:18px"><h4 style="color:var(--navy);font-size:13px;margin-bottom:8px">爬虫 / 机器人 TOP（不计入上方真实访问，供比对）</h4>
-      <table><tbody id="botRows"></tbody></table>
+    <div style="margin-top:18px">
+      <h4 style="color:var(--navy);font-size:13px;margin-bottom:10px">爬虫 / 机器人（不计入上方真实访问，供比对）</h4>
+      <div class="rank">
+        <div><h4>按类别</h4><table><tbody id="botKindRows"></tbody></table></div>
+        <div><h4>来源（机房 / 运营商，ASN 归因）</h4><table><tbody id="botSrcRows"></tbody></table></div>
+      </div>
+      <div style="margin-top:16px">
+        <h4 style="color:var(--navy);font-size:13px;margin-bottom:8px">谁在抓（按 UA）</h4>
+        <table><thead><tr><th>类别</th><th>名称 / UA</th><th style="text-align:right">次数</th><th style="text-align:right">访客</th></tr></thead>
+          <tbody id="botRows"></tbody></table>
+      </div>
+      <p class="stats-note">
+        类别：<b>搜索</b>＝搜索引擎（带来自然流量）· <b>AI 索引</b>＝决定你会不会被 AI 答案引用 · <b>AI 实时</b>＝用户当场提问时来取页 ·
+        <b>AI 训练</b>＝只取内容、不留流量（放不放行看 robots.txt 策略）· <b>脚本/未知</b>＝监控探针、社交预览、SEO 工具、扫描器。
+        来源按 ASN 归因（只记国家与机房/运营商，不含个人标识），<b>自 2026-09-18 上线后生效</b>，此前历史记录无此信息。
+      </p>
     </div>
     <p class="stats-note">自建统计，无第三方埋点：不采集个人信息，IP 仅存哈希；已自动过滤爬虫与机器人，统计的是真实访问。</p>
   </div>
@@ -403,18 +432,33 @@
     document.getElementById('stTotalUv').textContent = data.total.uv;
     document.getElementById('stBotToday').textContent = (data.botToday || {}).pv + ' / ' + (data.botToday || {}).uv;
     document.getElementById('stBotTotal').textContent = (data.botTotal || {}).pv + ' / ' + (data.botTotal || {}).uv;
-    // 补全日期序列（无数据的日期补 0）
+    // 补全日期序列（无数据的日期补 0）；机器人按天叠加，用同一把尺子看抓取量级
     const byDay = {};
     (data.byDay || []).forEach(r => byDay[r.day] = r);
+    const botDay = {};
+    (data.botByDay || []).forEach(r => {
+      if (!botDay[r.day]) botDay[r.day] = {};
+      botDay[r.day][r.kind] = (botDay[r.day][r.kind] || 0) + r.pv;
+    });
     const daysArr = [];
     for (let i = curDays - 1; i >= 0; i--) {
       const d = new Date(Date.now() - i * 864e5).toISOString().slice(0, 10);
-      daysArr.push({ day: d, pv: (byDay[d] || {}).pv || 0, uv: (byDay[d] || {}).uv || 0 });
+      const kinds = botDay[d] || {};
+      const botPv = Object.keys(kinds).reduce((s, k) => s + kinds[k], 0);
+      daysArr.push({ day: d, pv: (byDay[d] || {}).pv || 0, uv: (byDay[d] || {}).uv || 0, botPv, kinds });
     }
-    const maxPv = Math.max(1, ...daysArr.map(d => d.pv));
-    document.getElementById('chart').innerHTML = daysArr.map(d =>
-      '<div class="col" style="height:' + Math.max(2, Math.round(d.pv / maxPv * 100)) + '%" data-tip="' + d.day + '：' + d.pv + ' PV / ' + d.uv + ' UV"></div>'
-    ).join('');
+    const maxPv = Math.max(1, ...daysArr.map(d => d.pv + d.botPv));
+    document.getElementById('chart').innerHTML = daysArr.map(d => {
+      const sum = d.pv + d.botPv;
+      const kindTxt = Object.keys(d.kinds).map(k => kindName(k) + ' ' + d.kinds[k]).join(' · ');
+      const tip = d.day + '：真实 ' + d.pv + ' PV / ' + d.uv + ' UV'
+        + (d.botPv ? '　｜　机器人 ' + d.botPv + (kindTxt ? '（' + kindTxt + '）' : '') : '');
+      if (!sum) return '<div class="col" style="height:2px;background:#e9eef6" data-tip="' + d.day + '：无访问"></div>';
+      return '<div class="col stack" style="height:' + Math.max(2, Math.round(sum / maxPv * 100)) + '%" data-tip="' + esc(tip) + '">'
+        + (d.botPv ? '<div style="flex:' + d.botPv + ' 0 0;min-height:2px;background:#e0a83e;border-radius:4px 4px 0 0"></div>' : '')
+        + (d.pv ? '<div style="flex:' + d.pv + ' 0 0;min-height:2px;background:linear-gradient(180deg,#22a7dd,#1878c8)"></div>' : '')
+        + '</div>';
+    }).join('');
     const step = Math.max(1, Math.floor(curDays / 8));
     document.getElementById('chartX').innerHTML = daysArr.map((d, i) =>
       '<span>' + (i % step === 0 || i === daysArr.length - 1 ? d.day.slice(5) : '') + '</span>'
@@ -425,10 +469,28 @@
     document.getElementById('devRows').innerHTML = (data.byDev || []).map(r =>
       '<tr><td>' + esc(r.dev === 'mobile' ? '手机' : r.dev === 'desktop' ? '电脑' : r.dev) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td></tr>'
     ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';
-    document.getElementById('botRows').innerHTML = (data.topBots || []).map(r =>
-      '<tr><td style="word-break:break-all;font-size:12px">' + esc(r.ua) + '</td><td style="text-align:right;white-space:nowrap"><b>' + r.pv + '</b></td></tr>'
-    ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无爬虫/机器人访问</td></tr>';
+    const botTotalPv = ((data.botTotal || {}).pv) || 0;
+    document.getElementById('botKindRows').innerHTML = (data.botByKind || []).map(r =>
+      '<tr><td><span class="kbadge k-' + esc(r.kind) + '">' + esc(kindName(r.kind)) + '</span></td>' +
+      '<td style="text-align:right"><b>' + r.pv + '</b><span style="color:var(--muted);font-size:11.5px"> / ' + (botTotalPv ? Math.round(r.pv / botTotalPv * 100) : 0) + '%</span></td></tr>'
+    ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';
+    document.getElementById('botSrcRows').innerHTML = (data.botSources || []).map(r =>
+      '<tr><td style="word-break:break-all;font-size:12.5px">' + esc(r.src) + (r.cc ? '<span class="time"> · ' + esc(r.cc) + '</span>' : '') + '</td>' +
+      '<td style="text-align:right;white-space:nowrap"><b>' + r.pv + '</b></td></tr>'
+    ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';
+    document.getElementById('botRows').innerHTML = (data.topBots || []).map(r => {
+      const ua = r.ua || '';
+      return '<tr>' +
+        '<td><span class="kbadge k-' + esc(r.kind) + '">' + esc(kindName(r.kind)) + '</span></td>' +
+        '<td><b>' + esc(r.name || ua.slice(0, 46)) + '</b>' +
+          (ua ? '<div class="ua" title="' + esc(ua) + '">' + esc(ua.slice(0, 150)) + (ua.length > 150 ? '…' : '') + '</div>' : '') + '</td>' +
+        '<td style="text-align:right"><b>' + r.pv + '</b></td>' +
+        '<td style="text-align:right">' + (r.uv || '—') + '</td></tr>';
+    }).join('') || '<tr><td colspan="4" style="color:var(--muted)">暂无爬虫/机器人访问</td></tr>';
   }
+  // 类别名与配色（与后端 classifyBot 一一对应）
+  const KIND_NAME = { search: '搜索', ai_index: 'AI 索引', ai_live: 'AI 实时', ai_train: 'AI 训练', script: '脚本/未知' };
+  function kindName(k) { return KIND_NAME[k] || (k && k !== 'unknown' ? k : '脚本/未知'); }
 
   function showList(){ loginView.style.display = 'none'; listView.style.display = 'block'; document.getElementById('logout').style.display = 'inline-block'; load(); }
   function showLogin(){ loginView.style.display = 'block'; listView.style.display = 'none'; document.getElementById('logout').style.display = 'none'; }
