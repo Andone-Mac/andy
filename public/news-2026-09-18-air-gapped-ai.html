@@ -192,6 +192,13 @@
   .msubmit:disabled{opacity:.6;cursor:not-allowed}
   .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
   .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
+  /* 留资表单：隐私政策同意勾选（2026-09-18 加，合规需要） */
+  .consent-row{margin-top:12px}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.6;color:#5b6b8c;cursor:pointer}
+  .chk input[type=checkbox]{flex:0 0 auto;width:16px;height:16px;margin:3px 0 0;accent-color:var(--cyan-deep);cursor:pointer}
+  .chk a{color:var(--cyan-deep);text-decoration:underline}
+  .chk.err{color:#a93226}
+  .chk.err input[type=checkbox]{outline:2px solid #f5c6c6;outline-offset:2px;border-radius:3px}
   .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
   .m-okcard.on{display:block}
   .m-okcard .big{font-size:2.4rem;line-height:1}
@@ -334,6 +341,7 @@
         <a href="news.html" class="on">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
           <a href="news.html">全部动态</a>
+          <a href="news-2026-09-19-data-leak-landscape.html">2025 年 4.1 万起泄露，六成案件源于内网</a>
           <a href="news-2026-09-18-air-gapped-ai.html">断网 AI 占比一年翻倍</a>
           <a href="news-2026-09-16-cloud-down.html">云端大模型接连掉线</a>
           <a href="news-2026-09-13-data-overseas.html">AI 数据出海传闻</a>
@@ -447,7 +455,7 @@
     <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。网站本身也不出域——无第三方埋点、无数据采集。</p>
     <div class="bottom">
       <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn</div>
-      <div><a style="color:#7f8db0" href="index.html">首页</a>　<a style="color:#7f8db0" href="news.html">行业动态</a>　<a style="color:#7f8db0" href="index.html#why">机悟是什么</a>　<a style="color:#7f8db0" href="index.html#scenes">用在哪</a>　<a style="color:#7f8db0" href="index.html#ledger">算三年账</a>　<a style="color:#7f8db0" href="index.html#faq">常见顾虑</a>　<a style="color:#7f8db0" href="guide.html">部署指南</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="index.html#contact">联系我们</a></div>
+      <div><a style="color:#7f8db0" href="index.html">首页</a>　<a style="color:#7f8db0" href="news.html">行业动态</a>　<a style="color:#7f8db0" href="index.html#why">机悟是什么</a>　<a style="color:#7f8db0" href="index.html#scenes">用在哪</a>　<a style="color:#7f8db0" href="index.html#ledger">算三年账</a>　<a style="color:#7f8db0" href="index.html#faq">常见顾虑</a>　<a style="color:#7f8db0" href="guide.html">部署指南</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="index.html#contact">联系我们</a>　<a style="color:#7f8db0" href="privacy.html">隐私政策</a></div>
     </div>
   </div>
 </footer>
@@ -468,6 +476,10 @@
         <div class="mqr">
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
           <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
         </div>
         <button class="msubmit" type="submit" id="msubmit">提交申请</button>
       </form>
@@ -509,6 +521,45 @@
   });
   $('#zclose').addEventListener('click',function(){$('#zoomer').style.display='none';});
   $('#zoomer').addEventListener('click',function(e){if(e.target===this){this.style.display='none';}});
+  // ---- 留资表单提交（2026-09-18 补：此前这一块根本没绑 submit，点「提交申请」会整页刷新、线索丢失）----
+  var APIH = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
+  async function apiPost(path, opts){
+    var lastErr = null;
+    for (var i = 0; i < APIH.length; i++){
+      try {
+        var ctl = new AbortController(), timer = setTimeout(function(){ ctl.abort(); }, 8000);
+        var r = await fetch(APIH[i] + path, Object.assign({}, opts, { signal: ctl.signal }));
+        clearTimeout(timer); return r;
+      } catch (e) { lastErr = e; }
+    }
+    throw lastErr || new Error('network');
+  }
+  var mformEl = $('#mform-el');
+  if (mformEl) mformEl.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var msg = $('#mmsg'), btn = $('#msubmit'), box = $('#mform'), okc = $('#mok');
+    msg.className = 'mmsg'; msg.textContent = '';
+    var val = function(n){ var el = mformEl.querySelector('[name="' + n + '"]'); return el ? (el.value || '').trim() : ''; };
+    var ccRaw = val('cc'), pw = val('pw'), need = val('need');
+    var parts = ccRaw.split(/\s+/).filter(Boolean);
+    var company = parts.length > 1 ? parts.slice(0, -1).join(' ') : ccRaw;
+    var contact = parts.length > 1 ? parts[parts.length - 1] : '';
+    if (!company) { msg.className='mmsg err'; msg.textContent='请填写公司 / 单位名称'; return; }
+    if (!pw) { msg.className='mmsg err'; msg.textContent='请填写电话或微信号（至少一项），方便我们联系您'; return; }
+    if (!need) { msg.className='mmsg err'; msg.textContent='请简单介绍一下需求'; return; }
+    if (need.length < 4) { msg.className='mmsg err'; msg.textContent='需求介绍再详细一点会更高效（4 字以上即可）'; return; }
+    var ck = mformEl.querySelector('input[name="consent"]');
+    if (!ck || !ck.checked) { msg.className='mmsg err'; msg.textContent='请先阅读并勾选同意《隐私政策》，我们才能联系您'; return; }
+    btn.disabled = true; var old = btn.textContent; btn.textContent = '提交中…';
+    try {
+      var resp = await apiPost('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ type:'eval', company: company, contact: contact, title: val('title'), phone: pw, wechat: '', need: need, consent: true }) });
+      var data = await resp.json().catch(function(){ return {}; });
+      if (resp.ok && data.ok) { box.style.display='none'; okc.classList.add('on'); }
+      else { msg.className='mmsg err'; msg.textContent = (data && data.error) || '提交失败，请稍后再试，或直接加官方微信'; }
+    } catch (err) { msg.className='mmsg err'; msg.textContent='网络开小差了，请稍后再试，或直接加官方微信（二维码见右）'; }
+    btn.disabled = false; btn.textContent = old;
+  });
 })();
 </script>
 </body>

@@ -13,17 +13,17 @@
 <link rel="icon" href="assets/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
-<meta property="og:title" content="行业动态 — 「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍">
-<meta property="og:description" content="一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。同期，NVIDIA 与 Palantir 把开源模型打包进空网环境交付给政府机构，DataRobot 把 AI 治理下沉到本地与空网，NVIDIA 在 IFA 上宣布本地推理最高提速 1.9× 并点名支持 Hermes Agent。「断网 AI」正在从少数单位的特殊选择，变成受监管行业的常规配置。">
+<meta property="og:title" content="行业动态 — 数据泄露这一年：41,644 起、2,120 家企业——六成案件，源头在单位自己的内网">
+<meta property="og:description" content="据数世咨询与零零信安 2025 年度统计：全年有效数据泄露事件 41,644 起，同比上升 10.83%。但比数量更值得看的，是这些事件从哪里漏出来的——六成起于内网与内部人员，2026 年 9 月 15 日国家网信办公开的四起典型案例，三起是「自家系统」失守。">
 <meta property="og:url" content="https://javis.org.cn/news.html">
 <meta property="og:image" content="https://javis.org.cn/assets/logo.png">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="行业动态 — 「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍">
-<meta name="twitter:description" content="一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。同期，NVIDIA 与 Palantir 把开源模型打包进空网环境交付给政府机构，DataRobot 把 AI 治理下沉到本地与空网，NVIDIA 在 IFA 上宣布本地推理最高提速 1.9× 并点名支持 Hermes Agent。「断网 AI」正在从少数单位的特殊选择，变成受监管行业的常规配置。">
+<meta name="twitter:title" content="行业动态 — 数据泄露这一年：41,644 起、2,120 家企业——六成案件，源头在单位自己的内网">
+<meta name="twitter:description" content="据数世咨询与零零信安 2025 年度统计：全年有效数据泄露事件 41,644 起，同比上升 10.83%。但比数量更值得看的，是这些事件从哪里漏出来的——六成起于内网与内部人员，2026 年 9 月 15 日国家网信办公开的四起典型案例，三起是「自家系统」失守。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/logo.png">
 <meta name="theme-color" content="#16295e">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"机悟·政企超脑 行业动态","url":"https://javis.org.cn/news.html","itemListElement":[{"@type":"ListItem","position":1,"url":"https://javis.org.cn/news-2026-09-18-air-gapped-ai.html","name":"「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍"},{"@type":"ListItem","position":2,"url":"https://javis.org.cn/news-2026-09-16-cloud-down.html","name":"云端大模型九月接连「掉线」：算力长在别人的机房，停下来的却是您的业务"},{"@type":"ListItem","position":3,"url":"https://javis.org.cn/news-2026-09-13-data-overseas.html","name":"多家国产大模型被曝将用户对话转发境外 Claude 模型「蒸馏」，含疑似敏感信息"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"机悟·政企超脑 行业动态","url":"https://javis.org.cn/news.html","itemListElement":[{"@type":"ListItem","position":1,"url":"https://javis.org.cn/news-2026-09-19-data-leak-landscape.html","name":"数据泄露这一年：41,644 起、2,120 家企业——六成案件，源头在单位自己的内网"},{"@type":"ListItem","position":2,"url":"https://javis.org.cn/news-2026-09-18-air-gapped-ai.html","name":"「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍"},{"@type":"ListItem","position":3,"url":"https://javis.org.cn/news-2026-09-16-cloud-down.html","name":"云端大模型九月接连「掉线」：算力长在别人的机房，停下来的却是您的业务"},{"@type":"ListItem","position":4,"url":"https://javis.org.cn/news-2026-09-13-data-overseas.html","name":"多家国产大模型被曝将用户对话转发境外 Claude 模型「蒸馏」，含疑似敏感信息"}]}</script>
 <style>
   :root{
     --navy:#16295e;--navy-deep:#0e1c42;--cyan:#22a7dd;--cyan-deep:#1878c8;
@@ -192,6 +192,13 @@
   .msubmit:disabled{opacity:.6;cursor:not-allowed}
   .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
   .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
+  /* 留资表单：隐私政策同意勾选（2026-09-18 加，合规需要） */
+  .consent-row{margin-top:12px}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.6;color:#5b6b8c;cursor:pointer}
+  .chk input[type=checkbox]{flex:0 0 auto;width:16px;height:16px;margin:3px 0 0;accent-color:var(--cyan-deep);cursor:pointer}
+  .chk a{color:var(--cyan-deep);text-decoration:underline}
+  .chk.err{color:#a93226}
+  .chk.err input[type=checkbox]{outline:2px solid #f5c6c6;outline-offset:2px;border-radius:3px}
   .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
   .m-okcard.on{display:block}
   .m-okcard .big{font-size:2.4rem;line-height:1}
@@ -334,6 +341,7 @@
         <a href="news.html" class="on">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
           <a href="news.html">全部动态</a>
+          <a href="news-2026-09-19-data-leak-landscape.html">2025 年 4.1 万起泄露，六成案件源于内网</a>
           <a href="news-2026-09-18-air-gapped-ai.html">断网 AI 占比一年翻倍</a>
           <a href="news-2026-09-16-cloud-down.html">云端大模型接连掉线</a>
           <a href="news-2026-09-13-data-overseas.html">AI 数据出海传闻</a>
@@ -381,7 +389,7 @@
     <h1>行业动态</h1>
     <p class="nw-dek">与「数据安全 · 云端可用性 · 本地化 AI」密切相关的重大公开事件，以及机悟的合规解读——只陈述事实，不预设任何厂商的法律定性。</p>
     <div class="nw-rule"></div>
-    <div class="nw-meta">最新更新 2026-09-18　·　共 3 条　·　持续更新</div>
+    <div class="nw-meta">最新更新 2026-09-19　·　共 4 条　·　持续更新</div>
   </div>
 </section>
 
@@ -391,12 +399,20 @@
       <div>
         <div class="nw-sec">头条</div>
         <article class="nw-feat">
-          <span class="n-date">2026-09-18</span><span class="n-tag" style="margin-left:8px">行业趋势 · 关联解读</span>
-          <h2><a href="news-2026-09-18-air-gapped-ai.html">「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍</a></h2>
-          <p class="nw-lead">一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。同期，NVIDIA 与 Palantir 把开源模型打包进空网环境交付给政府机构，DataRobot 把 AI 治理下沉到本地与空网，NVIDIA 在 IFA 上宣布本地推理最高提速 1.9× 并点名支持 Hermes Agent。「断网 AI」正在从少数单位的特殊选择，变成受监管行业的常规配置。</p>
-          <p style="margin-top:14px"><a class="nw-morelink" href="news-2026-09-18-air-gapped-ai.html">阅读全文 →</a></p>
+          <span class="n-date">2026-09-19</span><span class="n-tag" style="margin-left:8px">数据安全 · 执法动态</span>
+          <h2><a href="news-2026-09-19-data-leak-landscape.html">数据泄露这一年：41,644 起、2,120 家企业——六成案件，源头在单位自己的内网</a></h2>
+          <p class="nw-lead">据数世咨询与零零信安 2025 年度统计：全年有效数据泄露事件 41,644 起，同比上升 10.83%。但比数量更值得看的，是这些事件从哪里漏出来的——六成起于内网与内部人员，2026 年 9 月 15 日国家网信办公开的四起典型案例，三起是「自家系统」失守。</p>
+          <p style="margin-top:14px"><a class="nw-morelink" href="news-2026-09-19-data-leak-landscape.html">阅读全文 →</a></p>
         </article>
         <div class="nw-sec">全部动态</div>
+        <article class="nw-item">
+          <div class="dt">2026-09-18</div>
+          <div>
+            <h3><a href="news-2026-09-18-air-gapped-ai.html">「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍</a></h3>
+            <p>一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。同期，NVIDIA 与 Palantir 把开源模型打包进空网环境交付给政府机构，DataRobot 把 AI 治理下沉到本地与空网，NVIDIA 在 IFA 上宣布本地推理最高提速 1.9× 并点名支持 Hermes Agent。「断网 AI」正在从少数单位的特殊选择，变成受监管行业的常规配置。</p>
+            <span class="n-tag">行业趋势 · 关联解读</span> <a class="nw-morelink" href="news-2026-09-18-air-gapped-ai.html">阅读全文 →</a>
+          </div>
+        </article>
         <article class="nw-item">
           <div class="dt">2026-09-16</div>
           <div>
@@ -469,7 +485,7 @@
     <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。网站本身也不出域——无第三方埋点、无数据采集。</p>
     <div class="bottom">
       <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn</div>
-      <div><a style="color:#7f8db0" href="index.html">首页</a>　<a style="color:#7f8db0" href="news.html">行业动态</a>　<a style="color:#7f8db0" href="index.html#why">机悟是什么</a>　<a style="color:#7f8db0" href="index.html#scenes">用在哪</a>　<a style="color:#7f8db0" href="index.html#ledger">算三年账</a>　<a style="color:#7f8db0" href="index.html#faq">常见顾虑</a>　<a style="color:#7f8db0" href="guide.html">部署指南</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="index.html#contact">联系我们</a></div>
+      <div><a style="color:#7f8db0" href="index.html">首页</a>　<a style="color:#7f8db0" href="news.html">行业动态</a>　<a style="color:#7f8db0" href="index.html#why">机悟是什么</a>　<a style="color:#7f8db0" href="index.html#scenes">用在哪</a>　<a style="color:#7f8db0" href="index.html#ledger">算三年账</a>　<a style="color:#7f8db0" href="index.html#faq">常见顾虑</a>　<a style="color:#7f8db0" href="guide.html">部署指南</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="index.html#contact">联系我们</a>　<a style="color:#7f8db0" href="privacy.html">隐私政策</a></div>
     </div>
   </div>
 </footer>
@@ -490,6 +506,10 @@
         <div class="mqr">
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
           <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
         </div>
         <button class="msubmit" type="submit" id="msubmit">提交申请</button>
       </form>
@@ -531,6 +551,45 @@
   });
   $('#zclose').addEventListener('click',function(){$('#zoomer').style.display='none';});
   $('#zoomer').addEventListener('click',function(e){if(e.target===this){this.style.display='none';}});
+  // ---- 留资表单提交（2026-09-18 补：此前这一块根本没绑 submit，点「提交申请」会整页刷新、线索丢失）----
+  var APIH = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
+  async function apiPost(path, opts){
+    var lastErr = null;
+    for (var i = 0; i < APIH.length; i++){
+      try {
+        var ctl = new AbortController(), timer = setTimeout(function(){ ctl.abort(); }, 8000);
+        var r = await fetch(APIH[i] + path, Object.assign({}, opts, { signal: ctl.signal }));
+        clearTimeout(timer); return r;
+      } catch (e) { lastErr = e; }
+    }
+    throw lastErr || new Error('network');
+  }
+  var mformEl = $('#mform-el');
+  if (mformEl) mformEl.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var msg = $('#mmsg'), btn = $('#msubmit'), box = $('#mform'), okc = $('#mok');
+    msg.className = 'mmsg'; msg.textContent = '';
+    var val = function(n){ var el = mformEl.querySelector('[name="' + n + '"]'); return el ? (el.value || '').trim() : ''; };
+    var ccRaw = val('cc'), pw = val('pw'), need = val('need');
+    var parts = ccRaw.split(/\s+/).filter(Boolean);
+    var company = parts.length > 1 ? parts.slice(0, -1).join(' ') : ccRaw;
+    var contact = parts.length > 1 ? parts[parts.length - 1] : '';
+    if (!company) { msg.className='mmsg err'; msg.textContent='请填写公司 / 单位名称'; return; }
+    if (!pw) { msg.className='mmsg err'; msg.textContent='请填写电话或微信号（至少一项），方便我们联系您'; return; }
+    if (!need) { msg.className='mmsg err'; msg.textContent='请简单介绍一下需求'; return; }
+    if (need.length < 4) { msg.className='mmsg err'; msg.textContent='需求介绍再详细一点会更高效（4 字以上即可）'; return; }
+    var ck = mformEl.querySelector('input[name="consent"]');
+    if (!ck || !ck.checked) { msg.className='mmsg err'; msg.textContent='请先阅读并勾选同意《隐私政策》，我们才能联系您'; return; }
+    btn.disabled = true; var old = btn.textContent; btn.textContent = '提交中…';
+    try {
+      var resp = await apiPost('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ type:'eval', company: company, contact: contact, title: val('title'), phone: pw, wechat: '', need: need, consent: true }) });
+      var data = await resp.json().catch(function(){ return {}; });
+      if (resp.ok && data.ok) { box.style.display='none'; okc.classList.add('on'); }
+      else { msg.className='mmsg err'; msg.textContent = (data && data.error) || '提交失败，请稍后再试，或直接加官方微信'; }
+    } catch (err) { msg.className='mmsg err'; msg.textContent='网络开小差了，请稍后再试，或直接加官方微信（二维码见右）'; }
+    btn.disabled = false; btn.textContent = old;
+  });
 })();
 </script>
 </body>
