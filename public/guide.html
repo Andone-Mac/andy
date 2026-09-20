@@ -231,6 +231,13 @@
   .msubmit:disabled{opacity:.6;cursor:not-allowed}
   .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
   .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
+  /* 留资表单：隐私政策同意勾选（2026-09-18 加，合规需要） */
+  .consent-row{margin-top:12px}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.6;color:#5b6b8c;cursor:pointer}
+  .chk input[type=checkbox]{flex:0 0 auto;width:16px;height:16px;margin:3px 0 0;accent-color:var(--cyan-deep);cursor:pointer}
+  .chk a{color:var(--cyan-deep);text-decoration:underline}
+  .chk.err{color:#a93226}
+  .chk.err input[type=checkbox]{outline:2px solid #f5c6c6;outline-offset:2px;border-radius:3px}
   .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
   .m-okcard.on{display:block}
   .m-okcard .big{font-size:2.4rem;line-height:1}
@@ -321,7 +328,7 @@
         <a href="#contact">联系我们<span class="caret">▾</span></a>
         <div class="nav-sub">
           <a href="#contact">联系方式 · 留言</a>
-          <a href="about.html#downloads">资料下载</a>
+          <a href="index.html#downloads">资料下载</a>
         </div>
       </div>
     </nav>
@@ -477,6 +484,10 @@
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
           <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
         </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
         <button class="msubmit" type="submit" id="msubmit">提交申请</button>
       </form>
       <div class="mmsg" id="mmsg" role="status"></div>
@@ -564,6 +575,7 @@
     msub.textContent = KINDS[curKind].sub;
     msubmitBtn.textContent = curKind === 'demo' ? '预约演示' : '提交申请';
     mformEl.reset(); mmsg.className = 'mmsg'; mmsg.textContent = '';
+    { const r = mformEl.querySelector('.chk.err'); if (r) r.classList.remove('err'); }
     mformBox.style.display = 'block'; mokBox.classList.remove('on');
     mback.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -588,13 +600,21 @@
     if (!pw) return showMsg('请填写电话或微信号（至少一项），方便我们联系您', true);
     if (!need) return showMsg('请简单介绍一下需求', true);
     if (need.length < 4) return showMsg('需求介绍再详细一点会更高效（4 字以上即可）', true);
+    {
+      const ck = mformEl.querySelector('input[name="consent"]');
+      if (!ck || !ck.checked) {
+        const row = ck && ck.closest('.chk'); if (row) row.classList.add('err');
+        return showMsg('请先阅读并勾选同意《隐私政策》，我们才能联系您', true);
+      }
+      const row = ck.closest && ck.closest('.chk'); if (row) row.classList.remove('err');
+    }
     msubmitBtn.disabled = true;
     const old = msubmitBtn.textContent;
     msubmitBtn.textContent = '提交中…';
     try {
       const resp = await apiFetch('/api/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need })
+        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need, consent: true })
       });
       const data = await resp.json().catch(() => ({}));
       if (resp.ok && data.ok) { mformBox.style.display = 'none'; mokBox.classList.add('on'); }

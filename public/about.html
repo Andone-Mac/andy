@@ -169,24 +169,6 @@
   .slogan-final{text-align:center;margin-top:60px;font-family:var(--serif);font-size:clamp(1.2rem,2.6vw,1.6rem);color:var(--navy);font-weight:900;letter-spacing:.06em}
   .slogan-final span{color:var(--cyan-deep)}
 
-  /* 资料下载 */
-  .dl-list{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:30px}
-  .dl-item{display:flex;align-items:center;gap:16px;border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#fff;transition:box-shadow .18s,transform .18s}
-  .dl-item:hover{box-shadow:0 10px 26px rgba(14,28,66,.08);transform:translateY(-2px)}
-  .dl-ico{flex:none;width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;letter-spacing:.03em;color:#fff;background:linear-gradient(135deg,var(--navy),var(--cyan-deep))}
-  .dl-ico.pdf{background:linear-gradient(135deg,#b3292b,#e0524f)}
-  .dl-ico.ppt{background:linear-gradient(135deg,#b3541e,#e08a3c)}
-  .dl-ico.doc{background:linear-gradient(135deg,#1f4f9c,#3b7bd9)}
-  .dl-ico.zip{background:linear-gradient(135deg,#4a5568,#718096)}
-  .dl-meta{flex:1;min-width:0}
-  .dl-meta b{display:block;color:var(--navy);font-size:1rem;font-weight:700;margin-bottom:5px;line-height:1.45}
-  .dl-meta span{color:var(--muted);font-size:.85rem;line-height:1.6}
-  .dl-btn{flex:none;display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--navy);color:var(--navy);border-radius:8px;padding:9px 16px;font-size:.88rem;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s}
-  .dl-btn:hover{background:var(--navy);color:#fff}
-  .dl-empty{border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted);font-size:.94rem;margin-top:30px;background:#fbfcfe;line-height:1.8}
-  .dl-note{margin-top:16px;color:var(--muted);font-size:.85rem;line-height:1.75}
-  @media (max-width:900px){.dl-list{grid-template-columns:1fr}.dl-item{padding:16px}.dl-btn{padding:8px 12px;font-size:.85rem}}
-
   /* CTA band + footer（同官网） */
   .cta-band{background:linear-gradient(135deg,var(--navy-deep),var(--navy) 55%,#1c3c86);color:#fff;text-align:center;border-radius:16px;padding:52px 28px}
   .cta-band h2{color:#fff}
@@ -225,6 +207,13 @@
   .msubmit:disabled{opacity:.6;cursor:not-allowed}
   .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
   .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
+  /* 留资表单：隐私政策同意勾选（2026-09-18 加，合规需要） */
+  .consent-row{margin-top:12px}
+  .chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.6;color:#5b6b8c;cursor:pointer}
+  .chk input[type=checkbox]{flex:0 0 auto;width:16px;height:16px;margin:3px 0 0;accent-color:var(--cyan-deep);cursor:pointer}
+  .chk a{color:var(--cyan-deep);text-decoration:underline}
+  .chk.err{color:#a93226}
+  .chk.err input[type=checkbox]{outline:2px solid #f5c6c6;outline-offset:2px;border-radius:3px}
   .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
   .m-okcard.on{display:block}
   .m-okcard .big{font-size:2.4rem;line-height:1}
@@ -311,7 +300,7 @@
         <a href="index.html#contact">联系我们<span class="caret">▾</span></a>
         <div class="nav-sub">
           <a href="index.html#contact">联系方式 · 留言</a>
-          <a href="#downloads">资料下载</a>
+          <a href="index.html#downloads">资料下载</a>
         </div>
       </div>
     </nav>
@@ -441,17 +430,6 @@
   </div>
 </section>
 
-<!-- ============ 资料下载 ============ -->
-<section class="blk" id="downloads">
-  <div class="wrap">
-    <div class="kicker">DOWNLOAD · 资料下载</div>
-    <h2>把资料带走，慢慢看</h2>
-    <p class="lead">产品宣传册、方案说明、演示材料——需要的直接下载。没有您要的材料？来信索取，我们按需整理。</p>
-    <div class="dl-list" id="dlList"></div>
-    <p class="dl-note">以上均为对外公开版本，不含任何客户信息与项目细节；定制化方案书请与我们联系。如遇下载异常，可来信 info@javis.org.cn 索取。</p>
-  </div>
-</section>
-
 <!-- ============ CTA + 联系 ============ -->
 <section class="blk" id="contact" style="padding-top:8px">
   <div class="wrap">
@@ -499,6 +477,10 @@
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
           <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
         </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
         <button class="msubmit" type="submit" id="msubmit">提交申请</button>
       </form>
       <div class="mmsg" id="mmsg" role="status"></div>
@@ -534,32 +516,6 @@
       img.onerror = function(){ if (++hi < APIH.length) img.src = APIH[hi] + qs; };
       img.src = APIH[0] + qs;
     } catch(e){}
-  })();
-  // ---- 资料下载（新增文件：把文件放进 assets/downloads/ 后在下面 DL 数组加一行）----
-  /* DL-LIST-START */
-  var DL = [
-    { t: "机悟·政企超脑 宣传册 v1", d: "产品定位 · 能力清单 · 部署路径 · 常见顾虑", f: "机悟政企超脑宣传册_v1.pdf", s: "1.6 MB", date: "2026-09" }
-  ];
-  /* DL-LIST-END */
-  (function(){
-    var box = document.getElementById('dlList');
-    if (!box) return;
-    if (!DL.length){
-      box.innerHTML = '<div class="dl-empty">资料整理中，即将上线。<br>着急可先来信索取：info@javis.org.cn</div>';
-      return;
-    }
-    var ICON = { pdf:'pdf', ppt:'ppt', pptx:'ppt', doc:'doc', docx:'doc', zip:'zip', rar:'zip', xls:'doc', xlsx:'doc' };
-    box.innerHTML = DL.map(function(x){
-      var ext = (x.f.split('.').pop() || '').toLowerCase();
-      var label = ext === 'pptx' ? 'PPT' : (ext === 'docx' ? 'DOC' : ext.toUpperCase());
-      var cls = ICON[ext] || '';
-      var sub = [x.d, x.s, x.date].filter(Boolean).join(' · ');
-      return '<div class="dl-item">'
-        + '<div class="dl-ico ' + cls + '">' + label + '</div>'
-        + '<div class="dl-meta"><b>' + x.t + '</b><span>' + sub + '</span></div>'
-        + '<a class="dl-btn" href="assets/downloads/' + encodeURIComponent(x.f) + '" download>下载</a>'
-        + '</div>';
-    }).join('');
   })();
 
   // 导航（移动端抽屉：点链接/点外部/Esc 都能关，关闭时恢复页面滚动）
@@ -612,6 +568,7 @@
     msub.textContent = KINDS[curKind].sub;
     msubmitBtn.textContent = curKind === 'demo' ? '预约演示' : '提交申请';
     mformEl.reset(); mmsg.className = 'mmsg'; mmsg.textContent = '';
+    { const r = mformEl.querySelector('.chk.err'); if (r) r.classList.remove('err'); }
     mformBox.style.display = 'block'; mokBox.classList.remove('on');
     mback.classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -636,13 +593,21 @@
     if (!pw) return showMsg('请填写电话或微信号（至少一项），方便我们联系您', true);
     if (!need) return showMsg('请简单介绍一下需求', true);
     if (need.length < 4) return showMsg('需求介绍再详细一点会更高效（4 字以上即可）', true);
+    {
+      const ck = mformEl.querySelector('input[name="consent"]');
+      if (!ck || !ck.checked) {
+        const row = ck && ck.closest('.chk'); if (row) row.classList.add('err');
+        return showMsg('请先阅读并勾选同意《隐私政策》，我们才能联系您', true);
+      }
+      const row = ck.closest && ck.closest('.chk'); if (row) row.classList.remove('err');
+    }
     msubmitBtn.disabled = true;
     const old = msubmitBtn.textContent;
     msubmitBtn.textContent = '提交中…';
     try {
       const resp = await apiFetch('/api/lead', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need })
+        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need, consent: true })
       });
       const data = await resp.json().catch(() => ({}));
       if (resp.ok && data.ok) { mformBox.style.display = 'none'; mokBox.classList.add('on'); }
