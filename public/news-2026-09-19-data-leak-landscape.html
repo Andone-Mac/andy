@@ -328,7 +328,7 @@
     <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
     <nav class="links" id="menu">
       <div class="nav-item">
-        <a href="index.html">首页<span class="caret">▾</span></a>
+        <a href="index.html#top">首页<span class="caret">▾</span></a>
         <div class="nav-sub">
           <a href="index.html#why">机悟·甲维思</a>
           <a href="guide.html">部署指南</a>
@@ -338,7 +338,7 @@
         </div>
       </div>
       <div class="nav-item">
-        <a href="news.html" class="on">行业动态<span class="caret">▾</span></a>
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
           <a href="news.html">全部动态</a>
           <a href="news-2026-09-19-data-leak-landscape.html">2025 年 4.1 万起泄露，六成案件源于内网</a>
@@ -376,7 +376,13 @@
           <a href="about.html#identity">我们的样子</a>
         </div>
       </div>
-      <a href="index.html#contact">联系我们</a>
+      <div class="nav-item">
+        <a href="index.html#contact">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="index.html#contact">联系方式 · 留言</a>
+          <a href="index.html#downloads">资料下载</a>
+        </div>
+      </div>
     </nav>
     <a class="btn btn-solid nav-cta" href="index.html#contact" data-open="eval">免费部署评估</a>
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
