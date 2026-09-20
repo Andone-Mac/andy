@@ -3,392 +3,124 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍｜行业动态｜机悟·政企超脑 | 甲维思 JAVIS</title>
-<meta name="description" content="一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。">
-<meta name="keywords" content="断网大模型,离线大模型,内网部署,私有化部署,air-gapped AI,数据不出域,本地大模型,政企AI,数据出境安全评估,机悟,政企超脑">
+<title>「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="format-detection" content="telephone=no,email=no">
 <link rel="canonical" href="https://javis.org.cn/news-2026-09-18-air-gapped-ai.html">
 <link rel="icon" href="assets/favicon.png">
-<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
-<meta property="og:title" content="「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍">
-<meta property="og:description" content="一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。">
+<meta property="og:title" content="「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。">
 <meta property="og:url" content="https://javis.org.cn/news-2026-09-18-air-gapped-ai.html">
-<meta property="og:image" content="https://javis.org.cn/assets/logo.png">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍">
-<meta name="twitter:description" content="一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。">
-<meta name="twitter:image" content="https://javis.org.cn/assets/logo.png">
+<meta name="twitter:title" content="「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍","description":"一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。同期，NVIDIA 与 Palantir 把开源模型打包进空网环境交付给政府机构，DataRobot 把 AI 治理下沉到本地与空网，NVIDIA 在 IFA 上宣布本地推理最高提速 1.9× 并点名支持 Hermes Agent。「断网 AI」正在从少数单位的特殊选择，变成受监管行业的常规配置。","datePublished":"2026-09-18","dateModified":"2026-09-18","author":{"@type":"Organization","name":"甲维思 JAVIS"},"publisher":{"@type":"Organization","name":"甲维思 JAVIS"},"mainEntityOfPage":"https://javis.org.cn/news-2026-09-18-air-gapped-ai.html","image":["https://javis.org.cn/assets/logo.png"]}</script>
-<style>
-  :root{
-    --navy:#16295e;--navy-deep:#0e1c42;--cyan:#22a7dd;--cyan-deep:#1878c8;
-    --gold:#e6b34d;--gold-ink:#96690f;--gold-bg:#fdf4e3;
-    --ink:#22304a;--ink-soft:#3d4c6b;--muted:#7b8499;--line:#dfe5ef;--bg:#fff;--band:#0e1c42;
-    --maxw:1080px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  section[id]{scroll-margin-top:90px}
-  section{padding:72px 0}
-  a{color:var(--cyan-deep)}
-  h2{color:var(--navy);font-size:clamp(1.45rem,3vw,1.9rem);line-height:1.4;margin-bottom:12px;letter-spacing:.01em}
-  .kicker{display:flex;align-items:center;gap:12px;font-size:.76rem;font-weight:700;letter-spacing:.24em;color:var(--cyan-deep);text-transform:uppercase;margin-bottom:14px}
-  .kicker::after{content:"";width:42px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--navy))}
-  .lead{color:var(--ink-soft);font-size:1.02rem;max-width:760px}
-  .center{text-align:center}.center .kicker{justify-content:center}.center .lead{margin:0 auto}
-
-  /* nav */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(14,28,66,.04)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
-  .brand img{height:48px;width:auto;display:block}
-  nav.links{display:flex;gap:26px;align-items:center;flex:1;justify-content:space-evenly}
-  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.17rem;font-weight:700;padding:6px 2px;border-bottom:2px solid transparent}
-  nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
-  nav.links a.active{color:var(--navy);font-weight:800;border-bottom-color:var(--cyan)}
-  .nav-item{position:relative}
-  .nav-item > a{display:flex;align-items:center;gap:4px}
-  .nav-item .caret{font-size:.62rem;color:var(--cyan-deep);transition:transform .2s}
-  .nav-item:hover .caret{transform:rotate(180deg)}
-  .nav-sub{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 34px rgba(14,28,66,.14);min-width:206px;padding:8px;opacity:0;visibility:hidden;transition:opacity .18s,visibility .18s;z-index:60}
-  .nav-item:hover .nav-sub{opacity:1;visibility:visible}
-  .nav-sub a{display:block;padding:10px 14px;border-radius:7px;font-size:.92rem;color:var(--ink-soft);border-bottom:none!important;white-space:nowrap}
-  .nav-sub a:hover{background:#eef5fd;color:var(--navy)}
-  @media(max-width:900px){
-    .nav-item{display:block;width:100%}
-    .nav-item > a{display:inline-block}
-    .nav-item .caret{display:none}
-    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px;background:transparent}
-    .nav-sub a{padding:8px 0;font-size:.95rem;color:#dfe9ff;border-bottom:none!important}
-    .nav-sub a:hover{background:none;color:#fff}
-  }
-  .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s;cursor:pointer}
-  .btn-solid{background:var(--navy);color:#fff}
-  .btn-solid:hover{background:var(--navy-deep);transform:translateY(-1px)}
-  .btn-ghost{border:1.5px solid #fff;color:#fff;background:transparent}
-  .btn-ghost:hover{background:rgba(255,255,255,.14)}
-  .btn-line{border:1.5px solid var(--navy);color:var(--navy)}
-  .btn-line:hover{background:var(--navy);color:#fff}
-  .nav-cta{padding:10px 18px;font-size:.88rem}
-  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
-
-  /* ---------- 全屏影片首屏（zkedugroup 式：视频铺满首屏，5 套横/竖轮插） ---------- */
-  .film{position:relative;width:100%;height:100vh;height:100svh;min-height:520px;overflow:hidden;background:#04070f}
-  .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#04070f}
-  .film .shade{position:absolute;inset:0;pointer-events:none;z-index:1;background:linear-gradient(180deg,rgba(8,14,33,.55) 0%,rgba(8,14,33,0) 24%,rgba(8,14,33,0) 58%,rgba(8,14,33,.5) 100%)}
-  .film .play{position:absolute;inset:0;z-index:3;display:none;align-items:center;justify-content:center;background:rgba(4,7,15,.18);border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
-  .film.needs-tap .play{display:flex}
-  .film .ptri{width:0;height:0;border-style:solid;border-width:26px 0 26px 42px;border-color:transparent transparent transparent rgba(255,255,255,.95);filter:drop-shadow(0 2px 10px rgba(0,0,0,.55))}
-  .film .cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;color:#dfe7f6;text-decoration:none;font-size:.78rem;letter-spacing:.3em;text-shadow:0 1px 4px rgba(0,0,0,.6);padding:6px 14px}
-  .film .cue .chev{width:20px;height:20px;border-right:2px solid rgba(255,255,255,.95);border-bottom:2px solid rgba(255,255,255,.95);transform:rotate(45deg);animation:cue 1.7s ease-in-out infinite;opacity:.9}
-  @keyframes cue{0%,100%{transform:rotate(45deg) translate(0,0);opacity:.4}50%{transform:rotate(45deg) translate(4px,4px);opacity:1}}
-  .film .dots{position:absolute;right:26px;bottom:26px;z-index:2;display:flex;gap:9px}
-  .film .dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(255,255,255,.75);padding:0;background:transparent;cursor:pointer;transition:background .2s,transform .2s}
-  .film .dots button.on{background:#fff;transform:scale(1.28)}
-  @media (prefers-reduced-motion:reduce){.film .cue .chev{animation:none}}
-  @media (max-width:900px){.film .dots{right:16px;bottom:18px}}
-
-  /* hero */
-  .hero{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 55%,#1c3c86 100%);color:#fff;padding:96px 0 88px;text-align:center;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,rgba(34,167,221,.22),transparent 65%);pointer-events:none}
-  .hero .wrap{position:relative;z-index:1}
-  .hero .tag{display:inline-flex;align-items:center;border:1.5px solid #e6b34d;border-radius:999px;padding:9px 26px;font-size:1.29rem;font-weight:700;letter-spacing:.06em;color:#f5d78e;margin-bottom:24px;box-shadow:0 0 18px rgba(230,179,77,.25)}
-  .hero h1{font-size:clamp(1.7rem,4.6vw,2.9rem);line-height:1.35;font-weight:800;letter-spacing:.01em}
-  .hero h1 .hl{color:#5cc6ff}
-  .hero .sub{margin:20px auto 0;max-width:780px;color:#c9d6f2;font-size:clamp(.98rem,1.6vw,1.1rem)}
-  .hero .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
-  .hero .cta-note{font-size:.85rem;color:#9fb2dd;width:100%}
-  .hero .chips{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  .hero .chip{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);border-radius:8px;padding:7px 16px;font-size:.88rem;color:#e6eefc}
-  .hero .slogan{margin-top:40px;font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:800;letter-spacing:.04em;color:#fff}
-  .hero .slogan span{color:#5cc6ff}
-
-  /* cards */
-  .grid{display:grid;gap:18px;margin-top:34px}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .card{border:1px solid var(--line);border-radius:12px;padding:22px 20px;background:#fff;transition:box-shadow .18s,transform .18s}
-  .card:hover{box-shadow:0 10px 26px rgba(14,28,66,.08);transform:translateY(-2px)}
-  .card b.t{display:block;color:var(--navy);font-size:1.06rem;margin:10px 0 8px}
-  .card p{font-size:.92rem;color:var(--ink-soft)}
-  .card .icon{width:40px;height:40px;border-radius:9px;background:#eaf3fc;color:var(--cyan-deep);display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:800}
-  .quote{display:block;margin-top:10px;font-size:.85rem;color:var(--cyan-deep);font-weight:700}
-
-  /* scenes */
-  .scenes{background:#f7f9fd}
-  .scene{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:18px;background:#fff}
-  .scene h3{color:var(--navy);font-size:1rem;margin-bottom:6px}
-  .scene p{font-size:.88rem;color:var(--ink-soft)}
-  .scene .m{display:inline-block;margin-top:8px;background:#eaf3fc;color:var(--cyan-deep);border-radius:6px;padding:2px 8px;font-size:.78rem;font-weight:700}
-  .scene-note{margin-top:20px;font-size:.84rem;color:var(--muted)}
-
-  /* ledger */
-  .ledger table{width:100%;border-collapse:collapse;margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .ledger th,.ledger td{padding:13px 16px;text-align:left;border-bottom:1px solid #eef2f8;font-size:.93rem;vertical-align:top}
-  .ledger thead th{background:var(--navy);color:#fff;font-size:.9rem;letter-spacing:.02em}
-  .ledger td.win{background:#f0f9ff;font-weight:700;color:var(--navy)}
-  .ledger .cap{margin-top:12px;font-size:.85rem;color:var(--muted)}
-
-  /* faq */
-  details{border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:10px;overflow:hidden}
-  summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:700;color:var(--navy);font-size:.99rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";font-size:1.35rem;color:var(--cyan-deep);font-weight:800;line-height:1;transition:transform .15s}
-  details[open] summary::after{content:"–"}
-  details .a{padding:0 18px 16px;color:var(--ink-soft);font-size:.93rem}
-
-  /* cta band */
-  .cta-band{background:linear-gradient(135deg,var(--navy-deep),var(--navy) 55%,#1c3c86);color:#fff;text-align:center;border-radius:16px;padding:52px 28px}
-  .cta-band h2{color:#fff}
-  .cta-band p{color:#c9d6f2;max-width:660px;margin:0 auto 26px}
-
-  /* contact */
-  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-  .cbox{border:1px solid var(--line);border-radius:12px;padding:22px;background:#fff}
-  .cbox b{font-size:.8rem;letter-spacing:.16em;color:var(--muted);display:block;margin-bottom:10px;font-weight:700}
-  .cbox p{font-size:1.02rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
-  .cbox small{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
-  .cbox .qr{width:220px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff;cursor:zoom-in}
-  .cbox .qr-tip{display:block;color:var(--cyan-deep);font-weight:800;font-size:.9rem;margin-bottom:2px}
-  .mqr img,.qr2{cursor:zoom-in}
-
-  /* lightbox */
-  .zoomer{position:fixed;inset:0;background:rgba(8,14,30,.85);display:none;align-items:center;justify-content:center;z-index:220;cursor:zoom-out;padding:26px}
-  .zoomer.open{display:flex}
-  .zoomer img{max-width:min(86vw,560px);max-height:84vh;background:#fff;border-radius:12px;padding:14px;box-shadow:0 18px 70px rgba(0,0,0,.55);cursor:zoom-out}
-  .zoomer .z-x{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
-  .zoomer .z-x:hover{background:#d64541}
-  .zoomer .z-tip{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,.8);font-size:.9rem}
-
-  /* modal form */
-  .mback{position:fixed;inset:0;background:rgba(14,28,66,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:120;padding:18px}
-  .mback.open{display:flex}
-  .mcard{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 60px rgba(14,28,66,.35);padding:26px 26px 20px;position:relative}
-  .mcard .m-close{position:absolute;top:10px;right:12px;width:42px;height:42px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(14,28,66,.28);transition:background .15s,transform .15s}
-  .mcard .m-close:hover{background:#d64541;transform:scale(1.06)}
-  .mcard h3{color:var(--navy);font-size:1.3rem;margin:2px 0 4px}
-  .mcard .m-sub{color:var(--muted);font-size:.9rem;margin:0 0 14px}
-  .mf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .mf .full{grid-column:1/-1}
-  .fld{display:flex;flex-direction:column;gap:5px}
-  .fld label{font-size:.82rem;font-weight:700;color:var(--navy)}
-  .fld label em{font-style:normal;color:#d64541;font-weight:800}
-  .fld .hint{font-size:.72rem;color:var(--muted);font-weight:400}
-  .inp{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.93rem;color:var(--ink);background:#fbfcfe;width:100%;box-sizing:border-box;font-family:inherit}
-  .inp:focus{outline:none;border-color:var(--cyan);background:#fff;box-shadow:0 0 0 3px rgba(34,167,221,.14)}
-  textarea.inp{resize:vertical;min-height:128px}
-  .mqr{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#eef7fd,#f7fbff);border:2px solid var(--cyan-deep);border-radius:12px;padding:18px 16px;margin-top:16px;box-shadow:0 3px 10px rgba(24,120,200,.12)}
-  .mqr img{width:112px;height:112px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:4px;flex:none}
-  .mqr b{color:var(--navy);font-size:1.08rem;display:block}
-  .mqr p{margin:6px 0 0;font-size:.88rem;color:var(--ink-soft);line-height:1.6}
-  .mqr .go{color:var(--cyan-deep);font-weight:800;font-size:.98rem;display:block;margin-top:8px}
-  .msubmit{margin-top:16px;width:100%;border:0;background:linear-gradient(90deg,var(--navy),var(--cyan-deep));color:#fff;font-size:1rem;font-weight:800;padding:13px;border-radius:8px;cursor:pointer}
-  .msubmit:disabled{opacity:.6;cursor:not-allowed}
-  .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
-  .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
-  /* 留资表单：隐私政策同意勾选（2026-09-18 加，合规需要） */
-  .consent-row{margin-top:12px}
-  .chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.6;color:#5b6b8c;cursor:pointer}
-  .chk input[type=checkbox]{flex:0 0 auto;width:16px;height:16px;margin:3px 0 0;accent-color:var(--cyan-deep);cursor:pointer}
-  .chk a{color:var(--cyan-deep);text-decoration:underline}
-  .chk.err{color:#a93226}
-  .chk.err input[type=checkbox]{outline:2px solid #f5c6c6;outline-offset:2px;border-radius:3px}
-  .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
-  .m-okcard.on{display:block}
-  .m-okcard .big{font-size:2.4rem;line-height:1}
-  .m-okcard h4{color:var(--navy);font-size:1.2rem;margin:10px 0 6px}
-  .m-okcard p{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 auto 6px;max-width:420px}
-  .m-okcard .qr2{width:150px;height:150px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:6px;margin:10px auto 2px;display:block}
-  .m-okcard .go{color:var(--cyan-deep);font-weight:800;font-size:.9rem}
-  .m-okcard .msubmit{max-width:220px}
-  @media(max-width:600px){.mf{grid-template-columns:1fr}.mcard{padding:20px 16px 16px}}
-
-  footer{background:var(--band);color:#7f8db0;padding:38px 0 32px;font-size:.84rem}
-  footer .top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.08)}
-  footer .logo-w{height:36px;width:auto}
-  footer .slogan{color:#dfe9ff;font-weight:700;letter-spacing:.03em}
-  footer .comply{margin-top:16px;line-height:1.7}
-  footer .bottom{margin-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-  @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
-  /* ===== NEWS 新闻动态 ===== */
-  .news-grid{display:grid;grid-template-columns:5fr 6fr;gap:28px;align-items:start;margin-top:8px}
-  .news-video{border-radius:14px;overflow:hidden;border:1px solid var(--line);box-shadow:0 10px 30px rgba(22,41,94,.10);background:#050a18;position:sticky;top:88px}
-  .news-video video{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-  .news-items{display:flex;flex-direction:column;gap:16px}
-  .news-card{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:18px 20px;background:#fff}
-  .n-date{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;color:#fff;background:var(--navy-deep);border-radius:20px;padding:3px 12px}
-  .n-tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--cyan-deep);background:#eaf6fd;border:1px solid #bfe4f7;border-radius:20px;padding:3px 12px}
-  .news-card .n-date{margin-bottom:10px}
-  .news-card .n-tag{margin-left:8px}
-  .news-card h3{color:var(--navy);font-size:1.12rem;line-height:1.45;margin-bottom:8px}
-  .news-card p{color:var(--ink-soft);font-size:.94rem;margin-bottom:8px}
-  .news-card .n-src{font-size:.8rem;color:var(--muted)}
-  .news-card ul{margin:8px 0 4px 18px;color:var(--ink-soft);font-size:.92rem}
-  .news-card ul li{margin-bottom:4px}
-  .news-cta{margin-top:10px}
-  @media (max-width:900px){.news-grid{grid-template-columns:1fr}.news-video{position:static}}
-  @media (max-width:900px){
-    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:#0b1530;flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start;max-height:calc(100vh - 74px);max-height:calc(100dvh - 74px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:0 16px 34px rgba(0,0,0,.32);z-index:60;transform:translateZ(0)}
-    body.menu-open{overflow:hidden}
-    nav.links.open{display:flex}
-    nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1.15rem}
-    .menu-toggle{display:block}
-    .g4,.g3,.cgrid{grid-template-columns:1fr}
-    .hero{padding:128px 0 72px}
-    section{padding:56px 0}
-    .ledger table,.ledger thead,.ledger tbody,.ledger tr,.ledger th,.ledger td{display:block;width:100%}
-    .ledger thead{display:none}
-    .ledger td{border-bottom:none;padding:6px 16px}
-    .ledger tr{border-bottom:1px solid #eef2f8;padding:8px 0}
-  }
-  /* ===== 行业动态：首页标题列表 / 门户 / 详情页 ===== */
-  .hl-list{list-style:none;margin:10px 0 14px;border-top:1px solid var(--line)}
-  .hl-list li{border-bottom:1px dashed var(--line)}
-  .hl-list a{display:flex;gap:18px;align-items:baseline;padding:15px 2px;text-decoration:none;color:var(--navy);transition:background .18s,color .18s}
-  .hl-list a:hover{background:#f7fafd;color:var(--cyan-deep)}
-  .hl-list .d{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;color:var(--muted);flex:0 0 92px;letter-spacing:.02em}
-  .hl-list .t{font-size:1.02rem;font-weight:600;line-height:1.55}
-  .hl-list a:hover .t{text-decoration:underline;text-underline-offset:3px}
-  .hl-more{margin-top:6px;font-size:.92rem}
-  @media (max-width:640px){.hl-list a{flex-direction:column;gap:4px}.hl-list .d{flex:none}}
-
-  .nw-mast{padding:124px 0 0}
-  .nw-pill{display:inline-block;border:1px solid rgba(230,179,77,.85);background:var(--gold-bg);color:var(--gold-ink);border-radius:999px;padding:6px 18px;font-size:.84rem;font-weight:700;letter-spacing:.18em;box-shadow:0 0 14px rgba(230,179,77,.22)}
-  .nw-mast h1{font-size:clamp(1.9rem,4.6vw,2.7rem);line-height:1.24;color:var(--navy);margin:16px 0 10px;font-weight:800;letter-spacing:.01em}
-  .nw-dek{color:var(--ink-soft);font-size:clamp(.96rem,1.6vw,1.06rem);max-width:820px}
-  .nw-rule{height:3px;border-radius:2px;margin:18px 0 12px;background:linear-gradient(90deg,var(--navy) 0,var(--navy) 108px,var(--cyan) 108px,var(--cyan) 178px,var(--line) 178px)}
-  .nw-meta{font-size:.83rem;color:var(--muted);font-family:ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.02em}
-  .nw-main{padding:34px 0 64px}
-  .nw-grid{display:grid;grid-template-columns:7.4fr 4.6fr;gap:38px;align-items:start}
-  .nw-sec{display:flex;align-items:center;gap:12px;font-size:1.02rem;color:var(--navy);margin:6px 0 4px}
-  .nw-sec:after{content:"";flex:1;height:1px;background:var(--line)}
-  .nw-feat{border-bottom:2px solid var(--navy);padding-bottom:20px;margin-bottom:26px}
-  .nw-feat h2{font-size:clamp(1.32rem,2.8vw,1.78rem);line-height:1.4;margin:10px 0 12px;font-weight:800}
-  .nw-feat h2 a{color:var(--navy);text-decoration:none}
-  .nw-feat h2 a:hover{color:var(--cyan-deep)}
-  .nw-feat .nw-lead{color:var(--ink-soft);font-size:1rem}
-  .nw-item{display:grid;grid-template-columns:100px 1fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
-  .nw-item .dt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.8rem;color:var(--muted);padding-top:3px}
-  .nw-item h3{font-size:1.1rem;line-height:1.5;margin-bottom:8px}
-  .nw-item h3 a{color:var(--navy);text-decoration:none}
-  .nw-item h3 a:hover{color:var(--cyan-deep);text-decoration:underline;text-underline-offset:3px}
-  .nw-item p{color:var(--ink-soft);font-size:.95rem;margin-bottom:10px}
-  .nw-morelink{font-size:.9rem;font-weight:700;color:var(--cyan-deep);text-decoration:none;white-space:nowrap}
-  .nw-morelink:hover{text-decoration:underline;text-underline-offset:3px}
-  .nw-side{position:sticky;top:88px}
-  .nw-card{border:1px solid var(--line);border-radius:12px;padding:18px 20px;background:#fff;margin-bottom:18px}
-  .nw-card h4{font-size:.95rem;color:var(--navy);margin-bottom:12px;letter-spacing:.02em}
-  .nw-card video{display:block;width:100%;border-radius:9px;background:#050a18}
-  .nw-card .nw-note{font-size:.82rem;color:var(--muted);margin-top:10px}
-  .nw-links{list-style:none}
-  .nw-links li{margin-bottom:9px;font-size:.92rem}
-  @media (max-width:900px){.nw-grid{grid-template-columns:1fr;gap:26px}.nw-side{position:static}.nw-item{grid-template-columns:1fr;gap:6px}}
-
-  .art-head{padding:120px 0 0}
-  .crumb{font-size:.83rem;color:var(--muted);margin-bottom:18px}
-  .crumb a{color:var(--muted);text-decoration:none}
-  .crumb a:hover{color:var(--cyan-deep)}
-  .art-h1{font-size:clamp(1.5rem,3.4vw,2.15rem);line-height:1.36;color:var(--navy);margin:14px 0 0;font-weight:800;letter-spacing:.01em}
-  .art-lede{margin-top:18px;padding-left:16px;border-left:3px solid var(--cyan);color:var(--ink-soft);font-size:1.02rem}
-  .art-sec{padding:30px 0 64px}
-  .art-wrap{max-width:780px}
-  .art-fig{margin:0 0 26px}
-  .art-fig video{display:block;width:100%;border-radius:12px;background:#050a18}
-  .art-fig figcaption{font-size:.82rem;color:var(--muted);margin-top:9px}
-  .art-body p{margin-bottom:15px;color:var(--ink-soft);font-size:1.01rem}
-  .art-body ul{margin:6px 0 18px 20px;color:var(--ink-soft);font-size:.98rem}
-  .art-body ul li{margin-bottom:7px}
-  .art-h2{font-size:1.12rem;color:var(--navy);margin:26px 0 10px;display:flex;align-items:center;gap:10px}
-  .art-h2:before{content:"";width:13px;height:13px;background:var(--cyan);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
-  .art-tl{list-style:none;margin:10px 0 20px;border-left:2px solid var(--line);padding-left:22px}
-  .art-tl li{position:relative;padding-bottom:11px;font-size:.95rem;color:var(--ink-soft)}
-  .art-tl li:before{content:"";position:absolute;left:-28px;top:.48em;width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 3px #eaf6fd}
-  .art-tl .dt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--navy);font-weight:700;margin-right:9px}
-  .kv-box{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 62%,#1c3c86 100%);border-radius:14px;padding:24px 26px;margin:30px 0;color:#fff}
-  .kv-box h3{color:#fff;font-size:1.1rem;margin-bottom:6px}
-  .kv-box .kv-sub{color:#a8c0ea;font-size:.9rem;margin-bottom:14px}
-  .kv-box ul{list-style:none;margin:0 0 4px}
-  .kv-box li{position:relative;padding-left:28px;margin-bottom:14px;color:#e9f0fc;font-size:1.02rem;line-height:1.72}
-  .kv-box li:last-child{margin-bottom:0}
-  .kv-box li:before{content:"";position:absolute;left:0;top:.5em;width:14px;height:14px;background:var(--cyan);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
-  .kv-box li b{color:#8fd8ff}
-  .art-src{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:26px}
-  .art-foot{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:26px}
-</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍",
+  "description": "一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。",
+  "datePublished": "2026-09-18",
+  "dateModified": "2026-09-18",
+  "author": {
+    "@type": "Organization",
+    "name": "甲维思 JAVIS"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "甲维思 JAVIS"
+  },
+  "mainEntityOfPage": "https://javis.org.cn/news-2026-09-18-air-gapped-ai.html",
+  "image": [
+    "https://javis.org.cn/assets/logo.png"
+  ]
+}
+</script>
 </head>
+<body>
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
     <nav class="links" id="menu">
       <div class="nav-item">
-        <a href="index.html#top">首页<span class="caret">▾</span></a>
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="index.html#why">机悟·甲维思</a>
-          <a href="guide.html">部署指南</a>
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
           <a href="about.html">关于我们</a>
-          <a href="news.html">行业动态</a>
-          <a href="index.html#contact">联系我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="downloads.html">资料下载<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="downloads.html">全部资料</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="news.html">全部动态</a>
-          <a href="news-2026-09-19-data-leak-landscape.html">2025 年 4.1 万起泄露，六成案件源于内网</a>
+          <a href="news.html">全部动态（共 5 条）</a>
+          <a href="news-2026-09-20-silent-forwarding.html">「静默转发」指控：数据已出境？</a>
+          <a href="news-2026-09-19-data-leak-landscape.html">4.1 万起泄露，六成源于内网</a>
           <a href="news-2026-09-18-air-gapped-ai.html">断网 AI 占比一年翻倍</a>
           <a href="news-2026-09-16-cloud-down.html">云端大模型接连掉线</a>
           <a href="news-2026-09-13-data-overseas.html">AI 数据出海传闻</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="index.html#why">机悟·甲维思<span class="caret">▾</span></a>
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="index.html#why">机悟是什么</a>
-          <a href="index.html#scenes">用在哪</a>
-          <a href="index.html#ledger">算三年账</a>
-          <a href="index.html#faq">常见顾虑</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="guide.html">部署指南<span class="caret">▾</span></a>
-        <div class="nav-sub">
-          <a href="guide.html#why">必须上本地AI理由</a>
-          <a href="guide.html#select">怎么选型</a>
-          <a href="guide.html#ledger">算三年账</a>
-          <a href="guide.html#pitfalls">落地避坑</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="about.html">关于我们<span class="caret">▾</span></a>
-        <div class="nav-sub">
-          <a href="about.html#preface">序 · 一个时代的悖论</a>
-          <a href="about.html#mission">我们的使命</a>
-          <a href="about.html#vision">愿景 · 百年传承</a>
-          <a href="about.html#values">价值观 · 定位</a>
-          <a href="about.html#rules">行为准则 · 取舍</a>
-          <a href="about.html#identity">我们的样子</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="index.html#contact">联系我们<span class="caret">▾</span></a>
-        <div class="nav-sub">
-          <a href="index.html#contact">联系方式 · 留言</a>
-          <a href="index.html#downloads">资料下载</a>
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
         </div>
       </div>
     </nav>
-    <a class="btn btn-solid nav-cta" href="index.html#contact" data-open="eval">免费部署评估</a>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
-</header><body>
-
+</header>
 <section class="art-head" id="top">
   <div class="wrap art-wrap">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
@@ -432,8 +164,8 @@
     <div class="art-foot">
       <a class="btn btn-line" href="news.html">← 返回行业动态</a>
       <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn btn-solid" href="index.html#contact" data-open="eval">申请 40 分钟免费部署评估</a>
-        <a class="btn btn-line" href="index.html#contact" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
       </div>
     </div>
   </div>
@@ -445,128 +177,68 @@
       <h2>看完这组数据，您的单位排在哪一边？</h2>
       <p>把大模型部署在您自己的内网：断网可用、数据不出域、结论可溯源、版本冻结。一次 40 分钟免费评估，现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。</p>
       <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
-        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="index.html#contact" data-open="eval">申请 40 分钟免费部署评估</a>
-        <a class="btn btn-ghost" href="index.html#contact" data-open="demo">预约演示 · 跑本地 AI</a>
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-ghost" href="contact.html" data-open="demo">预约演示 · 跑本地 AI</a>
       </div></div>
     </div>
   </div>
 </section>
-
 <footer>
   <div class="wrap">
     <div class="top">
       <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
       <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
     </div>
-    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
     <div class="bottom">
-      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn</div>
-      <div><a style="color:#7f8db0" href="index.html">首页</a>　<a style="color:#7f8db0" href="news.html">行业动态</a>　<a style="color:#7f8db0" href="index.html#why">机悟是什么</a>　<a style="color:#7f8db0" href="index.html#scenes">用在哪</a>　<a style="color:#7f8db0" href="index.html#ledger">算三年账</a>　<a style="color:#7f8db0" href="index.html#faq">常见顾虑</a>　<a style="color:#7f8db0" href="guide.html">部署指南</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="index.html#contact">联系我们</a>　<a style="color:#7f8db0" href="privacy.html">隐私政策</a></div>
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
     </div>
   </div>
 </footer>
-
-<div class="mback" id="mback" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
   <div class="mcard">
     <button class="m-close" id="mclose" aria-label="关闭">×</button>
-    <div id="mform">
-      <h3 id="mtitle">申请 40 分钟免费部署评估</h3>
-      <p class="m-sub" id="msub">提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
-      <form id="mform-el" novalidate>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
         <div class="mf">
           <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
           <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
-          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：IT 负责人"></div>
-          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" required maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
         </div>
         <div class="mqr">
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
-          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
         </div>
         <div class="fld full consent-row">
           <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
             <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
         </div>
-        <button class="msubmit" type="submit" id="msubmit">提交申请</button>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
       </form>
-      <div class="mmsg" id="mmsg" role="status"></div>
-    </div>
-    <div class="m-okcard" id="mok">
-      <div class="big">✓</div>
-      <h4>已收到您的申请</h4>
-      <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
-      <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
-      <p><span class="go">加官方微信更快对接</span></p>
-      <button class="msubmit" type="button" id="mok-close">好的</button>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
     </div>
   </div>
 </div>
-
+<!-- ============ 二维码放大 ============ -->
 <div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
   <button class="z-x" id="zclose" aria-label="关闭">×</button>
   <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
 </div>
-
-<script>
-(function(){
-  var $ = function(s){return document.querySelector(s)};
-  function openM(kind){
-    var t = $('#mtitle'), s = $('#msub');
-    if(kind==='eval'){t.textContent='申请 40 分钟免费部署评估';s.textContent='提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。'}
-    else if(kind==='demo'){t.textContent='预约演示 · 在您的设备上真跑一遍断网大模型';s.textContent='30 分钟远程演示，全程不断网不可用不演示。提交后工作人员将在 1 个工作日内联系您。'}
-    $('#mback').style.display='flex';document.body.style.overflow='hidden';
-  }
-  document.querySelectorAll('[data-open]').forEach(function(a){
-    a.addEventListener('click',function(e){e.preventDefault();openM(a.getAttribute('data-open'));});
-  });
-  $('#mclose').addEventListener('click',function(){$('#mback').style.display='none';document.body.style.overflow='';});
-  $('#mok-close').addEventListener('click',function(){$('#mback').style.display='none';document.body.style.overflow='';});
-  $('#mback').addEventListener('click',function(e){if(e.target===this){this.style.display='none';document.body.style.overflow='';}});
-  document.querySelectorAll('.go, .qr, .qr2').forEach(function(im){
-    im.addEventListener('click',function(){var s=im.tagName==='IMG'?im.src:'';if(s){$('#zimg').src=s;$('#zoomer').style.display='flex';}});
-  });
-  $('#zclose').addEventListener('click',function(){$('#zoomer').style.display='none';});
-  $('#zoomer').addEventListener('click',function(e){if(e.target===this){this.style.display='none';}});
-  // ---- 留资表单提交（2026-09-18 补：此前这一块根本没绑 submit，点「提交申请」会整页刷新、线索丢失）----
-  var APIH = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
-  async function apiPost(path, opts){
-    var lastErr = null;
-    for (var i = 0; i < APIH.length; i++){
-      try {
-        var ctl = new AbortController(), timer = setTimeout(function(){ ctl.abort(); }, 8000);
-        var r = await fetch(APIH[i] + path, Object.assign({}, opts, { signal: ctl.signal }));
-        clearTimeout(timer); return r;
-      } catch (e) { lastErr = e; }
-    }
-    throw lastErr || new Error('network');
-  }
-  var mformEl = $('#mform-el');
-  if (mformEl) mformEl.addEventListener('submit', async function(e){
-    e.preventDefault();
-    var msg = $('#mmsg'), btn = $('#msubmit'), box = $('#mform'), okc = $('#mok');
-    msg.className = 'mmsg'; msg.textContent = '';
-    var val = function(n){ var el = mformEl.querySelector('[name="' + n + '"]'); return el ? (el.value || '').trim() : ''; };
-    var ccRaw = val('cc'), pw = val('pw'), need = val('need');
-    var parts = ccRaw.split(/\s+/).filter(Boolean);
-    var company = parts.length > 1 ? parts.slice(0, -1).join(' ') : ccRaw;
-    var contact = parts.length > 1 ? parts[parts.length - 1] : '';
-    if (!company) { msg.className='mmsg err'; msg.textContent='请填写公司 / 单位名称'; return; }
-    if (!pw) { msg.className='mmsg err'; msg.textContent='请填写电话或微信号（至少一项），方便我们联系您'; return; }
-    if (!need) { msg.className='mmsg err'; msg.textContent='请简单介绍一下需求'; return; }
-    if (need.length < 4) { msg.className='mmsg err'; msg.textContent='需求介绍再详细一点会更高效（4 字以上即可）'; return; }
-    var ck = mformEl.querySelector('input[name="consent"]');
-    if (!ck || !ck.checked) { msg.className='mmsg err'; msg.textContent='请先阅读并勾选同意《隐私政策》，我们才能联系您'; return; }
-    btn.disabled = true; var old = btn.textContent; btn.textContent = '提交中…';
-    try {
-      var resp = await apiPost('/api/lead', { method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ type:'eval', company: company, contact: contact, title: val('title'), phone: pw, wechat: '', need: need, consent: true }) });
-      var data = await resp.json().catch(function(){ return {}; });
-      if (resp.ok && data.ok) { box.style.display='none'; okc.classList.add('on'); }
-      else { msg.className='mmsg err'; msg.textContent = (data && data.error) || '提交失败，请稍后再试，或直接加官方微信'; }
-    } catch (err) { msg.className='mmsg err'; msg.textContent='网络开小差了，请稍后再试，或直接加官方微信（二维码见右）'; }
-    btn.disabled = false; btn.textContent = old;
-  });
-})();
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>

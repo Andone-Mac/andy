@@ -3,643 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>政企大模型私有化部署避坑指南：从选型到落地的完整路径 | 机悟·政企超脑</title>
-<meta name="description" content="政企大模型私有化部署完整避坑指南：必须上本地 AI 的理由（保密法第三十一条、数据安全法最高一千万罚款）、模型与硬件选型、三条路径三年账、落地四个坑、验收口径与自检清单。机悟·政企超脑，数据不出域，单位有超脑。">
-<meta name="keywords" content="大模型私有化部署,政企大模型部署,断网大模型,本地部署大模型选型,私有化部署成本,大模型部署避坑,国产化大模型,内网大模型部署,量化模型,数据不出域,机悟,政企超脑,甲维思,JAVIS">
+<title>部署指南已并入「产品与方案」 | 机悟·政企超脑</title>
+<meta name="description" content="原「部署指南」内容已并入「产品与方案」页：交付路径、验收标准、三年成本账与常见顾虑。">
+<meta name="keywords" content="大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="format-detection" content="telephone=no,email=no">
 <link rel="canonical" href="https://javis.org.cn/guide.html">
 <link rel="icon" href="assets/favicon.png">
-<!-- Open Graph（微信/企微/FB 分享卡片） -->
-<meta property="og:type" content="article">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟政企超脑">
-<meta property="og:title" content="政企大模型私有化部署避坑指南：从选型到落地的完整路径">
-<meta property="og:description" content="必须上本地 AI 的理由、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径——一篇讲透政企大模型私有化部署。">
+<meta property="og:title" content="部署指南已并入「产品与方案」 | 机悟·政企超脑">
+<meta property="og:description" content="原「部署指南」内容已并入「产品与方案」页：交付路径、验收标准、三年成本账与常见顾虑。">
 <meta property="og:url" content="https://javis.org.cn/guide.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
-<meta property="og:image:alt" content="机悟·政企超脑 品牌视觉">
 <meta property="og:locale" content="zh_CN">
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="政企大模型私有化部署避坑指南：从选型到落地">
-<meta name="twitter:description" content="必须上本地 AI 的理由、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径。">
+<meta name="twitter:title" content="部署指南已并入「产品与方案」 | 机悟·政企超脑">
+<meta name="twitter:description" content="原「部署指南」内容已并入「产品与方案」页：交付路径、验收标准、三年成本账与常见顾虑。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
-<!-- 结构化数据：Article + FAQ + Organization（搜索引擎/AI 富摘要） -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Article",
-      "@id": "https://javis.org.cn/guide.html#article",
-      "headline": "政企大模型私有化部署避坑指南：从选型到落地的完整路径",
-      "description": "必须上本地 AI 的理由、模型与硬件怎么选、三条路径三年账、落地四个坑、验收口径与自检清单——一篇讲透政企大模型私有化部署。",
-      "inLanguage": "zh-CN",
-      "author": { "@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/" },
-      "publisher": {
-        "@type": "Organization",
-        "@id": "https://javis.org.cn/#org",
-        "name": "甲维思 JAVIS",
-        "logo": { "@type": "ImageObject", "url": "https://javis.org.cn/assets/logo.png" }
-      },
-      "mainEntityOfPage": "https://javis.org.cn/guide.html"
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://javis.org.cn/#org",
-      "name": "甲维思 JAVIS",
-      "alternateName": "机悟",
-      "url": "https://javis.org.cn/",
-      "logo": "https://javis.org.cn/assets/logo.png",
-      "email": "info@javis.org.cn",
-      "slogan": "数据不出域，单位有超脑，个人得助手",
-      "description": "为有本地/内网部署大模型需求的公司或组织，提供专业大模型断网私有化部署服务。"
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://javis.org.cn/#website",
-      "url": "https://javis.org.cn/",
-      "name": "机悟·政企超脑官网",
-      "inLanguage": "zh-CN",
-      "publisher": { "@id": "https://javis.org.cn/#org" }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://javis.org.cn/guide.html#faq",
-      "mainEntity": [
-        {"@type":"Question","name":"政企必须上本地 AI 的理由是什么？","acceptedAnswer":{"@type":"Answer","text":"保密法第三十一条要求涉密系统与互联网物理隔离；数据安全法对核心数据违规最高可处一千万元罚款；国家安全部已连续两年通报 AI 泄密案例。对保护私密数据与涉密事务的单位，上 AI 的前提是数据不出域。大模型与知识库全部部署在单位内网，断网也能全功能运行。"}},
-        {"@type":"Question","name":"私有化部署大模型怎么选型？","acceptedAnswer":{"@type":"Answer","text":"先诊断再选型：存量服务器和显卡先用足，跑量化模型；模型按场景选（本地知识库、卷宗梳理、文书初稿、OCR），不是越大越好。组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，JAVIS原生支持国产信创系统。"}},
-        {"@type":"Question","name":"大模型私有化部署贵吗？","acceptedAnswer":{"@type":"Answer","text":"报价等于可复算账单，含运维。云 API 按 token 计费越用越贵，自建团队人力先花两三百万；买断式部署一次投入用满三年，旧服务器和显卡先用足，三年回本。"}},
-        {"@type":"Question","name":"AI 答错了怎么办？","acceptedAnswer":{"@type":"Answer","text":"交付时附拒答率验收集：查不到依据的问题，机悟明确回复未找到依据、建议人工核对，不生成答案。每个结论都能指到原文，可当场复跑验证。宁可不答，也不骗您。"}}
-      ]
-    }
-  ]
-}
-</script>
-<style>
-  :root{
-    --navy:#16295e;--navy-deep:#0e1c42;--cyan:#22a7dd;--cyan-deep:#1878c8;
-    --ink:#22304a;--ink-soft:#3d4c6b;--muted:#7b8499;--line:#dfe5ef;--bg:#fff;--band:#0e1c42;
-    --maxw:1080px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--bg);line-height:1.65}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-  section[id]{scroll-margin-top:90px}
-  section{padding:72px 0}
-  a{color:var(--cyan-deep)}
-  h2{color:var(--navy);font-size:clamp(1.45rem,3vw,1.9rem);line-height:1.4;margin-bottom:12px;letter-spacing:.01em}
-  .kicker{display:flex;align-items:center;gap:12px;font-size:.76rem;font-weight:700;letter-spacing:.24em;color:var(--cyan-deep);text-transform:uppercase;margin-bottom:14px}
-  .kicker::after{content:"";width:42px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--navy))}
-  .lead{color:var(--ink-soft);font-size:1.02rem;max-width:760px}
-  .center{text-align:center}.center .kicker{justify-content:center}.center .lead{margin:0 auto}
-
-  /* nav */
-  header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);box-shadow:0 1px 0 rgba(14,28,66,.04)}
-  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:18px}
-  .brand img{height:48px;width:auto;display:block}
-  nav.links{display:flex;gap:26px;align-items:center;flex:1;justify-content:space-evenly}
-  nav.links a{color:var(--ink-soft);text-decoration:none;font-size:1.17rem;font-weight:700;padding:6px 2px;border-bottom:2px solid transparent}
-  nav.links a:hover{color:var(--navy);border-bottom-color:var(--cyan)}
-  nav.links a.active{color:var(--navy);font-weight:800;border-bottom-color:var(--cyan)}
-  .nav-item{position:relative}
-  .nav-item > a{display:flex;align-items:center;gap:4px}
-  .nav-item .caret{font-size:.62rem;color:var(--cyan-deep);transition:transform .2s}
-  .nav-item:hover .caret{transform:rotate(180deg)}
-  .nav-sub{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 14px 34px rgba(14,28,66,.14);min-width:206px;padding:8px;opacity:0;visibility:hidden;transition:opacity .18s,visibility .18s;z-index:60}
-  .nav-item:hover .nav-sub{opacity:1;visibility:visible}
-  .nav-sub a{display:block;padding:10px 14px;border-radius:7px;font-size:.92rem;color:var(--ink-soft);border-bottom:none!important;white-space:nowrap}
-  .nav-sub a:hover{background:#eef5fd;color:var(--navy)}
-  @media(max-width:900px){
-    .nav-item{display:block;width:100%}
-    .nav-item > a{display:inline-block}
-    .nav-item .caret{display:none}
-    .nav-sub{position:static;transform:none;opacity:1;visibility:visible;box-shadow:none;border:none;border-left:2px solid rgba(255,255,255,.15);border-radius:0;min-width:0;padding:0 0 0 14px;margin:2px 0 4px;background:transparent}
-    .nav-sub a{padding:8px 0;font-size:.95rem;color:#dfe9ff;border-bottom:none!important}
-    .nav-sub a:hover{background:none;color:#fff}
-  }
-  .btn{display:inline-block;text-decoration:none;font-size:.95rem;font-weight:700;border-radius:6px;padding:13px 26px;transition:background .15s,color .15s,transform .15s;cursor:pointer}
-  .btn-solid{background:var(--navy);color:#fff}
-  .btn-solid:hover{background:var(--navy-deep);transform:translateY(-1px)}
-  .btn-ghost{border:1.5px solid #fff;color:#fff;background:transparent}
-  .btn-ghost:hover{background:rgba(255,255,255,.14)}
-  .btn-line{border:1.5px solid var(--navy);color:var(--navy)}
-  .btn-line:hover{background:var(--navy);color:#fff}
-  .nav-cta{padding:10px 18px;font-size:.88rem}
-  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
-
-  /* hero */
-  .hero{background:linear-gradient(150deg,var(--navy-deep) 0%,var(--navy) 55%,#1c3c86 100%);color:#fff;padding:158px 0 96px;text-align:center;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;inset:auto -10% -30% -10%;height:60%;background:radial-gradient(ellipse at center,rgba(34,167,221,.22),transparent 65%);pointer-events:none}
-  .hero .wrap{position:relative;z-index:1}
-  .hero .tag{display:inline-flex;align-items:center;border:1.5px solid #e6b34d;border-radius:999px;padding:9px 26px;font-size:1.29rem;font-weight:700;letter-spacing:.06em;color:#f5d78e;margin-bottom:24px;box-shadow:0 0 18px rgba(230,179,77,.25)}
-  .hero h1{font-size:clamp(1.7rem,4.6vw,2.9rem);line-height:1.35;font-weight:800;letter-spacing:.01em}
-  .hero h1 .hl{color:#5cc6ff}
-  .hero .sub{margin:20px auto 0;max-width:780px;color:#c9d6f2;font-size:clamp(.98rem,1.6vw,1.1rem)}
-  .hero .cta-row{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center}
-  .hero .cta-note{font-size:.85rem;color:#9fb2dd;width:100%}
-  .hero .chips{margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-  .hero .chip{border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);border-radius:8px;padding:7px 16px;font-size:.88rem;color:#e6eefc}
-  .hero .slogan{margin-top:40px;font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:800;letter-spacing:.04em;color:#fff}
-  .hero .slogan span{color:#5cc6ff}
-
-  /* cards */
-  .grid{display:grid;gap:18px;margin-top:34px}
-  .g4{grid-template-columns:repeat(4,1fr)}
-  .g3{grid-template-columns:repeat(3,1fr)}
-  .card{border:1px solid var(--line);border-radius:12px;padding:22px 20px;background:#fff;transition:box-shadow .18s,transform .18s}
-  .card:hover{box-shadow:0 10px 26px rgba(14,28,66,.08);transform:translateY(-2px)}
-  .card b.t{display:block;color:var(--navy);font-size:1.06rem;margin:10px 0 8px}
-  .card p{font-size:.92rem;color:var(--ink-soft)}
-  .card .icon{width:40px;height:40px;border-radius:9px;background:#eaf3fc;color:var(--cyan-deep);display:flex;align-items:center;justify-content:center;font-size:1.25rem;font-weight:800}
-  .quote{display:block;margin-top:10px;font-size:.85rem;color:var(--cyan-deep);font-weight:700}
-
-  /* scenes */
-  .scenes{background:#f7f9fd}
-  .scene{border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:10px;padding:18px;background:#fff}
-  .scene h3{color:var(--navy);font-size:1rem;margin-bottom:6px}
-  .scene p{font-size:.88rem;color:var(--ink-soft)}
-  .scene .m{display:inline-block;margin-top:8px;background:#eaf3fc;color:var(--cyan-deep);border-radius:6px;padding:2px 8px;font-size:.78rem;font-weight:700}
-  .scene-note{margin-top:20px;font-size:.84rem;color:var(--muted)}
-
-  /* ledger */
-  .ledger table{width:100%;border-collapse:collapse;margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-  .ledger th,.ledger td{padding:13px 16px;text-align:left;border-bottom:1px solid #eef2f8;font-size:.93rem;vertical-align:top}
-  .ledger thead th{background:var(--navy);color:#fff;font-size:.9rem;letter-spacing:.02em}
-  .ledger td.win{background:#f0f9ff;font-weight:700;color:var(--navy)}
-  .ledger .cap{margin-top:12px;font-size:.85rem;color:var(--muted)}
-
-  /* faq */
-  details{border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:10px;overflow:hidden}
-  summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:700;color:var(--navy);font-size:.99rem;display:flex;justify-content:space-between;align-items:center;gap:12px}
-  summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";font-size:1.35rem;color:var(--cyan-deep);font-weight:800;line-height:1;transition:transform .15s}
-  details[open] summary::after{content:"–"}
-  details .a{padding:0 18px 16px;color:var(--ink-soft);font-size:.93rem}
-
-  /* cta band */
-  .cta-band{background:linear-gradient(135deg,var(--navy-deep),var(--navy) 55%,#1c3c86);color:#fff;text-align:center;border-radius:16px;padding:52px 28px}
-  .cta-band h2{color:#fff}
-  .cta-band p{color:#c9d6f2;max-width:660px;margin:0 auto 26px}
-
-  /* contact */
-  .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
-  .cbox{border:1px solid var(--line);border-radius:12px;padding:22px;background:#fff}
-  .cbox b{font-size:.8rem;letter-spacing:.16em;color:var(--muted);display:block;margin-bottom:10px;font-weight:700}
-  .cbox p{font-size:1.02rem;font-weight:700;color:var(--navy-deep);word-break:break-all}
-  .cbox small{display:block;color:var(--muted);font-size:.84rem;margin-top:8px}
-  .cbox .qr{width:220px;max-width:100%;display:block;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px;padding:6px;background:#fff;cursor:zoom-in}
-  .cbox .qr-tip{display:block;color:var(--cyan-deep);font-weight:800;font-size:.9rem;margin-bottom:2px}
-  .mqr img,.qr2{cursor:zoom-in}
-
-  /* lightbox */
-  .zoomer{position:fixed;inset:0;background:rgba(8,14,30,.85);display:none;align-items:center;justify-content:center;z-index:220;cursor:zoom-out;padding:26px}
-  .zoomer.open{display:flex}
-  .zoomer img{max-width:min(86vw,560px);max-height:84vh;background:#fff;border-radius:12px;padding:14px;box-shadow:0 18px 70px rgba(0,0,0,.55);cursor:zoom-out}
-  .zoomer .z-x{position:absolute;top:18px;right:20px;width:46px;height:46px;border-radius:50%;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:1.9rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
-  .zoomer .z-x:hover{background:#d64541}
-  .zoomer .z-tip{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(255,255,255,.8);font-size:.9rem}
-
-  /* modal form */
-  .mback{position:fixed;inset:0;background:rgba(14,28,66,.55);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:120;padding:18px}
-  .mback.open{display:flex}
-  .mcard{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:92vh;overflow:auto;box-shadow:0 24px 60px rgba(14,28,66,.35);padding:26px 26px 20px;position:relative}
-  .mcard .m-close{position:absolute;top:10px;right:12px;width:42px;height:42px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(14,28,66,.28);transition:background .15s,transform .15s}
-  .mcard .m-close:hover{background:#d64541;transform:scale(1.06)}
-  .mcard h3{color:var(--navy);font-size:1.3rem;margin:2px 0 4px}
-  .mcard .m-sub{color:var(--muted);font-size:.9rem;margin:0 0 14px}
-  .mf{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .mf .full{grid-column:1/-1}
-  .fld{display:flex;flex-direction:column;gap:5px}
-  .fld label{font-size:.82rem;font-weight:700;color:var(--navy)}
-  .fld label em{font-style:normal;color:#d64541;font-weight:800}
-  .fld .hint{font-size:.72rem;color:var(--muted);font-weight:400}
-  .inp{border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:.93rem;color:var(--ink);background:#fbfcfe;width:100%;box-sizing:border-box;font-family:inherit}
-  .inp:focus{outline:none;border-color:var(--cyan);background:#fff;box-shadow:0 0 0 3px rgba(34,167,221,.14)}
-  textarea.inp{resize:vertical;min-height:128px}
-  .mqr{display:flex;align-items:center;gap:18px;background:linear-gradient(135deg,#eef7fd,#f7fbff);border:2px solid var(--cyan-deep);border-radius:12px;padding:18px 16px;margin-top:16px;box-shadow:0 3px 10px rgba(24,120,200,.12)}
-  .mqr img{width:112px;height:112px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:4px;flex:none}
-  .mqr b{color:var(--navy);font-size:1.08rem;display:block}
-  .mqr p{margin:6px 0 0;font-size:.88rem;color:var(--ink-soft);line-height:1.6}
-  .mqr .go{color:var(--cyan-deep);font-weight:800;font-size:.98rem;display:block;margin-top:8px}
-  .msubmit{margin-top:16px;width:100%;border:0;background:linear-gradient(90deg,var(--navy),var(--cyan-deep));color:#fff;font-size:1rem;font-weight:800;padding:13px;border-radius:8px;cursor:pointer}
-  .msubmit:disabled{opacity:.6;cursor:not-allowed}
-  .mmsg{margin-top:12px;font-size:.9rem;display:none;padding:10px 14px;border-radius:8px;line-height:1.6}
-  .mmsg.err{display:block;background:#fdeeee;color:#a93226;border:1px solid #f5c6c6}
-  /* 留资表单：隐私政策同意勾选（2026-09-18 加，合规需要） */
-  .consent-row{margin-top:12px}
-  .chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;line-height:1.6;color:#5b6b8c;cursor:pointer}
-  .chk input[type=checkbox]{flex:0 0 auto;width:16px;height:16px;margin:3px 0 0;accent-color:var(--cyan-deep);cursor:pointer}
-  .chk a{color:var(--cyan-deep);text-decoration:underline}
-  .chk.err{color:#a93226}
-  .chk.err input[type=checkbox]{outline:2px solid #f5c6c6;outline-offset:2px;border-radius:3px}
-  .m-okcard{display:none;text-align:center;padding:24px 10px 10px}
-  .m-okcard.on{display:block}
-  .m-okcard .big{font-size:2.4rem;line-height:1}
-  .m-okcard h4{color:var(--navy);font-size:1.2rem;margin:10px 0 6px}
-  .m-okcard p{color:var(--muted);font-size:.9rem;line-height:1.6;margin:0 auto 6px;max-width:420px}
-  .m-okcard .qr2{width:150px;height:150px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:6px;margin:10px auto 2px;display:block}
-  .m-okcard .go{color:var(--cyan-deep);font-weight:800;font-size:.9rem}
-  .m-okcard .msubmit{max-width:220px}
-  @media(max-width:600px){.mf{grid-template-columns:1fr}.mcard{padding:20px 16px 16px}}
-
-  footer{background:var(--band);color:#7f8db0;padding:38px 0 32px;font-size:.84rem}
-  footer .top{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center;padding-bottom:22px;border-bottom:1px solid rgba(255,255,255,.08)}
-  footer .logo-w{height:36px;width:auto}
-  footer .slogan{color:#dfe9ff;font-weight:700;letter-spacing:.03em}
-  footer .comply{margin-top:16px;line-height:1.7}
-  footer .bottom{margin-top:14px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-
-  @media (max-width:960px){.g4{grid-template-columns:1fr 1fr}}
-  @media (max-width:900px){
-    nav.links{display:none;position:absolute;top:74px;left:0;right:0;background:#0b1530;flex-direction:column;padding:16px 26px;gap:4px;align-items:flex-start;justify-content:flex-start;max-height:calc(100vh - 74px);max-height:calc(100dvh - 74px);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;box-shadow:0 16px 34px rgba(0,0,0,.32);z-index:60;transform:translateZ(0)}
-    body.menu-open{overflow:hidden}
-    nav.links.open{display:flex}
-    nav.links a{color:#eef2fb !important;padding:10px 0;width:100%;font-size:1.15rem}
-    .menu-toggle{display:block}
-    .g4,.g3,.cgrid{grid-template-columns:1fr}
-    .hero{padding:128px 0 72px}
-    section{padding:56px 0}
-    .ledger table,.ledger thead,.ledger tbody,.ledger tr,.ledger th,.ledger td{display:block;width:100%}
-    .ledger thead{display:none}
-    .ledger td{border-bottom:none;padding:6px 16px}
-    .ledger tr{border-bottom:1px solid #eef2f8;padding:8px 0}
-  }
-</style>
+<meta http-equiv="refresh" content="3; url=product.html">
 </head>
 <body>
-
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
     <nav class="links" id="menu">
       <div class="nav-item">
-        <a href="index.html#top">首页<span class="caret">▾</span></a>
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html" class="active">产品与方案<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="index.html#why">机悟·甲维思</a>
-          <a href="guide.html">部署指南</a>
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
           <a href="about.html">关于我们</a>
-          <a href="news.html">行业动态</a>
-          <a href="index.html#contact">联系我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="downloads.html">资料下载<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="downloads.html">全部资料</a>
         </div>
       </div>
       <div class="nav-item">
         <a href="news.html">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="news.html">全部动态</a>
-          <a href="news-2026-09-19-data-leak-landscape.html">2025 年 4.1 万起泄露，六成案件源于内网</a>
+          <a href="news.html">全部动态（共 5 条）</a>
+          <a href="news-2026-09-20-silent-forwarding.html">「静默转发」指控：数据已出境？</a>
+          <a href="news-2026-09-19-data-leak-landscape.html">4.1 万起泄露，六成源于内网</a>
           <a href="news-2026-09-18-air-gapped-ai.html">断网 AI 占比一年翻倍</a>
           <a href="news-2026-09-16-cloud-down.html">云端大模型接连掉线</a>
           <a href="news-2026-09-13-data-overseas.html">AI 数据出海传闻</a>
         </div>
       </div>
       <div class="nav-item">
-        <a href="index.html#why">机悟·甲维思<span class="caret">▾</span></a>
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="index.html#why">机悟是什么</a>
-          <a href="index.html#scenes">用在哪</a>
-          <a href="index.html#ledger">算三年账</a>
-          <a href="index.html#faq">常见顾虑</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="guide.html" class="active">部署指南<span class="caret">▾</span></a>
-        <div class="nav-sub">
-          <a href="guide.html#why">必须上本地AI理由</a>
-          <a href="guide.html#select">怎么选型</a>
-          <a href="guide.html#ledger">算三年账</a>
-          <a href="guide.html#pitfalls">落地避坑</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="about.html">关于我们<span class="caret">▾</span></a>
-        <div class="nav-sub">
-          <a href="about.html#preface">序 · 一个时代的悖论</a>
-          <a href="about.html#mission">我们的使命</a>
-          <a href="about.html#vision">愿景 · 百年传承</a>
-          <a href="about.html#values">价值观 · 定位</a>
-          <a href="about.html#rules">行为准则 · 取舍</a>
-          <a href="about.html#identity">我们的样子</a>
-        </div>
-      </div>
-      <div class="nav-item">
-        <a href="index.html#contact">联系我们<span class="caret">▾</span></a>
-        <div class="nav-sub">
-          <a href="index.html#contact">联系方式 · 留言</a>
-          <a href="index.html#downloads">资料下载</a>
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
         </div>
       </div>
     </nav>
-    <a class="btn btn-solid nav-cta" href="#contact" data-open="eval">免费部署评估</a>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
-
-<!-- ============ HERO ============ -->
-<section class="hero" id="top" style="padding-bottom:72px">
+<section class="mast" id="top">
   <div class="wrap">
-    <span class="tag">机悟 · 政企超脑 · 部署指南</span>
-    <h1>政企大模型私有化部署<br><span class="hl">从选型到落地的完整避坑指南</span></h1>
-    <p class="sub">这篇写给正在评估「怎么把大模型安全地装进自己内网」的决策者。不讲概念，讲路径、讲坑、讲怎么验收——每一步都能落地、能复算、能交账。</p>
-    <div class="cta-row">
-      <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
-      <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示 · 跑本地 AI</a>
-      <span class="cta-note">先试后买 · 两周试点见效再谈合同 · 不满意，不立项</span>
+    <div class="kicker">MOVED · 页面已合并</div>
+    <h1>「部署指南」已并入「产品与方案」</h1>
+    <p class="dek">为避免同一套内容在两处维护、口径漂移，原部署指南的交付路径、验收标准、三年成本账与常见顾虑已统一到「产品与方案」页。</p>
+    <div class="rule"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <a class="btn btn-solid" href="product.html">前往 产品与方案 →</a>
+      <a class="btn btn-line" href="index.html">返回首页</a>
     </div>
-    <p class="slogan">数据不出域 · 单位有<span>超脑</span> · 个人得<span>助手</span></p>
+    <p class="note">如果您是通过收藏或外部链接来到本页，请更新为 <a href="product.html">product.html</a>。</p>
   </div>
 </section>
-
-<!-- ============ WHY ============ -->
-<section id="why">
-  <div class="wrap">
-    <div class="kicker">STEP 1 · 必须上本地AI理由</div>
-    <h2>不是敢不敢上云，<br>是您的内网物理上就够不到云端。</h2>
-    <p class="lead">很多单位的第一反应是「等公版 AI 更好用、更便宜了再说」。但这个等待在政企语境里不成立——因为有三条硬约束，跟 AI 好不好用无关，跟数据能不能出门有关：</p>
-    <div class="grid g4">
-      <div class="card"><div class="icon">法</div><b class="t">保密法 · 物理隔离</b><p>保密法第三十一条明确涉密系统必须与互联网物理隔离。涉密不上网，AI 照样用——前提是 AI 也得在隔离网内。</p></div>
-      <div class="card"><div class="icon">罚</div><b class="t">数据安全法 · 高额罚款</b><p>对核心数据违规，最高可处一千万元罚款。一次「喂给公版 AI」的操作，可能是一次难以交账的合规事故。</p></div>
-      <div class="card"><div class="icon">案</div><b class="t">已有前车之鉴</b><p>国家安全部已连续两年通报 AI 泄密案例。风险不是假设，是已经在发生、并且会被追责的事。</p></div>
-      <div class="card"><div class="icon">槛</div><b class="t">真正的门槛</b><p>对保护私密数据的单位，上 AI 最大的坑不是思想「保守」，而是「不会本地化部署」——这是工程能力问题，不是态度问题。</p></div>
-    </div>
-    <p class="scene-note">结论：政企上 AI 的路径几乎唯一——大模型和知识库全部部署在单位内网，断网也能全功能运行，演示全程无外网请求。</p>
-  </div>
-</section>
-
-<!-- ============ SELECT ============ -->
-<section class="scenes" id="select">
-  <div class="wrap">
-    <div class="kicker">STEP 2 · 怎么选型</div>
-    <h2>先诊断，再选型；<br>不是越大越好，是越合适越好。</h2>
-    <div class="grid g3">
-      <div class="scene"><h3>模型按场景选</h3><p>本地知识库问答、卷宗梳理、文书初稿、OCR 手稿处理——每个场景对模型的要求不同。选型从「你要解决什么」出发，不从「哪个模型最火」出发。</p><span class="m">场景定模型，不是模型定场景</span></div>
-      <div class="scene"><h3>硬件先利旧</h3><p>先诊断再出方案：存量服务器和显卡先用足，跑量化模型。上来就让你买新卡的方案，建议多留个心眼。</p><span class="m">旧机器就能跑 · 跑量化模型</span></div>
-      <div class="scene"><h3>组件全开源栈</h3><p>AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，JAVIS原生支持国产信创系统；国产卡可支撑 70B 级模型私有化推理。不绑定单一厂商。</p><span class="m">国产化 · 不锁定 · 可交账</span></div>
-    </div>
-    <p class="scene-note">选型不是一次性买断的「点菜」，而是可复算的工程方案：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字写清楚，再谈立项。</p>
-  </div>
-</section>
-
-<!-- ============ LEDGER ============ -->
-<section class="ledger" id="ledger">
-  <div class="wrap">
-    <div class="kicker">STEP 3 · 算三年账</div>
-    <h2>一张三年总账：哪本账贵，算完您来定。</h2>
-    <table>
-      <thead><tr><th style="width:24%">方案</th><th>三年总成本逻辑</th><th>关键风险</th></tr></thead>
-      <tbody>
-        <tr><td><b>云 API 按量付费</b></td><td>按 token 计费，越用越贵没有头——IDC 数据显示 2025 年企业级调用量同比增长约 16 倍。</td><td>数据出门即违规；涨价与断供不可控。</td></tr>
-        <tr><td><b>自建算法团队</b></td><td>微调算法工程师年薪 50–100 万一位、起步两位，再配数据团队干半年，人力先花两三百万。</td><td>人走楼空，经验不沉淀。</td></tr>
-        <tr><td class="win">机悟 · 买断部署</td><td>一次投入用满三年，带调优、带运维；旧服务器和显卡先用足——把「养团队」换成「买服务」。</td><td class="win">报价＝可复算账单，每一行您都能核对。</td></tr>
-      </tbody>
-    </table>
-    <p class="cap">先诊断再出方案，不做「推荐您买新卡」的方案。评估不收费：现有设备能跑什么、缺什么、多少钱、多久能用，白纸黑字。</p>
-  </div>
-</section>
-
-<!-- ============ PITFALLS ============ -->
-<section class="scenes" id="pitfalls" style="background:#fff">
-  <div class="wrap">
-    <div class="kicker">STEP 4 · 落地四个坑</div>
-    <h2>钱花了、卡买了、模型装上了，<br>真正的问题才开始。</h2>
-    <div class="grid g3">
-      <div class="scene"><h3>坑一：只测「能聊」，不测「拒答率」</h3><p>演示时 AI 对答如流，一上线就开始编条文。关键验收项是「查不到依据时它会不会编」——交付要附拒答率验收集，每个结论都能指到原文。</p><span class="m">宁可不答，也不骗您</span></div>
-      <div class="scene"><h3>坑二：上来就买新卡</h3><p>不诊断、不试跑，先把硬件预算花光。正确的是先用足存量设备，跑量化模型，试点见效了再谈扩容。</p><span class="m">利旧优先 · 先试后买</span></div>
-      <div class="scene"><h3>坑三：做第二块没人点的屏幕</h3><p>单独做一个 AI 入口，员工不打开，项目就死了。要把 AI 嵌进现有的卷宗、文书、审批流程——员工照干老活，只是干得更快。</p><span class="m">嵌进流程，不是另起炉灶</span></div>
-      <div class="scene"><h3>坑四：把 AI 当「替代」而不是「辅助」</h3><p>让 AI 出终稿、直接签发，一旦出错无人担责。正确姿势：AI 出初稿、出线索、出引用，人来审核、签发——辅助提效，不替代人工。</p><span class="m">辅助、提效，不替代人工</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ FAQ ============ -->
-<section id="faq" style="padding-top:0">
-  <div class="wrap">
-    <div class="kicker">FAQ · 常见顾虑</div>
-    <h2>您问得最多的十二件事。</h2>
-    <details><summary>「太贵了」？</summary><div class="a">报价＝可复算账单，含运维。我们先算三年总账：云 API 年年涨，买断＋旧设备利旧三年回本——哪本账贵，算完您来定。</div></details>
-    <details><summary>「答错了怎么办」？</summary><div class="a">交付时附拒答率验收集：查不到依据的问题，机悟明确回「未找到依据，建议人工核对」，不生成答案，您可以当场复跑。宁可不答，也不骗您。</div></details>
-    <details><summary>「再等等、明年再说」？</summary><div class="a">先别立项。拿一台旧服务器、一个业务科室、两个高频场景，试两周——验收口径提前定好，满意了再谈合同。</div></details>
-    <details><summary>「有什么案例」？</summary><div class="a">政法项目按保密要求一律脱敏，只能讲「某省级政法机关」。想看真的？带着贵单位的真题来，我们当场在您设备上复跑——比任何 PPT 都可靠。</div></details>
-    <details><summary>「为什么不找大厂」？</summary><div class="a">大厂重心在省市级大项目，打法重、周期长。区县的轻量私有化场景，恰恰是我们的主战场：交付标准、两周见效、当场复跑。</div></details>
-    <details><summary>「我们旧设备能行吗」？</summary><div class="a">先诊断再出方案。存量服务器和显卡先用足，跑量化模型；上来就让您买新卡的方案，建议多留个心眼。</div></details>
-    <details><summary>「员工不会用怎么办」？</summary><div class="a">我们不做第二块没人点的屏幕。机悟嵌进您现有的卷宗、文书、审批流程，员工照干老活，只是干得更快。</div></details>
-    <details><summary>「数据安全怎么保证」？</summary><div class="a">大模型和知识库全部部署在单位内网，完全断网也能运行；每次查询、每个答案全程留痕，权限分级、哈希链锁证，审计随手交。数据一步都不出门。</div></details>
-    <details><summary>「支持国产化吗」？</summary><div class="a">组件全开源栈，AMD/NVIDIA/昇腾/寒武纪/海光芯片均支持，JAVIS原生支持国产信创系统；实测国产卡可支撑 70B 级模型私有化推理，不绑定单一厂商。</div></details>
-    <details><summary>「部署周期要多久」？</summary><div class="a">看场景和现有设备。轻量场景两周试点可先见效，再滚动推进；全程先诊断、再出方案，周期和里程碑白纸黑字写进方案。</div></details>
-    <details><summary>「后期怎么运维」？</summary><div class="a">买断式部署带调优、带运维。模型换代、芯片更替、框架升级，都有清晰的升级路径，不是一锤子买卖。</div></details>
-    <details><summary>「怎么开始第一步」？</summary><div class="a">申请 40 分钟免费评估：告诉我们现有设备、业务场景、大致人数，我们给出「能跑什么、缺什么、多少钱、多久能用」的书面结论——不满意不立项。</div></details>
-  </div>
-</section>
-
-<!-- ============ CTA + CONTACT ============ -->
-<section id="contact" style="padding-top:8px">
-  <div class="wrap">
-    <div class="cta-band">
-      <h2>把您的问题带到内网来。</h2>
-      <p>一次 40 分钟的免费评估：现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。也可以约 30 分钟远程演示，在您的设备上真跑一遍断网大模型。</p>
-      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
-        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="#contact" data-open="eval">申请 40 分钟免费部署评估</a>
-        <a class="btn btn-ghost" href="#contact" data-open="demo">预约演示 · 跑本地 AI</a>
-      </div></div>
-    </div>
-    <div class="cgrid">
-      <div class="cbox"><b>邮箱</b><p>info@javis.org.cn</p><small>评估与演示预约可直接来信，工作日 9:00–18:00 回复。</small></div>
-      <div class="cbox"><b>官方微信 · 扫码直聊</b><span class="qr-tip">不想等？直接加官方微信最快</span><img class="qr" src="assets/QR_official.png" alt="机悟官方微信二维码"><small>长按识别或扫一扫，备注「单位 + 需求」优先安排。点击二维码可看大图。</small></div>
-      <div class="cbox"><b>适合谁</b><p>政企 + 中小企业</p><small>政法、党政、国企、医院、金融、高校、能源制造、涉密资质单位，以及有本地部署诉求的中小企业——我们都谈。</small></div>
-    </div>
-  </div>
-</section>
-
 <footer>
   <div class="wrap">
     <div class="top">
       <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
       <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
     </div>
-    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核。案例信息已按合规要求脱敏。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
     <div class="bottom">
-      <div>© 2026 甲维思（JAVIS）· 机悟政企超脑　|　javis.org.cn</div>
-      <div><a style="color:#7f8db0" href="#top">首页</a>　<a style="color:#7f8db0" href="index.html">官网首页</a>　<a style="color:#7f8db0" href="#why">为什么私有化</a>　<a style="color:#7f8db0" href="#select">怎么选型</a>　<a style="color:#7f8db0" href="#pitfalls">落地避坑</a>　<a style="color:#7f8db0" href="#faq">常见顾虑</a>　<a style="color:#7f8db0" href="about.html">关于我们</a>　<a style="color:#7f8db0" href="#contact">联系我们</a></div>
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
     </div>
   </div>
 </footer>
-
 <!-- ============ 留资弹窗 ============ -->
-<div class="mback" id="mback" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
   <div class="mcard">
     <button class="m-close" id="mclose" aria-label="关闭">×</button>
-    <div id="mform">
-      <h3 id="mtitle">申请 40 分钟免费部署评估</h3>
-      <p class="m-sub" id="msub">提交后工作人员将在 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
-      <form id="mform-el" novalidate>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
         <div class="mf">
           <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
           <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
-          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：IT 负责人"></div>
-          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" required maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
         </div>
         <div class="mqr">
           <img src="assets/QR_official.png" alt="机悟官方微信二维码">
-          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
         </div>
         <div class="fld full consent-row">
           <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
             <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
         </div>
-        <button class="msubmit" type="submit" id="msubmit">提交申请</button>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
       </form>
-      <div class="mmsg" id="mmsg" role="status"></div>
-    </div>
-    <div class="m-okcard" id="mok">
-      <div class="big">✓</div>
-      <h4>已收到您的申请</h4>
-      <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
-      <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
-      <p><span class="go">加官方微信更快对接</span></p>
-      <button class="msubmit" type="button" id="mok-close">好的</button>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
     </div>
   </div>
 </div>
-
 <!-- ============ 二维码放大 ============ -->
 <div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
   <button class="z-x" id="zclose" aria-label="关闭">×</button>
   <img id="zimg" alt="机悟官方微信二维码（放大）">
   <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
 </div>
-
-<script>
-  // ---- 自建访问统计（无第三方埋点，数据存自家 D1）----
-  (function(){
-    try {
-      // 双通道：主用自有域名（大陆可达），失败自动退回 workers.dev
-      var APIH = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
-      var dev = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
-      var ref = document.referrer ? new URL(document.referrer).host : '';
-      var qs = '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
-      var hi = 0;
-      var img = new Image(1,1);
-      img.onerror = function(){ if (++hi < APIH.length) img.src = APIH[hi] + qs; };
-      img.src = APIH[0] + qs;
-    } catch(e){}
-  })();
-  // 导航（移动端抽屉：点链接/点外部/Esc 都能关，关闭时恢复页面滚动）
-  const _menu = document.getElementById('menu');
-  const _mtog = document.querySelector('.menu-toggle');
-  function _closeMenu(){ _menu.classList.remove('open'); document.body.classList.remove('menu-open'); }
-  document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', _closeMenu));
-  document.addEventListener('click', e => {
-    if (!_menu.classList.contains('open')) return;
-    if (_menu.contains(e.target)) return;
-    if (_mtog && _mtog.contains(e.target)) return;
-    _closeMenu();
-  });
-  addEventListener('keydown', e => { if (e.key === 'Escape') _closeMenu(); });
-
-  // ---- 留资弹窗 ----
-  // 双通道：主用自有域名（大陆可达），失败自动退回 workers.dev
-  const API_HOSTS = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
-  async function apiFetch(path, opts){
-    let lastErr;
-    for (const base of API_HOSTS){
-      try {
-        const ctl = new AbortController();
-        const to = setTimeout(() => ctl.abort(), 8000);
-        const r = await fetch(base + path, Object.assign({}, opts, { signal: ctl.signal }));
-        clearTimeout(to);
-        return r;
-      } catch(e){ lastErr = e; }
-    }
-    throw lastErr || new Error('network');
-  }
-  const mback = document.getElementById('mback');
-  const mformBox = document.getElementById('mform');
-  const mokBox = document.getElementById('mok');
-  const mformEl = document.getElementById('mform-el');
-  const mtitle = document.getElementById('mtitle');
-  const msub = document.getElementById('msub');
-  const mmsg = document.getElementById('mmsg');
-  const msubmitBtn = document.getElementById('msubmit');
-  const mclose = document.getElementById('mclose');
-  const mokClose = document.getElementById('mok-close');
-  const KINDS = {
-    eval: { title: '申请 40 分钟免费部署评估', sub: '现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。' },
-    demo: { title: '预约演示 · 跑本地 AI', sub: '约 30 分钟远程演示：在您的设备上真跑一遍断网大模型，全程无外网请求。提交后 1 个工作日内联系您安排时间。' }
-  };
-  let curKind = 'eval';
-  function openForm(kind){
-    curKind = KINDS[kind] ? kind : 'eval';
-    mtitle.textContent = KINDS[curKind].title;
-    msub.textContent = KINDS[curKind].sub;
-    msubmitBtn.textContent = curKind === 'demo' ? '预约演示' : '提交申请';
-    mformEl.reset(); mmsg.className = 'mmsg'; mmsg.textContent = '';
-    { const r = mformEl.querySelector('.chk.err'); if (r) r.classList.remove('err'); }
-    mformBox.style.display = 'block'; mokBox.classList.remove('on');
-    mback.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    const f = mformEl.querySelector('input[name=cc]'); if (f) setTimeout(() => f.focus(), 60);
-  }
-  function closeForm(){ mback.classList.remove('open'); document.body.style.overflow = ''; }
-  document.querySelectorAll('[data-open]').forEach(a => a.addEventListener('click', e => { e.preventDefault(); openForm(a.dataset.open); }));
-  mclose.addEventListener('click', closeForm);
-  mokClose.addEventListener('click', closeForm);
-  mback.addEventListener('click', e => { if (e.target === mback) closeForm(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape' && mback.classList.contains('open')) closeForm(); });
-
-  mformEl.addEventListener('submit', async e => {
-    e.preventDefault();
-    mmsg.className = 'mmsg'; mmsg.textContent = '';
-    const val = n => (mformEl.querySelector('[name="' + n + '"]').value || '').trim();
-    const ccRaw = val('cc'), pw = val('pw'), need = val('need');
-    const ccParts = ccRaw.split(/\s+/).filter(Boolean);
-    const company = ccParts.length > 1 ? ccParts.slice(0, -1).join(' ') : ccRaw;
-    const contact = ccParts.length > 1 ? ccParts[ccParts.length - 1] : '';
-    if (!company) return showMsg('请填写公司 / 单位名称', true);
-    if (!pw) return showMsg('请填写电话或微信号（至少一项），方便我们联系您', true);
-    if (!need) return showMsg('请简单介绍一下需求', true);
-    if (need.length < 4) return showMsg('需求介绍再详细一点会更高效（4 字以上即可）', true);
-    {
-      const ck = mformEl.querySelector('input[name="consent"]');
-      if (!ck || !ck.checked) {
-        const row = ck && ck.closest('.chk'); if (row) row.classList.add('err');
-        return showMsg('请先阅读并勾选同意《隐私政策》，我们才能联系您', true);
-      }
-      const row = ck.closest && ck.closest('.chk'); if (row) row.classList.remove('err');
-    }
-    msubmitBtn.disabled = true;
-    const old = msubmitBtn.textContent;
-    msubmitBtn.textContent = '提交中…';
-    try {
-      const resp = await apiFetch('/api/lead', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ type: curKind, company, contact, title: val('title'), phone: pw, wechat: '', need, consent: true })
-      });
-      const data = await resp.json().catch(() => ({}));
-      if (resp.ok && data.ok) { mformBox.style.display = 'none'; mokBox.classList.add('on'); }
-      else showMsg((data && data.error) || '提交失败，请稍后再试，或直接加官方微信', true);
-    } catch (err) {
-      showMsg('网络开小差了，请稍后再试，或直接加官方微信（二维码见右）', true);
-    }
-    msubmitBtn.disabled = false; msubmitBtn.textContent = old;
-  });
-  function showMsg(t, isErr){ mmsg.textContent = t; mmsg.className = isErr ? 'mmsg err' : 'mmsg ok'; }
-
-  // ---- 二维码放大 ----
-  const zoomer = document.getElementById('zoomer');
-  const zimg = document.getElementById('zimg');
-  function openZoom(src){ zimg.src = src; zoomer.classList.add('open'); document.body.style.overflow = 'hidden'; }
-  function closeZoom(){ zoomer.classList.remove('open'); document.body.style.overflow = mback.classList.contains('open') ? 'hidden' : ''; }
-  document.querySelectorAll('.cbox .qr, .mqr img, .qr2').forEach(img => {
-    img.addEventListener('click', e => { e.stopPropagation(); openZoom(img.src); });
-  });
-  zoomer.addEventListener('click', closeZoom);
-  document.getElementById('zclose').addEventListener('click', e => { e.stopPropagation(); closeZoom(); });
-  addEventListener('keydown', e => { if (e.key === 'Escape' && zoomer.classList.contains('open')) closeZoom(); });
-</script>
+<script src="assets/site.js"></script>
 </body>
 </html>
