@@ -132,10 +132,15 @@
       <b style="color:var(--navy)">官网访问统计</b>
       <span class="count" id="statsRange">近 30 天</span>
       <span class="sp"></span>
-      <span class="filters">
+      <span class="filters" id="dayFilters">
         <button data-d="7" onclick="loadStats(7,this)">7天</button>
         <button data-d="30" class="sel" onclick="loadStats(30,this)">30天</button>
         <button data-d="60" onclick="loadStats(60,this)">60天</button>
+      </span>
+      <span class="filters" id="siteFilters">
+        <button data-s="all" class="sel" onclick="loadSite('all',this)">全部站点</button>
+        <button data-s="jiwu.org.cn" onclick="loadSite('jiwu.org.cn',this)">jiwu.org.cn</button>
+        <button data-s="javis.org.cn" onclick="loadSite('javis.org.cn',this)">javis.org.cn</button>
       </span>
       <button class="ghost" onclick="loadStats(curDays)">刷新</button>
     </div>
@@ -154,6 +159,10 @@
       <i style="background:#e0a83e;margin-left:14px"></i>爬虫 / 机器人
     </div>
     <div class="rank">
+      <div><h4>分站对比（近 N 天）</h4><table><thead><tr><th>站点</th><th style="text-align:right">PV</th><th style="text-align:right">UV</th><th style="text-align:right">爬虫</th></tr></thead><tbody id="siteRows"></tbody></table></div>
+      <div><h4>页面排行（真实访问 TOP）</h4><table><thead><tr><th>页面</th><th style="text-align:right">PV</th><th style="text-align:right">UV</th></tr></thead><tbody id="pathRows"></tbody></table></div>
+    </div>
+    <div class="rank" style="margin-top:16px">
       <div><h4>访问来源 TOP</h4><table><tbody id="refRows"></tbody></table></div>
       <div><h4>设备分布</h4><table><tbody id="devRows"></tbody></table></div>
     </div>
@@ -335,6 +344,13 @@
 
   // ---- 访问统计 tab ----
   let curDays = 30;
+  let curSite = 'all';
+  function loadSite(s, btn){
+    curSite = s;
+    document.querySelectorAll('#siteFilters button').forEach(x => x.classList.remove('sel'));
+    if (btn) btn.classList.add('sel');
+    loadStats(curDays);
+  }
   function switchTab(which){
     document.getElementById('tabLeads').classList.toggle('sel', which === 'leads');
     document.getElementById('tabStats').classList.toggle('sel', which === 'stats');
@@ -420,10 +436,10 @@
   });
   async function loadStats(days, btn){
     curDays = days || curDays;
-    if (btn) { document.querySelectorAll('#statsCard .filters button').forEach(x => x.classList.remove('sel')); btn.classList.add('sel'); }
+    if (btn) { document.querySelectorAll('#dayFilters button').forEach(x => x.classList.remove('sel')); btn.classList.add('sel'); }
     document.getElementById('statsRange').textContent = '近 ' + curDays + ' 天';
     const t = localStorage.getItem('javis_token');
-    const { status, data } = await api('/api/stats?days=' + curDays, { headers: { 'X-Auth': t } });
+    const { status, data } = await api('/api/stats?days=' + curDays + (curSite !== 'all' ? '&site=' + encodeURIComponent(curSite) : ''), { headers: { 'X-Auth': t } });
     if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
     if (!data.ok) return;
     document.getElementById('stTodayPv').textContent = data.today.pv;
@@ -463,6 +479,12 @@
     document.getElementById('chartX').innerHTML = daysArr.map((d, i) =>
       '<span>' + (i % step === 0 || i === daysArr.length - 1 ? d.day.slice(5) : '') + '</span>'
     ).join('');
+    document.getElementById('siteRows').innerHTML = (data.bySite || []).map(r =>
+      '<tr><td>' + esc(r.site) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td><td style="text-align:right">' + r.uv + '</td><td style="text-align:right;color:#b9770e">' + (r.botPv || 0) + '</td></tr>'
+    ).join('') || '<tr><td colspan="4" style="color:var(--muted)">暂无数据</td></tr>';
+    document.getElementById('pathRows').innerHTML = (data.byPath || []).map(r =>
+      '<tr><td>' + esc(r.path) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td><td style="text-align:right">' + r.uv + '</td></tr>'
+    ).join('') || '<tr><td colspan="3" style="color:var(--muted)">暂无数据</td></tr>';
     document.getElementById('refRows').innerHTML = (data.byRef || []).map(r =>
       '<tr><td>' + esc(r.ref) + '</td><td style="text-align:right"><b>' + r.pv + '</b></td></tr>'
     ).join('') || '<tr><td colspan="2" style="color:var(--muted)">暂无数据</td></tr>';

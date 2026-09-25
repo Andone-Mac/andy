@@ -11,7 +11,7 @@
       var APIH = ['https://api.javis.org.cn', 'https://javis-api.wanyejiang2018.workers.dev'];
       var dev = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
       var ref = document.referrer ? new URL(document.referrer).host : '';
-      var qs = '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&t=' + Date.now();
+      var qs = '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&s=' + encodeURIComponent(location.hostname) + '&t=' + Date.now();
       var hi = 0, img = new Image(1, 1);
       img.onerror = function () { if (++hi < APIH.length) img.src = APIH[hi] + qs; };
       img.src = APIH[0] + qs;
