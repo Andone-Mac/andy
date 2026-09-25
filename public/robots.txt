@@ -36,6 +36,30 @@ Allow: /
 User-agent: Sogou web spider
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Kimi-SearchBot
+Allow: /
+
+User-agent: KimiBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
 Sitemap: https://javis.org.cn/sitemap.xml
 
 # AI 引擎全量正文：https://javis.org.cn/llms-full.txt
