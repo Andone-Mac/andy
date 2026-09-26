@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>机悟·政企超脑 · 行业动态（甲维思 JAVIS）</title>
+    <link>https://javis.org.cn/news.html</link>
+    <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
+    <language>zh-CN</language>
+    <lastBuildDate>Sat, 26 Sep 2026 13:06:56 +0000</lastBuildDate>
+    <item>
+      <title>《人工智能安全治理框架》3.0 发布：「确保安全可控」写进治理框架——政企上 AI 的第一步，是把模型放在自己手里</title>
+      <link>https://javis.org.cn/news-2026-09-26-ai-governance-framework-3.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-26-ai-governance-framework-3.html</guid>
+      <pubDate>Sat, 26 Sep 2026 00:00:00 +0000</pubDate>
+      <category>官方标准 · 关联解读</category>
+      <description>9 月 14 日，2026 年国家网络安全宣传周开幕式上，全国网安标委发布《人工智能安全治理框架》3.0。指导原则里「确保安全可控」四个字，对准备上大模型的政企单位来说，落到执行层就是四个「在谁手里」：模型、数据、版本、记录。</description>
+    </item>
+    <item>
+      <title>政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关</title>
+      <link>https://javis.org.cn/news-2026-09-23-ai-security-standards.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-23-ai-security-standards.html</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+      <category>官方规范 · 关联解读</category>
+      <description>在 2026 年国家网络安全宣传周新闻发布会上，中央网信办表示已发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行等环节安全要求。落到准备上大模型的政企单位身上，这就是三张检查表。</description>
+    </item>
+    <item>
+      <title>新版《网络安全法》已施行：新增人工智能条款，特别严重后果的罚款上限提到 1000 万元</title>
+      <link>https://javis.org.cn/news-2026-09-23-cybersecurity-law-2026.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-23-cybersecurity-law-2026.html</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 +0000</pubDate>
+      <category>法规 · 关联解读</category>
+      <description>2026 年 1 月 1 日起，修订后的《网络安全法》正式施行：新增人工智能条款，罚则分三档，特别严重后果的罚款上限提高到一千万元，直接责任人最高一百万元。责任到人之后，能不能拿出当天的记录才是关键。</description>
+    </item>
+    <item>
+      <title>你以为是国产AI在回答，数据却已悄悄出境：这份报告最值得警惕的，不是指控本身</title>
+      <link>https://javis.org.cn/news-2026-09-20-silent-forwarding.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-20-silent-forwarding.html</guid>
+      <pubDate>Sun, 20 Sep 2026 00:00:00 +0000</pubDate>
+      <category>重大 · 关联解读</category>
+      <description>Anthropic 报告指控部分国产 AI 存在「静默转发」。指控尚无独立第三方验证；但报告坐实了一件事——走公有 API 的每一条对话，对模型服务商都是完全透明的。</description>
+    </item>
+    <item>
+      <title>数据泄露这一年：41,644 起、2,120 家企业——六成案件，源头在单位自己的内网</title>
+      <link>https://javis.org.cn/news-2026-09-19-data-leak-landscape.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-19-data-leak-landscape.html</guid>
+      <pubDate>Sat, 19 Sep 2026 00:00:00 +0000</pubDate>
+      <category>数据安全 · 执法动态</category>
+      <description>据数世咨询与零零信安 2025 年度统计：全年有效数据泄露事件 41,644 起，同比上升 10.83%。比数量更值得看的，是从哪里漏出来的——六成起于内网与内部人员。国家网信办 9 月 15 日公开的四起典型案例，三起是「自家系统」失守。</description>
+    </item>
+    <item>
+      <title>「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍</title>
+      <link>https://javis.org.cn/news-2026-09-18-air-gapped-ai.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-18-air-gapped-ai.html</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。</description>
+    </item>
+    <item>
+      <title>云端大模型九月接连「掉线」：算力长在别人的机房，停下来的却是您的业务</title>
+      <link>https://javis.org.cn/news-2026-09-16-cloud-down.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-16-cloud-down.html</guid>
+      <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
+      <category>可用性 · 关联解读</category>
+      <description>9 月 2 日官方状态页公告一次网页／API 部分中断；不到两周，第三方可用性监测又记录到 9 月 14 日晚「消息延迟、无法发送」与 9 月 15 日约 33 分钟的访问中断，两次官方状态页均未公告。</description>
+    </item>
+    <item>
+      <title>多家国产大模型被曝将用户对话转发境外 Claude 模型「蒸馏」，含疑似敏感信息</title>
+      <link>https://javis.org.cn/news-2026-09-13-data-overseas.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-13-data-overseas.html</guid>
+      <pubDate>Sun, 13 Sep 2026 00:00:00 +0000</pubDate>
+      <category>重大 · 关联解读</category>
+      <description>据公开报道，Anthropic 发布威胁情报报告，指多家中资 AI 服务商把用户在中国产品界面的提问，在后台转发给境外 Claude 模型做「蒸馏」训练。数据去了哪里，不由对话框上的 logo 决定，由部署方式决定。</description>
+    </item>
+  </channel>
+</rss>
