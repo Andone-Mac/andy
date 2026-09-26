@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>机悟线索管理后台 · javis.org.cn</title>
+<meta name="robots" content="noindex,nofollow">
+<title>机悟线索管理后台 · 双站（javis / jiwu）</title>
 <style>
   :root{--navy:#16295e;--navy-deep:#0e1c42;--cyan:#22a7dd;--cyan-deep:#1878c8;--ink:#22304a;--muted:#7b8499;--line:#dfe5ef;--bg:#f4f7fb}
   *{box-sizing:border-box;margin:0;padding:0}
@@ -80,7 +81,7 @@
 </head>
 <body>
 <header>
-  <div><b>机悟 · 线索管理后台</b> <span class="hint">官网 javis.org.cn 留资数据 · 数据存于 Cloudflare D1</span></div>
+  <div><b>机悟 · 线索管理后台</b> <span class="hint">双站留资数据（javis.org.cn / jiwu.org.cn）· 数据存于 Cloudflare D1</span></div>
   <button class="ghost" id="logout" style="display:none;color:#fff;background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.35)">退出登录</button>
 </header>
 
@@ -144,6 +145,7 @@
       </span>
       <button class="ghost" onclick="loadStats(curDays)">刷新</button>
     </div>
+    <div id="statsErr" style="display:none;color:#a93226;background:#fdecea;border:1px solid #a9322655;border-radius:6px;padding:8px 12px;margin:10px 0;font-size:13px;line-height:1.7"></div>
     <div class="stat-cards">
       <div class="stat-card"><div class="n" id="stTodayPv">–</div><div class="l">今日浏览 (PV)</div></div>
       <div class="stat-card"><div class="n" id="stTodayUv">–</div><div class="l">今日访客 (UV)</div></div>
@@ -280,12 +282,14 @@
 
   async function load() {
     const t = localStorage.getItem('javis_token');
-    const { status, data } = await api('/api/leads', { headers: { 'X-Auth': t } });
-    if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
-    if (status === 200 && data.ok) {
-      ALL = data.leads || [];
-      render();
-    }
+    try {
+      const { status, data } = await api('/api/leads', { headers: { 'X-Auth': t } });
+      if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
+      if (status === 200 && data.ok) {
+        ALL = data.leads || [];
+        render();
+      }
+    } catch (e) { /* 网络不通时不打扰登录视图；统计 tab 有自己的错误提示 */ }
   }
   function render() {
     const total = document.getElementById('totalCount');
@@ -438,8 +442,17 @@
     curDays = days || curDays;
     if (btn) { document.querySelectorAll('#dayFilters button').forEach(x => x.classList.remove('sel')); btn.classList.add('sel'); }
     document.getElementById('statsRange').textContent = '近 ' + curDays + ' 天';
+    const errBox = document.getElementById('statsErr');
     const t = localStorage.getItem('javis_token');
-    const { status, data } = await api('/api/stats?days=' + curDays + (curSite !== 'all' ? '&site=' + encodeURIComponent(curSite) : ''), { headers: { 'X-Auth': t } });
+    let status, data;
+    try {
+      ({ status, data } = await api('/api/stats?days=' + curDays + (curSite !== 'all' ? '&site=' + encodeURIComponent(curSite) : ''), { headers: { 'X-Auth': t } }));
+    } catch (e) {
+      errBox.innerHTML = '<b>网络不通：</b>当前网络访问不到统计接口 api.javis.org.cn（境外 Cloudflare 通道，国内偶发超时属正常）。请点「刷新」重试，或稍后再试；页面本身没有问题。';
+      errBox.style.display = 'block';
+      return;
+    }
+    errBox.style.display = 'none';
     if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
     if (!data.ok) return;
     document.getElementById('stTodayPv').textContent = data.today.pv;

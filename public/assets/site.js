@@ -8,6 +8,7 @@
   /* ================= 自建访问统计（无第三方埋点，数据存自家 D1） ================= */
   (function () {
     try {
+      if (!/^https?:$/.test(location.protocol)) return; // 本地 file:// 预览不打点，避免污染统计
       var APIH = ['https://api.javis.org.cn', 'https://javis-api.wanyejiang2018.workers.dev'];
       var dev = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
       var ref = document.referrer ? new URL(document.referrer).host : '';
