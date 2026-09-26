@@ -5,6 +5,17 @@
   'use strict';
   var q = function (s, r) { return (r || document).querySelector(s); };
 
+  /* ================= http→https / www→根域 归一（OSS 静态托管无服务端跳转，客户端兜底） ================= */
+  (function () {
+    try {
+      var h = location.hostname, p = location.protocol;
+      if (!/(^|\.)javis\.org\.cn$|(^|\.)jiwu\.org\.cn$|^javis-s6po\.onrender\.com$/i.test(h)) return; // 只对线上域名归一，本地预览不动
+      if ((p === 'http:' || /^www\./i.test(h)) && h !== 'javis-s6po.onrender.com') {
+        location.replace('https://' + h.replace(/^www\./i, '') + location.pathname + location.search + location.hash);
+      }
+    } catch (e) { }
+  })();
+
   /* ================= 自建访问统计（无第三方埋点，数据存自家 D1） ================= */
   (function () {
     try {
