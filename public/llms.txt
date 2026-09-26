@@ -16,6 +16,9 @@
 - [资料下载](https://javis.org.cn/downloads.html)：产品宣传册等对外公开资料
 - [行业动态](https://javis.org.cn/news.html)：与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读，共 8 条，每条可进入独立详情页（最新两条：《人工智能安全治理框架》3.0 发布与「确保安全可控」落地四问；政务大模型安全规范点明的模型选型／建设部署／运行三环节）
 - [联系我们](https://javis.org.cn/contact.html)：邮箱、官方微信二维码、留资表单（POST https://api.javis.org.cn/api/lead）
+- [专题页 · 政法机关的卷宗梳理，大模型能帮到哪一步？](https://javis.org.cn/topic-legal-case-files.html)：卷宗四环节 AI 做到哪一步、断网怎么跑、溯源与留痕（含拒答率验收）、两周试点到验收的落地节奏
+- [专题页 · 大模型私有化部署多少钱？](https://javis.org.cn/topic-three-year-ledger.html)：五笔账拆解（硬件／软件／服务／运维／扩容）、云 API 与自建团队同口径三年对比、三档规格选型、可复算账单承诺
+- [专题页 · 单位那台旧服务器还跑得动大模型吗？](https://javis.org.cn/topic-legacy-servers.html)：显存×模型规模×并发人数对照逻辑、利旧三项前提（驱动／内存／存储 IO）、何时必须加卡
 - [隐私政策](https://javis.org.cn/privacy.html)：我们如何收集、使用、保存与保护您提交的个人信息
 
 ## 三条信息支柱（每条一个可出示的证明点）
