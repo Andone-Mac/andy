@@ -6,7 +6,23 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 26 Sep 2026 13:06:56 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 28 Sep 2026 02:39:40 +0000</lastBuildDate>
+    <item>
+      <title>251 个团队同场测试，「大模型安全护栏」单独成一个场景——官方在提醒：上内网 AI，护栏不是可选项</title>
+      <link>https://javis.org.cn/news-2026-09-28-ai-cybersec-guardrail-test.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-28-ai-cybersec-guardrail-test.html</guid>
+      <pubDate>Mon, 28 Sep 2026 00:00:00 +0000</pubDate>
+      <category>官方测试 · 关联解读</category>
+      <description>9 月 14 日网安周开幕式上，《2026 年人工智能技术赋能网络安全应用测试结果》发布：8 个测试场景、151 家单位 251 个团队报名，其中场景 5 就是「大模型安全护栏能力检测」。当护栏能力被官方单列成考核场景，准备上大模型的政企单位就该明白：模型装进内网只是第一步，管住它的嘴是第二步。</description>
+    </item>
+    <item>
+      <title>累计 1112 款备案、731 款登记：生成式 AI 的合规台账越来越厚——而内网自用工具，不在这本台账里</title>
+      <link>https://javis.org.cn/news-2026-09-27-genai-filing-publicity.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-27-genai-filing-publicity.html</guid>
+      <pubDate>Sun, 27 Sep 2026 00:00:00 +0000</pubDate>
+      <category>官方公告 · 关联解读</category>
+      <description>9 月 14 日，国家网信办公告 2026 年 7–8 月生成式人工智能服务备案信息：新增 124 款备案、133 款登记，累计已达 1112 款备案、731 款登记。对政企单位来说，这份公告划出了一条清晰的分界线——对外提供服务，每一款都要进台账；内网自用，不产生这套义务。</description>
+    </item>
     <item>
       <title>《人工智能安全治理框架》3.0 发布：「确保安全可控」写进治理框架——政企上 AI 的第一步，是把模型放在自己手里</title>
       <link>https://javis.org.cn/news-2026-09-26-ai-governance-framework-3.html</link>
