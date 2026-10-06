@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 28 Sep 2026 02:39:40 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 06 Oct 2026 15:04:56 +0000</lastBuildDate>
+    <item>
+      <title>万亿参数在训、百万上下文开权、资本五十亿美元押算力——最近两周国内 AI，本地部署的三块拼图同时在补齐</title>
+      <link>https://javis.org.cn/news-2026-10-06-domestic-ai-local-window.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-06-domestic-ai-local-window.html</guid>
+      <pubDate>Tue, 06 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业综述 · 关联解读</category>
+      <description>9 月 22 日云栖大会报出 5 万亿至 10 万亿参数训练计划与自研芯片量产时间表；9 月 13 日智谱完成约 50 亿美元融资、大头投向算力；MiniMax M3、Kimi K3、DeepSeek V4、GLM-5.3 把开源权重带进百万上下文时代；10 月 3 日桌面级 AI 整机宣布单机本地跑约千亿参数。「用哪来、算力哪来、厂商还能干多久」——政企本地化部署的三个老问题，两周内同时出现新答案。</description>
+    </item>
     <item>
       <title>251 个团队同场测试，「大模型安全护栏」单独成一个场景——官方在提醒：上内网 AI，护栏不是可选项</title>
       <link>https://javis.org.cn/news-2026-09-28-ai-cybersec-guardrail-test.html</link>
