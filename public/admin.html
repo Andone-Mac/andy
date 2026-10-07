@@ -284,7 +284,7 @@
     const t = localStorage.getItem('javis_token');
     try {
       const { status, data } = await api('/api/leads', { headers: { 'X-Auth': t } });
-      if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
+      if (status === 401) { needLogin(); return; }
       if (status === 200 && data.ok) {
         ALL = data.leads || [];
         render();
@@ -396,6 +396,7 @@
     const st = document.getElementById('whState');
     try {
       const r = await api('/api/settings/notify');
+      if (r.status === 401) { needLogin(); return; }
       if (r.status !== 200 || !r.data.ok) { st.textContent = '读取失败'; st.style.color = '#a93226'; return; }
       const d = r.data;
       st.textContent = d.set ? ('已配置（' + d.source + '）：' + d.masked) : '未配置 —— 留资不会推送到群里';
@@ -413,6 +414,7 @@
     if (!url) { whMsg('请先粘贴 Webhook 地址', false); return; }
     try {
       const r = await api('/api/settings/notify', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ url }) });
+      if (r.status === 401) { needLogin(); return; }
       if (r.status === 200 && r.data.ok) { whMsg('已保存：' + r.data.masked + '（建议接着点「发送测试消息」验证）', true); document.getElementById('whUrl').value = ''; loadNotify(); }
       else whMsg((r.data && r.data.error) || '保存失败', false);
     } catch (e) { whMsg('保存失败：网络不通（检查是否已挂代理）', false); }
@@ -423,6 +425,7 @@
     btn.disabled = true; btn.textContent = '发送中…'; whMsg('');
     try {
       const r = await api('/api/settings/notify/test', { method: 'POST' });
+      if (r.status === 401) { needLogin(); return; }
       if (r.status === 200) { whMsg(r.data.ok ? '测试消息已发出，请看群是否收到' : '测试未通过，下方是原因', r.data.ok); loadNotify(); }
       else whMsg((r.data && r.data.error) || '测试失败', false);
     } catch (e) { whMsg('测试失败：网络不通', false); }
@@ -453,7 +456,7 @@
       return;
     }
     errBox.style.display = 'none';
-    if (status === 401) { localStorage.removeItem('javis_token'); showLogin(); return; }
+    if (status === 401) { needLogin(); return; }
     if (!data.ok) return;
     document.getElementById('stTodayPv').textContent = data.today.pv;
     document.getElementById('stTodayUv').textContent = data.today.uv;
@@ -529,6 +532,18 @@
 
   function showList(){ loginView.style.display = 'none'; listView.style.display = 'block'; document.getElementById('logout').style.display = 'inline-block'; load(); }
   function showLogin(){ loginView.style.display = 'block'; listView.style.display = 'none'; document.getElementById('logout').style.display = 'none'; }
+  // 401 统一处理：清 token → 回登录页并说明原因。
+  // 教训：通知 tab 原先没接这一步，登录态过期时页面显示「读取失败 / 未授权」，
+  // 看着像后台坏了或 webhook 配错了，实际只是要重新登录。
+  function needLogin(){
+    localStorage.removeItem('javis_token');
+    errBox.textContent = '登录已过期，请重新登录';
+    errBox.style.display = 'block';
+    const w = document.getElementById('whMsg');
+    if (w) w.style.display = 'none';
+    showLogin();
+    return true;
+  }
   if (localStorage.getItem('javis_token')) showList(); else showLogin();
   load();
 </script>
