@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍 | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。">
+<title>一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
 <meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="format-detection" content="telephone=no,email=no">
-<link rel="canonical" href="https://javis.org.cn/news-2026-09-18-air-gapped-ai.html">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-07-local-model-overview.html">
 <link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
 <link rel="icon" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
-<meta property="og:title" content="「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。">
-<meta property="og:url" content="https://javis.org.cn/news-2026-09-18-air-gapped-ai.html">
+<meta property="og:title" content="一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-07-local-model-overview.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。">
+<meta name="twitter:title" content="一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -33,10 +33,10 @@
   "@graph": [
     {
       "@type": "NewsArticle",
-      "headline": "「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍",
-      "description": "一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。",
-      "datePublished": "2026-09-18",
-      "dateModified": "2026-09-18",
+      "headline": "一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览",
+      "description": "开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。",
+      "datePublished": "2026-10-07",
+      "dateModified": "2026-10-07",
       "author": {
         "@type": "Organization",
         "name": "甲维思 JAVIS"
@@ -45,7 +45,7 @@
         "@type": "Organization",
         "name": "甲维思 JAVIS"
       },
-      "mainEntityOfPage": "https://javis.org.cn/news-2026-09-18-air-gapped-ai.html",
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-07-local-model-overview.html",
       "image": [
         "https://javis.org.cn/assets/logo.png"
       ]
@@ -68,8 +68,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍",
-          "item": "https://javis.org.cn/news-2026-09-18-air-gapped-ai.html"
+          "name": "一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览",
+          "item": "https://javis.org.cn/news-2026-10-07-local-model-overview.html"
         }
       ]
     }
@@ -150,43 +150,42 @@
 <section class="art-head" id="top">
   <div class="wrap art-wrap">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
-    <span class="n-date">2026-09-18</span><span class="n-tag" style="margin-left:8px">行业趋势 · 关联解读</span>
-    <h1 class="art-h1">「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍</h1>
-    <p class="art-lede">一份 2026 年的行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前（2025 年 Q1）这个比例约为 7%。同期，NVIDIA 与 Palantir 把开源模型打包进空网环境交付给政府机构，DataRobot 把 AI 治理下沉到本地与空网，NVIDIA 在 IFA 上宣布本地推理最高提速 1.9× 并点名支持 Hermes Agent。「断网 AI」正在从少数单位的特殊选择，变成受监管行业的常规配置。</p>
+    <span class="n-date">2026-10-07</span><span class="n-tag" style="margin-left:8px">行业综述 · 选型参考</span>
+    <h1 class="art-h1">一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览</h1>
+    <p class="art-lede">过去两个月，「本地能跑多大的模型」这件事的边界被三条线同时推开：<b>开源侧</b>，小米 MiMo-V2.6（1.02 万亿参数，MIT 协议）、Kimi K3（2.8 万亿）、GLM-5.3、DeepSeek V4 集体开放权重并支持百万 Token 上下文；<b>架构侧</b>，MoE 混合专家让「总参数」和「每次推理真正用到的参数」彻底解绑——35B 总参数的模型，推理时只激活 3B，小显存也能请出「大模型」；<b>引擎侧</b>，开源推理引擎 Strata 用「显存 + 内存 + SSD」三级存储，把 125B 的 Qwen3.8-Flash-Next 塞进了普通游戏电脑。本文把这些新信息按硬件档位整理成一张对照表，并说说量化与管控里的坑。</p>
   </div>
 </section>
 
 <section class="art-sec">
   <div class="wrap art-wrap">
     <div class="art-body">
-      <p>这份统计来自 Presenc AI 的《Air-Gapped LLM Deployment Statistics 2026》（最后更新 2026 年 5 月）。它的口径是"完全无互联网出口、不连任何云 API、常常连遥测都没有"的部署形态——也就是说，这些机器在互联网上"看不见"，任何一家云端 AI 监测工具都统计不到它们。作者自己也说明：因为空网环境不产生遥测数据，这些比例是<b>方向性估算</b>，不是精确值。</p>
-      <p>按支出结构看，国防/情报/政府占约 <b>38%</b>，医疗 <b>19%</b>，受监管金融 <b>17%</b>，法律 <b>9%</b>。最常见的落地形态是"<b>自有 GPU 服务器（2–8 张 H100 级）+ 开源权重模型 + 本地 RAG</b>"——不是买一个大模型账号，而是把模型、知识库和数据一起放进自己的机房。</p>
-      <h3 class="art-h2">为什么是这三年：三条硬约束把数据推回内网</h3>
+      <h3 class="art-h2">先看懂架构：MoE 为什么让「显存档位」不再是死刑判决</h3>
+      <p>传统稠密模型（每层参数全量参与计算）的部署逻辑很简单：显存装得下量化后的整模型就能跑，装不下就崩。2026 年主流开源旗舰几乎全部转向 <b>MoE（混合专家）</b>：把每层的「专家」做成几十上百个子网络，每次推理只路由到其中一小部分。以本次实测的两款为例——Qwen3.8-Flash-Next 总参数 125B、每 Token 仅激活 6B；小米 4 月的 Qwen3.6-35B-A3B 总参数 35B、激活仅 3B。翻译成人话：<b>模型很「聪明」（容量大），但每次开口只「动一小块脑子」（算力与带宽开销小）</b>，于是「按总参数估硬件」的老经验集体失效，新的门槛变成：权重全放哪（显存/内存/SSD）＋激活部分跑多快。</p>
+      <h3 class="art-h2">引擎侧的新变量：Strata 把 125B 请进普通 PC——我们实测了</h3>
+      <p>9 月底开源、10 月初冲上技术社区热榜的 <b>Strata</b>（MIT 协议，基于 llama.cpp 深度改造）就是冲着「权重全放哪」来的：它的三级存储把最常用专家驻留显存、全部专家放内存、29GB 级查表留在 SSD 流式读取；再配「小模型先猜、大模型批量验」的推测解码提速 1.6-1.8 倍。<b>我们在本地一台 24GB 显存 + 31GB 内存的机器上完成部署实测</b>：IQ2_XS 量化档（约 66GB 下载量、39.2GB 常驻内存），文本生成 <b>51-77 tokens/s</b>（中文问答、代码场景，专家缓存命中率 87-91%），图片理解单张约 3 秒，接口是标准的 OpenAI/Anthropic 兼容 API，可直接对接现有办公应用与智能体工具链。一句话结论：<b>一台中端工作站，今天可以当「千亿级内网大脑」用</b>——这是两年前必须进云端集群或专业整机才能干的事。</p>
+      <h3 class="art-h2">对照表：按你手里的显卡，现在能跑什么</h3>
+      <p>下表综合公开实测（知乎、腾讯云开发者社区、博客园等 2026 年 4-10 月横评）、厂商模型卡与我们本机数据整理；「可跑」指达到可用的出字速度（≥20 tok/s 或可接受的长任务节奏），量化默认 Q4_K_M～Q5_K_M 档：</p>
       <ul class="art-tl">
-        <li><span class="dt">合规</span>数据出境的口径在收紧。2026 年 9 月 11 日，国家网信办发布《数据出境安全管理政策法规问答（2026年9月）》，进一步明确个人信息出境认证与安全评估的适用情形，并强调不得以"数量拆分"等手段规避安全评估。对政法、医疗、国企这类数据，"不出内网"是合规成本最低的路径。</li>
-        <li><span class="dt">可用性</span>算力长在别人的机房里，可用性、单价、接口版本就都由别人的公告决定（本网 9 月 16 日已就云端大模型接连掉线做过关联解读）。</li>
-        <li><span class="dt">成本</span>本地推理是一次性、可折旧的投入，不是一张每月浮动的账单；存量服务器与显卡还能先利旧跑通。</li>
+        <li><span class="dt">8GB 显存</span>稠密档：7B–8B 全系（Qwen3.8-8B、Gemma 4 8B 等）流畅。注意 Gemma 类模型对低量化敏感，低于 4-bit 逻辑能力明显滑坡。</li>
+        <li><span class="dt">12GB 显存</span>稠密档：14B 量化舒适、32B 量化勉强（约 25 tok/s）；<b>MoE 档</b>：35B-A3B 级别已可完整驻留——小卡的最佳路线是「换架构」而不是「攒显存」。</li>
+        <li><span class="dt">16–24GB 显存</span>单位级甜点位：24GB 卡跑 32B 稠密量化有实战价值；上表「MoE + 31GB 内存」组合即可本地跑 125B（Strata 实测）。多数 2019–2022 年采购的工作站卡都在这条线上。</li>
+        <li><span class="dt">48GB+/双卡/桌面整机</span>70B 级稠密稳定驻留；2.4T 级开源旗舰开始进入「多卡+大内存」的可部署视野。</li>
+        <li><span class="dt">桌面 AI 整机（参考）</span>NVIDIA DGX Spark 64GB 版 10 月 23 日上市、$4999 起，单机约千亿参数、两台池化约 2000 亿——适合要「开箱即用+统一内存」又不想自己攒机的单位。</li>
       </ul>
-      <h3 class="art-h2">2026 年，产业侧的动作也在往同一个方向走</h3>
-      <ul class="art-tl">
-        <li><span class="dt">07 月初</span>NVIDIA 与 Palantir 把 Nemotron 开源模型打包进 <b>air-gapped（空网）环境</b>，交付给美国政府机构与关键基础设施运营方，可自训、自有、可审计，数据不出网。</li>
-        <li><span class="dt">07-02</span>DataRobot 宣布把 AI 治理能力从公有云扩展到<b>本地、边缘与空网</b>环境。</li>
-        <li><span class="dt">08-11</span>NVIDIA 发布 <b>Nemotron 3.5 Lightning</b>（30B 总参 / 3B 激活，Mamba-2 混合架构，边缘与单卡即可运行），定位是多智能体系统里的专职执行者。</li>
-        <li><span class="dt">08-26</span>Z.ai 开源 <b>GLM-5.3-Flash</b>（320B 总参 / 18B 激活、1M 上下文、原生多模态），把"前沿能力"继续往开源一侧推。</li>
-        <li><span class="dt">09-03</span>NVIDIA IFA 2026：本地推理最高 <b>1.9× 提速</b>（llama.cpp / vLLM 优化）；为 <b>24GB 以上显存</b>的显卡提供"一键本地 AI"，并点名支持 Hermes Agent、OpenClaw、Perplexity Portable Computer；10 月 RTX Spark PC 上市，配套 NVIDIA PAIR 可把局域网内多台 PC 拼成推理池。</li>
-      </ul>
-      <p>把这些放在一起看，逻辑很清楚：<b>断网不等于落后。</b>当"数据不能出门"和"业务必须用 AI"同时成立，行业给出的答案不是等云端合规，而是把模型搬进门内——这也正是本网一直主张的那件事。</p>
+      <h3 class="art-h2">两个必须说清的坑</h3>
+      <p><b>一是「能跑 ≠ 能签」。</b>量化每降一档，数学推理、长文事实性、中文细节都在悄悄退步；社区独立基准曾发现某档量化模型「分数好看但实际任务翻车」的案例。选型必须以<b>本单位真实业务样本</b>（卷宗、公文、图纸说明）做小样本验证，而不是看跑分榜。</p>
+      <p><b>二是「开源 ≠ 免责」。</b>开放权重同样带许可条款（不同厂商的商用转售、规模限制不同），且模型自带的能力边界（幻觉、提示注入）不会因为「跑在自己机房」就消失。护栏、溯源、权限分级，这些管控责任从云端搬到内网，一样都不会少——这正是本站此前解读《大模型安全护栏成官方测试场景》反复讲的点。</p>
     </div>
-<div class="kv-box">
-          <h3>机悟的观点：断网 AI 的三件套</h3>
-          <p class="kv-sub">占比翻倍的背后，是三个变量从别人手里回到自己手里。</p>
-          <ul>
-            <li><b>数据不出域：</b>模型、知识库、日志全部留在单位内网，物理隔离环境下照常可用；卷宗、病历、图纸一步都不出门。</li>
-            <li><b>可用性与版本自有：</b>不受第三方状态页与厂商公告影响，版本冻结在您验收的那一版，交付时间表握在自己手里。</li>
-            <li><b>存量先利旧：</b>先用手上的服务器与显卡跑通，再谈扩容——本地推理是一次性、可折旧的投入。</li>
-          </ul>
-        </div>
-    <p class="art-src">来源：Presenc AI《Air-Gapped LLM Deployment Statistics 2026》（2026-05 更新，第三方方向性估算）；NVIDIA 官方博客《Sparks Fly: NVIDIA Accelerates Local AI at IFA 2026》（2026-09-03）与《NVIDIA Nemotron 3.5 Lightning and NeMo Switchyard》（2026-08-11）；国家网信办《数据出境安全管理政策法规问答（2026年9月）》（2026-09-11）；DataRobot 公告（2026-07-02）；Wccftech 报道（2026-09-03）。文中比例数据为第三方估算值，非精确统计；本产品与上述厂商无任何关联，文中不预设对任何厂商的法律定性。</p>
+    <div class="kv-box">
+      <h3>机悟的建议：两个月做一次「本地能力盘点」</h3>
+      <p class="kv-sub">模型与引擎的迭代速度已经以「周」计，硬件账也该常算常新。</p>
+      <ul>
+        <li><b>先盘架构再盘显存：</b>旧卡不等于旧生产力——MoE 量化路线下，很多 2020 年前后的卡反而能跑起当年想都不敢想的参数级模型。</li>
+        <li><b>拿真实文档做一轮小样本：</b>挑 2–3 款同档位候选模型，用本单位卷宗/公文各跑一批，看溯源能否指回原文、该拒的拒不拒。</li>
+        <li><b>把「引擎」当采购要素：</b>同一模型在不同推理引擎上能差 2–3 倍速度；评估时问清楚对方用什么引擎、是否支持你的存量硬件。</li>
+      </ul>
+    </div>
+    <p class="art-src">来源：小米 MiMo-V2.6 发布信息（MIT 协议、1.02T 参数，2026-09-21）；Kimi K3/中新网 2026-07-21；Qwen3.8-Flash-Next 模型卡（huggingface.co/Qwen，2026-08）与 Strata 开源仓库（github.com/Niko1221/Strata，MIT，2026-10-04 社区热榜）——本机实测数据为甲维思于 2026-10-06 在一台 24GB 显存/31GB 内存工作站上所测；Qwen3.6-35B-A3B（Apache 2.0，2026-04）；腾讯云开发者社区《本地部署开源大模型三足鼎立》2026-04；知乎《最全 LLM 大模型推理成绩实测》2026-02 及《本地部署 AI Agent，6G 显存跑 Qwen3.6-35B-A3B》2026-06；博客园《开源大模型本地部署硬件选型深度指南》2026-05-17；财联社/腾讯新闻（NVIDIA DGX Spark 64GB 版，2026-10-03）。行业信息仅作综述参考，不构成投资建议；本文不评判任何厂商与产品，量化版本与速度数据以各模型官方发布为准。</p>
     <div class="art-foot">
       <a class="btn btn-line" href="news.html">← 返回行业动态</a>
       <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
@@ -200,11 +199,10 @@
 <section id="contact" style="padding-top:8px">
   <div class="wrap">
     <div class="cta-band">
-      <h2>看完这组数据，您的单位排在哪一边？</h2>
-      <p>把大模型部署在您自己的内网：断网可用、数据不出域、结论可溯源、版本冻结。一次 40 分钟免费评估，现有设备能跑什么、缺什么、多少钱、多久能用——白纸黑字，不满意不立项。</p>
+      <h2>您的旧显卡，可能比想象中「能装」</h2>
+      <p>一次 40 分钟免费评估：现有硬件在 MoE/量化新路线下能跑什么模型、缺什么管控、多少钱、多久能用，白纸黑字，不满意不立项。</p>
       <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
         <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
-        <a class="btn btn-ghost" href="contact.html" data-open="demo">预约演示 · 跑本地 AI</a>
       </div></div>
     </div>
   </div>

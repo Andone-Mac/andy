@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 06 Oct 2026 15:04:56 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 07 Oct 2026 03:15:51 +0000</lastBuildDate>
+    <item>
+      <title>一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览</title>
+      <link>https://javis.org.cn/news-2026-10-07-local-model-overview.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-07-local-model-overview.html</guid>
+      <pubDate>Wed, 07 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业综述 · 选型参考</category>
+      <description>开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。</description>
+    </item>
     <item>
       <title>万亿参数在训、百万上下文开权、资本五十亿美元押算力——最近两周国内 AI，本地部署的三块拼图同时在补齐</title>
       <link>https://javis.org.cn/news-2026-10-06-domestic-ai-local-window.html</link>
