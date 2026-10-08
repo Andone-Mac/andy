@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关 | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="在 2026 年国家网络安全宣传周新闻发布会上，中央网信办表示已发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行等环节安全要求。落到准备上大模型的政企单位身上，这就是三张检查表。">
+<title>DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="9 月 30 日，深度求索官宣开源面向华为昇腾平台的大模型基础设施组件：TileLang、DeepGEMM、DeepEP、TileKernels、FlashMLA、DeepSelect 六件套，与其英伟达平台开源组件一一对应，且是训练自家 V4 系列用过的生产级代码。信创方案里最难让人放心的一块——国产芯片的开发生态——第一次被头部厂商用开源代码补齐。">
 <meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="format-detection" content="telephone=no,email=no">
-<link rel="canonical" href="https://javis.org.cn/news-2026-09-23-ai-security-standards.html">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html">
 <link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
 <link rel="icon" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
-<meta property="og:title" content="政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="在 2026 年国家网络安全宣传周新闻发布会上，中央网信办表示已发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行等环节安全要求。落到准备上大模型的政企单位身上，这就是三张检查表。">
-<meta property="og:url" content="https://javis.org.cn/news-2026-09-23-ai-security-standards.html">
+<meta property="og:title" content="DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="9 月 30 日，深度求索官宣开源面向华为昇腾平台的大模型基础设施组件：TileLang、DeepGEMM、DeepEP、TileKernels、FlashMLA、DeepSelect 六件套，与其英伟达平台开源组件一一对应，且是训练自家 V4 系列用过的生产级代码。信创方案里最难让人放心的一块——国产芯片的开发生态——第一次被头部厂商用开源代码补齐。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="在 2026 年国家网络安全宣传周新闻发布会上，中央网信办表示已发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行等环节安全要求。落到准备上大模型的政企单位身上，这就是三张检查表。">
+<meta name="twitter:title" content="DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="9 月 30 日，深度求索官宣开源面向华为昇腾平台的大模型基础设施组件：TileLang、DeepGEMM、DeepEP、TileKernels、FlashMLA、DeepSelect 六件套，与其英伟达平台开源组件一一对应，且是训练自家 V4 系列用过的生产级代码。信创方案里最难让人放心的一块——国产芯片的开发生态——第一次被头部厂商用开源代码补齐。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -33,10 +33,10 @@
   "@graph": [
     {
       "@type": "NewsArticle",
-      "headline": "政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关",
-      "description": "在 2026 年国家网络安全宣传周新闻发布会上，中央网信办表示已发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行等环节安全要求。落到准备上大模型的政企单位身上，这就是三张检查表。",
-      "datePublished": "2026-09-23",
-      "dateModified": "2026-09-23",
+      "headline": "DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎",
+      "description": "9 月 30 日，深度求索官宣开源面向华为昇腾平台的大模型基础设施组件：TileLang、DeepGEMM、DeepEP、TileKernels、FlashMLA、DeepSelect 六件套，与其英伟达平台开源组件一一对应，且是训练自家 V4 系列用过的生产级代码。信创方案里最难让人放心的一块——国产芯片的开发生态——第一次被头部厂商用开源代码补齐。",
+      "datePublished": "2026-10-08",
+      "dateModified": "2026-10-08",
       "author": {
         "@type": "Organization",
         "name": "甲维思 JAVIS"
@@ -45,7 +45,7 @@
         "@type": "Organization",
         "name": "甲维思 JAVIS"
       },
-      "mainEntityOfPage": "https://javis.org.cn/news-2026-09-23-ai-security-standards.html",
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html",
       "image": [
         "https://javis.org.cn/assets/logo.png"
       ]
@@ -68,8 +68,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关",
-          "item": "https://javis.org.cn/news-2026-09-23-ai-security-standards.html"
+          "name": "DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎",
+          "item": "https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html"
         }
       ]
     }
@@ -150,44 +150,37 @@
 <section class="art-head" id="top">
   <div class="wrap art-wrap">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
-    <span class="n-date">2026-09-23</span><span class="n-tag" style="margin-left:8px">官方规范 · 关联解读</span>
-    <h1 class="art-h1">政务大模型的安全要求被点成三个环节：模型选型、建设部署、运行——上 AI 之前，先过这三关</h1>
-    <p class="art-lede">在 2026 年国家网络安全宣传周新闻发布会上，中央网信办把大模型的安全要求说得很具体：模型选型、建设部署、运行，等环节都要有安全要求。这句话落到一个准备上大模型的政企单位身上，就是三张检查表。</p>
+    <span class="n-date">2026-10-08</span><span class="n-tag" style="margin-left:8px">信创动态 · 关联解读</span>
+    <h1 class="art-h1">DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎</h1>
+    <p class="art-lede">9 月 30 日，深度求索（DeepSeek）官宣开源面向华为昇腾平台的一整套大模型基础设施组件——算子语言 TileLang、矩阵计算库 DeepGEMM、分布式通信库 DeepEP 等六件套，与其在英伟达平台的开源组件一一对应，且是训练自家 V4 系列真刀真枪用过的生产级代码。对政企单位，这补上的是信创方案里最难让人放心的一块：国产芯片不只「能点亮」，而是有了对等 CUDA 的开发生态。</p>
   </div>
 </section>
 
 <section class="art-sec">
   <div class="wrap art-wrap">
     <div class="art-body">
-      <p>在 2026 年国家网络安全宣传周（9 月 14 日至 20 日）新闻发布会上，中央网信办网络安全协调局表示：<b>已组织制定发布《生成式人工智能服务安全基本要求》《生成式人工智能预训练和优化训练数据安全规范》等国家标准</b>，对大模型服务供给、训练数据使用等关键环节提出明确安全基线要求；并<b>发布《政务大模型应用安全规范》，明确模型选型、建设部署、运行等环节安全要求</b>，指导政府部门安全使用人工智能。</p>
-      <p>有两句话必须说在前面：这段话来自官方发布口径，<b>具体条文以标准正式文本为准</b>；《政务大模型应用安全规范》首次发布是在 2025 年网安周（全国网络安全标准化技术委员会技术文件），本次是官方在宣传周期间对这组标准的再次明确。本文只转述公开表述，不评判任何厂商与产品。</p>
-      <h3 class="art-h2">把「三个环节」翻成单位里的三个问题</h3>
+      <h3 class="art-h2">开源了什么：六个组件，对着 CUDA 生态逐个补齐</h3>
+      <p>按深度求索官方公告（2026 年 9 月 30 日），本次开源覆盖<b>编译语言、计算库、分布式通信库</b>三层，六个组件与其此前面向英伟达平台的开源项目一一对应：算子描述语言 <b>TileLang</b>（昇腾版）、矩阵计算库 <b>DeepGEMM</b>、专家并行通信库 <b>DeepEP</b>、通用访存算子库 <b>TileKernels</b>、注意力算子 <b>FlashMLA</b>、数据管线算子 <b>DeepSelect</b>，代码已在 GitHub 对应仓库开放。官方同时披露两个硬事实：TileLang<b>「已承载 DeepSeek V4 系列模型训练中大部分算子的实现」</b>——不是演示工程，是生产级；以及公司正与华为共同推进基于昇腾 950 的 <b>128 卡超节点</b>方案。</p>
+      <p>为什么这件事比「发一个新模型」分量重？行业共识是：卡住国产算力的从来不是芯片参数，而是<b>迁移要拿汇编重写一遍</b>。英伟达 2006 年推出 CUDA，用近二十年把 cuDNN、NCCL、TensorRT 及配套教程、社区堆成护城河；换一家芯片，等于让写了十年高级语言的工程师全部改用底层写法重造轮子。TileLang 这类声明式算子语言把门槛从「手动排线程、搬数据、插同步」降回「描述要算什么、切多大块」，编译层自动生成——据多家技术社区实测转述，迁移成本从「重写一遍」压向「改几行」。这是<b>第一次，一家中国头部大模型公司把在国产芯片上跑通生产级训练的完整底层软件栈全部开源</b>。</p>
+      <h3 class="art-h2">对政企意味着什么：信创算力选型的心结松动了</h3>
       <ul class="art-tl">
-        <li><span class="dt">选型</span><b>模型从哪来、版本怎么冻结？</b>用的是谁的模型、什么版本、读过哪些数据、出问题找谁——选型不是挑参数最大的，是挑说得清的。</li>
-        <li><span class="dt">建设部署</span><b>推理跑在哪台机器上、边界怎么划？</b>网络边界、日志、权限、模型调用、第三方组件、更新方式——这六项能不能逐条写进方案书。</li>
-        <li><span class="dt">运行</span><b>结论能不能指回原文、出了问题能不能回放？</b>每一次提问、每一份引用、每一步操作是否留痕；凭证与数据有没有落到外网。</li>
+        <li><span class="dt">09-30</span>深度求索官宣开源昇腾平台六大基础设施组件（TileLang / DeepGEMM / DeepEP / TileKernels / FlashMLA / DeepSelect），与英伟达平台开源组件一一对应。</li>
+        <li><span class="dt">同日</span>官方披露 TileLang 已承载 V4 系列训练大部分算子实现；与华为共推昇腾 950 的 128 卡超节点方案。</li>
+        <li><span class="dt">10-03</span>DeepSeek Harness 智能体框架发布 V0.2 预览版，提供 macOS/Windows 桌面端安装包，并加入实验性兼容层（新浪科技报道）。</li>
       </ul>
-      <p>这三个环节本身并不新鲜，但被官方并列写进安全要求之后，它们就从「技术细节」变成了<b>采购与验收时要能拿出来的证据</b>——说不清，就过不了关。</p>
-      <h3 class="art-h2">机悟的做法：把三个环节做成可验收的交付</h3>
-      <p>机悟·政企超脑服务的就是「数据不能出门」的单位，四条硬约束正好一条条对上：</p>
-      <ul>
-        <li><b>物理上不出门</b>——大模型离线部署在单位自己的机房，断网可用、不联外网；数据没有出境的路，也就没有中途的转发。</li>
-        <li><b>凭证不落地</b>——账号、密钥、内网权限留在单位边界内，不经第三方之手。</li>
-        <li><b>全程可审计</b>——每次提问、每份引用、每步操作留痕，可回放、可追责；AI 说的每句话都能指到原文。</li>
-        <li><b>合规是底线</b>——网络边界、日志、权限、模型调用、第三方组件、更新方式逐项写进方案书，版本冻结在验收那一版。</li>
-      </ul>
-      <p>一句话：<b>规范要求的三个环节，最后都要落在同一个问题上——这套 AI 到底跑在谁的机房里。</b></p>
+      <p>回到采购视角。「国产 GPU 硬件参数不输、生态差一大截」曾是政企信创 AI 项目立项时被问得最多的一句话；模型能移植、算子没人写、出问题没人兜底，是很多单位把信创算力方案搁置的真实原因。这次开源之后，这条链路第一次出现了「头部模型公司用过 + 全栈源码公开 + 芯片厂商联合推进」的组合：<b>国产算力底座上「能不能训练顶级大模型」的问号，被头部厂商用代码画上了句号</b>（多家开发者社区的一致评价）。「好不好用」的接力棒则交到生态与集成商手里——这正是落地服务商的活。</p>
+      <p>当然，冷静的一半也要说：开源栈成熟≠交钥匙工程。国产芯片上的模型量化、推理性能调优、显存切分、断网环境运维，仍需逐机型逐场景验证；版本与安全管控的担子也不会因为底层开源而消失。官方组件与各家实测数据请以仓库与正式发布为准。</p>
     </div>
     <div class="kv-box">
-      <h3>机悟的建议：上 AI 之前，先把这三件事问清</h3>
-      <p class="kv-sub">不依赖任何厂商的承诺，先把自己的边界摸清。</p>
+      <h3>机悟的建议：把「信创算力可行性」从 PPT 问题变成实测问题</h3>
+      <p class="kv-sub">生态补齐的窗口期，最适合用一次小实验代替一轮争论。</p>
       <ul>
-        <li><b>问选型：</b>模型版本、训练数据来源、更新方式，能不能给出书面说明，并冻结到验收版本。</li>
-        <li><b>问部署：</b>推理落在哪台机器、网络边界怎么划、日志与权限谁管——存量服务器和显卡能不能先利旧跑通。</li>
-        <li><b>问运行：</b>结论能不能指回原文？凭证与数据会不会出门？出了问题能不能回放当天的记录。</li>
+        <li><b>先测后选型：</b>单位若已有或正评估昇腾等国产卡，别停在参数对比——选一款开源旗舰模型，在真机上量一轮吞吐、时延、显存占用，一下午就有可签字的结论。</li>
+        <li><b>混合过渡：</b>存量英伟达设备继续推理、国产算力承接扩容与训练，两套栈用同一套管控（权限、日志、版本冻结）统一管——迁移不必一刀切。</li>
+        <li><b>把「谁兜底」写进方案：</b>开源组件解决了「有没有」，落地还需要有人负责「跑坏了怎么办」——选型评分里，集成与运维能力的权重应不低于硬件参数。</li>
       </ul>
     </div>
-    <p class="art-src">来源：光明网《多项人工智能大模型标准规范发布》，2026-09-02，记者刘吉东；2026 年国家网络安全宣传周（9 月 14 日至 20 日，主题「网络安全为人民，网络安全靠人民——智能时代 网安护航」）公开报道。本文仅转述官方公开表述，不评判任何厂商与产品；标准条文以发布机构正式文本为准。</p>
+    <p class="art-src">来源：深度求索官方公众号开源公告（2026-09-30）；TileLang（tile-ai/tilelang）及 DeepGEMM-Ascend、DeepEP-Ascend、TileKernels、FlashMLA、DeepSelect（deepseek-ai/*）GitHub 仓库公开信息；新浪科技《DeepSeek 开源昇腾组件，让硬件性能上限不再难啃》；阿里云开发者社区、鲲鹏昇腾开发者社区 2026-10 初技术解读。本文仅转述官方公告与公开报道，组件性能与适配细节以各仓库正式发布为准；不评判任何厂商与产品。</p>
     <div class="art-foot">
       <a class="btn btn-line" href="news.html">← 返回行业动态</a>
       <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
@@ -201,8 +194,8 @@
 <section id="contact" style="padding-top:8px">
   <div class="wrap">
     <div class="cta-band">
-      <h2>三个环节，六件事——一次评估问清</h2>
-      <p>现有设备能跑什么、缺什么、边界怎么划、日志与权限怎么管、谁来更新、多少钱、多久能用——一次 40 分钟免费评估，白纸黑字，不满意不立项。</p>
+      <h2>您机房里那批国产卡，跑得动开源旗舰模型吗？</h2>
+      <p>一次 40 分钟免费评估：现有硬件能跑什么模型、缺什么管控、多少钱、多久能用，白纸黑字，不满意不立项。</p>
       <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
         <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
       </div></div>

@@ -43,6 +43,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-10-08-openai-astra-safety-pull.html</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>monthly</changefreq>

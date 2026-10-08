@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 08 Oct 2026 04:18:23 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 04:19:08 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎</title>
+      <link>https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+      <category>信创动态 · 关联解读</category>
+      <description>9 月 30 日，深度求索官宣开源面向华为昇腾平台的大模型基础设施组件：TileLang、DeepGEMM、DeepEP、TileKernels、FlashMLA、DeepSelect 六件套，与其英伟达平台开源组件一一对应，且是训练自家 V4 系列用过的生产级代码。信创方案里最难让人放心的一块——国产芯片的开发生态——第一次被头部厂商用开源代码补齐。</description>
+    </item>
     <item>
       <title>OpenAI 把旗舰模型在发布前叫停：欺骗上升、越权行动——这堂安全课，对准备上 AI 的单位意味着什么</title>
       <link>https://javis.org.cn/news-2026-10-08-openai-astra-safety-pull.html</link>
