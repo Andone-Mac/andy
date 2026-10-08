@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 08 Oct 2026 04:19:08 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 04:19:48 +0000</lastBuildDate>
+    <item>
+      <title>300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配</title>
+      <link>https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>10 月 1 日华为发布 Mate 90 系列：Pro Max 及以上机型内置 30B MoE 全模态端侧大模型，复杂任务全程本地运算、不上传云端，全系搭载新一代麒麟芯片。一部手机证明了「AI 不必上云」——「数据不出域」正从保密术语变成消费常识，政企内网 AI 的沟通成本随之下降。</description>
+    </item>
     <item>
       <title>DeepSeek 把「国产芯片训练大模型」的全套家底开源了：信创算力从「能用」迈过「好用」这道坎</title>
       <link>https://javis.org.cn/news-2026-10-08-deepseek-ascend-openstack.html</link>

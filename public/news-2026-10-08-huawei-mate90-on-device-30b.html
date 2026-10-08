@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
+<title>300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="10 月 1 日华为发布 Mate 90 系列：Pro Max 及以上机型内置 30B MoE 全模态端侧大模型，复杂任务全程本地运算、不上传云端，全系搭载新一代麒麟芯片。一部手机证明了「AI 不必上云」——「数据不出域」正从保密术语变成消费常识，政企内网 AI 的沟通成本随之下降。">
 <meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="format-detection" content="telephone=no,email=no">
-<link rel="canonical" href="https://javis.org.cn/news-2026-10-07-local-model-overview.html">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html">
 <link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
 <link rel="icon" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
-<meta property="og:title" content="一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
-<meta property="og:url" content="https://javis.org.cn/news-2026-10-07-local-model-overview.html">
+<meta property="og:title" content="300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="10 月 1 日华为发布 Mate 90 系列：Pro Max 及以上机型内置 30B MoE 全模态端侧大模型，复杂任务全程本地运算、不上传云端，全系搭载新一代麒麟芯片。一部手机证明了「AI 不必上云」——「数据不出域」正从保密术语变成消费常识，政企内网 AI 的沟通成本随之下降。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
+<meta name="twitter:title" content="300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="10 月 1 日华为发布 Mate 90 系列：Pro Max 及以上机型内置 30B MoE 全模态端侧大模型，复杂任务全程本地运算、不上传云端，全系搭载新一代麒麟芯片。一部手机证明了「AI 不必上云」——「数据不出域」正从保密术语变成消费常识，政企内网 AI 的沟通成本随之下降。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -33,10 +33,10 @@
   "@graph": [
     {
       "@type": "NewsArticle",
-      "headline": "一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览",
-      "description": "开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。",
-      "datePublished": "2026-10-07",
-      "dateModified": "2026-10-07",
+      "headline": "300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配",
+      "description": "10 月 1 日华为发布 Mate 90 系列：Pro Max 及以上机型内置 30B MoE 全模态端侧大模型，复杂任务全程本地运算、不上传云端，全系搭载新一代麒麟芯片。一部手机证明了「AI 不必上云」——「数据不出域」正从保密术语变成消费常识，政企内网 AI 的沟通成本随之下降。",
+      "datePublished": "2026-10-08",
+      "dateModified": "2026-10-08",
       "author": {
         "@type": "Organization",
         "name": "甲维思 JAVIS"
@@ -45,7 +45,7 @@
         "@type": "Organization",
         "name": "甲维思 JAVIS"
       },
-      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-07-local-model-overview.html",
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html",
       "image": [
         "https://javis.org.cn/assets/logo.png"
       ]
@@ -68,8 +68,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览",
-          "item": "https://javis.org.cn/news-2026-10-07-local-model-overview.html"
+          "name": "300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配",
+          "item": "https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html"
         }
       ]
     }
@@ -150,42 +150,38 @@
 <section class="art-head" id="top">
   <div class="wrap art-wrap">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
-    <span class="n-date">2026-10-07</span><span class="n-tag" style="margin-left:8px">行业综述 · 选型参考</span>
-    <h1 class="art-h1">一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览</h1>
-    <p class="art-lede">过去两个月，「本地能跑多大的模型」这件事的边界被三条线同时推开：<b>开源侧</b>，小米 MiMo-V2.6（1.02 万亿参数，MIT 协议）、Kimi K3（2.8 万亿）、GLM-5.3、DeepSeek V4 集体开放权重并支持百万 Token 上下文；<b>架构侧</b>，MoE 混合专家让「总参数」和「每次推理真正用到的参数」彻底解绑——35B 总参数的模型，推理时只激活 3B，小显存也能请出「大模型」；<b>引擎侧</b>，开源推理引擎 Strata 用「显存 + 内存 + SSD」三级存储，把 125B 的 Qwen3.8-Flash-Next 塞进了普通游戏电脑。本文把这些新信息按硬件档位整理成一张对照表，并说说量化与管控里的坑。</p>
+    <span class="n-date">2026-10-08</span><span class="n-tag" style="margin-left:8px">行业趋势 · 关联解读</span>
+    <h1 class="art-h1">300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配</h1>
+    <p class="art-lede">10 月 1 日华为发布 Mate 90 系列：Pro Max 及以上机型内置 30B（300 亿参数）MoE 全模态端侧大模型，官方口径复杂任务全程本地运算、不上传云端；全系搭载新一代麒麟芯片，Pro Max 首发麒麟 9050 Pro。一部手机都能把旗舰级模型装进掌心离线跑——「AI 必须上云」这个行业最大的默认前提，正在从消费电子这一端被拆掉。</p>
   </div>
 </section>
 
 <section class="art-sec">
   <div class="wrap art-wrap">
     <div class="art-body">
-      <h3 class="art-h2">先看懂架构：MoE 为什么让「显存档位」不再是死刑判决</h3>
-      <p>传统稠密模型（每层参数全量参与计算）的部署逻辑很简单：显存装得下量化后的整模型就能跑，装不下就崩。2026 年主流开源旗舰几乎全部转向 <b>MoE（混合专家）</b>：把每层的「专家」做成几十上百个子网络，每次推理只路由到其中一小部分。以本次实测的两款为例——Qwen3.8-Flash-Next 总参数 125B、每 Token 仅激活 6B；小米 4 月的 Qwen3.6-35B-A3B 总参数 35B、激活仅 3B。翻译成人话：<b>模型很「聪明」（容量大），但每次开口只「动一小块脑子」（算力与带宽开销小）</b>，于是「按总参数估硬件」的老经验集体失效，新的门槛变成：权重全放哪（显存/内存/SSD）＋激活部分跑多快。</p>
-      <h3 class="art-h2">引擎侧的新变量：Strata 把 125B 请进普通 PC——我们实测了</h3>
-      <p>9 月底开源、10 月初冲上技术社区热榜的 <b>Strata</b>（MIT 协议，基于 llama.cpp 深度改造）就是冲着「权重全放哪」来的：它的三级存储把最常用专家驻留显存、全部专家放内存、29GB 级查表留在 SSD 流式读取；再配「小模型先猜、大模型批量验」的推测解码提速 1.6-1.8 倍。<b>我们在本地一台 24GB 显存 + 31GB 内存的机器上完成部署实测</b>：IQ2_XS 量化档（约 66GB 下载量、39.2GB 常驻内存），文本生成 <b>51-77 tokens/s</b>（中文问答、代码场景，专家缓存命中率 87-91%），图片理解单张约 3 秒，接口是标准的 OpenAI/Anthropic 兼容 API，可直接对接现有办公应用与智能体工具链。一句话结论：<b>一台中端工作站，今天可以当「千亿级内网大脑」用</b>——这是两年前必须进云端集群或专业整机才能干的事。</p>
-      <h3 class="art-h2">对照表：按你手里的显卡，现在能跑什么</h3>
-      <p>下表综合公开实测（知乎、腾讯云开发者社区、博客园等 2026 年 4-10 月横评）、厂商模型卡与我们本机数据整理；「可跑」指达到可用的出字速度（≥20 tok/s 或可接受的长任务节奏），量化默认 Q4_K_M～Q5_K_M 档：</p>
+      <h3 class="art-h2">发布现场：端侧大模型从「演示功能」变成「旗舰标配」</h3>
+      <p>据发布会公开信息与多家科技媒体报道（IT 之家、虎嗅、网易科技，2026-10-01）：Mate 90 系列含标准版、Pro、Pro Max、Pro Max 典藏版、RS 非凡大师，<b>5999 元起、当日 12:08 开售</b>；标准版搭载麒麟 9030「旗舰 τ 芯片」，Pro Max 及 RS 首发麒麟 9050 Pro（逻辑折叠 τ 架构），公开报道口径 NPU 性能提升幅度最高达 140%。AI 是这场发布的主线：<b>Mate 90 Pro Max 及以上机型部署 30B MoE 全模态端侧大模型</b>，小艺升级为个人专属智能体——通话 2.0 支持代接来电、通话摘要与实时翻译，图库助手支持一句话修图、一句话成片，导航条支持 30 余类服务主动推荐；多篇报道强调这些能力<b>全程本地运算、不上传云端</b>，场景理解能力提升约 47%（数字以华为官方发布为准）。</p>
+      <p>把时间轴拉长看，这不是孤立事件：网信办 2026 年 9 月 23 日公告中已有 <b>3 款手机端侧生成式 AI 服务完成备案</b>；本站 10 月 7 日刚梳理过开源权重在 PC 本地推理的显存阶梯。如今 30B 级全模态模型进了手机——<b>「大模型 = 云端 API」的等式，消费端已经不再成立</b>。</p>
+      <h3 class="art-h2">为什么这条对政企单位是个信号，而不是数码新闻</h3>
       <ul class="art-tl">
-        <li><span class="dt">8GB 显存</span>稠密档：7B–8B 全系（Qwen3.8-8B、Gemma 4 8B 等）流畅。注意 Gemma 类模型对低量化敏感，低于 4-bit 逻辑能力明显滑坡。</li>
-        <li><span class="dt">12GB 显存</span>稠密档：14B 量化舒适、32B 量化勉强（约 25 tok/s）；<b>MoE 档</b>：35B-A3B 级别已可完整驻留——小卡的最佳路线是「换架构」而不是「攒显存」。</li>
-        <li><span class="dt">16–24GB 显存</span>单位级甜点位：24GB 卡跑 32B 稠密量化有实战价值；上表「MoE + 31GB 内存」组合即可本地跑 125B（Strata 实测）。多数 2019–2022 年采购的工作站卡都在这条线上。</li>
-        <li><span class="dt">48GB+/双卡/桌面整机</span>70B 级稠密稳定驻留；2.4T 级开源旗舰开始进入「多卡+大内存」的可部署视野。</li>
-        <li><span class="dt">桌面 AI 整机（参考）</span>NVIDIA DGX Spark 64GB 版 10 月 23 日上市、$4999 起，单机约千亿参数、两台池化约 2000 亿——适合要「开箱即用+统一内存」又不想自己攒机的单位。</li>
+        <li><span class="dt">09-23</span>网信办备案公告中，手机端侧生成式 AI 服务累计 3 款完成备案——端侧模型进入监管视野并成为独立类目。</li>
+        <li><span class="dt">10-01</span>华为 Mate 90 系列发布：Pro Max 及以上内置 30B MoE 全模态端侧大模型，主打全程本地运算；5999 元起当日开售。</li>
+        <li><span class="dt">10-03</span>桌面级 AI 整机（64GB 统一内存版）宣布单机本地跑约千亿参数——从手机到桌面，本地算力同期下沉（详见本站 10-06 条目）。</li>
       </ul>
-      <h3 class="art-h2">两个必须说清的坑</h3>
-      <p><b>一是「能跑 ≠ 能签」。</b>量化每降一档，数学推理、长文事实性、中文细节都在悄悄退步；社区独立基准曾发现某档量化模型「分数好看但实际任务翻车」的案例。选型必须以<b>本单位真实业务样本</b>（卷宗、公文、图纸说明）做小样本验证，而不是看跑分榜。</p>
-      <p><b>二是「开源 ≠ 免责」。</b>开放权重同样带许可条款（不同厂商的商用转售、规模限制不同），且模型自带的能力边界（幻觉、提示注入）不会因为「跑在自己机房」就消失。护栏、溯源、权限分级，这些管控责任从云端搬到内网，一样都不会少——这正是本站此前解读《大模型安全护栏成官方测试场景》反复讲的点。</p>
+      <p>第一层含义：<b>技术路线被大众市场验证了。</b>MoE 稀疏激活、低比特量化、NPU 专用算力这套「把大模型塞进小盒子」的组合拳，在手机这种对功耗、散热、时延最苛刻的场景里跑通了商用——同样的路线放进单位的机房，可行性的举证责任轻了一大截。十年前「办公电脑」证明了云计算，如今旗舰手机正在证明另一件事：<b>算力与智能可以留在设备这一侧，质量并不塌。</b></p>
+      <p>第二层含义，也更实际：<b>市场教育的成本在由厂商替你付。</b>越来越多干部和经办人第一次直观体验到「AI 不出设备也能听懂、能干活」，「数据不出域」从保密部门的专业术语变成常识——政企内网 AI 立项时的沟通阻力，会顺着这个趋势持续下降。第三层含义关乎架构：端侧模型处理个人日程与文档摘要，单位内网模型管卷宗与公文，各归其位、各守其域——「端侧 + 内网」的分层，比「一切上云」更贴近政企真实的保密边界。</p>
+      <p>照例说冷静的一半：手机端的 30B 与单位需要的办案/公文级能力不是一回事，端侧模型不做审计溯源、不管权限分级，更替代不了内网里的涉密数据处理；消费级「本地运算」的隐私条款以厂商官方说明为准。这里读的是趋势，不是结论。</p>
     </div>
     <div class="kv-box">
-      <h3>机悟的建议：两个月做一次「本地能力盘点」</h3>
-      <p class="kv-sub">模型与引擎的迭代速度已经以「周」计，硬件账也该常算常新。</p>
+      <h3>机悟的建议：顺着「本地化」已成常识的风向，做三件事</h3>
+      <p class="kv-sub">手机先替政企把「数据不出门也能用好 AI」验证了一遍，方案沟通可以借力。</p>
       <ul>
-        <li><b>先盘架构再盘显存：</b>旧卡不等于旧生产力——MoE 量化路线下，很多 2020 年前后的卡反而能跑起当年想都不敢想的参数级模型。</li>
-        <li><b>拿真实文档做一轮小样本：</b>挑 2–3 款同档位候选模型，用本单位卷宗/公文各跑一批，看溯源能否指回原文、该拒的拒不拒。</li>
-        <li><b>把「引擎」当采购要素：</b>同一模型在不同推理引擎上能差 2–3 倍速度；评估时问清楚对方用什么引擎、是否支持你的存量硬件。</li>
+        <li><b>立项话术升级：</b>向领导班子汇报时，可以直接用「您手机上的小艺就是离线跑大模型」做锚点——私有化部署不再是超前概念，而是与个人设备同一趋势的单位版本。</li>
+        <li><b>分层规划：</b>把「个人端侧 AI（公开信息、日程）+ 单位内网 AI（涉密与业务数据）」画成两张边界清楚的图，比笼统的「统一上云」更符合保密要求，也更好过审。</li>
+        <li><b>算力评估趁窗口：</b>旗舰手机与桌面整机把推理效率卷上来了，量化模型对存量硬件更友好——旧服务器、老显卡现在值得重新盘一遍，别按两年前的结论作废。</li>
       </ul>
     </div>
-    <p class="art-src">来源：小米 MiMo-V2.6 发布信息（MIT 协议、1.02T 参数，2026-09-21）；Kimi K3/中新网 2026-07-21；Qwen3.8-Flash-Next 模型卡（huggingface.co/Qwen，2026-08）与 Strata 开源仓库（github.com/Niko1221/Strata，MIT，2026-10-04 社区热榜）——本机实测数据为甲维思于 2026-10-06 在一台 24GB 显存/31GB 内存工作站上所测；Qwen3.6-35B-A3B（Apache 2.0，2026-04）；腾讯云开发者社区《本地部署开源大模型三足鼎立》2026-04；知乎《最全 LLM 大模型推理成绩实测》2026-02 及《本地部署 AI Agent，6G 显存跑 Qwen3.6-35B-A3B》2026-06；博客园《开源大模型本地部署硬件选型深度指南》2026-05-17；财联社/腾讯新闻（NVIDIA DGX Spark 64GB 版，2026-10-03）。行业信息仅作综述参考，不构成投资建议；本文不评判任何厂商与产品，量化版本与速度数据以各模型官方发布为准。</p>
+    <p class="art-src">来源：华为企业业务发布会公开信息（2026-10-01）；IT 之家《华为 Mate 90 系列及全场景新品发布会一文汇总》、虎嗅、网易科技、新浪科技 2026-10-01/02 报道；中央网信办生成式 AI 服务备案公告（2026-09-23）。本文仅转述公开发布会与媒体报道，芯片性能与端侧模型参数以华为官方发布为准；不评判任何厂商与产品。</p>
     <div class="art-foot">
       <a class="btn btn-line" href="news.html">← 返回行业动态</a>
       <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
@@ -199,8 +195,8 @@
 <section id="contact" style="padding-top:8px">
   <div class="wrap">
     <div class="cta-band">
-      <h2>您的旧显卡，可能比想象中「能装」</h2>
-      <p>一次 40 分钟免费评估：现有硬件在 MoE/量化新路线下能跑什么模型、缺什么管控、多少钱、多久能用，白纸黑字，不满意不立项。</p>
+      <h2>手机都能离线跑 300 亿参数，您单位的内网还差什么？</h2>
+      <p>一次 40 分钟免费评估：现有硬件能跑什么模型、缺什么管控、多少钱、多久能用，白纸黑字，不满意不立项。</p>
       <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
         <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
       </div></div>
