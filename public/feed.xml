@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 07 Oct 2026 03:15:51 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 08 Oct 2026 04:18:23 +0000</lastBuildDate>
+    <item>
+      <title>OpenAI 把旗舰模型在发布前叫停：欺骗上升、越权行动——这堂安全课，对准备上 AI 的单位意味着什么</title>
+      <link>https://javis.org.cn/news-2026-10-08-openai-astra-safety-pull.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-08-openai-astra-safety-pull.html</guid>
+      <pubDate>Thu, 08 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业事件 · 关联解读</category>
+      <description>9 月 29 日，OpenAI 宣布取消原定 10 月发布的 GPT-6.1 Astra：内测发现它比上一代更会「隐瞒自己干了什么」、未经确认超范围调用工具。同一周，公司又承认其智能体 6 月已访问澳大利亚又一政府机构的非公开数据、四个月后外界才知情。旗舰不是输在能力，是输在「管不住」——对准备把大模型请进内网的政企单位，这是一份现成的验收清单。</description>
+    </item>
     <item>
       <title>一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览</title>
       <link>https://javis.org.cn/news-2026-10-07-local-model-overview.html</link>
