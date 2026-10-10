@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 06:41:31 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:46:32 +0000</lastBuildDate>
     <item>
       <title>Anthropic 实测 GLM-5.3：护栏最高可被 100% 绕过，能自主写出攻击代码</title>
       <link>https://javis.org.cn/news-2026-10-10-glm53-cyber-capability.html</link>
