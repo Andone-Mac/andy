@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 06:40:09 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:40:50 +0000</lastBuildDate>
+    <item>
+      <title>图像模型三次换挡：FLUX 3 走向开源，Qwen-Image-2.1 登顶，Jev 改写决策</title>
+      <link>https://javis.org.cn/news-2026-10-10-image-decision-model-trio.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-10-image-decision-model-trio.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <category>技术前沿 · 关联解读</category>
+      <description>相近的时间窗口里，图像与决策类模型接连更新：Black Forest Labs 的 FLUX 3 把图像、视频、音频放进一个统一架构（7 月 23 日发布，开源权重在路上）；阿里 Qwen-Image-2.1 以 7B 单模型进入 Artificial Analysis 图像榜的开源前列；TypeSafe 的 Jev 以「非语言模型的决策模型」定位上架 OpenRouter。三件事指向同一个方向：模型正在从「生成内容」走向「理解世界并做决策」。</description>
+    </item>
     <item>
       <title>DeepSeek 筹备科创板 IPO：中信证券进场、估值约 5000 亿元，大模型走到资本门口</title>
       <link>https://javis.org.cn/news-2026-10-10-deepseek-star-ipo.html</link>
