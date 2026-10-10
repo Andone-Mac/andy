@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 08 Oct 2026 04:19:48 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:37:59 +0000</lastBuildDate>
+    <item>
+      <title>美国六大 AI 巨头与白宫签下《超级智能协定》：行业自律的时代，政企该看懂的三点</title>
+      <link>https://javis.org.cn/news-2026-10-10-white-house-superintelligence-accord.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-10-white-house-superintelligence-accord.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国际动态 · 关联解读</category>
+      <description>9 月 29 日，特朗普与六家美国头部 AI 公司负责人签署《超级智能协定》（The White House Accord on Superintelligence），特朗普称其「几乎像一部宪法」，但文件是自愿的、道义上具有约束力的行业承诺：内部管控、独立外部审计、董事会级监督委员会。同日他宣布组建十人委员会统筹 AI 安全。这份「自己管自己」的协定，给政企上 AI 提供了一份可对照的动作清单。</description>
+    </item>
     <item>
       <title>300 亿参数塞进一部手机、全程本地运算不上云：旗舰手机把「数据不出门」做成了标配</title>
       <link>https://javis.org.cn/news-2026-10-08-huawei-mate90-on-device-30b.html</link>
