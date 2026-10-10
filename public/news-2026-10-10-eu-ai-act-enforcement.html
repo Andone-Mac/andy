@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
+<title>欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026 年 8 月 2 日起，欧盟委员会 AI 办公室与各成员国监管机构正式开始执行《人工智能法案》（AI Act）：通用人工智能（GPAI）模型提供方须履行义务，聊天机器人等交互式 AI 必须向用户亮明「我是 AI」，禁止性做法同步进入执法。对面向欧盟市场提供产品或服务的单位，这是一道新增的硬性合规门槛。">
 <meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="format-detection" content="telephone=no,email=no">
-<link rel="canonical" href="https://javis.org.cn/news-2026-10-07-local-model-overview.html">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html">
 <link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
 <link rel="icon" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
-<meta property="og:title" content="一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
-<meta property="og:url" content="https://javis.org.cn/news-2026-10-07-local-model-overview.html">
+<meta property="og:title" content="欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026 年 8 月 2 日起，欧盟委员会 AI 办公室与各成员国监管机构正式开始执行《人工智能法案》（AI Act）：通用人工智能（GPAI）模型提供方须履行义务，聊天机器人等交互式 AI 必须向用户亮明「我是 AI」，禁止性做法同步进入执法。对面向欧盟市场提供产品或服务的单位，这是一道新增的硬性合规门槛。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。">
+<meta name="twitter:title" content="欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026 年 8 月 2 日起，欧盟委员会 AI 办公室与各成员国监管机构正式开始执行《人工智能法案》（AI Act）：通用人工智能（GPAI）模型提供方须履行义务，聊天机器人等交互式 AI 必须向用户亮明「我是 AI」，禁止性做法同步进入执法。对面向欧盟市场提供产品或服务的单位，这是一道新增的硬性合规门槛。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -33,10 +33,10 @@
   "@graph": [
     {
       "@type": "NewsArticle",
-      "headline": "一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览",
-      "description": "开源旗舰集体开放权重（MiMo-V2.6 1.02T/MIT、Kimi K3 2.8T、GLM-5.3、DeepSeek V4 全带百万上下文）；MoE 架构让「总参数」与「激活参数」解绑，小显存也能跑 35B 级模型；新引擎 Strata 用显存+内存+SSD 三级存储把 125B 塞进游戏电脑——本机实测 51-77 tokens/s。本文按显存档位整理「现在本地能跑什么」对照表，并提醒量化与管控的两个坑。",
-      "datePublished": "2026-10-07",
-      "dateModified": "2026-10-07",
+      "headline": "欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束",
+      "description": "2026 年 8 月 2 日起，欧盟委员会 AI 办公室与各成员国监管机构正式开始执行《人工智能法案》（AI Act）：通用人工智能（GPAI）模型提供方须履行义务，聊天机器人等交互式 AI 必须向用户亮明「我是 AI」，禁止性做法同步进入执法。对面向欧盟市场提供产品或服务的单位，这是一道新增的硬性合规门槛。",
+      "datePublished": "2026-10-10",
+      "dateModified": "2026-10-10",
       "author": {
         "@type": "Organization",
         "name": "甲维思 JAVIS"
@@ -45,7 +45,7 @@
         "@type": "Organization",
         "name": "甲维思 JAVIS"
       },
-      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-07-local-model-overview.html",
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html",
       "image": [
         "https://javis.org.cn/assets/logo.png"
       ]
@@ -68,8 +68,8 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览",
-          "item": "https://javis.org.cn/news-2026-10-07-local-model-overview.html"
+          "name": "欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束",
+          "item": "https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html"
         }
       ]
     }
@@ -150,43 +150,66 @@
 <section class="art-head" id="top">
   <div class="wrap art-wrap">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
-    <span class="n-date">2026-10-07</span><span class="n-tag" style="margin-left:8px">行业综述 · 选型参考</span>
-    <h1 class="art-h1">一张表看懂本地能跑的开源大模型：从 8GB 老卡到单机千亿参数——2026 年 10 月本地模型概览</h1>
-    <p class="art-lede">过去两个月，「本地能跑多大的模型」这件事的边界被三条线同时推开：<b>开源侧</b>，小米 MiMo-V2.6（1.02 万亿参数，MIT 协议）、Kimi K3（2.8 万亿）、GLM-5.3、DeepSeek V4 集体开放权重并支持百万 Token 上下文；<b>架构侧</b>，MoE 混合专家让「总参数」和「每次推理真正用到的参数」彻底解绑——35B 总参数的模型，推理时只激活 3B，小显存也能请出「大模型」；<b>引擎侧</b>，开源推理引擎 Strata 用「显存 + 内存 + SSD」三级存储，把 125B 的 Qwen3.8-Flash-Next 塞进了普通游戏电脑。本文把这些新信息按硬件档位整理成一张对照表，并说说量化与管控里的坑。</p>
+    <span class="n-date">2026-10-10</span><span class="n-tag" style="margin-left:8px">法规动态 · 关联解读</span>
+    <h1 class="art-h1">欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束</h1>
+    <p class="art-lede">据欧盟委员会 2026 年 7 月 31 日新闻稿（IP/26/1714），自 2026 年 8 月 2 日起，欧盟委员会 AI 办公室（AI Office）会同各成员国主管部门，开始执行《人工智能法案》。同日，新的透明度规则生效：聊天机器人及其他交互式 AI 系统必须告知用户「你是在与 AI 而非真人交互」，生成或修改过的内容也需相应标识。</p>
   </div>
 </section>
 
 <section class="art-sec">
   <div class="wrap art-wrap">
     <div class="art-body">
-      <h3 class="art-h2">先看懂架构：MoE 为什么让「显存档位」不再是死刑判决</h3>
-      <p>传统稠密模型（每层参数全量参与计算）的部署逻辑很简单：显存装得下量化后的整模型就能跑，装不下就崩。2026 年主流开源旗舰几乎全部转向 <b>MoE（混合专家）</b>：把每层的「专家」做成几十上百个子网络，每次推理只路由到其中一小部分。以本次实测的两款为例——Qwen3.8-Flash-Next 总参数 125B、每 Token 仅激活 6B；小米 4 月的 Qwen3.6-35B-A3B 总参数 35B、激活仅 3B。翻译成人话：<b>模型很「聪明」（容量大），但每次开口只「动一小块脑子」（算力与带宽开销小）</b>，于是「按总参数估硬件」的老经验集体失效，新的门槛变成：权重全放哪（显存/内存/SSD）＋激活部分跑多快。</p>
-      <h3 class="art-h2">引擎侧的新变量：Strata 把 125B 请进普通 PC——我们实测了</h3>
-      <p>9 月底开源、10 月初冲上技术社区热榜的 <b>Strata</b>（MIT 协议，基于 llama.cpp 深度改造）就是冲着「权重全放哪」来的：它的三级存储把最常用专家驻留显存、全部专家放内存、29GB 级查表留在 SSD 流式读取；再配「小模型先猜、大模型批量验」的推测解码提速 1.6-1.8 倍。<b>我们在本地一台 24GB 显存 + 31GB 内存的机器上完成部署实测</b>：IQ2_XS 量化档（约 66GB 下载量、39.2GB 常驻内存），文本生成 <b>51-77 tokens/s</b>（中文问答、代码场景，专家缓存命中率 87-91%），图片理解单张约 3 秒，接口是标准的 OpenAI/Anthropic 兼容 API，可直接对接现有办公应用与智能体工具链。一句话结论：<b>一台中端工作站，今天可以当「千亿级内网大脑」用</b>——这是两年前必须进云端集群或专业整机才能干的事。</p>
-      <h3 class="art-h2">对照表：按你手里的显卡，现在能跑什么</h3>
-      <p>下表综合公开实测（知乎、腾讯云开发者社区、博客园等 2026 年 4-10 月横评）、厂商模型卡与我们本机数据整理；「可跑」指达到可用的出字速度（≥20 tok/s 或可接受的长任务节奏），量化默认 Q4_K_M～Q5_K_M 档：</p>
+      <h3 class="art-h2">生效了什么：三块同时开执法</h3>
+      <p>按欧盟委员会官方说明，本次进入执法的是三部分：一是通用人工智能（GPAI）模型提供方的义务；二是透明度义务；三是被禁止的 AI 做法。</p>
       <ul class="art-tl">
-        <li><span class="dt">8GB 显存</span>稠密档：7B–8B 全系（Qwen3.8-8B、Gemma 4 8B 等）流畅。注意 Gemma 类模型对低量化敏感，低于 4-bit 逻辑能力明显滑坡。</li>
-        <li><span class="dt">12GB 显存</span>稠密档：14B 量化舒适、32B 量化勉强（约 25 tok/s）；<b>MoE 档</b>：35B-A3B 级别已可完整驻留——小卡的最佳路线是「换架构」而不是「攒显存」。</li>
-        <li><span class="dt">16–24GB 显存</span>单位级甜点位：24GB 卡跑 32B 稠密量化有实战价值；上表「MoE + 31GB 内存」组合即可本地跑 125B（Strata 实测）。多数 2019–2022 年采购的工作站卡都在这条线上。</li>
-        <li><span class="dt">48GB+/双卡/桌面整机</span>70B 级稠密稳定驻留；2.4T 级开源旗舰开始进入「多卡+大内存」的可部署视野。</li>
-        <li><span class="dt">桌面 AI 整机（参考）</span>NVIDIA DGX Spark 64GB 版 10 月 23 日上市、$4999 起，单机约千亿参数、两台池化约 2000 亿——适合要「开箱即用+统一内存」又不想自己攒机的单位。</li>
+        <li><b>GPAI 模型提供方：</b>须留存技术文档并提供给主管机关或下游提供方，建立版权合规政策，并发布训练内容摘要。</li>
+        <li><b>系统性风险模型的额外义务：</b>训练算力超过 10<sup>25</sup> FLOP 即被推定为具有系统性风险（该阈值目前仍在复核中），其提供方须向委员会通报、开展风险评估与缓解、报告事故、落实网络安全防护。</li>
+        <li><b>透明度与禁止性做法：</b>交互式 AI 须亮明身份；操纵用户、以有害方式利用脆弱性、对个人进行威胁其权利的不公平评分的系统被禁止。</li>
       </ul>
-      <h3 class="art-h2">两个必须说清的坑</h3>
-      <p><b>一是「能跑 ≠ 能签」。</b>量化每降一档，数学推理、长文事实性、中文细节都在悄悄退步；社区独立基准曾发现某档量化模型「分数好看但实际任务翻车」的案例。选型必须以<b>本单位真实业务样本</b>（卷宗、公文、图纸说明）做小样本验证，而不是看跑分榜。</p>
-      <p><b>二是「开源 ≠ 免责」。</b>开放权重同样带许可条款（不同厂商的商用转售、规模限制不同），且模型自带的能力边界（幻觉、提示注入）不会因为「跑在自己机房」就消失。护栏、溯源、权限分级，这些管控责任从云端搬到内网，一样都不会少——这正是本站此前解读《大模型安全护栏成官方测试场景》反复讲的点。</p>
+      <h3 class="art-h2">谁管、管到什么程度</h3>
+      <p>执法权分散在三类主体：AI 办公室负责「与底层 GPAI 模型同一提供方」的 AI 系统，以及被《数字服务法》认定为超大型在线平台/搜索引擎的系统；成员国主管机关负责其他 AI 系统；欧盟机构使用的 AI 由欧洲数据保护监督局（EDPS）负责。AI 办公室可发出信息请求（RFI），若回复不实或误导可处罚款；对故意或过失违规可作出处罚决定，罚则按违规性质、严重程度与持续时间确定。</p>
+      <p>AI 办公室同时上线了投诉工具（Complaint Tool）与举报工具（Whistleblower Tool），供自然人与法人举报涉嫌违规行为。下表是把关键时间点排在一起，方便对照自己的产品节奏。</p>
+      <figure class="art-fig">
+        <svg style="width:100%;height:auto;display:block;border-radius:12px" xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="Noto Sans CJK SC,PingFang SC,Microsoft YaHei,FZHei-B01,sans-serif" role="img" aria-label="时间线">
+<rect width="800" height="400" fill="#f4f7fc"/>
+<line x1="150" y1="20" x2="150" y2="380" stroke="#22a7dd" stroke-width="2"/>
+<circle cx="150" cy="30" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="35" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2024-08-01</text>
+<text x="168" y="35" font-size="15" fill="#3d4c6b">AI Act 生效</text>
+<circle cx="150" cy="82" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="87" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2025-02-02</text>
+<text x="168" y="87" font-size="15" fill="#3d4c6b">禁止性做法与 AI 素养义务适用</text>
+<circle cx="150" cy="134" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="139" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2025-08-02</text>
+<text x="168" y="139" font-size="15" fill="#3d4c6b">治理规则与 GPAI 模型义务适用</text>
+<circle cx="150" cy="186" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="191" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2026-08-02</text>
+<text x="168" y="191" font-size="15" fill="#3d4c6b">AI 办公室与成员国开始执法；透明规则生效</text>
+<circle cx="150" cy="238" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="243" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2027-08-02</text>
+<text x="168" y="243" font-size="15" fill="#3d4c6b">已上市模型合规大限</text>
+<circle cx="150" cy="290" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="295" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2027-12-02</text>
+<text x="168" y="295" font-size="15" fill="#3d4c6b">附件 III 高风险 AI 系统规则适用</text>
+<circle cx="150" cy="342" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="347" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2028-08-02</text>
+<text x="168" y="347" font-size="15" fill="#3d4c6b">嵌入受监管产品的高风险系统规则适用</text>
+</svg>
+        <figcaption>图：欧盟 AI Act 关键时间点。来源：欧盟委员会 IP/26/1714（2026-07-31）与欧盟数字战略官网（2026）。</figcaption>
+      </figure>
+      <p>对准备出海或已在欧盟有用户的单位，最紧迫的是<b>透明度</b>这一块：它不要求你重新训练模型，只要求你在产品入口把「这是 AI」说清楚、把生成内容标出来。相对而言，这是成本最低、也最容易被忽略的第一道门槛。</p>
     </div>
     <div class="kv-box">
-      <h3>机悟的建议：两个月做一次「本地能力盘点」</h3>
-      <p class="kv-sub">模型与引擎的迭代速度已经以「周」计，硬件账也该常算常新。</p>
+      <h3>机悟的建议：面向欧盟的业务，把「透明」和「留痕」提前做</h3>
+      <p class="kv-sub">执法从「有没有做」转向「能不能证明做了」——证明靠的是文档与日志。</p>
       <ul>
-        <li><b>先盘架构再盘显存：</b>旧卡不等于旧生产力——MoE 量化路线下，很多 2020 年前后的卡反而能跑起当年想都不敢想的参数级模型。</li>
-        <li><b>拿真实文档做一轮小样本：</b>挑 2–3 款同档位候选模型，用本单位卷宗/公文各跑一批，看溯源能否指回原文、该拒的拒不拒。</li>
-        <li><b>把「引擎」当采购要素：</b>同一模型在不同推理引擎上能差 2–3 倍速度；评估时问清楚对方用什么引擎、是否支持你的存量硬件。</li>
+        <li><b>亮明身份：</b>面向欧盟用户的产品，交互入口需要明确的「AI 身份」提示，生成或修改的内容要能标识来源。</li>
+        <li><b>训练内容摘要与版权：</b>若您对外提供模型服务，训练数据摘要与版权政策成为必备文档——本地部署时，这些资料留在自己手里更省事。</li>
+        <li><b>先判断管辖边界：</b>确认自己属于 AI 办公室、成员国主管机关还是 EDPS 的管辖范围，再确定合规动作与时间点，别按错误的时间表预案。</li>
       </ul>
     </div>
-    <p class="art-src">来源：小米 MiMo-V2.6 发布信息（MIT 协议、1.02T 参数，2026-09-21）；Kimi K3/中新网 2026-07-21；Qwen3.8-Flash-Next 模型卡（huggingface.co/Qwen，2026-08）与 Strata 开源仓库（github.com/Niko1221/Strata，MIT，2026-10-04 社区热榜）——本机实测数据为甲维思于 2026-10-06 在一台 24GB 显存/31GB 内存工作站上所测；Qwen3.6-35B-A3B（Apache 2.0，2026-04）；腾讯云开发者社区《本地部署开源大模型三足鼎立》2026-04；知乎《最全 LLM 大模型推理成绩实测》2026-02 及《本地部署 AI Agent，6G 显存跑 Qwen3.6-35B-A3B》2026-06；博客园《开源大模型本地部署硬件选型深度指南》2026-05-17；财联社/腾讯新闻（NVIDIA DGX Spark 64GB 版，2026-10-03）。行业信息仅作综述参考，不构成投资建议；本文不评判任何厂商与产品，量化版本与速度数据以各模型官方发布为准。</p>
-    <div class="art-foot">
+    <p class="art-src">来源：欧盟委员会新闻稿 IP/26/1714（2026-07-31，布鲁塞尔）；欧盟数字战略官网《General-purpose AI obligations under the AI Act》事实页及 AI Act 执法框架页（2026）。本文仅转述官方公开信息，具体合规以欧盟官方文本与主管机关解释为准，不评判任何厂商与产品。</p>
+      <div class="art-foot">
       <a class="btn btn-line" href="news.html">← 返回行业动态</a>
       <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
         <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
@@ -199,8 +222,8 @@
 <section id="contact" style="padding-top:8px">
   <div class="wrap">
     <div class="cta-band">
-      <h2>您的旧显卡，可能比想象中「能装」</h2>
-      <p>一次 40 分钟免费评估：现有硬件在 MoE/量化新路线下能跑什么模型、缺什么管控、多少钱、多久能用，白纸黑字，不满意不立项。</p>
+      <h2>面向欧盟的业务，AI 的「身份提示」和「操作留痕」，您准备好了吗？</h2>
+      <p>一次 40 分钟免费评估：把「透明与留痕」拆成可落地的内网管控项——权限、日志、版本冻结、可复核结论，白纸黑字，不满意不立项。</p>
       <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
         <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
       </div></div>

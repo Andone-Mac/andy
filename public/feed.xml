@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 06:37:59 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:38:46 +0000</lastBuildDate>
+    <item>
+      <title>欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束</title>
+      <link>https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <category>法规动态 · 关联解读</category>
+      <description>2026 年 8 月 2 日起，欧盟委员会 AI 办公室与各成员国监管机构正式开始执行《人工智能法案》（AI Act）：通用人工智能（GPAI）模型提供方须履行义务，聊天机器人等交互式 AI 必须向用户亮明「我是 AI」，禁止性做法同步进入执法。对面向欧盟市场提供产品或服务的单位，这是一道新增的硬性合规门槛。</description>
+    </item>
     <item>
       <title>美国六大 AI 巨头与白宫签下《超级智能协定》：行业自律的时代，政企该看懂的三点</title>
       <link>https://javis.org.cn/news-2026-10-10-white-house-superintelligence-accord.html</link>
