@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 10 Oct 2026 06:38:46 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 06:39:29 +0000</lastBuildDate>
+    <item>
+      <title>美国智库向国会作证：中国开源模型已经领先，下载量两倍于美国、榜单前三都是中国模型</title>
+      <link>https://javis.org.cn/news-2026-10-10-china-open-source-leads.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-10-china-open-source-leads.html</guid>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>据 AI 研究员 Nathan Lambert 向美国国会所作证词及其公开发表的预备讲稿，中国开源权重模型在下载量、榜单成绩与学术采用上全面领先：Hugging Face 累计下载约 32 亿次、约为美国的两倍；Artificial Analysis 智能指数前三名（GLM-5.3、GLM-5.3-Flash、Kimi K3）得分 45、42、44，而美国最好的开源模型仅 23 至 26。对政企选型，「开源领先」正在从口号变成可以核对的数据。</description>
+    </item>
     <item>
       <title>欧盟 AI Act 的执法权正式生效：聊天机器人必须亮明身份，出海与合规多一道硬约束</title>
       <link>https://javis.org.cn/news-2026-10-10-eu-ai-act-enforcement.html</link>
