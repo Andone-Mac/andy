@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLM-5.3-Highspeed 被曝实测 490 tokens/s：模型竞争开始比「每秒能出多少字」 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="据量子位 2026-10-12 报道，有网友称在 Zcode 3.15.1 中体验到智谱的新模型 GLM-5.3-Highspeed，晒出的输出速度达 490 tokens/s；该名称此前已被 Pi 的模型目录收录（上下文 100 万 token、单次最大生成 131,072 token、三档思考强度，与 GLM-5.3 普通版一致）。对照数据：上月的 GLM-5.3-FlashX 上限约 200 t/s，Artificial Analysis 测得 GLM-5.3-Flash 在 Z.ai API 上约 60 t/s，今年 5 月的 GLM-5.1-Highspeed 为 400 t/s。官方尚未确认该型号与速度，模型仍在随机灰度中。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-12-glm53-highspeed-490tps.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="GLM-5.3-Highspeed 被曝实测 490 tokens/s：模型竞争开始比「每秒能出多少字」 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="据量子位 2026-10-12 报道，有网友称在 Zcode 3.15.1 中体验到智谱的新模型 GLM-5.3-Highspeed，晒出的输出速度达 490 tokens/s；该名称此前已被 Pi 的模型目录收录（上下文 100 万 token、单次最大生成 131,072 token、三档思考强度，与 GLM-5.3 普通版一致）。对照数据：上月的 GLM-5.3-FlashX 上限约 200 t/s，Artificial Analysis 测得 GLM-5.3-Flash 在 Z.ai API 上约 60 t/s，今年 5 月的 GLM-5.1-Highspeed 为 400 t/s。官方尚未确认该型号与速度，模型仍在随机灰度中。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-12-glm53-highspeed-490tps.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GLM-5.3-Highspeed 被曝实测 490 tokens/s：模型竞争开始比「每秒能出多少字」 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="据量子位 2026-10-12 报道，有网友称在 Zcode 3.15.1 中体验到智谱的新模型 GLM-5.3-Highspeed，晒出的输出速度达 490 tokens/s；该名称此前已被 Pi 的模型目录收录（上下文 100 万 token、单次最大生成 131,072 token、三档思考强度，与 GLM-5.3 普通版一致）。对照数据：上月的 GLM-5.3-FlashX 上限约 200 t/s，Artificial Analysis 测得 GLM-5.3-Flash 在 Z.ai API 上约 60 t/s，今年 5 月的 GLM-5.1-Highspeed 为 400 t/s。官方尚未确认该型号与速度，模型仍在随机灰度中。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "GLM-5.3-Highspeed 被曝实测 490 tokens/s：模型竞争开始比「每秒能出多少字」",
+      "description": "据量子位 2026-10-12 报道，有网友称在 Zcode 3.15.1 中体验到智谱的新模型 GLM-5.3-Highspeed，晒出的输出速度达 490 tokens/s；该名称此前已被 Pi 的模型目录收录（上下文 100 万 token、单次最大生成 131,072 token、三档思考强度，与 GLM-5.3 普通版一致）。对照数据：上月的 GLM-5.3-FlashX 上限约 200 t/s，Artificial Analysis 测得 GLM-5.3-Flash 在 Z.ai API 上约 60 t/s，今年 5 月的 GLM-5.1-Highspeed 为 400 t/s。官方尚未确认该型号与速度，模型仍在随机灰度中。",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-12-glm53-highspeed-490tps.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "GLM-5.3-Highspeed 被曝实测 490 tokens/s：模型竞争开始比「每秒能出多少字」",
+          "item": "https://javis.org.cn/news-2026-10-12-glm53-highspeed-490tps.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 25 条）</a>
+          <a href="news-2026-10-12-huawei-memento3-rsi.html">华为 Memento 3 通关 ARC-AGI-3</a>
+          <a href="news-2026-10-12-gpt6-astra-circle-packing.html">GPT-6 Astra 证明 57 年难题</a>
+          <a href="news-2026-10-12-glm53-highspeed-490tps.html">GLM-5.3-Highspeed 实测 490 tokens/s</a>
+          <a href="news-2026-10-12-ssd-contract-price-sixth-rise.html">SSD 合约价六连涨、一年翻四倍</a>
+          <a href="news-2026-10-10-glm53-cyber-capability.html">Anthropic 实测 GLM-5.3 网络攻击</a>
+          <a href="news-2026-10-10-image-decision-model-trio.html">图像与决策模型同月换挡</a>
+          <a href="news-2026-10-10-deepseek-star-ipo.html">DeepSeek 筹备科创板 IPO</a>
+          <a href="news-2026-10-10-china-open-source-leads.html">美国智库承认中国开源领先</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-12</span><span class="n-tag" style="margin-left:8px">技术前沿 · 关联解读</span>
+    <h1 class="art-h1">GLM-5.3-Highspeed 被曝实测 490 tokens/s：模型竞争开始比「每秒能出多少字」</h1>
+    <p class="art-lede">据量子位 2026-10-12 报道，有网友称在 Zcode 3.15.1 中体验到智谱的新模型 GLM-5.3-Highspeed，晒出的输出速度达 490 tokens/s；该名称此前已被 Pi 的模型目录收录（上下文窗口 100 万 token、单次最大生成 131,072 token，low/high/max 三档思考强度，与 GLM-5.3 普通版一致）。作为对照：上月的 GLM-5.3-FlashX 上限约 200 t/s，Artificial Analysis 测得 GLM-5.3-Flash 在 Z.ai API 上约 60 t/s，今年 5 月的 GLM-5.1-Highspeed 为 400 t/s。需要强调：<b>官方尚未确认该型号与速度，模型仍在随机灰度中</b>。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">四个速度数字，放一起看</h3>
+      <ul class="art-tl">
+        <li><b>490 tokens/s</b>——网友在 Zcode 3.15.1 里晒出的 GLM-5.3-Highspeed 实测值（订阅用户随机灰度，<b>未经官方确认</b>）。按同样速度线性外推，输出 1 万 token 的生成阶段约需 20 秒。</li>
+        <li><b>400 tokens/s</b>——2026 年 5 月发布的 GLM-5.1-Highspeed，当时被称为刷新了厂商 API 的速度上限。</li>
+        <li><b>200 tokens/s</b>——上月的 GLM-5.3-FlashX 最高速度。</li>
+        <li><b>约 60 tokens/s</b>——Artificial Analysis 对 GLM-5.3-Flash 在 Z.ai API 上的输出速度测值。</li>
+      </ul>
+      <figure class="art-fig">
+        <svg style="width:100%;height:auto;display:block;border-radius:12px" xmlns="http://www.w3.org/2000/svg" width="800" height="310" viewBox="0 0 800 310" font-family="Noto Sans CJK SC,PingFang SC,Microsoft YaHei,FZHei-B01,sans-serif" role="img" aria-label="输出速度对比（tokens/s）">
+<rect width="800" height="310" fill="#f4f7fc"/>
+<text x="40" y="28" font-size="17" font-weight="700" fill="#0e1c42">输出速度对比（tokens/s）：灰度实测 vs 已发布型号</text>
+<text x="190" y="86" font-size="16" fill="#3d4c6b" text-anchor="end">GLM-5.3-Highspeed*</text>
+<rect x="200" y="64" width="520" height="34" rx="5" fill="#22a7dd"/>
+<text x="730" y="86" font-size="16" font-weight="700" fill="#0e1c42">490</text>
+<text x="190" y="146" font-size="16" fill="#3d4c6b" text-anchor="end">GLM-5.1-Highspeed</text>
+<rect x="200" y="124" width="424.5" height="34" rx="5" fill="#9fb3d6"/>
+<text x="636.5" y="146" font-size="16" font-weight="700" fill="#0e1c42">400</text>
+<text x="190" y="206" font-size="16" fill="#3d4c6b" text-anchor="end">GLM-5.3-FlashX</text>
+<rect x="200" y="184" width="212.2" height="34" rx="5" fill="#9fb3d6"/>
+<text x="424.2" y="206" font-size="16" font-weight="700" fill="#0e1c42">200</text>
+<text x="190" y="266" font-size="16" fill="#3d4c6b" text-anchor="end">GLM-5.3-Flash</text>
+<rect x="200" y="244" width="63.7" height="34" rx="5" fill="#9fb3d6"/>
+<text x="275.7" y="266" font-size="16" font-weight="700" fill="#0e1c42">60</text>
+</svg>
+        <figcaption>图：*号项为网友灰度实测值，官方未确认；其余为已发布型号或第三方测值。来源：量子位（2026-10-12）、Artificial Analysis 测速（经该报道引用）。</figcaption>
+      </figure>
+      <h3 class="art-h2">速度为什么变得值钱</h3>
+      <p>过去两年选型看的是「答得对不对」，现在多了一栏「多快能答完」。原因很实际：当模型从「聊天」走向「干活」——长文档梳理、批量材料处理、多轮工具调用——单次生成动辄几千到上万 token，<b>吞吐直接决定这件事能不能嵌进日常工作流</b>。同样的任务，60 t/s 和 400 t/s 的差别，是「等一会儿」和「等一上午」的差别。</p>
+      <p>对本地化部署，还有一层：内网机器的吞吐决定了<b>能同时供几个人用</b>。显存与批处理策略既定时，推理速度就是并发能力——这也是很多单位最后发现「买得起卡，但用起来卡」的地方。</p>
+      <p>冷静的一半：第一，这是<b>单点灰度实测</b>，同一型号在不同套餐、不同负载下差异很大，也不排除与社区讨论的其它匿名型号有关；第二，同名的「高速版」通常意味着在某些环节做了取舍（思考预算、蒸馏、缓存策略），速度上去了，复杂任务的正确率未必同步；第三，速度只是选型的一栏，许可证与能否本地部署仍是硬门槛。以官方发布与您自己机器上的实测为准。</p>
+    </div>
+    <div class="kv-box">
+      <h3>机悟的建议：把「每秒 token」当成选型表里的一栏，而不是全部</h3>
+      <p class="kv-sub">速度决定能不能用起来，效果决定值不值得用；两个都得在您自己的硬件上量。</p>
+      <ul>
+        <li><b>按任务测吞吐：</b>用您真实的输入长度与输出长度测，长输入更要看首字时延（预填充）——它往往才是体感慢的来源。</li>
+        <li><b>把并发一起算：</b>问清楚「这一速度下能同时服务几个人」，再折算成硬件配置，别只看单人跑分。</li>
+        <li><b>先过许可证与本地部署这道门槛：</b>能商用、能进内网的型号才有讨论速度的意义；灰度期信息以官方发布为准。</li>
+      </ul>
+    </div>
+    <p class="art-src">来源：量子位（2026-10-12，含网友 @leo114119 的实测截图转述与 Pi 模型目录信息）；Artificial Analysis 对 GLM-5.3-Flash 的测速（经该报道引用）。本文仅转述公开报道与社区实测信息；该型号与速度尚未获官方确认，仍在随机灰度中，能力、许可证与可用性以官方发布为准。</p>
+      <div class="art-foot">
+      <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+      <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>别人的 490 tokens/s，您的内网能跑多快？</h2>
+      <p>一次 40 分钟免费评估：用您的真实任务测吞吐、首字时延与并发，算清需要的硬件与三年成本，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

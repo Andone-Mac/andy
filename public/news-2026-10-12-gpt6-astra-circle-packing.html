@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPT-6 Astra 补上 57 年前的证明：小圆装大圆问题 N≤20 全部严格证明 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026 年 10 月 11 日，数学爱好者 nor 在其博客发布结果：借助 GPT-6 Astra，他严格证明了「把 N 个半径 1 的圆盘装进半径 R 的大圆、求最小 R」这一问题中 N=15、16、17、18、20 的最优性。此前只有 N≤14 与 N=19 得到严格证明——1968 年葛立恒证到 N≤7，1969 年 Udo Pirl 推进到 10 个圆盘并给出 11–19 的排列方案，直到 2003 年前后才证到 N≤14 与 N=19。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-12-gpt6-astra-circle-packing.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="GPT-6 Astra 补上 57 年前的证明：小圆装大圆问题 N≤20 全部严格证明 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026 年 10 月 11 日，数学爱好者 nor 在其博客发布结果：借助 GPT-6 Astra，他严格证明了「把 N 个半径 1 的圆盘装进半径 R 的大圆、求最小 R」这一问题中 N=15、16、17、18、20 的最优性。此前只有 N≤14 与 N=19 得到严格证明——1968 年葛立恒证到 N≤7，1969 年 Udo Pirl 推进到 10 个圆盘并给出 11–19 的排列方案，直到 2003 年前后才证到 N≤14 与 N=19。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-12-gpt6-astra-circle-packing.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPT-6 Astra 补上 57 年前的证明：小圆装大圆问题 N≤20 全部严格证明 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026 年 10 月 11 日，数学爱好者 nor 在其博客发布结果：借助 GPT-6 Astra，他严格证明了「把 N 个半径 1 的圆盘装进半径 R 的大圆、求最小 R」这一问题中 N=15、16、17、18、20 的最优性。此前只有 N≤14 与 N=19 得到严格证明——1968 年葛立恒证到 N≤7，1969 年 Udo Pirl 推进到 10 个圆盘并给出 11–19 的排列方案，直到 2003 年前后才证到 N≤14 与 N=19。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "GPT-6 Astra 补上 57 年前的证明：小圆装大圆问题 N≤20 全部严格证明",
+      "description": "2026 年 10 月 11 日，数学爱好者 nor 在其博客发布结果：借助 GPT-6 Astra，他严格证明了「把 N 个半径 1 的圆盘装进半径 R 的大圆、求最小 R」这一问题中 N=15、16、17、18、20 的最优性。此前只有 N≤14 与 N=19 得到严格证明——1968 年葛立恒证到 N≤7，1969 年 Udo Pirl 推进到 10 个圆盘并给出 11–19 的排列方案，直到 2003 年前后才证到 N≤14 与 N=19。",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-12-gpt6-astra-circle-packing.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "GPT-6 Astra 补上 57 年前的证明：小圆装大圆问题 N≤20 全部严格证明",
+          "item": "https://javis.org.cn/news-2026-10-12-gpt6-astra-circle-packing.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 25 条）</a>
+          <a href="news-2026-10-12-huawei-memento3-rsi.html">华为 Memento 3 通关 ARC-AGI-3</a>
+          <a href="news-2026-10-12-gpt6-astra-circle-packing.html">GPT-6 Astra 证明 57 年难题</a>
+          <a href="news-2026-10-12-glm53-highspeed-490tps.html">GLM-5.3-Highspeed 实测 490 tokens/s</a>
+          <a href="news-2026-10-12-ssd-contract-price-sixth-rise.html">SSD 合约价六连涨、一年翻四倍</a>
+          <a href="news-2026-10-10-glm53-cyber-capability.html">Anthropic 实测 GLM-5.3 网络攻击</a>
+          <a href="news-2026-10-10-image-decision-model-trio.html">图像与决策模型同月换挡</a>
+          <a href="news-2026-10-10-deepseek-star-ipo.html">DeepSeek 筹备科创板 IPO</a>
+          <a href="news-2026-10-10-china-open-source-leads.html">美国智库承认中国开源领先</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-12</span><span class="n-tag" style="margin-left:8px">技术前沿 · 关联解读</span>
+    <h1 class="art-h1">GPT-6 Astra 补上 57 年前的证明：小圆装大圆问题 N≤20 全部严格证明</h1>
+    <p class="art-lede">2026 年 10 月 11 日，数学爱好者 nor 在其博客发布结果：借助 GPT-6 Astra，他严格证明了「把 N 个半径 1 的圆盘装进半径 R 的大圆、求最小 R」这一问题中 N=15、16、17、18、20 的最优性。此前只有 N≤14 与 N=19 得到严格证明——1968 年美国数学家葛立恒证到 N≤7，1969 年 Udo Pirl 推进到 10 个圆盘并给出 11–19 的排列方案，直到 2003 年前后才证到 N≤14 与 N=19。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一道「看着像奥数题」的证明，难在哪</h3>
+      <p>问题本身很好懂：给定 N 个半径均为 1 的圆盘和一个半径 R 的大圆，要求所有小圆盘完全落在大圆内（可与边界相切、不得超出）、任意两个小圆盘不重叠（可相切），求 R 的最小值。真正的难点不在找出一个好摆法，而在<b>严格证明「没有更好的摆法」</b>——排列方案 1969 年就有人给出，但要排除掉无限多种可能性的更优解，卡了半个多世纪。</p>
+      <figure class="art-fig">
+        <svg style="width:100%;height:auto;display:block;border-radius:12px" xmlns="http://www.w3.org/2000/svg" width="800" height="250" viewBox="0 0 800 250" font-family="Noto Sans CJK SC,PingFang SC,Microsoft YaHei,FZHei-B01,sans-serif" role="img" aria-label="时间线">
+<rect width="800" height="250" fill="#f4f7fc"/>
+<line x1="150" y1="26" x2="150" y2="222" stroke="#22a7dd" stroke-width="2"/>
+<circle cx="150" cy="42" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="47" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">1968</text>
+<text x="168" y="47" font-size="15" fill="#3d4c6b">葛立恒证明 N≤7</text>
+<circle cx="150" cy="102" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="107" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">1969</text>
+<text x="168" y="107" font-size="15" fill="#3d4c6b">Udo Pirl 推进到 N=10，并给出 11–19 的排列方案</text>
+<circle cx="150" cy="162" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="167" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2003 前后</text>
+<text x="168" y="167" font-size="15" fill="#3d4c6b">严格证明到 N≤14 与 N=19</text>
+<circle cx="150" cy="222" r="7" fill="#22a7dd" stroke="#fff" stroke-width="2"/>
+<text x="134" y="227" font-size="15" font-weight="700" fill="#0e1c42" text-anchor="end">2026-10</text>
+<text x="168" y="227" font-size="15" fill="#3d4c6b">nor + GPT-6 Astra 补齐 N=15/16/17/18/20，N≤20 全部严格证明</text>
+</svg>
+        <figcaption>图：小圆装大圆问题最优性证明的推进节点。来源：nor 博客（2026-10-11）及其引用的数学史脉络。</figcaption>
+      </figure>
+      <h3 class="art-h2">证明是怎么走通的</h3>
+      <p>据 nor 的博客，GPT-6 Astra 的路径不是「猜答案」，而是<b>把无限多种排列缩减为有限情形，再用计算机逐一排除</b>。公开转述给出的五个步骤大致是：</p>
+      <ul class="art-tl">
+        <li><b>把靠外的圆盘推向边界：</b>证明在满足特定条件时，可以把靠近外圆的圆盘向外移动而不引起重叠，从而把圆盘分成边界上一组与内部一组。</li>
+        <li><b>用角度关系排除大量排列：</b>圆盘不重叠就必须保持一定角度间隔，若某排列要求的角度总和超过 360°，可直接排除。</li>
+        <li><b>让计算机枚举剩余可能：</b>不去搜索每个圆盘的具体坐标，而是检查圆盘到圆心的距离区间及其环绕次序。</li>
+        <li><b>用几何刚性把「接近」变「一致」：</b>前面的搜索只能证明可行排列都非常接近经典方案；再利用接触约束证明这些排列无法发生符合条件的微小变形，从而把「非常接近」提升为「严格一致」（15 个圆盘的情形使用了另一种奇数环论证）。</li>
+        <li><b>还原原始排列：</b>最后证明原排列中必然至少有一个圆盘接触外圆边界，因此不可能塞进半径更小的外圆，最优性得证。</li>
+      </ul>
+      <p>值得注意的是，这<b>不是一句提示词就完成</b>的。nor 在博客里列出的「人类贡献」包括：判断问题可行性、引导模型、与漏洞百出的网页界面打交道、修复细节、反复推敲表述、手动验证结论有效性，并用 Astra 与 Opus 5.5 重新检查全部内容。</p>
+      <h3 class="art-h2">对政企场景有什么参考价值</h3>
+      <p>这类新闻容易被读成「AI 会做数学了」，但对做内网 AI 的单位，真正可迁移的是<b>「可复核」这三个字</b>：模型给出的是过程与可检验的中间步骤，人能逐步验证、能复现、能留痕。这与政企场景里对「结论可溯源、过程可留痕」的要求是同构的——AI 在流程里担任的是「候选与证据的生成者」，最终判定仍由人来做。</p>
+      <p>冷静的一半：这是一个经过剪裁的数学问题，且有明确的对错判据；多数业务问题的目标是模糊的、判据是软的，同样的方法不能直接照搬。此外，报道来自研究者本人的博客与公开讨论，结论以原始论文与同行复核为准。</p>
+    </div>
+    <div class="kv-box">
+      <h3>机悟的建议：要「过程」，不要只要「结论」</h3>
+      <p class="kv-sub">AI 的产出能不能被复核，比它答得多快更重要——这一点决定了它能不能进您的工作流。</p>
+      <ul>
+        <li><b>把可验证性写进验收：</b>要求关键任务给出依据与中间步骤，让人能抽查、能复现，而不是只收一段结论。</li>
+        <li><b>让 AI 做候选、人做判定：</b>在材料梳理、法规比对这类场景，AI 的角色是「把疑点整堆抬到人面前」，最终判断与签字留在人这一侧。</li>
+        <li><b>用「人工复核耗时」当指标：</b>衡量 AI 是否真的省时间，看的是加上复核之后的总耗时，而不是单次生成速度。</li>
+      </ul>
+    </div>
+    <p class="art-src">来源：nor 博客《Circle in circle packing, N=15..20》（2026-10-11，nor-blog.pages.dev）；其公开社交账号帖文（X，2026-10-11）；量子位对上述结果的转述（2026-10-12）。本文仅转述公开研究结果与报道，不评判任何厂商与产品，证明结论以原始材料与同行复核为准。</p>
+      <div class="art-foot">
+      <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+      <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>要的不是「答得快」，而是「能复核」</h2>
+      <p>一次 40 分钟免费评估：把结论溯源、过程留痕、人工复核这几个环节拆成可验收的清单，再决定要不要立项，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
