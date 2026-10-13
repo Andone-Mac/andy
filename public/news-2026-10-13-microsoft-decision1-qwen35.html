@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="当地时间 2026-10-09，微软宣布推出 Microsoft-Decision-1 决策模型（IT 之家 10-10 中文报道）：该模型对阿里开源的 Qwen3.5-9B 进行后训练，实现「超低延迟的单次推理决策评分」，专为结构化决策任务打造；在 36 项基准测试、涵盖近 15 万个完全隔离盲测阶段中取得最高准确率，响应速度比次席 Quyet-1.0-Large 快 4.5 倍、比 GPT-6 Sol 快 35 倍，已上线 Microsoft Foundry 并同步接入 OpenRouter。微软称将把该路线迁移适配至自研 MAI 与 OpenAI 等底座——底座可替换、能力层是资产，「开源底座+后训练」路线拿到国际大厂背书。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="当地时间 2026-10-09，微软宣布推出 Microsoft-Decision-1 决策模型（IT 之家 10-10 中文报道）：该模型对阿里开源的 Qwen3.5-9B 进行后训练，实现「超低延迟的单次推理决策评分」，专为结构化决策任务打造；在 36 项基准测试、涵盖近 15 万个完全隔离盲测阶段中取得最高准确率，响应速度比次席 Quyet-1.0-Large 快 4.5 倍、比 GPT-6 Sol 快 35 倍，已上线 Microsoft Foundry 并同步接入 OpenRouter。微软称将把该路线迁移适配至自研 MAI 与 OpenAI 等底座——底座可替换、能力层是资产，「开源底座+后训练」路线拿到国际大厂背书。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="当地时间 2026-10-09，微软宣布推出 Microsoft-Decision-1 决策模型（IT 之家 10-10 中文报道）：该模型对阿里开源的 Qwen3.5-9B 进行后训练，实现「超低延迟的单次推理决策评分」，专为结构化决策任务打造；在 36 项基准测试、涵盖近 15 万个完全隔离盲测阶段中取得最高准确率，响应速度比次席 Quyet-1.0-Large 快 4.5 倍、比 GPT-6 Sol 快 35 倍，已上线 Microsoft Foundry 并同步接入 OpenRouter。微软称将把该路线迁移适配至自研 MAI 与 OpenAI 等底座——底座可替换、能力层是资产，「开源底座+后训练」路线拿到国际大厂背书。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票",
+      "description": "当地时间 2026-10-09，微软宣布推出 Microsoft-Decision-1 决策模型（IT 之家 10-10 中文报道）：该模型对阿里开源的 Qwen3.5-9B 进行后训练，实现「超低延迟的单次推理决策评分」，专为结构化决策任务打造；在 36 项基准测试、涵盖近 15 万个完全隔离盲测阶段中取得最高准确率，响应速度比次席 Quyet-1.0-Large 快 4.5 倍、比 GPT-6 Sol 快 35 倍，已上线 Microsoft Foundry 并同步接入 OpenRouter。微软称将把该路线迁移适配至自研 MAI 与 OpenAI 等底座——底座可替换、能力层是资产，「开源底座+后训练」路线拿到国际大厂背书。",
+      "datePublished": "2026-10-13",
+      "dateModified": "2026-10-13",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票",
+          "item": "https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 27 条）</a>
+          <a href="news-2026-10-13-microsoft-decision1-qwen35.html">微软 Decision-1 底座 Qwen3.5-9B，比 GPT-6 Sol 快 35 倍</a>
+          <a href="news-2026-10-13-securities-agent-dual-track.html">超 10 家券商接入第三方 AI 平台，自研底座+外部生态双轨</a>
+          <a href="news-2026-10-12-huawei-memento3-rsi.html">华为 Memento 3 通关 ARC-AGI-3</a>
+          <a href="news-2026-10-12-gpt6-astra-circle-packing.html">GPT-6 Astra 证明 57 年难题</a>
+          <a href="news-2026-10-12-glm53-highspeed-490tps.html">GLM-5.3-Highspeed 实测 490 tokens/s</a>
+          <a href="news-2026-10-12-ssd-contract-price-sixth-rise.html">SSD 合约价六连涨、一年翻四倍</a>
+          <a href="news-2026-10-10-glm53-cyber-capability.html">Anthropic 实测 GLM-5.3 网络攻击</a>
+          <a href="news-2026-10-10-image-decision-model-trio.html">图像与决策模型同月换挡</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-13</span><span class="n-tag" style="margin-left:8px">行业趋势 · 关联解读</span>
+    <h1 class="art-h1">微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票</h1>
+    <p class="art-lede">当地时间 2026-10-09，微软宣布推出 Microsoft-Decision-1 决策模型（IT 之家 10-10 中文报道）：该模型对阿里开源的 Qwen3.5-9B 进行后训练，实现「超低延迟的单次推理决策评分」，专为结构化决策任务打造；在 36 项基准测试、涵盖近 15 万个完全隔离盲测阶段中取得最高准确率，响应速度比次席 Quyet-1.0-Large 快 4.5 倍、比 GPT-6 Sol 快 35 倍，已上线 Microsoft Foundry 并同步接入 OpenRouter。对准备用中小模型构建垂直应用的政企单位，这是国际大厂对「开源底座+后训练」路线的一次背书。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">先把数字看清楚</h3>
+      <ul class="art-tl">
+        <li><b>定位：</b>专为「结构化决策任务」打造，官方称实际表现「全面超越大语言模型及其他传统决策模型」。</li>
+        <li><b>测试：</b>36 项基准测试，涵盖近 <b>15 万个</b>训练阶段完全隔离（Blind Evaluation）的测试内容，取得最高准确率。</li>
+        <li><b>速度：</b>比排名次席的 Quyet-1.0-Large 快 <b>4.5 倍</b>，比 GPT-6 Sol 快 <b>35 倍</b>，基准测试中响应速度位列第一。</li>
+        <li><b>机制：</b>对 Qwen3.5-9B 后训练，实现「超低延迟的单次推理决策评分」——一次推理直接出分，不做多轮长文本。</li>
+        <li><b>渠道：</b>已上线 Microsoft Foundry，同步接入 OpenRouter。</li>
+        <li><b>后续：</b>微软称将以此为基础，迁移适配至包括自研 Microsoft AI（MAI）和 OpenAI 在内的其他底座模型。</li>
+      </ul>
+      <figure class="art-fig">
+        <svg style="width:100%;height:auto;display:block;border-radius:12px" xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="Noto Sans CJK SC,PingFang SC,Microsoft YaHei,FZHei-B01,sans-serif" role="img" aria-label="响应速度对比（相对值，越小越快）">
+<rect width="800" height="300" fill="#f4f7fc"/>
+<text x="40" y="28" font-size="17" font-weight="700" fill="#0e1c42">响应速度对比（相对值：越小越快）</text>
+<text x="250" y="86" font-size="15" fill="#3d4c6b" text-anchor="end">Microsoft-Decision-1（本次发布）</text>
+<rect x="260" y="64" width="14" height="34" rx="5" fill="#22a7dd"/>
+<text x="284" y="86" font-size="16" font-weight="700" fill="#0e1c42">1×</text>
+<text x="250" y="150" font-size="15" fill="#3d4c6b" text-anchor="end">Quyet-1.0-Large（次席）</text>
+<rect x="260" y="128" width="62" height="34" rx="5" fill="#9fb3d6"/>
+<text x="332" y="150" font-size="16" font-weight="700" fill="#0e1c42">4.5×</text>
+<text x="250" y="214" font-size="15" fill="#3d4c6b" text-anchor="end">GPT-6 Sol</text>
+<rect x="260" y="192" width="480" height="34" rx="5" fill="#9fb3d6"/>
+<text x="750" y="214" font-size="16" font-weight="700" fill="#0e1c42">35×</text>
+<text x="40" y="266" font-size="13" fill="#3d4c6b">数据：IT 之家（2026-10-10）；36 项基准隔离盲测，响应速度位列第一。</text>
+</svg>
+        <figcaption>图：Microsoft-Decision-1 响应速度相对值（以本模型为 1，越小越快）。来源：IT 之家（2026-10-10，微软官方当地时间 2026-10-09 发布）。</figcaption>
+      </figure>
+      <h3 class="art-h2">「决策模型」解决的是哪类场景</h3>
+      <p>它和通用大模型对话是两种东西：通用模型「先想后说」，决策模型「<b>直接给分</b>」——单次推理、不做多轮、不长文本，延迟就是生命线。对应到单位里的场景：授信预审、风控触发判断、评标打分、调度优化、初审筛查——这类任务调用频次高、每次都要快而稳、结果要可审计，却不需要百 B 级参数。</p>
+      <p>9B 为什么够用：结构化决策任务拼的不是参数规模，是「窄而深」的后训练——领域规则、历史案例、评分口径灌进小模型。9B 单次推理意味着<b>单卡或小集群就能跑</b>，而这恰恰是政企内网最常见的硬件配置。</p>
+      <h3 class="art-h2">真正的信号：国际大厂在国产开源底座上做产品</h3>
+      <p>微软选阿里开源的 Qwen3.5-9B 作底座，且官方路线是把这条决策路线「rebase」到自研 MAI 与 OpenAI 底座——<b>底座是可替换的，能力层（后训练数据与方法）才是资产</b>。这和国内政企的实操完全同向：在 Qwen 系中小模型上做行业微调+私有化部署，技术路线刚被国际大厂验证过一轮。</p>
+      <p>反过来说，底座可替换也提醒方案设计的重点：<b>绑定关系应该在数据与微调管道上，而不是某个具体模型版本上</b>——模型版本会换，评测集、微调流水线、领域数据是跟着单位走的。</p>
+    </div>
+    <div class="kv-box">
+      <h3>机悟的观点：「小模型+微调」路线拿到国际样本</h3>
+      <p class="kv-sub">高频、结构化、延迟敏感的场景，先把小模型跑通，再谈大模型。</p>
+      <ul>
+        <li><b>选型顺序：</b>场景是「高频、结构化、延迟敏感」时，优先 7B–14B 级小模型+后训练，不要一上来就上百 B——成本与延迟差一个数量级。</li>
+        <li><b>底座按可替换设计：</b>领域数据、微调管道、评测集做成可复用资产，换底座时重训而不是重建，方案生命周期不被单一模型版本锁死。</li>
+        <li><b>单次推理任务天然适合内网：</b>无多轮状态、无长文本输出，审计与回放都容易——与「可执行、可留痕、可问责」的验收口径天然吻合。</li>
+      </ul>
+    </div>
+    <p class="art-src">来源：IT 之家（2026-10-10，微软官方当地时间 2026-10-09 发布）；Microsoft Foundry 与 OpenRouter 上线信息（经上述报道转述）。本文仅转述公开报道内容，不评判任何模型与厂商，不构成采购建议。</p>
+      <div class="art-foot">
+      <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+      <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>您单位有没有「打分型」场景，其实 9B 就能跑？</h2>
+      <p>一次 40 分钟免费评估：先挑一个真实业务场景，把「小模型微调+内网单次推理」与「大模型 API 调用」的 TCO、延迟、审计能力算成一张对照表。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

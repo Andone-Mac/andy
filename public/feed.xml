@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 13 Oct 2026 12:54:08 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 12:54:51 +0000</lastBuildDate>
+    <item>
+      <title>微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票</title>
+      <link>https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>当地时间 2026-10-09，微软宣布推出 Microsoft-Decision-1 决策模型（IT 之家 10-10 中文报道）：该模型对阿里开源的 Qwen3.5-9B 进行后训练，实现「超低延迟的单次推理决策评分」，专为结构化决策任务打造；在 36 项基准测试、涵盖近 15 万个完全隔离盲测阶段中取得最高准确率，响应速度比次席 Quyet-1.0-Large 快 4.5 倍、比 GPT-6 Sol 快 35 倍，已上线 Microsoft Foundry 并同步接入 OpenRouter。微软称将把该路线迁移适配至自研 MAI 与 OpenAI 等底座——底座可替换、能力层是资产，「开源底座+后训练」路线拿到国际大厂背书。</description>
+    </item>
     <item>
       <title>超 10 家券商接入第三方 AI 平台：「自研基座为核心、外部生态为补充」的双轨，是政企 AI 选型的直接参照</title>
       <link>https://javis.org.cn/news-2026-10-13-securities-agent-dual-track.html</link>
