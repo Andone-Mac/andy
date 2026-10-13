@@ -288,6 +288,20 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .art-tl .dt{font-family:var(--mono);color:var(--navy);font-weight:700;margin-right:9px}
 .art-src{font-size:.82rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:26px}
 .art-foot{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:26px}
+/* ---------- 详情页文末「上一篇 / 下一篇」（构建产物，源在 build_v6.news_pager） ---------- */
+.art-pager-sec{padding:0 0 54px}
+.art-pager{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.art-pager .pg{display:block;padding:15px 17px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;transition:border-color .18s,box-shadow .18s}
+.art-pager .pg:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(22,41,94,.08)}
+.art-pager .pg-k{display:block;font-size:.78rem;font-weight:700;color:var(--cyan-deep);margin-bottom:7px}
+.art-pager .pg-t{display:block;font-size:.93rem;line-height:1.55;font-weight:700;color:var(--navy)}
+.art-pager .pg-d{display:block;font-family:var(--mono);font-size:.73rem;color:var(--muted);margin-top:8px}
+.art-pager .pg.next{text-align:right}
+.art-pager .pg-off{background:#f6f8fc}
+.art-pager .pg-off .pg-k{color:var(--muted)}
+.art-pager .pg-off .pg-t{color:var(--muted);font-weight:400}
+.pg-all{margin-top:16px;text-align:center;font-size:.86rem;color:var(--muted)}
+@media(max-width:640px){.art-pager{grid-template-columns:1fr}.art-pager .pg.next{text-align:left}}
 .kv-box{background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 62%,#1c3c86 100%);border-radius:14px;padding:24px 26px;margin:30px 0;color:#fff}
 .kv-box h3{color:#fff;font-size:1.1rem;margin-bottom:6px}
 .kv-box .kv-sub{color:#a8c0ea;font-size:.9rem;margin-bottom:14px}
