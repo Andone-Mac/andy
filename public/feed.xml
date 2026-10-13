@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 12 Oct 2026 17:04:46 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 12:54:08 +0000</lastBuildDate>
+    <item>
+      <title>超 10 家券商接入第三方 AI 平台：「自研基座为核心、外部生态为补充」的双轨，是政企 AI 选型的直接参照</title>
+      <link>https://javis.org.cn/news-2026-10-13-securities-agent-dual-track.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-securities-agent-dual-track.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>据中国基金报（21 经济网转载，2026-10-06）不完全统计，已有超过 10 家券商接入第三方 AI 平台，覆盖 Kimi、腾讯 WorkBuddy、阿里千问、火山引擎等；中信证券、广发证券、中信建投、国泰海通等头部机构多平台并行接入。中信证券技术人士的原话是「不同平台各有能力侧重，我们会按场景择优选用」；其选型「第一准则，就是数据安全、隔离能力与合规可追溯」。广发证券 CIO 辛治运强调券商 AI 必须交付「可执行、可留痕、可问责的业务结果」。强监管金融行业如何给 AI 选型——这份答卷与政企私有化部署的决策逻辑高度同构。</description>
+    </item>
     <item>
       <title>华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏：不改模型权重，操作比人类少 56%</title>
       <link>https://javis.org.cn/news-2026-10-12-huawei-memento3-rsi.html</link>
