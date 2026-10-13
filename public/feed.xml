@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 13 Oct 2026 12:54:51 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 12:55:38 +0000</lastBuildDate>
+    <item>
+      <title>中国大模型周调用量 86.74 万亿 Token、包揽 OpenRouter 全球前五：国产开源模型拿到了真实工作量的检验</title>
+      <link>https://javis.org.cn/news-2026-10-13-china-tokens-openrouter-top5.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-china-tokens-openrouter-top5.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>据每日经济新闻（2026-10-12，基于 OpenRouter 最新数据）：10 月 5 日至 11 日当周，全球 AI 大模型总调用量 172 万亿 Token，环比 +3.61%；其中中国大模型周调用量 86.74 万亿 Token，环比 +50.96%，美国 18.97 万亿 Token（+17.1%），中国连续 24 周超过美国；且全球调用量前五全部是中国模型——DeepSeek V4.1 Flash 第一（41 万亿，+60%）、智谱 GLM-5.3-Flash 第二（12.2 万亿）、小米 MiMo-V2.6-Flash 第三（11.5 万亿）、阶跃星辰 Step 5 Preview 第四（8.84 万亿，上线首周即入榜）、腾讯 Hy4 preview 第五（8.28 万亿）；上一周第一的匿名模型「Space Bunny Alpha」跌出榜单。</description>
+    </item>
     <item>
       <title>微软新决策模型底座是阿里开源 Qwen3.5-9B：比 GPT-6 Sol 快 35 倍，国际大厂给「小模型」投了票</title>
       <link>https://javis.org.cn/news-2026-10-13-microsoft-decision1-qwen35.html</link>
