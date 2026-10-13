@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="北京商报（2026-10-13）：阶跃星辰（StepFun）连续三天排了三件事——13 日发布智能体手机，14 日 0 时 30 分起调整 Step-5-preview API 价格（缓存命中输入价格上调一倍，缓存未命中输入价与输出价不变），15 日开源完整模型权重。Step 5 Preview 为稀疏 MoE 架构、总参数 600B、每 Token 激活 27B，支持 1M Token 上下文与视觉输入，10 月 8 日上线 OpenRouter 后首周调用量 8.84 万亿 Token、全球第四。在开源前夜把 API 价格调上去——头部模型厂商的这一定价动作直接验证了一个判断：自部署不只是数据安全选项，也是企业成本管控的议价筹码。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="北京商报（2026-10-13）：阶跃星辰（StepFun）连续三天排了三件事——13 日发布智能体手机，14 日 0 时 30 分起调整 Step-5-preview API 价格（缓存命中输入价格上调一倍，缓存未命中输入价与输出价不变），15 日开源完整模型权重。Step 5 Preview 为稀疏 MoE 架构、总参数 600B、每 Token 激活 27B，支持 1M Token 上下文与视觉输入，10 月 8 日上线 OpenRouter 后首周调用量 8.84 万亿 Token、全球第四。在开源前夜把 API 价格调上去——头部模型厂商的这一定价动作直接验证了一个判断：自部署不只是数据安全选项，也是企业成本管控的议价筹码。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="北京商报（2026-10-13）：阶跃星辰（StepFun）连续三天排了三件事——13 日发布智能体手机，14 日 0 时 30 分起调整 Step-5-preview API 价格（缓存命中输入价格上调一倍，缓存未命中输入价与输出价不变），15 日开源完整模型权重。Step 5 Preview 为稀疏 MoE 架构、总参数 600B、每 Token 激活 27B，支持 1M Token 上下文与视觉输入，10 月 8 日上线 OpenRouter 后首周调用量 8.84 万亿 Token、全球第四。在开源前夜把 API 价格调上去——头部模型厂商的这一定价动作直接验证了一个判断：自部署不只是数据安全选项，也是企业成本管控的议价筹码。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码",
+      "description": "北京商报（2026-10-13）：阶跃星辰（StepFun）连续三天排了三件事——13 日发布智能体手机，14 日 0 时 30 分起调整 Step-5-preview API 价格（缓存命中输入价格上调一倍，缓存未命中输入价与输出价不变），15 日开源完整模型权重。Step 5 Preview 为稀疏 MoE 架构、总参数 600B、每 Token 激活 27B，支持 1M Token 上下文与视觉输入，10 月 8 日上线 OpenRouter 后首周调用量 8.84 万亿 Token、全球第四。在开源前夜把 API 价格调上去——头部模型厂商的这一定价动作直接验证了一个判断：自部署不只是数据安全选项，也是企业成本管控的议价筹码。",
+      "datePublished": "2026-10-13",
+      "dateModified": "2026-10-13",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码",
+          "item": "https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 29 条）</a>
+          <a href="news-2026-10-13-stepfun-triple-open-source.html">阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源</a>
+          <a href="news-2026-10-13-china-tokens-openrouter-top5.html">中国大模型周调用量 86.74 万亿 Token，包揽全球前五</a>
+          <a href="news-2026-10-13-microsoft-decision1-qwen35.html">微软 Decision-1 底座 Qwen3.5-9B，比 GPT-6 Sol 快 35 倍</a>
+          <a href="news-2026-10-13-securities-agent-dual-track.html">超 10 家券商接入第三方 AI 平台，自研底座+外部生态双轨</a>
+          <a href="news-2026-10-12-huawei-memento3-rsi.html">华为 Memento 3 通关 ARC-AGI-3</a>
+          <a href="news-2026-10-12-gpt6-astra-circle-packing.html">GPT-6 Astra 证明 57 年难题</a>
+          <a href="news-2026-10-12-glm53-highspeed-490tps.html">GLM-5.3-Highspeed 实测 490 tokens/s</a>
+          <a href="news-2026-10-12-ssd-contract-price-sixth-rise.html">SSD 合约价六连涨、一年翻四倍</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-13</span><span class="n-tag" style="margin-left:8px">行业趋势 · 关联解读</span>
+    <h1 class="art-h1">阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码</h1>
+    <p class="art-lede">北京商报（2026-10-13）：阶跃星辰（StepFun）连续三天排了三件事——13 日发布智能体手机，14 日 0 时 30 分起调整 Step-5-preview API 价格（<b>缓存命中输入价格上调一倍</b>，缓存未命中输入价与输出价不变），15 日开源完整模型权重。在开源前夜把 API 价格调上去，头部模型厂商的这一定价动作，直接验证了一个判断：<b>自部署不只是数据安全选项，也是企业成本管控的议价筹码</b>。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">三天，三件事</h3>
+      <figure class="art-fig">
+        <svg style="width:100%;height:auto;display:block;border-radius:12px" xmlns="http://www.w3.org/2000/svg" width="800" height="240" viewBox="0 0 800 240" font-family="Noto Sans CJK SC,PingFang SC,Microsoft YaHei,FZHei-B01,sans-serif" role="img" aria-label="阶跃星辰三天三件事（2026 年 10 月）">
+<rect width="800" height="240" fill="#f4f7fc"/>
+<text x="40" y="28" font-size="17" font-weight="700" fill="#0e1c42">阶跃星辰「三天三件事」（2026 年 10 月）</text>
+<line x1="150" y1="56" x2="150" y2="216" stroke="#22a7dd" stroke-width="2"/>
+<circle cx="150" cy="76" r="6" fill="#22a7dd"/>
+<text x="130" y="81" font-size="16" font-weight="700" fill="#0e1c42" text-anchor="end">10-13</text>
+<text x="175" y="81" font-size="16" fill="#3d4c6b">发布智能体手机（官方排期）</text>
+<circle cx="150" cy="136" r="6" fill="#22a7dd"/>
+<text x="130" y="141" font-size="16" font-weight="700" fill="#0e1c42" text-anchor="end">10-14 00:30</text>
+<text x="175" y="141" font-size="16" fill="#3d4c6b">API 调价：缓存命中输入价格上调一倍；缓存未命中输入价与输出价不变</text>
+<circle cx="150" cy="196" r="6" fill="#22a7dd"/>
+<text x="130" y="201" font-size="16" font-weight="700" fill="#0e1c42" text-anchor="end">10-15</text>
+<text x="175" y="201" font-size="16" fill="#3d4c6b">Step 5 Preview 完整权重开源（600B 总参数 / 27B 激活 / 1M 上下文）</text>
+</svg>
+        <figcaption>图：阶跃星辰 2026 年 10 月 13–15 日排期。来源：北京商报（2026-10-13）。</figcaption>
+      </figure>
+      <h3 class="art-h2">这个模型本身有什么</h3>
+      <ul class="art-tl">
+        <li><b>架构：</b>稀疏 MoE，<b>600B 总参数、每 Token 激活 27B</b>——参数大、推理成本按激活量计费，这正是它适合 agentic 场景的结构原因。</li>
+        <li><b>能力：</b>支持 <b>1M Token 上下文</b>窗口与视觉输入；官方称在 AI 编码、软件工程、专业知识工作等场景达到前沿水平，金融领域表现尤为突出。</li>
+        <li><b>榜单：</b>据北京商报报道，其 AA（Artificial Analysis）综合智能指数 <b>444 分</b>，位居全球开源模型前三。</li>
+        <li><b>节奏：</b>Step 5 Preview 9 月 20 日正式发布、10 月 8 日上线 OpenRouter，<b>上线首周调用量 8.84 万亿 Token、全球第四</b>（每日经济新闻基于 OpenRouter 数据）；版本策略跳过了 Step 4 系列，转向「旗舰预览+快速开源」。</li>
+      </ul>
+      <h3 class="art-h2">为什么「开源前夜涨价」值得单独说</h3>
+      <p>先看涨法：<b>只涨「缓存命中输入」，翻倍；缓存未命中输入与输出价不动</b>。这不是普涨，而是精准命中 agentic 调用的成本结构——长上下文、高复用、大量命中缓存的高频调用，正是企业级智能体的典型形态。厂商调价的对象，不是所有用户，是「把智能体跑在生产上」的那部分。</p>
+      <p>再看逻辑：此前行业主线是「API 降价抢客户」，现在变成「<b>开源权重+API 涨价，把有规模、有稳定性要求的负载推向自部署</b>」——用价格把客户往自持方向推。对企业而言含义很直接：API 侧涨价，自部署的 TCO 优势自然扩大；而开源权重就是「对冲工具」——自己跑得动，成本就不随价格单边走。</p>
+      <p>还有一个前提常被忽略：Step 5 Preview 已经在真实工作量里排到全球第四（周调用 8.84 万亿），<b>15 日开源后它不是「仅供科研」的模型，而是「生产可用」的模型</b>——这对「开源模型只适合做 POC」的说法是一个直接的现实反例。</p>
+    </div>
+    <div class="kv-box">
+      <h3>机悟的观点：盯住 15 日开源，先做一张 TCO 对照表</h3>
+      <p class="kv-sub">厂商用价格告诉客户：自部署从「备选项」变成了「对选项」。</p>
+      <ul>
+        <li><b>开源当天看三件事：</b>许可条款（商用是否无限制）、权重体积（磁盘/显存占用）、推理框架支持（GGUF / vLLM 等主流链路是否现成）。</li>
+        <li><b>权重到手即 POC：</b>用单位真实业务数据跑延迟、准确率、显存占用三个数——榜单给的是全球均值，POC 给的是您的数据上的数。</li>
+        <li><b>做一张「API vs 自部署」TCO 对照表：</b>按涨价后的缓存命中价、您的月调用量，算出自部署回本周期——这张表同时是采购谈判的材料。</li>
+      </ul>
+    </div>
+    <p class="art-src">来源：北京商报（2026-10-13）；Step 5 Preview 发布、上线与参数信息（阶跃星辰官方，经每日经济新闻 2026-10-12 报道转述）；AA 指数（北京商报报道）。本文仅转述公开报道内容，不评判任何厂商或产品，不构成采购建议。</p>
+      <div class="art-foot">
+      <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+      <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>权重 15 日开源，您单位能不能当天跑起来？</h2>
+      <p>一次 40 分钟免费评估：先把「您的调用量 × 涨价后价格」与「自部署 TCO」算成对照表，看清自部署值不值、什么时候回本。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

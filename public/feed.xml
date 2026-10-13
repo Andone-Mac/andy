@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 13 Oct 2026 12:55:38 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 13 Oct 2026 12:56:17 +0000</lastBuildDate>
+    <item>
+      <title>阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码</title>
+      <link>https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业趋势 · 关联解读</category>
+      <description>北京商报（2026-10-13）：阶跃星辰（StepFun）连续三天排了三件事——13 日发布智能体手机，14 日 0 时 30 分起调整 Step-5-preview API 价格（缓存命中输入价格上调一倍，缓存未命中输入价与输出价不变），15 日开源完整模型权重。Step 5 Preview 为稀疏 MoE 架构、总参数 600B、每 Token 激活 27B，支持 1M Token 上下文与视觉输入，10 月 8 日上线 OpenRouter 后首周调用量 8.84 万亿 Token、全球第四。在开源前夜把 API 价格调上去——头部模型厂商的这一定价动作直接验证了一个判断：自部署不只是数据安全选项，也是企业成本管控的议价筹码。</description>
+    </item>
     <item>
       <title>中国大模型周调用量 86.74 万亿 Token、包揽 OpenRouter 全球前五：国产开源模型拿到了真实工作量的检验</title>
       <link>https://javis.org.cn/news-2026-10-13-china-tokens-openrouter-top5.html</link>
