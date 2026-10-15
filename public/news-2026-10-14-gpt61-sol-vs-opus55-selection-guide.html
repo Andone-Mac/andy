@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="OrcaRouter 基于 Artificial Analysis 基准（日更）的实测对比：Claude Opus 5.5 智能指数 57.6、$4/$20 per M token、单任务成本 $5.98；GPT-6.1 Sol 指数 51.8、$2/$10 per M、单任务成本 $0.72。长文回忆基本持平（83.0% vs 84.7%）、上下文 Sol 略长（1.05M vs 1M）。差距全在抽象推理：SciCode 54.2% vs 66.9%（-12.7 分）、Humanity's Last Exam 52.9% vs 61.4%。两模型同一 Key 同账单可混用（OrcaRouter 已上）。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="OrcaRouter 基于 Artificial Analysis 基准（日更）的实测对比：Claude Opus 5.5 智能指数 57.6、$4/$20 per M token、单任务成本 $5.98；GPT-6.1 Sol 指数 51.8、$2/$10 per M、单任务成本 $0.72。长文回忆基本持平（83.0% vs 84.7%）、上下文 Sol 略长（1.05M vs 1M）。差距全在抽象推理：SciCode 54.2% vs 66.9%（-12.7 分）、Humanity's Last Exam 52.9% vs 61.4%。两模型同一 Key 同账单可混用（OrcaRouter 已上）。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="OrcaRouter 基于 Artificial Analysis 基准（日更）的实测对比：Claude Opus 5.5 智能指数 57.6、$4/$20 per M token、单任务成本 $5.98；GPT-6.1 Sol 指数 51.8、$2/$10 per M、单任务成本 $0.72。长文回忆基本持平（83.0% vs 84.7%）、上下文 Sol 略长（1.05M vs 1M）。差距全在抽象推理：SciCode 54.2% vs 66.9%（-12.7 分）、Humanity's Last Exam 52.9% vs 61.4%。两模型同一 Key 同账单可混用（OrcaRouter 已上）。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus",
+      "description": "OrcaRouter 基于 Artificial Analysis 基准（日更）的实测对比：Claude Opus 5.5 智能指数 57.6、$4/$20 per M token、单任务成本 $5.98；GPT-6.1 Sol 指数 51.8、$2/$10 per M、单任务成本 $0.72。长文回忆基本持平（83.0% vs 84.7%）、上下文 Sol 略长（1.05M vs 1M）。差距全在抽象推理：SciCode 54.2% vs 66.9%（-12.7 分）、Humanity's Last Exam 52.9% vs 61.4%。两模型同一 Key 同账单可混用（OrcaRouter 已上）。",
+      "datePublished": "2026-10-14",
+      "dateModified": "2026-10-14",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus",
+          "item": "https://javis.org.cn/news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 35 条）</a>
+          <a href="news-2026-10-14-stepfun-step5-open-source.html">阶跃 Step 5 明日开源：BF16 权重、600B/27B、1M 上下文、许可证未定</a>
+          <a href="news-2026-10-14-token-loan-standardization-start.html">Token 贷标准化启动：十余家银行已落地、首部国家标准 10-14 起草</a>
+          <a href="news-2026-10-14-deepseek-invests-winverse-embodied-ai.html">DeepSeek 领投 Winverse AI：模型厂商开始投机器人，具身智能临界点 1-2 年</a>
+          <a href="news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html">GPT-6.1 Sol vs Opus 5.5：8.3 倍成本差、长文持平、推理分流</a>
+          <a href="news-2026-10-14-meta-muse-wonder-flagship-return.html">Meta Muse Wonder 旗舰回归：MSL 首秀直指 Opus 5.5，订阅制分发</a>
+          <a href="news-2026-10-15-deepseek-18th-outage-cloud-risk.html">DeepSeek 年内第 18 次宕机：云端 API 单点失效风险，本地化部署成刚需</a>
+          <a href="news-2026-10-13-stepfun-triple-open-source.html">阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源</a>
+          <a href="news-2026-10-13-china-tokens-openrouter-top5.html">中国大模型周调用量 86.74 万亿 Token，包揽全球前五</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-14</span><span class="n-tag" style="margin-left:8px">技术前沿 · 关联解读</span>
+    <h1 class="art-h1">GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus</h1>
+    <p class="art-lede">OrcaRouter 基于 Artificial Analysis 基准（日更）的实测对比：Claude Opus 5.5 智能指数 57.6、$4/$20 per M token、单任务成本 $5.98；GPT-6.1 Sol 指数 51.8、$2/$10 per M、单任务成本 $0.72。长文回忆基本持平（83.0% vs 84.7%）、上下文 Sol 略长（1.05M vs 1M）。差距全在抽象推理：SciCode 54.2% vs 66.9%（-12.7 分）、Humanity's Last Exam 52.9% vs 61.4%。两模型同一 Key 同账单可混用（OrcaRouter 已上）。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">核心数字对照表</h3>
+      <figure class="art-fig">
+        <svg style="width:100%;height:auto;display:block;border-radius:12px" xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="Noto Sans CJK SC,PingFang SC,Microsoft YaHei,FZHei-B01,sans-serif" role="img" aria-label="GPT-6.1 Sol vs Claude Opus 5.5 核心指标对比">
+<rect width="800" height="360" fill="#f4f7fc"/>
+<text x="40" y="28" font-size="17" font-weight="700" fill="#0e1c42">GPT-6.1 Sol vs Claude Opus 5.5 核心指标对比（OrcaRouter / Artificial Analysis v4.3.2 日更）</text>
+<!-- 表头 -->
+<rect x="40" y="50" width="720" height="36" rx="4" fill="#0e1c42"/>
+<text x="80" y="74" font-size="14" font-weight="700" fill="#fff">指标</text>
+<text x="280" y="74" font-size="14" font-weight="700" fill="#fff">GPT-6.1 Sol</text>
+<text x="480" y="74" font-size="14" font-weight="700" fill="#fff">Claude Opus 5.5</text>
+<text x="680" y="74" font-size="14" font-weight="700" fill="#fff">差距/备注</text>
+<!-- 行1 -->
+<rect x="40" y="90" width="720" height="34" rx="4" fill="#fff" stroke="#e0e6f0"/>
+<text x="80" y="112" font-size="14" fill="#0e1c42">智能指数</text>
+<text x="280" y="112" font-size="14" font-weight="700" fill="#22a7dd">51.8</text>
+<text x="480" y="112" font-size="14" font-weight="700" fill="#0e1c42">57.6</text>
+<text x="680" y="112" font-size="14" fill="#3d4c6b">-5.8 分</text>
+<!-- 行2 -->
+<rect x="40" y="128" width="720" height="34" rx="4" fill="#fafbfd" stroke="#e0e6f0"/>
+<text x="80" y="150" font-size="14" fill="#0e1c42">单任务成本</text>
+<text x="280" y="150" font-size="14" font-weight="700" fill="#22a7dd">$0.72</text>
+<text x="480" y="150" font-size="14" font-weight="700" fill="#0e1c42">$5.98</text>
+<text x="680" y="150" font-size="14" font-weight="700" fill="#e04040">Sol 便宜 8.3×</text>
+<!-- 行3 -->
+<rect x="40" y="166" width="720" height="34" rx="4" fill="#fff" stroke="#e0e6f0"/>
+<text x="80" y="188" font-size="14" fill="#0e1c42">API 定价 (In/Out per M)</text>
+<text x="280" y="188" font-size="14" fill="#0e1c42">$2 / $10</text>
+<text x="480" y="188" font-size="14" fill="#0e1c42">$4 / $20</text>
+<text x="680" y="188" font-size="14" fill="#3d4c6b">Sol 半价</text>
+<!-- 行4 -->
+<rect x="40" y="204" width="720" height="34" rx="4" fill="#fafbfd" stroke="#e0e6f0"/>
+<text x="80" y="226" font-size="14" fill="#0e1c42">长文回忆</text>
+<text x="280" y="226" font-size="14" font-weight="700" fill="#22a7dd">83.0%</text>
+<text x="480" y="226" font-size="14" font-weight="700" fill="#0e1c42">84.7%</text>
+<text x="680" y="226" font-size="14" fill="#3d4c6b">基本持平</text>
+<!-- 行5 -->
+<rect x="40" y="242" width="720" height="34" rx="4" fill="#fff" stroke="#e0e6f0"/>
+<text x="80" y="264" font-size="14" fill="#0e1c42">上下文窗口</text>
+<text x="280" y="264" font-size="14" fill="#0e1c42">1,050,000</text>
+<text x="480" y="264" font-size="14" fill="#0e1c42">1,000,000</text>
+<text x="680" y="264" font-size="14" fill="#3d4c6b">Sol 略长 5%</text>
+<!-- 行6 -->
+<rect x="40" y="280" width="720" height="34" rx="4" fill="#fafbfd" stroke="#e0e6f0"/>
+<text x="80" y="302" font-size="14" fill="#0e1c42">SciCode (科研编程)</text>
+<text x="280" y="302" font-size="14" font-weight="700" fill="#e04040">54.2%</text>
+<text x="480" y="302" font-size="14" font-weight="700" fill="#0e1c42">66.9%</text>
+<text x="680" y="302" font-size="14" font-weight="700" fill="#e04040">Opus 领先 12.7 分</text>
+<!-- 行7 -->
+<rect x="40" y="318" width="720" height="34" rx="4" fill="#fff" stroke="#e0e6f0"/>
+<text x="80" y="340" font-size="14" fill="#0e1c42">Humanity's Last Exam</text>
+<text x="280" y="340" font-size="14" font-weight="700" fill="#e04040">52.9%</text>
+<text x="480" y="340" font-size="14" font-weight="700" fill="#0e1c42">61.4%</text>
+<text x="680" y="340" font-size="14" fill="#e04040">Opus 领先 8.5 分</text>
+</svg>
+        <figcaption>图：OrcaRouter 实测对比表，基于 Artificial Analysis Intelligence Index v4.3.2（日更），两模型均在最大努力设置下测试。单任务成本 = 综合指数得分反推的美元成本。</figcaption>
+      </figure>
+
+      <h3 class="art-h2">差距在哪、不在哪</h3>
+      <p><b>不在长文检索/工程落地：</b>长文回忆 83% vs 84.7%、上下文 1.05M vs 1M、输出上限同为 128k——在「海量上下文里找答案、多步工具调用、批量代码生成」这类政企高频场景，Sol 与 Opus **基本持平**，但 Sol 单任务成本低 <b>8.3 倍</b>。</p>
+      <p><b>在抽象推理/科研编程：</b>SciCode（科研级编程、无现成答案可抄）Sol 54.2% vs Opus 66.9%，差 <b>12.7 分</b>；Humanity's Last Exam（高难度推理）差 8.5 分。这是「硬核推理」的护城河，Opus 的溢价买的就是这部分。</p>
+
+      <h3 class="art-h2">同一 Key 可混用：架构层面的实操启示</h3>
+      <p>OrcaRouter 已把两模型挂在同一 API Key、同一账单、同一 USD 余额下——请求时显式指定模型即可。缓存读价格：Sol $0.10/M、Opus $0.20/M；Sol 超 272k 提示词阶梯涨至 $4/$15。这意味着：</p>
+      <ul class="art-tl">
+        <li>网关层可按「任务标签 + 预算阈值」自动路由：长文检索/高并发/成本敏感 → Sol；硬核推理/低容错 → Opus。</li>
+        <li>日志留痕可审计：每次调用记录模型、Token、耗时、成本，事后可做成本归因与效果复盘。</li>
+      </ul>
+      <p>对内网私有化：**两者均闭源、无权重下载**，不适合数据不出域场景；但「同一网关混用、按任务分流」的架构模式**值得复刻**——您的内网网关也可路由：长文检索 → 开源 Flash/小模型；硬推理 → 蒸馏大模型或闭源旗舰（若允许数据出域）。</p>
+
+    </div>
+    <div class="kv-box">
+      <h3>机悟的建议：把「任务分流路由」写进内网 AI 架构标准</h3>
+      <p class="kv-sub">选型不再是「买最贵的」，而是「按场景分流、同一网关混用、日志留痕可审计」。</p>
+      <ul>
+        <li><b>任务分桶标准化：</b>长上下文检索/高吞吐/成本敏感 → 开源 Flash/小模型；高难度推理/低容错/科研编程 → 闭源旗舰或蒸馏大模型。</li>
+        <li><b>网关层按「任务标签 + 预算阈值」自动路由：</b>每次调用记录模型、Token、耗时、成本，事后可成本归因、效果复盘、审计留痕。</li>
+        <li><b>内网复刻 OrcaRouter 模式：</b>同一入口、同一计费池、可配置路由规则、可插拔模型后端——这是比「选哪个模型」更重要的基建能力。</li>
+      </ul>
+    </div>
+    <p class="art-src">来源：OrcaRouter 官方博客《GPT-6.1 Sol vs Claude Opus 5.5: Where the Gap Lives》（2026-10，Artificial Analysis Intelligence Index v4.3.2 日更数据）；OpenAI/Anthropic 官方定价页。本文仅转述公开基准与定价数据，不评判任何厂商与产品，不构成采购建议。</p>
+      <div class="art-foot">
+      <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+      <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-10-14-deepseek-invests-winverse-embodied-ai.html" title="DeepSeek 领投机器人 AI 独角兽 Winverse AI：模型厂商开始「投资占位下一个方向」，具身智能临界点或在 1-2 年内">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">DeepSeek 领投 Winverse AI：模型厂商开始投机器人，具身智能临界点 1-2 年</span>
+        <span class="pg-d">2026-10-14</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-10-14-meta-muse-wonder-flagship-return.html" title="Meta Muse Wonder 旗舰回归：MSL 成立一年多首发前沿模型，Wonder Full 56 分直追 Opus 5.5">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">Meta Muse Wonder 旗舰回归：MSL 首秀直指 Opus 5.5，订阅制分发</span>
+        <span class="pg-d">2026-10-14</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 35 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>别再纠结「买哪个旗舰」，先把网关做成能分流的</h2>
+      <p>一次 40 分钟免费评估：梳理您的真实任务分桶，设计「开源小模型做长文、蒸馏大模型做推理」的路由规则，算清三年总拥有成本，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

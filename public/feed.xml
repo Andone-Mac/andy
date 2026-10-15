@@ -6,7 +6,55 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 13 Oct 2026 23:52:19 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 15 Oct 2026 05:14:02 +0000</lastBuildDate>
+    <item>
+      <title>阶跃 Step 5 明日（10-15）开源：BF16 完整权重、600B/27B MoE、1M 上下文、许可证仍未公布——内网 POC 准备清单</title>
+      <link>https://javis.org.cn/news-2026-10-14-stepfun-step5-open-source.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-stepfun-step5-open-source.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <category>技术前沿 · 关联解读</category>
+      <description>阶跃星辰 9-20 发布 Step 5 Preview（稀疏 MoE，600B 总参数、激活 27B，1M 上下文、原生多模态），AA 综合智能指数 444 分、开源前三，单任务成本约为 Claude Opus 5 的 1/8。API 已全量开放，**完整权重定于 10 月 15 日释放，BF16 精度，许可证暂未公布**（IT之家/腾讯新闻/搜狐/凤凰网均确认）。OpenRouter 首周调用量 8.84 万亿 Token 登顶全球第四，验证了生产可用性。</description>
+    </item>
+    <item>
+      <title>「Token 贷」十余家银行抢滩落地、全国首部《算力 Token 融资》标准 10-14 启动起草：口径不一、风控跟不上，标准化迫在眉睫</title>
+      <link>https://javis.org.cn/news-2026-10-14-token-loan-standardization-start.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-token-loan-standardization-start.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <category>政策法规 · 关联解读</category>
+      <description>央视财经/21 财经/金融时报 8 月-10 月跟踪：中行「算力 Token 贷」等产品已落地，构建「数据即信用、算力即资质」科创金融体系。但痛点集中：Token 统计口径各异、平台间成本价值差异大、无效 Token 甄别难、信贷员技能结构跟不上。10-14 新浪科技披露：全国首部《算力 Token 融资》标准正式启动起草，汇聚产业链代表企业与专家，围绕 Token 信贷融资、AI 经营数据应用等场景定标准。标准落地前，融资端仍是「各家自摸索」。</description>
+    </item>
+    <item>
+      <title>DeepSeek 领投机器人 AI 独角兽 Winverse AI：模型厂商开始「投资占位下一个方向」，具身智能临界点或在 1-2 年内</title>
+      <link>https://javis.org.cn/news-2026-10-14-deepseek-invests-winverse-embodied-ai.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-deepseek-invests-winverse-embodied-ai.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <category>产业动态 · 关联解读</category>
+      <description>据 AI Daily Insights / 21 世纪经济报道（10-12/13）：DeepSeek 同意领投成立数月的机器人 AI 初创公司 Winverse AI 种子轮，拟议融资数千万美元、投后估值约 4 亿美元（~27 亿人民币），美团龙珠资本跟投。同日王兴兴在工博会表示：具身智能临界点「快则一两年」，GPT-6 部署到机器人上测试效果不错，泛化与效率仍是核心难题。DeepSeek 从「只练模型」转向「投资+自研双轨占位具身智能」。</description>
+    </item>
+    <item>
+      <title>GPT-6.1 Sol vs Claude Opus 5.5 实测选型指南：长文检索持平、成本差 8.3 倍、硬核推理仍得 Opus</title>
+      <link>https://javis.org.cn/news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-gpt61-sol-vs-opus55-selection-guide.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <category>技术前沿 · 关联解读</category>
+      <description>OrcaRouter 基于 Artificial Analysis 基准（日更）的实测对比：Claude Opus 5.5 智能指数 57.6、$4/$20 per M token、单任务成本 $5.98；GPT-6.1 Sol 指数 51.8、$2/$10 per M、单任务成本 $0.72。长文回忆基本持平（83.0% vs 84.7%）、上下文 Sol 略长（1.05M vs 1M）。差距全在抽象推理：SciCode 54.2% vs 66.9%（-12.7 分）、Humanity's Last Exam 52.9% vs 61.4%。两模型同一 Key 同账单可混用（OrcaRouter 已上）。</description>
+    </item>
+    <item>
+      <title>Meta Muse Wonder 旗舰回归：MSL 成立一年多首发前沿模型，Wonder Full 56 分直追 Opus 5.5</title>
+      <link>https://javis.org.cn/news-2026-10-14-meta-muse-wonder-flagship-return.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-meta-muse-wonder-flagship-return.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <category>技术前沿 · 关联解读</category>
+      <description>美东时间 10 月 12 日，Meta 超级智能实验室（MSL）发布 Muse Wonder 与 Muse Wonder Full 两款模型，宣称在智能体、编程、知识工作基准达到或超过主要竞争对手。Artificial Analysis 综合智能指数显示：Wonder Full 得 56 分，仅次于 Claude Opus 5.5（58 分）、与 Sonnet 5.5 并列；Wonder 得 52 分。访问限定：Meta Model API 开发者与 Muse Code 订阅用户优先，Full 版仅限 Muse Code 订阅。这是 MSL 成立一年多以来首次推出自称前沿水平的旗舰模型，Meta 股价次日涨 3.38%。</description>
+    </item>
+    <item>
+      <title>DeepSeek 年内第 18 次宕机：云端 API 单点失效暴露业务连续性隐患，机悟本地化部署方案成政企「备胎」首选</title>
+      <link>https://javis.org.cn/news-2026-10-15-deepseek-18th-outage-cloud-risk.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-deepseek-18th-outage-cloud-risk.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>风险提示 · 合规解读</category>
+      <description>10 月 15 日早 8 点起，DeepSeek 网页与 API 大面积中断，官方确认「部分中断」并紧急修复。这是 2026 年以来至少第 18 次大面积故障，导致大量用户被迫转投豆包等替代品。云端模型 API 的单点失效风险再次凸显：无 SLA 承诺、无本地兜底、数据外泄合规双重暴雷。机悟 JAVIS 基于 llama.cpp + 7900 XTX 的全离线部署方案，已助多家政企单位实现「断网可用、数据不出域、推理成本可控」的 AI 基础设施。</description>
+    </item>
     <item>
       <title>阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码</title>
       <link>https://javis.org.cn/news-2026-10-13-stepfun-triple-open-source.html</link>
