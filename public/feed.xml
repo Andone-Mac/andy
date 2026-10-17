@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:46 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:48 +0000</lastBuildDate>
+    <item>
+      <title>华为发布业界首个 NPO 超节点：昇腾 960 芯片性能翻番提前就绪，两款超节点 2027 年上市</title>
+      <link>https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</guid>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>汪涛在全联接大会 2026 宣布：昇腾 960 超节点为业界首个 NPO（近封装光学）超节点；现场披露口径（据现场报道汇总）：单机 4096 卡、8E FP8、1PB HBM、利用率约 2.75 倍、功耗降超 550 千瓦；两款超节点 2027Q2/Q3 上市。</description>
+    </item>
     <item>
       <title>TC260 对《智能体系统开发安全指南》公开征求意见：智能体标准体系首次向「开发侧」延伸</title>
       <link>https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</link>
