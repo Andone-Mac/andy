@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:44 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:46 +0000</lastBuildDate>
+    <item>
+      <title>TC260 对《智能体系统开发安全指南》公开征求意见：智能体标准体系首次向「开发侧」延伸</title>
+      <link>https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>TC260 秘书处 9-18 就《智能体系统开发安全指南（征求意见稿）》征求意见（网安秘字〔2026〕119 号），截止 2026-10-02；标准体系首次延伸到开发侧，与 7 月 80 号文形成「开发—部署使用」双覆盖，政企可将其写入 RFP、前置等保三级/密评对标。</description>
+    </item>
     <item>
       <title>字节 Seed 成立国内首个独立大模型安全与对齐部门：五大方向，直接向 Seed 负责人汇报</title>
       <link>https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</link>
