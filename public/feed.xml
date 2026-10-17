@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:48 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:50 +0000</lastBuildDate>
+    <item>
+      <title>网信办：2026 年 7-8 月新增 124 款生成式 AI 服务备案，其中 7 款提供手机端侧服务</title>
+      <link>https://javis.org.cn/news-2026-09-14-cac-generative-ai-124-filings.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-14-cac-generative-ai-124-filings.html</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>【增量更新】网信办 9-14 公告：2026 年 7-8 月新增 124 款生成式 AI 服务备案，其中 7 款手机端侧服务；对比 2025 全年 446 款（2025 年 1 月公告口径），此前官网已报累计 1112 款备案/731 款登记，端侧合规提速。</description>
+    </item>
     <item>
       <title>华为发布业界首个 NPO 超节点：昇腾 960 芯片性能翻番提前就绪，两款超节点 2027 年上市</title>
       <link>https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</link>
