@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:41 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:44 +0000</lastBuildDate>
+    <item>
+      <title>字节 Seed 成立国内首个独立大模型安全与对齐部门：五大方向，直接向 Seed 负责人汇报</title>
+      <link>https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-13 字节 Seed 发内部邮件成立安全与对齐部门，严林负责、直报 Seed 负责人吴永辉，五大投入方向并加强外部第三方评测合作，为国内首个独立大模型安全与对齐部门；安全与对齐从合规体系升格为独立职能，政企采购可将安全治理组织列为评估项。</description>
+    </item>
     <item>
       <title>Character.AI 申请第 11 章破产保护：资产 5000 万-1 亿美元，迪士尼 2000 万美元竞购部分 IP</title>
       <link>https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</link>
