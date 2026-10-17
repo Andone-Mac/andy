@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:30 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:33 +0000</lastBuildDate>
+    <item>
+      <title>智元创新启动 10-15 亿元新融资、估值约 500 亿元：120 天静置期规则下 IPO 推后至 2027</title>
+      <link>https://javis.org.cn/news-2026-10-15-agibot-new-round-50b-valuation.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-agibot-new-round-50b-valuation.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-13 据投资人信源（据报道，智元未回应），智元启动 10-15 亿元新融资、估值约 500 亿元、据报道接近收尾；按港交所 120 天静置期规则，本轮交割后 2026 年内无法挂牌，IPO 推后至 2027。第三方整理（非官方披露）：2025 营收破 10 亿元、人形机器人出货 5100+ 台。</description>
+    </item>
     <item>
       <title>DeepSeek 10-15 宕机补偿落地：10.8-10.14 消费全额返还赠金，「云 API 保险」的边界在哪</title>
       <link>https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</link>
