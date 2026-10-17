@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:26 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:28 +0000</lastBuildDate>
+    <item>
+      <title>2026 人工智能产业大会济南开幕：发布「AI 赋能新型工业化」高价值场景图谱，覆盖 20 行业、1000+ 场景</title>
+      <link>https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-15 2026 人工智能产业大会济南开幕：信通院在工信部科技司统筹下发布《AI 赋能新型工业化高价值场景图谱》，覆盖 20 个细分行业、1000 余场景，「一业一图谱、一景一档案」+ 攻关/验证/推广三级体系；魏亮发布十大关键词。推广级场景是政企可复制采购标的参照。</description>
+    </item>
     <item>
       <title>截至 10-16 仍未官宣：Kimi K3.1「三档推理 + 百万上下文」传闻跟踪，政企选型该盯住什么</title>
       <link>https://javis.org.cn/news-2026-10-16-kimi-k3-1-rumor-tracking.html</link>
