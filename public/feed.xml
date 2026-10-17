@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:35 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:37 +0000</lastBuildDate>
+    <item>
+      <title>IDC：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，但仅 5.6% 企业见到显著成效</title>
+      <link>https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>IDC 10-13 报告：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，评估 24 家供应商（以原文名单为准），覆盖 11 行业、14 类智能体场景。但 62.4% 企业缺 AI 人才、48% 数据薄弱、仅 5.6% 见到显著成效——瓶颈在人才与数据，私有化部署+代运维是现实路径。</description>
+    </item>
     <item>
       <title>具身智能资本热度不减：星尘智能完成 10 亿元新一轮融资，估值 150 亿元，半年第 4 轮</title>
       <link>https://javis.org.cn/news-2026-10-14-stardust-intelligence-1b-funding.html</link>
