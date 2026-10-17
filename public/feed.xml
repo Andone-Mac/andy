@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:37 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:39 +0000</lastBuildDate>
+    <item>
+      <title>DDR4 合约价三个月累涨 24%：内存涨价正在压缩本地部署成本优势，缺口 2027Q4 见顶</title>
+      <link>https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>巴克莱：DDR4 合约价单月环比 +4%、三个月累计 +24%，涨幅反超 DDR5（+3%、+20%）；另一国际投行预计 DRAM 缺口 2027Q4 见顶（13.9%）。内存是本地推理 BOM 大头，涨价周期正压缩本地部署成本优势，政企应在采购窗口锁定内存价、重跑本地与云对比。</description>
+    </item>
     <item>
       <title>IDC：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，但仅 5.6% 企业见到显著成效</title>
       <link>https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</link>
