@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:28 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:30 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek 10-15 宕机补偿落地：10.8-10.14 消费全额返还赠金，「云 API 保险」的边界在哪</title>
+      <link>https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-15 08:11 起 DeepSeek 对话服务与 V4.1 Flash API 部分中断，13:04 前后恢复约 5 小时；官方补偿 10.8-10.14 消费全额返还赠金、自动到账、赠金优先抵扣。新浪科技统计年内至少第 18 次中断；赠金≠现金、SLA 缺失，本地部署兜底才是业务连续性保障。</description>
+    </item>
     <item>
       <title>2026 人工智能产业大会济南开幕：发布「AI 赋能新型工业化」高价值场景图谱，覆盖 20 行业、1000+ 场景</title>
       <link>https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</link>
