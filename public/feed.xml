@@ -6,94 +6,14 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:50 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:15:41 +0000</lastBuildDate>
     <item>
-      <title>网信办：2026 年 7-8 月新增 124 款生成式 AI 服务备案，其中 7 款提供手机端侧服务</title>
-      <link>https://javis.org.cn/news-2026-09-14-cac-generative-ai-124-filings.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-14-cac-generative-ai-124-filings.html</guid>
-      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <title>腾讯混元 Hy Memory 2.0 开源三层记忆系统：30B MoE 记忆模型基准 55.49% 超 Claude Opus 5</title>
+      <link>https://javis.org.cn/news-2026-10-16-tencent-hunyan-hy-memory-2-0.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-16-tencent-hunyan-hy-memory-2-0.html</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
       <category>行业动态</category>
-      <description>【增量更新】网信办 9-14 公告：2026 年 7-8 月新增 124 款生成式 AI 服务备案，其中 7 款手机端侧服务；对比 2025 全年 446 款（2025 年 1 月公告口径），此前官网已报累计 1112 款备案/731 款登记，端侧合规提速。</description>
-    </item>
-    <item>
-      <title>华为发布业界首个 NPO 超节点：昇腾 960 芯片性能翻番提前就绪，两款超节点 2027 年上市</title>
-      <link>https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</guid>
-      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>汪涛在全联接大会 2026 宣布：昇腾 960 超节点为业界首个 NPO（近封装光学）超节点；现场披露口径（据现场报道汇总）：单机 4096 卡、8E FP8、1PB HBM、利用率约 2.75 倍、功耗降超 550 千瓦；两款超节点 2027Q2/Q3 上市。</description>
-    </item>
-    <item>
-      <title>TC260 对《智能体系统开发安全指南》公开征求意见：智能体标准体系首次向「开发侧」延伸</title>
-      <link>https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</guid>
-      <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>TC260 秘书处 9-18 就《智能体系统开发安全指南（征求意见稿）》征求意见（网安秘字〔2026〕119 号），截止 2026-10-02；标准体系首次延伸到开发侧，与 7 月 80 号文形成「开发—部署使用」双覆盖，政企可将其写入 RFP、前置等保三级/密评对标。</description>
-    </item>
-    <item>
-      <title>字节 Seed 成立国内首个独立大模型安全与对齐部门：五大方向，直接向 Seed 负责人汇报</title>
-      <link>https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>10-13 字节 Seed 发内部邮件成立安全与对齐部门，严林负责、直报 Seed 负责人吴永辉，五大投入方向并加强外部第三方评测合作，为国内首个独立大模型安全与对齐部门；安全与对齐从合规体系升格为独立职能，政企采购可将安全治理组织列为评估项。</description>
-    </item>
-    <item>
-      <title>Character.AI 申请第 11 章破产保护：资产 5000 万-1 亿美元，迪士尼 2000 万美元竞购部分 IP</title>
-      <link>https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>10-13，Character.AI 申请第 11 章破产保护，资产 5000 万-1 亿美元，拟年底前经法院监督出售资产维持运营；迪士尼有意竞购，付 2000 万美元获部分 IP。「陪伴型 AI」头部四年烧穿现金，是政企评估供应商存续风险与数据归属的现成教材。</description>
-    </item>
-    <item>
-      <title>DDR4 合约价三个月累涨 24%：内存涨价正在压缩本地部署成本优势，缺口 2027Q4 见顶</title>
-      <link>https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>巴克莱：DDR4 合约价单月环比 +4%、三个月累计 +24%，涨幅反超 DDR5（+3%、+20%）；另一国际投行预计 DRAM 缺口 2027Q4 见顶（13.9%）。内存是本地推理 BOM 大头，涨价周期正压缩本地部署成本优势，政企应在采购窗口锁定内存价、重跑本地与云对比。</description>
-    </item>
-    <item>
-      <title>IDC：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，但仅 5.6% 企业见到显著成效</title>
-      <link>https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</guid>
-      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>IDC 10-13 报告：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，评估 24 家供应商（以原文名单为准），覆盖 11 行业、14 类智能体场景。但 62.4% 企业缺 AI 人才、48% 数据薄弱、仅 5.6% 见到显著成效——瓶颈在人才与数据，私有化部署+代运维是现实路径。</description>
-    </item>
-    <item>
-      <title>具身智能资本热度不减：星尘智能完成 10 亿元新一轮融资，估值 150 亿元，半年第 4 轮</title>
-      <link>https://javis.org.cn/news-2026-10-14-stardust-intelligence-1b-funding.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-stardust-intelligence-1b-funding.html</guid>
-      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>10-14 星尘智能官宣完成 10 亿元新一轮融资、估值 150 亿元，投控东海（深投控）领投，近半年第 4 轮；6 月 B 轮估值首破百亿元、3 个月后达 150 亿元。资金用于模型迭代、人才扩充、商业化落地与产能建设，推进「AI 模型-具身 OS-绳驱本体」三位一体全栈。</description>
-    </item>
-    <item>
-      <title>智元创新启动 10-15 亿元新融资、估值约 500 亿元：120 天静置期规则下 IPO 推后至 2027</title>
-      <link>https://javis.org.cn/news-2026-10-15-agibot-new-round-50b-valuation.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-agibot-new-round-50b-valuation.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>10-13 据投资人信源（据报道，智元未回应），智元启动 10-15 亿元新融资、估值约 500 亿元、据报道接近收尾；按港交所 120 天静置期规则，本轮交割后 2026 年内无法挂牌，IPO 推后至 2027。第三方整理（非官方披露）：2025 营收破 10 亿元、人形机器人出货 5100+ 台。</description>
-    </item>
-    <item>
-      <title>DeepSeek 10-15 宕机补偿落地：10.8-10.14 消费全额返还赠金，「云 API 保险」的边界在哪</title>
-      <link>https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>10-15 08:11 起 DeepSeek 对话服务与 V4.1 Flash API 部分中断，13:04 前后恢复约 5 小时；官方补偿 10.8-10.14 消费全额返还赠金、自动到账、赠金优先抵扣。新浪科技统计年内至少第 18 次中断；赠金≠现金、SLA 缺失，本地部署兜底才是业务连续性保障。</description>
-    </item>
-    <item>
-      <title>2026 人工智能产业大会济南开幕：发布「AI 赋能新型工业化」高价值场景图谱，覆盖 20 行业、1000+ 场景</title>
-      <link>https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <category>行业动态</category>
-      <description>10-15 2026 人工智能产业大会济南开幕：信通院在工信部科技司统筹下发布《AI 赋能新型工业化高价值场景图谱》，覆盖 20 个细分行业、1000 余场景，「一业一图谱、一景一档案」+ 攻关/验证/推广三级体系；魏亮发布十大关键词。推广级场景是政企可复制采购标的参照。</description>
+      <description>10-16 腾讯开源 Hy Memory 2.0 三层记忆系统（工作/代码/聊天，30B MoE 激活约 3B），记忆基准宏平均 55.49% 超 Claude Opus 5 与 DeepSeek V4.1 Flash；LoCoMo 单问题 token 降 39.3%。开源记忆层是本地化部署补长程记忆能力的直接选项，数据不出域。</description>
     </item>
     <item>
       <title>截至 10-16 仍未官宣：Kimi K3.1「三档推理 + 百万上下文」传闻跟踪，政企选型该盯住什么</title>
@@ -104,12 +24,44 @@
       <description>Wccftech 9-23 报道月之暗面内部接口现 K3.1 标识（据报道，官方未证实）；传闻三档推理、约 100 万上下文、Agent/Swarm 模式，截至 10-16 仍未官宣。本文按传闻跟踪口径拆解：档位=成本旋钮、百万上下文=长文档场景、Swarm=多智能体编排，选型建议以 K3 官方资料为基线。</description>
     </item>
     <item>
-      <title>腾讯混元 Hy Memory 2.0 开源三层记忆系统：30B MoE 记忆模型基准 55.49% 超 Claude Opus 5</title>
-      <link>https://javis.org.cn/news-2026-10-16-tencent-hunyan-hy-memory-2-0.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-16-tencent-hunyan-hy-memory-2-0.html</guid>
-      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+      <title>2026 人工智能产业大会济南开幕：发布「AI 赋能新型工业化」高价值场景图谱，覆盖 20 行业、1000+ 场景</title>
+      <link>https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
       <category>行业动态</category>
-      <description>10-16 腾讯开源 Hy Memory 2.0 三层记忆系统（工作/代码/聊天，30B MoE 激活约 3B），记忆基准宏平均 55.49% 超 Claude Opus 5 与 DeepSeek V4.1 Flash；LoCoMo 单问题 token 降 39.3%。开源记忆层是本地化部署补长程记忆能力的直接选项，数据不出域。</description>
+      <description>10-15 2026 人工智能产业大会济南开幕：信通院在工信部科技司统筹下发布《AI 赋能新型工业化高价值场景图谱》，覆盖 20 个细分行业、1000 余场景，「一业一图谱、一景一档案」+ 攻关/验证/推广三级体系；魏亮发布十大关键词。推广级场景是政企可复制采购标的参照。</description>
+    </item>
+    <item>
+      <title>DeepSeek 10-15 宕机补偿落地：10.8-10.14 消费全额返还赠金，「云 API 保险」的边界在哪</title>
+      <link>https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-deepseek-outage-compensation-credit.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-15 08:11 起 DeepSeek 对话服务与 V4.1 Flash API 部分中断，13:04 前后恢复约 5 小时；官方补偿 10.8-10.14 消费全额返还赠金、自动到账、赠金优先抵扣。新浪科技统计年内至少第 18 次中断；赠金≠现金、SLA 缺失，本地部署兜底才是业务连续性保障。</description>
+    </item>
+    <item>
+      <title>智元创新启动 10-15 亿元新融资、估值约 500 亿元：120 天静置期规则下 IPO 推后至 2027</title>
+      <link>https://javis.org.cn/news-2026-10-15-agibot-new-round-50b-valuation.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-agibot-new-round-50b-valuation.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-13 据投资人信源（据报道，智元未回应），智元启动 10-15 亿元新融资、估值约 500 亿元、据报道接近收尾；按港交所 120 天静置期规则，本轮交割后 2026 年内无法挂牌，IPO 推后至 2027。第三方整理（非官方披露）：2025 营收破 10 亿元、人形机器人出货 5100+ 台。</description>
+    </item>
+    <item>
+      <title>DeepSeek 年内第 18 次宕机：云端 API 单点失效暴露业务连续性隐患，机悟本地化部署方案成政企「备胎」首选</title>
+      <link>https://javis.org.cn/news-2026-10-15-deepseek-18th-outage-cloud-risk.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-deepseek-18th-outage-cloud-risk.html</guid>
+      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
+      <category>风险提示 · 合规解读</category>
+      <description>10 月 15 日早 8 点起，DeepSeek 网页与 API 大面积中断，官方确认「部分中断」并紧急修复。这是 2026 年以来至少第 18 次大面积故障，导致大量用户被迫转投豆包等替代品。云端模型 API 的单点失效风险再次凸显：无 SLA 承诺、无本地兜底、数据外泄合规双重暴雷。机悟 JAVIS 基于 llama.cpp + 7900 XTX 的全离线部署方案，已助多家政企单位实现「断网可用、数据不出域、推理成本可控」的 AI 基础设施。</description>
+    </item>
+    <item>
+      <title>具身智能资本热度不减：星尘智能完成 10 亿元新一轮融资，估值 150 亿元，半年第 4 轮</title>
+      <link>https://javis.org.cn/news-2026-10-14-stardust-intelligence-1b-funding.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-14-stardust-intelligence-1b-funding.html</guid>
+      <pubDate>Wed, 14 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-14 星尘智能官宣完成 10 亿元新一轮融资、估值 150 亿元，投控东海（深投控）领投，近半年第 4 轮；6 月 B 轮估值首破百亿元、3 个月后达 150 亿元。资金用于模型迭代、人才扩充、商业化落地与产能建设，推进「AI 模型-具身 OS-绳驱本体」三位一体全栈。</description>
     </item>
     <item>
       <title>阶跃 Step 5 明日（10-15）开源：BF16 完整权重、600B/27B MoE、1M 上下文、许可证仍未公布——内网 POC 准备清单</title>
@@ -152,12 +104,36 @@
       <description>美东时间 10 月 12 日，Meta 超级智能实验室（MSL）发布 Muse Wonder 与 Muse Wonder Full 两款模型，宣称在智能体、编程、知识工作基准达到或超过主要竞争对手。Artificial Analysis 综合智能指数显示：Wonder Full 得 56 分，仅次于 Claude Opus 5.5（58 分）、与 Sonnet 5.5 并列；Wonder 得 52 分。访问限定：Meta Model API 开发者与 Muse Code 订阅用户优先，Full 版仅限 Muse Code 订阅。这是 MSL 成立一年多以来首次推出自称前沿水平的旗舰模型，Meta 股价次日涨 3.38%。</description>
     </item>
     <item>
-      <title>DeepSeek 年内第 18 次宕机：云端 API 单点失效暴露业务连续性隐患，机悟本地化部署方案成政企「备胎」首选</title>
-      <link>https://javis.org.cn/news-2026-10-15-deepseek-18th-outage-cloud-risk.html</link>
-      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-15-deepseek-18th-outage-cloud-risk.html</guid>
-      <pubDate>Thu, 15 Oct 2026 00:00:00 +0000</pubDate>
-      <category>风险提示 · 合规解读</category>
-      <description>10 月 15 日早 8 点起，DeepSeek 网页与 API 大面积中断，官方确认「部分中断」并紧急修复。这是 2026 年以来至少第 18 次大面积故障，导致大量用户被迫转投豆包等替代品。云端模型 API 的单点失效风险再次凸显：无 SLA 承诺、无本地兜底、数据外泄合规双重暴雷。机悟 JAVIS 基于 llama.cpp + 7900 XTX 的全离线部署方案，已助多家政企单位实现「断网可用、数据不出域、推理成本可控」的 AI 基础设施。</description>
+      <title>IDC：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，但仅 5.6% 企业见到显著成效</title>
+      <link>https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-idc-china-industrial-ai-280b.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>IDC 10-13 报告：中国工业 AI 支出 2030 年将达 2800 亿元、五年 CAGR 52%，评估 24 家供应商（以原文名单为准），覆盖 11 行业、14 类智能体场景。但 62.4% 企业缺 AI 人才、48% 数据薄弱、仅 5.6% 见到显著成效——瓶颈在人才与数据，私有化部署+代运维是现实路径。</description>
+    </item>
+    <item>
+      <title>DDR4 合约价三个月累涨 24%：内存涨价正在压缩本地部署成本优势，缺口 2027Q4 见顶</title>
+      <link>https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>巴克莱：DDR4 合约价单月环比 +4%、三个月累计 +24%，涨幅反超 DDR5（+3%、+20%）；另一国际投行预计 DRAM 缺口 2027Q4 见顶（13.9%）。内存是本地推理 BOM 大头，涨价周期正压缩本地部署成本优势，政企应在采购窗口锁定内存价、重跑本地与云对比。</description>
+    </item>
+    <item>
+      <title>Character.AI 申请第 11 章破产保护：资产 5000 万-1 亿美元，迪士尼 2000 万美元竞购部分 IP</title>
+      <link>https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-13，Character.AI 申请第 11 章破产保护，资产 5000 万-1 亿美元，拟年底前经法院监督出售资产维持运营；迪士尼有意竞购，付 2000 万美元获部分 IP。「陪伴型 AI」头部四年烧穿现金，是政企评估供应商存续风险与数据归属的现成教材。</description>
+    </item>
+    <item>
+      <title>字节 Seed 成立国内首个独立大模型安全与对齐部门：五大方向，直接向 Seed 负责人汇报</title>
+      <link>https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-bytedance-seed-safety-alignment-dept.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-13 字节 Seed 发内部邮件成立安全与对齐部门，严林负责、直报 Seed 负责人吴永辉，五大投入方向并加强外部第三方评测合作，为国内首个独立大模型安全与对齐部门；安全与对齐从合规体系升格为独立职能，政企采购可将安全治理组织列为评估项。</description>
     </item>
     <item>
       <title>阶跃三连击：智能体手机、API 缓存命中价翻倍、600B 权重开源——开源前夜先涨价，自部署成为企业议价筹码</title>
@@ -368,6 +344,14 @@
       <description>据数世咨询与零零信安 2025 年度统计：全年有效数据泄露事件 41,644 起，同比上升 10.83%。比数量更值得看的，是从哪里漏出来的——六成起于内网与内部人员。国家网信办 9 月 15 日公开的四起典型案例，三起是「自家系统」失守。</description>
     </item>
     <item>
+      <title>TC260 对《智能体系统开发安全指南》公开征求意见：智能体标准体系首次向「开发侧」延伸</title>
+      <link>https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-18-tc260-agent-development-safety-guidelines.html</guid>
+      <pubDate>Fri, 18 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>TC260 秘书处 9-18 就《智能体系统开发安全指南（征求意见稿）》征求意见（网安秘字〔2026〕119 号），截止 2026-10-02；标准体系首次延伸到开发侧，与 7 月 80 号文形成「开发—部署使用」双覆盖，政企可将其写入 RFP、前置等保三级/密评对标。</description>
+    </item>
+    <item>
       <title>「断网也要用 AI」不再是小众：内网与离线部署的占比，一年翻了一倍</title>
       <link>https://javis.org.cn/news-2026-09-18-air-gapped-ai.html</link>
       <guid isPermaLink="true">https://javis.org.cn/news-2026-09-18-air-gapped-ai.html</guid>
@@ -376,12 +360,28 @@
       <description>一份 2026 年行业统计显示：员工规模 5000 人以上的企业里，14%–19% 的大模型部署运行在完全隔离的内网或本地机房；一年前约为 7%。该统计为方向性估算，不是精确值。</description>
     </item>
     <item>
+      <title>华为发布业界首个 NPO 超节点：昇腾 960 芯片性能翻番提前就绪，两款超节点 2027 年上市</title>
+      <link>https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-17-huawei-ascend-960-npo-supernode.html</guid>
+      <pubDate>Thu, 17 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>汪涛在全联接大会 2026 宣布：昇腾 960 超节点为业界首个 NPO（近封装光学）超节点；现场披露口径（据现场报道汇总）：单机 4096 卡、8E FP8、1PB HBM、利用率约 2.75 倍、功耗降超 550 千瓦；两款超节点 2027Q2/Q3 上市。</description>
+    </item>
+    <item>
       <title>云端大模型九月接连「掉线」：算力长在别人的机房，停下来的却是您的业务</title>
       <link>https://javis.org.cn/news-2026-09-16-cloud-down.html</link>
       <guid isPermaLink="true">https://javis.org.cn/news-2026-09-16-cloud-down.html</guid>
       <pubDate>Wed, 16 Sep 2026 00:00:00 +0000</pubDate>
       <category>可用性 · 关联解读</category>
       <description>9 月 2 日官方状态页公告一次网页／API 部分中断；不到两周，第三方可用性监测又记录到 9 月 14 日晚「消息延迟、无法发送」与 9 月 15 日约 33 分钟的访问中断，两次官方状态页均未公告。</description>
+    </item>
+    <item>
+      <title>网信办：2026 年 7-8 月新增 124 款生成式 AI 服务备案，其中 7 款提供手机端侧服务</title>
+      <link>https://javis.org.cn/news-2026-09-14-cac-generative-ai-124-filings.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-09-14-cac-generative-ai-124-filings.html</guid>
+      <pubDate>Mon, 14 Sep 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>【增量更新】网信办 9-14 公告：2026 年 7-8 月新增 124 款生成式 AI 服务备案，其中 7 款手机端侧服务；对比 2025 全年 446 款（2025 年 1 月公告口径），此前官网已报累计 1112 款备案/731 款登记，端侧合规提速。</description>
     </item>
     <item>
       <title>多家国产大模型被曝将用户对话转发境外 Claude 模型「蒸馏」，含疑似敏感信息</title>
