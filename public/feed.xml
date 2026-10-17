@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:02:21 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:26 +0000</lastBuildDate>
+    <item>
+      <title>截至 10-16 仍未官宣：Kimi K3.1「三档推理 + 百万上下文」传闻跟踪，政企选型该盯住什么</title>
+      <link>https://javis.org.cn/news-2026-10-16-kimi-k3-1-rumor-tracking.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-16-kimi-k3-1-rumor-tracking.html</guid>
+      <pubDate>Fri, 16 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>Wccftech 9-23 报道月之暗面内部接口现 K3.1 标识（据报道，官方未证实）；传闻三档推理、约 100 万上下文、Agent/Swarm 模式，截至 10-16 仍未官宣。本文按传闻跟踪口径拆解：档位=成本旋钮、百万上下文=长文档场景、Swarm=多智能体编排，选型建议以 K3 官方资料为基线。</description>
+    </item>
     <item>
       <title>腾讯混元 Hy Memory 2.0 开源三层记忆系统：30B MoE 记忆模型基准 55.49% 超 Claude Opus 5</title>
       <link>https://javis.org.cn/news-2026-10-16-tencent-hunyan-hy-memory-2-0.html</link>
