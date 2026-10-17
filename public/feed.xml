@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:03:39 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2026 01:03:41 +0000</lastBuildDate>
+    <item>
+      <title>Character.AI 申请第 11 章破产保护：资产 5000 万-1 亿美元，迪士尼 2000 万美元竞购部分 IP</title>
+      <link>https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-13-character-ai-chapter-11-bankruptcy.html</guid>
+      <pubDate>Tue, 13 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-13，Character.AI 申请第 11 章破产保护，资产 5000 万-1 亿美元，拟年底前经法院监督出售资产维持运营；迪士尼有意竞购，付 2000 万美元获部分 IP。「陪伴型 AI」头部四年烧穿现金，是政企评估供应商存续风险与数据归属的现成教材。</description>
+    </item>
     <item>
       <title>DDR4 合约价三个月累涨 24%：内存涨价正在压缩本地部署成本优势，缺口 2027Q4 见顶</title>
       <link>https://javis.org.cn/news-2026-10-13-ddr4-contract-price-24pct.html</link>
