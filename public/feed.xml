@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 17 Oct 2026 01:15:41 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 11:17:29 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放</title>
+      <link>https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html</guid>
+      <pubDate>Sat, 17 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>DeepSeek 10-17 全量切换 V4.1-Flash-1017，官方口径为性能与费用「帕累托改进」：DeepSWE v1.1 77.0（前代 74.2）、Terminal-Bench 4.0 42.3（31.2），同时缩短任务运行时间与输出长度。权重同日以 MIT 许可发布于 Hugging Face（FP8、非门控），自研搜索引擎的 Search/Fetch API 同期开放（¥5/千次成功请求、5 QPS）。对本地化部署，许可、单位任务成本、可离线三项要一起评估。</description>
+    </item>
     <item>
       <title>腾讯混元 Hy Memory 2.0 开源三层记忆系统：30B MoE 记忆模型基准 55.49% 超 Claude Opus 5</title>
       <link>https://javis.org.cn/news-2026-10-16-tencent-hunyan-hy-memory-2-0.html</link>

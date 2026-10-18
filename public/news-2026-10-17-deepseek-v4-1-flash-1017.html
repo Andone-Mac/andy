@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="DeepSeek 10-17 全量切换 V4.1-Flash-1017，官方口径为性能与费用「帕累托改进」：DeepSWE v1.1 77.0（前代 74.2）、Terminal-Bench 4.0 42.3（31.2），同时缩短任务运行时间与输出长度。权重同日以 MIT 许可发布于 Hugging Face（FP8、非门控），自研搜索引擎的 Search/Fetch API 同期开放（¥5/千次成功请求、5 QPS）。对本地化部署，许可、单位任务成本、可离线三项要一起评估。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="DeepSeek 10-17 全量切换 V4.1-Flash-1017，官方口径为性能与费用「帕累托改进」：DeepSWE v1.1 77.0（前代 74.2）、Terminal-Bench 4.0 42.3（31.2），同时缩短任务运行时间与输出长度。权重同日以 MIT 许可发布于 Hugging Face（FP8、非门控），自研搜索引擎的 Search/Fetch API 同期开放（¥5/千次成功请求、5 QPS）。对本地化部署，许可、单位任务成本、可离线三项要一起评估。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="DeepSeek 10-17 全量切换 V4.1-Flash-1017，官方口径为性能与费用「帕累托改进」：DeepSWE v1.1 77.0（前代 74.2）、Terminal-Bench 4.0 42.3（31.2），同时缩短任务运行时间与输出长度。权重同日以 MIT 许可发布于 Hugging Face（FP8、非门控），自研搜索引擎的 Search/Fetch API 同期开放（¥5/千次成功请求、5 QPS）。对本地化部署，许可、单位任务成本、可离线三项要一起评估。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放",
+      "description": "DeepSeek 10-17 全量切换 V4.1-Flash-1017，官方口径为性能与费用「帕累托改进」：DeepSWE v1.1 77.0（前代 74.2）、Terminal-Bench 4.0 42.3（31.2），同时缩短任务运行时间与输出长度。权重同日以 MIT 许可发布于 Hugging Face（FP8、非门控），自研搜索引擎的 Search/Fetch API 同期开放（¥5/千次成功请求、5 QPS）。对本地化部署，许可、单位任务成本、可离线三项要一起评估。",
+      "datePublished": "2026-10-17",
+      "dateModified": "2026-10-17",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放",
+          "item": "https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 49 条）</a>
+          <a href="news-2026-10-17-deepseek-v4-1-flash-1017.html">DeepSeek 1017 开源</a>
+          <a href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html">混元 Hy Memory 开源</a>
+          <a href="news-2026-10-16-kimi-k3-1-rumor-tracking.html">Kimi K3.1 跟踪</a>
+          <a href="news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html">济南 AI 大会场景图谱</a>
+          <a href="news-2026-10-15-deepseek-outage-compensation-credit.html">DeepSeek 补偿方案</a>
+          <a href="news-2026-10-15-agibot-new-round-50b-valuation.html">智元 500 亿估值</a>
+          <a href="news-2026-10-15-deepseek-18th-outage-cloud-risk.html">DeepSeek 年内第 18 次宕机：云端 API 单点失效风险，本地化部署成刚需</a>
+          <a href="news-2026-10-14-stardust-intelligence-1b-funding.html">星尘智能 10 亿融资</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-17</span><span class="n-tag" style="margin-left:8px">国产大模型 · 开源权重</span>
+    <h1 class="art-h1">DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放</h1>
+    <p class="art-lede">10-17，DeepSeek 把 V4.1-Flash-1017 推到网页端、App 与 API，官方称之为性能与费用同时改善的「帕累托改进」：DeepSWE v1.1 77.0（前代 74.2）、Terminal-Bench 4.0 42.3（31.2），同时缩短任务运行时间与输出长度。权重于同日以 MIT 许可在 Hugging Face 发布，官方自研搜索引擎的 Search/Fetch API 也一起对外开放——对本地化部署而言，这是「权重宽松 + 成本可算」的组合。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">先看官方给的两组数：分数在涨，时间在降</h3>
+      <p>按 DeepSeek 官方新闻稿（10-17，标题《Wish-Driven Programming：许愿式编程一键成真》），V4.1-Flash-1017 与其上一版 V4.1-Flash 的对比中，Agent 与编码类基准普遍上移，且官方明确把「缩短任务运行时间与输出长度」与「提升基准」放在同一句里表述，称在多个 Harness 下达到新的性能—费用帕累托最优。</p>
+      <ul class="art-tl">
+        <li><b>DeepSWE v1.1：</b>77.0（前代 74.2），测试框架 mini-swe-v2；</li>
+        <li><b>Terminal-Bench 4.0：</b>42.3（前代 31.2），使用 Claude Code 框架测试；</li>
+        <li><b>ProgramBench：</b>29.1（20.3）；<b>NL2Repo-Bench：</b>68.2（65.4）；</li>
+        <li><b>Automation-Bench V1.0.6：</b>60.5（54.8）；<b>Agents' Last Exam：</b>35.4（31.8）；</li>
+        <li><b>Apex Bench v1.1：</b>72.1（64.6）；<b>HLE（无工具）：</b>42.6（36.8，仅测文本子集）。</li>
+      </ul>
+      <p>需要说清口径：以上均为厂商自测，测试框架与取值条件写在官方脚注里，第三方复测尚未出现。对采购方，这一组数字的意义不在于「谁第一」，而在于同一模型版本内的自比——同一套框架下前代与当代的差值，比跨厂商的榜单排名更接近「换版本能带来多少实际收益」。</p>
+      <h3 class="art-h2">这次改的是「单位任务成本」，不只是分数</h3>
+      <p>官方把这版的技术路线归结为基于自反馈的强化学习（RL）训练：用模型自身的置信度与自生成批评作为训练信号，重点提升了「从零开始构建完整项目」的能力，官方演示包括 3D 建模、网页小游戏、基于 Godot 引擎的项目复刻等。这类任务的共同点是交互轮次多、工具调用密集——这正是 Agent 场景里成本被放大的地方。</p>
+      <p>与之一致的是工程侧的动作：官方点名针对 DeepSeek Harness、腾讯 CodeBuddy、WorkBuddy 等框架做了专项优化，并要求升级到 DeepSeek Harness 0.2.1-rc.1 及以上以获得适配。对政企使用者，这条信息比基准分更实用：同一张卡、同一套内网环境，换版本能否缩短任务时长、减少输出 token，直接决定单次业务处理的成本。</p>
+      <h3 class="art-h2">权重 MIT、次日上线：许可条款比分数更影响选型</h3>
+      <p>权重侧的事实可以独立核实：Hugging Face 上 <code>deepseek-ai/DeepSeek-V4.1-Flash-1017</code> 仓库于 2026-10-17 创建，许可证标签为 MIT，精度为 FP8，仓库非门控（gated: false）。上线一天内下载量约 1.0 万次、收藏 1177。</p>
+      <p>MIT 是这轮发布里最容易被低估的一点。企业做本地化部署时，真正卡住的往往不是显存，而是许可：能不能商用、能不能改、能不能把权重放进内网镜像、二次分发给分支机构和集成商要不要额外授权。MIT 这类宽松许可把这些问题的答案提前给了出来，法务评估的路径因此短很多。反过来，许可收紧的模型即便分数更高，也可能在采购流程里被一票否决。</p>
+      <h3 class="art-h2">Search / Fetch API 同期开放：检索也开始按次计价</h3>
+      <p>同日，DeepSeek 把长期支撑其网页端与 API 端搜索能力的自研搜索引擎对外开放：<code>POST /v1/tools/search</code> 返回结构化结果（含长摘要、发布时间与权威度评级），<code>POST /v1/tools/fetch</code> 把指定网页抓成 Markdown。计费口径是按成功请求计：每千次 5 元，失败、空结果与超时不收费，Search 与 Fetch 各限每账号 5 QPS；2026-11-01 前通过 Harness、Claude Code、Codex 的服务端工具调用不计费。</p>
+      <p>对做 RAG 与 Agent 的团队，这意味着检索成本第一次可以被写成一行预算：一次查询约 0.005 元，一万次约 50 元。相比自建爬虫加向量库的运维投入，按次计价在小规模阶段更划算；规模上来之后，是否继续外采则取决于数据是否允许出域——这一条对政企往往是决定性的。</p>
+      <h3 class="art-h2">对政企的含义：许可、成本、可离线，三条一起看</h3>
+      <p>把这次发布拆成三件事，正好对应本地化部署评估表上的三栏：<b>许可</b>（MIT，商用与二次分发路径清晰）、<b>成本</b>（官方口径是性能与费用同时改善，实际收益需在自己的任务集上复测）、<b>可离线</b>（FP8 权重公开，可进内网镜像）。三者同时成立时，模型才真正具备「内网可用」的条件，缺一项都会在验收阶段暴露。</p>
+      <p>需要提醒的是：官方基准不覆盖企业自有任务，换版本前应在自己的 20–50 条真实任务上做 A/B，比较的是任务完成率、平均轮次与输出 token，而不是榜单分数。这一步做与不做，决定了「升级」是成本优化还是新的不稳定来源。</p>
+    </div>
+
+    <div class="kv-box">
+      <h3>机悟的建议：换版本之前，先算清「单位任务成本」</h3>
+      <p class="kv-sub">分数涨了不等于账单降了，要按自己任务集复测。</p>
+      <ul>
+        <li><b>许可先过关：</b>确认权重许可允许商用与内网分发（本版为 MIT），把许可条款写进选型评分表，避免验收阶段返工；</li>
+        <li><b>自建任务集复测：</b>用 20–50 条真实业务任务做新旧版本 A/B，记录完成率、平均交互轮次与输出 token，三项一起看；</li>
+        <li><b>版本与框架对齐：</b>官方优化绑定 Harness/CodeBuddy/WorkBuddy 等框架及 0.2.1-rc.1 以上版本，内网部署前先确认框架版本匹配；</li>
+        <li><b>检索成本单列：</b>外采按次计价的搜索/抓取接口要单独列出预算，涉及数据出域的场景优先内网检索方案。</li>
+      </ul>
+    </div>
+
+    <p class="art-src">来源：DeepSeek 官方新闻稿（2026-10-17，api-docs.deepseek.com/zh-cn/news/news261017/）、Search/Fetch 使用指南与 Hugging Face 模型页（deepseek-ai/DeepSeek-V4.1-Flash-1017，MIT）。基准数据均为厂商自测口径。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+    <div class="art-foot">
+      <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+      <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html" title="腾讯混元 Hy Memory 2.0 开源三层记忆系统：30B MoE 记忆模型基准 55.49% 超 Claude Opus 5">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">混元 Hy Memory 开源</span>
+        <span class="pg-d">2026-10-16</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 49 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>新模型要不要换？用你的任务集跑一遍再决定</h2>
+      <p>一次 40 分钟免费评估：按你的真实业务任务做新旧版本对比，测算单位任务成本与三年 TCO，输出「分级路由 + 本地兜底」架构草案与合规材料清单，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
