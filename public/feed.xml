@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Oct 2026 11:17:29 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 18 Oct 2026 11:18:09 +0000</lastBuildDate>
+    <item>
+      <title>首个全国产十万卡 AI 超集群真机亮相：十万加速卡互联、已支撑 26 个领域 300 多种计算任务</title>
+      <link>https://javis.org.cn/news-2026-10-18-ten-thousand-card-cluster.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-18-ten-thousand-card-cluster.html</guid>
+      <pubDate>Sun, 18 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业动态</category>
+      <description>10-18 央视新闻报道，2026 全国高性能计算学术大会（深圳）上，我国首个全国产十万卡 AI 超集群真机亮相并将发布十大重要应用成果。十万张 AI 加速卡高速互联，峰值算力相当于全人类持续计算 200 年；今年 8 月官宣正式投用，现支撑新材料、创新药、人工智能等 26 个领域 300 多种计算任务。路线为超算与智算原生融合，同一底座既跑高精度科学计算，也跑大模型训练推理。</description>
+    </item>
     <item>
       <title>DeepSeek V4.1-Flash-1017 发布：DeepSWE 77.0、MIT 权重次日上线，Search/Fetch API 同期开放</title>
       <link>https://javis.org.cn/news-2026-10-17-deepseek-v4-1-flash-1017.html</link>
