@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 18 Oct 2026 11:18:09 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 14:15:50 +0000</lastBuildDate>
+    <item>
+      <title>国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿</title>
+      <link>https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国际 AI · 行业落地</category>
+      <description>这一周，国际 AI 巨头与行业落地各给了一个信号：英伟达一次性开源 3 款 Nemotron 3.5，把 120B 压进 24GB 边缘设备、跑 84 tokens/s，给「内网服务器—边缘盒子—嵌入式」配齐可照抄的参考架构；OpenAI 对 GPT-4o、GPT-4.1 等 4 款老模型下了最后通牒，2027 年 1 月起强制下线；金蝶三季报显示企业智能体「灵基」付费客户破 3000 家、订阅 ARR 46 亿元。云端「租大脑」的停服风险，和企业为受控智能体持续付费，摆在了同一周。</description>
+    </item>
     <item>
       <title>首个全国产十万卡 AI 超集群真机亮相：十万加速卡互联、已支撑 26 个领域 300 多种计算任务</title>
       <link>https://javis.org.cn/news-2026-10-18-ten-thousand-card-cluster.html</link>

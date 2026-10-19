@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="这一周，国际 AI 巨头与行业落地各给了一个信号：英伟达一次性开源 3 款 Nemotron 3.5，把 120B 压进 24GB 边缘设备、跑 84 tokens/s，给「内网服务器—边缘盒子—嵌入式」配齐可照抄的参考架构；OpenAI 对 GPT-4o、GPT-4.1 等 4 款老模型下了最后通牒，2027 年 1 月起强制下线；金蝶三季报显示企业智能体「灵基」付费客户破 3000 家、订阅 ARR 46 亿元。云端「租大脑」的停服风险，和企业为受控智能体持续付费，摆在了同一周。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="这一周，国际 AI 巨头与行业落地各给了一个信号：英伟达一次性开源 3 款 Nemotron 3.5，把 120B 压进 24GB 边缘设备、跑 84 tokens/s，给「内网服务器—边缘盒子—嵌入式」配齐可照抄的参考架构；OpenAI 对 GPT-4o、GPT-4.1 等 4 款老模型下了最后通牒，2027 年 1 月起强制下线；金蝶三季报显示企业智能体「灵基」付费客户破 3000 家、订阅 ARR 46 亿元。云端「租大脑」的停服风险，和企业为受控智能体持续付费，摆在了同一周。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="这一周，国际 AI 巨头与行业落地各给了一个信号：英伟达一次性开源 3 款 Nemotron 3.5，把 120B 压进 24GB 边缘设备、跑 84 tokens/s，给「内网服务器—边缘盒子—嵌入式」配齐可照抄的参考架构；OpenAI 对 GPT-4o、GPT-4.1 等 4 款老模型下了最后通牒，2027 年 1 月起强制下线；金蝶三季报显示企业智能体「灵基」付费客户破 3000 家、订阅 ARR 46 亿元。云端「租大脑」的停服风险，和企业为受控智能体持续付费，摆在了同一周。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿",
+      "description": "这一周，国际 AI 巨头与行业落地各给了一个信号：英伟达一次性开源 3 款 Nemotron 3.5，把 120B 压进 24GB 边缘设备、跑 84 tokens/s，给「内网服务器—边缘盒子—嵌入式」配齐可照抄的参考架构；OpenAI 对 GPT-4o、GPT-4.1 等 4 款老模型下了最后通牒，2027 年 1 月起强制下线；金蝶三季报显示企业智能体「灵基」付费客户破 3000 家、订阅 ARR 46 亿元。云端「租大脑」的停服风险，和企业为受控智能体持续付费，摆在了同一周。",
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-19",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿",
+          "item": "https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 51 条）</a>
+          <a href="news-2026-10-19-intl-ai-giants-deployment.html">国际 AI 与行业落地周扫</a>
+          <a href="news-2026-10-18-ten-thousand-card-cluster.html">国产十万卡超集群</a>
+          <a href="news-2026-10-17-deepseek-v4-1-flash-1017.html">DeepSeek 1017 开源</a>
+          <a href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html">混元 Hy Memory 开源</a>
+          <a href="news-2026-10-16-kimi-k3-1-rumor-tracking.html">Kimi K3.1 跟踪</a>
+          <a href="news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html">济南 AI 大会场景图谱</a>
+          <a href="news-2026-10-15-deepseek-outage-compensation-credit.html">DeepSeek 补偿方案</a>
+          <a href="news-2026-10-15-agibot-new-round-50b-valuation.html">智元 500 亿估值</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-19</span><span class="n-tag" style="margin-left:8px">国际 AI · 行业落地</span>
+    <h1 class="art-h1">国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿</h1>
+    <p class="art-lede">这一周，国际 AI 巨头与行业落地各给了一个信号：英伟达一次性开源 3 款 Nemotron 3.5，把 120B 压进 24GB 边缘设备、跑 84 tokens/s，等于给「内网服务器—边缘盒子—嵌入式」配齐了可照抄的参考架构；OpenAI 则对 GPT-4o、GPT-4.1 等 4 款老模型下了最后通牒，2027 年 1 月起强制下线；金蝶三季报显示企业智能体「灵基」付费客户破 3000 家、订阅 ARR 46 亿元。云端「租大脑」的版本停服风险，和企业为受控智能体持续付费的事实，摆在了同一周。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">全栈开源：芯片巨头把本地推理的参考架构配齐</h3>
+      <p>10 月 15 日，英伟达一次发布 3 款 Nemotron 3.5 开源模型：Nemotron 3.5 Super VL（120B，官方称速度提升 5 倍）、两款边缘模型 Bolt 74B-A9B 24GB（即日可用）与 Bolt E4B 4GB（10 月 23 日上线）。其中 Bolt 74B-A9B 用原生 2-bit 量化把 120B 父模型压进 24GB 显存，在 RTX Spark 上 SPEED-Bench 约 83.99 tokens/s。开放权重 + 数据集 + 训练配方，Scale AI、EY、AI21 等数十家在做行业后训练。这是「服务器—边缘—嵌入式」全栈的开源参考架构，本地部署第一次有芯片巨头级别的照抄样例。</p>
+
+      <h3 class="art-h2">版本停服：「租大脑」的教科书级风险</h3>
+      <p>10 月 14 日，OpenAI 正式通知：gpt-4o（两个快照）、gpt-4o-mini、gpt-4.1、gpt-4.1-mini 将于 2027-01-14 从 API 移除，建议迁移到 gpt-6-luna。同日，GPT-5.5 从 ChatGPT/Work/Codex 退役（覆盖全套餐，由 GPT-6.1 Sol 接管默认位，不适用 API 直调）。此前 OpenAI 已连发多波下线清单（tts-1 等 2027-01-06、whisper-1 等 2027-02-26、GPT-5.1 等 2027-04-01），一个月内四批遗留模型进入强制迁移倒计时。「云端租大脑」的版本生命周期，第一次被写成了明确的停服日期。</p>
+      <ul class="art-tl">
+        <li><b>对云端选型</b>把「模型版本生命周期 / 停服日期」写进采购评估表，别只比 API 单价。</li>
+        <li><b>对本地化部署</b>掌握开源权重意味着版本由你冻结在验收那一版，不受海外厂商停服支配——这是私有化最硬的一条理由。</li>
+      </ul>
+
+      <h3 class="art-h2">付费锚点：企业为受控智能体持续付费，且增速加快</h3>
+      <p>10 月 12 日，金蝶国际发布 2026 Q3 业务进展：截至 9 月 30 日，集团订阅服务 ARR 约 46.04 亿元（同比 +19.3%），Q3 单季净新增 ARR 同比 +46.9%，前三季度 AI 原生产品签约合同金额 10.02 亿元。2026 年 5 月发布的「灵基」（企业智能体操作系统）付费客户已破 3000 家。企业为「受控、可审计」的智能体持续付费、且增速在加快，这给「私有化部署到底值不值」提供了一个来自上市企业的财务锚点。</p>
+
+      <div class="kv-box">
+        <h3>机悟的建议：把「版本停服」风险算进选型，别只比 API 单价</h3>
+        <p class="kv-sub">同一周里，停服风险与付费事实并存。建议四步：</p>
+        <ul>
+          <li><b>算停服成本</b>云端老模型强制下线 = 业务中断 + 迁移成本，把「版本生命周期」写进选型评估表。</li>
+          <li><b>掌握权重</b>内网私有化掌握开源权重，版本由你冻结在验收那一版，不受海外厂商停服支配。</li>
+          <li><b>抄参考架构</b>照英伟达「服务器—边缘—嵌入式」分层，敏感数据用 24GB 级本地模型留在内网。</li>
+          <li><b>用财务锚点测算 ROI</b>参照上市企业「受控智能体」的付费增速，把私有化 TCO 与持续付费对比，给决策层一页账。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：NVIDIA 官方博客（Nemotron 3.5，2026-10-15）、OpenAI 官方（模型弃用清单 / 发布说明，2026-10-14）、中国发展网（金蝶国际 2026 Q3 业务进展公告，2026-10-12）。性能/参数为对应厂商官方口径；金蝶 ARR 为公司披露口径；方向性数据，以官方发布为准。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-18-ten-thousand-card-cluster.html" title="首个全国产十万卡 AI 超集群真机亮相：十万加速卡互联、已支撑 26 个领域 300 多种计算任务">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">国产十万卡超集群</span>
+        <span class="pg-d">2026-10-18</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 51 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>云端停服、数据出境，内网私有化怎么落地？</h2>
+      <p>一次 40 分钟免费评估：梳理你现有模型依赖与停服风险，给出「开源权重 + 内网部署」的迁移与分级方案，输出一页 TCO，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
