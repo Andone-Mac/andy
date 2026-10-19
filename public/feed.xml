@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 19 Oct 2026 14:15:50 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 14:16:39 +0000</lastBuildDate>
+    <item>
+      <title>国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架</title>
+      <link>https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 开源生态</category>
+      <description>这一周，国产开源大模型密集补弹药：蚂蚁百灵把 560B 级旗舰权重全量开源（MIT 许可、4 卡可跑）、面壁把 35B MoE 塞进约 3GB 内存跑上手机、中国电信的 29B 央企底座从「可下载」走到「可商用调用」；商务部国际贸易经济合作研究院报告给出权威口径——Qwen 系列上半年全球下载超 30 亿次、同等性能下开源成本约为闭源的八分之一。可选的国产开源底座第一次有了公开可核对的规格与成本参照。</description>
+    </item>
     <item>
       <title>国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿</title>
       <link>https://javis.org.cn/news-2026-10-19-intl-ai-giants-deployment.html</link>

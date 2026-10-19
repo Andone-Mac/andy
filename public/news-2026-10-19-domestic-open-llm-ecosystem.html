@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="这一周，国产开源大模型密集补弹药：蚂蚁百灵把 560B 级旗舰权重全量开源（MIT 许可、4 卡可跑）、面壁把 35B MoE 塞进约 3GB 内存跑上手机、中国电信的 29B 央企底座从「可下载」走到「可商用调用」；商务部国际贸易经济合作研究院报告给出权威口径——Qwen 系列上半年全球下载超 30 亿次、同等性能下开源成本约为闭源的八分之一。可选的国产开源底座第一次有了公开可核对的规格与成本参照。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="这一周，国产开源大模型密集补弹药：蚂蚁百灵把 560B 级旗舰权重全量开源（MIT 许可、4 卡可跑）、面壁把 35B MoE 塞进约 3GB 内存跑上手机、中国电信的 29B 央企底座从「可下载」走到「可商用调用」；商务部国际贸易经济合作研究院报告给出权威口径——Qwen 系列上半年全球下载超 30 亿次、同等性能下开源成本约为闭源的八分之一。可选的国产开源底座第一次有了公开可核对的规格与成本参照。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="这一周，国产开源大模型密集补弹药：蚂蚁百灵把 560B 级旗舰权重全量开源（MIT 许可、4 卡可跑）、面壁把 35B MoE 塞进约 3GB 内存跑上手机、中国电信的 29B 央企底座从「可下载」走到「可商用调用」；商务部国际贸易经济合作研究院报告给出权威口径——Qwen 系列上半年全球下载超 30 亿次、同等性能下开源成本约为闭源的八分之一。可选的国产开源底座第一次有了公开可核对的规格与成本参照。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架",
+      "description": "这一周，国产开源大模型密集补弹药：蚂蚁百灵把 560B 级旗舰权重全量开源（MIT 许可、4 卡可跑）、面壁把 35B MoE 塞进约 3GB 内存跑上手机、中国电信的 29B 央企底座从「可下载」走到「可商用调用」；商务部国际贸易经济合作研究院报告给出权威口径——Qwen 系列上半年全球下载超 30 亿次、同等性能下开源成本约为闭源的八分之一。可选的国产开源底座第一次有了公开可核对的规格与成本参照。",
+      "datePublished": "2026-10-19",
+      "dateModified": "2026-10-19",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架",
+          "item": "https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 52 条）</a>
+          <a href="news-2026-10-19-domestic-open-llm-ecosystem.html">国产开源大模型周扫</a>
+          <a href="news-2026-10-19-intl-ai-giants-deployment.html">国际 AI 与行业落地周扫</a>
+          <a href="news-2026-10-18-ten-thousand-card-cluster.html">国产十万卡超集群</a>
+          <a href="news-2026-10-17-deepseek-v4-1-flash-1017.html">DeepSeek 1017 开源</a>
+          <a href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html">混元 Hy Memory 开源</a>
+          <a href="news-2026-10-16-kimi-k3-1-rumor-tracking.html">Kimi K3.1 跟踪</a>
+          <a href="news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html">济南 AI 大会场景图谱</a>
+          <a href="news-2026-10-15-deepseek-outage-compensation-credit.html">DeepSeek 补偿方案</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-19</span><span class="n-tag" style="margin-left:8px">国产大模型 · 开源生态</span>
+    <h1 class="art-h1">国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架</h1>
+    <p class="art-lede">这一周，国产开源大模型密集补弹药：蚂蚁百灵把 560B 级旗舰权重全量开源（MIT 许可、4 卡可跑）、面壁把 35B MoE 塞进约 3GB 内存跑上手机、中国电信的 29B 央企底座从「可下载」走到「可商用调用」；商务部国际贸易经济合作研究院的报告则给出权威口径——Qwen 系列上半年全球下载超 30 亿次、同等性能下开源成本约为闭源的八分之一。对考虑私有化的单位，可选的国产开源底座，第一次有了公开可核对的规格与成本参照。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">旗舰开源：560B 级 MoE 第一次给出「几卡能跑」的公开参照</h3>
+      <p>10 月 15 日，蚂蚁集团百灵实验室开源 Ling-3.1-flash：总参数约 560B、每 Token 激活约 25B 的 MoE，最高支持 1M 上下文，FP8 checkpoint 以 MIT 许可上架 Hugging Face 与 ModelScope，附 SGLang、vLLM 部署路径。本地部署侧，用 MXFP4（路由专家）+ FP8（稠密）混合量化，权重从 534GB 降到 292GB（约降 45%），在 Hopper GPU（如 H20）上由 8 卡降到 4 卡。Artificial Analysis 智能指数 41，输出约 210 token/s。这是 560B 级旗舰第一次把「几卡能跑、量化后多大、什么许可」公开摆出来，私有化选型的成本参照第一次可核对。</p>
+
+      <h3 class="art-h2">端侧开源：35B MoE 跑进 3GB，国产芯片平台即支持</h3>
+      <p>10 月 13 日，面壁智能开源 MiniCPM-V 4.7，含 35B-A3B（总参 350 亿、激活 30 亿 MoE）与 1B 两版。官方称它是首个可在端侧无损流畅运行的开源 MoE：约 3GB 内存即可运行、解码 15+ token/s（iPad Pro 实测），视觉、语音、OCR、文档、GUI、Agent、代码、空间推理全开。发布当日即支持瑞芯微、NVIDIA、Intel、Apple，以及 iOS、安卓、鸿蒙。MiniCPM 系列全球累计下载已破 6000 万次——端侧、国产芯片平台、开源许可三项齐了。</p>
+
+      <h3 class="art-h2">央企底座：29B 开源模型从「可下载」走到「可商用调用」</h3>
+      <p>10 月 15 日，中国电信星辰大模型 Xing 4.0 系列商用上架天翼 AI 开放平台：权重自 9 月 16 日起可从 Hugging Face 下载（Apache 2.0），本次以 API 形式商用，上下文 262,144（256K）、最大输出 192K，支持结构化输出、Function Call、深度思考。架构为稀疏 MoE：检查点 290 亿参数、每 Token 读取 40 亿参数、64 专家激活 4 + 1 共享。模型卡自报 SWE-bench Verified 75.0 等基准（厂商自述、未独立复现）。央企底座走到「可下载 + 可商用调用」，对政企多了一个国产、合规、可商用的开源选项。</p>
+
+      <h3 class="art-h2">权威口径：开源 = 生态成熟 + 成本约闭源八分之一</h3>
+      <p>10 月 13 日，商务部国际贸易经济合作研究院报告：2026 上半年 Qwen 全球下载超 30 亿次（同期 Meta 约 2.27 亿、谷歌约 4.18 亿），登顶全球下载榜；截至 7 月，Qwen 派生的社区模型已超 15 万个。Kimi K3 以 2.78 万亿参数成为全球最大开源模型。报告援引麻省理工 + 佐治亚理工基于 OpenRouter 的实测：闭源模型平均每百万 Token 1.86 美元，同等性能下开源模型仅 0.23 美元——约为闭源的八分之一。这是「开源更便宜」第一次有了权威机构的口径背书，而不是厂商自说自话。</p>
+      <ul class="art-tl">
+        <li><b>对私有化选型的含义</b>可选的国产开源底座第一次有了公开、可核对的规格（许可 / 激活参 / 可离线性）与成本参照。</li>
+        <li><b>对成本测算的含义</b>「同等性能下开源约为闭源 1/8」给了 TCO 测算一个可引用的锚点，但仍是方向性估算，需以自有任务 A/B 复测。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：选国产开源底座，先看「许可 + 单位成本 + 可离线」三项</h3>
+        <p class="kv-sub">底座多了，反而要更克制地选。建议四步：</p>
+        <ul>
+          <li><b>看许可</b>MIT / Apache 2.0 可直接商用，商用受限的权重要法务过一遍再进内网。</li>
+          <li><b>看单位成本</b>同一任务算 Token 成本，别只看参数规模——560B 能 4 卡跑，单位任务成本才决定 TCO。</li>
+          <li><b>看可离线</b>确认权重与推理框架都能在内网闭环，依赖与许可证文件一并归档。</li>
+          <li><b>分级配模型</b>旗舰开源跑核心推理、29B 级跑中高频、端侧 35B 跑涉密现场，一套底座分级用。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：上海证券报·中国证券网（蚂蚁百灵 Ling-3.1-flash，2026-10-15；面壁 MiniCPM-V 4.7，2026-10-13）、中国电信天翼 AI 开放平台（星辰 Xing 4.0，2026-10-15）、中国日报网（商务部国际贸易经济合作研究院 AI 治理报告，2026-10-13）。下载量/参数量/成本为对应机构口径；中国电信模型卡基准为厂商自述、未经独立复现；成本对比为方向性估算，以官方发布为准。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-19-intl-ai-giants-deployment.html" title="国际 AI 与行业落地一周扫描：英伟达开源 24GB 本地模型、OpenAI 下线老模型、智能体 ARR 46 亿">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">国际 AI 与行业落地周扫</span>
+        <span class="pg-d">2026-10-19</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 52 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>哪款国产开源底座最适合你的内网？一次评估给清单</h2>
+      <p>一次 40 分钟免费评估：按你的场景与数据边界，从国产开源底座里选 2–3 款，给出许可、单位成本、可离线三项的核对清单与试跑方案，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏，仅以远程接入演示（脱敏数据）形式呈现。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
