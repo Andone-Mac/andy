@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 19 Oct 2026 14:16:39 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 14:17:17 +0000</lastBuildDate>
+    <item>
+      <title>本地算力硬件一周扫描：RISC-V 单芯片降本 20%、端侧一体机价格腰斩、H200 整机月涨 12%</title>
+      <link>https://javis.org.cn/news-2026-10-19-local-compute-hardware-cost.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-19-local-compute-hardware-cost.html</guid>
+      <pubDate>Mon, 19 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 本地部署成本</category>
+      <description>这一周，本地算力硬件给了三组互相印证、又彼此矛盾的信号：一边是国产 RISC-V+AI 单芯片把本地推理硬件采购成本再降 20%、端侧一体机价格腰斩；另一边是英伟达官方承认消费级 GPU 短缺「超出控制」、DDR5 现货价较 2025 年低位涨超 5 倍，深圳全新 H200 整机现货一个月上行约 12%。降本与涨价同时发生，「本地部署到底划不划算」要按锁价时间窗重算一次。</description>
+    </item>
     <item>
       <title>国产开源大模型一周扫描：560B 旗舰可 4 卡跑、35B MoE 上手机、央企 29B 底座商用上架</title>
       <link>https://javis.org.cn/news-2026-10-19-domestic-open-llm-ecosystem.html</link>
