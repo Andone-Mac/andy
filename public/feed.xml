@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:12:54 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 16:25:32 +0000</lastBuildDate>
     <item>
       <title>DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾</title>
       <link>https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html</link>
