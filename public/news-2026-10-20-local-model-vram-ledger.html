@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="承接上一篇本地模型概览，这次把「能跑」拆成四笔可复算的账：权重体积＝参数×位宽÷8；KV 缓存按层数与头数逐 token 叠加，27B 开到 262K 单这一项就要 17GB；量化掉的精度用 Top-1 一致率衡量，1bit 压到 594GB 换来 78.9%；同一对二手 3090 换引擎，27B 解码能从 41 跑到 128 tokens/s。六张对照表覆盖 8GB 到 192GB 六档配置。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-20-local-model-vram-ledger.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="承接上一篇本地模型概览，这次把「能跑」拆成四笔可复算的账：权重体积＝参数×位宽÷8；KV 缓存按层数与头数逐 token 叠加，27B 开到 262K 单这一项就要 17GB；量化掉的精度用 Top-1 一致率衡量，1bit 压到 594GB 换来 78.9%；同一对二手 3090 换引擎，27B 解码能从 41 跑到 128 tokens/s。六张对照表覆盖 8GB 到 192GB 六档配置。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-20-local-model-vram-ledger.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="承接上一篇本地模型概览，这次把「能跑」拆成四笔可复算的账：权重体积＝参数×位宽÷8；KV 缓存按层数与头数逐 token 叠加，27B 开到 262K 单这一项就要 17GB；量化掉的精度用 Top-1 一致率衡量，1bit 压到 594GB 换来 78.9%；同一对二手 3090 换引擎，27B 解码能从 41 跑到 128 tokens/s。六张对照表覆盖 8GB 到 192GB 六档配置。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度",
+      "description": "承接上一篇本地模型概览，这次把「能跑」拆成四笔可复算的账：权重体积＝参数×位宽÷8；KV 缓存按层数与头数逐 token 叠加，27B 开到 262K 单这一项就要 17GB；量化掉的精度用 Top-1 一致率衡量，1bit 压到 594GB 换来 78.9%；同一对二手 3090 换引擎，27B 解码能从 41 跑到 128 tokens/s。六张对照表覆盖 8GB 到 192GB 六档配置。",
+      "datePublished": "2026-10-20",
+      "dateModified": "2026-10-20",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-20-local-model-vram-ledger.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度",
+          "item": "https://javis.org.cn/news-2026-10-20-local-model-vram-ledger.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 54 条）</a>
+          <a href="news-2026-10-20-local-model-vram-ledger.html">本地部署四笔账：权重、KV、量化、引擎</a>
+          <a href="news-2026-10-19-local-compute-hardware-cost.html">算力硬件与部署成本周扫</a>
+          <a href="news-2026-10-19-domestic-open-llm-ecosystem.html">国产开源大模型周扫</a>
+          <a href="news-2026-10-19-intl-ai-giants-deployment.html">国际 AI 与行业落地周扫</a>
+          <a href="news-2026-10-18-ten-thousand-card-cluster.html">国产十万卡超集群</a>
+          <a href="news-2026-10-17-deepseek-v4-1-flash-1017.html">DeepSeek 1017 开源</a>
+          <a href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html">混元 Hy Memory 开源</a>
+          <a href="news-2026-10-16-kimi-k3-1-rumor-tracking.html">Kimi K3.1 跟踪</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-20</span><span class="n-tag" style="margin-left:8px">行业综述 · 本地部署测算</span>
+    <h1 class="art-h1">「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度</h1>
+    <p class="art-lede">上一篇《一张表看懂本地能跑的开源大模型》被转得多，评论区问得最集中的是三个问题：为什么 12GB 卡能跑 125B？为什么同样的卡别人快一倍？为什么上下文一开长就崩？这三个问题对应四笔账——权重体积、KV 缓存、量化精度、推理引擎。本文把四笔账都写成可以自己套的公式，附 13 组公开实测速度与 6 张对照表，并按 8GB 到 192GB 六档说清「能跑什么、上下文能开多大、瓶颈在哪」。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">先给结论：四句话，四笔账</h3>
+      <ul class="art-tl">
+        <li><b>权重账是一道除法</b>体积 ≈ 参数量 × 位宽 ÷ 8。125B 的 4bit 约 63GB，753B 的 4bit 约 376GB——「装不下」首先是算术问题，不是玄学。</li>
+        <li><b>KV 缓存才是长上下文的真凶</b>它逐 token 线性叠加，不是按比例慢慢涨。27B 这一代每 token 约 64 KiB（FP16），开到 262k 单这一项就要 17GB 上下。</li>
+        <li><b>量化省体积、掉长尾</b>2.8T 的模型能被压到 594GB，代价是 Top-1 一致率降到 78.9%。「能跑」和「能签」是两件事。</li>
+        <li><b>引擎已经是采购要素</b>同一个 27B、同样两张 3090，llama.cpp 约 41 tokens/s，换 vLLM 配投机解码可到 89–128 tokens/s。</li>
+      </ul>
+
+      <h3 class="art-h2">账一：权重体积，一道除法加一点误差</h3>
+      <p>先算体积：<b>GB ≈ 参数量（B）× 位宽 ÷ 8</b>。这个式子算出来的是<b>下界</b>——真实文件还要加上嵌入表、视觉塔、量化缩放系数与元数据，通常比下界大 10%–25%。以已有的 Qwen3.8-27B（稠密，27.78B）为例，公开 GGUF 文件大小与公式下界对得很齐：</p>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.94rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">量化档位</th><th style="text-align:left;padding:9px 10px">公开文件大小</th><th style="text-align:left;padding:9px 10px">公式下界（27.78B）</th><th style="text-align:left;padding:9px 10px">说明</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-IQ2_XXS</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">7.27 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">≈ 7.0 GB（2bit）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">8GB 卡可用，精度损失明显</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-Q3_K_XL</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">13.15 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">≈ 10.4 GB（3bit）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">12GB 卡的现实选择</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-Q4_K_M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">16.46 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">≈ 13.9 GB（4bit）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">16GB 卡刚好、24GB 卡舒适</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-Q4_K_XL</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">17.56 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">≈ 15.6 GB（4.5bit 混合）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">我们案例里长期在跑的一档</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-Q6_K</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">21.98 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">≈ 20.8 GB（6bit）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">24GB 卡接近满驻留</td></tr>
+        </tbody>
+      </table>
+      <p>把同一个式子套到旗舰上，就能立刻判断「单机到底有没有可能」：</p>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.94rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">模型</th><th style="text-align:left;padding:9px 10px">总参 / 激活</th><th style="text-align:left;padding:9px 10px">上下文</th><th style="text-align:left;padding:9px 10px">权重与最小可跑内存</th><th style="text-align:left;padding:9px 10px">许可口径</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">Qwen3.8-Flash-Next</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">125B / 6B</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">原生 262,144，可扩 1M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">4bit ≈ 63GB；12GB 显卡 + 大内存可跑（引擎侧方案）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">Qwen 社区许可 1.0（非 Apache）</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">GLM-5.3</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">753B / 约 40B</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">FP8 约 756GB；2bit 约 245GB；8bit 约 810GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">GLM-5.3 自定义许可（年营收超 100 亿美元的托管方需审查）</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">Kimi K3</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">2.8T / 104B</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">全精度 1.56TB；1bit 594GB（需约 610GB 内存）；2bit 861GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">Kimi K3 License（年营收超 2000 万美元的模型即服务受限）</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">MiMo-V2.6-Pro / Flash</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1.02T / 42B；309B / 15B</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">Flash 的 FP8 权重 172.9GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">MIT</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">DeepSeek V4-Pro / Flash</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1.6T / 49B；284B / 13B</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">照 4bit 估算：约 800GB / 约 142GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">MIT</td></tr>
+        </tbody>
+      </table>
+      <p>这张表最有用的一列不是参数，是<b>许可</b>。五个模型里两个是自定义许可：Qwen3.8-Flash-Next 用的是 Qwen 社区许可 1.0，不是前代的 Apache 2.0；GLM-5.3 与 Kimi K3 各自带一份自定义条款，前者对「年营收超 100 亿美元且对外托管」设了安全审查前置，后者对「年营收超 2000 万美元的模型即服务」设了商业限制。对政企单位，这意味着<b>「权重能下载」不等于「可以随便对外提供」</b>——内网自用通常没问题，做成对外产品或 SaaS 之前必须先看许可。</p>
+
+      <h3 class="art-h2">账二：KV 缓存，长上下文的真凶</h3>
+      <p>权重是一次性的，KV 缓存是持续增长的。每一层注意力都要为每个 token 保存一份 Key 和 Value，所以显存随上下文<b>线性</b>上涨。公式是：<b>每 token 字节 = 2（K 与 V）× kv_heads × head_dim × 需要缓存的层数 × 每元素字节</b>。</p>
+      <p>麻烦在于「需要缓存的层数」不等于总层数。这一代 27B 用了混合结构（部分线性注意力层，只维护固定大小的循环状态，不随上下文增长），真正建 KV 缓存的只有全注意力层。以公开拆解的 Qwen 27B 为例：16 层全注意力、4 个 KV 头、head_dim 256。</p>
+      <ul class="art-tl">
+        <li><b>每 token 元素数</b>2 × 4 × 256 × 16 = 32,768 个元素</li>
+        <li><b>FP16 每 token</b>32,768 × 2 字节 = 65,536 字节 = 64 KiB</li>
+        <li><b>开到 262k</b>64 KiB × 262,144 = 16 GiB ≈ 17.2 GB</li>
+        <li><b>用 FP8 存 KV</b>直接减半，同样的 262k 约 8.6 GB</li>
+      </ul>
+      <p>这就是为什么「权重 16.74GB 的 27B 能跑在 16GB 卡上」和「27B 开 262k 上下文」是两件完全不同的事：前者只看权重，后者要连 KV 一起算。把两笔加总，账面立刻变得具体：</p>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.94rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">配置（27B Q4_K_M 16.74GB）</th><th style="text-align:left;padding:9px 10px">权重 + KV</th><th style="text-align:left;padding:9px 10px">放在哪</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">+ 170K 上下文，FP16 KV</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 27.9 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">双 3090（48GiB）余 17GB 左右</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">+ 262K 上下文，FP16 KV</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 33.9 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">双 3090 仍放得下</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">+ 262K 上下文，FP8 KV</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 25.3 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">还能留出并发空间</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">单张 16GB 卡 + 262K（部分 offload）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">权重占满 16GB，KV 走内存</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">社区实测：生成 42.7 tok/s，20k 上下文时 prefill 658 tok/s，200k 时降到 35 tok/s / 500 tok/s</td></tr>
+        </tbody>
+      </table>
+      <p>我们自己那台 32GB 显存的机器是另一个方向的样本：27B 的 Q4_K_XL（17.56GB）、开到 218,000 上下文，再叠一个 4B 的嵌入模型（3.22GB），两个模型合计占到 31.9 / 34.2 GB——余量只有 2.3GB。这台机器能天天跑，靠的是把嵌入模型全部层放进 GPU、把上下文预算写死，而不是「显存越大越保险」。这套配置的实测记录在<a href="case-real.html">真实案例页</a>里可以逐项核对。</p>
+
+      <h3 class="art-h2">账三：引擎，同一张卡能差出三倍</h3>
+      <p>这一笔账去年还不存在。现在同一个模型、同一对二手 3090，换引擎和加速方式，解码速度能差一倍以上。原因不复杂：单路解码的速度上限由「每个 token 要把多少权重从显存读一遍」决定，3090 的带宽约 936 GB/s，27B 的 Q4 权重约 15.7GB（扣掉不会被整表流式读取的嵌入层），理论单卡上限就是 936 ÷ 15.7 ≈ 59.6 tok/s；投机解码（小模型先猜、大模型批量验）能突破这条带宽天花板，因为它一次权重读取验证多个 token。</p>
+      <div style="margin:18px 0">
+        <svg viewBox="0 0 880 330" width="100%" role="img" aria-label="同一对 RTX 3090 上 27B 模型不同引擎的解码速度对比" style="background:#f4f7fc;border-radius:8px">
+          <text x="24" y="30" font-size="15" font-family="system-ui,-apple-system,'Noto Sans CJK SC',sans-serif" fill="#16295e" font-weight="600">同一对二手 RTX 3090（48GiB）跑同一个 27B：解码 tokens/s</text>
+          <g font-size="14" font-family="system-ui,-apple-system,'Noto Sans CJK SC',sans-serif" fill="#33445c">
+            <text x="24" y="76">llama.cpp（默认）</text><rect x="240" y="60" width="176" height="22" fill="#9fd4ee" rx="3"/><text x="428" y="77" font-weight="600" fill="#16295e">41</text>
+            <text x="24" y="116">vLLM + MTP（散文）</text><rect x="240" y="100" width="304" height="22" fill="#5cbde6" rx="3"/><text x="556" y="117" font-weight="600" fill="#16295e">71</text>
+            <text x="24" y="156">vLLM + DFlash（散文）</text><rect x="240" y="140" width="334" height="22" fill="#2aa6dd" rx="3"/><text x="586" y="157" font-weight="600" fill="#16295e">78</text>
+            <text x="24" y="196">vLLM + MTP（代码）</text><rect x="240" y="180" width="381" height="22" fill="#1c8fc9" rx="3"/><text x="633" y="197" font-weight="600" fill="#16295e">89</text>
+            <text x="24" y="236">vLLM + DFlash（代码）</text><rect x="240" y="220" width="549" height="22" fill="#16295e" rx="3"/><text x="801" y="237" font-weight="600" fill="#16295e">128</text>
+            <line x1="240" y1="252" x2="240" y2="256" stroke="#a9b7c9"/>
+            <text x="24" y="286" font-size="13" fill="#5b6b80">口径：公开实测（双 3090、TP=2、27B Q4），散文与代码的投机接受率不同，同一配置在两类内容上会给出两个数。</text>
+            <text x="24" y="308" font-size="13" fill="#5b6b80">理论带宽上限：单卡 936 ÷ 15.7GB ≈ 59.6 tok/s；双卡 TP=2 约 119.2 tok/s——投机解码让实测越过了这条线。</text>
+          </g>
+        </svg>
+      </div>
+      <p>更极端的是「省显存」这一路。Strata 这类基于 llama.cpp 改造的引擎，把 125B MoE 的 24,576 个专家按热度分层——最常用的几千个驻留显存、全部专家放内存、一张查找表放 SSD，每 token 只调用其中 10 个专家，再叠投机解码（官方称提速 1.6–1.8 倍）。公开实测数据给出的组合是这样的：</p>
+      <ul class="art-tl">
+        <li><b>12GB 的 RTX 5070</b>Q2 量化下输出 94 tok/s、读提示词 2,650 tok/s，系统内存最低 32GB 即可。</li>
+        <li><b>约 1000 美元的二手整机</b>（老款工作站 + 双 12GB 3060 + 64GB DDR4）四档量化都在 52–63 tok/s，上下文都开到 256K。</li>
+        <li><b>RTX 5090 + 9950X</b>三组测试平均 142 → 207 tok/s；长上下文下专家缓存命中率 96%–98%。</li>
+        <li><b>对照组</b>同一台 192GB 统一内存的机器，用 llama.cpp 跑同一个 125B + 4B 草稿模型，约 34 tok/s——引擎差异，比硬件差异更直接。</li>
+      </ul>
+      <p>代价同样要说清：这条路线高度依赖「模型是 MoE + 专家热度集中」，几乎是为单个模型量身定做；省下来的显存并没有消失，而是转移到系统内存，长上下文想舒服，128GB 内存是更现实的起点。</p>
+
+      <h3 class="art-h2">账四：量化，省的是体积、掉的是长尾</h3>
+      <p>「能跑」与「能签」之间隔着量化。Kimi K3 的公开量化评估是目前少见的完整样本——同一套校准集，给出了困惑度、KLD 与 Top-1 一致率：</p>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.94rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">量化档位</th><th style="text-align:left;padding:9px 10px">体积</th><th style="text-align:left;padding:9px 10px">平均 KLD</th><th style="text-align:left;padding:9px 10px">困惑度</th><th style="text-align:left;padding:9px 10px">Top-1 一致率</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-IQ1_S（动态 1bit）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">594 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">0.5645</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">2.579</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">78.9%</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-IQ1_M</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">649 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">0.4789</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">2.364</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">81.2%</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-IQ2_XXS</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">711 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">0.3784</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">2.127</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">84.1%</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-Q2_K_XL（动态 2bit）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">861 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">0.1779</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1.736</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">90.4%</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">UD-Q8_K_XL（对照，接近无损）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1,560 GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">按定义对齐</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">1.458</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">基线</td></tr>
+        </tbody>
+      </table>
+      <p>同样的事情在 753B 上更刺眼：2bit 版本 245GB 内存就能跑起来，官方给出的 Top-1 保持率约 86%；但 8bit 版本要 810GB。也就是说，「压到能跑」通常意味着<b>每五到十个回答里有一个跟全精度不一样</b>——做摘要、做检索问答可以接受，做金额、条款、数字的核对就必须留人。</p>
+      <p>另一条路是换数值格式而不是硬压位宽：动态 NVFP4 在同等体积下能比通用 NVFP4 快约 2.5 倍，精度损失更小。方向很明确——<b>位宽之争正在变成格式之争</b>，评估时要问清楚「你说的 4bit 是哪一种 4bit」。</p>
+
+      <h3 class="art-h2">硬件：三条路线，价格都在往上走</h3>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.94rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">方案</th><th style="text-align:left;padding:9px 10px">当前价格</th><th style="text-align:left;padding:9px 10px">你能得到什么</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">二手 3090 24GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 8,000 元/张，一年涨 63%</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">27B 全驻留 + 长上下文；双卡可跑到 262K</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">RTX 5090D 32GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">10-13 行情约 44,464 元（首发一万六出头）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">单卡 32GB + 高带宽，125B 类 MoE 的加速上限</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">RTX Pro 6000 96GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 1.5 万美元</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">单卡 96GB，753B 级低比特开始有意义</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">DGX Spark 64GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">4,999 美元起，10-23 开卖</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">厂商口径单机可跑到约 1000 亿参数；两台经 ConnectX-7 池化到 128GB</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">AMD AI Max+ 395 128GB 整机</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 2.5 万元</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">统一内存，跑 125B–300B 的低比特版本</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">AI Max+ PRO 495 192GB 移动工作站</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">约 7,449 美元（约 5 万元）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">300B 4bit（权重约 150GB）可整载，速度不及独显</td></tr>
+        </tbody>
+      </table>
+      <p>三条路线各有各的边界：<b>独显路线</b>速度快、显存天花板低（消费级 32GB 到顶）；<b>统一内存路线</b>容量大、带宽低，适合「装得下比跑得快更重要」的场景；<b>引擎省显存路线</b>几乎零成本（软件免费、MIT），但吃内存、吃模型适配。真正的坏消息在价格端：DDR5 现货较 2025 年低位涨超 5 倍，SSD 合约价连续六季上涨、同比约三倍，显卡因为存储颗粒被 AI 抢产能而同步上行——<b>「等降价再买」这个选项，2026 年基本不存在</b>。</p>
+
+      <h3 class="art-h2">六档配置：能跑什么、上下文能开多大</h3>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.94rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">硬件</th><th style="text-align:left;padding:9px 10px">能跑什么</th><th style="text-align:left;padding:9px 10px">上下文</th><th style="text-align:left;padding:9px 10px">瓶颈</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">8GB 显存</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">7–9B 稠密（Q4/Q5）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">16K–32K</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">KV 一长就挤，长文档只能分段</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">12GB 显存</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">14B 舒适；27B 需 Q3；125B 走引擎路线（Q2 94 tok/s）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">32K（27B）/ 256K（引擎路线）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">系统内存要 64–128GB，量化偏低</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">16–24GB 显存</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">27B 全驻留（Q4_K_M 16.46GB）；35B-A3B 全驻留</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">128K 舒适、262K 需 FP8 KV 或 offload</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">上下文一开大就挤占权重</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">48GB（双 3090）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">27B + 262K 双开；70B 级 Q4 勉强</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">262K（FP16 KV 仍有余量）</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">TP=2 的通信开销，batch=1 时收益有限</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">64–128GB 统一内存</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">125B 级 MoE、300B 级低比特</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">128K–256K</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">带宽低，单路解码 30–50 tok/s</td></tr>
+          <tr><td style="padding:8px 10px;border-top:1px solid #e6edf6">192GB 以上</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">753B 的 2bit（约 245GB）仍差一截；2.8T 门槛 610GB</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">视方案而定</td><td style="padding:8px 10px;border-top:1px solid #e6edf6">单机已到物理极限，需多机或集群</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">三个坑：能跑 ≠ 能签 ≠ 能对外</h3>
+      <ul class="art-tl">
+        <li><b>能跑不等于能签</b>低比特量化的损失集中在长尾：金额、编号、条款引用、否定句。选型必须用本单位真实样本（卷宗、公文、图纸说明）做小样本对照，而不是看跑分榜。</li>
+        <li><b>上下文不是免费的午餐</b>开到 262K 的代价可能是 17GB 显存；同一份材料，切片检索往往比硬灌全文更快、更准、更便宜。</li>
+        <li><b>许可与护栏一起搬进了内网</b>自定义许可对「对外托管/模型即服务」普遍有营收门槛与审查条款；护栏、溯源、权限分级的责任，也不会因为「跑在自己机房」就消失。这条我们此前解读过（<a href="news-2026-09-28-ai-cybersec-guardrail-test.html">大模型安全护栏成官方测试场景</a>）。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：按「四笔账」做一次本地能力盘点</h3>
+        <p class="kv-sub">模型和引擎迭代已经按周计，硬件账该常算常新。建议每两个月做一次盘点，四步走：</p>
+        <ul>
+          <li><b>先算权重</b>把候选模型的参数、位宽、许可填进同一张表，先淘汰「装不下」和「许可不允许对外」的选项。</li>
+          <li><b>再算 KV</b>按目标上下文算 KV 与权重之和，得出「这台机器能开多大上下文」，而不是先买卡再试。</li>
+          <li><b>然后比引擎</b>同一模型至少试两种引擎（llama.cpp 与 vLLM/SGLang），把投机解码打开，速度差常常比换卡更划算。</li>
+          <li><b>最后验量化</b>用 20 份真实文件、20 个真实问题做对照，确认低比特版本在你们的任务上「该拒的拒、该回到原文的回到原文」。</li>
+        </ul>
+      </div>
+
+      <p class="art-src">来源：阿里云开发者社区与 IT之家（Qwen3.8-Flash-Next 125B/6B、262,144→1M 上下文，2026-08-26）、Hugging Face 模型卡与 Qwen 社区许可 1.0（许可口径）、Unsloth 文档与腾讯云开发者社区（Kimi K3 量化体积、KLD、Top-1 一致率，2026-09-08）、至顶智库（GLM-5.3 753B/40B 激活、自定义许可、2bit 245GB 与 8bit 810GB，2026-09-02）、OrcaRouter（MiMo-V2.6-Pro 1.02T/42B、Flash 309B/15B 与 MIT 许可，2026-09-21）、ofox.ai（Qwen3.8-27B 各量化 GGUF 文件大小）、lftw.dev（27B 的 KV 缓存算式、双 3090 各引擎实测与带宽上限，2026-08-30）、掘金社区转述的 16GB 卡 262K 实测（2026-10-19）、至顶 AI 实验室与 Strata 项目文档（125B 三级存储、5070/双 3060/5090 实测、专家命中率与投机解码，2026-10-15）、超能网与界面新闻（DGX Spark 64GB 4,999 美元、10-23 开卖）、ZAKER/网易科技与至顶智库（AI Max+ 395 128GB、PRO 495 192GB 价格）、什么值得买与博客园（二手 3090 约 8,000 元、一年涨 63%、5090D 44,464 元）。上述速度、体积、价格均为对应机构/社区与厂商口径，属方向性数据，以官方发布与本单位实测为准。本文仅转述公开信息与技术测算，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-19-local-compute-hardware-cost.html" title="本地算力硬件一周扫描：RISC-V 单芯片降本 20%、端侧一体机价格腰斩、H200 整机月涨 12%">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">算力硬件与部署成本周扫</span>
+        <span class="pg-d">2026-10-19</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 54 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>先算清四笔账，再决定买多大的卡</h2>
+      <p>一次 40 分钟免费评估：按你们的真实文件算权重、KV、引擎与量化四笔账，给出「现有设备能跑到哪一档、缺什么、多少钱、多久能用」，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

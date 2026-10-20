@@ -367,3 +367,21 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
   .cbox .qr{width:180px}
 }
 @media print{header.nav,.film,.mback,.zoomer{display:none}}
+
+/* ---------- 行业动态分页器（news.html / news-pN.html） ---------- */
+.pgnav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:38px 0 8px}
+.pgnav a,.pgnav span{display:inline-flex;align-items:center;justify-content:center;min-width:42px;height:42px;padding:0 13px;border:1px solid var(--line);border-radius:4px;font-size:.94rem;line-height:1;color:var(--navy);background:#fff;text-decoration:none;transition:border-color .15s,color .15s,background .15s}
+.pgnav a:hover{border-color:var(--cyan);color:var(--cyan-deep);background:#f7fbfe}
+.pgnav .cur{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:700}
+.pgnav .off{color:#b3c0d0;background:#f8fafc;border-color:#e9eff7}
+.pgnav .pgbtn{font-weight:600}
+.pginfo{text-align:center;font-size:.86rem;color:var(--ink-soft);margin:0 0 4px}
+/* 正文表格（新闻切片内联样式的兜底与手机端压缩） */
+.art-table{width:100%;border-collapse:collapse}
+.art-body .art-table th{background:#f4f7fc;color:var(--navy);font-weight:700}
+@media(max-width:640px){
+  .pgnav{gap:6px;margin:28px 0 8px}
+  .pgnav a,.pgnav span{min-width:34px;height:36px;padding:0 9px;font-size:.88rem}
+  .art-body .art-table{font-size:.84rem}
+  .art-body .art-table th,.art-body .art-table td{padding:7px 8px!important}
+}

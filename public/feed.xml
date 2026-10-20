@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 02:39:04 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 05:09:08 +0000</lastBuildDate>
+    <item>
+      <title>「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度</title>
+      <link>https://javis.org.cn/news-2026-10-20-local-model-vram-ledger.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-20-local-model-vram-ledger.html</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业综述 · 本地部署测算</category>
+      <description>承接上一篇本地模型概览，这次把「能跑」拆成四笔可复算的账：权重体积＝参数×位宽÷8；KV 缓存按层数与头数逐 token 叠加，27B 开到 262K 单这一项就要 17GB；量化掉的精度用 Top-1 一致率衡量，1bit 压到 594GB 换来 78.9%；同一对二手 3090 换引擎，27B 解码能从 41 跑到 128 tokens/s。六张对照表覆盖 8GB 到 192GB 六档配置。</description>
+    </item>
     <item>
       <title>本地算力硬件一周扫描：RISC-V 单芯片降本 20%、端侧一体机价格腰斩、H200 整机月涨 12%</title>
       <link>https://javis.org.cn/news-2026-10-19-local-compute-hardware-cost.html</link>
