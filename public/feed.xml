@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:11:43 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 16:12:00 +0000</lastBuildDate>
+    <item>
+      <title>记忆张量开源记忆原生大模型 MemT1.0：288B/36B 双版，11 项记忆基准居首</title>
+      <link>https://javis.org.cn/news-2026-10-20-memt-memory-native-llm-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-20-memt-memory-native-llm-open.html</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 记忆架构</category>
+      <description>10 月 20 日，中国团队记忆张量发布并开源记忆原生模型 MemT1.0 系列，含 MemT-1.0-Flash（288B）与 MemT-1.0-Nano（36B）两版。它把「可持续存在、可更新的内部记忆」纳入模型计算，让历史信息与任务经验在后续相关任务中被直接调用，不必再重复提供原始历史文本。模型已通过 Hugging Face 等平台开源，权重可免费获取。</description>
+    </item>
     <item>
       <title>智能算力规模 2592 EFLOPS 同比 +146%：国产芯片三季报兑现，附与机悟契合的产品清单</title>
       <link>https://javis.org.cn/news-2026-10-20-smart-compute-2592eflops-domestic-chip.html</link>
