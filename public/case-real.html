@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>真实案例 · 实用功能窥见 | 一台内网设备的七项实测提效 —— 机悟·政企超脑</title>
+<meta name="description" content="真实案例复盘：一家省级政法单位内网 AI 工作台的连续运行记录（已脱敏）。2 小时 41 分讯问录像 8–15 分钟出初评报告、3,466 份文档 161,365 个检索分块、15 篇案例批量修订带修订痕迹、11 GB 备份一致性校验通过、8 个数字岗位按点运行。">
+<meta name="keywords" content="真实案例,私有化部署案例,本地大模型提效,讯问录像评议,文书修订,本地知识库,内网大模型,机悟,政企超脑,甲维思,JAVIS">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/case-real.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="真实案例 · 实用功能窥见 | 一台内网设备的七项实测提效 —— 机悟·政企超脑">
+<meta property="og:description" content="真实案例复盘：一家省级政法单位内网 AI 工作台的连续运行记录（已脱敏）。2 小时 41 分讯问录像 8–15 分钟出初评报告、3,466 份文档 161,365 个检索分块、15 篇案例批量修订带修订痕迹、11 GB 备份一致性校验通过、8 个数字岗位按点运行。">
+<meta property="og:url" content="https://javis.org.cn/case-real.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="真实案例 · 实用功能窥见 | 一台内网设备的七项实测提效 —— 机悟·政企超脑">
+<meta name="twitter:description" content="真实案例复盘：一家省级政法单位内网 AI 工作台的连续运行记录（已脱敏）。2 小时 41 分讯问录像 8–15 分钟出初评报告、3,466 份文档 161,365 个检索分块、15 篇案例批量修订带修订痕迹、11 GB 备份一致性校验通过、8 个数字岗位按点运行。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://javis.org.cn/#org",
+      "name": "甲维思 JAVIS",
+      "alternateName": "机悟",
+      "url": "https://javis.org.cn/",
+      "logo": "https://javis.org.cn/assets/logo.png"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "真实案例 · 实用功能窥见",
+          "item": "https://javis.org.cn/case-real.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html" class="active">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 53 条）</a>
+          <a href="news-2026-10-19-local-compute-hardware-cost.html">算力硬件与部署成本周扫</a>
+          <a href="news-2026-10-19-domestic-open-llm-ecosystem.html">国产开源大模型周扫</a>
+          <a href="news-2026-10-19-intl-ai-giants-deployment.html">国际 AI 与行业落地周扫</a>
+          <a href="news-2026-10-18-ten-thousand-card-cluster.html">国产十万卡超集群</a>
+          <a href="news-2026-10-17-deepseek-v4-1-flash-1017.html">DeepSeek 1017 开源</a>
+          <a href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html">混元 Hy Memory 开源</a>
+          <a href="news-2026-10-16-kimi-k3-1-rumor-tracking.html">Kimi K3.1 跟踪</a>
+          <a href="news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html">济南 AI 大会场景图谱</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="mast" id="top">
+  <div class="wrap">
+    <div class="kicker">REAL CASE · 真实案例</div>
+    <h1>真实案例：一台内网设备，把一条业务流水线跑成了日常</h1>
+    <p class="dek">本页复盘一家省级政法单位（下称「该单位」）内网 AI 工作台的连续运行记录：语料治理、文书修订、讯问录像评议、采集入库、备份守护，全部在断网环境里按点运行。为保护该单位与其经手的案件，单位名称、地域、人员与案由一律隐去；页内数字均为内网实机日志、数据库只读统计与产出文件，不掺经验估算。</p>
+    <div class="rule"></div>
+    <div class="cta-row" style="justify-content:flex-start">
+      <a class="btn btn-solid" href="contact.html" data-open="demo">预约远程接入演示（脱敏数据）</a>
+      <a class="btn btn-line" href="product.html">回到产品与方案总览</a>
+    </div>
+    <p class="note" style="margin-top:20px">脱敏口径：不出现单位名称、地域、人员与案由，也不做暗示性表述。所有数字来自使用方内网环境的运行记录，可在演示中用同类脱敏数据复跑。</p>
+  </div>
+</section>
+
+<section id="gains">
+  <div class="wrap">
+    <div class="kicker">GAINS · 真实提效</div>
+    <h2>七道工序，七组能复核的数字。</h2>
+    <p class="lead">同一台设备、同一批文件：把「原来怎么做」和「现在几分钟」摆在一起。机器只是把粗加工变快，复核仍然由人做。</p>
+<table class="tbl">
+    <thead><tr><th style="width:21%">工序</th><th>原来的做法</th><th>本案例实测</th><th style="width:19%">口径</th></tr></thead>
+    <tbody>
+      <tr><td><b>2 小时 41 分讯问录像评议</b></td><td>专人完整观看、边看边记，再手写评议意见</td><td class="win">8–15 分钟出文字稿 + 初评报告（含说话人分离）</td><td>实测，单卡 GPU</td></tr>
+      <tr><td><b>6.6 小时音频转写</b></td><td>按录音时长同等投入，1 小时录音约 1 小时</td><td class="win">约 21 分钟完成，约 19 倍实时</td><td>实测，GPU 转写</td></tr>
+      <tr><td><b>39 页纯扫描 PDF</b></td><td>逐页看、逐字打，或送外包录入</td><td class="win">16,016 字，分钟级提取，结构与通知一致</td><td>实测，OCR 150 dpi</td></tr>
+      <tr><td><b>22 页 WPS 私版文件</b></td><td>常规工具打不开，只能手抄或截图辨认</td><td class="win">12,875 字符完整提取，首尾逐字比对一致</td><td>实测，GUI 流水线</td></tr>
+      <tr><td><b>15 篇典型案例按模板修订</b></td><td>逐篇改、逐句对，改完还看不出哪里动了</td><td class="win">批量生成带修订标记的 .docx，逐条接受或拒绝</td><td>实测，XML + WPS 验证</td></tr>
+      <tr><td><b>3,466 份在库文档</b></td><td>靠人记、靠人问、靠翻文件夹</td><td class="win">161,365 个有效检索分块，答案回到具体文件与章节</td><td>实测，数据库只读统计</td></tr>
+      <tr><td><b>11 GB 全量备份</b></td><td>手工拷盘，没有校验，坏了才知道</td><td class="win">280 个条目，SHA-256 与数据库一致性校验通过</td><td>实测，独立重算复核</td></tr>
+    </tbody>
+  </table>
+  <p class="note">口径提醒：上表「原来怎么做」是人工基线，需用贵单位自己的数据校准；下面的功能与数字才是本案例的实测记录。</p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="kicker">FEATURES · 七个实用功能</div>
+    <h2>不是「能演示」，是每天在用。</h2>
+    <p class="lead">每个功能都按同一套写法交代：做了什么、在该单位怎么用、实测到什么程度、人还负责哪一段。</p>
+<div class="card" style="margin-top:22px">
+      <b class="t">01　私有知识库：把「文件堆」变成「可检索资产」</b>
+      <p>做了什么：把专业书籍、法规、典型案例、裁判文书、内部讲话稿统一转成可检索的 Markdown，逐份加来源头（文书类型、来源单位、原件路径、入库日期、引用提示），再按分类分块、去重、简体化，过质量闸门后才入向量库。</p>
+      <p>实测：入库 4,868 份、有效 3,466 份；分块 306,550、有效 161,365；语料 4.0 GB。其中专业书籍 225 份、4,283.5 万汉字、去重后 216 种；职务犯罪侦查典型案例 12 份汇编、104 件，另加 2025 年新增 6 件；地方业务资料 1,079 份。全库扫描 3,479 件，error=0。</p>
+      <p>怎么保证不是「垃圾进、垃圾出」：正文过短、编码异常、md5 校验失败的整本跳过；同书 PDF 与 txt 双份逐组核对后退役冗余；目录改名必须同步数据库路径，避免重复嵌入十万分块；入库后用文中独有表述反查，确认能排到前几位。</p>
+      <span class="proof">人还负责：判断这条依据能不能拿去写材料、上会、送复核——机器给的是出处，不是结论。</span>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <b class="t">02　公文与法律文书：从「读得懂」到「改得动」</b>
+      <p>做了什么：处理 WPS 私版 .wps、老 .doc、扫描 PDF 与 .docx：提取文字、去页眉页码、还原标题层级、修正 OCR 错字，再按本单位模板生成或修订 Word 文档。修订不是另存新稿，而是逐段逐句留下 w:ins / w:del 修订标记——谁改的、改了什么、原文是什么，打开就能接受或拒绝。</p>
+      <p>实测：22 页授课稿提取 12,875 字符 / 11,250 汉字，首尾完整、逐字比对一致；39 页纯扫描 PDF 提取 16,016 字，6 件案例的结构与通知要求一致；15 篇典型案例全部生成带修订标记的 .docx，XML 合法性校验通过并经 WPS 实际打开验证。</p>
+      <p>格式按模板走：二号小标宋标题、三号黑体一级标题、三号楷体分类项、28 磅固定行距、首行缩进两字符。</p>
+      <span class="proof">人还负责：像带实习生一样逐条接受或拒绝修订，改完签发。</span>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <b class="t">03　讯问录像评议：3 小时录像，变成 10 分钟报告</b>
+      <p>做了什么：把录像抽音频 → GPU 转写 → 说话人分离 → 客观语音统计 → 按 100 分制细则评分，输出文字稿、评分报告、优缺点清单与汇总表；每条扣分都挂时间戳与原话，评委按时间点回听即可。</p>
+      <p>实测：单场 2 小时 41 分 37 秒，8–15 分钟完成转写与初评；最长一场 3 小时 47 分、4 段录像合并为同一场次；单场转写 3,117 段、35,320 字、77.7 分钟；GPU 转写约 13.3 倍实时；已出报告 22 份、历史记录 26 条；评分体系为 100 分制、A–F 六级、20 个二级指标加红线清单；13 组专名/错字规则实测修正 16 处。</p>
+      <p>比分数更重要的是纪律：只评录像中可观测的办案行为；不做表情、微表情与语气情绪识别；证据不足的条目给基准分并列入待人工复核；报告中固定声明「AI 仅为初评，不得直接作为考核或处理依据」；涉及红线只标 suspect。</p>
+      <span class="proof">人还负责：认定与定稿。AI 只把可核查的事实摆上桌，分数不替人下结论。</span>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <b class="t">04　语料采集与治理：不是「抓网页」，是「建资产」</b>
+      <p>做了什么：按主题相关性、出版社权威性、内容完整性三道闸门筛专业资料，转成 Markdown，逐本校验章数与字数才入藏。主题只收强关联的（讯问审讯、侦查谋略、职务犯罪侦查、证据、立案监督），泛法律与畅销书不收。</p>
+      <p>实测：累计抓取 400+ 本、6+ 批次，零账号冻结、零验证弹窗；入藏 225 份、4,283.5 万汉字；来源结构为平台电子书 186 份、扫描件 OCR 19 份、PDF 文字层 11 份、同书 txt 8 份、本地翻译 1 份，去重后 216 种；裁判文书 569 份全文入库，523 份未获取清单移交人工研判。</p>
+      <p>节奏也工程化：夜间 23:00 抓取、次日 02:30 验收，避开白天人工使用时段；登录失效不硬试，先静默续登录，失败才开扫码窗口；请求节奏拟人化。</p>
+      <span class="proof">人还负责：定主题边界与出版社白名单，决定哪些资料值得进库。</span>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <b class="t">05　本地模型与显存：一台机器，把「云」搬进机房</b>
+      <p>做了什么：在国产系统 + 单张 32 GB 显卡上同时跑主模型与向量模型：主模型 27B 级、UD-Q4_K_XL 量化、218,000 上下文；嵌入模型 8,192 上下文、512 批大小。</p>
+      <p>实测：解码 53–60 tok/s（Vulkan + MTP）；嵌入模型 3.22 GB、37/37 层全在 GPU；16 块批量嵌入从 7.6 秒降到 1.03 秒，单次查询嵌入从 0.13–0.28 秒降到 0.03–0.04 秒；双模型共占 31.9 / 34.2 GB，余量约 2.3 GB；改造前后向量一致性 minCos 1.000000，无需重建索引。</p>
+      <p>踩过的坑也写进作业流程：该卡在 Linux 上走 ROCm 路线曾导致开机 oops，最终改走 Vulkan；混合 GDN 模型必须加 GGML_VK_DISABLE_COOPMAT=1，否则出 NaN 乱码——这不是实验室的「已知问题」，是会让设备起不来的问题。</p>
+      <span class="proof">人还负责：不需要懂 GPU，只需要看日报。</span>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <b class="t">06　AI 运营化：有班次、有日志、有交接的数字班组</b>
+      <p>做了什么：把 AI 从「对话窗口」变成按点上班的常驻生产力，失败有处置、产出有留痕。以下是本案例里真实在跑的排班表。</p>
+      <table class="tbl" style="margin-top:6px">
+        <thead><tr><th style="width:16%">岗位</th><th style="width:14%">班次</th><th>做什么</th><th style="width:26%">失败怎么办</th></tr></thead>
+        <tbody>
+          <tr><td>语料采集员</td><td>每晚 23:00</td><td>抓取指定书目、校验章数、转 Markdown</td><td>会话失效则开扫码窗口并通知</td></tr>
+          <tr><td>语料验收员</td><td>次日 02:30</td><td>核对章数、分块与入库结果</td><td>未完成则续抓并通知</td></tr>
+          <tr><td>案件简报员</td><td>每日 08:30 / 21:30</td><td>汇总案件与待办</td><td>失败重试并留日志</td></tr>
+          <tr><td>官网监测员</td><td>每周一 09:00</td><td>扫官方源更新</td><td>记录失败链接</td></tr>
+          <tr><td>备份员</td><td>工作日 12:12</td><td>快照数据库、语料与向量库到独立盘</td><td>校验失败即告警</td></tr>
+          <tr><td>模型守护</td><td>每 3 分钟</td><td>检查模型响应</td><td>连续无响应才重启，避免误判长上下文重算</td></tr>
+          <tr><td>授权守护</td><td>每 10 分钟</td><td>检查授权状态，防回退</td><td>自动拉回已激活状态并留日志</td></tr>
+          <tr><td>硬件哨兵</td><td>持续</td><td>CPU/GPU 温度、风扇、磁盘</td><td>超阈值提示到监控面板</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px">备份是真的能恢复：每日 11 GB、280 个条目，SHA-256 独立重算通过，数据库与向量库的 integrity_check 均为 ok；备份前先核对源库最后落盘时间，确保变更已包含；关键文件在包内与磁盘四组哈希一致。</p>
+      <span class="proof">人还负责：只看日报与告警。AI 项目最常见的死法不是模型不行，而是上线三个月没人管。</span>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <b class="t">07　数据抢救与旧介质读取：先救数据，再谈智能</b>
+      <p>做了什么：处理政企最常见的「数据在旧介质、旧格式、旧系统里」：多区段光盘、VOB 录像、低音量录音、WPS 私版文件。</p>
+      <table class="tbl" style="margin-top:6px">
+        <thead><tr><th style="width:18%">场景</th><th style="width:28%">问题</th><th>处置</th><th style="width:24%">结果</th></tr></thead>
+        <tbody>
+          <tr><td>多区段光盘</td><td>挂载后除最后一个文件外全是 0 字节</td><td>识别为 8 段 ISO9660 + UDF 混合盘，按 session 用 sbsector 逐段挂载</td><td>11 个文件 / 170 MB 全部取回，目标压缩包 136,789 字节校验通过</td></tr>
+          <tr><td>VOB 录像无声音</td><td>音轨实为 AAC，解复用器按 MP2 解，整条丢弃</td><td>换解复用器，重封装为标准 MP4/AAC</td><td>86 分钟音轨恢复，音画同步</td></tr>
+          <tr><td>12 个 MP4 声音轻</td><td>录音电平 −27.6 至 −37.9 LUFS，系统音量仅 56%</td><td>先诊断再给播放与提音量方案</td><td>可正常听清，原件零改动</td></tr>
+          <tr><td>WPS 私版 .wps</td><td>常规工具打不开</td><td>GUI + 剪贴板流水线，自动清理僵尸进程</td><td>22 页 / 12,875 字符完整提取</td></tr>
+        </tbody>
+      </table>
+      <span class="proof">人还负责：确认取回的文件与原件一致。智能化不是从买显卡开始，是从把旧盘里的文件完整取出来开始。</span>
+    </div>
+  </div>
+</section>
+
+<section id="line">
+  <div class="wrap">
+    <div class="kicker">LINE · 一条流水线</div>
+    <h2>四个动作串起来，才叫「工序交给 AI 打下手」。</h2>
+    <p class="lead">单点工具谁都有；真正省时间的是把找、读、写、核串成一条线，每一步都能回到上一步的出处。</p>
+<div class="grid g4" style="margin-top:26px">
+    <div class="card"><b class="t">① 资料找到位</b><p>入库即带来源头；问一句话，返回具体文件、章节与页码，而不是一段「听起来对」的话。</p><span class="proof">实测：161,365 个有效分块支撑检索</span></div>
+    <div class="card"><b class="t">② 材料读得快</b><p>扫描件、WPS 私版、老 .doc、录像与录音，先进流水线转成可读文本；读不完的长材料交给转写与初评。</p><span class="proof">实测：约 19 倍实时转写；39 页扫描件分钟级</span></div>
+    <div class="card"><b class="t">③ 初稿改得动</b><p>直接落在原稿上按模板修订，修订痕迹可逐条接受或拒绝，不用再复制粘贴回文件。</p><span class="proof">实测：15 篇修订稿，XML + WPS 验证</span></div>
+    <div class="card"><b class="t">④ 校核留得住</b><p>引用、时间戳、修订标记、操作日志都在；每日快照加哈希校验，出事能回到原状。</p><span class="proof">实测：11 GB 备份一致性校验通过</span></div>
+  </div>
+  </div>
+</section>
+
+<section id="boundary" class="card-bg">
+  <div class="wrap">
+    <div class="kicker">BOUNDARY · 人机边界</div>
+    <h2>这四件事，我们不做。</h2>
+    <p class="lead">提效是真的，边界也是真的。把边界写清楚，才敢让它在业务里天天跑。</p>
+<ul class="creed-list" style="counter-reset:none">
+    <li style="padding-left:22px"><b>不替代办案人员作最终判断</b><p>AI 只出初稿与初评。评分报告固定写明「不得直接作为考核或处理依据」，红线只标疑点，认定权在人。</p></li>
+    <li style="padding-left:22px"><b>不做情绪识别与微表情判断</b><p>只评录像中可观测的办案行为；每条扣分必须附时间戳与原话，证据不足给基准分并移交人工复核。</p></li>
+    <li style="padding-left:22px"><b>不把数据传到任何外部接口</b><p>模型、向量检索、语音识别全部本地运行，不配置外部 API；演示时可以直接断网，核心功能仍然可用。</p></li>
+    <li style="padding-left:22px"><b>不承诺「全自动」「零错误」</b><p>查不到依据就明确回「未找到依据，建议人工核对」，不生成答案。OCR 有误差、说话人分离会降级、长任务受显存限制——这些都标在报告里，不藏起来。</p></li>
+  </ul>
+  </div>
+</section>
+
+<section id="verify">
+  <div class="wrap">
+    <div class="kicker">VERIFY · 怎么自己验</div>
+    <h2>以上数字，您可以按这五条当场复核。</h2>
+    <p class="lead">我们不要求您相信一页纸，只要求您按同一套动作验一遍。</p>
+<div class="grid g2" style="margin-top:26px">
+    <div class="card"><b class="t">抽 20 个业务问题</b><p>看每个答案能不能回到具体文件、具体章节；回不到就算不合格。</p></div>
+    <div class="card"><b class="t">抽 20 份真实文件</b><p>看提取成功率与人工校对工作量，是否比原来省时间——把复核算进去再算。</p></div>
+    <div class="card"><b class="t">抽 1 场真实录像</b><p>看出报告的时间，以及每条扣分的时间戳能不能对上原话。</p></div>
+    <div class="card"><b class="t">做一次「删库—恢复」演练</b><p>现场把数据删掉再恢复，看能不能完整回来——备份不是有文件就算数。</p></div>
+  </div>
+  <p class="note">第五条最简单：拔掉外网，核心功能仍可用。另附一句算法——节省工时 =（原单件人工工时 − 复核工时）× 月处理量；不要把「机器跑了 10 分钟」直接说成「省下 3 小时」。</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>想看这套东西在您的数据上跑一遍？</h2>
+      <p>约 30 分钟远程接入演示（脱敏数据）：断网环境、同类脱敏样本、当场复跑；或申请 40 分钟免费部署评估，先看现有设备能跑什么、缺什么、多少钱、多久能用。</p>
+      <div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+        <a class="btn btn-ghost" href="contact.html" data-open="demo">预约远程接入演示</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
