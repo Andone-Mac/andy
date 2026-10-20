@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="先放下「万亿参数」。今年 10 月本地能跑多大，答案比参数表友好得多：12GB 老卡能请出 125B、24GB 稳跑 27B、5 万元一体机能装下 300B。这篇不讲公式，只有一张「硬件—能跑什么—速度—多少钱」对照表、三句话解释原理、一份现价清单和三个比参数更重要的提醒；想追公式与实测细节，文末指向上周的完整技术版。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-20-local-model-one-table.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="先放下「万亿参数」。今年 10 月本地能跑多大，答案比参数表友好得多：12GB 老卡能请出 125B、24GB 稳跑 27B、5 万元一体机能装下 300B。这篇不讲公式，只有一张「硬件—能跑什么—速度—多少钱」对照表、三句话解释原理、一份现价清单和三个比参数更重要的提醒；想追公式与实测细节，文末指向上周的完整技术版。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-20-local-model-one-table.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="先放下「万亿参数」。今年 10 月本地能跑多大，答案比参数表友好得多：12GB 老卡能请出 125B、24GB 稳跑 27B、5 万元一体机能装下 300B。这篇不讲公式，只有一张「硬件—能跑什么—速度—多少钱」对照表、三句话解释原理、一份现价清单和三个比参数更重要的提醒；想追公式与实测细节，文末指向上周的完整技术版。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B",
+      "description": "先放下「万亿参数」。今年 10 月本地能跑多大，答案比参数表友好得多：12GB 老卡能请出 125B、24GB 稳跑 27B、5 万元一体机能装下 300B。这篇不讲公式，只有一张「硬件—能跑什么—速度—多少钱」对照表、三句话解释原理、一份现价清单和三个比参数更重要的提醒；想追公式与实测细节，文末指向上周的完整技术版。",
+      "datePublished": "2026-10-20",
+      "dateModified": "2026-10-20",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-20-local-model-one-table.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B",
+          "item": "https://javis.org.cn/news-2026-10-20-local-model-one-table.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 55 条）</a>
+          <a href="news-2026-10-20-local-model-one-table.html">一张表看懂本地能跑多大（简明版）</a>
+          <a href="news-2026-10-20-local-model-vram-ledger.html">本地部署四笔账：权重、KV、量化、引擎</a>
+          <a href="news-2026-10-19-local-compute-hardware-cost.html">算力硬件与部署成本周扫</a>
+          <a href="news-2026-10-19-domestic-open-llm-ecosystem.html">国产开源大模型周扫</a>
+          <a href="news-2026-10-19-intl-ai-giants-deployment.html">国际 AI 与行业落地周扫</a>
+          <a href="news-2026-10-18-ten-thousand-card-cluster.html">国产十万卡超集群</a>
+          <a href="news-2026-10-17-deepseek-v4-1-flash-1017.html">DeepSeek 1017 开源</a>
+          <a href="news-2026-10-16-tencent-hunyan-hy-memory-2-0.html">混元 Hy Memory 开源</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-20</span><span class="n-tag" style="margin-left:8px">行业综述 · 简明版</span>
+    <h1 class="art-h1">一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B</h1>
+    <p class="art-lede">先放下「万亿参数」这四个字。今年 10 月，本地能跑多大的模型，答案比参数表友好得多：一张 12GB 的老显卡能请出 125B 的模型，一台 24GB 的普通机箱能稳稳跑 27B，五万元的一体机能装下 300B。这篇不讲公式，只用一张表、三句话和一份现价清单，把「你手里的机器能跑什么」说清楚；想追公式与实测细节，文末指向上周的完整版。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一张表：你手里的机器，现在能跑什么</h3>
+      <table class="art-table" style="width:100%;border-collapse:collapse;font-size:.95rem;margin:14px 0">
+        <thead><tr style="background:#f4f7fc"><th style="text-align:left;padding:9px 10px">手里的硬件</th><th style="text-align:left;padding:9px 10px">能跑什么</th><th style="text-align:left;padding:9px 10px">出字速度</th><th style="text-align:left;padding:9px 10px">大概要花多少</th></tr></thead>
+        <tbody>
+          <tr><td style="padding:9px 10px;border-top:1px solid #e6edf6">8GB 显存</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">7–9B 的小模型，问答、摘要、简单写作</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">20–40 字/秒</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">二手入门卡，千元级</td></tr>
+          <tr><td style="padding:9px 10px;border-top:1px solid #e6edf6">12GB 显存</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">27B（降一档精度）；<b>装上专用引擎可跑 125B</b></td><td style="padding:9px 10px;border-top:1px solid #e6edf6">27B 约 20–30；125B 实测 94</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">二手整机约 1,000 美元（约 7,000 元）</td></tr>
+          <tr><td style="padding:9px 10px;border-top:1px solid #e6edf6">16–24GB 显存</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">27B 全量跑满、35B 级 MoE 随便跑</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">40 字/秒上下</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">二手 3090 约 8,000 元/张</td></tr>
+          <tr><td style="padding:9px 10px;border-top:1px solid #e6edf6">48GB（双卡）</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">27B + 超长上下文双开；70B 级勉强</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">41–128（看引擎）</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">两张二手 3090，1.6 万元左右</td></tr>
+          <tr><td style="padding:9px 10px;border-top:1px solid #e6edf6">128GB 统一内存</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">125B 级大模型，装得下比跑得快更重要</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">30–50 字/秒</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">一体机约 2.5 万元起</td></tr>
+          <tr><td style="padding:9px 10px;border-top:1px solid #e6edf6">192GB 统一内存</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">300B 级（低精度）可整载；753B 仍差一截</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">几十字/秒</td><td style="padding:9px 10px;border-top:1px solid #e6edf6">移动工作站约 5 万元</td></tr>
+        </tbody>
+      </table>
+      <p>表里最反常识的是第二行：<b>12GB 显卡跑 125B</b>。两年前这是不可能的，今年已经有人用一台约 1,000 美元的二手整机（两张 12GB 老卡 + 64GB 内存）跑出了每秒 52–63 个字，上下文还开到 256K。原因不在显卡变强，而在下面这三句话。</p>
+
+      <h3 class="art-h2">三句话，说清为什么「小卡也能跑大模型」</h3>
+      <ul class="art-tl">
+        <li><b>一、大模型现在是「专家团队」，不是「一个通才」</b>125B 的模型内部由两万多个小专家组成，每写一个字只叫其中十来个。全部专家没必要同时挤在显卡里——常用的放显卡、其余放内存，用到了再取。</li>
+        <li><b>二、引擎替你把「装不下」变成了「装得慢一点」</b>过去显存不够就直接跑不起来；现在有专门的引擎（开源、免费）把模型摊到整台机器上，代价是内存要够大——64GB 起步、长上下文最好 128GB。</li>
+        <li><b>三、量化是拿精度换体积，不是白拿</b>把每个参数从 16 位压到 4 位，体积降到四分之一。但压得越狠，细节越容易走样：2.8 万亿参数的模型能压到 594GB 跑起来，代价是「跟全精度答案一致」的比例掉到约 79%。</li>
+      </ul>
+
+      <h3 class="art-h2">今年真正的变化：不是卡变强，是「装法」变了</h3>
+      <p>三个信号可以放在一起看：一张 12GB 的显卡跑 125B，速度 94 字/秒；一台 1,000 美元的二手整机把同一档模型跑到 52–63 字/秒、上下文 256K；英伟达 10 月 23 日开卖的 DGX Spark 64GB 版，4,999 美元起，官方口径单机可跑到约 1,000 亿参数，两台还能拼成 128GB。</p>
+      <p>换句话说，<b>决定「能不能跑」的，从「显卡多贵」变成了「内存够不够 + 用什么引擎 + 敢压到几比特」</b>。这对预算有限的单位是好消息：手里那批 2019–2022 年的工作站，很多都能重新上工。</p>
+
+      <h3 class="art-h2">价格：等降价这条路，今年已经没有了</h3>
+      <ul class="art-tl">
+        <li><b>老卡在涨</b>二手 3090 一年涨了约 63%，现在约 8,000 元一张；5090D 32GB 10 月 13 日行情冲到约 44,464 元（首发一万六出头）。</li>
+        <li><b>新卡被 AI 抢产能</b>存储颗粒优先给 AI 数据中心，消费级显卡减产调价，连 AMD 都上调了指导价。</li>
+        <li><b>内存、硬盘也在涨</b>DDR5 现货较 2025 年低位涨超 5 倍；SSD 合约价连续六个季度上涨，同比约三倍。</li>
+        <li><b>所以</b>「先不买、等明年便宜」的窗口基本关闭；要买就按预算锁单，别在涨价传闻里追高——真金白银要花在能跑起来的配置上，而不是最大的那张卡。</li>
+      </ul>
+
+      <h3 class="art-h2">三个提醒，比参数更重要</h3>
+      <ul class="art-tl">
+        <li><b>能跑 ≠ 能签</b>压到低精度跑得动的模型，最容易在金额、编号、条款引用这类细节上出错。一定要拿本单位 20 份真实文件先试，别只看跑分。</li>
+        <li><b>上下文不是免费的</b>把一整本案卷「硬灌」给模型，既要显存也要时间；多数场景里，先检索再喂几段，又快又准又便宜。</li>
+        <li><b>许可是隐形门槛</b>今年几个大模型的许可都改了：有的从宽松协议换成社区协议，有的对「对外提供模型服务」设了营收门槛。内网自用通常没问题，做成对外产品前务必先看条款。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>想再往下看一层？两篇都在站内</h3>
+        <p class="kv-sub">这篇是「结论版」，给决策和预算用；下面两篇是「证据版」，给技术评估和验收用。</p>
+        <ul>
+          <li><b>算法与实测细节</b><a href="news-2026-10-20-local-model-vram-ledger.html">上一篇《「本地能跑多大」四张账》</a>：权重体积公式、KV 缓存逐 token 算式、13 组实测速度、六档配置与六张对照表。</li>
+          <li><b>真实场景能跑成什么样</b><a href="case-real.html">真实案例 · 实用功能窥见</a>：一台内网设备上，文档、文书、录像评议、备份守护的实际产出与耗时（已脱敏，数字可复核）。</li>
+        </ul>
+      </div>
+
+      <div class="kv-box">
+        <h3>机悟的建议：先问三个问题，再决定买什么</h3>
+        <p class="kv-sub">不用先懂技术，先把自己的情况说清楚，配置自然就出来了：</p>
+        <ul>
+          <li><b>要跑多大的模型</b>只是问答与写作，24GB 卡就够；要读完整本案卷、要长上下文，就要大内存。</li>
+          <li><b>几个人同时用</b>一个人用和二十个人用，是两种硬件；并发是预算里最容易低估的一项。</li>
+          <li><b>数据能不能出内网</b>不能出，就走本地部署，把参数、上下文、备份一起算进验收标准。</li>
+        </ul>
+      </div>
+
+      <p class="art-src">来源：至顶 AI 实验室与 Strata 项目文档（12GB 卡跑 125B、约 1,000 美元二手整机 52–63 字/秒、5070 实测 94 字/秒、专家缓存命中 96%–98%，2026-10-15）、超能网与界面新闻（DGX Spark 64GB 4,999 美元、10-23 开卖，2026-10-01）、什么值得买与博客园（二手 3090 约 8,000 元、一年涨 63%、5090D 行情约 44,464 元，2026-10-13/14）、深圳市电子商会与集邦咨询（DDR5 现货较 2025 低位涨超 5 倍、SSD 约三倍，2026-10-18）、Unsloth 与腾讯云开发者社区（2.8 万亿参数模型压到 594GB、一致率约 79%，2026-09-08）、ZAKER 与至顶智库（128GB 一体机约 2.5 万元、192GB 移动工作站约 5 万元，2026-10-13/14）、阿里云开发者社区与 IT 之家（125B/6B 激活、262,144 扩 1M 上下文，2026-08-26）。速度、体积、价格均为对应机构与社区口径，属方向性数据，以官方发布与本单位实测为准。本文为结论版综述，技术公式与逐项实测见同站《「本地能跑多大」四张账》。仅转述公开信息，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-20-local-model-vram-ledger.html" title="「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">本地部署四笔账：权重、KV、量化、引擎</span>
+        <span class="pg-d">2026-10-20</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 55 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>手里那台机器能跑什么，40 分钟就能给答案</h2>
+      <p>把现有服务器或工作站的型号、显存、内存告诉我们：能跑多大的模型、能开多长上下文、大概多少字/秒、要不要加卡——白纸黑字，先评估后付费，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
