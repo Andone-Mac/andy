@@ -6,14 +6,14 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:05:01 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 16:06:41 +0000</lastBuildDate>
     <item>
       <title>一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B</title>
       <link>https://javis.org.cn/news-2026-10-20-local-model-one-table.html</link>
       <guid isPermaLink="true">https://javis.org.cn/news-2026-10-20-local-model-one-table.html</guid>
       <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
       <category>行业综述 · 简明版</category>
-      <description>先放下「万亿参数」。今年 10 月本地能跑多大，答案比参数表友好得多：12GB 老卡能请出 125B、24GB 稳跑 27B、5 万元一体机能装下 300B。这篇不讲公式，只有一张「硬件—能跑什么—速度—多少钱」对照表、三句话解释原理、一份现价清单和三个比参数更重要的提醒；想追公式与实测细节，文末指向上周的完整技术版。</description>
+      <description>先放下「万亿参数」。今年 10 月本地能跑多大，答案比参数表友好得多：12GB 老卡能请出 125B、24GB 稳跑 27B、5 万元一体机能装下 300B。这篇不讲公式，只有一张「硬件—能跑什么—速度—多少钱」对照表、三句话解释原理、一份现价清单和三个比参数更重要的提醒；想追公式与实测细节，文末指向同站完整技术版。</description>
     </item>
     <item>
       <title>「本地能跑多大」2026 年 10 月测算版：权重、KV、量化、引擎四张账，附 13 组实测速度</title>
