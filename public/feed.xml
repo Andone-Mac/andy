@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:12:36 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 16:12:54 +0000</lastBuildDate>
+    <item>
+      <title>DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾</title>
+      <link>https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 推理框架</category>
+      <description>10 月 20 日，DeepSeek 把内部推理框架 DeepInfer 全面开源，并同步开源生产级 Token 编解码组件 deepseek-recipe。官方口径：基于 DeepInfer，DeepSeek V4.1 Flash 已实现高吞吐、低延迟的大规模推理，单集群日吞吐 155 万亿 Token、每卡每小时营收 38 美元（谷价口径）。对准备私有化的单位，这是「推理这一层」第一次拿到一个来自头部厂商、可与官方线上服务对齐的开源参考实现。</description>
+    </item>
     <item>
       <title>千问办公推出「敏捷版」：面向大型政企私有化部署，五重租户隔离 + 国密 + 等保 2.0 三级</title>
       <link>https://javis.org.cn/news-2026-10-20-qwen-office-agile-private.html</link>

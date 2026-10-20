@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="10 月 20 日，DeepSeek 把内部推理框架 DeepInfer 全面开源，并同步开源生产级 Token 编解码组件 deepseek-recipe。官方口径：基于 DeepInfer，DeepSeek V4.1 Flash 已实现高吞吐、低延迟的大规模推理，单集群日吞吐 155 万亿 Token、每卡每小时营收 38 美元（谷价口径）。对准备私有化的单位，这是「推理这一层」第一次拿到一个来自头部厂商、可与官方线上服务对齐的开源参考实现。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="10 月 20 日，DeepSeek 把内部推理框架 DeepInfer 全面开源，并同步开源生产级 Token 编解码组件 deepseek-recipe。官方口径：基于 DeepInfer，DeepSeek V4.1 Flash 已实现高吞吐、低延迟的大规模推理，单集群日吞吐 155 万亿 Token、每卡每小时营收 38 美元（谷价口径）。对准备私有化的单位，这是「推理这一层」第一次拿到一个来自头部厂商、可与官方线上服务对齐的开源参考实现。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="10 月 20 日，DeepSeek 把内部推理框架 DeepInfer 全面开源，并同步开源生产级 Token 编解码组件 deepseek-recipe。官方口径：基于 DeepInfer，DeepSeek V4.1 Flash 已实现高吞吐、低延迟的大规模推理，单集群日吞吐 155 万亿 Token、每卡每小时营收 38 美元（谷价口径）。对准备私有化的单位，这是「推理这一层」第一次拿到一个来自头部厂商、可与官方线上服务对齐的开源参考实现。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾",
+      "description": "10 月 20 日，DeepSeek 把内部推理框架 DeepInfer 全面开源，并同步开源生产级 Token 编解码组件 deepseek-recipe。官方口径：基于 DeepInfer，DeepSeek V4.1 Flash 已实现高吞吐、低延迟的大规模推理，单集群日吞吐 155 万亿 Token、每卡每小时营收 38 美元（谷价口径）。对准备私有化的单位，这是「推理这一层」第一次拿到一个来自头部厂商、可与官方线上服务对齐的开源参考实现。",
+      "datePublished": "2026-10-20",
+      "dateModified": "2026-10-20",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾",
+          "item": "https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 60 条）</a>
+          <a href="news-2026-10-20-deepseek-deepinfer-open-source.html">DeepSeek 开源 DeepInfer</a>
+          <a href="news-2026-10-20-qwen-office-agile-private.html">千问办公敏捷版（私有化）</a>
+          <a href="news-2026-10-20-chinatelecom-xing-intent-open.html">星辰意图模型 Xing-Intent</a>
+          <a href="news-2026-10-20-memt-memory-native-llm-open.html">记忆张量 MemT1.0（开源）</a>
+          <a href="news-2026-10-20-smart-compute-2592eflops-domestic-chip.html">智能算力 2592EFLOPS + 国产芯片</a>
+          <a href="news-2026-10-20-local-model-one-table.html">一张表看懂本地能跑多大（简明版）</a>
+          <a href="news-2026-10-20-local-model-vram-ledger.html">本地部署四笔账：权重、KV、量化、引擎</a>
+          <a href="news-2026-10-19-local-compute-hardware-cost.html">算力硬件与部署成本周扫</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-20</span><span class="n-tag" style="margin-left:8px">国产大模型 · 推理框架</span>
+    <h1 class="art-h1">DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾</h1>
+    <p class="art-lede">10 月 20 日，DeepSeek 把内部推理框架 DeepInfer 全面开源，并同步开源生产级 Token 编解码组件 deepseek-recipe。官方口径：基于 DeepInfer，DeepSeek V4.1 Flash 已实现高吞吐、低延迟的大规模推理，单集群日吞吐 155 万亿 Token、每卡每小时营收 38 美元（谷价口径）。对准备私有化的单位，这是「推理这一层」第一次拿到一个来自头部厂商、可与官方线上服务对齐的开源参考实现。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">开源了两样东西：推理框架 + Token 编解码组件</h3>
+      <p>DeepInfer 集成高性能算子与深度优化的推理引擎，支持分布式推理、推测解码（speculative decoding）、SWA Bounded Replay、结构化输出等能力，兼容英伟达与华为昇腾两大平台。同步开源的 deepseek-recipe 是生产级 Token 编解码组件，处理逻辑与 DeepSeek 官方 API 完整对齐——确保社区部署与官方服务拿到一致的 API 体验。两个仓库都已开在 GitHub：deepseek-ai/DeepInfer 与 deepseek-ai/deepseek-recipe。</p>
+
+      <h3 class="art-h2">官方给出的线上数据：155 万亿 Token/天、每卡每小时 38 美元</h3>
+      <p>据 DeepSeek 技术报告，基于 DeepInfer 已实现 V4.1 Flash 的高吞吐、低延迟大规模推理，单一集群的服务吞吐达 155 万亿 Tokens/天，按谷价计整体营收为每卡每小时 38 美元。DeepSeek 把它定位为「大模型普惠」的关键一层：训练使模型学有所成，推理则让模型为人所用；推理框架负责统筹调度庞大的算力集群，其效率直接决定 AI 服务的算力成本与电力消耗。</p>
+
+      <h3 class="art-h2">为什么单独开源「推理框架」</h3>
+      <p>在 DeepSeek 的表述里，模型的能力边界由模型本身划定，但「如何以合理成本提供超大规模模型服务」，取决于一个长期不被公众注意的中间层——推理框架。此前 DeepSeek 已陆续开源一系列大模型、TileLang 编译工具与推理算子库，这次把推理框架也放开，等于把「从造模型到供服务」的全套手艺向社区摊开。对自建推理服务的企业，这套框架的价值不在「又一个模型」，而在「怎么把已有的卡跑得更省」。</p>
+
+      <h3 class="art-h2">对私有化的含义：从「能跑」到「跑得省」</h3>
+      <ul class="art-tl">
+        <li><b>多一个开源底座</b>私有化推理层此前主要在 vLLM / SGLang / llama.cpp 之间选，现在多了一个头部厂商出品、可与官方线上对齐的选项。</li>
+        <li><b>双栈兼容</b>同时支持英伟达与华为昇腾，对「信创 + 存量 GPU 混部」的单位，迁移路径更短。</li>
+        <li><b>成本可对标</b>官方给出「155 万亿 Token/天、每卡每小时 38 美元」的效率锚点，评估自建推理 TCO 时有了可参照的标尺。</li>
+        <li><b>注意边界</b>官方数据是 DeepSeek 自家集群、自家模型的线上统计，换硬件、换模型、换负载后，需用自己的任务集复测。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：私有化先算「推理层」的账，别只比模型</h3>
+        <p class="kv-sub">模型选对了，推理层拖后腿一样贵。建议四步：</p>
+        <ul>
+          <li><b>分层评估</b>模型（权重/许可）、推理框架（吞吐/延迟）、硬件（显存/互联）三层分开算，别混在一起拍板。</li>
+          <li><b>先做 A/B</b>拿自有 20–50 条真实任务，在候选框架上比完成率、首字延迟、输出 token 与单卡吞吐，再用官方锚点校准。</li>
+          <li><b>双栈留后路</b>如果未来可能上昇腾，优先选「已在昇腾验证过」的框架，避免二次迁移。</li>
+          <li><b>许可与审计</b>框架与组件的许可证、依赖清单归档，确保内网闭环可分发包。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：澎湃新闻（DeepSeek 全面开源推理框架 DeepInfer，2026-10-20）、GitHub（deepseek-ai/DeepInfer、deepseek-ai/deepseek-recipe）。吞吐/营收为 DeepSeek 官方技术报告口径，换硬件与负载后表现不同，以官方发布为准。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-20-qwen-office-agile-private.html" title="千问办公推出「敏捷版」：面向大型政企私有化部署，五重租户隔离 + 国密 + 等保 2.0 三级">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">千问办公敏捷版（私有化）</span>
+        <span class="pg-d">2026-10-20</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 60 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>推理层怎么选，才不白花钱？一次评估把账算清</h2>
+      <p>一次 40 分钟免费评估：按你的模型与硬件，在 DeepInfer / vLLM / SGLang / llama.cpp 之间做吞吐-延迟-成本三维对比，给出私有化推理层的选型与复测方案，不满意不立项。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
