@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 16:07:52 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 16:11:43 +0000</lastBuildDate>
+    <item>
+      <title>智能算力规模 2592 EFLOPS 同比 +146%：国产芯片三季报兑现，附与机悟契合的产品清单</title>
+      <link>https://javis.org.cn/news-2026-10-20-smart-compute-2592eflops-domestic-chip.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-20-smart-compute-2592eflops-domestic-chip.html</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力底座 · 国产芯片</category>
+      <description>10 月 20 日国新办发布会披露：截至 2026 年 9 月底，我国智能算力规模达 2592 EFLOPS，同比增长 146%。同日，国产算力芯片三季报密集兑现——海光、龙芯、寒武纪业绩预喜，沐曦扭亏；产业侧，协创数据签下近 375 亿元算力大单，昇腾 950DT 万卡池、天数天垓 300 等超节点相继落地。对做政企私有化的服务商，这一轮「国产算力从能用走向好用」的兑现，直接决定了本地部署的硬件可选面。</description>
+    </item>
     <item>
       <title>一张表看懂 10 月本地能跑多大模型：12GB 老卡请出 125B、24GB 稳跑 27B、5 万元一体机装下 300B</title>
       <link>https://javis.org.cn/news-2026-10-20-local-model-one-table.html</link>
