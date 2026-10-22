@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Oct 2026 05:22:28 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 05:42:56 +0000</lastBuildDate>
+    <item>
+      <title>星火 X2.6 在国产万卡底座上完成训练升级：政法最关心的不是跑分，是卷宗能不能留在本地</title>
+      <link>https://javis.org.cn/news-2026-10-22-iflytek-spark-x26-legal-local.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-22-iflytek-spark-x26-legal-local.html</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 政法落地</category>
+      <description>10 月 22 日北京科博展开展，光明网 10-21 报道：现场首展全国首个国产万卡算力底座「飞星」平台、基于全国产算力完成训练升级的讯飞星火 X2.6，以及端侧轻量化模型与「云+端」协同方案。同场的讯飞晓法·超级法律助手覆盖卷宗解析、证据审查、诉讼策略推演与文书起草，支持敏感信息脱敏、关键结论溯源与本地化安全处理，官方称已在国内部分律所试用。对政法单位，可核查的是三件事：训练算力是否全国产、推理能否分级、交付是否真本地。</description>
+    </item>
     <item>
       <title>DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、兼容英伟达与昇腾</title>
       <link>https://javis.org.cn/news-2026-10-20-deepseek-deepinfer-open-source.html</link>
