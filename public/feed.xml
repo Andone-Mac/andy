@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Oct 2026 05:43:05 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 05:43:09 +0000</lastBuildDate>
+    <item>
+      <title>内存一年涨 300%、5090 年内涨 150%：本地部署的报价单，现在只能按周签</title>
+      <link>https://javis.org.cn/news-2026-10-22-memory-gpu-price-local-cost.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-22-memory-gpu-price-local-cost.html</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 本地部署成本</category>
+      <description>深圳商报 10-21 华强北实地走访：DDR5 16G 从一年前 200 多元涨到 1300 元以上，32GB DDR5 报 2100–3800 元，DDR4 16G 从不足 200 元涨到 530–600 元；RTX 5090 从 1 月 1 日的 2.2 万元涨到 5.5 万元（年内 +150%），10 月 12 日起十天内涨 1.5 万元，5080 十天翻倍。同日集邦预估四季度 DRAM 合约价环比再涨约 20%，戴尔 CEO 称过去 12 个月内存涨近 500%、新增产能要等 2029–2030 年。对要攒机器跑本地模型的单位，这笔账要重算了。</description>
+    </item>
     <item>
       <title>vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表</title>
       <link>https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html</link>
