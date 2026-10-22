@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Oct 2026 05:42:56 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 05:43:01 +0000</lastBuildDate>
+    <item>
+      <title>Weaxor 勒索专挑数据库与 OA，同日广东公布 108 款 AI 服务登记：内网与备案，两头都要交卷</title>
+      <link>https://javis.org.cn/news-2026-10-22-weaxor-ransomware-genai-registration.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-22-weaxor-ransomware-genai-registration.html</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <category>数据安全 · 合规监管</category>
+      <description>国家计算机病毒应急处理中心 10-22 通报：境内发现多起「Weaxor」勒索病毒攻击，主攻企业数据库与 OA 办公系统，文件被加密后改名（.weax、.rox、.wxx 等 7 种后缀）并留勒索信；入侵路径是弱口令或系统漏洞 + PowerShell 脚本投送。同周合规侧也在收口：广东网信公布生成式 AI 服务登记累计 108 款、API 调用已备案模型同样要登记；陕西网信三季度下架 31 款未做安全评估的 App、对 5 家主体罚款。把系统搬进内网只是起点。</description>
+    </item>
     <item>
       <title>星火 X2.6 在国产万卡底座上完成训练升级：政法最关心的不是跑分，是卷宗能不能留在本地</title>
       <link>https://javis.org.cn/news-2026-10-22-iflytek-spark-x26-legal-local.html</link>
