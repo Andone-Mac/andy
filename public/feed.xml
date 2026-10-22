@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Oct 2026 05:43:01 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 05:43:05 +0000</lastBuildDate>
+    <item>
+      <title>vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表</title>
+      <link>https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html</guid>
+      <pubDate>Thu, 22 Oct 2026 00:00:00 +0000</pubDate>
+      <category>推理引擎 · 国产算力</category>
+      <description>10 月 21 日蚂蚁集团与 vLLM 社区开源通用量化推理内核库 Humming：设备侧支持 NVIDIA Turing 及以后架构与 CUDA 兼容设备（点名平头哥真武 810E），一套架构覆盖整型/浮点、多位宽与多种缩放方案的权重与激活组合，dense 与 MoE 都在范围内。官方口径：DeepSeek-V4.1-Flash 的 MoE 从 Marlin W4A16 切到 Humming W4A8，端到端吞吐提升约 14%–43%、首 token 延迟下降 25%–32%，并发 64 时输出吞吐 442.37→633.94 tokens/s；vLLM 0.29.0 起 CUDA 安装默认内置。</description>
+    </item>
     <item>
       <title>Weaxor 勒索专挑数据库与 OA，同日广东公布 108 款 AI 服务登记：内网与备案，两头都要交卷</title>
       <link>https://javis.org.cn/news-2026-10-22-weaxor-ransomware-genai-registration.html</link>

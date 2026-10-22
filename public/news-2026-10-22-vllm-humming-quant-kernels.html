@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="10 月 21 日蚂蚁集团与 vLLM 社区开源通用量化推理内核库 Humming：设备侧支持 NVIDIA Turing 及以后架构与 CUDA 兼容设备（点名平头哥真武 810E），一套架构覆盖整型/浮点、多位宽与多种缩放方案的权重与激活组合，dense 与 MoE 都在范围内。官方口径：DeepSeek-V4.1-Flash 的 MoE 从 Marlin W4A16 切到 Humming W4A8，端到端吞吐提升约 14%–43%、首 token 延迟下降 25%–32%，并发 64 时输出吞吐 442.37→633.94 tokens/s；vLLM 0.29.0 起 CUDA 安装默认内置。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="10 月 21 日蚂蚁集团与 vLLM 社区开源通用量化推理内核库 Humming：设备侧支持 NVIDIA Turing 及以后架构与 CUDA 兼容设备（点名平头哥真武 810E），一套架构覆盖整型/浮点、多位宽与多种缩放方案的权重与激活组合，dense 与 MoE 都在范围内。官方口径：DeepSeek-V4.1-Flash 的 MoE 从 Marlin W4A16 切到 Humming W4A8，端到端吞吐提升约 14%–43%、首 token 延迟下降 25%–32%，并发 64 时输出吞吐 442.37→633.94 tokens/s；vLLM 0.29.0 起 CUDA 安装默认内置。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="10 月 21 日蚂蚁集团与 vLLM 社区开源通用量化推理内核库 Humming：设备侧支持 NVIDIA Turing 及以后架构与 CUDA 兼容设备（点名平头哥真武 810E），一套架构覆盖整型/浮点、多位宽与多种缩放方案的权重与激活组合，dense 与 MoE 都在范围内。官方口径：DeepSeek-V4.1-Flash 的 MoE 从 Marlin W4A16 切到 Humming W4A8，端到端吞吐提升约 14%–43%、首 token 延迟下降 25%–32%，并发 64 时输出吞吐 442.37→633.94 tokens/s；vLLM 0.29.0 起 CUDA 安装默认内置。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表",
+      "description": "10 月 21 日蚂蚁集团与 vLLM 社区开源通用量化推理内核库 Humming：设备侧支持 NVIDIA Turing 及以后架构与 CUDA 兼容设备（点名平头哥真武 810E），一套架构覆盖整型/浮点、多位宽与多种缩放方案的权重与激活组合，dense 与 MoE 都在范围内。官方口径：DeepSeek-V4.1-Flash 的 MoE 从 Marlin W4A16 切到 Humming W4A8，端到端吞吐提升约 14%–43%、首 token 延迟下降 25%–32%，并发 64 时输出吞吐 442.37→633.94 tokens/s；vLLM 0.29.0 起 CUDA 安装默认内置。",
+      "datePublished": "2026-10-22",
+      "dateModified": "2026-10-22",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表",
+          "item": "https://javis.org.cn/news-2026-10-22-vllm-humming-quant-kernels.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 63 条）</a>
+          <a href="news-2026-10-22-vllm-humming-quant-kernels.html">vLLM 开源 Humming 内核</a>
+          <a href="news-2026-10-22-weaxor-ransomware-genai-registration.html">Weaxor 勒索与 AI 登记</a>
+          <a href="news-2026-10-22-iflytek-spark-x26-legal-local.html">星火 X2.6 与晓法本地化</a>
+          <a href="news-2026-10-20-deepseek-deepinfer-open-source.html">DeepSeek 开源 DeepInfer</a>
+          <a href="news-2026-10-20-qwen-office-agile-private.html">千问办公敏捷版（私有化）</a>
+          <a href="news-2026-10-20-chinatelecom-xing-intent-open.html">星辰意图模型 Xing-Intent</a>
+          <a href="news-2026-10-20-memt-memory-native-llm-open.html">记忆张量 MemT1.0（开源）</a>
+          <a href="news-2026-10-20-smart-compute-2592eflops-domestic-chip.html">智能算力 2592EFLOPS + 国产芯片</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-22</span><span class="n-tag" style="margin-left:8px">推理引擎 · 国产算力</span>
+    <h1 class="art-h1">vLLM 与蚂蚁开源量化推理内核 Humming：国产加速卡第一次进了支持列表</h1>
+    <p class="art-lede">10 月 21 日，蚂蚁集团与 vLLM 社区开源通用量化推理内核库 Humming。官方给出的三项卖点很克制：一是支持面从 NVIDIA Turing 及以后架构延伸到 CUDA 兼容设备，明确点名了平头哥真武 810E；二是一套架构同时吃下整型与浮点、多种位宽与缩放方案的权重／激活组合，覆盖 dense 与 MoE；三是在代表性负载上「显著优于」vLLM Marlin、FlashInfer 与 DeepGEMM。对准备做本地化推理的政企，它的意义不在多了一个库，而在「换芯」这件事第一次有了现成的内核层答案。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">先把「支持面」讲清楚：Turing 之后的卡，加上国产兼容卡</h3>
+      <p>按 vLLM 官方博客，Humming 的设备支持范围是 NVIDIA Turing 及之后的 GPU 架构，外加 CUDA 兼容设备——文中举的例子正是平头哥的 Zhenwu 810E。这句话在工程上很关键：过去国产卡的适配往往要做一整套私有补丁，版本一升级就全部作废；如果一颗卡能跑 CUDA 兼容路径，就能直接吃 vLLM 生态的更新。</p>
+      <p>量化支持则是这个库真正的技术债偿还。官方描述是「统一的架构」支持多种权重与激活格式的组合，覆盖不同的整型、浮点位宽与缩放方案，dense GEMM 与 MoE GEMM 都在范围内。落实到运维层面，意味着同一套部署不必再为每个模型、每种量化格式单独挑一个内核实现。</p>
+
+      <h3 class="art-h2">官方给的数字：吞吐 +14%–43%，首 token 快 25%–32%</h3>
+      <p>vLLM 博客给出的端到端测试口径是一次「换内核」的对比：把 DeepSeek-V4.1-Flash 的 MoE 从 Marlin W4A16（BF16 激活）切到 Humming W4A8（tokenwise FP8 激活），端到端吞吐提升约 14%–43%，平均首 token 延迟（TTFT）下降约 25%–32%；并注明优势随并发增大而扩大——并发 64 时，输出吞吐从 442.37 tokens/s 升到 633.94 tokens/s。</p>
+      <p>同精度层面的对比也有：在中小批量下，W8A8、W4A8、W4A4 分别达到约 1.25×、1.6×、1.4× 的基线性能，并在多类负载上优于对应的 FlashInfer 实现。另外一项容易被忽略的收益是编译时间：在一台 CUDA 13.4 的 H200 服务器上做 W4A16 单内核编译测试，CUTLASS + NVCC 需要 23.35 秒，Humming 用 NVCC 为 1.82 秒、用 NVRTC 为 1.88 秒。</p>
+
+      <h3 class="art-h2">工程上最省事的一点：vLLM 0.29.0 起开箱内置</h3>
+      <p>官方明确：从 vLLM 0.29.0 开始，CUDA 安装会把 Humming 作为依赖一起装上，不需要单独安装。这对运维是好消息——升级 vLLM 就顺带把量化内核换新了，而不是「装一个第三方库、再赌它和主版本兼容」。仓库在 github.com/vllm-project/humming。</p>
+
+      <h3 class="art-h2">对本地化部署的三点含义</h3>
+      <ul class="art-tl">
+        <li><b>国产卡的地板抬高了</b>「CUDA 兼容」这条路一旦走通，国产加速卡的适配成本从「改内核」降到「改参数」，混合部署（存量英伟达 + 新增国产）的运维复杂度明显下降。</li>
+        <li><b>量化不再是精度换速度的赌博</b>W4A8 相比 W4A16 同时拿到吞吐与首 token 的双向改善，说明在这条路径上「更激进的量化」可以兼得体验，前提是内核实现足够好。</li>
+        <li><b>复测仍要自己做</b>官方数据是 DeepSeek-V4.1-Flash 在自家测试环境下、指定并发与上下文的口径；换模型、换卡、换上下文长度，收益会变，甚至可能为负。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：把「内核层」也写进 POC 清单</h3>
+        <p class="kv-sub">以前 POC 只比模型，现在要往下一层看内核与引擎：</p>
+        <ul>
+          <li><b>同题对比</b>拿自有 20–50 条真实任务，在「同模型 + 同卡 + 不同内核」下比首 token 延迟、输出吞吐与答案质量，别只比峰值。</li>
+          <li><b>盯住长上下文</b>并发 64 的收益不等于长文档场景的收益，K/V 与显存占用要单独测一遍。</li>
+          <li><b>国产卡先小规模验</b>用一颗或两颗国产兼容卡跑通链路，再谈批量采购；跑通了才谈整机。</li>
+          <li><b>版本锁定</b>把 vLLM / 内核版本写进交付清单与升级策略，避免「顺手升级」把生产性能打回原点。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：vLLM 官方博客《Announcing Humming: Fast, Flexible Kernels for Quantized Inference》（2026-10-21，作者为蚂蚁集团与 vLLM 社区）、GitHub（vllm-project/humming）。吞吐、延迟与编译时间为官方测试口径，换硬件、模型与并发后表现不同，需以自有任务集复测为准。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-22-weaxor-ransomware-genai-registration.html" title="Weaxor 勒索专挑数据库与 OA，同日广东公布 108 款 AI 服务登记：内网与备案，两头都要交卷">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">Weaxor 勒索与 AI 登记</span>
+        <span class="pg-d">2026-10-22</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 63 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>同样的卡，换个内核能快多少？当场测给你看</h2>
+      <p>一次 40 分钟免费评估：在你的硬件上对比不同推理引擎与量化内核的首 token 延迟、输出吞吐与显存占用，给出可复现的选型报告。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
