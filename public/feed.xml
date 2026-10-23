@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 00:54:47 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 00:55:31 +0000</lastBuildDate>
     <item>
       <title>130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：7 个模型实测对照表</title>
       <link>https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html</link>
