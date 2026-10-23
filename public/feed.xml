@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 04:56:51 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 10:15:07 +0000</lastBuildDate>
     <item>
       <title>一张 640×480 的图 3.43 秒出结果：Swift-1.5-Qwen3.8-27B 在 24 GB 消费卡上的实测</title>
       <link>https://javis.org.cn/news-2026-10-23-swift15-27b-vision-343s.html</link>
@@ -16,12 +16,12 @@
       <description>Swift-1.5-Qwen3.8-27B（dense+SSM 27B，Q4_K_M 17.44 GB + 视觉编码器 0.93 GB）在单张 RX 7900 XTX 24 GB 上的实测：MTP n=2 解码 67.2 ± 1.0 tok/s，llama-bench pp512 921（私有 Mesa 26.2.5，比系统 Mesa 24.3 的 677 高 36%）；视觉往返 3.43 秒（编码器在 GPU）对 15.0–16.1 秒（编码器留 CPU），差 4.4 倍；显存三档为 100K/112K/128K 对应 21.98 / 22.58 / 23.19 GB。含两个「假故障」排查与适用场景。</description>
     </item>
     <item>
-      <title>130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表</title>
+      <title>消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s</title>
       <link>https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html</link>
       <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html</guid>
       <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
       <category>本地实测 · 模型对照</category>
-      <description>三台机器、8 个模型配置、四个维度的一次横向对照：GLM-4.7-Flash（20 GB）在 96K–192K 上下文跑到 128–130 tok/s；Qwen3.8-Flash-Next（93.7 GB MoE）在 24 GB 卡上 1k→256k 稳定 62–76 tok/s；Qwen3.8-27B 短提示最快 68.7 但 60K 掉到 51.1；Qwen3.6-35B-A3B 在 32 GB 卡上约 82 tok/s，Swift-1.5-Qwen3.8-27B（dense+SSM）MTP 下 67.2 tok/s、pp512 921、视觉往返 3.43 s。能力侧 MMLU-Pro 56.5%–63.5%、MATH-500 最高 76.7%，15 项真实任务两个模型 15/15。含没跑成的三个模型与全部口径。</description>
+      <description>三台消费级机器、9 个模型配置、四个维度的横向对照（自有设备自测）：GLM-4.7-Flash 20 GB 在 128K 上下文 130.0 tok/s；Flash-Next 93.7 GB 撑到 256K 仍有 62.3 tok/s；今天刚跑到的 134.1 GB Q5_K_M 靠 90 GiB 常驻预算稳在 43–45 tok/s；27B Dense 短提示 68.7 但 60K 掉到 51.1。快慢主要由量化方式与常驻预算决定，不是参数量；口径互不相同，不可横向排名。</description>
     </item>
     <item>
       <title>94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过</title>

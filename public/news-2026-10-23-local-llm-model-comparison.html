@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表 | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="三台机器、8 个模型配置、四个维度的一次横向对照：GLM-4.7-Flash（20 GB）在 96K–192K 上下文跑到 128–130 tok/s；Qwen3.8-Flash-Next（93.7 GB MoE）在 24 GB 卡上 1k→256k 稳定 62–76 tok/s；Qwen3.8-27B 短提示最快 68.7 但 60K 掉到 51.1；Qwen3.6-35B-A3B 在 32 GB 卡上约 82 tok/s，Swift-1.5-Qwen3.8-27B（dense+SSM）MTP 下 67.2 tok/s、pp512 921、视觉往返 3.43 s。能力侧 MMLU-Pro 56.5%–63.5%、MATH-500 最高 76.7%，15 项真实任务两个模型 15/15。含没跑成的三个模型与全部口径。">
+<title>消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="三台消费级机器、9 个模型配置、四个维度的横向对照（自有设备自测）：GLM-4.7-Flash 20 GB 在 128K 上下文 130.0 tok/s；Flash-Next 93.7 GB 撑到 256K 仍有 62.3 tok/s；今天刚跑到的 134.1 GB Q5_K_M 靠 90 GiB 常驻预算稳在 43–45 tok/s；27B Dense 短提示 68.7 但 60K 掉到 51.1。快慢主要由量化方式与常驻预算决定，不是参数量；口径互不相同，不可横向排名。">
 <meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -19,16 +19,16 @@
 <link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
-<meta property="og:title" content="130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="三台机器、8 个模型配置、四个维度的一次横向对照：GLM-4.7-Flash（20 GB）在 96K–192K 上下文跑到 128–130 tok/s；Qwen3.8-Flash-Next（93.7 GB MoE）在 24 GB 卡上 1k→256k 稳定 62–76 tok/s；Qwen3.8-27B 短提示最快 68.7 但 60K 掉到 51.1；Qwen3.6-35B-A3B 在 32 GB 卡上约 82 tok/s，Swift-1.5-Qwen3.8-27B（dense+SSM）MTP 下 67.2 tok/s、pp512 921、视觉往返 3.43 s。能力侧 MMLU-Pro 56.5%–63.5%、MATH-500 最高 76.7%，15 项真实任务两个模型 15/15。含没跑成的三个模型与全部口径。">
+<meta property="og:title" content="消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="三台消费级机器、9 个模型配置、四个维度的横向对照（自有设备自测）：GLM-4.7-Flash 20 GB 在 128K 上下文 130.0 tok/s；Flash-Next 93.7 GB 撑到 256K 仍有 62.3 tok/s；今天刚跑到的 134.1 GB Q5_K_M 靠 90 GiB 常驻预算稳在 43–45 tok/s；27B Dense 短提示 68.7 但 60K 掉到 51.1。快慢主要由量化方式与常驻预算决定，不是参数量；口径互不相同，不可横向排名。">
 <meta property="og:url" content="https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="三台机器、8 个模型配置、四个维度的一次横向对照：GLM-4.7-Flash（20 GB）在 96K–192K 上下文跑到 128–130 tok/s；Qwen3.8-Flash-Next（93.7 GB MoE）在 24 GB 卡上 1k→256k 稳定 62–76 tok/s；Qwen3.8-27B 短提示最快 68.7 但 60K 掉到 51.1；Qwen3.6-35B-A3B 在 32 GB 卡上约 82 tok/s，Swift-1.5-Qwen3.8-27B（dense+SSM）MTP 下 67.2 tok/s、pp512 921、视觉往返 3.43 s。能力侧 MMLU-Pro 56.5%–63.5%、MATH-500 最高 76.7%，15 项真实任务两个模型 15/15。含没跑成的三个模型与全部口径。">
+<meta name="twitter:title" content="消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="三台消费级机器、9 个模型配置、四个维度的横向对照（自有设备自测）：GLM-4.7-Flash 20 GB 在 128K 上下文 130.0 tok/s；Flash-Next 93.7 GB 撑到 256K 仍有 62.3 tok/s；今天刚跑到的 134.1 GB Q5_K_M 靠 90 GiB 常驻预算稳在 43–45 tok/s；27B Dense 短提示 68.7 但 60K 掉到 51.1。快慢主要由量化方式与常驻预算决定，不是参数量；口径互不相同，不可横向排名。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -37,8 +37,8 @@
   "@graph": [
     {
       "@type": "NewsArticle",
-      "headline": "130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表",
-      "description": "三台机器、8 个模型配置、四个维度的一次横向对照：GLM-4.7-Flash（20 GB）在 96K–192K 上下文跑到 128–130 tok/s；Qwen3.8-Flash-Next（93.7 GB MoE）在 24 GB 卡上 1k→256k 稳定 62–76 tok/s；Qwen3.8-27B 短提示最快 68.7 但 60K 掉到 51.1；Qwen3.6-35B-A3B 在 32 GB 卡上约 82 tok/s，Swift-1.5-Qwen3.8-27B（dense+SSM）MTP 下 67.2 tok/s、pp512 921、视觉往返 3.43 s。能力侧 MMLU-Pro 56.5%–63.5%、MATH-500 最高 76.7%，15 项真实任务两个模型 15/15。含没跑成的三个模型与全部口径。",
+      "headline": "消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s",
+      "description": "三台消费级机器、9 个模型配置、四个维度的横向对照（自有设备自测）：GLM-4.7-Flash 20 GB 在 128K 上下文 130.0 tok/s；Flash-Next 93.7 GB 撑到 256K 仍有 62.3 tok/s；今天刚跑到的 134.1 GB Q5_K_M 靠 90 GiB 常驻预算稳在 43–45 tok/s；27B Dense 短提示 68.7 但 60K 掉到 51.1。快慢主要由量化方式与常驻预算决定，不是参数量；口径互不相同，不可横向排名。",
       "datePublished": "2026-10-23",
       "dateModified": "2026-10-23",
       "author": {
@@ -72,7 +72,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表",
+          "name": "消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s",
           "item": "https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html"
         }
       ]
@@ -134,7 +134,7 @@
         <div class="nav-sub">
           <a href="news.html">全部动态（共 68 条）</a>
           <a href="news-2026-10-23-swift15-27b-vision-343s.html">Swift-1.5 视觉 3.43 s</a>
-          <a href="news-2026-10-23-local-llm-model-comparison.html">8 个模型实测对照</a>
+          <a href="news-2026-10-23-local-llm-model-comparison.html">9 个模型实测对照</a>
           <a href="news-2026-10-23-local-model-field-data-flash-next.html">24GB 卡跑 256K 实测</a>
           <a href="news-2026-10-22-gov-ai-procurement-two-tracks.html">政务 AI 采购两条路</a>
           <a href="news-2026-10-22-memory-gpu-price-local-cost.html">内存与显卡年内暴涨</a>
@@ -173,15 +173,15 @@
   <div class="wrap art-wrap art-wide">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
     <span class="n-date">2026-10-23</span><span class="n-tag" style="margin-left:8px">本地实测 · 模型对照</span>
-    <h1 class="art-h1">130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表</h1>
-    <p class="art-lede">从 8 月到现在，我们在三台机器上跑过 8 个模型配置：Qwen3.8-27B 的四种量化、Qwen3.8-Flash-Next 的三档权重、Qwen3.6-35B-A3B、GLM-4.7-Flash，以及 Swift-1.5-Qwen3.8-27B。同一批数字里既有「20 GB 模型跑到 130 tok/s」，也有「93.7 GB 模型在 24 GB 卡上跑满 256K」，还有「27B 短提示最快、长上下文最先掉队」。这篇不再只讲一个模型，把它们摆到同一张桌子上做对照——包括没跑成的那些，也一并记账。</p>
+    <h1 class="art-h1">消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s</h1>
+    <p class="art-lede">从 8 月到现在，我们在三台机器上跑过 9 个模型配置：Qwen3.8-27B 的四种量化、Qwen3.8-Flash-Next 的四档权重、Qwen3.6-35B-A3B、GLM-4.7-Flash，以及 Swift-1.5-Qwen3.8-27B。同一批数字里既有「20 GB 模型跑到 130 tok/s」，也有「93.7 GB 模型在 24 GB 卡上跑满 256K」，还有「134.1 GB 权重压在 24 GB 卡上、8K→96K 几乎不掉速」，以及「27B 短提示最快、长上下文最先掉队」。这篇不再只讲一个模型，把它们摆到同一张桌子上做对照——包括没跑成的那些，也一并记账。</p>
   </div>
 </section>
 
 <section class="art-sec">
   <div class="wrap art-wrap art-wide">
     <div class="art-body">
-      <h3 class="art-h2">一、先交代家底：3 台机器、8 个配置、四个维度</h3>
+      <h3 class="art-h2">一、先交代家底：3 台机器、9 个配置、四个维度</h3>
       <p>本地模型的对照必须先固定「机器 + 引擎 + 量化 + 上下文」四件事，否则数字毫无意义。这次用到的是三套环境：</p>
       <table class="art-table is-fixed" style="margin-top:14px">
         <colgroup><col style="width:14%"><col style="width:30%"><col style="width:38%"><col style="width:18%"></colgroup>
@@ -204,17 +204,19 @@
           <tr><td><b>Swift-1.5-Qwen3.8-27B</b><br>（Q4_K_M，dense+SSM 27B）</td><td>≈ 18 GB</td><td>llama.cpp<br>（MTP n=2）</td><td><b>67.2 ± 1.0</b>（119,808 ctx，5 次重复）</td></tr>
           <tr><td><b>Qwen3.8-Flash-Next</b>（UD-IQ4_XS，MoE）</td><td><b>93.7 GB</b></td><td>Strata<br>（显存+内存+SSD）</td><td>1k 63.6 · 4k 75.7 · 16k 64.4 · 32k 65.3<br>64k 65.7 · 128k 62.2 · 256k <b>62.3</b></td></tr>
           <tr><td>Qwen3.8-Flash-Next-unc（Q4_K_M）</td><td>≈ 47 GB</td><td>Strata</td><td>1k 56.8 · 4k 68.4 · 32k 57.4 · 64k 50.3 · 256k 49.4</td></tr>
+          <tr><td><b>Qwen3.8-Flash-Next-unc</b><br>（Q5_K_M，MoE）</td><td><b>134.1 GB</b></td><td>Strata<br>（显存+内存+SSD）</td><td>32K–64K <b>44.6</b> · 64K–96K 43.5<br><small>真实负载中位（154 条请求），非定长扫描；上限 131K</small></td></tr>
           <tr><td><b>Qwen3.8-27B</b>（UD-Q4_K_XL，Dense）</td><td>17.6 GB</td><td>llama.cpp</td><td>1k <b>68.7</b> · 4k 70.9 · 16k 58.4 · 32k 62.0 · 60k <b>51.1</b></td></tr>
           <tr><td>Qwen3.8-27B（Q5_K_M，开 MTP）</td><td>18.2 GB</td><td>llama.cpp<br>（XTX / 3090 CUDA）</td><td>16K：XTX <b>63.7</b> · 3090 <b>60.0</b>（关 MTP 仅 34.8 / 37.4）</td></tr>
           <tr><td>Qwen3.8-27B-unc（Q5_K_P）</td><td>20.2 GB</td><td>Ollama<br>（R9700 32 GB）</td><td>65K ≈ 25</td></tr>
           <tr><td><b>Qwen3.6-35B-A3B</b><br>（Q4_K_M，MoE 35B/激活 3B）</td><td>21.2 GB</td><td>Ollama<br>（R9700 32 GB）</td><td>65K <b>≈ 82</b></td></tr>
         </tbody>
       </table>
-      <p>三个反直觉的结论：</p>
+      <p>五个反直觉的结论：</p>
       <ul class="art-tl">
         <li><b>20 GB 的 GLM 跑出 130 tok/s</b>，比 93.7 GB 的 Flash-Next 快一倍多——但它是短提示单条生成的口径（生成 385–391 token），不代表长文档吞吐。</li>
         <li><b>MoE 是速度的主要变量</b>：35B-A3B（激活 3B）在 32 GB 卡上约 82 tok/s，而同机器的 27B Dense 只有约 25 tok/s。</li>
         <li><b>27B Dense 短提示最快</b>（68.7），但它是唯一在 60K 就掉到 51.1 的——「起跑快」不等于「耐力好」。</li>
+        <li><b>最大的那个最慢，但没掉队</b>：134.1 GB 的 Q5_K_M 靠 <b>90 GiB 常驻预算</b>和专家缓存，在 24 GB 卡上跑出 43–45 tok/s（真实负载中位，8K→96K 几乎不衰减）——比 93.7 GB 的 UD-IQ4_XS 慢约三成，权重越大、分层搬运的代价越明显。</li>
         <li><b>Swift-1.5 是 27B 量级的另一条路</b>：dense+SSM 混合架构，MTP 下解码 <b>67.2 ± 1.0 tok/s</b>（固定 360 token 提示、5 次重复），llama-bench pp512 <b>921</b>、tg64 39.4；视觉往返 <b>3.43 s</b>（mmproj 上 GPU）对 15.0–16.1 s（编码器留 CPU），差 4.4 倍。</li>
       </ul>
 
@@ -222,6 +224,7 @@
       <p>长上下文是本地部署最容易翻车的地方。这次测到的三条曲线很不一样：</p>
       <ul class="art-tl">
         <li><b>Flash-Next（UD-IQ4_XS）</b>：262,144 上下文下，1k→256k 解码始终在 <b>62–76 tok/s</b>，几乎是一条水平线；256K 时仍有 62.3 tok/s，预填 1,113 tok/s。</li>
+        <li><b>Flash-Next-unc（Q5_K_M）</b>：131,072 上下文下，8K→96K 解码中位从 45.5 到 43.5 tok/s（真实负载，不是定长扫描），KV 有 <b>98.6%</b> 命中显存；代价是常驻 69 GiB page-locked 要 83 秒、显存只剩 0.4 GiB 余量。</li>
         <li><b>GLM-4.7-Flash</b>：在 96K / 128K / 192K 三档分别 127.8 / 130.0 / 128.6 tok/s，说明它的长上下文开销也很小——但 192K 是这次测到的上限。</li>
         <li><b>27B Dense</b>：32K 还有 62.0，60K 只剩 51.1；128K 必须关掉视觉才能跑，182K 时视觉编码直接 OOM（显存余量 0.04 GB）。</li>
         <li><b>3090 的墙更低</b>：同样的 27B + 视觉 + MTP，XTX 能上 70K，3090 加载即 OOM，48K 才安全（余约 1 GB）。</li>
@@ -269,11 +272,11 @@
         <ul>
           <li><b>最长要喂多长的材料</b>先定上下文天花板（256K / 128K / 64K），再选能站住那条线的模型。</li>
           <li><b>是「短指令高频」还是「长文档一次成稿」</b>前者看 MoE 小激活的 tok/s，后者看长上下文的衰减曲线。</li>
-          <li><b>能不能接受「分层的复杂度」</b>显存+内存+SSD 能把 93.7 GB 塞进 24 GB 卡，但要接受运维多看一个指标（GTT 与专家命中率）。</li>
+          <li><b>能不能接受「分层的复杂度」</b>显存+内存+SSD 能把 134.1 GB 塞进 24 GB 卡，但要接受开机 83 秒建常驻、运维多看一个指标（GTT 与专家命中率）。</li>
           <li><b>谁来复核</b>速度与准确率都可以复测，最终还是要人看：我们的每一份评测报告都保留原始 jsonl，可以逐题回看。</li>
         </ul>
       </div>
-      <p class="art-src">数据来源：本机 benchmark 结果文件与运行日志（2026-08 ~ 2026-10-23：perf_*、mmlu_pro_*、gsm8k_*、math500_*、hermes_agent_tasks*、glm-sweep-*.log、mtp-ab-result-*.log、llama-bench-3090-*.log）、Qwen38-27B 单卡优化报告（2026-10-14）、Mesa 26.2.5 RADV 升级报告（2026-10-18）、双卡 GPU 优化报告（2026-09-19）、R9700 机型 daxing 37 题验收集（2026-08-31）、本地大模型选型报告（2026-09-16，Nemotron / GLM-5.3-Flash 尺寸评估）。所有数字均为自有设备自测记录，不同机器、引擎、量化与上下文口径互不可替代；GLM-4.7-Flash 为单条生成口径（385–391 token），与 pp512 类基准不可直接比较。本文仅陈述自测数据与公开技术口径，不评判任何企业与产品，不构成投资建议。</p>
+      <p class="art-src">数据来源：本机 benchmark 结果文件与运行日志（2026-08 ~ 2026-10-23：perf_*、mmlu_pro_*、gsm8k_*、math500_*、hermes_agent_tasks*、glm-sweep-*.log、mtp-ab-result-*.log、llama-bench-3090-*.log）、Qwen38-27B 单卡优化报告（2026-10-14）、Mesa 26.2.5 RADV 升级报告（2026-10-18）、双卡 GPU 优化报告（2026-09-19）、R9700 机型 daxing 37 题验收集（2026-08-31）、本地大模型选型报告（2026-09-16，Nemotron / GLM-5.3-Flash 尺寸评估）、Strata 会话日志 strata-unc-q5km.log（Q5_K_M，快照 2026-10-23 17:37）。所有数字均为自有设备自测记录，不同机器、引擎、量化与上下文口径互不可替代；GLM-4.7-Flash 为单条生成口径（385–391 token），与 pp512 类基准不可直接比较。本文仅陈述自测数据与公开技术口径，不评判任何企业与产品，不构成投资建议。</p>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
@@ -303,7 +306,7 @@
 <section id="contact" style="padding-top:8px">
   <div class="wrap">
     <div class="cta-band">
-      <h2>七个模型里挑一个适合你的，靠的不是跑分表</h2>
+      <h2>九个模型配置里挑一个适合你的，靠的不是跑分表</h2>
       <p>40 分钟免费部署评估：按你的材料长度、并发与预算，在三类路线里给出一个明确建议，并把复测脚本与评测集留给你。</p>
       <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
         <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
@@ -314,8 +317,8 @@
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
   <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
-  <div style="margin-top:8px;user-select:all">「130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表」，机悟 JAVIS，2026-10-23，https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html</div>
-  <div style="margin-top:4px;opacity:.75">Markdown：<code>[130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表](https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html)（机悟 JAVIS，2026-10-23）</code></div>
+  <div style="margin-top:8px;user-select:all">「消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s」，机悟 JAVIS，2026-10-23，https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s](https://javis.org.cn/news-2026-10-23-local-llm-model-comparison.html)（机悟 JAVIS，2026-10-23）</code></div>
 </div></div></section><!-- cite:end -->
 
 <footer>
