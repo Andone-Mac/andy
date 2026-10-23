@@ -106,8 +106,8 @@ nav.links a.active{color:var(--navy);font-weight:800;border-bottom-color:var(--c
 .mast h1{font-size:clamp(1.6rem,3.8vw,2.3rem);line-height:1.32;color:var(--navy);margin:14px 0 12px}
 .mast .dek{color:var(--ink-soft);font-size:clamp(.98rem,1.6vw,1.08rem);max-width:840px}
 /* 案例页金色标题行（对齐宣传册第 3 页的 WHAT 金线） */
-.mast h1.goldline{font-family:var(--mono);font-size:clamp(1.08rem,2.55vw,1.52rem);line-height:1.72;letter-spacing:.1em;font-weight:800;margin:0 0 24px;color:var(--gold-ink);background:linear-gradient(94deg,#96690f 0%,#c9932a 38%,#e6b34d 58%,#96690f 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase}
-@supports not ((-webkit-background-clip:text) or (background-clip:text)){.mast h1.goldline{color:#96690f;-webkit-text-fill-color:#96690f}}
+.mast h1.goldline{font-family:var(--mono);font-size:clamp(1.22rem,3.05vw,1.92rem);line-height:1.62;letter-spacing:.075em;font-weight:900;margin:1.55em 0 26px;color:#7a5208;background:linear-gradient(94deg,#6f4a06 0%,#9c6c12 34%,#c08f24 58%,#7a5208 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-transform:uppercase}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){.mast h1.goldline{color:#7a5208;-webkit-text-fill-color:#7a5208}}
 @media(max-width:640px){.mast h1.goldline{letter-spacing:.08em;line-height:1.8}}
 .rule{height:3px;border-radius:2px;margin:20px 0 6px;background:linear-gradient(90deg,var(--navy) 0,var(--navy) 108px,var(--cyan) 108px,var(--cyan) 178px,var(--line) 178px)}
 
