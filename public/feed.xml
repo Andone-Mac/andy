@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:26 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:29 +0000</lastBuildDate>
+    <item>
+      <title>195 款大模型「持证上路」：广东三年备案量增长 23 倍，释放了什么信号</title>
+      <link>https://javis.org.cn/news-2026-10-23-guangdong-195-llm-filings.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-guangdong-195-llm-filings.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>合规 · 备案</category>
+      <description>《广东备案大模型观察报告（2026）》显示：自 2023 年开展备案工作以来广东备案量三年增长 23 倍，2025 年以来加速放量；截至 2026 年 9 月，广东已有 195 款生成式人工智能服务通过国家网信办备案。</description>
+    </item>
     <item>
       <title>一周 AI 安全：LiteLLM 安装包被投毒、模型被当成攻击引擎、智能体辅助入侵</title>
       <link>https://javis.org.cn/news-2026-10-23-ai-security-weekly-360.html</link>
