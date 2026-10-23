@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:23 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:26 +0000</lastBuildDate>
+    <item>
+      <title>一周 AI 安全：LiteLLM 安装包被投毒、模型被当成攻击引擎、智能体辅助入侵</title>
+      <link>https://javis.org.cn/news-2026-10-23-ai-security-weekly-360.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-ai-security-weekly-360.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>AI 安全 · 供应链</category>
+      <description>360《AI 安全专题周报》（TIC-202610-AI04，10-17 至 10-23）把本周风险归为五类：AI 网关供应链投毒、模型与云计费资源劫持、AI 编码工具凭据泄露、智能体辅助入侵、AI 应用组件漏洞。LiteLLM 1.107.0 的恶意安装包在 Python 启动时即执行窃密载荷。</description>
+    </item>
     <item>
       <title>24 秒预热视频：Kimi K3.1 要来了，1M 上下文还只是传闻</title>
       <link>https://javis.org.cn/news-2026-10-23-kimi-k31-teaser.html</link>
