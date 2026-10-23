@@ -187,8 +187,8 @@
         <colgroup><col style="width:14%"><col style="width:30%"><col style="width:38%"><col style="width:18%"></colgroup>
         <thead><tr><th>机器</th><th>显卡 / 内存</th><th>引擎</th><th>时间</th></tr></thead>
         <tbody>
-          <tr><td><b>机A（现役）</b></td><td>RX 7900 XTX <b>24 GB</b> · 125.6 GiB 内存<br>i7-14700F</td><td>Strata 0.1.47（HIP）/<br>llama.cpp fcac190（Vulkan + 私有 Mesa 26.2.5）</td><td>2026-09 ~ 10</td></tr>
-          <tr><td><b>机A（双卡期）</b></td><td>XTX 24 GB + RTX 3090 24 GB · 32 GiB 内存</td><td>llama.cpp（Vulkan + CUDA 双构建）</td><td>2026-09</td></tr>
+          <tr><td><b>机A（现役）</b></td><td>RX 7900 XTX <b>24 GB</b><br>125.6 GiB 内存 · i7-14700F</td><td>Strata 0.1.47（HIP）/<br>llama.cpp fcac190（Vulkan + 私有 Mesa 26.2.5）</td><td>2026-09 ~ 10</td></tr>
+          <tr><td><b>机A（双卡期）</b></td><td>XTX 24 GB + RTX 3090 24 GB<br>+ 32 GiB 内存</td><td>llama.cpp<br>（Vulkan + CUDA 双构建）</td><td>2026-09</td></tr>
           <tr><td><b>机B（R9700）</b></td><td>R9700 <b>32 GB</b></td><td>Ollama / llama.cpp</td><td>2026-08</td></tr>
         </tbody>
       </table>
@@ -201,13 +201,13 @@
         <thead><tr><th>模型 / 量化</th><th>权重体积</th><th>引擎</th><th>解码速度（tok/s，按上下文档）</th></tr></thead>
         <tbody>
           <tr><td><b>GLM-4.7-Flash</b>（i1-Q5_K_M）</td><td>≈ 20 GB</td><td>llama.cpp</td><td>96K 127.8 · 128K <b>130.0</b> · 192K 128.6</td></tr>
-          <tr><td><b>Swift-1.5-Qwen3.8-27B</b>（Q4_K_M，dense+SSM 27B）</td><td>≈ 18 GB</td><td>llama.cpp（MTP n=2）</td><td><b>67.2 ± 1.0</b>（119,808 ctx，5 次重复）</td></tr>
-          <tr><td><b>Qwen3.8-Flash-Next</b>（UD-IQ4_XS，MoE）</td><td><b>93.7 GB</b></td><td>Strata（显存+内存+SSD）</td><td>1k 63.6 · 4k 75.7 · 16k 64.4 · 32k 65.3<br>64k 65.7 · 128k 62.2 · 256k <b>62.3</b></td></tr>
+          <tr><td><b>Swift-1.5-Qwen3.8-27B</b><br>（Q4_K_M，dense+SSM 27B）</td><td>≈ 18 GB</td><td>llama.cpp<br>（MTP n=2）</td><td><b>67.2 ± 1.0</b>（119,808 ctx，5 次重复）</td></tr>
+          <tr><td><b>Qwen3.8-Flash-Next</b>（UD-IQ4_XS，MoE）</td><td><b>93.7 GB</b></td><td>Strata<br>（显存+内存+SSD）</td><td>1k 63.6 · 4k 75.7 · 16k 64.4 · 32k 65.3<br>64k 65.7 · 128k 62.2 · 256k <b>62.3</b></td></tr>
           <tr><td>Qwen3.8-Flash-Next-unc（Q4_K_M）</td><td>≈ 47 GB</td><td>Strata</td><td>1k 56.8 · 4k 68.4 · 32k 57.4 · 64k 50.3 · 256k 49.4</td></tr>
           <tr><td><b>Qwen3.8-27B</b>（UD-Q4_K_XL，Dense）</td><td>17.6 GB</td><td>llama.cpp</td><td>1k <b>68.7</b> · 4k 70.9 · 16k 58.4 · 32k 62.0 · 60k <b>51.1</b></td></tr>
-          <tr><td>Qwen3.8-27B（Q5_K_M，开 MTP）</td><td>18.2 GB</td><td>llama.cpp（XTX / 3090 CUDA）</td><td>16K：XTX <b>63.7</b> · 3090 <b>60.0</b>（关 MTP 仅 34.8 / 37.4）</td></tr>
-          <tr><td>Qwen3.8-27B-unc（Q5_K_P）</td><td>20.2 GB</td><td>Ollama（R9700 32 GB）</td><td>65K ≈ 25</td></tr>
-          <tr><td><b>Qwen3.6-35B-A3B</b>（Q4_K_M，MoE 35B/激活 3B）</td><td>21.2 GB</td><td>Ollama（R9700 32 GB）</td><td>65K <b>≈ 82</b></td></tr>
+          <tr><td>Qwen3.8-27B（Q5_K_M，开 MTP）</td><td>18.2 GB</td><td>llama.cpp<br>（XTX / 3090 CUDA）</td><td>16K：XTX <b>63.7</b> · 3090 <b>60.0</b>（关 MTP 仅 34.8 / 37.4）</td></tr>
+          <tr><td>Qwen3.8-27B-unc（Q5_K_P）</td><td>20.2 GB</td><td>Ollama<br>（R9700 32 GB）</td><td>65K ≈ 25</td></tr>
+          <tr><td><b>Qwen3.6-35B-A3B</b><br>（Q4_K_M，MoE 35B/激活 3B）</td><td>21.2 GB</td><td>Ollama<br>（R9700 32 GB）</td><td>65K <b>≈ 82</b></td></tr>
         </tbody>
       </table>
       <p>三个反直觉的结论：</p>
