@@ -273,7 +273,7 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .art-h1{font-size:clamp(1.45rem,3.2vw,2.1rem);line-height:1.38;color:var(--navy);margin:14px 0 0}
 .art-lede{margin-top:18px;padding-left:16px;border-left:3px solid var(--cyan);color:var(--ink-soft);font-size:1.02rem}
 .art-sec{padding:30px 0 60px}
-.art-wrap{max-width:780px}
+.art-wrap{max-width:var(--maxw)}
 .art-fig{margin:0 0 26px}
 .art-fig video{display:block;width:100%;border-radius:12px;background:#050a18}
 .art-fig figcaption{font-size:.82rem;color:var(--muted);margin-top:9px}
