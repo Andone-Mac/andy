@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="MiniMax 10 月 23 日开源 M3.1 Flash 权重：428B 总参、激活约 23B，1M 上下文，官方称 72 小时处理超 100 万亿 token、成本降 70%。首日适配名单里国产卡几乎齐全——这篇把参数、成本与「能不能进客户机房」拆开看。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html">
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="MiniMax 10 月 23 日开源 M3.1 Flash 权重：428B 总参、激活约 23B，1M 上下文，官方称 72 小时处理超 100 万亿 token、成本降 70%。首日适配名单里国产卡几乎齐全——这篇把参数、成本与「能不能进客户机房」拆开看。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="MiniMax 10 月 23 日开源 M3.1 Flash 权重：428B 总参、激活约 23B，1M 上下文，官方称 72 小时处理超 100 万亿 token、成本降 70%。首日适配名单里国产卡几乎齐全——这篇把参数、成本与「能不能进客户机房」拆开看。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架",
+      "description": "MiniMax 10 月 23 日开源 M3.1 Flash 权重：428B 总参、激活约 23B，1M 上下文，官方称 72 小时处理超 100 万亿 token、成本降 70%。首日适配名单里国产卡几乎齐全——这篇把参数、成本与「能不能进客户机房」拆开看。",
+      "datePublished": "2026-10-23",
+      "dateModified": "2026-10-23",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架",
+          "item": "https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 77 条）</a>
+          <a href="news-2026-10-23-minimax-m31-flash-open-weights.html">MiniMax M3.1 Flash 开源</a>
+          <a href="news-2026-10-23-rtx-pro-5500-3m-orders.html">三大厂 300 万张 RTX PRO 5500</a>
+          <a href="news-2026-10-23-ascend-950-10k-cluster.html">昇腾 950DT 万卡池与 77% 份额</a>
+          <a href="news-2026-10-23-nvidia-china-share-zero.html">英伟达中国份额与国产卡接棒</a>
+          <a href="news-2026-10-23-glm-legal-open-weights.html">GLM-Legal 开源法律模型</a>
+          <a href="news-2026-10-23-guangdong-195-llm-filings.html">广东 195 款大模型备案</a>
+          <a href="news-2026-10-23-ai-security-weekly-360.html">AI 安全周报：LiteLLM 投毒</a>
+          <a href="news-2026-10-23-kimi-k31-teaser.html">Kimi K3.1 预热</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-23</span><span class="n-tag" style="margin-left:8px">开源模型 · 开放权重</span>
+    <h1 class="art-h1">428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架</h1>
+    <p class="art-lede">10 月 23 日，MiniMax（稀宇科技）宣布开源 M3.1 Flash 的模型权重：总参数 428B、每 token 激活约 23B，支持文本、图像、视频输入与最高 100 万 token 上下文。这档模型 10 月 19 日上线，官方称 72 小时内为真实用户处理超过 100 万亿 token；相较上一代 M3，线上推理速度提升近 3 倍，智能体任务综合成本降低 70%，日常场景输出可达每秒 200 多个 token。对要做私有化的人来说，真正的问题不是跑分，而是<b>这份权重能不能落到自家机房的卡上</b>——首日适配名单里，国产芯片占了多数。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、它是什么：428B 的 MoE，每 token 只激活 23B</h3>
+      <ul class="art-tl">
+        <li><b>总参数</b>：428B，每 token 激活约 23B（MoE 稀疏架构）</li>
+        <li><b>输入</b>：文本、图像、视频（多模态）</li>
+        <li><b>上下文</b>：最高 1,000,000 token</li>
+        <li><b>定位</b>：编程、智能体、计算机操作类任务</li>
+        <li><b>权重</b>：Hugging Face（MiniMaxAI/MiniMax-M3.1-Flash）与魔搭社区同步放出</li>
+      </ul>
+      <p>官方披露的三项关键技术分别是：<b>全模型稀疏注意力</b>（把长上下文的注意力开销压下来）、<b>量化感知训练 QAT</b>（让量化后的精度损失可控）、<b>功耗感知调度</b>（按功耗预算分配算力，提高单位能耗吞吐）。三项合起来，才解释了「428B 还能跑到 200+ tok/s」这件事。</p>
+
+      <h3 class="art-h2">二、三天 100 万亿 token：速度与成本这笔账怎么算</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>指标</th><th>M3（上一代）</th><th>M3.1 Flash</th></tr></thead>
+        <tbody>
+          <tr><td>线上推理速度</td><td>基线</td><td>近 3 倍</td></tr>
+          <tr><td>智能体任务综合成本</td><td>基线</td><td>−70%</td></tr>
+          <tr><td>日常输出速度</td><td>—</td><td>200+ tok/s</td></tr>
+          <tr><td>上下文上限</td><td>—</td><td>1,000,000 token</td></tr>
+          <tr><td>上线后 72 小时处理量</td><td>—</td><td>>100 万亿 token</td></tr>
+        </tbody>
+      </table>
+      <p>口径要说清楚：以上都是<b>云端服务侧</b>的官方与媒体披露指标，不等于单机部署速度。单机能跑到多少，取决于量化档、显存与内存带宽、以及是否采用分层（显存+内存+SSD）——同一份权重在不同机器上差 2–3 倍是常态。</p>
+
+      <h3 class="art-h2">三、Day-0 生态：国产芯片这次几乎全在名单里</h3>
+      <ul class="art-tl">
+        <li><b>芯片</b>：华为昇腾、平头哥、昆仑芯（宣布完成 Day 0 适配）、摩尔线程、壁仞、海光、沐曦、天数，以及英伟达与 AMD</li>
+        <li><b>推理框架</b>：vLLM、SGLang、智源 FlagOS</li>
+        <li><b>云与平台</b>：Together AI、Fireworks、Nebius、Baseten、Modal、DigitalOcean</li>
+        <li><b>模型库</b>：Hugging Face、魔搭社区</li>
+      </ul>
+      <p>这份名单比跑分更值得看：它决定「客户机房里的那张卡有没有算子」。国产卡从「能跑小参数模型」到「首日接住 428B 级开放权重」，是这一轮国产算力份额上行的具体注脚。</p>
+
+      <h3 class="art-h2">四、对客户机房意味着什么</h3>
+      <ul class="art-tl">
+        <li><b>能不能单机跑</b>：23B 的激活量不大，但 428B 的权重总量仍是大头。能否单机取决于官方后续放出的量化档与是否支持分层——<b>官方目前没有公布 GGUF 体积，不要拿参数量直接换算显存</b>。</li>
+        <li><b>上下文</b>：1M 上限对卷宗、整本材料这类场景有意义，但要用真实业务长度扫一遍衰减曲线（8K / 32K / 128K / 512K 四档）再定档。</li>
+        <li><b>许可</b>：开源权重不等于随便商用，落地前先核对许可证条款与商用限制。</li>
+        <li><b>算子</b>：Day-0 适配通常覆盖主流算子，视觉与视频输入属于长尾，必须单独验。</li>
+      </ul>
+
+      <h3 class="art-h2">五、我们拿到权重后会补测什么</h3>
+      <ul class="art-tl">
+        <li>Q4 / Q5 / Q8 各量化档的真实体积（GB）与单机可加载性</li>
+        <li>24 GB / 32 GB / 48 GB 三档显卡：能否加载、是否必须走分层</li>
+        <li>1M 上下文的实际解码速度曲线（每 4 倍上下文掉多少）</li>
+        <li>视觉与视频输入在国产卡上的算子覆盖</li>
+        <li>沙箱工具任务的通过率（agent 场景的真实分水岭）</li>
+      </ul>
+      <p>在这几项测完之前，任何「单机多少 tok/s」的说法都是猜的——我们不会用自己的机器去替别人的机器下结论。</p>
+
+      <div class="kv-box">
+        <h3>机悟的建议：先别问「能不能跑 428B」，先问「23B 激活落在哪」</h3>
+        <p class="kv-sub">这类 MoE 开放权重，决定体验的是三件事，按顺序验：</p>
+        <ul>
+          <li><b>装得下吗</b>：显存 + 内存 + SSD 的总容量，别只看显存。</li>
+          <li><b>激活常驻吗</b>：每 token 要用的 23B 是否常驻 GPU，决定 tok/s 的上限。</li>
+          <li><b>拉长还剩多少</b>：把上下文拉到业务真实长度，再看速度与显存余量。</li>
+          <li>给我们一张卡型清单，我们按这三步出结论——不做「参数量换算显存」的估算。</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来源：IT之家《MiniMax M3.1 Flash 开源模型权重，总参数 428B》（2026-10-23）、36 氪/智东西《MiniMax 重磅模型开源，华为昇腾将接入，3 天处理超 100 万亿 Token》（2026-10-23）、MiniMax 官方开源页（Hugging Face / 魔搭）。文中「近 3 倍」「70%」「200+ tok/s」「100 万亿 token」均为官方披露的云端服务口径，非本机实测；本页未做本地部署测试，不涉及能力排名。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-23-rtx-pro-5500-3m-orders.html" title="300 万张、350 亿美元：中国三大厂把「降规卡」买成了紧俏货">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">三大厂 300 万张 RTX PRO 5500</span>
+        <span class="pg-d">2026-10-23</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 77 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>428B 的开放权重，能不能落进你机房的那几张卡？</h2>
+      <p>40 分钟免费部署评估：报上卡型与显存，我们给出「装得下/装不下、要不要分层、大概多少 tok/s」的结论，并把复测脚本留给你。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架」，机悟 JAVIS，2026-10-23，https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架](https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html)（机悟 JAVIS，2026-10-23）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>
