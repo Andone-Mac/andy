@@ -20,7 +20,7 @@
   (function () {
     try {
       if (!/^https?:$/.test(location.protocol)) return; // 本地 file:// 预览不打点，避免污染统计
-      var APIH = ['https://api.javis.org.cn', 'https://javis-api.wanyejiang2018.workers.dev'];
+      var APIH = ['https://api.javis.org.cn'];
       var dev = /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
       var ref = document.referrer ? new URL(document.referrer).host : '';
       var qs = '/api/ping?p=' + encodeURIComponent(location.pathname) + '&r=' + encodeURIComponent(ref) + '&d=' + dev + '&s=' + encodeURIComponent(location.hostname) + '&t=' + Date.now();
