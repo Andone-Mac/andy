@@ -292,6 +292,7 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .art-foot{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-top:26px}
 /* ---------- 详情页文末「上一篇 / 下一篇」（构建产物，源在 build_v6.news_pager） ---------- */
 .art-pager-sec{padding:0 0 54px}
+.cite-sec{padding:34px 0 56px}
 .art-pager{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .art-pager .pg{display:block;padding:15px 17px;border:1px solid var(--line);border-radius:12px;background:#fff;text-decoration:none;transition:border-color .18s,box-shadow .18s}
 .art-pager .pg:hover{border-color:var(--cyan);box-shadow:0 6px 18px rgba(22,41,94,.08)}
