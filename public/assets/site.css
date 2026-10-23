@@ -273,7 +273,9 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .art-h1{font-size:clamp(1.45rem,3.2vw,2.1rem);line-height:1.38;color:var(--navy);margin:14px 0 0}
 .art-lede{margin-top:18px;padding-left:16px;border-left:3px solid var(--cyan);color:var(--ink-soft);font-size:1.02rem}
 .art-sec{padding:30px 0 60px}
-.art-wrap{max-width:var(--maxw)}
+.art-wrap{max-width:780px}
+/* 单页宽版：只有带 .art-wide 的正文区才与顶部导航同宽 */
+.art-wrap.art-wide{max-width:var(--maxw)}
 .art-fig{margin:0 0 26px}
 .art-fig video{display:block;width:100%;border-radius:12px;background:#050a18}
 .art-fig figcaption{font-size:.82rem;color:var(--muted);margin-top:9px}
@@ -378,6 +380,10 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .pginfo{text-align:center;font-size:.86rem;color:var(--ink-soft);margin:0 0 4px}
 /* 正文表格（新闻切片内联样式的兜底与手机端压缩） */
 .art-table{width:100%;border-collapse:collapse}
+/* 宽版页的对照表：等宽数字 + 固定列宽 + 数值列右对齐（列宽写在表格的 colgroup 里） */
+.art-wide .art-table.is-fixed{table-layout:fixed}
+.art-wide .art-table.is-fixed th,.art-wide .art-table.is-fixed td{word-break:break-word}
+.art-wide .art-table.is-fixed th:not(:first-child),.art-wide .art-table.is-fixed td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
 .art-body .art-table th{background:#f4f7fc;color:var(--navy);font-weight:700}
 @media(max-width:640px){
   .pgnav{gap:6px;margin:28px 0 8px}

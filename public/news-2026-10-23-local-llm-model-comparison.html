@@ -170,7 +170,7 @@
   </div>
 </header>
 <section class="art-head" id="top">
-  <div class="wrap art-wrap">
+  <div class="wrap art-wrap art-wide">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
     <span class="n-date">2026-10-23</span><span class="n-tag" style="margin-left:8px">本地实测 · 模型对照</span>
     <h1 class="art-h1">130 tok/s 的 GLM、256K 不掉速的 Flash-Next、68 tok/s 的 27B：8 个模型配置实测对照表</h1>
@@ -179,11 +179,12 @@
 </section>
 
 <section class="art-sec">
-  <div class="wrap art-wrap">
+  <div class="wrap art-wrap art-wide">
     <div class="art-body">
       <h3 class="art-h2">一、先交代家底：3 台机器、8 个配置、四个维度</h3>
       <p>本地模型的对照必须先固定「机器 + 引擎 + 量化 + 上下文」四件事，否则数字毫无意义。这次用到的是三套环境：</p>
-      <table class="art-table" style="margin-top:14px">
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:14%"><col style="width:30%"><col style="width:38%"><col style="width:18%"></colgroup>
         <thead><tr><th>机器</th><th>显卡 / 内存</th><th>引擎</th><th>时间</th></tr></thead>
         <tbody>
           <tr><td><b>机A（现役）</b></td><td>RX 7900 XTX <b>24 GB</b> · 125.6 GiB 内存 · i7-14700F</td><td>Strata 0.1.47（HIP）/ llama.cpp fcac190（Vulkan + 私有 Mesa 26.2.5）</td><td>2026-09 ~ 10</td></tr>
@@ -195,7 +196,8 @@
 
       <h3 class="art-h2">二、速度：最快的不是最大的那个</h3>
       <p>先看在同一张 24 GB 卡上的解码速度（单位 tok/s，均为自测记录）：</p>
-      <table class="art-table" style="margin-top:14px">
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:28%"><col style="width:11%"><col style="width:17%"><col style="width:16%"><col style="width:28%"></colgroup>
         <thead><tr><th>模型 / 量化</th><th>权重体积</th><th>引擎</th><th>上下文</th><th>解码速度</th></tr></thead>
         <tbody>
           <tr><td><b>GLM-4.7-Flash</b>（i1-Q5_K_M）</td><td>≈ 20 GB</td><td>llama.cpp</td><td>96K / 128K / 192K</td><td><b>127.8 / 130.0 / 128.6</b></td></tr>
@@ -228,7 +230,8 @@
 
       <h3 class="art-h2">四、能力：同一批题，差 3 个百分点意味着什么</h3>
       <p>同样的题库、同一个模板、seed=42，在本机跑出来的成绩：</p>
-      <table class="art-table" style="margin-top:14px">
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:32%"><col style="width:22.6%"><col style="width:22.6%"><col style="width:22.8%"></colgroup>
         <thead><tr><th>模型 / 配置</th><th>MMLU-Pro（200 题）</th><th>GSM8K（40 题）</th><th>MATH-500（30 题）</th></tr></thead>
         <tbody>
           <tr><td><b>Flash-Next-unc（Q4_K_M）</b></td><td><b>63.5%</b></td><td><b>100%</b></td><td>70.0%（重试 73.3%）</td></tr>
@@ -302,7 +305,7 @@
 </section>
 
 <section class="art-pager-sec">
-  <div class="wrap art-wrap">
+  <div class="wrap art-wrap art-wide">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-10-23-swift15-27b-vision-343s.html" title="一张 640×480 的图 3.43 秒出结果：Swift-1.5-Qwen3.8-27B 在 24 GB 消费卡上的实测">
         <span class="pg-k">← 上一篇</span>
