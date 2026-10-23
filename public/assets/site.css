@@ -385,6 +385,9 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .art-wide .art-table.is-fixed{table-layout:fixed}
 .art-wide .art-table.is-fixed th,.art-wide .art-table.is-fixed td{word-break:break-word}
 .art-wide .art-table.is-fixed th:not(:first-child),.art-wide .art-table.is-fixed td:not(:first-child){text-align:right;font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+.art-wide .art-table.is-fixed td{line-height:1.75}
+.art-wide .art-table.is-fixed td:last-child{white-space:normal}
+.art-wide .art-table.is-fixed td small{display:block;opacity:.72;font-size:.86em;font-weight:400}
 .art-body .art-table th{background:#f4f7fc;color:var(--navy);font-weight:700}
 @media(max-width:640px){
   .pgnav{gap:6px;margin:28px 0 8px}

@@ -197,17 +197,17 @@
       <h3 class="art-h2">二、速度：最快的不是最大的那个</h3>
       <p>先看在同一张 24 GB 卡上的解码速度（单位 tok/s，均为自测记录）：</p>
       <table class="art-table is-fixed" style="margin-top:14px">
-        <colgroup><col style="width:28%"><col style="width:11%"><col style="width:17%"><col style="width:16%"><col style="width:28%"></colgroup>
-        <thead><tr><th>模型 / 量化</th><th>权重体积</th><th>引擎</th><th>上下文</th><th>解码速度</th></tr></thead>
+        <colgroup><col style="width:30%"><col style="width:10%"><col style="width:16%"><col style="width:44%"></colgroup>
+        <thead><tr><th>模型 / 量化</th><th>权重体积</th><th>引擎</th><th>解码速度（tok/s，按上下文档）</th></tr></thead>
         <tbody>
-          <tr><td><b>GLM-4.7-Flash</b>（i1-Q5_K_M）</td><td>≈ 20 GB</td><td>llama.cpp</td><td>96K / 128K / 192K</td><td><b>127.8 / 130.0 / 128.6</b></td></tr>
-          <tr><td><b>Swift-1.5-Qwen3.8-27B</b>（Q4_K_M，dense+SSM 27B）</td><td>≈ 18 GB</td><td>llama.cpp（MTP n=2）</td><td>119,808</td><td><b>67.2 ± 1.0</b></td></tr>
-          <tr><td><b>Qwen3.8-Flash-Next</b>（UD-IQ4_XS，MoE）</td><td><b>93.7 GB</b></td><td>Strata（显存+内存+SSD）</td><td>1k→256k</td><td>63.6 / 75.7 / 64.4 / 65.3 / 65.7 / 62.2 / <b>62.3</b></td></tr>
-          <tr><td>Qwen3.8-Flash-Next-unc（Q4_K_M）</td><td>≈ 47 GB</td><td>Strata</td><td>1k/4k/32k/64k/256k</td><td>56.8 / 68.4 / 57.4 / 50.3 / 49.4</td></tr>
-          <tr><td><b>Qwen3.8-27B</b>（UD-Q4_K_XL，Dense）</td><td>17.6 GB</td><td>llama.cpp</td><td>1k/4k/16k/32k/60k</td><td><b>68.7</b> / 70.9 / 58.4 / 62.0 / <b>51.1</b></td></tr>
-          <tr><td>Qwen3.8-27B（Q5_K_M，开 MTP）</td><td>18.2 GB</td><td>llama.cpp（XTX / 3090 CUDA）</td><td>16K</td><td>63.7 / 60.0（关 MTP 仅 34.8 / 37.4）</td></tr>
-          <tr><td>Qwen3.8-27B-unc（Q5_K_P）</td><td>20.2 GB</td><td>Ollama（R9700 32 GB）</td><td>65K</td><td>≈ 25</td></tr>
-          <tr><td><b>Qwen3.6-35B-A3B</b>（Q4_K_M，MoE 35B/激活 3B）</td><td>21.2 GB</td><td>Ollama（R9700 32 GB）</td><td>65K</td><td><b>≈ 82</b></td></tr>
+          <tr><td><b>GLM-4.7-Flash</b>（i1-Q5_K_M）</td><td>≈ 20 GB</td><td>llama.cpp</td><td>96K 127.8 · 128K <b>130.0</b> · 192K 128.6</td></tr>
+          <tr><td><b>Swift-1.5-Qwen3.8-27B</b>（Q4_K_M，dense+SSM 27B）</td><td>≈ 18 GB</td><td>llama.cpp（MTP n=2）</td><td><b>67.2 ± 1.0</b>（119,808 ctx，5 次重复）</td></tr>
+          <tr><td><b>Qwen3.8-Flash-Next</b>（UD-IQ4_XS，MoE）</td><td><b>93.7 GB</b></td><td>Strata（显存+内存+SSD）</td><td>1k 63.6 · 4k 75.7 · 16k 64.4 · 32k 65.3 · 64k 65.7 · 128k 62.2 · 256k <b>62.3</b></td></tr>
+          <tr><td>Qwen3.8-Flash-Next-unc（Q4_K_M）</td><td>≈ 47 GB</td><td>Strata</td><td>1k 56.8 · 4k 68.4 · 32k 57.4 · 64k 50.3 · 256k 49.4</td></tr>
+          <tr><td><b>Qwen3.8-27B</b>（UD-Q4_K_XL，Dense）</td><td>17.6 GB</td><td>llama.cpp</td><td>1k <b>68.7</b> · 4k 70.9 · 16k 58.4 · 32k 62.0 · 60k <b>51.1</b></td></tr>
+          <tr><td>Qwen3.8-27B（Q5_K_M，开 MTP）</td><td>18.2 GB</td><td>llama.cpp（XTX / 3090 CUDA）</td><td>16K：XTX <b>63.7</b> · 3090 <b>60.0</b>（关 MTP 仅 34.8 / 37.4）</td></tr>
+          <tr><td>Qwen3.8-27B-unc（Q5_K_P）</td><td>20.2 GB</td><td>Ollama（R9700 32 GB）</td><td>65K ≈ 25</td></tr>
+          <tr><td><b>Qwen3.6-35B-A3B</b>（Q4_K_M，MoE 35B/激活 3B）</td><td>21.2 GB</td><td>Ollama（R9700 32 GB）</td><td>65K <b>≈ 82</b></td></tr>
         </tbody>
       </table>
       <p>三个反直觉的结论：</p>
@@ -234,9 +234,9 @@
         <colgroup><col style="width:32%"><col style="width:22.6%"><col style="width:22.6%"><col style="width:22.8%"></colgroup>
         <thead><tr><th>模型 / 配置</th><th>MMLU-Pro（200 题）</th><th>GSM8K（40 题）</th><th>MATH-500（30 题）</th></tr></thead>
         <tbody>
-          <tr><td><b>Flash-Next-unc（Q4_K_M）</b></td><td><b>63.5%</b></td><td><b>100%</b></td><td>70.0%（重试 73.3%）</td></tr>
-          <tr><td><b>Qwen3.8-27B（Q4_K_XL）</b></td><td>60.5%</td><td>95.0%（除截断 100%）</td><td>70.0%（重试 73.3%）</td></tr>
-          <tr><td>Flash-Next（UD-IQ4_XS，基线）</td><td>60.0%</td><td>97.5%</td><td>66.7%（重试 70.0%）</td></tr>
+          <tr><td><b>Flash-Next-unc（Q4_K_M）</b></td><td><b>63.5%</b></td><td><b>100%</b></td><td>70.0%<small>重试 73.3%</small></td></tr>
+          <tr><td><b>Qwen3.8-27B（Q4_K_XL）</b></td><td>60.5%</td><td>95.0%<small>除截断 100%</small></td><td>70.0%<small>重试 73.3%</small></td></tr>
+          <tr><td>Flash-Next（UD-IQ4_XS，基线）</td><td>60.0%</td><td>97.5%</td><td>66.7%<small>重试 70.0%</small></td></tr>
           <tr><td>Flash-Next（q4km-int8 标定）</td><td>59.5%</td><td><b>100%</b></td><td><b>76.7%</b></td></tr>
           <tr><td>Flash-Next（UD-IQ4_XS，最终优化版）</td><td>56.5%</td><td>97.5%</td><td><b>76.7%</b></td></tr>
         </tbody>
