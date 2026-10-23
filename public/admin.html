@@ -229,8 +229,8 @@
 <footer>机悟（JAVIS）· 数据不出域，单位有超脑，个人得助手。</footer>
 
 <script>
-  // 双通道：主用自有域名（大陆可达），失败自动退回 workers.dev
-  const API_HOSTS = ['https://api.javis.org.cn','https://javis-api.wanyejiang2018.workers.dev'];
+  // 单通道：自有域名 api.javis.org.cn（workers.dev 回退入口已停用，避免失败时多等 8 秒）
+  const API_HOSTS = ['https://api.javis.org.cn'];
   const loginView = document.getElementById('loginView');
   const listView = document.getElementById('listView');
   const errBox = document.getElementById('loginErr');

@@ -63,7 +63,7 @@
   })();
 
   /* ================= 留资表单（唯一线索接口：POST /api/lead） ================= */
-  var API_HOSTS = ['https://api.javis.org.cn', 'https://javis-api.wanyejiang2018.workers.dev'];
+  var API_HOSTS = ['https://api.javis.org.cn'];
   function apiFetch(primary, fallback, opts) {
     var urls = [primary, fallback].filter(Boolean), lastErr, i = 0;
     function attempt() {
@@ -77,7 +77,7 @@
     return attempt();
   }
   var KINDS = {
-    eval: { title: '申请 40 分钟免费部署评估', sub: '现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。', submit: '提交申请' },
+    eval: { title: '约 40 分钟评估', sub: '选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。', submit: '提交申请' },
     demo: { title: '预约远程接入演示（脱敏数据）', sub: '约 30 分钟远程演示：在您的设备上真跑一遍断网大模型，使用脱敏样本数据，全程无需外部设备进场。提交后 1 个工作日内联系您安排时间。', submit: '预约演示' }
   };
   function initLead(wrap) {
@@ -120,7 +120,7 @@
       var old = btn ? btn.textContent : '';
       if (btn) btn.textContent = '提交中…';
       var apiPath = form.getAttribute('data-api') || (API_HOSTS[0] + '/api/lead');
-      var apiFallback = form.getAttribute('data-api-fallback') || (API_HOSTS[1] + '/api/lead');
+      var apiFallback = form.getAttribute('data-api-fallback') || '';
       apiFetch(apiPath, apiFallback, {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -133,10 +133,10 @@
             if (form) form.style.display = 'none';
             if (okcard) okcard.classList.add('on');
             else showMsg('已收到您的申请，工作人员将在 1 个工作日内与您联系。', false);
-          } else showMsg((data && data.error) || '提交失败，请稍后再试，或直接加官方微信', true);
+          } else showMsg((data && data.error) || '提交失败，请稍后再试，或直接加企业微信', true);
         });
       }).catch(function () {
-        showMsg('网络开小差了，请稍后再试，或直接加官方微信（二维码见右）', true);
+        showMsg('网络开小差了，请稍后再试，或直接加企业微信（二维码见右）', true);
       }).then(function () {
         if (btn) { btn.disabled = false; btn.textContent = old; }
       });
@@ -179,7 +179,7 @@
      新增文件：把文件放进 assets/downloads/ 后，在下面 DL 数组加一行。 */
   /* DL-LIST-START */
   var DL = [
-    { t: "机悟·政企超脑 宣传册 v1", d: "产品定位 · 能力清单 · 部署路径 · 常见顾虑", f: "机悟·政企超脑宣传册_v1.pdf", s: "1.6 MB", date: "2026-09" }
+    { t: "JAVIS 客户宣传册 · 创业期 v2", d: "让 AI 真正干活 · 两条主线 · 三组产品 · 某院真实案例 · 先 POC", f: "机悟·甲维思 JAVIS宣传册_v2.pdf", s: "1.4 MB", date: "2026-10" }
   ];
   /* DL-LIST-END */
   (function () {
