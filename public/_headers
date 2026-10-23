@@ -1,0 +1,5 @@
+# Render 静态站响应头（Netlify 语法）。仅 javis.org.cn 生效；jiwu 走阿里云 OSS，无此能力。
+/*
+  Link: </ai-usage.html>; rel="license"
+  X-Robots-Tag: index, follow, max-snippet:-1, max-image-preview:large
+  X-AI-Usage: https://javis.org.cn/ai-usage.html

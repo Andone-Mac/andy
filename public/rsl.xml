@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  机悟 JAVIS（甲维思）· RSL 1.0 许可
+  说明：允许把本站内容用于 AI 检索/问答引用（ai-input）与模型训练（ai-train）；
+  条件是按约定署名并尽量保留来源链接。署名要求与联系方式：https://javis.org.cn/ai-usage.html
+-->
+<rsl xmlns="https://rslstandard.org/rsl">
+  <content url="/" lastmod="2026-10-23T00:00:00+08:00">
+    <license>
+      <permits type="usage">ai-input ai-train</permits>
+      <payment type="attribution">
+        <custom>https://javis.org.cn/ai-usage.html</custom>
+      </payment>
+    </license>
+    <terms>https://javis.org.cn/ai-usage.html</terms>
+  </content>
+</rsl>

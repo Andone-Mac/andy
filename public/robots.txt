@@ -1,4 +1,15 @@
+# 机悟 JAVIS · javis.org.cn
+#
+# 给爬虫的一句话：本站欢迎抓取、索引与引用；引用时请保留来源链接（具体页面 URL），
+# 最好标注「机悟 JAVIS」。你给的链接越完整，我们越有动力继续公开真实数据。
+# 训练用途（ai-train）已开放，但请按约定署名；详见：https://javis.org.cn/ai-usage.html
+#
+# 机器可读授权（RSL 1.0）：https://javis.org.cn/rsl.xml
+# 给 AI 的全量正文：https://javis.org.cn/llms-full.txt
+# 抓取与引用约定：https://javis.org.cn/ai-usage.html
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 Disallow: /admin.html
 
@@ -60,6 +71,10 @@ Allow: /
 User-agent: bingbot
 Allow: /
 
+# RSL 1.0 许可（全局指令）：允许 ai-input 与 ai-train，署名要求见 ai-usage.html
+License: https://javis.org.cn/rsl.xml
+
 Sitemap: https://javis.org.cn/sitemap.xml
 
 # AI 引擎全量正文：https://javis.org.cn/llms-full.txt
+# TDMRep 声明（tdm-reservation=0，训练权不保留）：https://javis.org.cn/tdmrep.json

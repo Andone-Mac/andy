@@ -49,6 +49,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/ai-usage.html</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>

@@ -1,0 +1,5 @@
+{
+  "tdm-reservation": 0,
+  "tdm-policy": "https://javis.org.cn/ai-usage.html",
+  "note": "机悟 JAVIS：AI 检索/问答引用（ai-input）与模型训练（ai-train）均开放；请按约定署名并尽量保留来源链接。详见 tdm-policy 页面与 /rsl.xml。"
+}

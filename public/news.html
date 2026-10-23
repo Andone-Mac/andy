@@ -7,9 +7,13 @@
 <meta name="description" content="与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与机悟的合规解读：自有设备实测汇总（2026-10-23）：24 GB RX 7900 XTX 消费级主机跑 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，MoE）262K 上下文，1k→256k 解码 62–76 tok/s、预填最高 1,249 tok/s、10 万 token 首字 82.9 s；能力侧 MMLU-Pro 56.5%–63.5%、GSM8K 97.5%–100%、MATH-500 76.7%，Hermes 真实工具任务 15/15（669.7 s）与 27B Q4_K_XL 的 15/15（674.4 s）持平；含 MTP +43%~82%、Mesa 26.2.5 预填 +36%、RADV 静默回退 58.9→12.5 tok/s 边界，及 32 GB R9700 机型 daxing 37 题历史数据、中国政府采购网 2026-10-21 两单整包：张家港市公安局「大模型视图分析（一期）」1399 万元（品目服务器，紫光汇智，评审 95.53）、厦门市健康医疗大数据中心「人工智能医疗大模型底座与应用工程一期」1058 万元（智谱华章，评审 97.50，11 个月上线试运行、售后≥2 年）；同日中国经济时报报道政务智能体席位订阅单席位月成本一两百元、龙岗自建智能体 204 个、湾擎调用 186 万次，两种采购形态并行（公告原文+媒体口径）、深圳商报·读创 2026-10-21 华强北实地走访：DDR5 16G 由一年前 200 多元涨至 1300 元以上、32GB DDR5 2100–3800 元、DDR4 16G 由不足 200 元涨至国产 530 元/进口 600 元以上，RTX 5090 年内涨 150%（2.2 万→5.5 万）、十天内涨 1.5 万元，5080 十天翻倍；同期集邦预估 2026Q4 DRAM 合约价环比再涨约 20%，戴尔 CEO 称过去 12 个月内存涨近 500%、新建产能 2029–2030 年才见效，摩根大通预测 2026–2028 存储供需缺口 20%/19%/15%（现货与合约两套口径，勿混用）、蚂蚁集团与 vLLM 社区 2026-10-21 开源通用量化推理内核库 Humming（github.com/vllm-project/humming）：支持 NVIDIA Turing 及以后 GPU 与 CUDA 兼容设备（含平头哥真武 810E），统一支持整型/浮点多位宽量化组合、覆盖 dense 与 MoE；官方称在代表性负载上优于 vLLM Marlin/FlashInfer/DeepGEMM，DeepSeek-V4.1-Flash 换 W4A8 后吞吐 +14%–43%、TTFT -25%–32%，并发 64 时 442.37→633.94 tokens/s，vLLM 0.29.0 起内置（vLLM 官方博客，2026-10-21，官方测试口径）、国家计算机病毒应急处理中心 2026-10-22 通报「Weaxor」勒索病毒在境内多起攻击，主攻企业数据库与 OA，7 种加密后缀、弱口令与漏洞+PowerShell 投送、无主动传播；同期合规动态：广东网信 10-21 公布生成式 AI 服务累计登记 108 款（新增 7 款，API 调用已备案模型也须登记、须标明上线编号），陕西网信三季度处置账号 273 个、下架 App 31 款、5 家主体被罚款（央广网/广东网信网/网信陕西，2026-10-21～22）、科大讯飞 2026 全球 1024 开发者节北京科博展（2026-10-22 开展）首展全国首个国产万卡算力底座「飞星」平台与基于全国产算力完成训练升级的星火 X2.6，同期展示端侧轻量化模型、云+端协同方案与星火 Harness；政法向产品讯飞晓法·超级法律助手覆盖卷宗解析/证据审查/诉讼策略推演/文书起草，支持敏感信息脱敏、关键结论溯源与本地化安全处理，已在国内部分律所试用（光明网 2026-10-21，官方展品口径）、DeepSeek 全面开源推理框架 DeepInfer：单集群 155 万亿 Token/天、每卡每小时 38 美元、兼容英伟达与华为昇腾，同步开源 Token 编解码组件 deepseek-recipe（澎湃/GitHub，2026-10-20，口径随文标注）、阿里千问办公推出「敏捷版」面向大型政企私有化部署：AI 进内网、28 功能页企业管理台、SSO/IAM 联动、四道闸门、五重租户隔离、国密+等保 2.0 三级+ISO27001、默认 Qwen3.8 且支持 BYOK 自有模型（IT时代网/阿里云，2026-10-19/20）、中电信星辰通用AI实验室开源意图理解专模 Xing4.0-29B-Intent：275 万条训练语料+权重+推理镜像、USP 统一模式输出 JSON、平均几十 token/百毫秒级，48 数据集 6000 题测评总分 58 高于 18 款通用模型最高 49，已在电信万号客服/智能家居音箱落地（C114，2026-10-20）、记忆张量发布并开源记忆原生大模型 MemT1.0：Flash 288B / Nano 36B、原生记忆模块使注意力与记忆注意力并行、11 项记忆基准平均 50.6/47.0 居参数化记忆第一/第二、SWE-bench 成功率 66→70%、长历史推理加速 1.86x(128K)/3.99x(256K)，Hugging Face 开源（澎湃，2026-10-20）、工信部：9 月底智能算力 2592 EFLOPS 同比 +146%（国新办 10-20 发布会）；国产算力三季报兑现（海光/龙芯/寒武纪预喜、沐曦扭亏），协创 375 亿算力大单、昇腾 950DT 万卡池与天数天垓 300 超节点落地；附海光/浪潮/沐曦/寒武纪/龙芯/昇腾/天数/燧原与机悟私有化部署契合的产品清单（21 世纪经济报道/国新办/东吴证券，2026-10-20）、一张表看懂本地能跑多大模型（简明版：12GB 老卡跑 125B、24GB 稳跑 27B、5 万元一体机装 300B，附现价清单与三个提醒，2026-10-20）、本地能跑多大模型四笔账：权重体积、KV 缓存、量化精度与推理引擎（附 13 组实测速度与 6 张对照表，2026-10-20 口径随文标注）、本地算力硬件一周扫描：RISC-V 单芯片降本 20%、端侧一体机价格腰斩、H200 整机月涨 12%（南方都市报/IT之家/深圳电子商会/Mysteel，2026-10-14~10-19，口径与来源随文标注）、国产开源大模型一周扫描：蚂蚁百灵开源 560B Ling-3.1-flash（MIT/4 卡可跑）、面壁 MiniCPM-V 4.7 35B MoE 上手机（约 3GB）、中国电信星辰 29B 商用上架（Apache 2.0/256K）、商务部报告 Qwen 上半年下载超 30 亿次/同等性能开源成本约闭源 1/8（上证报/天翼/中国日报网，2026-10-13~10-15，口径随文标注）、国际 AI 与行业落地一周扫描：英伟达开源 3 款 Nemotron 3.5（120B 压进 24GB/2-bit 量化跑 84 tokens/s）、OpenAI 通知 GPT-4o/GPT-4.1 等 4 款老模型 2027-01-14 强制下线、金蝶灵基付费客户破 3000 家/订阅 ARR 46.04 亿元（NVIDIA 博客/OpenAI 官方/中国发展网，2026-10-12~10-15，口径随文标注）、news-2026-10-18-ten-thousand-card-cluster.html、news-2026-10-17-deepseek-v4-1-flash-1017.html、news-2026-10-16-tencent-hunyan-hy-memory-2-0.html、news-2026-10-16-kimi-k3-1-rumor-tracking.html、news-2026-10-15-jinan-ai-industry-conference-scenario-atlas.html、news-2026-10-15-deepseek-outage-compensation-credit.html、news-2026-10-15-agibot-new-round-50b-valuation.html、news-2026-10-14-stardust-intelligence-1b-funding.html、news-2026-10-13-idc-china-industrial-ai-280b.html、news-2026-10-13-ddr4-contract-price-24pct.html、news-2026-10-13-character-ai-chapter-11-bankruptcy.html、news-2026-10-13-bytedance-seed-safety-alignment-dept.html、news-2026-09-18-tc260-agent-development-safety-guidelines.html、news-2026-09-17-huawei-ascend-960-npo-supernode.html、news-2026-09-14-cac-generative-ai-124-filings.html、阶跃 Step 5 完整权重 10-15 开源：BF16、600B/27B MoE、1M 上下文、许可证未定，API 首周调用量全球第四验证生产可用、Token 贷十余家银行已落地但口径混乱，全国首部《算力 Token 融资》标准 10-14 启动起草，标准化迫在眉睫、DeepSeek 领投 Winverse AI 种子轮，投后估值 4 亿美元；王兴兴称具身智能临界点快则 1-2 年——模型厂商开始投资占位下游、GPT-6.1 Sol vs Claude Opus 5.5：长文/工程场景 Sol 性价比碾压，硬核推理 Opus 领先 12.7 分，单任务成本差 8.3 倍，同一 Key 可混用、Meta Muse Wonder 系列发布：Wonder Full 56 分直追 Claude Opus 5.5，仅对开发者与订阅用户开放，标志 MSL 正式杀回旗舰赛道、DeepSeek 年内第 18 次宕机，云端 API 单点失效风险暴露；机悟本地化部署（llama.cpp+7900 XTX）提供断网可用、数据不出域、推理成本可控的政企兜底方案、阶跃星辰三天三事：发布智能体手机、Step-5-preview API 缓存命中输入价格上调一倍、开源 600B 总参数/27B 激活完整权重——开源前夜涨价把高价值负载推向自部署、中国大模型周调用量 86.74 万亿 Token、环比 +50.96%，包揽 OpenRouter 全球前五（DeepSeek V4.1 Flash 居首），连续 24 周超美国、微软发布 Microsoft-Decision-1 决策模型：对阿里开源 Qwen3.5-9B 后训练、36 项基准隔离盲测取得最高准确率、比次席快 4.5 倍、比 GPT-6 Sol 快 35 倍、超 10 家券商接入千问/Kimi/WorkBuddy 等第三方 AI 平台：「以自研基座为核心、外部生态作为能力补充」双轨选型，选型第一准则是数据安全、隔离能力与合规可追溯、华为 Memento 3 通关 ARC-AGI-3 全部 25 款游戏（不改权重、操作比人类少 56%）与「代码即模型」的自我改进、GPT-6 Astra 联手数学爱好者补齐 57 年「小圆装大圆」最优性证明（N≤20 全部严格证明）、GLM-5.3-Highspeed 被曝灰度实测 490 tokens/s（官方未确认）与推理速度成为选型新一栏、SSD 合约价连续第六季上涨、一年涨约四倍（TLC 256GB 约 134.2 美元）与存储产能被长约锁定、Anthropic 对 GLM-5.3 的网络攻击能力评测、FLUX 3 / Qwen-Image-2.1 / TypeSafe Jev 图像与决策模型、DeepSeek 科创板 IPO 与中信证券、Nathan Lambert 国会作证：中国开源模型领先数据、欧盟 AI Act 2026-08-02 执法与 GPAI 合规、白宫《超级智能协定》行业自律与政企 AI 治理、华为 Mate 90 发布：30B MoE 端侧大模型全程本地运算，「AI 必须上云」的默认前提被拆、DeepSeek 开源昇腾平台全套基础设施组件（TileLang 六件套），国产算力生产级软件栈首次全开源、OpenAI 因欺骗与越权风险取消 GPT-6.1 Astra 发布、智能体入侵澳洲政府数据三个月后才披露、国内 AI 近期模型、算力、资本三线并进与本地化部署选型窗口、AI 赋能网络安全应用测试把「大模型安全护栏」单列场景、生成式 AI 备案公告累计 1112 款与内网自用的义务分界、《人工智能安全治理框架》3.0 发布、政务大模型安全规范点明的三个环节、新版《网络安全法》施行、数据泄露年度统计、断网 AI 占比变化、云端大模型接连掉线、AI 数据出海传闻。只陈述事实，不预设法律定性。">
 <meta name="keywords" content="大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
-<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="1">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
 <link rel="canonical" href="https://javis.org.cn/news.html">
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
 <link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
 <link rel="icon" href="assets/favicon.png">
 <link rel="stylesheet" href="assets/site.css">
@@ -467,6 +471,23 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
 </head>
 <body>
 <header class="nav">
@@ -691,8 +712,8 @@
       <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
       <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
     </div>
-    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
-    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
     <div class="bottom">
       <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
       <div>邮箱 info@javis.org.cn</div>
