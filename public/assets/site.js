@@ -210,9 +210,9 @@
     var v = q('video', film), dots = q('#filmDots'), playBtn = q('.play', film);
     if (!v) return;
     var BASE = 'assets/videos/';
-    var LAND = ['v6.mp4', 'v1.mp4', 'v2.mp4', 'v3.mp4', 'v4.mp4', 'v5.mp4'];
-    var PORT = ['v6_p.mp4', 'v1_p.mp4', 'v2_p.mp4', 'v3_p.mp4', 'v4_p.mp4', 'v5_p.mp4'];
-    var i = 0, mode = null, timer = null;
+    var LAND = ['hero128.mp4'];   // 2026-10-24：站内只保留这一支品牌片（2:08，带音轨）
+    var PORT = ['hero128.mp4'];
+    var i = 0, mode = null, timer = null, soundOn = false;
     var pre = document.createElement('video');
     pre.muted = true; pre.preload = 'auto'; pre.setAttribute('playsinline', '');
     pre.style.cssText = 'position:absolute;top:0;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none';
@@ -232,6 +232,7 @@
     function buildDots() {
       if (!dots) return;
       dots.innerHTML = '';
+      if (LAND.length < 2) { dots.style.display = 'none'; return; }   // 单支片不出圆点
       for (var k = 0; k < LAND.length; k++) {
         var b = document.createElement('button');
         b.type = 'button'; b.setAttribute('role', 'tab');
@@ -241,7 +242,9 @@
       }
     }
     function primeNext() {
-      var l = list(); pre.src = BASE + l[(i + 1) % l.length];
+      var l = list();
+      if (l.length < 2) return;                       // 单支片无需预载下一支（省流量）
+      pre.src = BASE + l[(i + 1) % l.length];
       try { pre.load(); } catch (e) { }
     }
     function play(idx, doPlay) {
@@ -249,7 +252,7 @@
       i = ((idx % n) + n) % n;
       var name = l[i];
       v.poster = posterOf(name);
-      v.muted = true; v.setAttribute('playsinline', '');
+      v.muted = !soundOn; v.setAttribute('playsinline', '');
       v.src = BASE + name;
       try { v.load(); } catch (e) { }
       if (doPlay !== false) { var p = v.play(); if (p && p.catch) p.catch(function () { film.classList.add('needs-tap'); }); }
@@ -257,9 +260,28 @@
       clearTimeout(timer);
       if (doPlay !== false) timer = setTimeout(primeNext, 3000);
     }
-    v.addEventListener('ended', function () { play(i + 1); });
+    /* 声音开关：浏览器只允许静音自动播放，点一下才出声 */
+    var snd = document.createElement('button');
+    snd.className = 'snd'; snd.type = 'button'; snd.setAttribute('aria-label', '开启声音');
+    snd.innerHTML = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">' +
+      '<path class="spk" d="M4 9.2v5.6h3.5L12.8 19V5L7.5 9.2H4z"/>' +
+      '<path class="wv" d="M16.1 8.6a4.9 4.9 0 0 1 0 6.8"/>' +
+      '<path class="wv" d="M18.6 6.2a8.4 8.4 0 0 1 0 11.6"/></svg>';
+    film.appendChild(snd);
+    snd.addEventListener('click', function () {
+      soundOn = !soundOn;
+      v.muted = !soundOn;
+      snd.classList.toggle('on', soundOn);
+      snd.setAttribute('aria-label', soundOn ? '关闭声音' : '开启声音');
+      if (soundOn && v.paused) { var pp = v.play(); if (pp && pp.catch) pp.catch(function () { }); }
+    });
+    v.addEventListener('ended', function () {
+      if (list().length > 1) { play(i + 1); return; }  // 多支=轮播
+      v.currentTime = 0;                               // 单支=循环
+      var p = v.play(); if (p && p.catch) p.catch(function () { });
+    });
     if (playBtn) playBtn.addEventListener('click', function () {
-      film.classList.remove('needs-tap'); v.muted = true;
+      film.classList.remove('needs-tap'); v.muted = !soundOn;
       if (!film.dataset.started) { film.dataset.started = '1'; play(0, true); return; }
       var p = v.play(); if (p && p.catch) p.catch(function () { });
       primeNext();
@@ -277,7 +299,11 @@
       else if (v.paused && !film.classList.contains('needs-tap')) v.play().catch(function () { });
     });
     mode = isPortrait();
-    window.addEventListener('resize', function () { var m = isPortrait(); if (m !== mode) { mode = m; play(0); } });
+    window.addEventListener('resize', function () {
+      var m = isPortrait(); if (m === mode) return; mode = m;
+      var cur = (v.currentSrc || v.src || '').split('/').pop();
+      if (cur && list()[i] !== cur) play(i);   // 只有横/竖片不同才重载，别让旋转重启整片
+    });
     document.body.appendChild(pre);
     buildDots();
     var autoPlay = !saveData() && !calmMotion();
