@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:38 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:42 +0000</lastBuildDate>
+    <item>
+      <title>300 万张、350 亿美元：中国三大厂把「降规卡」买成了紧俏货</title>
+      <link>https://javis.org.cn/news-2026-10-23-rtx-pro-5500-3m-orders.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-rtx-pro-5500-3m-orders.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力供给 · 芯片</category>
+      <description>路透报道字节、阿里、腾讯合计订购逾 300 万张 RTX PRO 5500，总值超 350 亿美元，但英伟达不保证全数交付：中国订单总量超 600 万张，2027 年全球产能最多约 300 万张，部分伙伴或只能拿到 5%–10%。</description>
+    </item>
     <item>
       <title>昇腾 950DT 万卡池落地、国产卡份额 77%：国产算力从「买到」转向「整合」</title>
       <link>https://javis.org.cn/news-2026-10-23-ascend-950-10k-cluster.html</link>
