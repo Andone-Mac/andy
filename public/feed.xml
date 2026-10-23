@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:32 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:35 +0000</lastBuildDate>
+    <item>
+      <title>「近乎垄断到几乎为零」：英伟达在中国的份额去哪了</title>
+      <link>https://javis.org.cn/news-2026-10-23-nvidia-china-share-zero.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-nvidia-china-share-zero.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>产业格局 · 国产替代</category>
+      <description>黄仁勋称出口限制已让英伟达在中国 AI 数据中心芯片市场的占有率从近乎垄断降至几乎为零；同期中国三大厂订购逾 300 万张仍可合法供货的 RTX PRO 5500，IDC 数据显示国产加速卡份额已达 77%。份额没有消失，是换了持有人。</description>
+    </item>
     <item>
       <title>智谱开源 GLM-Legal：法律垂类模型第一次在公开榜排到开放权重第一</title>
       <link>https://javis.org.cn/news-2026-10-23-glm-legal-open-weights.html</link>
