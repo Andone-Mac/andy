@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="自有设备自测记录：i7-14700F + 单张 RX 7900 XTX 24 GB、125.6 GiB 内存，把 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，MoE）跑到 262,144 上下文，1k→256k 解码稳定 62–76 tok/s；MMLU-Pro 200 题 56.5%–63.5%、GSM8K 40 题 97.5%–100%、MATH-500 30 题 76.7%，15 项真实工具任务 15/15；27B Dense 短提示更快但 60k 掉到 51.1 tok/s。含 MTP +82%、Mesa 26.2.5 预填 +36% 与两条诚实边界。">
+<meta name="keywords" content="私有化部署,大模型私有化部署,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,保密法物理隔离,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="format-detection" content="telephone=no,email=no">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html">
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="自有设备自测记录：i7-14700F + 单张 RX 7900 XTX 24 GB、125.6 GiB 内存，把 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，MoE）跑到 262,144 上下文，1k→256k 解码稳定 62–76 tok/s；MMLU-Pro 200 题 56.5%–63.5%、GSM8K 40 题 97.5%–100%、MATH-500 30 题 76.7%，15 项真实工具任务 15/15；27B Dense 短提示更快但 60k 掉到 51.1 tok/s。含 MTP +82%、Mesa 26.2.5 预填 +36% 与两条诚实边界。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="自有设备自测记录：i7-14700F + 单张 RX 7900 XTX 24 GB、125.6 GiB 内存，把 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，MoE）跑到 262,144 上下文，1k→256k 解码稳定 62–76 tok/s；MMLU-Pro 200 题 56.5%–63.5%、GSM8K 40 题 97.5%–100%、MATH-500 30 题 76.7%，15 项真实工具任务 15/15；27B Dense 短提示更快但 60k 掉到 51.1 tok/s。含 MTP +82%、Mesa 26.2.5 预填 +36% 与两条诚实边界。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过",
+      "description": "自有设备自测记录：i7-14700F + 单张 RX 7900 XTX 24 GB、125.6 GiB 内存，把 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，MoE）跑到 262,144 上下文，1k→256k 解码稳定 62–76 tok/s；MMLU-Pro 200 题 56.5%–63.5%、GSM8K 40 题 97.5%–100%、MATH-500 30 题 76.7%，15 项真实工具任务 15/15；27B Dense 短提示更快但 60k 掉到 51.1 tok/s。含 MTP +82%、Mesa 26.2.5 预填 +36% 与两条诚实边界。",
+      "datePublished": "2026-10-23",
+      "dateModified": "2026-10-23",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过",
+          "item": "https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与方案<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与方案总览</a>
+          <a href="case-real.html">真实案例 · 实用功能窥见</a>
+          <a href="product.html#tiers">机悟·政企超脑 Lite / Pro / Enterprise</a>
+          <a href="product.html#assessment">AI 内网体检（入口）</a>
+          <a href="product.html#demo">远程接入演示（脱敏数据）</a>
+          <a href="product.html#path">交付路径与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">企业（国企 / 制造 / 科研 / 专业机构）</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 66 条）</a>
+          <a href="news-2026-10-23-local-model-field-data-flash-next.html">24GB 卡跑 256K 实测</a>
+          <a href="news-2026-10-22-gov-ai-procurement-two-tracks.html">政务 AI 采购两条路</a>
+          <a href="news-2026-10-22-memory-gpu-price-local-cost.html">内存与显卡年内暴涨</a>
+          <a href="news-2026-10-22-vllm-humming-quant-kernels.html">vLLM 开源 Humming 内核</a>
+          <a href="news-2026-10-22-weaxor-ransomware-genai-registration.html">Weaxor 勒索与 AI 登记</a>
+          <a href="news-2026-10-22-iflytek-spark-x26-legal-local.html">星火 X2.6 与晓法本地化</a>
+          <a href="news-2026-10-20-deepseek-deepinfer-open-source.html">DeepSeek 开源 DeepInfer</a>
+          <a href="news-2026-10-20-qwen-office-agile-private.html">千问办公敏捷版（私有化）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">免费部署评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-23</span><span class="n-tag" style="margin-left:8px">本地实测 · 模型选型</span>
+    <h1 class="art-h1">94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过</h1>
+    <p class="art-lede">这不是跑分网站的复述，是我们自己机器上的记录：一台 i7-14700F + 单张 RX 7900 XTX 24 GB 的消费级主机、125.6 GiB 内存，把 93.7 GB 的 Qwen3.8-Flash-Next（MoE，UD-IQ4_XS）跑到了 262,144 上下文。从 1k 到 256k，解码速度稳定在 62–76 tok/s；MMLU-Pro 200 题、GSM8K 40 题、MATH-500 30 题与 15 项真实工具任务，一并做了对照。同一批数字还包含我们此前在 32 GB R9700 机器、双卡（XTX + 3090）配置上留下的记录。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">先把机器和模型摆出来，省得对不上号</h3>
+      <p><b>机器</b>：i7-14700F（20C/28T）、125.6 GiB 内存、单张 RX 7900 XTX <b>24 GB</b>（gfx1100，PCIe Gen4 x16）、UOS 25、私有 Mesa 26.2.5 RADV（只给推理用，桌面 GL 不动）。</p>
+      <p><b>两个主角</b>：一个是 Qwen3.8-Flash-Next 的 unsloth UD-IQ4_XS 权重，三个分片合计 <b>93.7 GB</b>，靠 Strata 引擎做「显存 + 内存 + SSD」三层分层，专家缓存命中 78%–85%；另一个是 Qwen3.8-27B 的 UD-Q4_K_XL，<b>17.56 GB</b>，用 llama.cpp Vulkan 全量常驻显存。一个 94 GB、一个 17.6 GB，放在同一张 24 GB 卡上比对。</p>
+
+      <h3 class="art-h2">256K 上下文不掉速，这是「最稳」的硬指标</h3>
+      <p>短提示速度好看不难，难的是上下文拉长以后还能不能站住。Flash-Next UD-IQ4_XS 在 262K 配置下的实测：</p>
+      <ul class="art-tl">
+        <li><b>解码</b>1k 63.6 · 4k 75.7 · 16k 64.4 · 32k 65.3 · 64k 65.7 · 128k 62.2 · <b>256k 62.3 tok/s</b></li>
+        <li><b>预填</b>526 → 908 → 1,249（16k）→ 1,243 → 1,242 → 1,047（128k）→ 1,113 tok/s（256k）</li>
+        <li><b>一次性喂 10 万 token</b>：提示 100,378 tokens，首 token 82.9 秒，预填 1,211 tok/s，随后解码 47.3 tok/s，显存占用 24,012 / 24,560 MiB</li>
+      </ul>
+      <p>作为对照，27B Dense 在短提示上更快（1k 68.7 tok/s，4k 70.9），但上下文一过 32k 就开始掉：32k 62.0、60k 只剩 51.1；而且 128k 要关掉视觉才能跑，182k 直接因视觉编码 OOM 弃用。<b>要长上下文又要速度，24 GB 卡上目前站得稳的是 Flash-Next 这条路子。</b></p>
+
+      <h3 class="art-h2">能力没有缩水：客观题打平，真实任务全过</h3>
+      <p>同机、同模板、seed=42 的客观题（括号内为样本量）：</p>
+      <ul class="art-tl">
+        <li><b>MMLU-Pro（200 题）</b>Flash-Next unc Q4_K_M <b>63.5%</b>、27B Q4_K_XL <b>60.5%</b>、Flash-Next 基线 60.0%、q4km-int8 59.5%、最终优化版 56.5%</li>
+        <li><b>GSM8K（40 题）</b>Flash-Next q4km-int8 / unc <b>100%</b>、优化版 97.5%、27B 95.0%（2 题截断，除截断为 100%）</li>
+        <li><b>MATH-500（30 题）</b>Flash-Next q4km-int8 与优化版均 <b>76.7%</b>、27B 70.0%（重试 73.3%）</li>
+        <li><b>Hermes 真实工具任务 15 项</b>（基础 5 + hard 7 + x 3，全部在真实沙箱执行、程序判分）：Flash-Next <b>15/15</b>、总耗时 669.7 秒；27B <b>15/15</b>、674.4 秒</li>
+      </ul>
+      <p>结论很清楚：<b>小得多的 MoE 模型在能力上没输</b>，MMLU-Pro 的 unc 档还领先 3 个百分点；两者在真实工具任务上都是满分，总耗时几乎一样。差别全部落在「上下文天花板」和「掉不掉速」上。</p>
+
+      <h3 class="art-h2">三个加速杠杆，加起来才是这个数字</h3>
+      <ul class="art-tl">
+        <li><b>MTP 自投机</b>27B 在 XTX Vulkan 上从 34.8 → <b>63.7 tok/s（+82%）</b>；3090 CUDA 从 37.4 → 52.3 → <b>60.0（+64%）</b>；服务端 n-max=2 也有 +45%~53%，n=3 没有额外收益。</li>
+        <li><b>RADV Mesa 26.2.5</b>预填 pp512 从 687.4 → <b>933.6（+36%）</b>，pp128 +38%，解码 +1.7%；代价只是 llama.cpp 单独用新 ICD，桌面不受影响。</li>
+        <li><b>KV 量化 + 分层缓存</b>k8v4 的 KV 量化 + 90 GiB 专家常驻预算 + PCIe 0.35 分流，让 93.7 GB 权重在 24 GB 卡上有了「上下文能到 256K、速度还不塌」的可能。</li>
+      </ul>
+
+      <h3 class="art-h2">也要说清两条边界，不然就是吹牛</h3>
+      <p>第一，<b>短提示速度 ≠ 干活速度</b>。同一个模型跑长上下文 agent 任务（读 66,323 token 的文件、连续工具调用）时，真实生成速度是 <b>12–31 tok/s</b>，不是 62。对外引用必须区分这两套口径。</p>
+      <p>第二，<b>「稳」的反面案例我们也留了记录</b>：RADV 在 GTT 占用变高时会静默回退到系统内存——同一份参数，桌面多占 0.8–0.9 GiB 后，服务从 58.9 tok/s 掉到 <b>12.5 tok/s</b>，还不报错。判别方法是看 `mem_info_gtt_used` 是否超过 1.5 GiB、pp 与 decode 是否同时掉一半，重启服务即可恢复。这类坑不写出来，用户就会以为是模型不行。</p>
+      <p>第三，<b>不同机器不可混用</b>。此前在 32 GB R9700 机器上跑 daxing 37 题验收集：三个模型都是 37/37 全过，但 Mixture-of-Experts 的 Qwen3.6-35B-A3B 平均 13 秒、解码约 82 tok/s，明显快过 27B 的 30 秒；那是 8 月的 32 GB 卡和 Ollama 口径，和现在 24 GB 卡 + Strata 的数字不是一条线。</p>
+
+      <div class="kv-box">
+        <h3>机悟的建议：想在自己机器上复跑，按这五步来</h3>
+        <p class="kv-sub">不要相信任何一页纸，包括这一页。复跑只需要五步：</p>
+        <ul>
+          <li><b>固定变量</b>同一台机器、同一份权重、同一套提示词，一次只换一个参数（引擎、量化、上下文），否则数字没法归因。</li>
+          <li><b>测三档上下文</b>1k / 32k / 目标上限各跑一遍，看的是「随上下文衰减曲线」，不是单点峰值。</li>
+          <li><b>跑真实任务</b>拿自己业务里的 20–50 个真任务，让模型在沙箱里真的写文件、跑命令、核对结果，程序判分。</li>
+          <li><b>查 GTT 与显存</b>推理前后各看一次 `mem_info_gtt_used` 与显存占用，排除「静默回退系统内存」这类假故障。</li>
+          <li><b>记口径</b>每个数字都带上机型、引擎版本、量化、上下文与提示长度——没有口径的速度，等于没有速度。</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来源：本机 benchmark 结果与运行日志（Qwen3.8-Flash-Next UD-IQ4_XS / unc Q4_K_M、Qwen3.8-27B UD-Q4_K_XL，Strata 0.1.47 与 llama.cpp fcac190，2026-10-21 ~ 10-23）、Qwen38-27B 单卡优化报告（2026-10-14）、Mesa 26.2.5 RADV 升级报告（2026-10-18）、双卡 GPU 优化报告（2026-09-19）、32 GB R9700 机型上的 daxing 37 题验收集（2026-08-31）。所有数字均为自有设备自测记录，不同机器、引擎、量化与上下文口径互不可替代；换硬件与负载后表现会变，请以自有环境复测为准。本文仅陈述自测数据与公开技术口径，不评判任何企业与产品，不构成投资建议。</p>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="art-pager-sec">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-22-gov-ai-procurement-two-tracks.html" title="一边是 1399 万的整包，一边是月租一两百元的席位：政务 AI 采购已经分成两条路">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">政务 AI 采购两条路</span>
+        <span class="pg-d">2026-10-22</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 66 条）→</a></p>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>你的机器能跑多大、跑多快？一次评估给出你自己的数字</h2>
+      <p>40 分钟免费部署评估：清点现有设备、按你的业务量算显存与上下文、给出「能跑什么 / 多快 / 多少钱」的对照表，并把复测脚本留给你。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">申请 40 分钟免费部署评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与方案</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="免费部署评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">申请 40 分钟免费部署评估</h3>
+      <p class="lw-sub">现有设备能跑什么、缺什么、多少钱、多久能用——提交后 1 个工作日内联系您；也可以直接加下方官方微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" data-api-fallback="https://javis-api.wanyejiang2018.workers.dev/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟官方微信二维码">
+          <div><b>不想等？直接加官方微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加官方微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟官方微信二维码">
+        <p><span class="go">加官方微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟官方微信二维码（放大）">
+  <div class="z-tip">机悟官方微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js"></script>
+</body>
+</html>

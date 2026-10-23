@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 22 Oct 2026 05:43:14 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 00:11:20 +0000</lastBuildDate>
+    <item>
+      <title>94 GB 的模型塞进 24 GB 消费显卡：Qwen3.8-Flash-Next 跑满 256K 上下文，15 项真实任务全过</title>
+      <link>https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-local-model-field-data-flash-next.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 模型选型</category>
+      <description>自有设备自测记录：i7-14700F + 单张 RX 7900 XTX 24 GB、125.6 GiB 内存，把 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，MoE）跑到 262,144 上下文，1k→256k 解码稳定 62–76 tok/s；MMLU-Pro 200 题 56.5%–63.5%、GSM8K 40 题 97.5%–100%、MATH-500 30 题 76.7%，15 项真实工具任务 15/15；27B Dense 短提示更快但 60k 掉到 51.1 tok/s。含 MTP +82%、Mesa 26.2.5 预填 +36% 与两条诚实边界。</description>
+    </item>
     <item>
       <title>一边是 1399 万的整包，一边是月租一两百元的席位：政务 AI 采购已经分成两条路</title>
       <link>https://javis.org.cn/news-2026-10-22-gov-ai-procurement-two-tracks.html</link>
