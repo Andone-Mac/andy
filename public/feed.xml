@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:20 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:23 +0000</lastBuildDate>
+    <item>
+      <title>24 秒预热视频：Kimi K3.1 要来了，1M 上下文还只是传闻</title>
+      <link>https://javis.org.cn/news-2026-10-23-kimi-k31-teaser.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-kimi-k31-teaser.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>模型发布 · 预告</category>
+      <description>10 月 23 日 Kimi 官方账号发布 24 秒预热视频，画面中 Kimi Code 的模型栏显示 Model：Kimi K3.1。截至发稿，月之暗面尚未公布发布日期、参数规模与定价；1M 上下文与多智能体协作标记均未获官方确认。</description>
+    </item>
     <item>
       <title>投完宇树投「大脑」：DeepSeek 拟投 Winverse AI，估值约 4 亿美元</title>
       <link>https://javis.org.cn/news-2026-10-23-deepseek-winverse-ai.html</link>
