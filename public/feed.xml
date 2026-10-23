@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:29 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:32 +0000</lastBuildDate>
+    <item>
+      <title>智谱开源 GLM-Legal：法律垂类模型第一次在公开榜排到开放权重第一</title>
+      <link>https://javis.org.cn/news-2026-10-23-glm-legal-open-weights.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-glm-legal-open-weights.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>垂类模型 · 开源</category>
+      <description>智谱 10 月 12 日发布并开源法律垂类模型 GLM-Legal，Vals AI 测评显示其在 Harvey's Legal Agent Benchmark 与 LegalBench 的开放权重模型榜位列第一，任务全通过率 19.2%、准确率 86.23%。</description>
+    </item>
     <item>
       <title>195 款大模型「持证上路」：广东三年备案量增长 23 倍，释放了什么信号</title>
       <link>https://javis.org.cn/news-2026-10-23-guangdong-195-llm-filings.html</link>
