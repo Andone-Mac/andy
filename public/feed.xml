@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 23 Oct 2026 18:09:35 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 18:09:38 +0000</lastBuildDate>
+    <item>
+      <title>昇腾 950DT 万卡池落地、国产卡份额 77%：国产算力从「买到」转向「整合」</title>
+      <link>https://javis.org.cn/news-2026-10-23-ascend-950-10k-cluster.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-23-ascend-950-10k-cluster.html</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 集群</category>
+      <description>昇腾 950DT 万卡池已在中国电信内蒙古基地落地，中国移动千卡超节点在北京部署，华为云灵衢智算集群 9 月 30 日商用；IDC 数据显示 2026 年上半年国产 AI 加速卡份额合计 77%，华为以 28% 居首。</description>
+    </item>
     <item>
       <title>「近乎垄断到几乎为零」：英伟达在中国的份额去哪了</title>
       <link>https://javis.org.cn/news-2026-10-23-nvidia-china-share-zero.html</link>
