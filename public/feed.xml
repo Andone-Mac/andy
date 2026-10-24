@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 01:51:12 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 04:47:40 +0000</lastBuildDate>
+    <item>
+      <title>24 GB 的卡跑起来就像在线模型：10M-token 输入里，84.1% 不用重算</title>
+      <link>https://javis.org.cn/news-2026-10-24-flash-next-agent-load.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-24-flash-next-agent-load.html</guid>
+      <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 智能体负载</category>
+      <description>本机连续跑长会话智能体任务的记录：154 条请求、输入 10,045,954 词元、写出仅 245,389——每 42 个字里 41 个是读，其中 84.1% 不用重算。Flash-Next（MoE，Q5_K_M 134.1 GB）真实负载解码中位 8K–16K 45.5、64K–96K 43.5 tok/s；Qwen3.8-27B（Dense）短任务 1k 68.7 更快，但 60k 掉到 51.1、开思考 + 1536 预算时 64 题套卷 21 题截断、一条题 124 秒才吐完——词元在吐，任务没挪。机型、引擎、量化与口径全部标在格内，三套口径互不换算。</description>
+    </item>
     <item>
       <title>428B 开源、1M 上下文：MiniMax M3.1 Flash 把「大而快」摆上了货架</title>
       <link>https://javis.org.cn/news-2026-10-23-minimax-m31-flash-open-weights.html</link>
