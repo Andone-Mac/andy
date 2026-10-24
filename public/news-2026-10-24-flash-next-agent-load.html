@@ -178,7 +178,7 @@
   </div>
 </header>
 <section class="art-head" id="top">
-  <div class="wrap art-wrap">
+  <div class="wrap art-wrap art-wide">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
     <span class="n-date">2026-10-24</span><span class="n-tag" style="margin-left:8px">本地实测 · 智能体负载</span>
     <h1 class="art-h1">24 GB 的卡跑起来就像在线模型：10M-token 输入里，84.1% 不用重算</h1>
@@ -187,7 +187,7 @@
 </section>
 
 <section class="art-sec">
-  <div class="wrap art-wrap">
+  <div class="wrap art-wrap art-wide">
     <div class="art-body">
       <h3 class="art-h2">一、长线任务长什么样：写 1 个字之前，先读 41 个字</h3>
       <p>智能体干活的时候，词元的大头是「读」，不是「写」。本机一次真实使用记录（2026-10-23，连续会话 3 小时 44 分，Qwen3.8-Flash-Next 的 Q5_K_M 档，Strata 0.1.47/HIP 引擎）：</p>
@@ -200,15 +200,16 @@
       <p>所以「干不干得动智能体任务」，不看单点解码峰值，看的是三件事：读进去的东西要重算多少、吐出来的字有多少算数、天花板顶不顶得住。</p>
 
       <h3 class="art-h2">二、同一张卡，两种长会话命运</h3>
-      <p>下面这张表是全文的主表：五个维度，左列全部来自本机记录（档位与引擎在格内标死，口径互不换算）：</p>
-      <table class="art-table" style="margin-top:14px">
+      <p>下面这张表是全文的主表：五个维度，左右两列全部来自本机记录（档位与引擎在格内标死，口径互不换算）：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:13%"><col style="width:43.5%"><col style="width:43.5%"></colgroup>
         <thead><tr><th>维度</th><th>Qwen3.8-Flash-Next（MoE）</th><th>Qwen3.8-27B（Dense）</th></tr></thead>
         <tbody>
-          <tr><td><b>速度与上下文</b></td><td>真实负载中位：8K–16K <b>45.5</b> → 64K–96K <b>43.5</b> tok/s（Q5_K_M，134.1 GB，几乎不衰减）<small>定长扫描另一条线：1k 63.6 → 256k 62.3（UD-IQ4_XS）</small></td><td>1k <b>68.7</b> → 60k <b>51.1</b> tok/s（UD-Q4_K_XL，17.6 GB）——短程更快，长程掉档</td></tr>
-          <tr><td><b>会话天花板</b></td><td>单条请求 97,706 词元不 OOM；权重比内存还大，靠 69.04 GiB 常驻 + SSD 兜底扛住</td><td>128K 必须关掉视觉才能跑；182K 视觉编码直接 OOM（显存余量只剩 0.04 GB）</td></tr>
-          <tr><td><b>吐出去的字去哪了</b></td><td>MTP 草稿接受 81.9%；客观题 GSM8K（40 题）<b>100%</b>（unc Q4_K_M 档）</td><td>开思考 + 1536 词元预算时，64 题套卷 <b>21 题没写完就被截断</b>——字吐满了，答案是空的；一条题 <b>124 秒</b>才吐完；GSM8K 95.0%（2 题截断所致，除截断 100%）</td></tr>
-          <tr><td><b>「一问一答」任务</b></td><td>15/15 · 669.7 s</td><td>15/15 · 674.4 s——都过，这就是「仅够能用」的来源：短任务够用，察觉不出差别</td></tr>
-          <tr><td><b>前缀命中</b></td><td><b>84.1%</b>（真实会话）</td><td>本批未测这一口径，不编数</td></tr>
+          <tr><td><b>速度与上下文</b></td><td><b>8K–16K 45.5 · 64K–96K 43.5</b><br>真实负载中位 tok/s（Q5_K_M，134.1 GB）<br>几乎不衰减<small>定长扫描另一条线，不与此连线：<br>1k 63.6 → 256k 62.3（UD-IQ4_XS）</small></td><td><b>1k 68.7 → 60k 51.1</b><br>tok/s（UD-Q4_K_XL，17.6 GB）<br>短程更快，长程掉档</td></tr>
+          <tr><td><b>会话天花板</b></td><td>单条请求 <b>97,706</b> 词元，没有 OOM<br>权重比内存还大，靠分层扛住<small>69.04 GiB 常驻 + SSD 兜底</small></td><td>128K 必须关掉视觉才能跑<br>182K 视觉编码直接 OOM<small>显存余量只剩 0.04 GB</small></td></tr>
+          <tr><td><b>吐出去的字去哪了</b></td><td>MTP 草稿接受 <b>81.9%</b>，吐出的字一步到位<br>GSM8K（40 题）<b>100%</b><small>客观题口径，unc Q4_K_M 档</small></td><td>开思考 + 1536 词元预算，64 题套卷<br><b>21 题没写完就被截断</b>——字吐满了，答案是空的<br>一条题 <b>124 秒</b>才吐完<small>GSM8K 95.0%（2 题截断所致，除截断 100%）</small></td></tr>
+          <tr><td><b>「一问一答」任务</b></td><td>15/15<br>669.7 s</td><td>15/15<br>674.4 s<small>都过——这就是「仅够能用」的来源：<br>短任务够用，察觉不出差别</small></td></tr>
+          <tr><td><b>前缀命中</b></td><td><b>84.1%</b><br>真实会话数字</td><td>本批未测这一口径，不编数</td></tr>
         </tbody>
       </table>
       <p>五行连起来读：<b>27B 不是输在「慢」，是输在「会话一长」</b>——短程它反而更快；Flash-Next 赢的也不是吐字速度（43.5 对 51.1 反而更低），而是「读进去的不白读、吐出来的不白吐」。</p>
