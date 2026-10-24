@@ -44,6 +44,13 @@ h3{color:var(--navy);font-size:1.05rem}
 
 /* ---------- 导航 ---------- */
 header.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+/* 首页：导航透明覆盖在首屏视频上，视频延伸到最顶部 */
+header.nav.on-film{background:linear-gradient(180deg,rgba(4,10,24,.82) 0%,rgba(4,10,24,.42) 55%,rgba(4,10,24,0) 100%);border-bottom-color:transparent;transition:background .25s ease,border-color .25s ease,backdrop-filter .25s ease}
+header.nav.on-film.solid{background:rgba(4,10,24,.94);border-bottom-color:rgba(255,255,255,.12);backdrop-filter:blur(10px)}
+header.nav.on-film nav.links a{color:rgba(255,255,255,.9)}
+header.nav.on-film nav.links a:hover,header.nav.on-film nav.links a.active{color:#fff;border-bottom-color:var(--gold)}
+header.nav.on-film .nav-cta{background:#fff;border-color:#fff;color:var(--navy)}
+header.nav.on-film .menu-toggle{color:#fff;border-color:rgba(255,255,255,.45)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
 .brand img{height:44px;width:auto;display:block}
 nav.links{display:flex;gap:20px;align-items:center;flex:1;justify-content:space-evenly}

@@ -1,9 +1,18 @@
-/* 机悟·政企超脑 官网 v6 共用脚本（单一来源，全站引用）
-   包含：自建访问统计 / 移动端菜单 / 首屏影片轮播 / 二维码放大 / 留资表单（弹窗 + 内联） / 资料下载列表渲染
+/* 机悟·政企超脑 官网 v7 共用脚本（单一来源，全站引用）
+   包含：首页导航透明/滚动实心 / 自建访问统计 / 移动端菜单 / 首屏影片轮播 / 二维码放大 / 留资表单（弹窗 + 内联） / 资料下载列表渲染
    无任何外部依赖、无第三方埋点。 */
 (function () {
   'use strict';
   var q = function (s, r) { return (r || document).querySelector(s); };
+
+  /* ================= 首页：导航覆盖视频，滚动后变实心 ================= */
+  (function () {
+    var h = q('header.nav.on-film');
+    if (!h) return;
+    function sync() { h.classList.toggle('solid', window.scrollY > 70); }
+    sync();
+    addEventListener('scroll', sync, { passive: true });
+  })();
 
   /* ================= http→https / www→根域 归一（OSS 静态托管无服务端跳转，客户端兜底） ================= */
   (function () {
@@ -179,7 +188,7 @@
      新增文件：把文件放进 assets/downloads/ 后，在下面 DL 数组加一行。 */
   /* DL-LIST-START */
   var DL = [
-    { t: "JAVIS 客户宣传册 · 创业期 v2", d: "让 AI 真正干活 · 两条主线 · 三组产品 · 某院真实案例 · 先 POC", f: "机悟·甲维思 JAVIS宣传册_v2.pdf", s: "1.4 MB", date: "2026-10" }
+    { t: "机悟·甲维思 JAVIS 宣传册", d: "让 AI 真正干活 · 两条主线 · 三组产品 · 某院真实案例 · 先 POC", f: "机悟·甲维思 JAVIS宣传册.pdf", s: "1.4 MB", date: "2026-10" }
   ];
   /* DL-LIST-END */
   (function () {
