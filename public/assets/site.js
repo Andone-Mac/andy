@@ -220,7 +220,7 @@
     if (!v) return;
     var BASE = 'assets/videos/';
     var LAND = ['hero126_1080p.mp4'];   // 2026-10-24：站内只保留这一支品牌片（2:06，V2 母版 1920×1080 全画幅，带音轨）
-    var PORT = ['hero126_1080p.mp4'];
+    var PORT = ['hero126_p.mp4'];    // 竖版（1080×1920）：手机竖屏专用，原画 2.39 满宽 + 同帧模糊填充
     var i = 0, mode = null, timer = null, soundOn = false;
     var pre = document.createElement('video');
     pre.muted = true; pre.preload = 'auto'; pre.setAttribute('playsinline', '');
