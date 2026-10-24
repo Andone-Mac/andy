@@ -219,8 +219,8 @@
     var v = q('video', film), dots = q('#filmDots'), playBtn = q('.play', film);
     if (!v) return;
     var BASE = 'assets/videos/';
-    var LAND = ['hero126.mp4'];   // 2026-10-24：站内只保留这一支品牌片（2:06，V2 版，带音轨）
-    var PORT = ['hero126.mp4'];
+    var LAND = ['hero126_1080p.mp4'];   // 2026-10-24：站内只保留这一支品牌片（2:06，V2 母版 1920×1080 全画幅，带音轨）
+    var PORT = ['hero126_1080p.mp4'];
     var i = 0, mode = null, timer = null, soundOn = false;
     var pre = document.createElement('video');
     pre.muted = true; pre.preload = 'auto'; pre.setAttribute('playsinline', '');
