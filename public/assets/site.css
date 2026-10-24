@@ -75,7 +75,7 @@ nav.links a.active{color:var(--navy);font-weight:800;border-bottom-color:var(--c
 .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:6px;font-size:1.2rem;padding:4px 12px;color:var(--ink);cursor:pointer}
 
 /* ---------- 首屏影片 ---------- */
-.film{position:relative;width:100%;aspect-ratio:2.3881;height:auto;min-height:0;overflow:hidden;background:#04070f}
+.film{position:relative;width:100%;aspect-ratio:2.3881;height:auto;min-height:0;margin-top:74px;overflow:hidden;background:#04070f}  /* 74px = 固定导航高度，影片从导航下方开始，不重叠 */
 .film video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;background:#04070f}
 /* ---------- 内容保护：禁下载按钮 / 禁拖拽 / 禁长按存图 ---------- */
 video::-internal-media-controls-download-button{display:none}
