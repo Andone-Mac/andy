@@ -325,3 +325,35 @@
     }
   })();
 })();
+
+/* ================= 内容保护：禁另存/禁复制/禁拖拽（前端层，抬高抓取成本） ================= */
+(function () {
+  var isField = function (t) { return t && /^(INPUT|TEXTAREA|SELECT)$/.test(t.tagName || ''); };
+  document.addEventListener('contextmenu', function (e) {
+    if (isField(e.target)) return;
+    e.preventDefault();
+  });
+  document.addEventListener('copy', function (e) { if (!isField(e.target)) e.preventDefault(); });
+  document.addEventListener('cut', function (e) { if (!isField(e.target)) e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) {
+    var t = e.target;
+    if (t && /^(IMG|VIDEO|A)$/.test(t.tagName || '')) e.preventDefault();
+  });
+  var harden = function (v) {
+    try {
+      v.setAttribute('controlslist', 'nodownload noplaybackrate noremoteplayback');
+      v.setAttribute('disablepictureinpicture', '');
+      v.setAttribute('draggable', 'false');
+      v.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    } catch (err) { }
+  };
+  document.querySelectorAll('video').forEach(harden);
+  var mo = new MutationObserver(function (ms) {
+    ms.forEach(function (m) {
+      (m.addedNodes || []).forEach(function (n) {
+        if (n.tagName === 'VIDEO') harden(n);
+      });
+    });
+  });
+  try { mo.observe(document.documentElement, { childList: true, subtree: true }); } catch (err) { }
+})();
