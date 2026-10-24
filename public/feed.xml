@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 06:21:07 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 24 Oct 2026 07:10:38 +0000</lastBuildDate>
     <item>
       <title>24 GB 的卡跑起来就像在线模型：10M-token 输入里，84.1% 不用重算</title>
       <link>https://javis.org.cn/news-2026-10-24-flash-next-agent-load.html</link>

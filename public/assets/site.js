@@ -227,7 +227,7 @@
     pre.style.cssText = 'position:absolute;top:0;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none';
     function isPortrait() { return window.matchMedia('(max-width:767px) and (orientation: portrait)').matches; }
     function list() { return isPortrait() ? PORT : LAND; }
-    function posterOf(n) { return BASE + n.replace(/\.mp4$/, '_poster.jpg'); }
+    function posterOf(n) { return BASE + n.replace(/\.mp4$/, '_poster.jpg') + '?v=2'; }  // ?v=N 换封面内容时递增，绕开浏览器/边缘缓存
     function saveData() {
       try { var c = navigator.connection; if (c && c.saveData) return true; if (c && /(^|-)2g$/.test(c.effectiveType || '')) return true; } catch (e) { }
       return false;
