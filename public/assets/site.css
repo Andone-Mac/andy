@@ -51,6 +51,12 @@ header.nav.on-film nav.links a{color:rgba(255,255,255,.9)}
 header.nav.on-film nav.links a:hover,header.nav.on-film nav.links a.active{color:#fff;border-bottom-color:var(--gold)}
 header.nav.on-film .nav-cta{background:#fff;border-color:#fff;color:var(--navy)}
 header.nav.on-film .menu-toggle{color:#fff;border-color:rgba(255,255,255,.45)}
+/* 首页透明导航下，白色父级链接不能把白色文字带进白色下拉面板 */
+@media (min-width:901px){
+  header.nav.on-film nav.links .nav-sub a{color:var(--ink-soft);border-bottom:none}
+  header.nav.on-film nav.links .nav-sub a:hover{background:#eef5fd;color:var(--navy)}
+}
+
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:16px}
 .brand img{height:44px;width:auto;display:block}
 nav.links{display:flex;gap:20px;align-items:center;flex:1;justify-content:space-evenly}
