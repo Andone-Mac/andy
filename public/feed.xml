@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 24 Oct 2026 10:26:22 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 11:34:25 +0000</lastBuildDate>
+    <item>
+      <title>一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发</title>
+      <link>https://javis.org.cn/news-2026-10-25-open-weights-week.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-25-open-weights-week.html</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 一周观察</category>
+      <description>2026 年 10 月最后一周的五个动作：腾讯 WeVisOne-VL 2B/4B 以 Apache-2.0 悄悄开源、NVIDIA Nemotron 3.5 Bolt E4B 4GB 与 Bolt 74B-A9B 24GB 补齐设备端与单卡档、MiniMax M3.1 Flash 428B 放开权重并附商用条款、智谱 1024 发 5 亿 token 周末券、GLM-5.4/5.5 只给了「1 万亿参数 + 全自训练」的路线图。七行一张表，按「规格—开放方式—机房门槛」对齐。</description>
+    </item>
     <item>
       <title>24 GB 的卡跑起来就像在线模型：10M-token 输入里，84.1% 不用重算</title>
       <link>https://javis.org.cn/news-2026-10-24-flash-next-agent-load.html</link>

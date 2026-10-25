@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026 年 10 月最后一周的五个动作：腾讯 WeVisOne-VL 2B/4B 以 Apache-2.0 悄悄开源、NVIDIA Nemotron 3.5 Bolt E4B 4GB 与 Bolt 74B-A9B 24GB 补齐设备端与单卡档、MiniMax M3.1 Flash 428B 放开权重并附商用条款、智谱 1024 发 5 亿 token 周末券、GLM-5.4/5.5 只给了「1 万亿参数 + 全自训练」的路线图。七行一张表，按「规格—开放方式—机房门槛」对齐。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-25-open-weights-week.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-25-open-weights-week.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-25-open-weights-week.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-25-open-weights-week.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.0.9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026 年 10 月最后一周的五个动作：腾讯 WeVisOne-VL 2B/4B 以 Apache-2.0 悄悄开源、NVIDIA Nemotron 3.5 Bolt E4B 4GB 与 Bolt 74B-A9B 24GB 补齐设备端与单卡档、MiniMax M3.1 Flash 428B 放开权重并附商用条款、智谱 1024 发 5 亿 token 周末券、GLM-5.4/5.5 只给了「1 万亿参数 + 全自训练」的路线图。七行一张表，按「规格—开放方式—机房门槛」对齐。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-25-open-weights-week.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026 年 10 月最后一周的五个动作：腾讯 WeVisOne-VL 2B/4B 以 Apache-2.0 悄悄开源、NVIDIA Nemotron 3.5 Bolt E4B 4GB 与 Bolt 74B-A9B 24GB 补齐设备端与单卡档、MiniMax M3.1 Flash 428B 放开权重并附商用条款、智谱 1024 发 5 亿 token 周末券、GLM-5.4/5.5 只给了「1 万亿参数 + 全自训练」的路线图。七行一张表，按「规格—开放方式—机房门槛」对齐。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发",
+      "description": "2026 年 10 月最后一周的五个动作：腾讯 WeVisOne-VL 2B/4B 以 Apache-2.0 悄悄开源、NVIDIA Nemotron 3.5 Bolt E4B 4GB 与 Bolt 74B-A9B 24GB 补齐设备端与单卡档、MiniMax M3.1 Flash 428B 放开权重并附商用条款、智谱 1024 发 5 亿 token 周末券、GLM-5.4/5.5 只给了「1 万亿参数 + 全自训练」的路线图。七行一张表，按「规格—开放方式—机房门槛」对齐。",
+      "datePublished": "2026-10-25",
+      "dateModified": "2026-10-25",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-25-open-weights-week.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发",
+          "item": "https://javis.org.cn/news-2026-10-25-open-weights-week.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 79 条）</a>
+          <a href="news-2026-10-25-open-weights-week.html">一周开放权重：4GB 到 1 万亿</a>
+          <a href="news-2026-10-24-flash-next-agent-load.html">Flash-Next 长会话任务实测</a>
+          <a href="news-2026-10-23-minimax-m31-flash-open-weights.html">MiniMax M3.1 Flash 开源</a>
+          <a href="news-2026-10-23-rtx-pro-5500-3m-orders.html">三大厂 300 万张 RTX PRO 5500</a>
+          <a href="news-2026-10-23-ascend-950-10k-cluster.html">昇腾 950DT 万卡池与 77% 份额</a>
+          <a href="news-2026-10-23-nvidia-china-share-zero.html">英伟达中国份额与国产卡接棒</a>
+          <a href="news-2026-10-23-glm-legal-open-weights.html">GLM-Legal 开源法律模型</a>
+          <a href="news-2026-10-23-guangdong-195-llm-filings.html">广东 195 款大模型备案</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap art-wide">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-25</span><span class="n-tag" style="margin-left:8px">开放权重 · 一周观察</span>
+    <h1 class="art-h1">一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发</h1>
+    <p class="art-lede">2026 年 10 月最后一周，开放权重同时往两头走：一头把模型压进 4 GB 显存的设备里，一头把参数目标抬到 1 万亿以上。腾讯微信视觉团队 10 月 22 日悄悄放出 2B/4B 的 WeVisOne-VL，NVIDIA 10 月 23 日补上 4 GB 的 Nemotron 3.5 Bolt E4B，MiniMax 把 428B 的 M3.1 Flash 权重挂上 Hugging Face，智谱则在 1024 程序员节发 5 亿 token 的周末券、同时把 GLM-5.4/5.5 说成「全自训练」的产品。下面按「规格—开放方式—落地门槛」逐条过一遍。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap art-wide">
+    <div class="art-body">
+      <h3 class="art-h2">一、先把这一周的五件事按时间摆齐</h3>
+      <ul class="art-tl">
+        <li><b>10 月 19 日</b>：MiniMax 发布 M3.1 Flash（API 先上线），官方同时认领了此前在 OpenCode 匿名霸榜的 Space Bunny 就是它的早期版本。</li>
+        <li><b>10 月 22 日</b>：腾讯 WeChat Vision 团队的 WeVisOne-VL 权重、论文（arXiv 2610.31329）与评测脚本同日上线，2B 与 4B 两个尺寸，Apache-2.0。没有发布会、没有新闻稿。</li>
+        <li><b>10 月 23 日</b>：MiniMax 开源 M3.1 Flash 权重（Hugging Face 与魔搭同步）；NVIDIA Nemotron 3.5 Bolt E4B 4GB 正式放出。</li>
+        <li><b>10 月 23 日 20:00 起</b>：智谱 ZCode 1024 程序员节礼包开始领取，5 亿 token，20 万份，可用窗口到 <b>10 月 26 日 09:00</b>。</li>
+        <li><b>10 月 23–24 日</b>：智谱创始人唐杰在成都 CNCC 演讲中把 GLM-5.4/5.5 定义为「全自训练」产品、参数 1 万亿以上；同期官方确认部分推理节点硬件异常导致输出质量下降，故障节点已下线，付费用户补 3 张重置卡。</li>
+      </ul>
+      <p>五件事里只有四件能下载到东西——这是本周最该记住的区别：<b>路线图、补贴券、开放权重，不是同一种「发布」</b>。</p>
+
+      <h3 class="art-h2">二、智谱：路线图往前一格，额度往后补一刀</h3>
+      <p>现役的 GLM-5.3 是 7400 多亿参数的 MoE、100 万 token 上下文；按 Hugging Face 仓库里 safetensors 元数据读出来的总参数量约 753B，约 40B 激活。它并非新基座——官方和第三方口径一致：基座沿用 GLM-5.2，提升全部来自后训练 Scaling。同门的 GLM-5.3-Flash 是另一条线：320B 总参 / 18B 激活、原生多模态、MIT 许可，第三方智力榜给到 57 分档。</p>
+      <ul class="art-tl">
+        <li><b>下一代怎么走</b>：唐杰在 10 月上旬的新加坡演讲与 10 月下旬成都 CNCC 的演讲里给了同一套说法——参数从 7400 多亿抬到 <b>至少 1 万亿</b>，预训练数据向数 T 级扩；后训练继续加码 SFT / RLHF / RLVR；攻坚方向是「更长更自主的智能体」与「模型自己训练自己」（RSI）。</li>
+        <li><b>RSI 到什么程度</b>：官方口径是 GLM-5.4/5.5 只落地阶段性成果，完全自主的自我迭代留给下一代 GLM-6。8 月 31 日财报电话会上点名的是 GLM-6.0，所以「5.4 还是 6.0」这个问题，厂商自己也没给唯一答案。</li>
+        <li><b>现在能确定什么</b>：截至本页发布，GLM-5.4/5.5 <b>没有权重、没有定价、没有时间表</b>，任何把它们写进选型清单的方案都是把传闻当交付。</li>
+      </ul>
+      <p>同一周里更实用的是两件「往后补」的事。一是 1024 礼包：<b>5 亿 token</b>（= 0.5B），可用于 GLM-5.3 与 GLM-5.3-Flash，20 万份先到先得，10 月 23 日 23:00 生效、<b>10 月 26 日 09:00 到期</b>，过期作废。社区截图显示礼包拆成 2 亿 GLM-5.3 + 3 亿 GLM-5.3-Flash，官方公告只写总额，没有逐项说明——这一点别当成「每款各送 5 亿」。二是降智事故的补偿：官方确认少数推理节点硬件异常、影响经过这些节点的会话，故障节点已全部下线；所有付费用户补 3 张重置卡（有效至 12 月 22 日），并预告「新模型发布后再补一次」——这句预告，被社区普遍读作 GLM-5.4/5.5 临近的信号。</p>
+
+      <h3 class="art-h2">三、MiniMax：428B 的开放权重，先看许可再看跑分</h3>
+      <ul class="art-tl">
+        <li><b>规格</b>：约 428B 总参、每 token 激活约 23B（MoE），文本 / 图像 / 视频输入，上下文最高 100 万 token；官方跑分为 BankerToolBench 76.2、DeepSWE v1.1 73.7%、OSWorld 2.0 61.7、CyberGym 82.2，均为自测。</li>
+        <li><b>用量</b>：官方称上线 72 小时内真实用户处理超过 <b>100 万亿 token</b>；相较 M3，线上推理速度提升近 3 倍、智能体任务综合成本降低 70%。</li>
+        <li><b>价格</b>：每百万 token 输入 1 元、输出 4 元、缓存读取 0.1 元（海外价 0.15 / 0.60 / 0.015 美元）。</li>
+        <li><b>许可</b>：权重按 MiniMax 社区许可发布——商用需向 MiniMax 报备，年营收超过 <b>2000 万美元</b>要取得书面许可。这一条比跑分更影响采购：私有化交付前先确认自己落在哪一档。</li>
+        <li><b>门槛</b>：官方没有公布权重体积；428B 参数即便按 8 bit 存放也在 400 GB 量级（估算，非官方数字），属于机房级资产，不是「一张消费卡就能跑」的那一类。</li>
+      </ul>
+
+      <h3 class="art-h2">四、NVIDIA：一头 120B 进服务器，一头 4GB 进设备</h3>
+      <p>Nemotron 3.5 这一批有三个尺寸，正好把「服务器—工作站—设备」三档填满：</p>
+      <ul class="art-tl">
+        <li><b>Super VL（120B / 12B 激活）</b>：文本、图像、文档、视频输入；混合 Mamba-Transformer 架构、C-RADIOv4 视觉编码器、多 token 预测（MTP）、NVFP4 量化。官方给出的部署目标很具体：1×GB10、B200、B300、RTX PRO 6000、H200、2×H100。厂商案例里，Scale AI 后训练版本做供应商信用处理，推理成本声称降 40 倍、延迟降 5 倍。</li>
+        <li><b>Bolt 74B-A9B 24GB</b>：从 Super VL 蒸馏而来，74B 总参 / 9B 激活，靠<b>原生 2 bit 量化</b>塞进 24 GB，与其它应用并行跑；支持 llama.cpp、Ollama、LM Studio、Unsloth、vLLM。NVIDIA 称它在 PinchBench 同级别开放模型里排第一、在 BrowseComp 的开放模型里排第二。</li>
+        <li><b>Bolt E4B 4GB（10 月 23 日）</b>：目标约 <b>4 GB</b> 显存，64k 上下文、35 种语言，主打语音助手、角色对话、车载与机器人界面；随包提供 DFlash 并行草稿器，官方称比原 MTP 草稿器吞吐最多高 21%。GGUF Q4_K_M 与 BF16 两个检查点都能下载。</li>
+      </ul>
+      <p>有个细节值得单独说：Bolt E4B 是<b>在 Gemma 4 E4B 上做后训练</b>，不是从零训的底座。开放权重生态里这类「拿别人的基座 + 自己的后训练与配方」会越来越多，对采购方的含义是：同一个参数量下，「谁训的、谁的配方、许可证从哪来」三件事得分开问。</p>
+
+      <h3 class="art-h2">五、腾讯：小尺寸视觉模型，卖的是「看得准、也敢说没有」</h3>
+      <p>WeVisOne-VL 走的是另一条路：不做通用对话，只做「看」。它基于 Qwen3-VL，把坐标与点编码成 <code>&lt;0&gt;…&lt;1000&gt;</code> 的结构化 token，每预测完一个框就吐出一个 <code>&lt;OBJ&gt;</code> token，其隐藏状态送进一个 <b>960 万参数</b>的像素解码器，直接产出实例掩码与全分辨率 alpha matte——中间不再调 SAM 之类的第二个模型。</p>
+      <ul class="art-tl">
+        <li><b>开放程度</b>：Apache-2.0，2B 与 4B 权重、论文、评测脚本一并放出，另有 Hugging Face 演示页。</li>
+        <li><b>官方自测（4B）</b>：LVIS 检测 F1 55.3、Dense200 密集检测 71.3、RefCOCOg 指代检测 81.8、计数 PixMo-Count 89.6、OCR TotalText 52.0；抠图 P3M-500-NP 平均绝对误差 7.3（对比 SAM2-Matting 15.4）。</li>
+        <li><b>拒答率被当成一等指标</b>：WeRef-Bench 拒答率 96.4、RefCOCOg 67.4。用白话讲就是——让它找「不存在的灭火器」，它更倾向于回答「没有」，而不是随手框个散热器交差。这类「自信地答错」正是视觉模型进生产最贵的故障。</li>
+        <li><b>边界</b>：目前只做单轮图像任务，不支持视频，也不输出思维链；所有分数均为作者自测，尚无独立复现，4B 仓库实际参数量约 4.8B，按 F32 存放，下载体积比「4B」这个名字暗示的大。</li>
+      </ul>
+
+      <h3 class="art-h2">六、一张表：五件事落到自家机房各要什么</h3>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:24%"><col style="width:28%"><col style="width:22%"><col style="width:26%"></colgroup>
+        <thead><tr><th>发布方 / 模型</th><th>规模与规格（可核）</th><th>开放方式</th><th>对机房的现实门槛</th></tr></thead>
+        <tbody>
+          <tr><td><b>智谱</b><br>GLM-5.4 / 5.5</td><td><b>1 万亿参数以上</b>（官方口径）<br>预训练数据向数 T 级<br><small>攻坚方向：长程智能体、RSI</small></td><td><b>未发布</b><br>无权重、无定价、无时间表</td><td>只能做路线规划<br>写进选型清单就是拿传闻当交付</td></tr>
+          <tr><td><b>智谱</b><br>ZCode 1024 礼包</td><td><b>5 亿 token</b><br>GLM-5.3 / GLM-5.3-Flash</td><td>20 万份，先到先得<br>23 日 23:00 → 26 日 09:00</td><td>云端试用券<br>与私有化部署无关</td></tr>
+          <tr><td><b>MiniMax</b><br>M3.1 Flash</td><td><b>428B</b> 总参 · <b>23B</b> 激活<br>1M 上下文 · 文本/图/视频</td><td>权重（HF + 魔搭）<br>社区许可，商用需报备</td><td>权重 400 GB 量级（估算）<br>机房多卡，非单机</td></tr>
+          <tr><td><b>NVIDIA</b><br><small>Nemotron 3.5</small>Super VL 120B</td><td><b>120B</b> · <b>12B</b> 激活<br>文本/图像/文档/视频输入</td><td>开放权重 BF16 / NVFP4<br>另有 NIM 服务</td><td>1×GB10 至 2×H100<br>按卡型逐一对表</td></tr>
+          <tr><td><b>NVIDIA</b><br><small>Nemotron 3.5</small>Bolt 74B-A9B</td><td><b>74B</b> · <b>9B</b> 激活<br>原生 2 bit 量化</td><td>开放权重<br>llama.cpp / Ollama / vLLM</td><td><b>24 GB 单卡可跑</b><br>代价是 2 bit 的精度损失</td></tr>
+          <tr><td><b>NVIDIA</b><br><small>Nemotron 3.5</small>Bolt E4B 4GB</td><td>基于 Gemma 4 E4B 后训练<br>64k 上下文 · 35 语言</td><td>GGUF Q4_K_M + BF16<br>Ollama / LM Studio</td><td><b>≈ 4 GB</b><br>设备端对话与语音助手</td></tr>
+          <tr><td><b>腾讯</b><br>WeVisOne-VL 2B / 4B</td><td><b>2B / 4B</b> + 9.6M 像素解码器<br>单图 ≤1,960 视觉 token</td><td><b>Apache-2.0</b><br>权重 + 论文 + 评测脚本</td><td>普通卡可跑<br>仅单轮图像，不支持视频</td></tr>
+        </tbody>
+      </table>
+      <p>七行连起来看，本周的真实变化不在「谁又发了个大模型」，而在<b>同一周里 4 GB、24 GB、机房级三档都补齐了</b>：设备端能跑对话智能体，单张消费卡能跑 74B 的智能体模型，机房里能跑 120B 多模态与 428B 的 Flash。选型的动作因此变简单——先定卡，再定档，最后才比榜单。</p>
+
+      <div class="kv-box">
+        <h3>机悟的建议：这三件事比模型名更该先问</h3>
+        <p class="kv-sub">开放权重一个接一个，最容易踩的坑不是选错模型，是三件事没先问清：</p>
+        <ul>
+          <li><b>许可能不能商用</b>：Apache-2.0 一类最省心；「社区许可 + 营收门槛 + 需报备」的，先把自己的规模与条款对一遍再谈交付。</li>
+          <li><b>量化档谁来兜精度</b>：原生 2 bit 能塞进 24 GB 是工程胜利，但你的业务能否接受这份精度，只能用自己的题去测，不能看厂商 benchmark。</li>
+          <li><b>谁训的底座</b>：拿别人的基座做后训练已是常态，采购时要分清「模型作者」与「配方作者」，出问题时才知道该找谁。</li>
+          <li>给我们一张卡型清单和一个真实任务样本，我们按「装得下 / 装不下、要不要量化、大概多少 tok/s」出结论，并把复测脚本留给你。</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来源：NVIDIA 官方博客与 Nemotron 研究页（Nemotron 3.5 Super VL / Bolt 74B-A9B / Bolt E4B 4GB，2026-10-14 至 10-23）、NVIDIA 开发者博客与 vLLM Day-0 支持说明（2026-10-15）、Tencent/WeVisOne-VL 代码库与 arXiv 2610.31329（2026-10-22）、MiniMax 官方开源页与 Hugging Face 模型卡（2026-10-23）、上海证券报《MiniMax 开源 M3.1 Flash 模型 上线三天处理超 100 万亿词元》、IT之家《MiniMax M3.1 Flash 开源模型权重，总参数 428B》（2026-10-23）、小众软件《智谱 ZCode 1024 程序员节免费送 5 亿 Tokens》（2026-10-23）、站长之家与 C114 关于唐杰披露 GLM-5.4/5.5 路线的报道（2026-10-08 至 10-24）。文中厂商跑分、成本与速度均为各自官方披露口径，非本机实测；GLM-5.4/5.5 与 428B 权重体积换算为方向性估算，官方未公布细节。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-24-flash-next-agent-load.html" title="24 GB 的卡跑起来就像在线模型：10M-token 输入里，84.1% 不用重算">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">Flash-Next 长会话任务实测</span>
+        <span class="pg-d">2026-10-24</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 79 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>4 GB、24 GB、机房级三档都齐了，你的卡在哪一档？</h2>
+      <p>40 分钟线上评估：报上卡型、显存与一个真实任务，我们给出「装得下/装不下、要不要量化、大概多少 tok/s」的结论，并把复测脚本与评测集留给你。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发」，机悟 JAVIS，2026-10-25，https://javis.org.cn/news-2026-10-25-open-weights-week.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发](https://javis.org.cn/news-2026-10-25-open-weights-week.html)（机悟 JAVIS，2026-10-25）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.0.9"></script>
+</body>
+</html>
