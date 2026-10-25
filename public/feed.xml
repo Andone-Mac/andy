@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Oct 2026 11:34:25 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Oct 2026 12:40:29 +0000</lastBuildDate>
+    <item>
+      <title>一张榜看懂 10 月的模型排位：前四名挤在 3 分内、开源旗舰 11 月补位、25 分那一档不是差生</title>
+      <link>https://javis.org.cn/news-2026-10-25-intelligence-index-october.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-25-intelligence-index-october.html</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 +0000</pubDate>
+      <category>模型榜单 · 排位解读</category>
+      <description>Artificial Analysis 智力榜截图里，前四根柱子一样高：Claude Opus 5.5（58）、Sonnet 5.5（56）、Muse Wonder Full（56）、Kimi K3.1 Pro（55）——官方口径下头名到第四只差 3 分。中段 40–46 全是开源：GLM-5.3 45、Kimi K3 44、GLM-5.3-Flash 42、Qwen3.8 2.4T 40；K3.1 Pro 权重 11 月 4 日前放出后，开源与闭源头部的差距将从 12 分压到 3 分。榜尾 25–26 分是端侧模型，比的是每 GB 智能与延迟，不是总分。</description>
+    </item>
     <item>
       <title>一张表看懂本周开放权重：4GB 装对话智能体、24GB 跑 74B、1 万亿参数还没发</title>
       <link>https://javis.org.cn/news-2026-10-25-open-weights-week.html</link>
