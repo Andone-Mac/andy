@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6% | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.0.9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%",
+      "description": "完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。",
+      "datePublished": "2026-10-26",
+      "dateModified": "2026-10-26",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%",
+          "item": "https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 82 条）</a>
+          <a href="news-2026-10-26-rtx3090-tensor-core-unlock.html">3090 解锁 Tensor Core</a>
+          <a href="news-2026-10-26-rtx3090-unlock-gemm-ab.html">3090 解锁 A-B 实录</a>
+          <a href="news-2026-10-25-intelligence-index-october.html">一张榜看懂 10 月模型排位</a>
+          <a href="news-2026-10-25-open-weights-week.html">一周开放权重：4GB 到 1 万亿</a>
+          <a href="news-2026-10-24-flash-next-agent-load.html">Flash-Next 长会话任务实测</a>
+          <a href="news-2026-10-23-minimax-m31-flash-open-weights.html">MiniMax M3.1 Flash 开源</a>
+          <a href="news-2026-10-23-rtx-pro-5500-3m-orders.html">三大厂 300 万张 RTX PRO 5500</a>
+          <a href="news-2026-10-23-ascend-950-10k-cluster.html">昇腾 950DT 万卡池与 77% 份额</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap art-wide">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-26</span><span class="n-tag" style="margin-left:8px">本地实测 · 硬件调优</span>
+    <h1 class="art-h1">3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%</h1>
+    <p class="art-lede">这是一份完整技术记录：开源项目 gpu-unlock v1.0.0 在<b>另一台自有主机</b>（i9-12900H 笔记本 + 外置 RTX 3090，Ubuntu 26.04）上的实施、验证与边界。三组 A-B 测下来结论很清楚——稠密 BF16 矩阵乘实测 <b>108.3 TFLOPS</b>（原厂上限约 77.5，+40%），而 27B 量化 GGUF 推理的 prefill <b>+0.6%</b>、挖矿算力 <b>129.5 → 129.5 TH/s</b> 一动不动。解锁是真的，收益只落在一条精度路径上。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap art-wide">
+    <div class="art-body">
+      <h3 class="art-h2">一、先交代口径：这台机器、这个工具、三组测量的边界</h3>
+      <p>本文所有数字都来自本机命令输出，没有估算、没有转述替代实测。被解锁对象是 <b>gpu-unlock v1.0.0</b>（GitHub 用户 Zagitta，GPL-2.0-only，2026-10-18 发布），它移除的是 NVIDIA 在 GeForce Ampere 显卡上对「FP16/BF16 输入 + FP32 累加」Tensor Core 运算的<b>指令发射速率限制</b>。主机与工具链如下：</p>
+      <ul class="art-tl">
+        <li><b>主机</b>：HASEE CV15S 笔记本，i9-12900H 平台，Ubuntu 26.04，内核 <b>7.0.0-38-generic</b>，initramfs 生成器为 <b>dracut 110-11ubuntu0.1</b>（不是 initramfs-tools）</li>
+        <li><b>驱动</b>：NVIDIA <b>615.71.09</b>（KMD）+ CUDA UMD 13.4，与上游作者验证环境版本一致；<b>Secure Boot 已关闭</b></li>
+        <li><b>目标卡</b>：GPU1 = GA102 GeForce RTX 3090，<b>10de:2204</b>，BDF <b>0000:02:00.0</b>；GPU0 = AD107M RTX 4060 Laptop（不参与本次操作）</li>
+        <li><b>GEMM 口径</b>：torch 2.13.0+cu130，8192×8192×8192，20 次迭代取均值，显存 P-state 解锁（9751 MHz），<b>停矿</b>，功耗墙 350 W</li>
+        <li><b>llama.cpp 口径</b>：CUDA 后端 build d59d455fd，Qwen3.8-27B-Uncensored-Q5_K_M（18.18 GiB，-ngl 99），同一台机、同一组参数、显存 P-state 均解锁</li>
+        <li><b>挖矿口径</b>：PeakMiner 2.19.2 → herominers，显存锁 810 MHz、核心锁 1560 MHz，功耗 243~249 W、温度 66~67 °C</li>
+      </ul>
+
+      <h3 class="art-h2">二、机制：它改的是「发射速率」，不是加计算单元</h3>
+      <p>gpu-unlock 既不是 UEFI 应用，也不是打补丁的驱动，而是一个在 <b>initramfs 阶段、NVIDIA 专有驱动绑定显卡之前</b>执行的 Linux 内核模块。它的动作分三步：</p>
+      <ul class="art-tl">
+        <li><b>借道矿卡解锁社区</b>：用 CMP 矿卡解锁（WildFlash1st/cmp90hx-unlock）的 V67/PLM 手法，把改过的 GSP 固件镜像加载进显卡；</li>
+        <li><b>写硬件速度选择寄存器</b>：SS0 = <b>0x88888888</b>（选择完整 BF16 速率），SS1 的 4 位 = <b>0x8</b>（IMLA4，上游注明效果未验证）；</li>
+        <li><b>对 PCI 功能执行 FLR</b>（Function Level Reset）复位，然后把卡交还给原版、未修改的 NVIDIA 驱动正常初始化。</li>
+      </ul>
+      <p>这三个动作决定了它的三个特性：<b>不刷 vBIOS</b>（因此不存在砖机风险，也没有「反刷」流程）、<b>不跟着驱动版本重新打补丁</b>（驱动升级不失效）、<b>只管一次启动</b>（内核命令行里没有参数就没有解锁）。</p>
+      <p>支持范围按设备 ID 放行 GA102 / GA103 / GA104 / GA106 的 GeForce 卡，专业 A 系列与数据中心卡被显式拒绝。上游除 RTX 3090 与 3090 Ti 之外<b>没有实测过其他 GA102 板卡</b>，GA104 一张都没有实测过——所以任何单个成功案例都不能外推到别的型号。</p>
+
+      <h3 class="art-h2">三、实施时间线：从编译到冷启动 13 小时</h3>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:22%"><col style="width:40%"><col style="width:38%"></colgroup>
+        <thead><tr><th>时间</th><th>步骤</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td><b style="white-space:nowrap">10-25 20:30</b></td><td>拉取源码、按当前内核编译模块</td><td>编译通过（gcc 15.2.0，无源码改动）</td></tr>
+          <tr><td>10-25 20:32</td><td>下载 pinned 输入（NVIDIA 源码 + CachyOS nvidia-utils）</td><td>10.7 秒，SHA-256 全部校验通过</td></tr>
+          <tr><td>10-25 20:35</td><td>生成固件载荷</td><td>4.0 秒，5 个文件，make test 5/5 通过</td></tr>
+          <tr><td>10-25 20:39</td><td>采集原厂基线（llama.cpp + 挖矿）</td><td>pp512 1239.86 / pp2048 1250.51 t/s</td></tr>
+          <tr><td>10-26 08:42</td><td>首次安装（--trial）</td><td>踩坑：initramfs 里 <b>0 条</b> gpu_unlock</td></tr>
+          <tr><td>10-26 08:43</td><td>补装 dracut drop-in 后重装</td><td>initramfs 内 <b>7 条</b>（模块 + 5 个固件）</td></tr>
+          <tr><td>10-26 08:44</td><td>写入一次性 grub 入口并 arm</td><td>next_entry=gpu-unlock trial</td></tr>
+          <tr><td>10-26 08:58:45</td><td>关机 → 开机（冷启动）</td><td>启动正常，未黑屏、未卡启动</td></tr>
+          <tr><td>10-26 08:58:48</td><td>内核日志出现 gpu_unlock: unlocked</td><td><b>解锁成功</b></td></tr>
+          <tr><td>10-26 09:00</td><td>稠密 GEMM / llama.cpp / 挖矿 三组 A-B</td><td>见第五、六节</td></tr>
+          <tr><td>10-26 09:04</td><td>参数固化进 /etc/default/grub</td><td>后续启动自动生效</td></tr>
+        </tbody>
+      </table>
+      <p>产物一侧也留了账：<b>gsp_ga10x.bin 84,277,400 B</b>（由 CachyOS 包内原样提取）、booter_load_ga102.bin 61,256 B、gsp_boot_ga102.bin 24,576 B、gsp_boot_desc_ga102.bin 84 B、生成的 V67 签名镜像 v67-ga102-610.43.03.bin 64,000 B，以及 DKMS 编译后 zstd 压缩的 <b>gpu_unlock.ko 35,414 B</b>。固件生成器的 SHA-256 写在 manifest 里，make test 的 5 个用例分别校验打包路径、版本一致性、PKGBUILD 与 manifest 一致、V67 载荷哈希、发布组件清单——全部通过，说明生成的载荷与上游钉住的参考镜像逐字节一致。</p>
+
+      <h3 class="art-h2">四、唯一的坑：这台机的 initramfs 生成器是 dracut</h3>
+      <p>仓库给的是 initramfs-tools 的 drop-in（<code>/usr/share/initramfs-tools/modules.d/</code>），但本机 <code>update-initramfs</code> 实际调用 dracut。<b>第一次安装「成功」，镜像里 gpu_unlock 条目数为 0</b>——装是装完了，但完全不会生效。补装仓库自带的 dracut 配置（<code>force_drivers+=" gpu_unlock "</code>）后重新生成，镜像内出现 7 条：内核模块 + 5 个固件文件 + 目录项，这才算装进去了。</p>
+      <p>这个坑的教训只有一句：<b>装完必须打开 initramfs 看内容，不能用安装脚本的退出码当证据。</b></p>
+
+      <h3 class="art-h2">五、硬证据：稠密 GEMM 与内核日志</h3>
+      <p>图 1 是三组 GEMM 的关系：本次实测落在原厂上限与社区最好成绩之间。</p>
+      <svg viewBox="0 0 880 300" width="100%" role="img" aria-label="8192 立方稠密 GEMM：原厂上限、本次实测、社区最好成绩（BF16，单位 TFLOPS）" style="background:#f4f7fc;border-radius:8px">
+        <text x="24" y="30" font-size="15" font-family="system-ui,-apple-system,'Noto Sans CJK SC',sans-serif" fill="#16295e" font-weight="600">8192³ 稠密 BF16 GEMM（TFLOPS）</text>
+        <g font-size="14" font-family="system-ui,-apple-system,'Noto Sans CJK SC',sans-serif" fill="#33445c">
+          <text x="24" y="76">RTX 3090 原厂上限</text><rect x="240" y="60" width="311" height="22" fill="#9fd4ee" rx="3"/><text x="563" y="77" font-weight="600" fill="#16295e">77.5</text>
+          <text x="24" y="116">本次实测（解锁后）</text><rect x="240" y="100" width="435" height="22" fill="#2aa6dd" rx="3"/><text x="687" y="117" font-weight="600" fill="#16295e">108.3</text>
+          <text x="24" y="156">社区最好成绩</text><rect x="240" y="140" width="520" height="22" fill="#16295e" rx="3"/><text x="772" y="157" font-weight="600" fill="#16295e">129.6</text>
+          <line x1="240" y1="176" x2="240" y2="180" stroke="#a9b7c9"/>
+          <text x="24" y="206" font-size="13" fill="#5b6b80">口径：本机 350 W 功耗墙、停矿、显存 P-state 9751 MHz，20 次迭代均值；单次迭代 10.15 ms。</text>
+          <text x="24" y="228" font-size="13" fill="#5b6b80">社区那份 129.6 TFLOPS 的记录条件未完全公开，本机实测约为其 72%，差值来自功耗墙。</text>
+          <text x="24" y="256" font-size="13" fill="#5b6b80">判据：未解锁的 3090 任何情况下都跑不出 108 TFLOPS 的 BF16——原厂上限就在 77.5 附近。</text>
+        </g>
+      </svg>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:14%"><col style="width:19%"><col style="width:21%"><col style="width:24%"><col style="width:22%"></colgroup>
+        <thead><tr><th>精度</th><th>本次实测<br><small>单位 TFLOPS</small></th><th>3090 原厂上限</th><th>社区解锁最好成绩</th><th>相对原厂</th></tr></thead>
+        <tbody>
+          <tr><td><b>fp16</b></td><td><b>108.7</b></td><td>~77.5</td><td>129.6</td><td><b>+40%</b></td></tr>
+          <tr><td><b>bf16</b></td><td><b>108.3</b></td><td>~77.5</td><td>129.6</td><td><b>+40%</b></td></tr>
+          <tr><td><b>tf32</b></td><td><b>59.6</b></td><td>~40.2</td><td>69.8</td><td><b>+48%</b></td></tr>
+        </tbody>
+      </table>
+      <p>单次迭代 10.12 ms（fp16）、10.15 ms（bf16）。实测核心只跑到约 <b>1920 MHz</b>、温度 <b>59 °C</b>——不是温度问题，是 350 W 的功率预算问题。</p>
+      <p>解锁发生在启动第 3 秒，本次启动共 17 行 gpu_unlock 记录。关键三行：</p>
+      <ul class="art-tl">
+        <li><code>gpu_unlock: FWSEC geometry: image_off=0x4289c size=0xe200 imem=0xda00 … ucode=9 signatures=3 versions=0x7 bytes=1152</code></li>
+        <li><code>gpu_unlock: FWSEC signature selection: versions=0x7 fuse_version=2 sig_bytes=384</code></li>
+        <li><code>pci 0000:02:00.0: gpu_unlock: unlocked</code></li>
+      </ul>
+      <p>内核会同时打上 taint 标记（loading out-of-tree module taints kernel、module verification failed）——因为 Secure Boot 关闭、模块也没有登记进 MOK，这是<b>预期行为</b>，不代表加载失败。启动后 <code>lspci -nnk -s 02:00.0</code> 仍显示 <code>Kernel driver in use: nvidia</code>，说明复位后原版驱动正常接管。</p>
+
+      <h3 class="art-h2">六、业务负载 A-B：三组全落在噪声里</h3>
+      <p style="margin-top:12px">下表 llama.cpp 三行为同一模型 Qwen3.8-27B-Uncensored-Q5_K_M（-ngl 99）；tg128 受 810 MHz 显存锁影响，原厂态未测。</p>
+      <table class="art-table is-fixed" style="margin-top:10px">
+        <colgroup><col style="width:22%"><col style="width:28%"><col style="width:28%"><col style="width:22%"></colgroup>
+        <thead><tr><th>测试项</th><th>解锁前</th><th>解锁后</th><th>变化</th></tr></thead>
+        <tbody>
+          <tr><td><b>pp512</b></td><td>1239.86 ± 22.87 t/s</td><td>1225.72 ± 68.83 t/s</td><td>−1.1%<br><small>噪声内</small></td></tr>
+          <tr><td><b>pp2048</b></td><td>1250.51 ± 2.22 t/s</td><td>1258.08 ± 1.01 t/s</td><td>+0.6%</td></tr>
+          <tr><td><b>tg128</b></td><td>未测</td><td>37.40 ± 0.11 t/s</td><td>新增参考值</td></tr>
+          <tr><td><b>PRL 算力</b><br><small>pearlhash</small></td><td>129.5 TH/s</td><td>129.5 TH/s</td><td><b>0</b></td></tr>
+          <tr><td><b>拒绝份额</b></td><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td><b>挖矿功耗</b></td><td>249 W</td><td>244 W</td><td>−5 W</td></tr>
+        </tbody>
+      </table>
+      <p><b>为什么一点没涨：</b>量化 GGUF 推理里，Q5_K 这类权重的矩阵乘在 ggml 里走的是 int8 量化 + dp4a 类整数累加，权重照样要按字节从显存流一遍；被解锁的「FP16/BF16 输入 × FP32 累加」这条路径根本没被调用，所以解锁与它无关，解码（tg）本来就受显存带宽约束，更不会动。Pearl 挖矿的 pearlhash 是纯矩阵乘，但走整数 GEMM，<b>INT8 tensor 速率在原厂 3090 上没有被人为砍半</b>，SS0/SS1 对它无效。实测结果与理论判断完全吻合。</p>
+
+      <h3 class="art-h2">七、收益矩阵：哪些负载吃得到，哪些吃不到</h3>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:24%"><col style="width:27%"><col style="width:14%"><col style="width:35%"></colgroup>
+        <thead><tr><th>负载类型</th><th>代表场景</th><th>受益</th><th>依据与幅度</th></tr></thead>
+        <tbody>
+          <tr><td><b>稠密 BF16 图像生成</b></td><td>ComfyUI / SDXL / Flux</td><td><b>是</b></td><td>社区实测 <b>+47%~59%</b></td></tr>
+          <tr><td><b>稠密 BF16/FP16 训练、微调</b></td><td>LoRA、BF16 全参</td><td><b>是</b></td><td>本次 8192³ GEMM 实测，<b>接近 +40%</b></td></tr>
+          <tr><td><b>TF32 稠密 GEMM</b></td><td>科学计算、部分训练框架</td><td><b>是</b></td><td>本次实测 <b>+48%</b></td></tr>
+          <tr><td>量化 GGUF 推理</td><td>llama.cpp Q4/Q5/Q8</td><td>否</td><td>本次 A-B 实测 pp/tg 全平</td></tr>
+          <tr><td>整数 GEMM 负载</td><td>PRL / pearlhash</td><td>否</td><td>本次 A-B 实测零变化</td></tr>
+          <tr><td>解码 / token 生成</td><td>所有自回归推理</td><td>否<br><small>带宽瓶颈</small></td><td>本次 tg128 = 37.4 t/s</td></tr>
+          <tr><td>游戏 / DLSS 帧数</td><td>——</td><td>无证据</td><td>上游至今无独立帧数验证</td></tr>
+        </tbody>
+      </table>
+      <p>同一张表在传闻层面上还有四个必须提前否掉的期待：<b>不是翻倍</b>（只有被解锁的那一条精度路径提速，理论上限 2 倍，实测受功耗墙限制远达不到）；<b>不会有 48 GB 显存</b>（24 GB 是 24 颗 1 GB GDDR6X 物理决定的）；<b>不存在「解锁 FP8」</b>（Ampere 没有 FP8 硬件单元，没有可解锁对象）；<b>不会提升显存带宽</b>（控制器与位宽决定，与本次寄存器无关）。判断标准很简单：被限的是「发射速率」（同一批单元跑得更慢），这类才可能软件解开；「单元本身不存在」或「带宽/容量不够」，任何工具都改不了。</p>
+
+      <h3 class="art-h2">八、运维守则：判断当前这次启动到底有没有解锁，只认一条命令</h3>
+      <ul class="art-tl">
+        <li><b>温重启会静默丢掉解锁。</b>systemctl reboot 之后参数还在命令行上、模块也会跑，但卡不是冷的，模块按设计拒绝执行（already initialised since power on）——系统照常启动、一切看起来正常，实际是原厂状态。</li>
+        <li><b>判据只有一条</b>：<code>journalctl -k -b | grep "gpu_unlock: unlocked"</code>。<code>nvidia-smi</code> 里没有任何字段反映这个状态，<code>/proc/cmdline</code> 看着对也不代表生效。</li>
+        <li><b>合盖/睡眠是安全的。</b>睡眠会给显卡断电，模块的 resume 钩子（默认开启）会在唤醒时重新解锁一次。</li>
+        <li><b>真想重启就「关机再开机」。</b>多花 20 秒，换来的是这一次启动带解锁。</li>
+        <li><b>回滚</b>：<code>sudo bash ~/gpu-unlock/rollback-gpu-unlock.sh</code> 会删掉 grub 自定义入口、移除命令行参数、dkms remove 模块、删除固件与 initramfs drop-in，然后重建 initramfs 与 grub；回滚后需冷启动一次才回到原厂行为。</li>
+      </ul>
+
+      <h3 class="art-h2">九、风险与遗留项：五条边界，一条未处理的顺带问题</h3>
+      <ul class="art-tl">
+        <li><b>实验性工具。</b>项目发布仅一周余，社区报告十余份，长期稳定性（尤其 GSP 固件在长时间高负载下的行为）没有数据。本机目前验证到的窗口是：解锁后连续跑稠密 GEMM、大模型加载推理、以及数分钟挖矿，无异常。</li>
+        <li><b>内核被 taint。</b>加载外部模块会让内核打上 taint 标记，某些内核调试与 NVIDIA 官方支持流程会因此拒绝分析问题；日常使用无影响。</li>
+        <li><b>功耗墙是天花板。</b>本卡 350 W 上限决定了只能拿到社区峰值的约 72%；想再往上需要更高功耗墙的板卡或改散热/供电，不在本次范围。</li>
+        <li><b>社区个案差异大。</b>有一例 RTX 3080 Ti 20 GB 报告「流程走完但 BF16 无提升」，说明结果依赖具体板卡与固件版本，任何单例都不能外推。</li>
+        <li><b>一次性入口会随内核升级失效。</b>自定义 grub 入口里写死的是 7.0.0-38 内核路径，内核升级后这两个菜单项可能指向已被清理的内核文件；默认启动项带参数，不受影响。</li>
+        <li><b>顺带的链路问题（未处理）。</b>外置 3090 当前只协商到 PCIe 5.0 GT/s ×4（约 2 GB/s），而卡与 CPU 根端口的能力都是 16.0 GT/s，建议检查 OCuLink 线材/转接卡。这不影响算力（数据都在显存里），只影响加载模型与显存拷贝的速度；窄链路下的固件写入与 FLR 复位没有被上游报告覆盖过，只能靠实机冷启动验证，结果是通过。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：先看你的负载走的是哪条路径，再决定要不要动</h3>
+        <p class="kv-sub">这类硬件层面的寄存器解锁，值不值得做，只取决于一个问题——你的主负载走不走浮点稠密 GEMM：</p>
+        <ul>
+          <li><b>走整数量化路径的一律不用试</b>：量化 GGUF 推理（llama.cpp 的 Q4/Q5/Q8）、整数 GEMM 挖矿，实测全平，装上去只是多背一个内核 taint 和「温重启失效」的运维负担。</li>
+          <li><b>出图/微调机值得试</b>：稠密 BF16 的 ComfyUI / SDXL / Flux（社区 +47%~59%）与 LoRA、BF16 全参微调（本次 GEMM 实测接近 +40%）是唯一确定的受益面；先把原厂基线记下来，再用同一批提示词/同一份数据复测，别只看峰值。</li>
+          <li><b>客户机房一律不动</b>：实验性内核模块 + 内核 taint + 一次性启动参数，等于把「机器起不来」和「官方支持拒绝分析」两个风险绑在一起。自己的开发机可以接受，交付环境不行。</li>
+          <li>如果你正在为出图或微调算「加一张卡还是先榨干手里这张」，40 分钟评估里我们把你这台机的实际瓶颈测出来——是算力、带宽还是功耗墙，写成一页纸给你，连复测脚本一起留。</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来源：本机命令输出（torch 2.13.0+cu130 的 8192³ 稠密 GEMM、llama.cpp CUDA build d59d455fd 的 llm-bench A-B、PeakMiner 2.19.2 同矿池同钱包 A-B、journalctl -k -b 与 lspci 输出，2026-10-25 至 10-26）；工具与支持范围引自上游 Zagitta/gpu-unlock 仓库（GPL-2.0-only，v1.0.0，2026-10-18）README 与 issue 区；原厂上限与社区成绩引自上游 README、Notebookcheck（2026-10-24）、Wccftech（2026-10-24）与 TechPowerUp 报道。所有数字均来自本机命令输出，无估算、无转述替代实测；结果只代表该台机器该次冷启动，不可外推到其他板卡。本文为自有设备实测记录，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-10-26-rtx3090-tensor-core-unlock.html" title="3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">3090 解锁 Tensor Core</span>
+        <span class="pg-d">2026-10-26</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-10-25-intelligence-index-october.html" title="一张榜看懂 10 月的模型排位：前四名挤在 3 分内、开源旗舰 11 月补位、25 分那一档不是差生">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">一张榜看懂 10 月模型排位</span>
+        <span class="pg-d">2026-10-25</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 82 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>先测瓶颈，再决定加卡还是调优</h2>
+      <p>40 分钟线上评估：报上卡型、显存与你的主负载（出图、微调还是推理），我们给出「瓶颈在算力、带宽还是功耗墙」的结论，并把复测脚本留给你。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%」，机悟 JAVIS，2026-10-26，https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%](https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html)（机悟 JAVIS，2026-10-26）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.0.9"></script>
+</body>
+</html>

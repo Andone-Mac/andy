@@ -6,7 +6,23 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 25 Oct 2026 12:40:29 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 01:37:34 +0000</lastBuildDate>
+    <item>
+      <title>3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨</title>
+      <link>https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 算力解锁</category>
+      <description>gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%、挖矿 129.5→129.5 TH/s 零变化。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。</description>
+    </item>
+    <item>
+      <title>3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%</title>
+      <link>https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 硬件调优</category>
+      <description>完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。</description>
+    </item>
     <item>
       <title>一张榜看懂 10 月的模型排位：前四名挤在 3 分内、开源旗舰 11 月补位、25 分那一档不是差生</title>
       <link>https://javis.org.cn/news-2026-10-25-intelligence-index-october.html</link>
