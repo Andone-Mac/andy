@@ -218,7 +218,7 @@
     if (!film) return;
     var v = q('video', film), dots = q('#filmDots'), playBtn = q('.play', film);
     if (!v) return;
-    var BASE = 'assets/videos/';
+    var BASE = (window.JAVIS_MEDIA_BASE || 'assets/videos/');   // 视频托管前缀：首页模板注入，默认站内路径
     var LAND = ['hero126_1080p.mp4'];   // 2026-10-24：站内只保留这一支品牌片（2:06，V2 母版 1920×1080 全画幅，带音轨）
     var PORT = ['hero126_p2.mp4'];    // 竖版（1080×2400，手机实际比例）：原画 2.39 满宽 + 同帧模糊填充，cover 下两侧不裁
     var i = 0, mode = null, timer = null, soundOn = false;

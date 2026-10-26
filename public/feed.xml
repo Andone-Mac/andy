@@ -6,7 +6,95 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Oct 2026 01:37:34 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 12:42:12 +0000</lastBuildDate>
+    <item>
+      <title>单周 33.6 万亿 Token、环比涨 801%：DeepSeek 新版把周榜第一拿了回来</title>
+      <link>https://javis.org.cn/news-2026-10-26-deepseek-weekly-calls-no1.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-deepseek-weekly-calls-no1.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>调用量 · 全球第一</category>
+      <description>OpenRouter 10-19~10-25 周榜：DeepSeek 在 10 月 17 日更新的 V4.1-Flash-1017 单周调用量 33.6 万亿 Token、环比 +801%，居全球第一；旗下模型已连续三周在该平台周榜居首。含政企选型的三条读法与口径提醒。</description>
+    </item>
+    <item>
+      <title>188 万亿 Token 的一周：中国模型占了约一半，周榜前五没有一家美国公司</title>
+      <link>https://javis.org.cn/news-2026-10-26-openrouter-188t-china-share.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-openrouter-188t-china-share.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>调用量 · 格局</category>
+      <description>OpenRouter 10-19~10-25：全球总调用量 188 万亿 Token（环比 +14.63%），其中中国模型 93.54 万亿；周榜前五全部为中国模型，中国模型已连续 26 周高于美国。含「总量—结构—单价」三层读法。</description>
+    </item>
+    <item>
+      <title>3 万亿参数、100 万 token 上下文：Kimi K3.1 Pro 开源，参数规模仍排全球第一</title>
+      <link>https://javis.org.cn/news-2026-10-26-kimi-k31-pro-3t-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-kimi-k31-pro-3t-open.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 参数规模</category>
+      <description>10 月 24 日凌晨月之暗面发布 Kimi K3.1 Pro：3 万亿级参数、100 万 token 上下文窗口，仍是全球参数规模最大的开源模型；发布当日港股 MiniMax 跌 13%、智谱跌近半成。含「参数大 ≠ 内网跑得动」的三条判断。</description>
+    </item>
+    <item>
+      <title>模型还没发、代码先到：Qwen4 的一份推理内核 PR 把 27B 架构线索漏了出来</title>
+      <link>https://javis.org.cn/news-2026-10-26-qwen4-kernel-pr-27b.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-qwen4-kernel-pr-27b.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开源生态 · 传闻跟踪</category>
+      <description>Qwen4 尚未发布，但英特尔 GPU（XPU）推理加速仓库 analytics-zoo 中一份已合并 Pull Request 透露了 27B 架构线索。属传闻级线索：官方未确认，参数与发布日期均以后续公告为准。</description>
+    </item>
+    <item>
+      <title>576 颗 GPU 当一颗用：英伟达 NVL576 瞄准 10 万亿参数，明年上机架</title>
+      <link>https://javis.org.cn/news-2026-10-26-nvidia-nvl576-rubin.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-nvidia-nvl576-rubin.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国际巨头 · 互联架构</category>
+      <description>英伟达计划明年推出基于 Rubin Ultra 架构的 NVL576 整机架方案：CPO 与 NVLink 把 576 颗 GPU 互联为统一巨型 GPU，宣称「全球最高能效比」，瞄准 10 万亿参数级模型训练。含「互联换规模」对国内采购的三点含义。</description>
+    </item>
+    <item>
+      <title>国办发 29 号文：AI 提效要算就业账，新增岗位与替代影响一起管</title>
+      <link>https://javis.org.cn/news-2026-10-26-state-council-ai-employment.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-state-council-ai-employment.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>政策 · 就业友好</category>
+      <description>国务院办公厅印发《关于适应人工智能技术发展助力构建就业友好型发展方式的意见》（国办发〔2026〕29 号）：明确减缓 AI 应用就业替代影响，拓展新兴领域 AI 就业新空间、培育中小微企业稳岗扩岗新动能、创造 AI 就业创业新模式、加快开发 AI 新职业。含甲方立项与乙方交付的三点影响。</description>
+    </item>
+    <item>
+      <title>据行业媒体报道：全国首个 AI 应用风险综合保障方案发布，AI 出事谁兜底有了新选项</title>
+      <link>https://javis.org.cn/news-2026-10-26-ai-application-risk-insurance.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-ai-application-risk-insurance.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>合规 · 风险保障</category>
+      <description>据行业媒体报道，全国首个「人工智能应用风险综合保障方案」于 10 月 25 日前后发布。截至发稿未见官方公告全文，本页只转述报道要点，并给出甲方在方案书里该问的三个问题：责任边界、事故留痕、赔付触发条件。</description>
+    </item>
+    <item>
+      <title>网页篡改、恶意程序、数据泄露：网信办这批执法案例里，AI 不是主角但每条都相关</title>
+      <link>https://javis.org.cn/news-2026-10-26-cac-enforcement-cases.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-cac-enforcement-cases.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>合规 · 执法案例</category>
+      <description>国家网信办公布网络安全、数据安全、个人信息保护领域执法典型案例，覆盖网页篡改、恶意程序、数据泄露、个人信息泄露等情形。需说明时间线：案例原发布于 9 月，10 月 25 至 26 日为多地政府网站转发。含对部署方式的三点启示。</description>
+    </item>
+    <item>
+      <title>16G DDR5 报到 1400–1600 元：出厂价还在涨、渠道价已经倒挂，内存条有价无市</title>
+      <link>https://javis.org.cn/news-2026-10-26-dram-inverted-market.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-dram-inverted-market.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 存储价格</category>
+      <description>央视财经与多家媒体 10-26 调查：华强北 16G DDR5 内存条报价普遍 1400–1600 元、32G 2000–3000 多元、1TB 固态 800–1000 多元；10 月以来渠道销量下滑 20%–30%，出厂价仍涨而渠道价倒挂，A 股存储板块部分回撤超 40%。含本地部署预算的三条应对。</description>
+    </item>
+    <item>
+      <title>工博会闭幕：国产算力换赛道，用「超节点」补单卡的差距</title>
+      <link>https://javis.org.cn/news-2026-10-26-ciff-supernode-domestic-compute.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-ciff-supernode-domestic-compute.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 国产路线</category>
+      <description>第二十六届中国国际工业博览会闭幕，媒体报道称国产算力正以「超节点」体系能力补齐单点差距——即不追求单卡指标对标，而用互联与系统集成把整机性能拉起来。本条为报道口径，具体方案与参数以厂商与主办方发布为准。</description>
+    </item>
+    <item>
+      <title>一周六标看政企 AI 采购：从 AI 服务器到执法场景大模型，钱花在哪一层</title>
+      <link>https://javis.org.cn/news-2026-10-26-gov-ai-procurement-roundup.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-gov-ai-procurement-roundup.html</guid>
+      <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
+      <category>政企采购 · 一周标情</category>
+      <description>2026-10-26 中国政府采购网与国企采购平台同日挂出多个 AI 相关结果与公告：国家外汇管理局 AI 服务器采购中标、厦门出入境边防检查总站人工智能执法场景大模型招标、深圳宝安卫健局大模型平台密评与第三方检测招标、三峡集团 AI 管理平台成交、广药白云山 AI 算力建设中标、医渡科技中标重医附一院大数据平台约 1329 万元。含「算力—平台—场景—测评」四层拆解。</description>
+    </item>
     <item>
       <title>3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨</title>
       <link>https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</link>
