@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="DeepSeek V4.1-Flash 用 274 GB 的 2.25bpw 权重换知识量，默认上下文只有 8,192、不支持并发与视觉；Qwen3.8-Flash-Next 的 UD-IQ4_XS 93.7 GB，24 GB 卡实测 262,144 上下文、输出 62–76 tok/s，15 项沙箱工具任务 15/15。含两套口径差异与 agent 选型的三条判据。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-27-flash-agent-choice.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-27-flash-agent-choice.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-27-flash-agent-choice.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-27-flash-agent-choice.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.0.9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="DeepSeek V4.1-Flash 用 274 GB 的 2.25bpw 权重换知识量，默认上下文只有 8,192、不支持并发与视觉；Qwen3.8-Flash-Next 的 UD-IQ4_XS 93.7 GB，24 GB 卡实测 262,144 上下文、输出 62–76 tok/s，15 项沙箱工具任务 15/15。含两套口径差异与 agent 选型的三条判据。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-27-flash-agent-choice.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="DeepSeek V4.1-Flash 用 274 GB 的 2.25bpw 权重换知识量，默认上下文只有 8,192、不支持并发与视觉；Qwen3.8-Flash-Next 的 UD-IQ4_XS 93.7 GB，24 GB 卡实测 262,144 上下文、输出 62–76 tok/s，15 项沙箱工具任务 15/15。含两套口径差异与 agent 选型的三条判据。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速",
+      "description": "DeepSeek V4.1-Flash 用 274 GB 的 2.25bpw 权重换知识量，默认上下文只有 8,192、不支持并发与视觉；Qwen3.8-Flash-Next 的 UD-IQ4_XS 93.7 GB，24 GB 卡实测 262,144 上下文、输出 62–76 tok/s，15 项沙箱工具任务 15/15。含两套口径差异与 agent 选型的三条判据。",
+      "datePublished": "2026-10-27",
+      "dateModified": "2026-10-27",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-27-flash-agent-choice.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速",
+          "item": "https://javis.org.cn/news-2026-10-27-flash-agent-choice.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 95 条）</a>
+          <a href="news-2026-10-27-flash-agent-choice.html">两个 Flash 怎么选</a>
+          <a href="news-2026-10-27-strata-deepseek-v41-flash.html">Strata 跑 DSV4.1</a>
+          <a href="news-2026-10-26-deepseek-weekly-calls-no1.html">DeepSeek 单周登顶</a>
+          <a href="news-2026-10-26-openrouter-188t-china-share.html">188 万亿的一周</a>
+          <a href="news-2026-10-26-kimi-k31-pro-3t-open.html">Kimi K3.1 Pro 开源</a>
+          <a href="news-2026-10-26-qwen4-kernel-pr-27b.html">Qwen4 内核 PR 露 27B</a>
+          <a href="news-2026-10-26-nvidia-nvl576-rubin.html">NVL576：576 颗当一颗</a>
+          <a href="news-2026-10-26-state-council-ai-employment.html">国办 29 号文：AI 与就业</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap art-wide">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-27</span><span class="n-tag" style="margin-left:8px">本地部署 · 选型实测</span>
+    <h1 class="art-h1">一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速</h1>
+    <p class="art-lede">DeepSeek V4.1-Flash 和 Qwen3.8-Flash-Next 都带「Flash」二字，落到本地机器上却是两条完全不同的路：一个把 552B 的 MoE 压到 2.25bpw，用 274 GB 的盘换知识量，<b>默认上下文只有 8,192</b>；另一个 93.7 GB，在 24 GB 卡上实测跑满 <b>262,144</b> 上下文、输出 62–76 tok/s。要让 agent 在本地干活，先看形状、再看上下文，最后才轮到 tok/s。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap art-wide">
+    <div class="art-body">
+      <h3 class="art-h2">一、先看形状：两套权重把「本地跑」理解成了两件事</h3>
+      <p>DeepSeek 走的是「把大模型压到极致、再分层搬运」，Qwen3.8-Flash-Next 走的是「原生 4-bit 量化 + 显存/内存/SSD 三层 + 长上下文」。这两条路在纸面上都是「本地能跑」，但跑起来的手感完全不同。</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:26%"><col style="width:37%"><col style="width:37%"></colgroup>
+        <thead><tr><th>项目</th><th>DeepSeek V4.1-Flash<br><small>2.25bpw 档</small></th><th>Qwen3.8-Flash-Next<br><small>UD-IQ4_XS</small></th></tr></thead>
+        <tbody>
+          <tr><td><b>权重体积</b></td><td><b>274 GB</b><small>155 GB 专家集 + 111 GB Engram<br>+ 8 GB 草稿器</small></td><td><b>93.7 GB</b><small>3 个分片，原生 4-bit<br>无需重打精度</small></td></tr>
+          <tr><td><b>必须进显存</b></td><td>dense 权重 <b>16.8 GB</b><small>单卡不足 16 GB<br>启动即 OOM 退出</small></td><td>按层拆分<small>24 GB 卡够用<br>余下放内存与 SSD</small></td></tr>
+          <tr><td><b>上下文</b></td><td>默认 <b>8,192</b><small>官方验证过的尺寸<br>--context 可加大</small></td><td><b>262,144</b><small>实测跑满<br>256K 仍 62.3 tok/s</small></td></tr>
+          <tr><td><b>输出速度</b></td><td>官方 <b>8–11</b><small>12 GB 卡 + 46 GB 内存</small></td><td>实测 <b>62–76</b><small>1k→256k 基本持平</small></td></tr>
+          <tr><td><b>视觉 / 并发</b></td><td>都不支持<small>--vision、--parallel<br>带警告忽略</small></td><td>支持视觉<small>图像编码器走 CPU</small></td></tr>
+        </tbody>
+      </table>
+      <p>体积差近 <b>3 倍</b>（274 对 93.7 GB），换来的是知识量：DeepSeek 这一档的基座是 552B 的 MoE，40 层 × 384 专家、每写一个词只用 6 个，官方模型卡称其 2-bit 集保留了基座 <b>98.7%</b> 的任务均分（AIME25、GPQA-Diamond、LiveCodeBench v6）。代价写在下面三节里。</p>
+
+      <h3 class="art-h2">二、agent 干活先撞上的是上下文，不是算力</h3>
+      <p>一次工具调用往返通常就是几 K token，系统提示与工具定义先吃掉一截，十几轮下来就会越过 8,192。DeepSeek 官方的口径是：<b>8,192 是「验证过的尺寸」，用 --context 可以要更多，但超出验证范围的速度与稳定性得自己担</b>。同一份文档还写了两条 agent 场景的硬限制：</p>
+      <ul class="art-tl">
+        <li><b>不支持并发</b>：<code>--parallel</code> 带警告被忽略，请求只能一条一条排。</li>
+        <li><b>不支持图片</b>：<code>--vision</code> 同样被忽略。扫描件、截图这类材料进不了它的上下文。</li>
+        <li><b>有一个对 agent 友好的设计</b>：引擎会为多轮对话留「会话槽」——一个对话被别的请求打断时先存起来（约 17 MB / 6.5K token，上限 2 GB、一周清理），同一系统提示的 sub-agent 起子任务时不必把提示重读一遍。</li>
+      </ul>
+      <p>Qwen3.8 这一侧是另一种答案：262,144 的窗口在默认配置下就能吃满，我们同一批 <b>15 项沙箱工具任务</b>它 15/15 通过、总耗时 669.7 秒。长上下文不是「能力标称」，是这些任务真跑下来没被截断。</p>
+
+      <h3 class="art-h2">三、速度：两条轴不能混用</h3>
+      <p>DeepSeek 的速度由「多少专家待在内显」决定，官方手里的实测是按显卡档位公布的；下表全部是 2.00bpw 口径（2.25bpw 四卡另有 80 tok/s 的记录）。</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:50%"><col style="width:22%"><col style="width:28%"></colgroup>
+        <thead><tr><th>硬件</th><th>输出速度<br><small>tok/s</small></th><th>口径</th></tr></thead>
+        <tbody>
+          <tr><td>RTX 5070 12 GB<br><small>64 GB 内存</small></td><td><b>4–6</b></td><td>官方实测</td></tr>
+          <tr><td>RTX 3060 12 GB<br><small>46 GB 内存</small></td><td><b>8–11</b></td><td>官方实测<small>agent 任务 7.8</small></td></tr>
+          <tr><td><b>24 GB 单卡<br>+ 128 GB 内存</b></td><td><b>约 10–15</b></td><td>方向性估算<small>本文，见下段</small></td></tr>
+          <tr><td>1× Radeon AI PRO R9700 32 GB<br><small>251 GB 内存</small></td><td><b>21–25</b></td><td>官方实测</td></tr>
+          <tr><td><b>4× Radeon AI PRO R9700 32 GB</b></td><td><b>48</b></td><td>官方实测</td></tr>
+        </tbody>
+      </table>
+      <p>为什么 24 GB 单卡只能给估算：dense 的 16.8 GB 先把显存吃掉大半，剩下的专家只能靠内存与 CPU 侧计算，速度落在「12 GB 卡 + 46 GB 内存」的 8–11 与「单卡 R9700 + 251 GB 内存」的 21–25 之间。官方对 <b>40 GB 内存以下</b>的机器直接写「未测且慢」——内存不够就得读盘，那会掉到另一档。作为参照，同一张 24 GB 卡上 Qwen3.8-Flash-Next（UD-IQ4_XS）的自测是 <b>1k 63.6 · 4k 75.7 · 16k 64.4 · 32k 65.3 · 64k 65.7 · 128k 62.2 · 256k 62.3 tok/s</b>。<b>两套数字的机器、引擎、量化与上下文口径都不同，不可相加、不可互相替代</b>。</p>
+
+      <h3 class="art-h2">四、能力：不做跨模型排名，只并列口径</h3>
+      <p>两边都没有「同一台机器、同一套题」的正面数据，所以这一节不排座次，只把各自的评测口径摆出来——读者要复现，缺的正是这些口径。</p>
+      <ul class="art-tl">
+        <li><b>DeepSeek 侧（官方口径）</b>：2.25bpw 相对原模型的损失是困惑度 +7~8%、代码 +3.2~3.5%、agent 文本 +2.2~2.5%；2.00bpw 更大一些。官方两处文档的数字略有差异，完整表格见同日发布的《一张表看懂本地跑 DeepSeek V4.1 Flash》。</li>
+        <li><b>Qwen3.8 侧（本站实测，2026-10，24 GB 卡）</b>：MMLU-Pro 56.5%（200 题）、GSM8K 97.5%（40 题）、MATH-500 76.7%（30 题）；15 项沙箱工具任务 15/15；同一份权重换量化档与内核标定，MMLU-Pro 会在 56.5%~60.0% 之间浮动（去审查的 Q4_K_M 档另有 63.5% 的记录），波动比换模型还大。</li>
+        <li><b>为什么不做排名</b>：跑分对 agent 的解释力有限——真实工具任务里体积差 5 倍的模型可以打平（本机 15 项任务 669.7 秒 对 674.4 秒），而上下文被截断一次，整轮工作就白做。</li>
+      </ul>
+
+      <h3 class="art-h2">五、三个提醒</h3>
+      <ul class="art-tl">
+        <li><b>274 GB 是「一套」的价格</b>：三档量化全下要 533 GB。Engram 表每个词随机读几行，慢盘会拖慢每一个字，NVMe 不能省。</li>
+        <li><b>内存决定档位，不是显卡</b>：四卡机 48 tok/s 的前提是 172 GB 级专家驻在内存里；128 GB 会掉档，40 GB 以下是官方明说的「未测且慢」。</li>
+        <li><b>什么时候该选 Qwen3.8</b>：长材料、多轮工具调用、要视觉、要 60 tok/s 级的交互速度——262,144 的窗口默认就开着。<b>什么时候 DeepSeek 才值</b>：材料确实不能出域，且能接受 10–15 tok/s 与从 8K 起步的上下文。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的读法</h3>
+        <p class="kv-sub">选本地 agent 引擎，顺序是「上下文 → 内存 → 速度」，不是反过来。</p>
+        <ul>
+          <li>先定上下文天花板：8K 与 256K 是两种用法，不是快慢差异。</li>
+          <li>再看内存：DeepSeek 这一档考的是内存与盘，不是算力。</li>
+          <li>24 GB 卡跑 DeepSeek 是「能跑」档（约 10–15 tok/s），跑 Qwen3.8 才是「能干活」档（62–76 tok/s）。</li>
+          <li>真要私有化，先把评测集与复测脚本定下来，再决定买卡还是先用 API。</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来源：Strata 官方仓库 v0.2.6 说明与文档（README.zh-CN.md、docs/DEEPSEEK41.md、packaging/ENGINE-COMPONENT.md，2026-10）；DeepSeek-V4.1-Flash-1017 模型卡（ISTA-DASLab，552B、40 层 × 384 专家、取 6）；DeepSeek 速度与质量数字均为官方公布口径（非本站测量），24 GB 单卡 10–15 tok/s 为本文方向性估算；Qwen3.8-Flash-Next（UD-IQ4_XS，93.7 GB）的速度、客观题与 15 项沙箱任务为本站实测（2026-10，RX 7900 XTX 24 GB + 125.6 GiB 内存，Strata 0.1.48 HIP，262,144 上下文），逐档数字与复测记录见同站《消费硬件上的本地大模型实测》。两套数据机器、引擎、量化与上下文口径不同，不可相加或互相替代。本文仅转述公开信息与自测数据，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-27-strata-deepseek-v41-flash.html" title="一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">Strata 跑 DSV4.1</span>
+        <span class="pg-d">2026-10-27</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 95 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>你们的 agent，先看上下文还是先看速度？</h2>
+      <p>我们按「要喂多长的材料、多少轮工具调用、盘和内存够不够」三件事帮你算一遍，再决定是上 DeepSeek 这条路、Qwen 这条路，还是先用 API。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速」，机悟 JAVIS，2026-10-27，https://javis.org.cn/news-2026-10-27-flash-agent-choice.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速](https://javis.org.cn/news-2026-10-27-flash-agent-choice.html)（机悟 JAVIS，2026-10-27）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

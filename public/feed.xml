@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Oct 2026 09:42:34 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 12:54:57 +0000</lastBuildDate>
+    <item>
+      <title>一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速</title>
+      <link>https://javis.org.cn/news-2026-10-27-flash-agent-choice.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-27-flash-agent-choice.html</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地部署 · 选型实测</category>
+      <description>DeepSeek V4.1-Flash 用 274 GB 的 2.25bpw 权重换知识量，默认上下文只有 8,192、不支持并发与视觉；Qwen3.8-Flash-Next 的 UD-IQ4_XS 93.7 GB，24 GB 卡实测 262,144 上下文、输出 62–76 tok/s，15 项沙箱工具任务 15/15。含两套口径差异与 agent 选型的三条判据。</description>
+    </item>
     <item>
       <title>一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s</title>
       <link>https://javis.org.cn/news-2026-10-27-strata-deepseek-v41-flash.html</link>
