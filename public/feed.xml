@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 26 Oct 2026 12:42:12 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 08:08:46 +0000</lastBuildDate>
+    <item>
+      <title>一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s</title>
+      <link>https://javis.org.cn/news-2026-10-27-strata-deepseek-v41-flash.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-27-strata-deepseek-v41-flash.html</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地部署 · 选型实测</category>
+      <description>Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的采购单、API 成本对照，以及 24 GB 卡为什么跑不了的口径说明。</description>
+    </item>
     <item>
       <title>单周 33.6 万亿 Token、环比涨 801%：DeepSeek 新版把周榜第一拿了回来</title>
       <link>https://javis.org.cn/news-2026-10-26-deepseek-weekly-calls-no1.html</link>
