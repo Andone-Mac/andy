@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的采购单、API 成本对照，以及 24 GB 卡为什么跑不了的口径说明。">
+<meta name="description" content="Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的机器清单（约 ¥7 万）与 API 的 token 换算。">
 <meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -24,7 +24,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的采购单、API 成本对照，以及 24 GB 卡为什么跑不了的口径说明。">
+<meta property="og:description" content="Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的机器清单（约 ¥7 万）与 API 的 token 换算。">
 <meta property="og:url" content="https://javis.org.cn/news-2026-10-27-strata-deepseek-v41-flash.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
@@ -32,7 +32,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的采购单、API 成本对照，以及 24 GB 卡为什么跑不了的口径说明。">
+<meta name="twitter:description" content="Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的机器清单（约 ¥7 万）与 API 的 token 换算。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -42,7 +42,7 @@
     {
       "@type": "NewsArticle",
       "headline": "一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s",
-      "description": "Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的采购单、API 成本对照，以及 24 GB 卡为什么跑不了的口径说明。",
+      "description": "Strata 0.2.6 为 DeepSeek V4.1-Flash-1017 单独做了引擎：552B 的 MoE 拆成 138 GB 专家、16.8 GB dense 权重、111 GB Engram 三块，速度取决于多少专家留在显存与内存里。官方实测 12 GB 卡 4–6 tok/s、单卡 R9700 32 GB 21–25 tok/s、四卡 48 tok/s（2.25bpw 80）。含 40 tok/s 的机器清单（约 ¥7 万）与 API 的 token 换算。",
       "datePublished": "2026-10-27",
       "dateModified": "2026-10-27",
       "author": {
@@ -182,7 +182,7 @@
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
     <span class="n-date">2026-10-27</span><span class="n-tag" style="margin-left:8px">本地部署 · 选型实测</span>
     <h1 class="art-h1">一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s</h1>
-    <p class="art-lede">Strata 0.2.6 把 DeepSeek V4.1-Flash-1017 做成了独立引擎（<b>strata-dsv41</b>），552B 的 MoE 模型第一次有了「普通 PC 也能装」的路径。但它的速度曲线不是看显卡算力，而是看<b>有多少专家能待在内显里</b>。把官方公布的实测数字按硬件排开，40 tok/s 这条线到底要什么机器，一眼就能看出来——顺带说清我们手上那张 24GB 卡为什么跑不了。</p>
+    <p class="art-lede">Strata 0.2.6 把 DeepSeek V4.1-Flash-1017 做成了独立引擎（<b>strata-dsv41</b>），552B 的 MoE 模型第一次有了「普通 PC 也能装」的路径。但它的速度曲线不是看显卡算力，而是看<b>有多少专家能待在内显里</b>。把官方公布的实测数字按硬件排开，40 tok/s 这条线到底要什么机器，一眼就能看出来，连同它和 API 之间怎么算账。</p>
   </div>
 </section>
 
@@ -212,7 +212,7 @@
           <tr><td>RTX 5070 12 GB<br><small>64 GB 内存</small></td><td><b>4–6</b></td><td>约 110<small>4K 提示</small></td></tr>
           <tr><td>RTX 3060 12 GB<br><small>46 GB 内存</small></td><td><b>9–11</b></td><td>约 155<small>4K 提示</small></td></tr>
           <tr><td>1× Radeon AI PRO R9700 32 GB<br><small>251 GB 内存</small></td><td><b>21–25</b></td><td>320–360<small>8K 提示</small></td></tr>
-          <tr><td><b>4× Radeon AI PRO R9700 32 GB</b><br><small>128 GB 显存 · 251 GB 内存</small></td><td><b>48</b><small>2.25bpw 档 80</small></td><td>400–450<small>8K 提示</small></td></tr>
+          <tr><td><b>4× Radeon AI PRO R9700 32 GB</b><br><small>128 GB 显存<br>251 GB 内存</small></td><td><b>48</b><small>2.25bpw 档 80</small></td><td>400–450<small>8K 提示</small></td></tr>
         </tbody>
       </table>
       <p>两点值得注意。第一，<b>单卡 R9700 只有 21–25 tok/s</b>——它已经是 32 GB 显存、251 GB 内存的机器，仍然到不了 40，因为四卡那台的 172 GB 专家是驻在内存里的，单卡得再把更多专家推给 CPU。第二，那 251 GB 内存不是随手写的：官方记录里四卡机把 <b>6,197 个专家（116.5 GB）放进显存、9,163 个（172.3 GB）留在内存</b>。内存不够就得读盘，速度会掉到「能跑，但慢」那一档，官方对 40 GB 内存以下的机器直接写「未测且慢」。</p>
@@ -222,28 +222,19 @@
         <colgroup><col style="width:33%"><col style="width:39%"><col style="width:28%"></colgroup>
         <thead><tr><th>部件</th><th>要求</th><th>参考价</th></tr></thead>
         <tbody>
-          <tr><td><b>4× Radeon AI PRO R9700 32 GB</b><br><small>Linux，官方唯一支持的 AMD 卡</small></td><td>128 GB 显存<br>官方 48 tok/s 就是这台</td><td>¥11,000–13,000/张<br><small>2026-09 京东实价，首发 ¥10,999</small></td></tr>
-          <tr><td><b>内存 256 GB DDR5</b></td><td>CPU 侧 172 GB 专家要驻内存<br>128 GB 会掉档</td><td>¥2,000–3,000<br><small>估算</small></td></tr>
+          <tr><td><b>4× Radeon AI PRO R9700 32 GB</b><br><small>Linux，官方唯一支持的 AMD 卡</small></td><td>128 GB 显存<br>官方 48 tok/s 就是这台</td><td>≥ ¥44,000<br><small>¥11,000–13,000/张，2026-09 京东实价</small></td></tr>
+          <tr><td><b>内存 256 GB DDR5</b></td><td>CPU 侧 172 GB 专家要驻内存<br>128 GB 会掉档</td><td>约 ¥16,000<br><small>8×32 GB，约 ¥2,000/条</small></td></tr>
           <tr><td><b>电源 1,600 W 以上</b></td><td>四张卡走 12VHPWR</td><td>¥1,500 起<br><small>估算</small></td></tr>
           <tr><td><b>NVMe 空闲 257 GB</b></td><td>2.00bpw 一套<br>2.25bpw 要 274 GB</td><td>Engram 每词随机读<br>盘不能省</td></tr>
         </tbody>
       </table>
-      <p>粗算下来，<b>这套机器在 ¥5 万上下</b>（四张卡占九成）。如果只是想在本地跑起来、不追 40 tok/s，一张 12 GB 卡加 46 GB 内存也能出字——代价是 9–11 tok/s，读一段长提示要等很久。</p>
+      <p>粗算下来，<b>硬件至少 ¥6.1 万</b>（四张卡 ¥4.4 万起 + 内存 ¥1.6 万 + 电源），按 <b>¥7 万</b> 做预算比较稳。如果只是想在本地跑起来、不追 40 tok/s，一张 12 GB 卡加 46 GB 内存也能出字——代价是 9–11 tok/s，读一段长提示要等很久。</p>
 
-      <h3 class="art-h2">四、为什么我们这台 24 GB 卡跑不了</h3>
-      <p>写这篇之前我们按官方文档核了一遍自己的机器（RX 7900 XTX 24 GB + 128 GB 内存 + i7-14700F），结论是<b>不支持，不是慢</b>。三条硬门槛，任何一条都过不去：</p>
-      <ul class="art-tl">
-        <li><b>卡不在名单里</b>：DeepSeek V4.1-Flash 的 AMD 支持只写了 Radeon AI PRO R9700（Linux，gfx1201）。7900 XTX 是 gfx1100，虽然同属 Strata 支持范围，但 DeepSeek 引擎是按显卡变体单独下载的包，gfx1100 没有对应的包，<code>strata launch --family deepseek41</code> 会在下载任何大文件之前就停下。</li>
-        <li><b>显存不够装 dense 部分</b>：16.8 GB 的 attention 等权重必须整块进显存，单卡至少要 16 GB 余量，24 GB 卡扣掉上下文和桌面就剩不了多少。</li>
-        <li><b>内存装不下专家</b>：2.00bpw 专家 138 GB，128 GB 内存装不完，必然退化到读盘；而官方对 40 GB 内存以下的机器写的是「未测且慢」。</li>
-      </ul>
-      <p>理论上可以自己编（<code>-DSTRATA_BUILD_DSV41=ON</code> 并把 HIP 架构指到 gfx1100），但官方没有验证过这条路径，编出来也没法保证速度——这种「跑得起来但没人量过」的机器，不该拿来做生产选型。所以我们把结论写在这里：<b>24 GB 单卡 + 128 GB 内存，别为 40 tok/s 折腾 DSV4.1</b>；想用这个模型，先换卡。</p>
+      <h3 class="art-h2">四、和 API 算一笔账</h3>
+      <p>同一家的 <code>deepseek-flash</code>（就是 V4.1-Flash-1017）现在按峰谷定价：高峰时段输出 <b>¥8/百万 token</b>、输入缓存命中 ¥0.04、未命中 ¥2；闲时价格是高峰的一半。按我们自己的 agent 用量加权，实际单价约 <b>¥0.07/百万 token</b>（输入大量命中缓存、输出占比小）。<b>¥7 万的机器约等于 1 万亿 token（10,000 亿）</b>；就算全按输出价 ¥8/百万 计，也有 87.5 亿 token。日常写代码、跑 agent 的用量，这个额度够用很久，而且不用管驱动、显存、SSD 和散热。</p>
+      <p>本地部署真正值钱的地方不在速度，在<b>数据不出内网</b>。如果材料本来就能上公网，API 是更划算的选择；要处理的是不能出域的卷宗、工单、图纸，那才轮到算这张七万元的采购单。</p>
 
-      <h3 class="art-h2">五、和 API 算一笔账</h3>
-      <p>同一家的 <code>deepseek-flash</code>（就是 V4.1-Flash-1017）现在按峰谷定价：高峰时段输出 <b>¥8/百万 token</b>、输入缓存命中 ¥0.04、未命中 ¥2；闲时价格是高峰的一半。四卡机器那 ¥5 万，换算成 API 输出大约是 <b>600 万 token</b>。日常写代码、跑 agent 的用量，这个额度够用很久，而且不用管驱动、显存、SSD 和散热。</p>
-      <p>本地部署真正值钱的地方不在速度，在<b>数据不出内网</b>。如果材料本来就能上公网，API 是更划算的选择；要处理的是不能出域的卷宗、工单、图纸，那才轮到算这张五万元的采购单。</p>
-
-      <h3 class="art-h2">六、三个容易被忽略的细节</h3>
+      <h3 class="art-h2">五、三个容易被忽略的细节</h3>
       <ul class="art-tl">
         <li><b>默认上下文只有 8,192</b>：1M 是模型能力，不是默认配置。要长文档得自己加 <code>--context</code>，而上下文越长，显存和内存占用越高。</li>
         <li><b>「Faster 模式」在四卡机上不划算</b>：它只用 6 个专家里的 5 个换速度，显存 ≤16 GB 的机器会自动打开；四卡这种配置应该跑满 6 个专家，用速度换那点质量不值得。</li>
@@ -260,7 +251,7 @@
           <li>要私有化，先把 NVMe 备到 300 GB 以上空闲——Engram 每个词都在读它。</li>
         </ul>
       </div>
-      <p class="art-src">数据来源：Strata 官方仓库 v0.2.6 说明与文档（README.zh-CN.md、docs/DEEPSEEK41.md、docs/MODELS.md，2026-10）；DeepSeek-V4.1-Flash-1017 模型卡（552B、40 层 × 384 专家、取 6、1M 上下文、MIT）；速度数字均为 Strata 官方公布的实测（0.2.5，2.00bpw 档，另有 2.25bpw 四卡 80 tok/s），非本站测量；价格为 2026-09 京东实价报道（首发 ¥10,999，现价 ¥12,000–13,000），内存与电源为估价。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+      <p class="art-src">数据来源：Strata 官方仓库 v0.2.6 说明与文档（README.zh-CN.md、docs/DEEPSEEK41.md、docs/MODELS.md，2026-10）；DeepSeek-V4.1-Flash-1017 模型卡（552B、40 层 × 384 专家、取 6、1M 上下文、MIT）；速度数字均为 Strata 官方公布的实测（0.2.5，2.00bpw 档，另有 2.25bpw 四卡 80 tok/s），非本站测量；价格为 2026-09 京东实价报道（显卡首发 ¥10,999、现价 ¥12,000–13,000），内存按 32 GB 约 ¥2,000 估算，电源为估价。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
