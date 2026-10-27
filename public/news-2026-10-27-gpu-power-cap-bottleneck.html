@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="同一张 24 GB 显卡、同一套 93.7 GB 权重：功耗墙从 200 W 放到 291 W、性能档从自动换成锁高频，解码速度都在 62–66 tok/s，差别在噪声里——因为解码只吃 118–125 W。九组参数对照（KV 驻留窗口、显存保留、常驻预算）显示默认配置已是最优；另附三个会让测量结果翻倍的陷阱：冷启动、前缀缓存、并发任务。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.0.9">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="同一张 24 GB 显卡、同一套 93.7 GB 权重：功耗墙从 200 W 放到 291 W、性能档从自动换成锁高频，解码速度都在 62–66 tok/s，差别在噪声里——因为解码只吃 118–125 W。九组参数对照（KV 驻留窗口、显存保留、常驻预算）显示默认配置已是最优；另附三个会让测量结果翻倍的陷阱：冷启动、前缀缓存、并发任务。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="同一张 24 GB 显卡、同一套 93.7 GB 权重：功耗墙从 200 W 放到 291 W、性能档从自动换成锁高频，解码速度都在 62–66 tok/s，差别在噪声里——因为解码只吃 118–125 W。九组参数对照（KV 驻留窗口、显存保留、常驻预算）显示默认配置已是最优；另附三个会让测量结果翻倍的陷阱：冷启动、前缀缓存、并发任务。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文",
+      "description": "同一张 24 GB 显卡、同一套 93.7 GB 权重：功耗墙从 200 W 放到 291 W、性能档从自动换成锁高频，解码速度都在 62–66 tok/s，差别在噪声里——因为解码只吃 118–125 W。九组参数对照（KV 驻留窗口、显存保留、常驻预算）显示默认配置已是最优；另附三个会让测量结果翻倍的陷阱：冷启动、前缀缓存、并发任务。",
+      "datePublished": "2026-10-27",
+      "dateModified": "2026-10-27",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文",
+          "item": "https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 96 条）</a>
+          <a href="news-2026-10-27-gpu-power-cap-bottleneck.html">功耗墙不是瓶颈</a>
+          <a href="news-2026-10-27-flash-agent-choice.html">两个 Flash 怎么选</a>
+          <a href="news-2026-10-27-strata-deepseek-v41-flash.html">Strata 跑 DSV4.1</a>
+          <a href="news-2026-10-26-deepseek-weekly-calls-no1.html">DeepSeek 单周登顶</a>
+          <a href="news-2026-10-26-openrouter-188t-china-share.html">188 万亿的一周</a>
+          <a href="news-2026-10-26-kimi-k31-pro-3t-open.html">Kimi K3.1 Pro 开源</a>
+          <a href="news-2026-10-26-qwen4-kernel-pr-27b.html">Qwen4 内核 PR 露 27B</a>
+          <a href="news-2026-10-26-nvidia-nvl576-rubin.html">NVL576：576 颗当一颗</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap art-wide">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-27</span><span class="n-tag" style="margin-left:8px">本地部署 · 实测方法</span>
+    <h1 class="art-h1">一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文</h1>
+    <p class="art-lede">同一张 24 GB 显卡、同一套 93.7 GB 权重：把功耗墙从 200 W 放到 291 W、把性能档从自动换成锁高频，解码速度全都落在 <b>62–66 tok/s</b>，差别在重复测量的噪声里。原因不是电不够，而是解码时这张卡<b>只吃 118–125 W</b>——它在等数据，不是在等功率。本文把功耗墙实验、九组参数对照和三个会让测量结果翻倍的陷阱一并列出。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap art-wide">
+    <div class="art-body">
+
+      <h3 class="art-h2">一、先说口径：一张 24 GB 卡跑 93.7 GB 的模型</h3>
+      <p>没有口径的 tok/s 没有意义。下面所有数字都来自同一台机器、同一份权重、同一套启动参数，只改被测试的那一项。</p>
+      <ul class="art-tl">
+        <li><b>机器</b>：i7-14700F + Radeon RX 7900 XTX 24 GB（RDNA3，gfx1100）+ 125.6 GiB 内存，UOS 25 / Linux 6.6。</li>
+        <li><b>引擎与量化</b>：Strata 0.1.48（HIP 后端，对应仓库 v0.2.3），Qwen3.8-Flash-Next 的 <b>UD-IQ4_XS</b> 权重 93.7 GB（十进制，约 87.2 GiB），原生 4-bit、三个分片。</li>
+        <li><b>默认参数</b>：<code>--max-context 262144</code>、<code>--kv k8v4</code>、<code>--kv-resident 32768</code>、<code>--vram-reserve-mib 1500</code>、<code>--resident-budget-gib 90</code>、<code>--pool-workers 7</code>、<code>--pcie-frac 0.35</code>，MTP 草稿 4 个、最小接受概率 0.70。</li>
+        <li><b>测法</b>：每档发一条 128–256 token 的生成请求（temperature 0），速度取引擎日志里自己报告的解码速率；功耗与频率每 0.2–0.3 秒从 <code>amdgpu</code> 的 hwmon 与 <code>pp_dpm_*</code> 采样。</li>
+      </ul>
+      <p>先交代一个前提：93.7 GB 的权重装不进 24 GB 显存。引擎的做法是把一部分专家常驻显存、一部分常驻内存，剩下的按需通过 PCIe 逐层搬运——所以「显存一路吃满、命中率 90% 以上」是这个配置的正常状态，不是异常。</p>
+
+      <h3 class="art-h2">二、功耗墙实验：200 W 与 291 W 的输出差 0.5%</h3>
+      <p>这台机器平时还有另一种吃 GPU 的负载，因此做了「省电档」和「性能档」两套配置。要回答的问题很直接：<b>省电档留下的功耗墙，会不会把大模型的输出速度压住？</b>同一张卡上 <code>power1_cap</code> 的驱动上限就是 <code>power1_cap_max</code> = 291 W，再往上需要打开 OverDrive 改内核参数，本次没有动。三档对照，每档测两次：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:52%"><col style="width:24%"><col style="width:24%"></colgroup>
+        <thead><tr><th>设定</th><th>第 1 次<br><small>tok/s</small></th><th>第 2 次<br><small>tok/s</small></th></tr></thead>
+        <tbody>
+          <tr><td>291 W 功耗墙 + 性能档自动</td><td><b>63.1</b></td><td><b>65.5</b></td></tr>
+          <tr><td>200 W 功耗墙 + 性能档自动</td><td><b>62.4</b></td><td><b>66.2</b></td></tr>
+          <tr><td>291 W 功耗墙 + 性能档锁高频</td><td><b>66.3</b></td><td><b>65.1</b></td></tr>
+        </tbody>
+      </table>
+      <p>三档的差距是 <b>0.5%–5%</b>，而同一配置重复测量本身就能差 <b>8%</b>（后文的对照组即是）。所以结论不是「200 W 略慢」，而是<b>这三档在统计上分不出胜负</b>：200 W 的墙根本没有被碰到。顺带一提，性能档锁高频也没有收益，反而让空闲功耗和温度白涨——日常保持自动档即可。</p>
+
+      <h3 class="art-h2">三、为什么只吃 123 W：满载的是「搬运」，不是「计算」</h3>
+      <p>一次 49 秒的连续生成，每 0.3 秒采一次样，结果如下：</p>
+      <ul class="art-tl">
+        <li><b>功耗</b>：均值 <b>123 W</b>、峰值 <b>177 W</b>、谷值 98 W（上限 291 W）。</li>
+        <li><b>频率</b>：核心 <b>2,349–2,385 MHz</b>，已经是这张卡的最高 DPM 档；显存 1,249 MHz 满档。</li>
+        <li><b>占用</b>：<code>gpu_busy</code> 持续 <b>100%</b>，结温 72–73 °C、风扇 615 rpm。</li>
+      </ul>
+      <p>四个读数放在一起就说明问题了：<b>满频、满占用、却只吃四成电</b>。AMD 的 <code>gpu_busy</code> 统计的是「有没有活」，不是「算术单元跑得有多满」。在这种「专家在内存、按需过 PCIe」的部署里，解码一个 token 要等的是显存带宽与 PCIe 带宽，GPU 大部分时间在等数据，动态功耗自然上不去。</p>
+      <p>对照组是预填充（也就是读提示、算子密集的那一段）：一条 34,820 token 的提示，功耗 <b>90 分位 148 W</b>、瞬时最高冲到 <b>338 W</b>——比标称的 291 W 还高一截，说明这张卡真要电的时候要得到。换句话说，<b>「功耗低」是结果，不是限制</b>。</p>
+
+      <h3 class="art-h2">四、参数扫描：九组配置里，默认那组就是最优</h3>
+      <p>既然瓶颈在显存与数据搬运，那就把三个直接决定「谁进显存」的参数挨个改一遍：KV 驻留窗口（<code>--kv-resident</code>）、留给桌面与显示输出的显存（<code>--vram-reserve-mib</code>）、常驻内存预算（<code>--resident-budget-gib</code>）。每组都重启引擎重新加载，先发两条请求预热，再测 41k 与 131k 提示下的解码速度。</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:34%"><col style="width:22%"><col style="width:22%"><col style="width:22%"></colgroup>
+        <thead><tr><th>配置</th><th>41k 提示<br><small>tok/s</small></th><th>131k 提示<br><small>tok/s</small></th><th>专家命中<br><small>%</small></th></tr></thead>
+        <tbody>
+          <tr><td><b>默认</b> · 第 1 次<small>32,768 / 1,500 / 90</small></td><td><b>73.6</b></td><td><b>73.3</b></td><td>94.9</td></tr>
+          <tr><td><b>默认</b> · 重复测量</td><td><b>68.7</b></td><td><b>71.0</b></td><td>94.3</td></tr>
+          <tr><td>KV 窗口减半<small>16,384 / 1,500 / 90</small></td><td>74.7</td><td>68.5</td><td>95.0</td></tr>
+          <tr><td>KV 窗口翻倍<small>65,536 / 1,500 / 90</small></td><td><b>49.1</b></td><td><b>53.3</b></td><td><b>73.0</b></td></tr>
+          <tr><td>显存保留降到 1 GB<small>32,768 / 1,000 / 90</small></td><td><b>59.6</b></td><td>70.4</td><td>90.4</td></tr>
+          <tr><td>显存保留提到 2.5 GB<small>32,768 / 2,500 / 90</small></td><td>70.6</td><td>68.6</td><td>90.4</td></tr>
+          <tr><td>常驻预算提到 110 GiB<small>32,768 / 1,500 / 110</small></td><td>66.4</td><td>68.6</td><td>89.5</td></tr>
+        </tbody>
+      </table>
+      <p>读这张表只要抓住两个对照：</p>
+      <ul class="art-tl">
+        <li><b>KV 窗口翻倍是唯一明确的倒退</b>：命中率从 94% 掉到 73%，两条上下文长度各掉 25%–30%。原因很直接——KV 缓存多占的显存是从专家槽里抠出来的，专家进不来就要走 PCIe，多出来的那点 KV 省下的搬运还不够赔进去的。</li>
+        <li><b>其余四组都在噪声内或有明确代价</b>：KV 减半在 41k 略高、131k 低 6.5%；显存保留降到 1 GB 在 41k 掉 20%（59.6 对 73.6），是把余量压太紧、页缓存和分配抖动的代价；常驻预算 110 GiB 没有任何收益。</li>
+      </ul>
+      <p>所以这张卡上的默认三件套 <b>32,768 / 1,500 / 90</b> 不是「先这么放」，而是实测最优。参数优化不是免费的按钮，<b>在这类「显存装不下模型」的部署里，任何一个参数多吃一口显存，都会从专家槽里扣回来</b>。</p>
+
+      <h3 class="art-h2">五、两套速度：预填充和解码要分开看</h3>
+      <p>热态下的完整曲线（默认配置，两次测量的区间）：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:34%"><col style="width:33%"><col style="width:33%"></colgroup>
+        <thead><tr><th>提示长度</th><th>预填充<br><small>tok/s</small></th><th>解码<br><small>tok/s</small></th></tr></thead>
+        <tbody>
+          <tr><td>约 8,400 token</td><td><b>1,075</b></td><td><b>72.9–79.2</b></td></tr>
+          <tr><td>约 41,700 token</td><td><b>1,225</b></td><td><b>68.7–73.6</b></td></tr>
+          <tr><td>约 133,300 token</td><td><b>1,506</b></td><td><b>71.0–73.3</b></td></tr>
+        </tbody>
+      </table>
+      <p>两点值得注意。一是<b>长上下文没有出现想象中的「断崖」</b>：从 8k 到 131k，解码只差 5% 左右，预填充反而随长度略升（分块与并行吃得更满）。二是<b>预填充慢一个数量级、解码快但也不等于交互速度</b>——读一条 13 万 token 的材料要 88 秒，之后每写一个字 70 tok/s，这是两个必须分开报的数。</p>
+
+      <h3 class="art-h2">六、三个会让测量结果翻倍的陷阱</h3>
+      <p>这一节是本篇最该被同行拿去用的部分：同一套配置，测量方式不同可以差出 20 倍。</p>
+      <ul class="art-tl">
+        <li><b>冷启动</b>：引擎刚起、专家缓存是空的，8k 提示的第一条请求只有 <b>58.2 tok/s</b>（命中 76.6%）；发两条请求把它捂热之后，同一条请求是 <b>72.9 tok/s</b>（命中 93.6%）——差 25%。刚启动就测速，得到的不是这个配置的成绩，是加载进度。</li>
+        <li><b>前缀缓存</b>：同一个提示发第二次，引擎直接命中缓存，预填充从 7.8 秒变成 <b>0.2 秒</b>（等效 37,827 tok/s）。拿这种数字当预填充性能，能报出一个大十倍的假成绩；测预填充必须每次用没发过的提示。</li>
+        <li><b>并发污染（最贵的一个坑）</b>：同一台机器上并行跑一个 4 倍放大的视频超分任务时，34.8k 提示的解码掉到 <b>3.6 tok/s</b>；把 GPU 让出来之后，41.7k 提示是 <b>83.9 tok/s</b>——<b>23 倍</b>差距。当时差点据此得出「32k 之后有 KV 断崖」的错误结论。归因方法很土但有效：读 <code>/proc/&lt;pid&gt;/fdinfo</code> 里的 <code>drm-engine-*</code> 计数，就能看出是哪个进程在占 GPU 引擎。</li>
+      </ul>
+
+      <h3 class="art-h2">七、给同类机器的六条建议</h3>
+      <ul class="art-tl">
+        <li><b>先别怀疑功耗墙</b>：对比 <code>power1_cap</code> 与 <code>power1_cap_max</code>，两个值相等就是「已经放到最大」，再纠结也不会有收益。</li>
+        <li><b>满频 + 低功耗 = 在等数据</b>：看到「占用 100%、频率满载、功耗只有四成」，正确结论是负载是带宽型，不是被限速。</li>
+        <li><b>先做重复测量的基线</b>：同一配置两次能差 8%，任何小于这个幅度的「优化」都还在噪声里。</li>
+        <li><b>新起引擎先预热两条</b>，再交给 agent 或再测速。</li>
+        <li><b>测预填充换新提示</b>，测解码可以用同一提示（但要知道它在吃缓存）。</li>
+        <li><b>测速前确认卡是干净的</b>：视频处理、渲染、另一个推理进程都会让成绩失去意义。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的读法</h3>
+        <p class="kv-sub">判断一台机器「是不是被限了」，顺序是：先看功耗墙有没有到顶，再看频率是不是满档，最后才看数据往哪走。</p>
+        <ul>
+          <li><b>功耗墙</b>：<code>power1_cap</code> 与 <code>power1_cap_max</code> 是否相等；不相等才有得放。</li>
+          <li><b>频率</b>：核心频率是否已经踩在最高 DPM 档；没到才是真被压。</li>
+          <li><b>数据路径</b>：模型装不进显存时，决定速度的是显存、内存带宽与 PCIe，而不是电源。</li>
+          <li><b>口碑数据要看口径</b>：同一张卡、同一份权重，冷启动与热态差 25%，并行一个视频任务能差 20 倍——没有口径的 tok/s 不可比。</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来源：本站实测，2026-10-27，Radeon RX 7900 XTX 24 GB + i7-14700F + 125.6 GiB 内存，UOS 25 / Linux 6.6，Strata 0.1.48（HIP，gfx1100；开源仓库 v0.2.3），Qwen3.8-Flash-Next UD-IQ4_XS 93.7 GB，上下文 262,144，<code>--kv k8v4</code>。功耗、频率、温度取自 <code>amdgpu</code> 驱动 hwmon 的 <code>power1_average</code> 与 <code>pp_dpm_sclk/mclk</code>，0.2–0.3 秒采样；速度取引擎日志自报的解码速率。所有参数扫描均重启引擎重新加载、预热后测量，原始记录与复测脚本留存可复跑。本文仅转述公开信息与自测数据，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-27-flash-agent-choice.html" title="一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">两个 Flash 怎么选</span>
+        <span class="pg-d">2026-10-27</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 96 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>你的本地模型，是慢在算力、显存，还是测量方法？</h2>
+      <p>我们按「卡有多少显存、模型多大、上下文要多长、平时还有哪些任务抢 GPU」四件事帮你把瓶颈定位清楚，再决定是调参数、加内存，还是根本不用换硬件。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文」，机悟 JAVIS，2026-10-27，https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文](https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html)（机悟 JAVIS，2026-10-27）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

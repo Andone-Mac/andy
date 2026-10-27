@@ -140,7 +140,8 @@
       <div class="nav-item">
         <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="news.html">全部动态（共 95 条）</a>
+          <a href="news.html">全部动态（共 96 条）</a>
+          <a href="news-2026-10-27-gpu-power-cap-bottleneck.html">功耗墙不是瓶颈</a>
           <a href="news-2026-10-27-flash-agent-choice.html">两个 Flash 怎么选</a>
           <a href="news-2026-10-27-strata-deepseek-v41-flash.html">Strata 跑 DSV4.1</a>
           <a href="news-2026-10-26-deepseek-weekly-calls-no1.html">DeepSeek 单周登顶</a>
@@ -148,7 +149,6 @@
           <a href="news-2026-10-26-kimi-k31-pro-3t-open.html">Kimi K3.1 Pro 开源</a>
           <a href="news-2026-10-26-qwen4-kernel-pr-27b.html">Qwen4 内核 PR 露 27B</a>
           <a href="news-2026-10-26-nvidia-nvl576-rubin.html">NVL576：576 颗当一颗</a>
-          <a href="news-2026-10-26-state-council-ai-employment.html">国办 29 号文：AI 与就业</a>
         </div>
       </div>
       <div class="nav-item">
@@ -195,10 +195,10 @@
         <colgroup><col style="width:26%"><col style="width:37%"><col style="width:37%"></colgroup>
         <thead><tr><th>项目</th><th>DeepSeek V4.1-Flash<br><small>2.25bpw 档</small></th><th>Qwen3.8-Flash-Next<br><small>UD-IQ4_XS</small></th></tr></thead>
         <tbody>
-          <tr><td><b>权重体积</b></td><td><b>274 GB</b><small>155 GB 专家集 + 111 GB Engram<br>+ 8 GB 草稿器</small></td><td><b>93.7 GB</b><small>3 个分片，原生 4-bit<br>无需重打精度</small></td></tr>
-          <tr><td><b>必须进显存</b></td><td>dense 权重 <b>16.8 GB</b><small>单卡不足 16 GB<br>启动即 OOM 退出</small></td><td>按层拆分<small>24 GB 卡够用<br>余下放内存与 SSD</small></td></tr>
+          <tr><td><b>权重体积</b></td><td><b>274 GB</b><small>155 GB 专家集<br>+ 111 GB Engram<br>+ 8 GB 草稿器</small></td><td><b>93.7 GB</b><small>3 个分片，原生 4-bit<br>无需重打精度</small></td></tr>
+          <tr><td><b>必须进显存</b></td><td>dense 权重 <b style="white-space:nowrap">16.8 GB</b><small>单卡不足 16 GB<br>启动即 OOM 退出</small></td><td>按层拆分<small>24 GB 卡够用<br>余下放内存与 SSD</small></td></tr>
           <tr><td><b>上下文</b></td><td>默认 <b>8,192</b><small>官方验证过的尺寸<br>--context 可加大</small></td><td><b>262,144</b><small>实测跑满<br>256K 仍 62.3 tok/s</small></td></tr>
-          <tr><td><b>输出速度</b></td><td>官方 <b>8–11</b><small>12 GB 卡 + 46 GB 内存</small></td><td>实测 <b>62–76</b><small>1k→256k 基本持平</small></td></tr>
+          <tr><td><b>输出速度</b></td><td>官方 <b>8–11</b><small>12 GB 卡<br>+ 46 GB 内存</small></td><td>实测 <b>62–76</b><small>1k→256k 基本持平</small></td></tr>
           <tr><td><b>视觉 / 并发</b></td><td>都不支持<small>--vision、--parallel<br>带警告忽略</small></td><td>支持视觉<small>图像编码器走 CPU</small></td></tr>
         </tbody>
       </table>
@@ -257,17 +257,18 @@
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <span class="pg pg-off">
+      <a class="pg prev" rel="prev" href="news-2026-10-27-gpu-power-cap-bottleneck.html" title="一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文">
         <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">已经是最新一篇</span>
-      </span>
+        <span class="pg-t">功耗墙不是瓶颈</span>
+        <span class="pg-d">2026-10-27</span>
+      </a>
       <a class="pg next" rel="next" href="news-2026-10-27-strata-deepseek-v41-flash.html" title="一张表看懂本地跑 DeepSeek V4.1 Flash：12GB 卡 5 tok/s，四卡 48 tok/s">
         <span class="pg-k">下一篇 →</span>
         <span class="pg-t">Strata 跑 DSV4.1</span>
         <span class="pg-d">2026-10-27</span>
       </a>
     </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 95 条）→</a></p>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 96 条）→</a></p>
 </section>
       <div class="art-foot">
         <a class="btn btn-line" href="news.html">← 返回行业动态</a>

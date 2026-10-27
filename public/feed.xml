@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Oct 2026 12:54:57 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 27 Oct 2026 12:58:48 +0000</lastBuildDate>
+    <item>
+      <title>一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文</title>
+      <link>https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html</guid>
+      <pubDate>Tue, 27 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地部署 · 实测方法</category>
+      <description>同一张 24 GB 显卡、同一套 93.7 GB 权重：功耗墙从 200 W 放到 291 W、性能档从自动换成锁高频，解码速度都在 62–66 tok/s，差别在噪声里——因为解码只吃 118–125 W。九组参数对照（KV 驻留窗口、显存保留、常驻预算）显示默认配置已是最优；另附三个会让测量结果翻倍的陷阱：冷启动、前缀缓存、并发任务。</description>
+    </item>
     <item>
       <title>一张表看懂本地 agent 选谁：DeepSeek 默认 8K 上下文，Qwen3.8 实测 256K 不掉速</title>
       <link>https://javis.org.cn/news-2026-10-27-flash-agent-choice.html</link>

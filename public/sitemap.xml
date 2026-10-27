@@ -55,6 +55,12 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html</loc>
+    <lastmod>2026-10-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-10-27-flash-agent-choice.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>
