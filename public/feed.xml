@@ -6,7 +6,87 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 27 Oct 2026 12:58:48 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 10:18:04 +0000</lastBuildDate>
+    <item>
+      <title>一条新的提速路线开源了：官方自测 680 tok/s、SWE-bench 73.6，第三方还没复现</title>
+      <link>https://javis.org.cn/news-2026-10-29-dllm-clover-agent-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-dllm-clover-agent-open.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 新架构</category>
+      <description>扩散语言模型 Clover-35B-A3B-Preview 于 10 月 28 日开源：总参 350 亿、每 token 激活约 30 亿，块扩散并行解码。公司自报 SWE-bench Verified 73.6、Terminal-Bench 2.1 51.7、τ³ 65.3，整体生成 680 tok/s 为同尺寸自回归的 5—10 倍——全部为厂商口径，尚无第三方复现；权重已上 Hugging Face/GitHub，支持 SGLang 与 llama.cpp。</description>
+    </item>
+    <item>
+      <title>榜单改卷：60% 的分改从隐藏题里出，开源与闭源的差距拉到 12 分</title>
+      <link>https://javis.org.cn/news-2026-10-29-aa-index-v5-private-tasks.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-aa-index-v5-private-tasks.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>榜单 · 评测口径</category>
+      <description>Artificial Analysis 于 10 月 27 日前后上线 Index v5：60% 权重首次建立在私有/隐藏答案测试集上，知识、编码、科学、通用各占 25%；编码里 Cognition 的 FrontierCode 2.0 独占 15%、Terminal-Bench 4.0 占 10%。该快照口径下开源与闭源差距由 v4.3 的 3 分扩至 12 分，已放权重模型的天花板是 32 分。</description>
+    </item>
+    <item>
+      <title>744B、512K、MIT：完整的权重也放出来了——编码榜它仍比闭源差 15 分</title>
+      <link>https://javis.org.cn/news-2026-10-29-atria-dawn-full-weights.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-atria-dawn-full-weights.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 长上下文</category>
+      <description>上海 AI 实验室 Atria Dawn 完整版权重以 MIT 许可上线（确切上线时点各信源矛盾，正文按「10 月下旬」处理）：基于 744B MoE 的 GLM-5.2 底座，上下文由预览版 256K 提至 512K，同时提供 FP8 版。模型卡自报 CyberGym 86.8、SWE-bench Pro 61.7（对照 Claude Opus 5 的 76.5，差 14.8 分），本地部署需 SGLang v0.5.13.post1+ 或 vLLM v0.23.0+ 与多卡。</description>
+    </item>
+    <item>
+      <title>谷歌发布 Gemini 4 Carbon：$2/$10 每百万 token，自称同版榜单 59 登顶</title>
+      <link>https://javis.org.cn/news-2026-10-29-gemini-4-carbon-price.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-gemini-4-carbon-price.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>国际模型 · 定价</category>
+      <description>10 月 28 日谷歌发布 Gemini 4 Carbon，API 定价每百万 token 输入 $2、输出 $10；官方博客自称「在刚更新的 v5.0 上以 59 分位列第一」——与另一媒体引用的 58 分榜首来自同一指数的不同快照。官方另称 SEC-bench Pro 漏洞检测 88.2%、内部测试提示注入成功率 0.0%、经 Fairwind 计划优先向安全防御方开放，均为企业口径。</description>
+    </item>
+    <item>
+      <title>一个模型串出 5 条攻击链：62 个内核漏洞、Linux 零点击 root，补丁窗口在缩短</title>
+      <link>https://javis.org.cn/news-2026-10-29-anthropic-exploit-chains.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-anthropic-exploit-chains.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>安全 · 漏洞</category>
+      <description>10 月 27 日，Anthropic 前沿红队披露一个未发布内部研究模型在 Chrome/Safari/Android/Windows/Linux 五条链路构建出可运行利用链：Chrome 侧报道称涉及 62 个已修复 CVE（含 13 个沙箱逃逸，随 Chrome 156 修补）；Linux 链路为零点击远程 root（CVSS 9.8，10 月 15 日已上游修复）；均系协调披露，公开记录未见在野利用。</description>
+    </item>
+    <item>
+      <title>企业 AI 龙头晒出第一本账：媒体口径半年 $163 亿、近半收入走云市场</title>
+      <link>https://javis.org.cn/news-2026-10-29-anthropic-s1-listing-filing.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-anthropic-s1-listing-filing.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>资本 · 财务透明化</category>
+      <description>Anthropic 10 月 26 日递交 S-1、拟以代码 ANT 登陆纳斯达克（高盛、摩根士丹利牵头承销）——这是官方公告确认的全部内容。上半年收入 $163 亿、Q2 首盈 $9.74 亿、净收入留存约 900%、年付 $10 万以上客户超 11,900 家、算力合同义务最低约 $4,170 亿，均为 CNBC 等媒体对招股书的转述口径，本稿未在官方原文逐条核实。</description>
+    </item>
+    <item>
+      <title>原厂把话挑明：存储紧缺到 2030——单季营收首破 100 万亿韩元，长单已有人抢</title>
+      <link>https://javis.org.cn/news-2026-10-29-storage-tight-to-2030.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-storage-tight-to-2030.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 报价单</category>
+      <description>SK 海力士 10 月 28 日 Q3 财报：营收 104.62 万亿韩元（环比 +32%、同比 +328%）、营业利润 83.33 万亿（+38%/+632%），均创单季新高，由 HBM4、服务器 DDR5 与企业级 SSD 带动；公司称供不应求料持续至 2030。10 月 27 日行业消息称阿里/腾讯/字节寻求与三星/海力士签 10 年期长供（据报道，无官宣）。头豹测算中国服务器存储由 2025 年 810 亿元增至 2029 年 2503 亿元、占比 13.2%→25.4%（机构测算口径）。</description>
+    </item>
+    <item>
+      <title>一家中国存储厂做到 17%：企业级 SSD 已吃下 NAND 一半以上，报价单多出一个可选项</title>
+      <link>https://javis.org.cn/news-2026-10-29-ymtc-nand-share-17.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-ymtc-nand-share-17.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 国产可选项</category>
+      <description>Counterpoint 三季度数据：长江存储全球 NAND 出货份额由二季度 14% 升至三季度 17%；2026 年 Q2 企业级 SSD 已占全球 NAND 出货 48%、Q3 已超 50%，消费级需求反而下滑。机构预计长存企业级收入占比将由 2024 年接近零升至 2028 年约 38%；其现有两座厂合计月产能约 20 万片，三期新增 10 万片达 30 万片（均为机构口径）。</description>
+    </item>
+    <item>
+      <title>一个园区装下 100 万 P：算力基地订单已排到后年，绿电占了八成</title>
+      <link>https://javis.org.cn/news-2026-10-29-envision-compute-base-delivery.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-envision-compute-base-delivery.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力供给 · 租与自建</category>
+      <description>10 月 26 日媒体探访确认：远景乌兰察布星河 AI 算力基地一期近日向一家头部互联网企业完成交付，算力服务订单已排到 2028 年；园区建成后整体可承载约 100 万 P 算力、支持百万卡运行，规划电力负荷最高 3GW，绿电直供比例 80%（据该报道口径），电力来自远景自建风电场；二至四期预计 2027—2028 年交付。</description>
+    </item>
+    <item>
+      <title>国资机构接连押注工业垂类模型：数千万融资外，最值钱的是那行备案编号</title>
+      <link>https://javis.org.cn/news-2026-10-29-lingshu-industrial-agent-funding.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-lingshu-industrial-agent-funding.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>行业落地 · 资本</category>
+      <description>上海羚数智能连续完成数千万元 A1、A2 轮融资，由浦东创投、张江科投、锡创投联合投资（此前投资方含红杉中国、线性资本）。其「百工」工业大模型是上海首个通过国家网信办备案的工业垂类大模型；公司称产品已应用于超 100 家头部工业企业（含国央企），2026 上半年营收已超 2025 全年并预计全年盈利——均为公司口径。</description>
+    </item>
     <item>
       <title>一张表看懂本地大模型为什么跑不快：功耗墙放到 291W 也只吃 123W，瓶颈在显存与上下文</title>
       <link>https://javis.org.cn/news-2026-10-27-gpu-power-cap-bottleneck.html</link>
