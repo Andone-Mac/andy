@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="一台 RX 7900 XTX 24 GB 用 93.7–134.1 GB 三档权重接住整周真实工作：6,000 条请求、3.4 亿词元输入，89.5% 命中前缀缓存；各档真实负载解码中位 40.9–67.9 tok/s，从短任务到 25 万词元长会话最多降 23.3%。口径是真实负载中位数，与站内定长扫描口径互不换算；本篇不作能力排名。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-29-flash-next-three-tiers-week.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="一台 RX 7900 XTX 24 GB 用 93.7–134.1 GB 三档权重接住整周真实工作：6,000 条请求、3.4 亿词元输入，89.5% 命中前缀缓存；各档真实负载解码中位 40.9–67.9 tok/s，从短任务到 25 万词元长会话最多降 23.3%。口径是真实负载中位数，与站内定长扫描口径互不换算；本篇不作能力排名。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="一台 RX 7900 XTX 24 GB 用 93.7–134.1 GB 三档权重接住整周真实工作：6,000 条请求、3.4 亿词元输入，89.5% 命中前缀缓存；各档真实负载解码中位 40.9–67.9 tok/s，从短任务到 25 万词元长会话最多降 23.3%。口径是真实负载中位数，与站内定长扫描口径互不换算；本篇不作能力排名。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s",
+      "description": "一台 RX 7900 XTX 24 GB 用 93.7–134.1 GB 三档权重接住整周真实工作：6,000 条请求、3.4 亿词元输入，89.5% 命中前缀缓存；各档真实负载解码中位 40.9–67.9 tok/s，从短任务到 25 万词元长会话最多降 23.3%。口径是真实负载中位数，与站内定长扫描口径互不换算；本篇不作能力排名。",
+      "datePublished": "2026-10-29",
+      "dateModified": "2026-10-29",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s",
+          "item": "https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 107 条）</a>
+          <a href="news-2026-10-29-flash-next-three-tiers-week.html">三档一周真实运转</a>
+          <a href="news-2026-10-29-dllm-clover-agent-open.html">扩散模型开源了</a>
+          <a href="news-2026-10-29-aa-index-v5-private-tasks.html">榜单改卷了</a>
+          <a href="news-2026-10-29-atria-dawn-full-weights.html">512K 完整权重</a>
+          <a href="news-2026-10-29-gemini-4-carbon-price.html">59 分与两笔账</a>
+          <a href="news-2026-10-29-anthropic-exploit-chains.html">模型自己挖洞</a>
+          <a href="news-2026-10-29-anthropic-s1-listing-filing.html">龙头晒账本</a>
+          <a href="news-2026-10-29-storage-tight-to-2030.html">紧缺到 2030</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap art-wide">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-29</span><span class="n-tag" style="margin-left:8px">本地实测 · 真实负载</span>
+    <h1 class="art-h1">同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s</h1>
+    <p class="art-lede">这不是跑分，是一台机器干活一周的总账：10 月 22—29 日，同一个 Qwen3.8-Flash-Next 在单张 RX 7900 XTX 上轮流换三档量化，跑完 6,000 条请求——读进 3.5 亿词元、写出只有 384 万，读过的内容 89.5% 不用重讲。换档与换长短各影响速度多少？最快的一档 67.9 tok/s、最慢的一档 40.9 tok/s，但没一档掉出能干活的区间。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap art-wide">
+    <div class="art-body">
+      <h3 class="art-h2">一、这一周的账本：读 90 个字，写 1 个字</h3>
+      <p>智能体干活时，词元的大头永远是「读」。下面每一个数都来自引擎日志里的服务端记录（23:06 前的快照；默认档的会话此刻还在跑，数字会继续微涨）：</p>
+      <ul class="art-tl">
+        <li><b>62 场会话、6,000 条请求</b>读进 350,086,987 个词元、写出只有 3,844,006 个——读写比约 91:1；最长的一条请求一次喂进 248,983 个词元，没有 OOM</li>
+        <li>读进去的内容里 <b>89.5%</b> 命中前缀缓存、第二遍不用重算；三档的 MTP 草稿接受率 80.4%–83.3%，吐出来的字基本一步到位</li>
+        <li>一周里引擎从 0.1.40 升到 0.1.48，档位随任务切换——本篇只报日志里的事实，不给版本号归因提速</li>
+        <li>速度只统计写出 ≥80 词元的请求的<b>中位数</b>；14 条中途取消的预填不进任何表</li>
+      </ul>
+      <p>「像不像在线模型」的机制三件套（MoE 值班制、前缀命中、草稿核对），更早发布的智能体负载一篇已经拆过；本篇补的是它们在整周日程上的总账表现。</p>
+
+      <h3 class="art-h2">二、一档一行：谁接住了哪段活</h3>
+      <p>主表。四列全部来自同一份日志（体积为文件字节数、十进制 GB；角色一行只标事实上的在场时间）：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:22%"><col style="width:24%"><col style="width:27%"><col style="width:27%"></colgroup>
+        <thead><tr><th>档位<br><small>权重体积 · 角色</small></th><th>本周负载<br><small>会话 · 请求</small></th><th>读写词元<br><small>一周合计</small></th><th>前缀命中<br><small>与 MTP 接受率</small></th></tr></thead>
+        <tbody>
+          <tr><td><b>Q4_K_M</b><br>119.2 GB<small>默认档 10-22→10-29</small></td><td>40 场<br>3,821 条</td><td>读 2.35 亿<br>写 245 万</td><td><b style="white-space:nowrap">92.3%</b><br>草稿接受 80.9%</td></tr>
+          <tr><td><b>UD-IQ4_XS</b><br>93.7 GB<small>选型验证档 10-22→10-28</small></td><td>17 场<br>1,691 条</td><td>读 9,817 万<br>写 98 万</td><td><b style="white-space:nowrap">85.7%</b><br>草稿接受 80.4%</td></tr>
+          <tr><td><b>Q5_K_M</b><br>134.1 GB<small>重载档 10-23</small></td><td>5 场<br>488 条</td><td>读 1,740 万<br>写 41 万</td><td><b style="white-space:nowrap">73.2%</b><br>草稿接受 83.3%</td></tr>
+        </tbody>
+      </table>
+      <p>三行连起来读：<b>三档共用同一套引擎与工具链，换档只换权重文件</b>——但同一负载下，谁体积最小谁就最快，这个顺序在六行负载上没换过一次位置。换档这根杠杆有多大，下一张表给数。</p>
+
+      <h3 class="art-h2">三、速度表：竖向是任务变长，横向是换档</h3>
+      <p>同一张表两个读法——竖着读是「同一档，会话越挂越长」，横着读是「同一负载，换不换档」：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:22%"><col style="width:26%"><col style="width:26%"><col style="width:26%"></colgroup>
+        <thead><tr><th>提示长度<br><small>写满 ≥80 词元的请求</small></th><th>Q4_K_M<br><small>中位 tok/s · 样本</small></th><th>UD-IQ4_XS<br><small>中位 tok/s · 样本</small></th><th>Q5_K_M<br><small>中位 tok/s · 样本</small></th></tr></thead>
+        <tbody>
+          <tr><td>&lt;8K</td><td><b style="white-space:nowrap">54.9</b><br>471 条</td><td><b style="white-space:nowrap">67.9</b><br>246 条</td><td><b style="white-space:nowrap">45.3</b><br>3 条</td></tr>
+          <tr><td>8K–16K</td><td><b style="white-space:nowrap">52.2</b><br>7 条</td><td><b style="white-space:nowrap">57.8</b><br>22 条</td><td><b style="white-space:nowrap">45.5</b><br>1 条</td></tr>
+          <tr><td>16K–32K</td><td><b style="white-space:nowrap">49.7</b><br>97 条</td><td><b style="white-space:nowrap">59.5</b><br>137 条</td><td><b style="white-space:nowrap">40.9</b><br>22 条</td></tr>
+          <tr><td>32K–64K</td><td><b style="white-space:nowrap">47.6</b><br>538 条</td><td><b style="white-space:nowrap">55.5</b><br>300 条</td><td><b style="white-space:nowrap">44.0</b><br>99 条</td></tr>
+          <tr><td>64K–96K</td><td><b style="white-space:nowrap">46.2</b><br>408 条</td><td><b style="white-space:nowrap">54.3</b><br>229 条</td><td><b style="white-space:nowrap">42.4</b><br>130 条</td></tr>
+          <tr><td>96K+</td><td><b style="white-space:nowrap">45.9</b><br>1,090 条</td><td><b style="white-space:nowrap">52.1</b><br>411 条</td><td>未取样</td></tr>
+        </tbody>
+      </table>
+      <p>竖向：从最短负载到最长负载，三档各自最多降 23.3%（UD-IQ4_XS 档）、默认档只降 16.4%——上下文吃掉的是零头。横向：同一行三档差最大 <b style="white-space:nowrap">22.6 tok/s</b>（&lt;8K 那一行，且 Q5_K_M 档在该行只有 3 条样本）——换档才是影响体感的那一根杠杆。</p>
+
+      <h3 class="art-h2">四、三条提醒</h3>
+      <ul class="art-tl">
+        <li><b>这些是「这台机器这周被怎么用」的数字</b>，不是模型得分：89.5% 命中是多轮智能体会话的影子，一问一答、每次全新长文档的用法吃不到这个便宜</li>
+        <li><b>三套口径互不换算</b>：本篇＝真实负载中位；站内另有定长扫描（1k→256k）与沙箱任务两套数字，不可相加、不可互推</li>
+        <li><b>能力排名本篇没做</b>：MMLU-Pro／GSM8K 等客观题成绩见更早发布的两篇，别从本表的快慢推能力强弱</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：挑档之前，先量自己的一周账本</h3>
+        <p class="kv-sub">别抄任何人的数字，包括这一页的。顺序是：</p>
+      <ul class="">
+        <li><b>先量负载形态</b>拿自己业务的真任务连跑一周，读写比、命中率、提示长度分布三件事定下来，才知道 40 和 68 的差距跟你有没有关系</li>
+        <li><b>再固定口径</b>机型、引擎、量化、上下文四个变量同档才可比——换任何一个，数字都要重测</li>
+        <li><b>看中位不看峰值</b>给验收用的那一行必须带口径；峰值外推满负载，等于自己给自己埋雷</li>
+        <li><b>留人复核</b>速度和命中率都能复跑，交付的那一版还是要人看</li>
+      </ul>
+      </div>
+      <p class="art-src">数据来源：自有设备真实负载记录（2026-10-22 00:00 至 10-29 23:06）：Strata 引擎会话日志 strata-unc-q4km.log、strata-unsloth-ud-iq4_xs.log、strata-unc-q5km.log（HIP 后端，引擎 0.1.40→0.1.48，上下文窗口 262,144）；权重体积为 gguf 文件字节数（十进制 GB）。机器：i7-14700F + 单张 RX 7900 XTX 24 GB + 125.6 GiB 内存（UOS 25）。速度列为真实负载下写出 ≥80 词元请求的服务端中位，与站内定长扫描、沙箱任务两套口径互不换算；本篇未做客观题与工具任务评测，不作能力排名。本文仅陈述自测数据与公开技术口径，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-10-29-dllm-clover-agent-open.html" title="一条新的提速路线开源了：官方自测 680 tok/s、SWE-bench 73.6，第三方还没复现">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">扩散模型开源了</span>
+        <span class="pg-d">2026-10-29</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 107 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>想先量出自己机器的那张账本？</h2>
+      <p>这一页每一行都带着体积、引擎与口径——抄走的数字一旦离开口径就变味。40 分钟评估把你的真实会话接进沙箱，读写比、命中率与解码中位按你自己的负载出一版，复测脚本与判分留给你。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s」，机悟 JAVIS，2026-10-29，https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s](https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html)（机悟 JAVIS，2026-10-29）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

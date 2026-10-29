@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 12:52:13 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 15:34:51 +0000</lastBuildDate>
+    <item>
+      <title>同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s</title>
+      <link>https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 真实负载</category>
+      <description>一台 RX 7900 XTX 24 GB 用 93.7–134.1 GB 三档权重接住整周真实工作：6,000 条请求、3.4 亿词元输入，89.5% 命中前缀缓存；各档真实负载解码中位 40.9–67.9 tok/s，从短任务到 25 万词元长会话最多降 23.3%。口径是真实负载中位数，与站内定长扫描口径互不换算；本篇不作能力排名。</description>
+    </item>
     <item>
       <title>一条新的提速路线开源了：官方自测 680 tok/s、SWE-bench 73.6，第三方还没复现</title>
       <link>https://javis.org.cn/news-2026-10-29-dllm-clover-agent-open.html</link>
