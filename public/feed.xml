@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 11:50:54 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 29 Oct 2026 12:10:08 +0000</lastBuildDate>
     <item>
       <title>一条新的提速路线开源了：官方自测 680 tok/s、SWE-bench 73.6，第三方还没复现</title>
       <link>https://javis.org.cn/news-2026-10-29-dllm-clover-agent-open.html</link>
