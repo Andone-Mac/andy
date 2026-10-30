@@ -6,7 +6,39 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 29 Oct 2026 15:34:51 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 30 Oct 2026 08:17:37 +0000</lastBuildDate>
+    <item>
+      <title>欧洲万亿旗舰把权重全开了：总参 1.05T，每词元只激活 52B</title>
+      <link>https://javis.org.cn/news-2026-10-30-mistral-large4-1t-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-30-mistral-large4-1t-open.html</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 商用条款</category>
+      <description>Mistral 10 月 29 日释出 Large 4 全套权重：总参 1.05T、每词元激活 52B（部分报道引骨干口径 49B，模型仓库标注 A52B）、上下文 1M、1.6B 视觉编码器；此前 10 月 6 日 API 预览。权重以 FP8 与 NVFP4 两种格式发布，官方 API 标价输入 $0.7、输出 $2.1（每百万词元）。许可为 Mistral Ecosystem Open-Weight License v26.10：使用、修改、微调、商用皆可，把模型作为 API 服务转售需另签商用协议。</description>
+    </item>
+    <item>
+      <title>129.3 亿美元买「模型集市」：美司法部开问，开放分发枢纽绑没绑硬件</title>
+      <link>https://javis.org.cn/news-2026-10-30-nvidia-hf-doj-probe.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-30-nvidia-hf-doj-probe.html</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开放生态 · 监管问询</category>
+      <description>路透 10 月 28 日：美国司法部已就英伟达 9 月 3 日宣布的 129.3 亿美元收购 Hugging Face 展开问询——交易是否让英伟达掌握 AI 领域的关键分发枢纽、能否借平台取得对同业的竞争优势。平台承载 300 万个模型、50 万个数据集、1800 万开发者；按年化约 1.5 亿美元营收算，收购价接近 90 倍。英伟达称交易预计 2027 年上半年完成，并承诺 Hugging Face 保持开放、兼容各类芯片与云。调查不等于认定违法。</description>
+    </item>
+    <item>
+      <title>六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛</title>
+      <link>https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <category>端侧 · 许可门槛</category>
+      <description>Liquid AI 10 月 27 日发布 LFM3：6 款约 2B 级模型（文本 1.7B/视觉 VL-2B/音频 Audio-2B/全模态 Omni-2B/决策 d1-2B 与 d1-Omni-2B）全部由 LFM3-1.7B-Base 分支而来，骨干 24 层 tri-hybrid（13 层门控短卷积+5 层滑窗注意力+6 层全局注意力），预训练 22 万亿词元。文本档 256K 上下文、4-bit 约 1GB。许可为 LFM Open License v1.0：商用仅限年营收低于 1000 万美元的组织，超出即「源码可得」而非标准开源。</description>
+    </item>
+    <item>
+      <title>40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开</title>
+      <link>https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 语音</category>
+      <description>英伟达 10 月 28 日发布 Nemotron 3.5 Transcribe（模型卡名 30B-A4B）：单一权重合并多语转写、说话人归属、翻译与音频问答，转写 40 种语言、对其中 31 种做互译英文、在 13 种语言上区分说话人，单文件最长 1 小时、最多标注 8 名说话人；权重按 OpenMDW-1.1 发布，商用非商用皆可。同批公开 Granary v2 语料：公开清单覆盖 463,062 小时、48 种语言、16 个来源语料。</description>
+    </item>
     <item>
       <title>同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s</title>
       <link>https://javis.org.cn/news-2026-10-29-flash-next-three-tiers-week.html</link>

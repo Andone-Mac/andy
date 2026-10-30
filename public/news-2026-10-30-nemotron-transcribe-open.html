@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="英伟达 10 月 28 日发布 Nemotron 3.5 Transcribe（模型卡名 30B-A4B）：单一权重合并多语转写、说话人归属、翻译与音频问答，转写 40 种语言、对其中 31 种做互译英文、在 13 种语言上区分说话人，单文件最长 1 小时、最多标注 8 名说话人；权重按 OpenMDW-1.1 发布，商用非商用皆可。同批公开 Granary v2 语料：公开清单覆盖 463,062 小时、48 种语言、16 个来源语料。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-30-nemotron-transcribe-open.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="英伟达 10 月 28 日发布 Nemotron 3.5 Transcribe（模型卡名 30B-A4B）：单一权重合并多语转写、说话人归属、翻译与音频问答，转写 40 种语言、对其中 31 种做互译英文、在 13 种语言上区分说话人，单文件最长 1 小时、最多标注 8 名说话人；权重按 OpenMDW-1.1 发布，商用非商用皆可。同批公开 Granary v2 语料：公开清单覆盖 463,062 小时、48 种语言、16 个来源语料。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="英伟达 10 月 28 日发布 Nemotron 3.5 Transcribe（模型卡名 30B-A4B）：单一权重合并多语转写、说话人归属、翻译与音频问答，转写 40 种语言、对其中 31 种做互译英文、在 13 种语言上区分说话人，单文件最长 1 小时、最多标注 8 名说话人；权重按 OpenMDW-1.1 发布，商用非商用皆可。同批公开 Granary v2 语料：公开清单覆盖 463,062 小时、48 种语言、16 个来源语料。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开",
+      "description": "英伟达 10 月 28 日发布 Nemotron 3.5 Transcribe（模型卡名 30B-A4B）：单一权重合并多语转写、说话人归属、翻译与音频问答，转写 40 种语言、对其中 31 种做互译英文、在 13 种语言上区分说话人，单文件最长 1 小时、最多标注 8 名说话人；权重按 OpenMDW-1.1 发布，商用非商用皆可。同批公开 Granary v2 语料：公开清单覆盖 463,062 小时、48 种语言、16 个来源语料。",
+      "datePublished": "2026-10-30",
+      "dateModified": "2026-10-30",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开",
+          "item": "https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 111 条）</a>
+          <a href="news-2026-10-30-mistral-large4-1t-open.html">万亿旗舰开权重</a>
+          <a href="news-2026-10-30-nvidia-hf-doj-probe.html">收购模型集市</a>
+          <a href="news-2026-10-30-lfm3-six-edge-models.html">六款端侧小模型</a>
+          <a href="news-2026-10-30-nemotron-transcribe-open.html">多语语音开源</a>
+          <a href="news-2026-10-29-flash-next-three-tiers-week.html">三档一周真实运转</a>
+          <a href="news-2026-10-29-dllm-clover-agent-open.html">扩散模型开源了</a>
+          <a href="news-2026-10-29-aa-index-v5-private-tasks.html">榜单改卷了</a>
+          <a href="news-2026-10-29-atria-dawn-full-weights.html">512K 完整权重</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-30</span><span class="n-tag" style="margin-left:8px">开放权重 · 语音</span>
+    <h1 class="art-h1">40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开</h1>
+    <p class="art-lede">会议纪要、讯问笔录、巡检录音这些内网音频，以前多半要送出去才能转成文字。10 月 28 日这批开放权重把「40 种语言听得懂、还能分清谁在说话」装进了一个可商用的检查点，连训练语料的公开清单都一起放了。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、一个检查点包了几件事</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>能力</th><th>范围（模型卡口径）</th></tr></thead>
+        <tbody>
+          <tr><td>转写</td><td>40 种语言，单文件最长 1 小时</td></tr>
+          <tr><td>翻译</td><td>其中 31 种语言与英语互译</td></tr>
+          <tr><td>说话人归属</td><td>13 种语言，最多标注 8 人</td></tr>
+          <tr><td>形态</td><td>语音增强语言模型：转写之外可做音频问答</td></tr>
+          <tr><td>许可</td><td>OpenMDW-1.1，商用/非商用皆可</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">二、成绩表要连口径一起看</h3>
+      <ul class="art-tl">
+        <li>自报：九个英语数据集均值 WER 4.71%，对比项是开放权重里次优的 Qwen3-ASR-1.7B（4.94%）；</li>
+        <li>多说话人场景 cpWER 15.80，对比 DiCoW v3.3 + DiariZen 组合的 16.83；</li>
+        <li>成绩表捕获于 10 月 12 日，属厂商自报口径——中文与方言表现请以你们的真实录音复测为准。</li>
+      </ul>
+
+      <h3 class="art-h2">三、语料和模型一起开放，意味着什么</h3>
+      <p>Granary v2 的公开清单覆盖 463,062 小时、48 种语言、16 个来源语料（上代为 25 种语言）。官方特别说明：这些数字描述的是数据集发布范围，不等于模型的全部训练混合。对你评估的价值在于可复跑：想验证「它在你们那种口音与术语密度下掉多少点」，可以拿同一批公开语料做对照，而不是只信一张成绩表。</p>
+
+      <div class="kv-box">
+        <h3>内网音频这条链，值得重算一遍</h3>
+        <p class="kv-sub">四条：</p>
+        <ul>
+          <li>先盘存量音频类型（纪要/笔录/巡检），标出现在走云端 API 的年成本；</li>
+          <li>把「转写+区分说话人+检索问答」当一条链评估，而不是单测一个 ASR 分数；</li>
+          <li>中文与专业术语密度下掉多少点，用你们自己的录音对公开语料做对照复测；</li>
+          <li>模型与语料都开放——对照实验的素材不用再找厂商要。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：英伟达 10 月 28 日于 Hugging Face 的发布与模型卡、Unite.AI 报道；成绩均为厂商自报口径 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-10-30-lfm3-six-edge-models.html" title="六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">六款端侧小模型</span>
+        <span class="pg-d">2026-10-30</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-10-29-flash-next-three-tiers-week.html" title="同一模型三档量化一周实测：最快 67.9 tok/s、最慢 40.9 tok/s">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">三档一周真实运转</span>
+        <span class="pg-d">2026-10-29</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 111 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>内网录音变文字这件事，现在有一条不出域的完整链。</h2>
+      <p>拿一段你们的真实录音给我们，出一版「40 语言档在你场景下」的实测对照，流程可复跑。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开」，机悟 JAVIS，2026-10-30，https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开](https://javis.org.cn/news-2026-10-30-nemotron-transcribe-open.html)（机悟 JAVIS，2026-10-30）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

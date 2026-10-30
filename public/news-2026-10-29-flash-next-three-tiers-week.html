@@ -140,15 +140,15 @@
       <div class="nav-item">
         <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
         <div class="nav-sub">
-          <a href="news.html">全部动态（共 107 条）</a>
+          <a href="news.html">全部动态（共 111 条）</a>
+          <a href="news-2026-10-30-mistral-large4-1t-open.html">万亿旗舰开权重</a>
+          <a href="news-2026-10-30-nvidia-hf-doj-probe.html">收购模型集市</a>
+          <a href="news-2026-10-30-lfm3-six-edge-models.html">六款端侧小模型</a>
+          <a href="news-2026-10-30-nemotron-transcribe-open.html">多语语音开源</a>
           <a href="news-2026-10-29-flash-next-three-tiers-week.html">三档一周真实运转</a>
           <a href="news-2026-10-29-dllm-clover-agent-open.html">扩散模型开源了</a>
           <a href="news-2026-10-29-aa-index-v5-private-tasks.html">榜单改卷了</a>
           <a href="news-2026-10-29-atria-dawn-full-weights.html">512K 完整权重</a>
-          <a href="news-2026-10-29-gemini-4-carbon-price.html">59 分与两笔账</a>
-          <a href="news-2026-10-29-anthropic-exploit-chains.html">模型自己挖洞</a>
-          <a href="news-2026-10-29-anthropic-s1-listing-filing.html">龙头晒账本</a>
-          <a href="news-2026-10-29-storage-tight-to-2030.html">紧缺到 2030</a>
         </div>
       </div>
       <div class="nav-item">
@@ -200,14 +200,14 @@
       <p>「像不像在线模型」的机制三件套（MoE 值班制、前缀命中、草稿核对），更早发布的智能体负载一篇已经拆过；本篇补的是它们在整周日程上的总账表现。</p>
 
       <h3 class="art-h2">二、一档一行：谁接住了哪段活</h3>
-      <p>主表。四列全部来自同一份日志（体积为文件字节数、十进制 GB；角色一行只标事实上的在场时间）：</p>
+      <p>主表。四列全部来自同一份日志（体积为文件字节数、十进制 GB）。在场时间：默认档全程（10-22→10-29），选型验证档 10-22→10-28，重载档 10-23 一天——三档共用同一套引擎与工具链，换档只换权重文件。</p>
       <table class="art-table is-fixed" style="margin-top:14px">
-        <colgroup><col style="width:22%"><col style="width:24%"><col style="width:27%"><col style="width:27%"></colgroup>
-        <thead><tr><th>档位<br><small>权重体积 · 角色</small></th><th>本周负载<br><small>会话 · 请求</small></th><th>读写词元<br><small>一周合计</small></th><th>前缀命中<br><small>与 MTP 接受率</small></th></tr></thead>
+        <colgroup><col style="width:26%"><col style="width:22%"><col style="width:28%"><col style="width:24%"></colgroup>
+        <thead><tr><th>档位<br><small>权重体积</small></th><th>本周负载<br><small>场次·请求</small></th><th>读写词元<br><small>一周合计</small></th><th>前缀命中<br><small>草稿接受率</small></th></tr></thead>
         <tbody>
-          <tr><td><b>Q4_K_M</b><br>119.2 GB<small>默认档 10-22→10-29</small></td><td>40 场<br>3,821 条</td><td>读 2.35 亿<br>写 245 万</td><td><b style="white-space:nowrap">92.3%</b><br>草稿接受 80.9%</td></tr>
-          <tr><td><b>UD-IQ4_XS</b><br>93.7 GB<small>选型验证档 10-22→10-28</small></td><td>17 场<br>1,691 条</td><td>读 9,817 万<br>写 98 万</td><td><b style="white-space:nowrap">85.7%</b><br>草稿接受 80.4%</td></tr>
-          <tr><td><b>Q5_K_M</b><br>134.1 GB<small>重载档 10-23</small></td><td>5 场<br>488 条</td><td>读 1,740 万<br>写 41 万</td><td><b style="white-space:nowrap">73.2%</b><br>草稿接受 83.3%</td></tr>
+          <tr><td><b>Q4_K_M</b><br>119.2 GB</td><td>40 场<br>3,821 条</td><td><span style="white-space:nowrap">读 2.35 亿</span><br><span style="white-space:nowrap">写 245 万</span></td><td><b style="white-space:nowrap">92.3%</b><br>接受率 80.9%</td></tr>
+          <tr><td><b>UD-IQ4_XS</b><br>93.7 GB</td><td>17 场<br>1,691 条</td><td><span style="white-space:nowrap">读 9,817 万</span><br><span style="white-space:nowrap">写 98 万</span></td><td><b style="white-space:nowrap">85.7%</b><br>接受率 80.4%</td></tr>
+          <tr><td><b>Q5_K_M</b><br>134.1 GB</td><td>5 场<br>488 条</td><td><span style="white-space:nowrap">读 1,740 万</span><br><span style="white-space:nowrap">写 41 万</span></td><td><b style="white-space:nowrap">73.2%</b><br>接受率 83.3%</td></tr>
         </tbody>
       </table>
       <p>三行连起来读：<b>三档共用同一套引擎与工具链，换档只换权重文件</b>——但同一负载下，谁体积最小谁就最快，这个顺序在六行负载上没换过一次位置。换档这根杠杆有多大，下一张表给数。</p>
@@ -216,7 +216,7 @@
       <p>同一张表两个读法——竖着读是「同一档，会话越挂越长」，横着读是「同一负载，换不换档」：</p>
       <table class="art-table is-fixed" style="margin-top:14px">
         <colgroup><col style="width:22%"><col style="width:26%"><col style="width:26%"><col style="width:26%"></colgroup>
-        <thead><tr><th>提示长度<br><small>写满 ≥80 词元的请求</small></th><th>Q4_K_M<br><small>中位 tok/s · 样本</small></th><th>UD-IQ4_XS<br><small>中位 tok/s · 样本</small></th><th>Q5_K_M<br><small>中位 tok/s · 样本</small></th></tr></thead>
+        <thead><tr><th>提示长度<br><small>词元</small></th><th>Q4_K_M<br><small>中位 tok/s · 样本</small></th><th>UD-IQ4_XS<br><small>中位 tok/s · 样本</small></th><th>Q5_K_M<br><small>中位 tok/s · 样本</small></th></tr></thead>
         <tbody>
           <tr><td>&lt;8K</td><td><b style="white-space:nowrap">54.9</b><br>471 条</td><td><b style="white-space:nowrap">67.9</b><br>246 条</td><td><b style="white-space:nowrap">45.3</b><br>3 条</td></tr>
           <tr><td>8K–16K</td><td><b style="white-space:nowrap">52.2</b><br>7 条</td><td><b style="white-space:nowrap">57.8</b><br>22 条</td><td><b style="white-space:nowrap">45.5</b><br>1 条</td></tr>
@@ -249,17 +249,18 @@
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <span class="pg pg-off">
+      <a class="pg prev" rel="prev" href="news-2026-10-30-nemotron-transcribe-open.html" title="40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开">
         <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">已经是最新一篇</span>
-      </span>
+        <span class="pg-t">多语语音开源</span>
+        <span class="pg-d">2026-10-30</span>
+      </a>
       <a class="pg next" rel="next" href="news-2026-10-29-dllm-clover-agent-open.html" title="一条新的提速路线开源了：官方自测 680 tok/s、SWE-bench 73.6，第三方还没复现">
         <span class="pg-k">下一篇 →</span>
         <span class="pg-t">扩散模型开源了</span>
         <span class="pg-d">2026-10-29</span>
       </a>
     </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 107 条）→</a></p>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 111 条）→</a></p>
 </section>
       <div class="art-foot">
         <a class="btn btn-line" href="news.html">← 返回行业动态</a>

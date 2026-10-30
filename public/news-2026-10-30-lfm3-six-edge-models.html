@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="Liquid AI 10 月 27 日发布 LFM3：6 款约 2B 级模型（文本 1.7B/视觉 VL-2B/音频 Audio-2B/全模态 Omni-2B/决策 d1-2B 与 d1-Omni-2B）全部由 LFM3-1.7B-Base 分支而来，骨干 24 层 tri-hybrid（13 层门控短卷积+5 层滑窗注意力+6 层全局注意力），预训练 22 万亿词元。文本档 256K 上下文、4-bit 约 1GB。许可为 LFM Open License v1.0：商用仅限年营收低于 1000 万美元的组织，超出即「源码可得」而非标准开源。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-10-30-lfm3-six-edge-models.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="Liquid AI 10 月 27 日发布 LFM3：6 款约 2B 级模型（文本 1.7B/视觉 VL-2B/音频 Audio-2B/全模态 Omni-2B/决策 d1-2B 与 d1-Omni-2B）全部由 LFM3-1.7B-Base 分支而来，骨干 24 层 tri-hybrid（13 层门控短卷积+5 层滑窗注意力+6 层全局注意力），预训练 22 万亿词元。文本档 256K 上下文、4-bit 约 1GB。许可为 LFM Open License v1.0：商用仅限年营收低于 1000 万美元的组织，超出即「源码可得」而非标准开源。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="Liquid AI 10 月 27 日发布 LFM3：6 款约 2B 级模型（文本 1.7B/视觉 VL-2B/音频 Audio-2B/全模态 Omni-2B/决策 d1-2B 与 d1-Omni-2B）全部由 LFM3-1.7B-Base 分支而来，骨干 24 层 tri-hybrid（13 层门控短卷积+5 层滑窗注意力+6 层全局注意力），预训练 22 万亿词元。文本档 256K 上下文、4-bit 约 1GB。许可为 LFM Open License v1.0：商用仅限年营收低于 1000 万美元的组织，超出即「源码可得」而非标准开源。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛",
+      "description": "Liquid AI 10 月 27 日发布 LFM3：6 款约 2B 级模型（文本 1.7B/视觉 VL-2B/音频 Audio-2B/全模态 Omni-2B/决策 d1-2B 与 d1-Omni-2B）全部由 LFM3-1.7B-Base 分支而来，骨干 24 层 tri-hybrid（13 层门控短卷积+5 层滑窗注意力+6 层全局注意力），预训练 22 万亿词元。文本档 256K 上下文、4-bit 约 1GB。许可为 LFM Open License v1.0：商用仅限年营收低于 1000 万美元的组织，超出即「源码可得」而非标准开源。",
+      "datePublished": "2026-10-30",
+      "dateModified": "2026-10-30",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛",
+          "item": "https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 111 条）</a>
+          <a href="news-2026-10-30-mistral-large4-1t-open.html">万亿旗舰开权重</a>
+          <a href="news-2026-10-30-nvidia-hf-doj-probe.html">收购模型集市</a>
+          <a href="news-2026-10-30-lfm3-six-edge-models.html">六款端侧小模型</a>
+          <a href="news-2026-10-30-nemotron-transcribe-open.html">多语语音开源</a>
+          <a href="news-2026-10-29-flash-next-three-tiers-week.html">三档一周真实运转</a>
+          <a href="news-2026-10-29-dllm-clover-agent-open.html">扩散模型开源了</a>
+          <a href="news-2026-10-29-aa-index-v5-private-tasks.html">榜单改卷了</a>
+          <a href="news-2026-10-29-atria-dawn-full-weights.html">512K 完整权重</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-10-30</span><span class="n-tag" style="margin-left:8px">端侧 · 许可门槛</span>
+    <h1 class="art-h1">六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛</h1>
+    <p class="art-lede">端侧这摊的规矩一直是「小、快、能落地」。10 月 27 日这批六个模型把文本、视觉、音频、全模态和「毫秒级做判断」的决策档一次配齐——但「开放权重」四个字后面跟的那道年营收 1000 万美元的商用门槛，比任何一项跑分都更需要先读。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、六个模型各管一摊（官方自报口径）</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>模型</th><th>做什么</th><th>关键数字</th></tr></thead>
+        <tbody>
+          <tr><td>LFM3-1.7B</td><td>文本输入输出，为智能体工具链做过训练</td><td>1.73B 参数、12.8 万词表、256K 上下文、4-bit 约 1GB</td></tr>
+          <tr><td>LFM3-VL-2B</td><td>文本/图像/视频输入</td><td>自研视觉编码器仅 164M，官方称算力为上代所用 SigLIP2 编码器的三分之一</td></tr>
+          <tr><td>LFM3-Audio-2B</td><td>文本与音频双向输入输出</td><td>18 种语言语音转写/合成/翻译，首字延迟低至 50 毫秒</td></tr>
+          <tr><td>LFM3-Omni-2B</td><td>视、听、语一个模型全包</td><td>2.2B 参数，家族首个全模态</td></tr>
+          <tr><td>d1-2B / d1-Omni-2B</td><td>不写长答案，一次前向给一批带概率的判断</td><td>point/read/estimate/pick 四类有类型回答；d1-2B 比上代 d1-3B 少三分之一参数</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">二、端侧数字是怎么来的</h3>
+      <ul class="art-tl">
+        <li>骨干 24 层「三重混合」：13 层门控短卷积（卷积核由 3 加到 7）、5 层 256 词元滑动窗口注意力、6 层全局注意力；预训练 22 万亿词元，末段 3.5 万亿把上下文扩到 256K；</li>
+        <li>架构搜索覆盖 14 种设备与后端组合（旗舰手机、树莓派 5、M4 Max、桌面 CPU、云端 GPU、NPU 都在列）；</li>
+        <li>官方演示口径：LFM3-1.7B 在 iPhone 17 Pro 上解码 43.6 tok/s、占用内存 1.90GB；音频码本 LiquidCodec 在单 CPU 线程上以约 87 倍实时速度还原语音；</li>
+        <li>跑分均为厂商自报：文本档在网页智能体基准 WebArena-Verified 上 38.42（上代 3.02），家族 62 项评测均分由 57.6 升至 71.4。</li>
+      </ul>
+
+      <h3 class="art-h2">三、许可门槛比跑分更需要先读</h3>
+      <p>LFM Open License v1.0：研究、非营利用途不受限；商用仅限年营收低于 1000 万美元的组织；超出这条线，「开源」就成了「源码可得」——大型集成商、云厂商用它做产品，要先按授权谈判处理。发布伙伴名单（AMD、Arm、Intel、英伟达、高通等）说明生态推力不缺，缺的是你自己对一遍主体营收档位。</p>
+
+      <div class="kv-box">
+        <h3>端侧选型把这两栏先填了</h3>
+        <p class="kv-sub">四条：</p>
+        <ul>
+          <li>先查自家主体年营收是否低于 1000 万美元——这条决定「开源」还是「授权」；</li>
+          <li>端侧内存按 4-bit 1GB（文本）与 2B 档实际占用两级估算，别拿桌面跑分套手机；</li>
+          <li>决策档（d1）适合「要结论不要文章」的巡检、点验类场景：一次前向出一批带概率判断，接入时按字段解析；</li>
+          <li>家族全部数字为厂商自报，接入前用自己设备复测。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：Liquid AI 官方博客与模型卡、智源社区/Iresearch 等媒体转述（数字均标厂商自报口径） 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-10-30-nvidia-hf-doj-probe.html" title="129.3 亿美元买「模型集市」：美司法部开问，开放分发枢纽绑没绑硬件">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">收购模型集市</span>
+        <span class="pg-d">2026-10-30</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-10-30-nemotron-transcribe-open.html" title="40 种语言的转写一个模型管：30B 语音权重连 46 万小时语料一起开">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">多语语音开源</span>
+        <span class="pg-d">2026-10-30</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 111 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>端侧要落地，许可与内存这两栏得先过。</h2>
+      <p>把你们的设备清单与场景给我们，出一版「营收档位×内存×任务」的端侧评估，数字可复跑。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛」，机悟 JAVIS，2026-10-30，https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[六个 2B 级模型塞进手机：文本档 4-bit 占 1 GB，商用卡一道营收门槛](https://javis.org.cn/news-2026-10-30-lfm3-six-edge-models.html)（机悟 JAVIS，2026-10-30）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>
