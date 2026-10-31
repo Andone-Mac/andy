@@ -6,7 +6,55 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 30 Oct 2026 08:17:37 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 31 Oct 2026 11:15:10 +0000</lastBuildDate>
+    <item>
+      <title>20480 卡、117 亿元：运营商超节点集采把单价定在 57 万元一卡</title>
+      <link>https://javis.org.cn/news-2026-10-31-mobile-supernode-bid.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-31-mobile-supernode-bid.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力 · 集采单价</category>
+      <description>中国移动 2026—2027 年新一代人工智能超节点设备集中采购：10-26 开标、10-27 评标、10-28 公示中标候选人。五家拟中标份额 6144/5120/4096/3072/2048 卡，合计 20480 卡；投标报价（不含税）115.99 亿—117.02 亿元，最高与最低差约 0.88%；配套 RoCE 交换机 448 台、存储 82 套；交货期均 30 天。按第一名报价折算单卡约 57.1 万元（本刊计算，不含税）。</description>
+    </item>
+    <item>
+      <title>1990 万元买「词元」：区级政府第一次按 token 采本地基座服务</title>
+      <link>https://javis.org.cn/news-2026-10-31-xuhui-token-platform.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-31-xuhui-token-platform.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <category>采购 · 计量口径</category>
+      <description>上海市徐汇区新型工业化推进办公室「沪产基模徐汇区大模型词元服务平台」10-29 公示成交：中标金额 1990.00 万元，评审总得分 98.12；中标人为上海徐汇科创孵化器有限公司，联合体含中国电信上海分公司；采购方式为单一来源，合同签订后服务期 6 个月。项目名中的「词元（Token）平台」意味着预算科目从买算力转向按 token 计量购买本地基座模型服务。</description>
+    </item>
+    <item>
+      <title>AI 技术拟列管 23 项：大模型出海，「驻场」与「API」走两套流程</title>
+      <link>https://javis.org.cn/news-2026-10-31-ai-export-control-consultation.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-31-ai-export-control-consultation.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <category>监管 · 出口管制</category>
+      <description>商务部、科技部 2026 年第 48 号公告（10-16 发布）就修订《中国禁止出口限制出口技术目录》公开征求意见：涉及人工智能、生物医药、光伏三领域 40 项，其中拟禁止出口 14 项、拟限制出口 26 项；人工智能拟增列 23 项，含大模型、智能体、算力集群等。答记者问明确：已通过开源、发表论文进入公共领域的技术拟不纳入；限制类技术做海外本地化部署属技术出口管理范围，而以限制类大模型对外提供 API 调用、APP/网页交互、SaaS、本地端侧轻量化部署不属大模型技术出口管理范围。</description>
+    </item>
+    <item>
+      <title>显存 4.5 美元/Gb、封装据报涨两成、企业级盘一年三倍：一份 BOM 的涨点</title>
+      <link>https://javis.org.cn/news-2026-10-31-hbm-cowos-ssd-price-chain.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-31-hbm-cowos-ssd-price-chain.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 报价单</category>
+      <description>三处同时涨：三星 HBM 平均报价约 4.50 美元/Gb，高于 SK 海力士 3.60—3.80 美元（18%—25%）；36GB HBM3E 现货价一度 2100 美元，折 7.29 美元/Gb，约为长约的 4.9 倍；RBC 判断 2027 年 HBM 价格或涨 80%—100%（机构预测），台积电 CoWoS 先进封装据报拟上调 10%—20%；256GB TLC 企业级 SSD 合约价由 33.3 美元涨至 134.2 美元（+303%），2026 年四季度预计再涨 23%—28%。</description>
+    </item>
+    <item>
+      <title>一个区的仲裁智能体办了 965 件：文书撰写省七成、周期压两成</title>
+      <link>https://javis.org.cn/news-2026-10-31-haizhou-arbitration-agent.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-31-haizhou-arbitration-agent.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <category>政务落地 · 政法</category>
+      <description>新华日报 10-30 刊发江苏政务大模型落地调查：连云港市海州区「金睛智护」小程序 4 月 15 日上线至统计时点累计收到劳动仲裁线上申请 1447 件，仲裁智能体 2 月初投用以来辅助办理案件 965 件、线上成功调解纠纷 516 件；纳入统计的案件中文书平均撰写时长缩短 70%、案件整体处理周期同比压缩 20%。报道另称政务大模型建设成本中算力占比达六到七成，模型 API、语音识别、向量模型需另行计费。</description>
+    </item>
+    <item>
+      <title>导出 1800 条数据存联网电脑：护网—2026 三案说明「没泄露也罚」</title>
+      <link>https://javis.org.cn/news-2026-10-31-huwang-2026-cases.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-10-31-huwang-2026-cases.html</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 +0000</pubDate>
+      <category>监管 · 数据安全</category>
+      <description>公安部网络安全保卫局在「护网—2026」专项工作中公布三起不履行数据安全保护义务或网络安全保护义务典型案例，由福建漳州、龙岩、泉州属地公安机关作出行政处罚并责令改正：漳州某医疗机构权限管理混乱、人员导出 1800 余条工作数据存放于未部署有效防护的互联网电脑；龙岩某公司自建来访登记系统未采取数据安全技术措施；泉州某公司话务系统测试服务器未防护且测试后未下线，遭入侵后被利用外呼。</description>
+    </item>
     <item>
       <title>欧洲万亿旗舰把权重全开了：总参 1.05T，每词元只激活 52B</title>
       <link>https://javis.org.cn/news-2026-10-30-mistral-large4-1t-open.html</link>
