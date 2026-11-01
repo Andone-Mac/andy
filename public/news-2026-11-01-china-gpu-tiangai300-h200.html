@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="天数智芯 10 月 28 日媒体开放日首次公开天垓300 实机演示：第三方机构今年 7 月测试显示，典型 PD 分离部署下折算单卡端到端吞吐达英伟达 H200 的 1.05 倍；64K 长上下文 Attention 为 H200 的 1.05 倍，GLM-5.3 64K 场景 MoE 吞吐 1.15 倍；8K—128K 的 Agent 首字延迟低约 10%—30%。单卡 144GB 显存，IXL144 超节点单柜 144 颗 GPU、约 10.1TB 显存，官方称每百万有效词元成本较国际主流方案低约 40%。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="天数智芯 10 月 28 日媒体开放日首次公开天垓300 实机演示：第三方机构今年 7 月测试显示，典型 PD 分离部署下折算单卡端到端吞吐达英伟达 H200 的 1.05 倍；64K 长上下文 Attention 为 H200 的 1.05 倍，GLM-5.3 64K 场景 MoE 吞吐 1.15 倍；8K—128K 的 Agent 首字延迟低约 10%—30%。单卡 144GB 显存，IXL144 超节点单柜 144 颗 GPU、约 10.1TB 显存，官方称每百万有效词元成本较国际主流方案低约 40%。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="天数智芯 10 月 28 日媒体开放日首次公开天垓300 实机演示：第三方机构今年 7 月测试显示，典型 PD 分离部署下折算单卡端到端吞吐达英伟达 H200 的 1.05 倍；64K 长上下文 Attention 为 H200 的 1.05 倍，GLM-5.3 64K 场景 MoE 吞吐 1.15 倍；8K—128K 的 Agent 首字延迟低约 10%—30%。单卡 144GB 显存，IXL144 超节点单柜 144 颗 GPU、约 10.1TB 显存，官方称每百万有效词元成本较国际主流方案低约 40%。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成",
+      "description": "天数智芯 10 月 28 日媒体开放日首次公开天垓300 实机演示：第三方机构今年 7 月测试显示，典型 PD 分离部署下折算单卡端到端吞吐达英伟达 H200 的 1.05 倍；64K 长上下文 Attention 为 H200 的 1.05 倍，GLM-5.3 64K 场景 MoE 吞吐 1.15 倍；8K—128K 的 Agent 首字延迟低约 10%—30%。单卡 144GB 显存，IXL144 超节点单柜 144 颗 GPU、约 10.1TB 显存，官方称每百万有效词元成本较国际主流方案低约 40%。",
+      "datePublished": "2026-11-01",
+      "dateModified": "2026-11-01",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成",
+          "item": "https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 122 条）</a>
+          <a href="news-2026-11-01-china-ai-standards-take-effect.html">国标今天起实施</a>
+          <a href="news-2026-11-01-china-gpu-tiangai300-h200.html">国产卡实测超 H200</a>
+          <a href="news-2026-11-01-china-search-api-price-war.html">搜索 API 四块九</a>
+          <a href="news-2026-11-01-china-auto-ai-chip-x7ultra.html">车规大模型芯片</a>
+          <a href="news-2026-11-01-china-robots-collective-learning.html">96 台机器人组团学</a>
+          <a href="news-2026-10-31-mobile-supernode-bid.html">超节点集采单价</a>
+          <a href="news-2026-10-31-xuhui-token-platform.html">按词元买服务</a>
+          <a href="news-2026-10-31-ai-export-control-consultation.html">AI 技术出口管制</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-01</span><span class="n-tag" style="margin-left:8px">国产算力 · 实测对标</span>
+    <h1 class="art-h1">中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成</h1>
+    <p class="art-lede">国产卡以前被评价为「能用、不好用」。这一组数据的意义不在于某个数字赢了，而在于它把比较对象从「峰值参数」换成了「整条推理链路的实际产出」——这正是采购时真正掏钱买的东西。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、实测数字（第三方与企业实验室，各自口径）</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>场景</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>PD 分离部署、整链路端到端吞吐</td><td>折算单卡为 H200 的 1.05 倍（第三方机构 2026 年 7 月测试）</td></tr>
+          <tr><td>64K 长上下文 Attention</td><td>H200 的 1.05 倍</td></tr>
+          <tr><td>GLM-5.3、64K 场景 MoE 吞吐</td><td>同等体验下为 H200 的 1.15 倍</td></tr>
+          <tr><td>8K—128K Agent 首字延迟</td><td>较 H200 低约 10%—30%</td></tr>
+          <tr><td>搜索/广告/推荐在线业务</td><td>推荐推理吞吐 +21%，轻量计算时延 −26%</td></tr>
+          <tr><td>训练（Qwen3-32B、8 卡整机 FP8）</td><td>每卡有效吞吐为 H100 的 1.33 倍</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">二、单柜 144 卡与「每百万词元成本」</h3>
+      <p>IXL144 超节点在单个标准机柜内集成 144 颗 GPU、聚合约 10.1TB 显存，官方称每百万有效词元成本较国际主流方案低约 40%。这句才是采购视角的重点：单价不是唯一变量，单柜能装多少卡、显存池多大、有效吞吐多高，共同决定单位产出成本。</p>
+      <p>另一组稳定性数字值得记：满负荷运行时步时波动 0.43%，对比 Hopper 方案为 0.76%。对长期跑推理的机房，波动比峰值更影响服务水位。</p>
+
+      <h3 class="art-h2">三、口径边界要写清</h3>
+      <ul class="art-tl">
+        <li>所有对比均来自「特定模型＋特定部署条件」，不是脱离条件的整卡结论；</li>
+        <li>厂商自报与第三方测试要分栏：1.05 倍来自第三方机构，1.15 倍等场景数据来自企业性能实验室；</li>
+        <li>软件栈（含 Agent 化调优）决定部署与迁移成本，采购时应要求提供目标业务下的实测吞吐，而不是只看 TOPS。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>国产卡选型，问这四个数</h3>
+        <p class="kv-sub">四条：</p>
+        <ul>
+          <li>同响应要求下能承接多少并发，而不是峰值多少 TOPS；</li>
+          <li>长上下文（64K 以上）的实际首字延迟与吞吐；</li>
+          <li>单柜卡数与显存池，换算成每百万词元成本；</li>
+          <li>连续运行的步时波动与故障率，决定服务水位。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：天数智芯 2026 媒体开放日（10-28）及第三方测试披露，经 21 世纪经济报道、文汇报、雷峰网等报道；测试条件为企业与第三方机构口径 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-01-china-ai-standards-take-effect.html" title="中国 AI 国标今天起实施：大模型平台 4 项＋算力度量，验收有了统一尺子">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">国标今天起实施</span>
+        <span class="pg-d">2026-11-01</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-01-china-search-api-price-war.html" title="中国搜索 API 价格战开打：百度压到 4.9 元一千次，DeepSeek 今天起正式收费">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">搜索 API 四块九</span>
+        <span class="pg-d">2026-11-01</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 122 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>国产卡到了能算账的阶段，值得用自己的负载验一遍。</h2>
+      <p>把你们的模型与并发要求给我们，出一版「同条件对照」的实测方案，数字可复跑。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成」，机悟 JAVIS，2026-11-01，https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[中国国产 GPU 实测反超 H200 百分之五：单柜 144 卡，每百万词元成本降四成](https://javis.org.cn/news-2026-11-01-china-gpu-tiangai300-h200.html)（机悟 JAVIS，2026-11-01）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>
