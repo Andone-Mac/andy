@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="美团 11 月 2 日发布 LongCat-2.5：总参数 1.6 万亿、每个词元仅激活约 480 亿，定位长程智能体任务的原生多模态模型，训练全程使用国产算力。Terminal Bench v4.0 得 38.5 分，高于 GPT-5.6-Sol 的 37.3；v2.1 得 88.4，BrowseComp 91.9、MCP Atlas 83.1、Vision2Web 78.6、MathVision 96.5。官方同时披露为适配国产卡「单卡显存不足 80 GB」做的工程改造：长序列 SFT 单卡吞吐较 DDP 提升 86%，W4A4 量化下 Prefill 与 Decode 分别提升 43.3% 和 42.77%。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="美团 11 月 2 日发布 LongCat-2.5：总参数 1.6 万亿、每个词元仅激活约 480 亿，定位长程智能体任务的原生多模态模型，训练全程使用国产算力。Terminal Bench v4.0 得 38.5 分，高于 GPT-5.6-Sol 的 37.3；v2.1 得 88.4，BrowseComp 91.9、MCP Atlas 83.1、Vision2Web 78.6、MathVision 96.5。官方同时披露为适配国产卡「单卡显存不足 80 GB」做的工程改造：长序列 SFT 单卡吞吐较 DDP 提升 86%，W4A4 量化下 Prefill 与 Decode 分别提升 43.3% 和 42.77%。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="美团 11 月 2 日发布 LongCat-2.5：总参数 1.6 万亿、每个词元仅激活约 480 亿，定位长程智能体任务的原生多模态模型，训练全程使用国产算力。Terminal Bench v4.0 得 38.5 分，高于 GPT-5.6-Sol 的 37.3；v2.1 得 88.4，BrowseComp 91.9、MCP Atlas 83.1、Vision2Web 78.6、MathVision 96.5。官方同时披露为适配国产卡「单卡显存不足 80 GB」做的工程改造：长序列 SFT 单卡吞吐较 DDP 提升 86%，W4A4 量化下 Prefill 与 Decode 分别提升 43.3% 和 42.77%。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6",
+      "description": "美团 11 月 2 日发布 LongCat-2.5：总参数 1.6 万亿、每个词元仅激活约 480 亿，定位长程智能体任务的原生多模态模型，训练全程使用国产算力。Terminal Bench v4.0 得 38.5 分，高于 GPT-5.6-Sol 的 37.3；v2.1 得 88.4，BrowseComp 91.9、MCP Atlas 83.1、Vision2Web 78.6、MathVision 96.5。官方同时披露为适配国产卡「单卡显存不足 80 GB」做的工程改造：长序列 SFT 单卡吞吐较 DDP 提升 86%，W4A4 量化下 Prefill 与 Decode 分别提升 43.3% 和 42.77%。",
+      "datePublished": "2026-11-02",
+      "dateModified": "2026-11-02",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6",
+          "item": "https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 127 条）</a>
+          <a href="news-2026-11-02-meituan-longcat-25-domestic-compute.html">1.6 万亿只用国产卡</a>
+          <a href="news-2026-11-02-agibot-g2-convenience-store-24h.html">6 台机器人干 4.5 小时</a>
+          <a href="news-2026-11-02-china-city-agent-100-plan.html">城市智能体免费铺</a>
+          <a href="news-2026-11-02-apple-intelligence-china-qwen-launch.html">国行苹果 AI 定档</a>
+          <a href="news-2026-11-02-moore-threads-10000-card-domestic-cluster.html">2000 张国产卡跑满</a>
+          <a href="news-2026-11-01-china-ai-standards-take-effect.html">国标今天起实施</a>
+          <a href="news-2026-11-01-china-gpu-tiangai300-h200.html">国产卡实测超 H200</a>
+          <a href="news-2026-11-01-china-search-api-price-war.html">搜索 API 四块九</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-02</span><span class="n-tag" style="margin-left:8px">国产大模型 · 全栈自研</span>
+    <h1 class="art-h1">中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6</h1>
+    <p class="art-lede">万亿参数不稀奇，稀奇的是训练全程没用进口卡。真正值得看的不是 1.6 万亿这个数，而是官方为了在「单卡显存不足 80 GB」的国产卡上把它训出来，被迫做对的那几件事——这些工程细节，恰好也是企业自建集群时最常卡住的地方。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、先看参数结构：1.6 万亿是总量，480 亿才是每次推理的成本</h3>
+      <p>LongCat-2.5 是美团龙猫团队 11 月 2 日发布的新一代模型，定位「长程智能体任务」的原生多模态模型，在 LongCat-2.0 基础上强化了原生视觉理解与智能体编程能力。在线体验与 API 接入已开放，GitHub 与 Hugging Face 权重宣布「即将上线」。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项目</th><th>官方口径</th></tr></thead>
+        <tbody>
+          <tr><td>总参数量</td><td>1.6 万亿</td></tr>
+          <tr><td>每词元激活参数</td><td>约 480 亿</td></tr>
+          <tr><td>模型形态</td><td>原生多模态（视觉与文本同一主干）</td></tr>
+          <tr><td>训练算力</td><td>全程国产算力</td></tr>
+          <tr><td>权重状态</td><td>GitHub / Hugging Face「即将上线」</td></tr>
+        </tbody>
+      </table>
+      <p>「总参数」决定装得下多少知识，「激活参数」决定跑一次要多少算力。480 亿激活意味着推理时的显存与带宽压力，量级更接近一个中等规模模型，而不是一万六千亿。</p>
+
+      <h3 class="art-h2">二、长程智能体榜单：一个指标反超，其余要按各自口径读</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>评测项</th><th>本模型得分</th><th>参照</th></tr></thead>
+        <tbody>
+          <tr><td>Terminal Bench v2.1</td><td>88.4</td><td>—</td></tr>
+          <tr><td>Terminal Bench v4.0</td><td>38.5</td><td>GPT-5.6-Sol 37.3</td></tr>
+          <tr><td>AutomationBench</td><td>51.8</td><td>—</td></tr>
+          <tr><td>BrowseComp</td><td>91.9</td><td>—</td></tr>
+          <tr><td>Program Bench</td><td>25.5</td><td>—</td></tr>
+          <tr><td>MCP Atlas</td><td>83.1</td><td>—</td></tr>
+          <tr><td>3DCodeBench</td><td>55.4</td><td>—</td></tr>
+          <tr><td>Vision2Web（视觉）</td><td>78.6</td><td>—</td></tr>
+          <tr><td>MathVision（视觉）</td><td>96.5</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>Terminal Bench 测的是在终端里连续执行任务的能力，v4.0 是更难的一版，38.5 分这个绝对值不算高，但官方给出的对照是 GPT-5.6-Sol 的 37.3——这是发布材料里唯一一处与闭源旗舰的直接比较，且只覆盖单一评测项。</p>
+      <ul class="art-tl">
+        <li>「反超」只成立在这一项、这一版；其余项目官方未给同条件对照，不能推成整体领先；</li>
+        <li>Program Bench 25.5 分说明复杂编程任务仍有明显空间，长程任务与单轮编程不是一回事；</li>
+        <li>权重尚未实际放出，「即将上线」到「可下载」之间还有许可条款这一关。</li>
+      </ul>
+
+      <h3 class="art-h2">三、被迫做对的四件事：国产卡显存不足 80 GB 带来的工程改造</h3>
+      <p>官方在技术说明里点明，基础设施是「面向国产算力单卡显存不足 80 GB 的限制」做的优化。对自建集群的读者，这四条比跑分更有参考价值：</p>
+      <ul class="art-tl">
+        <li>超节点并行 + 双重分片 FSDP：把单卡装不下的专家分片到多卡，绕开单卡显存上限；</li>
+        <li>长序列 SFT 单卡吞吐较 DDP 基线提升 86%：长上下文训练的效率瓶颈不只在算力，也在并行策略；</li>
+        <li>推理用 W4A4，把专家权重与激活同时量化到 4 bit：相对 W8A8 INT8，Prefill 提升 43.3%、Decode 提升 42.77%，首字延迟与每词元耗时分别降低 15.91% 和 19.72%；</li>
+        <li>GMM 算子平均加速 1.73 倍：MoE 模型的算子在国产卡上往往没有现成高度优化版本，这部分得自己做。</li>
+      </ul>
+      <p>另外两条训练侧的细节也值得记：数据合成流水线自动生成任务、可交互环境与可验证测试用例，并用 fail-to-pass / pass-to-pass 双校验；为抑制 reward hacking，训练时做了断网、清除 git 历史与 LLM judge 监督。这类工程约束，是「长程智能体」能不能稳定跑起来的分水岭。</p>
+
+      <div class="kv-box">
+        <h3>要把「万亿参数」用到自己机房，先问这四个数</h3>
+        <p class="kv-sub">四条：</p>
+        <ul>
+          <li>激活参数与量化档位：决定单卡显存要多大，而不是总参数多大；</li>
+          <li>训练卡型号与规模：官方说「国产算力」，具体型号与卡数要问到，才谈得上复现；</li>
+          <li>量化后的精度损失：W4A4 提了 40% 以上吞吐，官方未给精度对照，需自测业务集；</li>
+          <li>权重许可与私有化条款：开源权重不等于可商用，许可与备案要求要一起看。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：美团龙猫 LongCat-2.5 官方技术博客（longcat.ai/blog/longcat-2.5）与 11 月 2 日发布信息，经站长之家、时代财经、格隆汇等报道；跑分为厂商自报口径，未做第三方复现。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-02-agibot-g2-convenience-store-24h.html" title="中国 6 台机器人干满 4.5 小时：337 项任务、30 杯咖啡，具身智能开始按工时算账">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">6 台机器人干 4.5 小时</span>
+        <span class="pg-d">2026-11-02</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 127 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>万亿参数能不能落到你的机房，取决于那四个数。</h2>
+      <p>把你们的目标模型、并发与现有硬件给我们，先出一版可复跑的容量测算，再谈部署。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6」，机悟 JAVIS，2026-11-02，https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6](https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html)（机悟 JAVIS，2026-11-02）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

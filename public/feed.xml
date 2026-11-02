@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 01 Nov 2026 08:09:25 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 09:11:53 +0000</lastBuildDate>
+    <item>
+      <title>中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6</title>
+      <link>https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 全栈自研</category>
+      <description>美团 11 月 2 日发布 LongCat-2.5：总参数 1.6 万亿、每个词元仅激活约 480 亿，定位长程智能体任务的原生多模态模型，训练全程使用国产算力。Terminal Bench v4.0 得 38.5 分，高于 GPT-5.6-Sol 的 37.3；v2.1 得 88.4，BrowseComp 91.9、MCP Atlas 83.1、Vision2Web 78.6、MathVision 96.5。官方同时披露为适配国产卡「单卡显存不足 80 GB」做的工程改造：长序列 SFT 单卡吞吐较 DDP 提升 86%，W4A4 量化下 Prefill 与 Decode 分别提升 43.3% 和 42.77%。</description>
+    </item>
+    <item>
+      <title>中国 6 台机器人干满 4.5 小时：337 项任务、30 杯咖啡，具身智能开始按工时算账</title>
+      <link>https://javis.org.cn/news-2026-11-02-agibot-g2-convenience-store-24h.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-02-agibot-g2-convenience-store-24h.html</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      <category>具身智能 · 真实上岗</category>
+      <description>11 月 2 日 10 时，智元启动「机器人打工不能停」24 小时便利店直播：6 台精灵 G2 正式上岗，截至 14 时 30 分在岗 4.5 小时完成 337 项任务——接待顾客 116 次、商品取送 84 件、咖啡制作 30 次、早餐服务 40 次、补货及巡检 27 次、桌面清洁 40 次。技术底座为 GO-3 基座模型与 Genie Master 具身 Agent，考核的是连续在岗而非单次演示。同期行业数据：10 月具身智能融资 33 起、101.05 亿元，较 9 月的 60 起、110.28 亿元接近腰斩；工信部预计今年人形机器人整机产量突破 10 万台。</description>
+    </item>
+    <item>
+      <title>中国城市智能体开始免费铺：2030 年前落 100 城，城市财政不出钱</title>
+      <link>https://javis.org.cn/news-2026-11-02-china-city-agent-100-plan.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-02-china-city-agent-100-plan.html</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      <category>政务落地 · 城市智能体</category>
+      <description>11 月 2 日，2026 年世界互联网大会乌镇峰会「数智创新发布活动·智能体主题发布」专场上，云堤科技启动「中国百城 AI 计划」：以数字赣州为样板，免费为城市建设城市智能体系统、城市财政无需投入，按「3 个月系统上线、1 年规模化运营、2 年建成生态」推进，目标到 2030 年落地 100 座城市、发展 1000 家服务商、服务 1 万家商家。数字赣州 2025 年 4 月上线，采用「1+4+N」架构，已上线 100 余项服务、覆盖全市 890 万市民。</description>
+    </item>
+    <item>
+      <title>国行苹果 AI 定档：11 月 4 日测试、12 月推送，Siri 背后接入中国大模型</title>
+      <link>https://javis.org.cn/news-2026-11-02-apple-intelligence-china-qwen-launch.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-02-apple-intelligence-china-qwen-launch.html</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      <category>系统级 AI · 端侧生态</category>
+      <description>苹果 10 月 31 日宣布与阿里巴巴合作，将通义千问整合进中国大陆版 Apple Intelligence：相关功能预计 11 月 4 日随 iOS 27.3 开发者测试版上线，12 月随正式版系统向中国用户推送。接入后用户可通过 Siri 调用千问做知识问答、文档与图片追问，也可使用「千问创作」生成文本与图像；百度文心将参与提供搜索与视觉识别等底层能力。这意味着国行设备的系统级 AI 能力，由国产大模型承接。</description>
+    </item>
+    <item>
+      <title>2000 张国产卡三个月跑满：无人车公司把训练搬过来，需求已到万卡级</title>
+      <link>https://javis.org.cn/news-2026-11-02-moore-threads-10000-card-domestic-cluster.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-02-moore-threads-10000-card-domestic-cluster.html</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 商用集群</category>
+      <description>11 月 2 日消息，摩尔线程与无锡市惠山招商集团、新石器慧通于 10 月 31 日签署战略合作：依托无锡（惠山）国产智算中心，新石器将基于摩尔线程全功能 GPU 启动更大规模自动驾驶模型训练，整体算力需求预计达万卡级。该中心一期配置 2000 张加速卡，投运三个月即满载，已有二十余家客户开展测试或正式业务，训练类任务占比超过六成。核心硬件 MTT S5000 单卡 AI 稠密算力峰值 1000 TFLOPS、80 GB 显存、显存带宽 1.6 TB/s。</description>
+    </item>
     <item>
       <title>中国 AI 国标今天起实施：大模型平台 4 项＋算力度量，验收有了统一尺子</title>
       <link>https://javis.org.cn/news-2026-11-01-china-ai-standards-take-effect.html</link>
