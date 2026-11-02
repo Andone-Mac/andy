@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 02 Nov 2026 09:11:53 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 02 Nov 2026 09:12:56 +0000</lastBuildDate>
     <item>
       <title>中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6</title>
       <link>https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html</link>
