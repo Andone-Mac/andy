@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="GCSA 10 月 30 日发布独立取证报告 v2.0：复核 18 笔原始交易，验证与 Binance 14 相关的 50 项 EIP-7702 授权签名与 1 项撤销签名，锚点区块 26303316。核心结论是签名有效只证明具备签署能力，链上无法区分私钥泄露、签名服务被滥用与审批流程被操纵。事件官方口径影响约 63 亿美元，约 30 亿美元已链上冻结，比特币与 ETH 等无发行方资产难以追回。文章把这套逻辑映射到政企 AI 的权限、审计与可撤销授权上。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-05-binance-63b-forensics.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="GCSA 10 月 30 日发布独立取证报告 v2.0：复核 18 笔原始交易，验证与 Binance 14 相关的 50 项 EIP-7702 授权签名与 1 项撤销签名，锚点区块 26303316。核心结论是签名有效只证明具备签署能力，链上无法区分私钥泄露、签名服务被滥用与审批流程被操纵。事件官方口径影响约 63 亿美元，约 30 亿美元已链上冻结，比特币与 ETH 等无发行方资产难以追回。文章把这套逻辑映射到政企 AI 的权限、审计与可撤销授权上。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="GCSA 10 月 30 日发布独立取证报告 v2.0：复核 18 笔原始交易，验证与 Binance 14 相关的 50 项 EIP-7702 授权签名与 1 项撤销签名，锚点区块 26303316。核心结论是签名有效只证明具备签署能力，链上无法区分私钥泄露、签名服务被滥用与审批流程被操纵。事件官方口径影响约 63 亿美元，约 30 亿美元已链上冻结，比特币与 ETH 等无发行方资产难以追回。文章把这套逻辑映射到政企 AI 的权限、审计与可撤销授权上。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的",
+      "description": "GCSA 10 月 30 日发布独立取证报告 v2.0：复核 18 笔原始交易，验证与 Binance 14 相关的 50 项 EIP-7702 授权签名与 1 项撤销签名，锚点区块 26303316。核心结论是签名有效只证明具备签署能力，链上无法区分私钥泄露、签名服务被滥用与审批流程被操纵。事件官方口径影响约 63 亿美元，约 30 亿美元已链上冻结，比特币与 ETH 等无发行方资产难以追回。文章把这套逻辑映射到政企 AI 的权限、审计与可撤销授权上。",
+      "datePublished": "2026-11-05",
+      "dateModified": "2026-11-05",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的",
+          "item": "https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 128 条）</a>
+          <a href="news-2026-11-05-binance-63b-forensics.html">50 个签名 63 亿美元</a>
+          <a href="news-2026-11-02-meituan-longcat-25-domestic-compute.html">1.6 万亿只用国产卡</a>
+          <a href="news-2026-11-02-agibot-g2-convenience-store-24h.html">6 台机器人干 4.5 小时</a>
+          <a href="news-2026-11-02-china-city-agent-100-plan.html">城市智能体免费铺</a>
+          <a href="news-2026-11-02-apple-intelligence-china-qwen-launch.html">国行苹果 AI 定档</a>
+          <a href="news-2026-11-02-moore-threads-10000-card-domestic-cluster.html">2000 张国产卡跑满</a>
+          <a href="news-2026-11-01-china-ai-standards-take-effect.html">国标今天起实施</a>
+          <a href="news-2026-11-01-china-gpu-tiangai300-h200.html">国产卡实测超 H200</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-05</span><span class="n-tag" style="margin-left:8px">安全治理 · 取证复盘</span>
+    <h1 class="art-h1">币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的</h1>
+    <p class="art-lede">这不是一次「代码被攻破」。10 月 30 日发布的独立取证报告 v2.0 把 Ethereum 上的关键链路拆开核验后，给了一句很冷的结论：50 项授权签名都有效，但链上分不清这是私钥泄露、签名服务被滥用，还是审批流程被操纵。对正在把 AI 接进业务流程的单位来说，这句话比 63 亿美元更值得抄下来。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、先把时间线钉住：一个热钱包，3 分 24 秒被清空</h3>
+      <p>北京时间 10 月 30 日凌晨 4 时 24 分，币安标记为 Binance 14 的热钱包向一个此前从未出现过的地址转出 167,464 枚 ETH，同时带走约 16.15 亿枚 USDT 在内的 63 种代币。24 秒后，Binance 16 向同一地址转出 28,005 枚 ETH；4 时 41 分，另一热钱包转出 7.8 亿枚 USDC。</p>
+      <p>整个过程安静、连续、没有中断，看起来像一次被授权的内部调拨。链上统计口径下，40 分钟内多条链的流出总额停在 58 亿美元附近；涉及 Ethereum、Bitcoin、Tron、Arbitrum、Avalanche、Optimism、Base 等 10 条链。币安当天上午给出的官方口径是：本次事件影响约 <b>63 亿美元</b>，其中约 <b>30 亿美元</b>已在链上冻结，损失由 SAFU 基金与公司自有资金承担。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>时点（北京时间）</th><th>发生了什么</th></tr></thead>
+        <tbody>
+          <tr><td>10 月 28 日起</td><td>攻击地址经混币器分批取得 gas 费，事后看是 37 小时潜伏期的起点</td></tr>
+          <tr><td>10 月 30 日 04:24</td><td>Binance 14 首笔异常转出，单笔约 25 亿美元</td></tr>
+          <tr><td>04:24 后 3 分 24 秒</td><td>Binance 14 资产被一次性转走，委托持续有效</td></tr>
+          <tr><td>05:01 前后</td><td>Tether 冻结主接收钱包中的 9.7 亿余枚 USDT</td></tr>
+          <tr><td>07:56</td><td>链上记录到该钱包最后一次被扫出资金</td></tr>
+        </tbody>
+      </table>
+      <p>需要分清三个口径：<b>58 亿美元</b>是链上统计的流出额，<b>63 亿美元</b>是币安确认的事件影响，<b>30 亿美元</b>是目前已冻结的部分。流出不等于净损失，冻结也不等于已经追回。</p>
+
+      <h3 class="art-h2">二、深度报告的核心不是「怎么偷的」，而是「查不出谁签的」</h3>
+      <p>全球网络安全联盟 GCSA（与香港大学合办 AI 与网络安全研究中心）于 10 月 30 日发布《币安约 63 亿美元被盗事件独立取证与 EIP-7702 攻击链路分析》v2.0。报告复核了 18 笔原始交易及外层签名，验证了与 Binance 14 相关的 <b>50 项</b> EIP-7702 初始授权签名与 <b>1 项</b>撤销签名，数据快照截至 10 月 30 日 13 时 03 分（北京时间），锚点区块 26303316。</p>
+      <p>它刻意划了一条界：一笔 type-4 交易里装了 50 项授权，不代表 50 项委托都生效；签名验证通过，只能证明「在那个时刻，有人具备合法的签署能力」。它无法反推私钥有没有离开受控环境，也无法指出是哪个内部系统发起了请求。</p>
+      <p>报告把这层意思写得很直白：在链上密码学视角下，<b>私钥直接泄露、内网签名服务器凭证被滥用、底层审批流被劫持</b>，三者产生的签名结果完全无法区分。要判断根因，只能靠链下证据——服务日志、终端记录、审批单据。</p>
+      <p>这也解释了它对官方初查的态度。币安初步调查指向一名 DevOps 工程师的笔记本电脑被入侵，再影响内部系统与未授权提款流程，并称「未发现钱包私钥泄露的证据」；TRM Labs、Chainalysis 则对朝鲜相关威胁活动给出高置信归因。GCSA 的写法是：这些可以提供事件脉络，但不作为该联盟自己的独立确认，也不能取代逐笔交易的核验。同样，报告只覆盖 Ethereum 重点链路，不是 10 条链的全量审计。</p>
+
+      <h3 class="art-h2">三、50 个预签名：把「撞大运」做成了一次成功</h3>
+      <p>按 Cobo 联合创始人神鱼的复盘与 Blockaid 的分析，攻击者在 4 时 20 分广播了一笔包含 50 个授权的交易，目标是 Binance 14。EIP-7702 允许普通账户签署授权、把执行权委托给一段合约代码，但每项授权只在钱包当时的交易序号（nonce）上有效。</p>
+      <p>Binance 14 一直在处理用户提现，nonce 不断变化。攻击者提前准备了 50 个连续序号的签名，其中一个命中，3 分 24 秒后钱包被清空。此后委托一直有效，新资金进入钱包就会被再次扫走，直到 7 时 56 分链上仍记录到转出；约 3 小时 49 分后，攻击者再广播一笔零地址授权，才把委托清掉。</p>
+      <p>慢雾创始人余弦的评价是「操作较为粗糙，但正式动手前做足了演练准备」——攻击者事先列了涵盖 64 种代币的转移清单，还用测试钱包演练了两次，最后一次距正式攻击约 3 个半小时。</p>
+      <p>这段最值得企业抄的地方不在密码学，而在三个动作：<b>提前批量准备授权</b>、<b>对齐高频入口的状态</b>、<b>用完不急着撤销</b>。换成任何一套自动化系统——模型网关、RPA 机器人、能调工具的智能体——都是同一套打法。</p>
+
+      <h3 class="art-h2">四、30 亿美元冻得住，1.8 万枚比特币冻不住</h3>
+      <p>冻结这一侧的数字很具体：Tether 冻结逾 15.6 亿枚 USDT，Circle 冻结逾 8 亿枚 USDC，Ripple 冻结 4,054 万枚 RLUSD，World Liberty Financial 也冻结了相关 USD1。截至报告快照，目标地址仍在 USDT 黑名单中，余额约 1.75 亿枚。</p>
+      <div style="background:#f4f7fc;border-radius:12px;padding:18px 20px;margin:18px 0">
+        <svg viewBox="0 0 820 200" width="100%" role="img" aria-label="币安事件影响总额与已冻结金额对比">
+          <rect x="0" y="0" width="820" height="200" fill="#f4f7fc"/>
+          <text x="24" y="52" font-size="16" fill="#0f2740" font-family="Noto Sans CJK SC, PingFang SC, sans-serif">官方确认影响</text>
+          <rect x="168" y="34" width="520" height="26" rx="4" fill="#c9dced"/>
+          <text x="700" y="54" font-size="17" fill="#0f2740" font-family="Noto Sans CJK SC, PingFang SC, sans-serif">63 亿美元</text>
+          <text x="24" y="126" font-size="16" fill="#0f2740" font-family="Noto Sans CJK SC, PingFang SC, sans-serif">已链上冻结</text>
+          <rect x="168" y="108" width="248" height="26" rx="4" fill="#22a7dd"/>
+          <text x="430" y="128" font-size="17" fill="#0f2740" font-family="Noto Sans CJK SC, PingFang SC, sans-serif">30 亿美元 · 47.6%</text>
+          <text x="24" y="178" font-size="14" fill="#5b7183" font-family="Noto Sans CJK SC, PingFang SC, sans-serif">冻结数字为币安 10 月 30 日核实口径，随执法协作可能继续增加；比例为本刊按 30 ÷ 63 计算。</text>
+        </svg>
+      </div>
+      <p>能冻住的原因不在链，而在发行方：USDT、USDC 由中心化机构发行，保留把地址列入黑名单的权力。ETH 与 BTC 没有发行方，没有任何机构能按下那个按钮。据 TRM Labs，攻击者显然预料到了这一点——以超过 10% 的折价把约 3.25 亿枚 USDT 卖给做市商，换成约 12.2 万枚 ETH。而已经被转走的约 1.8 万枚比特币，硬件钱包公司 Ballet 创始人 Bobby Lee 的判断是「那些钱已经没了」。</p>
+      <p>另一组参照数字：币安 2025 年报显示托管资产约 1,628 亿美元；设立于 2018 年的 SAFU 基金通常维持在约 10 亿美元规模。面对 63 亿美元的影响，赔付能力靠的是公司自有资金，而不是那只基金。</p>
+
+      <h3 class="art-h2">五、把这套逻辑搬到政企 AI 上：四个「签名权」问题</h3>
+      <p>企业里没有热钱包，但有等价物：能发起动作的系统。模型网关、自动化脚本、接了工具的智能体，本质上都是「拿着凭证替人办事」的签名机。币安案给出的四条，可以直接改成落地检查项。</p>
+      <ul class="art-tl">
+        <li><b>谁能签，和能签多少，要分开管。</b> Binance 14 的问题是一次命中就扫空。自动化入口必须有单次额度、目标白名单与频次上限，「可撤销」要能用一条指令做完，而不是等 3 小时 49 分。</li>
+        <li><b>审计只记结果，等于没记。</b> 链上能证明签名有效，却答不出谁发起。企业日志至少要能回答三件事：谁发起、依据哪条规则批准、对应哪张业务单据。</li>
+        <li><b>外部授权默认要能到期。</b> 第三方 API、插件、代付服务都是攻击面；授权给出去时就要约定期限与撤销路径，别让它长期挂着。</li>
+        <li><b>可控性取决于是否自持。</b> 30 亿美元冻得住，是因为发行方还在；1.8 万枚比特币没救，是因为没人能替它按下按钮。数据和模型放在别人机房，出事时同样只能等对方配合。</li>
+      </ul>
+      <p>这四条并不新，只是平时很难讲清楚代价。币安案把它们换算成了 63 亿美元。</p>
+
+      <div class="kv-box">
+        <h3>机悟建议：上线前先做一次「签名权盘点」</h3>
+        <p class="kv-sub">四条，一下午能做完：</p>
+        <ul>
+          <li>列出所有「能自己发起动作」的系统——模型网关、RPA、智能体、定时任务，逐个写清它能碰到哪些数据、能调哪些外部接口；</li>
+          <li>给每个入口定三档：只读、可写但需二次确认、自动执行；第三档必须带额度上限与目标白名单；</li>
+          <li>把审计日志的字段补齐到「发起人 + 规则依据 + 业务单据号」，并抽 20 条真实操作回查一遍；</li>
+          <li>做一次断网演练与一次恢复演练——核心功能在拔掉网线后仍然可用，才算数据真的在自己手里。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：GCSA《币安约 63 亿美元被盗事件独立取证与 EIP-7702 攻击链路分析》v2.0（2026 年 10 月 30 日发布）、币安官方公告与 SAFU 说明、Tether 与 Circle 公开声明、TRM Labs 与 Blockaid 分析、Cobo 神鱼与慢雾余弦复盘，经动区 BlockTempo、ChainCatcher、凤凰网科技、华尔街见闻、香港经济日报报道；归因与追回结论均为相关机构口径，未经司法认定。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-02-meituan-longcat-25-domestic-compute.html" title="中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">1.6 万亿只用国产卡</span>
+        <span class="pg-d">2026-11-02</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 128 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>权限清单写不清，AI 上线就是给自己加一个热钱包。</h2>
+      <p>把你们现有的系统清单、数据边界与想跑的第一条流程给我们，先出一版可复核的权限与审计方案，再谈部署。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的」，机悟 JAVIS，2026-11-05，https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的](https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html)（机悟 JAVIS，2026-11-05）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

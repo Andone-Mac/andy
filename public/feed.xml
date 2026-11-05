@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 02 Nov 2026 09:12:56 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 05 Nov 2026 10:49:20 +0000</lastBuildDate>
+    <item>
+      <title>币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的</title>
+      <link>https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 +0000</pubDate>
+      <category>安全治理 · 取证复盘</category>
+      <description>GCSA 10 月 30 日发布独立取证报告 v2.0：复核 18 笔原始交易，验证与 Binance 14 相关的 50 项 EIP-7702 授权签名与 1 项撤销签名，锚点区块 26303316。核心结论是签名有效只证明具备签署能力，链上无法区分私钥泄露、签名服务被滥用与审批流程被操纵。事件官方口径影响约 63 亿美元，约 30 亿美元已链上冻结，比特币与 ETH 等无发行方资产难以追回。文章把这套逻辑映射到政企 AI 的权限、审计与可撤销授权上。</description>
+    </item>
     <item>
       <title>中国 1.6 万亿参数模型只用国产卡训练：每词元激活 480 亿，长程榜反超 GPT-5.6</title>
       <link>https://javis.org.cn/news-2026-11-02-meituan-longcat-25-domestic-compute.html</link>
