@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026-11-07 两档量化（IQ3_S 主权重 54.82 GB＋28.80 GB PLE；IQ4_XS 93.68 GB）在 i7-14700F/128 GB/RTX 5080 16 GB 上各跑完整一套：解码 74.6 对 55.1 tok/s（中位）、GSM8K 40/40 双满、MMLU-Pro 64.8% 对 66.8%、十项 Hermes 工具任务两档 10/10（140.6 秒对 170.8 秒）；含跑测时刻表与内存/IO 落位。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-07-cuda5080-full-data-table.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026-11-07 两档量化（IQ3_S 主权重 54.82 GB＋28.80 GB PLE；IQ4_XS 93.68 GB）在 i7-14700F/128 GB/RTX 5080 16 GB 上各跑完整一套：解码 74.6 对 55.1 tok/s（中位）、GSM8K 40/40 双满、MMLU-Pro 64.8% 对 66.8%、十项 Hermes 工具任务两档 10/10（140.6 秒对 170.8 秒）；含跑测时刻表与内存/IO 落位。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026-11-07 两档量化（IQ3_S 主权重 54.82 GB＋28.80 GB PLE；IQ4_XS 93.68 GB）在 i7-14700F/128 GB/RTX 5080 16 GB 上各跑完整一套：解码 74.6 对 55.1 tok/s（中位）、GSM8K 40/40 双满、MMLU-Pro 64.8% 对 66.8%、十项 Hermes 工具任务两档 10/10（140.6 秒对 170.8 秒）；含跑测时刻表与内存/IO 落位。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent",
+      "description": "2026-11-07 两档量化（IQ3_S 主权重 54.82 GB＋28.80 GB PLE；IQ4_XS 93.68 GB）在 i7-14700F/128 GB/RTX 5080 16 GB 上各跑完整一套：解码 74.6 对 55.1 tok/s（中位）、GSM8K 40/40 双满、MMLU-Pro 64.8% 对 66.8%、十项 Hermes 工具任务两档 10/10（140.6 秒对 170.8 秒）；含跑测时刻表与内存/IO 落位。",
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent",
+          "item": "https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 140 条）</a>
+          <a href="news-2026-11-01-china-police-agent-eval-budget.html">测评工具单列立项</a>
+          <a href="news-2026-11-01-china-gov-compute-lease-by-p.html">按 P 租算力</a>
+          <a href="news-2026-11-01-china-riscv-appliance-under-100k.html">一体机压到十万内</a>
+          <a href="news-2026-11-01-china-agent-platform-third-party-models.html">平台代供模型</a>
+          <a href="news-2026-11-01-china-84-apps-personal-data-notice.html">84 款 App 通报</a>
+          <a href="news-2026-11-01-china-genai-filings-monthly-update.html">备案台账月更</a>
+          <a href="news-2026-11-01-china-looped-transformer-9b-open.html">9B 权重跑 56 层</a>
+          <a href="news-2026-11-01-china-ling-31-flash-mit-open.html">560B 走 MIT</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-07</span><span class="n-tag" style="margin-left:8px">自有设备实测 · 数据全表</span>
+    <h1 class="art-h1">国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent</h1>
+    <p class="art-lede">这一篇只放数据：2026 年 11 月 7 日一整天，同一台 16 GB 显卡的机器上，Qwen3.8-Flash-Next 两档量化（IQ4_XS 93.68 GB、IQ3_S 54.82 GB 主权重 + 28.80 GB PLE 表）各跑完整一套。六档提示长度、六项能力题池、十项真实 agent 任务、内存与 IO 落位，逐项列表；每个数字都能追到引擎日志或判分文件。结论写在 11-08 那篇，这篇是给你自己算账用的原始表。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、跑测时间线（按数据真实产生时刻）</h3>
+      <p>本篇不重复结论，只把 11 月 7 日一整天两档实测的原始表格摊开，方便你拿去做自己的选型账。所有数字都由脚本从引擎日志与判分产物现算；时刻取自引擎启动行与跑测脚本的阶段时间戳（本机 CST）。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>时刻（11-07）</th><th>动作</th></tr></thead>
+        <tbody>
+          <tr><td>11-07 15:48</td><td>IQ4_XS 六档提示长度速度扫描落盘</td></tr>
+          <tr><td>11-07 18:21:13–18:42:06</td><td>IQ4_XS 能力六项依次跑完（ifeval20→logic12→mmlu200→gsm40→math30→niah）</td></tr>
+          <tr><td>11-07 21:49</td><td>IQ4_XS agent 十项结果落盘</td></tr>
+          <tr><td>11-07 21:55:28</td><td>换 IQ3_S 档、引擎启动，冒烟与预热</td></tr>
+          <tr><td>11-07 21:57</td><td>IQ3_S 同矩阵速度扫描落盘</td></tr>
+          <tr><td>11-07 21:57:29–22:16:32</td><td>IQ3_S 能力六项跑完</td></tr>
+          <tr><td>11-07 22:16:32</td><td>IQ3_S agent 十项开始（22:18:53 全部完成）</td></tr>
+        </tbody>
+      </table>
+      <p>加上前一天 11-06 晚上那次 Q4_K_M 对照（119 GB 档，内存装不下、解码 3.7 tok/s），这台机器上一共跑了三档量化；11-06 那次已在本站 11-07 那篇单独写过，本篇只收两档完整数据。</p>
+
+      <h3 class="art-h2">二、机器与引擎配方</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项</th><th>两档共同取值</th></tr></thead>
+        <tbody>
+          <tr><td>机器</td><td>i7-14700F / 125.6 GiB 内存 / RTX 5080 16 GB / PCIe 5.0 x16</td></tr>
+          <tr><td>引擎</td><td>Strata 0.1.48 服务端 + 自编 CUDA 内核（sm_120）</td></tr>
+          <tr><td>上下文</td><td>262144 tokens；KV k8v4；常驻 KV 32768</td></tr>
+          <tr><td>投机解码</td><td>spec 4，接受阈值 0.70</td></tr>
+          <tr><td>内存护栏</td><td>125.6 GiB（引擎自报上限）</td></tr>
+          <tr><td>页锁定</td><td>pinned 0.00 GiB（驱动拒绝 page-lock，mlock 失败，全走 pageable）</td></tr>
+        </tbody>
+      </table>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项</th><th>IQ4_XS</th><th>IQ3_S</th></tr></thead>
+        <tbody>
+          <tr><td>主权重</td><td>93.68 GB</td><td>54.82 GB</td></tr>
+          <tr><td>PLE 表</td><td>不拆分</td><td>28.80 GB（走内存映射）</td></tr>
+          <tr><td>常驻预算</td><td>90 GiB</td><td>52 GiB</td></tr>
+          <tr><td>实际常驻专家</td><td>54.39 GiB</td><td>45.68 GiB</td></tr>
+          <tr><td>工作线程（pool-workers）</td><td>7</td><td>7</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">三、速度：解码与预填充全表（tok/s）</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>提示 tokens</th><th>IQ4_XS 解码</th><th>IQ3_S 解码</th></tr></thead>
+        <tbody>
+          <tr><td>1,096</td><td>38.9</td><td>67.1</td></tr>
+          <tr><td>4,222</td><td>57.1</td><td>70.9</td></tr>
+          <tr><td>16,715</td><td>56.4</td><td>84.2</td></tr>
+          <tr><td>33,380</td><td>53.8</td><td>80.0</td></tr>
+          <tr><td>66,701</td><td>57.2</td><td>78.2</td></tr>
+          <tr><td>133,343</td><td>50.9</td><td>70.9</td></tr>
+        </tbody>
+      </table>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>提示 tokens</th><th>IQ4_XS 预填充</th><th>IQ3_S 预填充</th></tr></thead>
+        <tbody>
+          <tr><td>1,096</td><td>—</td><td>179</td></tr>
+          <tr><td>4,222</td><td>525</td><td>747</td></tr>
+          <tr><td>16,715</td><td>1,104</td><td>1,971</td></tr>
+          <tr><td>33,380</td><td>1,478</td><td>2,007</td></tr>
+          <tr><td>66,701</td><td>2,247</td><td>2,690</td></tr>
+          <tr><td>133,343</td><td>2,431</td><td>3,675</td></tr>
+        </tbody>
+      </table>
+      <p>解码中位：IQ3_S 74.6、IQ4_XS 55.1 tok/s；两档预填充都随提示变长而下降，1,096 tokens 那档是冷启动，数字只作参考——扫描脚本本身也把它记为冷档。</p>
+
+      <h3 class="art-h2">四、能力：六项题池逐项</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>题项</th><th>IQ4_XS</th><th>IQ3_S</th></tr></thead>
+        <tbody>
+          <tr><td>GSM8K（40 题）</td><td>40/40</td><td>40/40</td></tr>
+          <tr><td>MATH-500（30 题）</td><td>22/30（截断 1）</td><td>22/30（截断 2）</td></tr>
+          <tr><td>四房逻辑题（12 题）</td><td>12/12</td><td>12/12</td></tr>
+          <tr><td>指令遵循 IFEval-lite（20 题）</td><td>19/20</td><td>18/20</td></tr>
+          <tr><td>大海捞针（32k 与 128k × 3 深度）</td><td>6/6</td><td>6/6</td></tr>
+          <tr><td>MMLU-Pro（196 题有效）</td><td>131/196</td><td>127/196</td></tr>
+        </tbody>
+      </table>
+      <p>MMLU-Pro 折算：IQ4_XS 131/196、IQ3_S 127/196，差 2.0 个百分点；按后者样本量估的单档 95% 置信半径约 6.6 个百分点，所以这一格应读作「同档」，不是「退化」。</p>
+
+      <h3 class="art-h2">五、agent：十项逐任务耗时</h3>
+      <p>跑的是 Hermes 本体的真实工具循环，判分用程序化断言（有没有调工具以 Hermes 页脚计数为准），不是看回答像不像。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>任务</th><th>IQ4_XS 秒</th><th>IQ3_S 秒</th></tr></thead>
+        <tbody>
+          <tr><td>写文件</td><td>8.8</td><td>21.1</td></tr>
+          <tr><td>用工具算数</td><td>11.7</td><td>11.9</td></tr>
+          <tr><td>错误恢复</td><td>13.1</td><td>10.6</td></tr>
+          <tr><td>两跳依赖</td><td>15.0</td><td>9.8</td></tr>
+          <tr><td>跨轮计数</td><td>17.9</td><td>11.9</td></tr>
+          <tr><td>不该调工具时不调</td><td>6.4</td><td>5.9</td></tr>
+          <tr><td>JSON 合规</td><td>9.9</td><td>10.6</td></tr>
+          <tr><td>shell 管道</td><td>10.2</td><td>8.8</td></tr>
+          <tr><td>长文捞码</td><td>52.7</td><td>36.9</td></tr>
+          <tr><td>多约束复合</td><td>25.1</td><td>13.1</td></tr>
+        </tbody>
+      </table>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>合计</th><th>IQ4_XS</th><th>IQ3_S</th></tr></thead>
+        <tbody>
+          <tr><td>通过</td><td>10/10</td><td>10/10</td></tr>
+          <tr><td>总耗时</td><td>170.8 秒</td><td>140.6 秒</td></tr>
+          <tr><td>区间</td><td>6.4–52.7 秒</td><td>5.9–36.9 秒</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">六、内存与 IO 落位</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项</th><th>IQ4_XS</th><th>IQ3_S</th></tr></thead>
+        <tbody>
+          <tr><td>显存内专家命中（六档扫描请求）</td><td>72.2%–76.9%</td><td>74.3%–83.3%</td></tr>
+          <tr><td>加载期读盘</td><td>6791–6852 MB</td><td>5903–7798 MB</td></tr>
+          <tr><td>请求中回读权重文件</td><td>0 blob</td><td>0 blob</td></tr>
+          <tr><td>PCIe 探测（host→device）</td><td>44.0 GB/s</td><td>43.9 GB/s</td></tr>
+        </tbody>
+      </table>
+      <p>有两条读法要注意：一是「请求中回读权重文件 0 blob」只在扫描请求里成立，进度表上的短请求同样没回读，但一旦常驻预算被内存压得更低，就会转成读盘，速度立刻塌；二是 KV 流式读块的显存命中率随上下文长度变化很大（日志全跨度 44.97%–99.92%），别拿单一数字当结论。</p>
+
+      <h3 class="art-h2">七、口径与边界</h3>
+      <ul class="art-tl">
+        <li>只测到 133,343 tokens，262K 以上未复测；1M 上下文没碰。</li>
+        <li>能力套件是重建版，与 10 月版题面渲染不完全一致，跨月只作「不回退」判断。</li>
+        <li>IQ3_S 本轮未叠加去审查控制向量，为的是与 IQ4_XS 对照公平；要测「叠加后」的速度与能力得另跑一轮。</li>
+        <li>没有做客观题库之外的业务回归（真实文档、真实表格解析），也没做多卡与多并发——单机单路，别外推到服务端吞吐。</li>
+        <li>这台机器一次开机基本只能跑一轮长测：595 驱动在引擎退出后会泄漏约 60 GiB 钉住内存，无 swap 不可回收，只能重启。</li>
+      </ul>
+      <p>原始产物全部留在本机：引擎日志 /media/UOS/D/Strata/strata-{iq4xs,iq3s}-cuda.log、扫描 CSV 与判分 jsonl ~/bench/qwen38/、现算脚本 Tech/1108_agg_cuda5080.py（中间产物 cuda5080_two_tiers.json）。</p>
+
+      <div class="kv-box">
+        <h3>两档实测的数据索引</h3>
+        <p class="kv-sub">六张数据表，从跑测时刻到显存落位，全部可回溯到日志</p>
+        <ul>
+          <li>解码中位：74.6 ｜ 55.1 tok/s</li>
+          <li>能力六项：最大差 2.0 个百分点（噪声 6.6）</li>
+          <li>agent 十项：10/10 ｜ 10/10；140.6 秒 ｜ 170.8 秒</li>
+          <li>实际常驻专家：45.68 GiB ｜ 54.39 GiB</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来自本机实测原始产物：引擎日志 /media/UOS/D/Strata/strata-{iq4xs,iq3s}-cuda.log、扫描 CSV 与判分 jsonl （~/bench/qwen38/），由 Tech/1108_agg_cuda5080.py 现算。硬件 i7-14700F / 125.6 GiB / RTX 5080 16 GB；模型为开放权重 Qwen3.8-Flash-Next。本篇按数据产生日 2026-11-07 归档。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-08-cuda5080-iq3s-vs-iq4xs.html" title="同一个国产模型换一档量化：16GB 显卡解码 55.1 → 74.6 tok/s，答题成绩没掉">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">换档量化解码 74.6</span>
+        <span class="pg-d">2026-11-08</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-07-rtx5080-16gb-93gb.html" title="16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">16GB 卡跑 93.7GB 模型</span>
+        <span class="pg-d">2026-11-07</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 140 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>想在你的机器上量同一张表</h2>
+      <p>这套跑法（六档速度 + 六项能力 + 十项 agent）可以搬到你的机器上，量完给一张同样的表。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent」，机悟 JAVIS，2026-11-07，https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent](https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html)（机悟 JAVIS，2026-11-07）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

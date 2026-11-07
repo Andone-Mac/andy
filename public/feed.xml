@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Nov 2026 17:28:07 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 17:48:55 +0000</lastBuildDate>
     <item>
       <title>中国省级公安第一次为「智能体测评工具」单独立项：1130.5 万元</title>
       <link>https://javis.org.cn/news-2026-11-01-china-police-agent-eval-budget.html</link>
@@ -86,6 +86,14 @@
       <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
       <category>本地实测 · 量化档位</category>
       <description>同一台 16 GB 显卡机器（i7-14700F/128 GB）上，Qwen3.8-Flash-Next 两档量化各跑完整一套：IQ3_S 主权重 54.82 GB＋28.80 GB PLE 表，IQ4_XS 93.68 GB。解码中位 74.6 对 55.1 tok/s，正常区间领先 24.2%～49.3%；预填充快 1.20～1.79 倍；六项能力题同协议，最大差距 2.0 个百分点（低于 6.6 个百分点的统计噪声）；Hermes 真实工具任务两档 10/10 全通，总耗时 140.6 秒对 170.8 秒。</description>
+    </item>
+    <item>
+      <title>国产模型在 16GB 显卡上的完整实测数据表：6 档速度、6 项能力、10 项 agent</title>
+      <link>https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
+      <category>自有设备实测 · 数据全表</category>
+      <description>2026-11-07 两档量化（IQ3_S 主权重 54.82 GB＋28.80 GB PLE；IQ4_XS 93.68 GB）在 i7-14700F/128 GB/RTX 5080 16 GB 上各跑完整一套：解码 74.6 对 55.1 tok/s（中位）、GSM8K 40/40 双满、MMLU-Pro 64.8% 对 66.8%、十项 Hermes 工具任务两档 10/10（140.6 秒对 170.8 秒）；含跑测时刻表与内存/IO 落位。</description>
     </item>
     <item>
       <title>16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7</title>

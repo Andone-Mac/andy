@@ -115,6 +115,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-11-07-cuda5080-full-data-table.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
