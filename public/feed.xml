@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 05 Nov 2026 10:49:20 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 01:39:15 +0000</lastBuildDate>
+    <item>
+      <title>16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7</title>
+      <link>https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html</guid>
+      <pubDate>Sat, 07 Nov 2026 00:00:00 +0000</pubDate>
+      <category>自有设备实测 · 单卡 CUDA</category>
+      <description>换卡后本机（i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存）实测：93.68 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，262,144 上下文）在 Strata 0.1.48 CUDA 后端上，4,222 词元提示预填充 591.8 tok/s、解码 64.8；33,380 词元提示预填充 1,536.3、解码 62.9，与 24 GB RX 7900 XTX 已发布的 62–76 tok/s 落在同一速度带。同一台机器换 Q4_K_M（119.15 GB），内存常驻只到 40.00 GiB、其余回读文件，解码只剩 3.7–5.8 tok/s。含分层落位表、冷启动 40.6→66.7 tok/s 的口径提醒，以及「先算内存账再挑卡」的选型顺序。</description>
+    </item>
     <item>
       <title>币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的</title>
       <link>https://javis.org.cn/news-2026-11-05-binance-63b-forensics.html</link>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="换卡后本机（i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存）实测：93.68 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，262,144 上下文）在 Strata 0.1.48 CUDA 后端上，4,222 词元提示预填充 591.8 tok/s、解码 64.8；33,380 词元提示预填充 1,536.3、解码 62.9，与 24 GB RX 7900 XTX 已发布的 62–76 tok/s 落在同一速度带。同一台机器换 Q4_K_M（119.15 GB），内存常驻只到 40.00 GiB、其余回读文件，解码只剩 3.7–5.8 tok/s。含分层落位表、冷启动 40.6→66.7 tok/s 的口径提醒，以及「先算内存账再挑卡」的选型顺序。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="换卡后本机（i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存）实测：93.68 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，262,144 上下文）在 Strata 0.1.48 CUDA 后端上，4,222 词元提示预填充 591.8 tok/s、解码 64.8；33,380 词元提示预填充 1,536.3、解码 62.9，与 24 GB RX 7900 XTX 已发布的 62–76 tok/s 落在同一速度带。同一台机器换 Q4_K_M（119.15 GB），内存常驻只到 40.00 GiB、其余回读文件，解码只剩 3.7–5.8 tok/s。含分层落位表、冷启动 40.6→66.7 tok/s 的口径提醒，以及「先算内存账再挑卡」的选型顺序。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="换卡后本机（i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存）实测：93.68 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，262,144 上下文）在 Strata 0.1.48 CUDA 后端上，4,222 词元提示预填充 591.8 tok/s、解码 64.8；33,380 词元提示预填充 1,536.3、解码 62.9，与 24 GB RX 7900 XTX 已发布的 62–76 tok/s 落在同一速度带。同一台机器换 Q4_K_M（119.15 GB），内存常驻只到 40.00 GiB、其余回读文件，解码只剩 3.7–5.8 tok/s。含分层落位表、冷启动 40.6→66.7 tok/s 的口径提醒，以及「先算内存账再挑卡」的选型顺序。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7",
+      "description": "换卡后本机（i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存）实测：93.68 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS，262,144 上下文）在 Strata 0.1.48 CUDA 后端上，4,222 词元提示预填充 591.8 tok/s、解码 64.8；33,380 词元提示预填充 1,536.3、解码 62.9，与 24 GB RX 7900 XTX 已发布的 62–76 tok/s 落在同一速度带。同一台机器换 Q4_K_M（119.15 GB），内存常驻只到 40.00 GiB、其余回读文件，解码只剩 3.7–5.8 tok/s。含分层落位表、冷启动 40.6→66.7 tok/s 的口径提醒，以及「先算内存账再挑卡」的选型顺序。",
+      "datePublished": "2026-11-07",
+      "dateModified": "2026-11-07",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7",
+          "item": "https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 129 条）</a>
+          <a href="news-2026-11-07-rtx5080-16gb-93gb.html">16GB 卡跑 93.7GB 模型</a>
+          <a href="news-2026-11-05-binance-63b-forensics.html">50 个签名 63 亿美元</a>
+          <a href="news-2026-11-02-meituan-longcat-25-domestic-compute.html">1.6 万亿只用国产卡</a>
+          <a href="news-2026-11-02-agibot-g2-convenience-store-24h.html">6 台机器人干 4.5 小时</a>
+          <a href="news-2026-11-02-china-city-agent-100-plan.html">城市智能体免费铺</a>
+          <a href="news-2026-11-02-apple-intelligence-china-qwen-launch.html">国行苹果 AI 定档</a>
+          <a href="news-2026-11-02-moore-threads-10000-card-domestic-cluster.html">2000 张国产卡跑满</a>
+          <a href="news-2026-11-01-china-ai-standards-take-effect.html">国标今天起实施</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap art-wide">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-07</span><span class="n-tag" style="margin-left:8px">自有设备实测 · 单卡 CUDA</span>
+    <h1 class="art-h1">16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7</h1>
+    <p class="art-lede">11 月 6 日到 7 日，我们在换卡后的本机上把同一份国产开源模型跑了两遍：一张 16 GB 的 RTX 5080，跑 93.7 GB 的 Qwen3.8-Flash-Next（UD-IQ4_XS）——读 3.34 万词元的提示，预填充 1,536.3 tok/s、解码 62.9 tok/s，与本机上一张 24 GB 旗舰卡落在同一个速度带里。同一台机器换成体积大 27% 的 Q4_K_M（119.2 GB），解码只剩 3.7 tok/s。差 17 倍的不是卡，是「内存 + 显存装不装得下」。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap art-wide">
+    <div class="art-body">
+      <h3 class="art-h2">一、先把口径摊开：权重是显存的 5.9 倍</h3>
+      <p>换卡之后本机是 i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存，UOS 25、开源内核模块驱动 595.71.05，引擎为 Strata 0.1.48 的 CUDA 后端（源码自编，sm_120）。这轮测的模型文件 93.68 GB（十进制，≈ 87.3 GiB），上下文窗口开到 262,144，KV 用 k8v4，MTP 草稿 4 步。</p>
+      <p>权重是显存的 <b>5.9 倍</b>，所以它从来不是「塞进显存」，而是分三层摆开——下表就是这份权重在这台机器上的实际落位（引擎启动日志原值）：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:30%"><col style="width:30%"><col style="width:40%"></colgroup>
+        <thead><tr><th>层<br><small>位置</small></th><th>容量<br><small>日志原值</small></th><th>装了什么<br><small>作用</small></th></tr></thead>
+        <tbody>
+          <tr><td><b>显存专家缓存</b><br><small>RTX 5080<br>16 GB</small></td><td><b style="white-space:nowrap">6.42 GiB</b><br><small>2,849 个专家槽</small></td><td>最常被路由到的专家<br><small>命中即在 GPU 上算</small></td></tr>
+          <tr><td><b>常驻内存</b><br><small>可分页，未锁页</small></td><td><b style="white-space:nowrap">54.40 GiB</b><br><small>按路由热度排序</small></td><td>下一层专家与显存互换<br><small>不回读硬盘</small></td></tr>
+          <tr><td><b>按需读取</b><br><small>模型文件本体</small></td><td><b style="white-space:nowrap">剩余部分</b><br><small style="white-space:nowrap">本次 0 次读盘</small></td><td>冷门专家兜底<br><small>请求中命中 0 blob</small></td></tr>
+        </tbody>
+      </table>
+      <ul class="art-tl">
+        <li><b>显存只占 6.42 GiB 是刻意的</b>：启动器给桌面与显示留了 1,500 MiB，剩下的才给专家缓存——16 GB 的卡上留不出几十 GB，缓存就必须小而准</li>
+        <li><b>54.40 GiB 这一层是「可分页」而不是锁页</b>：日志里 <code>page-locking refused (invalid argument)</code>、<code>mlock failed</code>，两档配置都出现了；也就是这台机器一直没锁过页，跑得快靠的是分层与路由排序，不是把内存钉死</li>
+        <li><b>两个请求里专家没有一次回读硬盘</b>：日志 <code>files 0 blobs</code>，读盘量全部发生在加载阶段（累计 6.8 GB）</li>
+      </ul>
+
+      <h3 class="art-h2">二、两个提示长度：预填充 591.8 → 1,536.3 tok/s</h3>
+      <p>速度是服务端自己的记录，不是客户端掐表：同一条请求里既给预填充耗时，也给生成耗时。提示从 4,222 词元拉到 33,380 词元，预填充反而更快——32768 的分块预填在长提示上把 GPU 喂满了。</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:24%"><col style="width:22%"><col style="width:22%"><col style="width:32%"></colgroup>
+        <thead><tr><th>提示长度<br><small>词元</small></th><th>预填充<br><small>tok/s</small></th><th>解码<br><small>tok/s</small></th><th>草稿接受<br><small>专家缓存命中</small></th></tr></thead>
+        <tbody>
+          <tr><td>4,222</td><td><b style="white-space:nowrap">591.8</b><br><small>7,135 ms</small></td><td><b style="white-space:nowrap">64.8</b><br><small>生成 105</small></td><td>65 / 79<br><small>命中 70.1%</small></td></tr>
+          <tr><td>33,380</td><td><b style="white-space:nowrap">1,536.3</b><br><small>21,728 ms</small></td><td><b style="white-space:nowrap">62.9</b><br><small>生成 148</small></td><td>89 / 103<br><small>命中 71.9%</small></td></tr>
+        </tbody>
+      </table>
+      <p>两个长度之间解码只掉 2.9%，这是分层生效的样子：KV 缓存 98.3% / 94.8% 的块读命中显存，专家缓存稳定在七成命中，草稿接受率 82.3% / 86.4%——每 5 个草稿里有 4 个被一次核对通过。</p>
+      <p>但别把第一个数当稳态：<b>冷启动时同一模型的解码是 40.6 → 51.4 → 66.7 tok/s</b>，对应的专家缓存命中率是 39.6% → 61.3% → 76.2%。前两个请求在给缓存「填充」，谁拿第一次请求的数字对外报，都是把最差的一档当成绩。</p>
+
+      <h3 class="art-h2">三、门槛实验：体积只大 27%，解码掉 17 倍</h3>
+      <p>同一台机器、同一套引擎，换成 Q4_K_M（119.15 GB）就出事了。下表两行是两次启动的日志事实，差的不只是体积：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:30%"><col style="width:38%"><col style="width:32%"></colgroup>
+        <thead><tr><th>量化档<br><small>权重体积</small></th><th>内存里的专家<br><small>日志原值</small></th><th>解码<br><small>tok/s</small></th></tr></thead>
+        <tbody>
+          <tr><td><b>UD-IQ4_XS</b><br>93.68 GB</td><td>常驻 54.40 GiB<br><small>请求中 0 次读盘</small></td><td><b style="white-space:nowrap">62.9–64.8</b><br><small>可用</small></td></tr>
+          <tr><td><b>Q4_K_M</b><br>119.15 GB</td><td>常驻 40.0 GiB<br><small>其余回读文件</small></td><td><b style="white-space:nowrap">3.7–5.8</b><br><small>掉出可用区间</small></td></tr>
+        </tbody>
+      </table>
+      <p>原因写在日志里：119.15 GB 的权重在 125.6 GiB 内存的机器上装不下「常驻那一层」，锁页同样被拒（<code>pinned 0.00 GiB</code>、<code>page-locking refused</code>），于是冷门专家只能落到硬盘随机读——<b>预填充也从 591.8 掉到 7.2 tok/s</b>，连把提示读进来都成了瓶颈。这不是显卡算力不够，是内存账没算平。</p>
+      <p>这条界线的意义：16 GB 卡能不能跑，不由显存决定，由「内存 + 显存能兜住多大一份权重」决定。93.7 GB 与 119.2 GB 只差 27%，体验差 17 倍——<b>量化选型的单位是「能不能常驻」，不是「压缩比好不好看」</b>。</p>
+
+      <h3 class="art-h2">四、和 24 GB 旗舰卡对照：同一个速度带，但别直接排名</h3>
+      <p>本站 10 月已发布过同一模型、同一量化在 24 GB RX 7900 XTX 上的定长扫描（HIP 后端）。把两边并排只为看清「16 GB 掉不掉队」，不作为排名：</p>
+      <table class="art-table is-fixed" style="margin-top:14px">
+        <colgroup><col style="width:34%"><col style="width:18%"><col style="width:24%"><col style="width:24%"></colgroup>
+        <thead><tr><th>机器 · 后端<br><small>引擎</small></th><th>显存<br><small>GB</small></th><th>提示范围<br><small>词元</small></th><th>解码<br><small>tok/s</small></th></tr></thead>
+        <tbody>
+          <tr><td>RTX 5080<br><small>Strata CUDA</small></td><td>16</td><td>4.2k<br>33.4k</td><td><b style="white-space:nowrap">62.9–64.8</b></td></tr>
+          <tr><td>RX 7900 XTX<br><small>Strata HIP</small></td><td>24</td><td><span style="white-space:nowrap">1k→256k</span></td><td><b style="white-space:nowrap">62–76</b></td></tr>
+        </tbody>
+      </table>
+      <p>两边的后端、引擎版本、提示长度都不同，不能相加也不能互推；能说的只有一句：<b>16 GB 的卡在这份 93.7 GB 权重上没掉出 24 GB 卡的速度带</b>，多出来的显存在这个模型上换到的是更大的专家缓存余量，而不是更高的解码速度。</p>
+      <p>还有一条老提醒照旧：定长提示的速度不等于干活速度。本站 10 月 22—29 日的真实负载记录里，同一模型的解码中位是 52–68 tok/s（长会话、工具调用、前缀命中都在里面），与这里的定长扫描不是一套口径。</p>
+
+      <h3 class="art-h2">五、三条提醒</h3>
+      <ul class="art-tl">
+        <li><b>本轮只跑了两档提示</b>：4.2k 与 33.4k；64k 以上到 262K 的档位本轮没有复测，别把 33.4k 的表现外推到 25 万上下文</li>
+        <li><b>没做客观题与工具任务</b>：这篇只有速度与资源账，不作能力排名；能力口径见本站更早发布的实测汇总</li>
+        <li><b>换档前先算内存</b>：先按「权重体积 ≤ 内存可常驻部分 + 显存缓存」估一遍，再谈速度；装不下时降的不是速度，是可用性</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟的建议：先量内存账，再挑卡</h3>
+        <p class="kv-sub">消费级显卡跑大模型的顺序，反过来更省事：</p>
+      <ul class="">
+        <li><b>先定模型档位</b>按业务需要的上下文与精度选量化，把权重体积写下来，再去看机器能不能常驻</li>
+        <li><b>再算三层容量</b>显存缓存（16 GB 卡实测 6.42 GiB 可用）+ 内存常驻 + 文件兜底，三层里任何一层塌了，速度就掉一个量级</li>
+        <li><b>最后才看卡</b>同一份权重在 16 GB 与 24 GB 卡上落在同一个速度带——先卡后模型，往往买到用不上的显存</li>
+        <li><b>验收带口径</b>机型、引擎、量化、上下文四项写全，速度取稳态而非首请求，留人复核</li>
+      </ul>
+      </div>
+      <p class="art-src">数据来源：自有设备实测（2026-11-06 20:16 Q4_K_M 档、2026-11-07 00:31–01:46 UD-IQ4_XS 档），Strata 0.1.48（CUDA 后端源码自编，sm_120）服务端日志 strata-unc-q4km-cuda.log、strata-iq4xs-cuda.log；机器 i7-14700F + 单张 RTX 5080 16 GB + 125.6 GiB 内存（UOS 25，驱动 595.71.05）；权重体积为 gguf 文件字节数（十进制 GB），上下文 262,144（Q4_K_M 档为 16,384）。速度为服务端单请求记录，提示长度为定长扫描的前两档，与本站真实负载中位、沙箱任务两套口径互不换算；本轮未测 64k 以上档位，未做客观题与工具任务评测，不作能力排名。本文仅陈述自测数据与公开技术口径，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-05-binance-63b-forensics.html" title="币安 63 亿美元窃案深度取证：50 个签名全部有效，却查不出是谁签的">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">50 个签名 63 亿美元</span>
+        <span class="pg-d">2026-11-05</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 129 条）→</a></p>
+</section>
+
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>想在自己机器上量一遍这张表？</h2>
+      <p>这一页每个数字都带着机型、引擎、量化与上下文——离开口径就没有意义。40 分钟评估把你的真实会话接进沙箱，按你自己的负载出一版速度与内存账，复测脚本与判分留给你。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7」，机悟 JAVIS，2026-11-07，https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7](https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html)（机悟 JAVIS，2026-11-07）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>
