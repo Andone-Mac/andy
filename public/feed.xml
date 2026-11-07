@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Nov 2026 09:55:47 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 17:28:07 +0000</lastBuildDate>
     <item>
       <title>中国省级公安第一次为「智能体测评工具」单独立项：1130.5 万元</title>
       <link>https://javis.org.cn/news-2026-11-01-china-police-agent-eval-budget.html</link>
@@ -78,6 +78,14 @@
       <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
       <category>国际 · 算力路线</category>
       <description>Alphabet 10 月 28 日发布 2026 年三季度财报：总收入 1275.77 亿美元、同比增 25%；Google Cloud 收入 307.09 亿美元、同比增 103%，云经营利润 111.21 亿美元（去年同期 35.94 亿美元）。财报点名「TPU 系统销售」是收入增长的重要贡献项之一；管理层在电话会上称将向少数客户交付可部署于其自有数据中心的 TPU 硬件配置，目标客户包括资本市场与 HPC。此外第一方模型 API 每分钟处理近 320 亿 token，为去年同期四倍多。</description>
+    </item>
+    <item>
+      <title>同一个国产模型换一档量化：16GB 显卡解码 55.1 → 74.6 tok/s，答题成绩没掉</title>
+      <link>https://javis.org.cn/news-2026-11-08-cuda5080-iq3s-vs-iq4xs.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-08-cuda5080-iq3s-vs-iq4xs.html</guid>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 量化档位</category>
+      <description>同一台 16 GB 显卡机器（i7-14700F/128 GB）上，Qwen3.8-Flash-Next 两档量化各跑完整一套：IQ3_S 主权重 54.82 GB＋28.80 GB PLE 表，IQ4_XS 93.68 GB。解码中位 74.6 对 55.1 tok/s，正常区间领先 24.2%～49.3%；预填充快 1.20～1.79 倍；六项能力题同协议，最大差距 2.0 个百分点（低于 6.6 个百分点的统计噪声）；Hermes 真实工具任务两档 10/10 全通，总耗时 140.6 秒对 170.8 秒。</description>
     </item>
     <item>
       <title>16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7</title>
