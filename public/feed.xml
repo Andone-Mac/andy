@@ -6,7 +6,79 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Nov 2026 01:39:15 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Nov 2026 09:55:47 +0000</lastBuildDate>
+    <item>
+      <title>中国省级公安第一次为「智能体测评工具」单独立项：1130.5 万元</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-police-agent-eval-budget.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-police-agent-eval-budget.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>政法采购 · 验收标尺</category>
+      <description>上海市公安局「智能体构建及测评工具子系统建设项目」10 月 27 日公布中标结果：中标金额 11,305,000.00 元（1130.5 万元），评审总得分 85.19，中标方为上海孚典智能科技有限公司，代理机构为上海市政府采购中心。建设内容明确分为三块：智能构建平台、开发工具箱、评测工具；建设周期为合同签订后 6 个月，含 1 个月试运行。</description>
+    </item>
+    <item>
+      <title>中国地方政务开始按 P 租算力：1045 万元买 80P，折合约 13 万元一 P</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-gov-compute-lease-by-p.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-gov-compute-lease-by-p.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>政务算力 · 租用单价</category>
+      <description>北京经开区管委会政务应用算力租用服务（二次）10 月 20 日发布公开招标公告：预算金额与最高限价均为 1045.044 万元，采购需求为「为北京经开区政务大模型应用提供不少于 80P（FP16）算力、存储、网络、安全及保障算力稳定运行的配套服务」；合同签订后 30 日内完成联调联试，甲方确认开通后服务期 1 年，不接受联合体投标。按此折算约 13.06 万元/P·年（本刊计算）。开标时间 11 月 10 日 09:30。</description>
+    </item>
+    <item>
+      <title>中国厂商把私有化一体机压到 10 万元以下：一颗 CPU、2TB 内存、不带 GPU 卡</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-riscv-appliance-under-100k.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-riscv-appliance-under-100k.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地部署 · 报价锚</category>
+      <description>蓝芯算力 10 月发布基于自研 RISC-V 服务器 CPU LX500 的智能体一体机：48 核（32 性能核＋16 能效核）、主频最高 2.7GHz、INT8 峰值 75 TOPS，单台只装 1 颗 LX500、无 GPU 加速卡，最高支持 2TB DDR5 统一内存（4×256GB 3DS RDIMM）；已兼容 Ubuntu、OpenEuler、BC-Linux、OpenRuyi，跑通 Kimi-K2.6、Qwen3.6-35B、DeepSeek V4。定价方面，标配可压到 10 万元以下；对标国内纯 GPU 一体机普遍 30—50 万元、压缩机型 15—16 万元。</description>
+    </item>
+    <item>
+      <title>中国企业不用再逐家买模型了：豆包工作开放三方模型，默认开启按点数扣</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-agent-platform-third-party-models.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-agent-platform-third-party-models.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>渠道与选型</category>
+      <description>10 月 29 日，豆包工作宣布向企业客户推出三方模型服务，首批接入 Kimi 3.1 Pro、GLM 5.3、DeepSeek V4.1 Flash 等系列模型。官方表示功能上线后默认直接开启，企业无需另行向模型厂商采购、也无需额外申请，后续按用量扣除企业已有的 AI 点数。</description>
+    </item>
+    <item>
+      <title>中国 84 款 App 被通报：第三方 SDK 未列明的占 45 款，24 款复测不合格下架</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-84-apps-personal-data-notice.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-84-apps-personal-data-notice.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>监管 · 个人信息</category>
+      <description>国家网络安全通报中心 10 月 26 日通报：国家计算机病毒应急处理中心检测发现 84 款移动应用存在违法违规收集使用个人信息问题，检测时间 2026 年 9 月 4 日至 10 月 15 日，涉 10 类情形，其中「隐私政策未逐一列明第三方 SDK 收集目的、方式、范围」45 款、「未以显著方式清晰告知处理者名称、联系方式与保存期限等」16 款、「向他人提供个人信息未告知接收方并取得单独同意」11 款、「无隐私政策」6 款。通报同时披露：上期通报的 82 款经复测仍有 24 款存在问题，已由移动应用分发平台下架。</description>
+    </item>
+    <item>
+      <title>中国大模型「持证」台账月更：江苏 112 款备案、142 款登记，北京累计 325 款</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-genai-filings-monthly-update.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-genai-filings-monthly-update.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>监管 · 备案口径</category>
+      <description>江苏网信网 10 月 30 日公告：截至当日江苏新增 2 款完成备案、25 款完成登记的生成式人工智能服务，累计备案 112 款、登记 142 款；仅通过 API 等方式调用已备案模型并面向公众提供服务的，走「登记」而非「备案」。北京 10 月 28 日新增 6 款备案、累计 325 款（据「网信北京」，媒体口径）；浙江截至 10 月 27 日新增 4 款备案、1 款登记，累计 119 款。各地公告均援引《生成式人工智能服务管理办法》，并要求公示模型名称与备案号、按《人工智能生成合成内容标识办法》添加标识。</description>
+    </item>
+    <item>
+      <title>中国厂商开源「循环计算」模型：9B 权重跑 56 层，Apache 2.0 可直接商用</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-looped-transformer-9b-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-looped-transformer-9b-open.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 架构路线</category>
+      <description>商汤 10 月 30 日 20 时 51 分宣布开源 SenseNova Loop-9B-Preview：采用 Looped Transformer 架构，32 层解码器中第 4—27 层组成的模块以共享权重连续执行两遍，每次前向完成 56 层计算但只存 32 层权重；模型卡列总参数约 9B、「推理参数」约 14.6B，训练上下文最长 262,144 token，权重以 BF16 导出，许可证为 Apache 2.0，权重上 Hugging Face、代码上 GitHub。厂商自报三项超过 Qwen3.5-27B（WorkBuddy Bench 66.89 对 60.53 等），但 Terminal-Bench 2.1 为 40.45、低于 47.19。</description>
+    </item>
+    <item>
+      <title>中国 560B 权重以 MIT 开放：每词元激活 25B、1M 上下文，还附可续训底座</title>
+      <link>https://javis.org.cn/news-2026-11-01-china-ling-31-flash-mit-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-china-ling-31-flash-mit-open.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 许可</category>
+      <description>蚂蚁集团百灵团队（InclusionAI）10 月 28 日开源 Ling-3.1-flash-1019，并同步放出可继续训练的基座 Ling-3.1-flash-base：总参数 560B、每 token 激活 25B、上下文 100 万 token，权重为 54 个 safetensors 分片；两款模型均为 MIT 许可。架构为 63 层 KDA 线性注意力＋9 层 Gated MLA（约 7:1），路由专家 512 个另加 1 个共享专家、每 token 激活 8 个。第三方评测 Artificial Analysis 智能指数 v4.3.2 得分 44（上一版 41）。</description>
+    </item>
+    <item>
+      <title>谷歌云收入同比增 103%：TPU 第一次卖进客户自己的机房</title>
+      <link>https://javis.org.cn/news-2026-11-01-alphabet-cloud-103-tpu-onprem.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-01-alphabet-cloud-103-tpu-onprem.html</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国际 · 算力路线</category>
+      <description>Alphabet 10 月 28 日发布 2026 年三季度财报：总收入 1275.77 亿美元、同比增 25%；Google Cloud 收入 307.09 亿美元、同比增 103%，云经营利润 111.21 亿美元（去年同期 35.94 亿美元）。财报点名「TPU 系统销售」是收入增长的重要贡献项之一；管理层在电话会上称将向少数客户交付可部署于其自有数据中心的 TPU 硬件配置，目标客户包括资本市场与 HPC。此外第一方模型 API 每分钟处理近 320 亿 token，为去年同期四倍多。</description>
+    </item>
     <item>
       <title>16 GB 显卡跑起 93.7 GB 国产模型：解码 62.9 tok/s，量化升一档就掉到 3.7</title>
       <link>https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html</link>

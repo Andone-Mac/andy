@@ -55,6 +55,60 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-police-agent-eval-budget.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-gov-compute-lease-by-p.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-riscv-appliance-under-100k.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-agent-platform-third-party-models.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-84-apps-personal-data-notice.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-genai-filings-monthly-update.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-looped-transformer-9b-open.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-china-ling-31-flash-mit-open.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-01-alphabet-cloud-103-tpu-onprem.html</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-11-07-rtx5080-16gb-93gb.html</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -896,6 +950,12 @@
   </url>
   <url>
     <loc>https://javis.org.cn/news-p13.html</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-p14.html</loc>
     <lastmod>2026-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
