@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 09 Nov 2026 14:30:19 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 14:33:01 +0000</lastBuildDate>
     <item>
       <title>同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s</title>
       <link>https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html</link>
