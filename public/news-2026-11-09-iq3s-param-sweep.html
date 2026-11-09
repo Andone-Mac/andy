@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026-11-09 晚 60 分钟，在一台 16 GB 显卡机器上对 Qwen3.8-Flash-Next 的 IQ3_S 档做 20 组单变量参数扫描：显存预留 1500→900 MiB、KV 缓存单元 32768→20480 两项入选，四档提示长度（1,320–66,512 词元）解码中位平均 72.8→81.6 tok/s（+12.2%），最长一档 75.0→81.0；显存内专家缓存 6.7→7.4 GiB、与内存层交换 3588→3194 次、读文件 0 次。深草稿、CPU 分担预填充、KV 动态增长判负。数字由脚本从引擎日志现算，89 项对账最大偏差 0.0。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-09-iq3s-param-sweep.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026-11-09 晚 60 分钟，在一台 16 GB 显卡机器上对 Qwen3.8-Flash-Next 的 IQ3_S 档做 20 组单变量参数扫描：显存预留 1500→900 MiB、KV 缓存单元 32768→20480 两项入选，四档提示长度（1,320–66,512 词元）解码中位平均 72.8→81.6 tok/s（+12.2%），最长一档 75.0→81.0；显存内专家缓存 6.7→7.4 GiB、与内存层交换 3588→3194 次、读文件 0 次。深草稿、CPU 分担预填充、KV 动态增长判负。数字由脚本从引擎日志现算，89 项对账最大偏差 0.0。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026-11-09 晚 60 分钟，在一台 16 GB 显卡机器上对 Qwen3.8-Flash-Next 的 IQ3_S 档做 20 组单变量参数扫描：显存预留 1500→900 MiB、KV 缓存单元 32768→20480 两项入选，四档提示长度（1,320–66,512 词元）解码中位平均 72.8→81.6 tok/s（+12.2%），最长一档 75.0→81.0；显存内专家缓存 6.7→7.4 GiB、与内存层交换 3588→3194 次、读文件 0 次。深草稿、CPU 分担预填充、KV 动态增长判负。数字由脚本从引擎日志现算，89 项对账最大偏差 0.0。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s",
+      "description": "2026-11-09 晚 60 分钟，在一台 16 GB 显卡机器上对 Qwen3.8-Flash-Next 的 IQ3_S 档做 20 组单变量参数扫描：显存预留 1500→900 MiB、KV 缓存单元 32768→20480 两项入选，四档提示长度（1,320–66,512 词元）解码中位平均 72.8→81.6 tok/s（+12.2%），最长一档 75.0→81.0；显存内专家缓存 6.7→7.4 GiB、与内存层交换 3588→3194 次、读文件 0 次。深草稿、CPU 分担预填充、KV 动态增长判负。数字由脚本从引擎日志现算，89 项对账最大偏差 0.0。",
+      "datePublished": "2026-11-09",
+      "dateModified": "2026-11-09",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s",
+          "item": "https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 141 条）</a>
+          <a href="news-2026-11-09-iq3s-param-sweep.html">只改两处解码 81.6</a>
+          <a href="news-2026-11-01-china-police-agent-eval-budget.html">测评工具单列立项</a>
+          <a href="news-2026-11-01-china-gov-compute-lease-by-p.html">按 P 租算力</a>
+          <a href="news-2026-11-01-china-riscv-appliance-under-100k.html">一体机压到十万内</a>
+          <a href="news-2026-11-01-china-agent-platform-third-party-models.html">平台代供模型</a>
+          <a href="news-2026-11-01-china-84-apps-personal-data-notice.html">84 款 App 通报</a>
+          <a href="news-2026-11-01-china-genai-filings-monthly-update.html">备案台账月更</a>
+          <a href="news-2026-11-01-china-looped-transformer-9b-open.html">9B 权重跑 56 层</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-09</span><span class="n-tag" style="margin-left:8px">本地实测 · 参数调优</span>
+    <h1 class="art-h1">同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s</h1>
+    <p class="art-lede">2026-11-09 晚 20:16 到 21:19，一台 16 GB 显卡机器上，同一个国产模型跑了 20 组引擎参数，每组只改一处。留下的只有两处小改动：显存预留 1500→900 MiB、KV 缓存单元 32768→20480。四档提示长度（最长 66,512 词元）的解码中位平均从 72.8 涨到 81.6 tok/s，快 12.2%%；深草稿、CPU 分担预填充、KV 动态增长判负。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、怎么扫：单变量、同文本三次取中位</h3>
+      <p>跑测在 2026-11-09 晚 20:16:45 至 21:16:34（CST），本机 i7-14700F / 125.6 GiB 内存 / RTX 5080 16 GB，模型是开放权重 Qwen3.8-Flash-Next 的 IQ3_S 档（主权重 54.82 GB 加 28.80 GB PLE 表），引擎为同一份 CUDA 构建，全部跑法由一个驱动脚本串起来：每组生成一份 runtime 配置 → 起独立 systemd 单元 → 探针打三轮 → 停引擎 → 记下显存与内存水位 → 换下一组。全程 20 组、引擎冷启动 27 次、日志里 219 条请求行。</p>
+      <p>探针到第三版才立住：前两版每次换不同文本、单次取样，同一配置两次能差 15%。第三版固定为「每个提示长度先一次冷预填充，再对同一段文本连打三次解码取中位」，文本取自引擎自带的说明文档（自然英文技术文本，去代码块与表格），尾部固定一句「从 1 数到 400，每行一个数」，保证解码长度恒定 256 词元。四档请求目标是 1,024 / 8,192 / 32,768 / 131,072 词元，语料池只凑到 1,320 / 9,169 / 33,269 / 66,512，后文一律按实际词元数写。</p>
+      <p>所有速度数字由脚本（Tech/1109_agg_iq3s_opt.py）直接解析引擎日志的 serve 行重算，再与探针自己记录的 CSV 对账：共 89 项可比，最大偏差 0.0 tok/s。预填充只取 reused=0 的冷启动行——复用命中时日志那一段只读 5 个词元，速率没有意义。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>时刻</th><th>组名</th><th>相对基线只改这一处</th></tr></thead>
+        <tbody>
+          <tr><td>20:16:45</td><td>w14</td><td>工作线程 7→14</td></tr>
+          <tr><td>20:19:10</td><td>res900</td><td>显存预留 1500→900</td></tr>
+          <tr><td>20:21:51</td><td>base2</td><td>与基线同参数（复测）</td></tr>
+          <tr><td>20:24:16</td><td>w14b</td><td>工作线程 7→14</td></tr>
+          <tr><td>20:26:42</td><td>res900b</td><td>显存预留 1500→900</td></tr>
+          <tr><td>20:29:11</td><td>kv20kb</td><td>KV 缓存单元 32768→20480</td></tr>
+          <tr><td>20:31:36</td><td>spec6b</td><td>草稿深度 4→6</td></tr>
+          <tr><td>20:34:09</td><td>adaptb</td><td>开 ADAPT_OVERLAP_RESIDENT</td></tr>
+          <tr><td>20:36:49</td><td>kvgrowb</td><td>KV 缓存单元 32768→0；加 kv-grow</td></tr>
+          <tr><td>20:40:14</td><td>base3</td><td>与基线同参数（复测）</td></tr>
+          <tr><td>20:42:56</td><td>res900c</td><td>显存预留 1500→900</td></tr>
+          <tr><td>20:45:27</td><td>kv20kc</td><td>KV 缓存单元 32768→20480</td></tr>
+          <tr><td>20:48:03</td><td>adaptc</td><td>开 ADAPT_OVERLAP_RESIDENT</td></tr>
+          <tr><td>20:50:38</td><td>specp05</td><td>草稿接受阈值 0.7→0.5</td></tr>
+          <tr><td>20:54:06</td><td>res700</td><td>显存预留 1500→700</td></tr>
+          <tr><td>20:56:39</td><td>res900kv20k</td><td>显存预留 1500→900；KV 缓存单元 32768→20480</td></tr>
+          <tr><td>20:59:10</td><td>spec5p05</td><td>草稿深度 4→5；草稿接受阈值 0.7→0.5</td></tr>
+          <tr><td>21:08:52</td><td>cpushare</td><td>显存预留 1500→900；KV 缓存单元 32768→20480；预填充块 auto:32768→2048；开 PREFILL_CPU_SHARE；开 PREFILL_CPU_SHARE_MAX</td></tr>
+          <tr><td>21:13:34</td><td>chunk8k</td><td>显存预留 1500→900；KV 缓存单元 32768→20480；预填充块 auto:32768→auto:8192</td></tr>
+          <tr><td>21:16:34</td><td>final</td><td>显存预留 1500→900；KV 缓存单元 32768→20480</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">二、名次：两处「少留显存」的改动赢下 12.2%</h3>
+      <p>赢家不是花哨的参数，是两处「让显存别留那么多余量」的小改动：显存预留从 1500 MiB 降到 900 MiB、KV 缓存单元从 32768 降到 20480。按四档长度的解码中位平均，基线 72.8 tok/s，最优组 81.6 tok/s，快 12.2%；两次复测该组合得 81.6 与 80.0 tok/s。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>组名</th><th>改了什么</th><th>平均解码</th><th>vs 基线</th></tr></thead>
+        <tbody>
+          <tr><td>res900kv20k</td><td>显存预留 1500→900；KV 缓存单元 32768→20480</td><td>81.6</td><td>+12.2%</td></tr>
+          <tr><td>final</td><td>显存预留 1500→900；KV 缓存单元 32768→20480</td><td>80.0</td><td>+9.9%</td></tr>
+          <tr><td>res900c</td><td>显存预留 1500→900</td><td>79.8</td><td>+9.7%</td></tr>
+          <tr><td>res700</td><td>显存预留 1500→700</td><td>79.3</td><td>+9.0%</td></tr>
+          <tr><td>specp05</td><td>草稿接受阈值 0.7→0.5</td><td>76.7</td><td>+5.4%</td></tr>
+          <tr><td>adaptc</td><td>开 ADAPT_OVERLAP_RESIDENT</td><td>76.2</td><td>+4.8%</td></tr>
+          <tr><td>kv20kc</td><td>KV 缓存单元 32768→20480</td><td>75.9</td><td>+4.3%</td></tr>
+          <tr><td>chunk8k</td><td>显存预留 1500→900；KV 缓存单元 32768→20480；预填充块 auto:32768→auto:8192</td><td>74.5</td><td>+2.4%</td></tr>
+          <tr><td>cpushare</td><td>显存预留 1500→900；KV 缓存单元 32768→20480；预填充块 auto:32768→2048；开 PREFILL_CPU_SHARE；开 PREFILL_CPU_SHARE_MAX</td><td>73.5</td><td>+1.1%</td></tr>
+          <tr><td>spec5p05</td><td>草稿深度 4→5；草稿接受阈值 0.7→0.5</td><td>72.7</td><td>-0.1%</td></tr>
+          <tr><td>base3（基线）</td><td>现行配方原样</td><td>72.8</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>表里没有的组（第一批的 w14、res900）用的是旧探针，只作方向参考，见第七节。</p>
+
+      <h3 class="art-h2">三、按上下文长度拆开看（解码 tok/s）</h3>
+      <p>增益不在一个长度上均匀分布：短提示（1,320 词元）从 68.2 涨到 77.2，中提示（9,169）基本持平，长提示（33,269 与 66,512）从 70.8 / 75.0 涨到 84.0 / 81.0。这台 16 GB 卡的瓶颈在长上下文，所以这两档才是本轮真正拿到的东西。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>提示词元</th><th>基线</th><th>预留 900</th><th>KV 20480</th><th>两项合（定档）</th></tr></thead>
+        <tbody>
+          <tr><td>1,320.0</td><td>68.2</td><td>82.5</td><td>72.3</td><td>77.2</td></tr>
+          <tr><td>9,169.0</td><td>77.1</td><td>81.7</td><td>80.1</td><td>77.8</td></tr>
+          <tr><td>33,269.0</td><td>70.8</td><td>77.7</td><td>78.1</td><td>84.0</td></tr>
+          <tr><td>66,512.0</td><td>75.0</td><td>77.3</td><td>73.1</td><td>81.0</td></tr>
+        </tbody>
+      </table>
+      <p>「预留 900」单独上就拿到大部分收益；「KV 20480」单独上只有约 +4.3%，但两项叠加在 33,269 与 66,512 两档又各自多出一截（82.5 对 77.7、80.9 对 77.3）。KV 单元调小腾出来的显存，被专家缓存吃掉了。</p>
+
+      <h3 class="art-h2">四、预填充：只算冷启动（tok/s）</h3>
+      <p>预填充按冷启动口径（reused=0）统计，单位 tok/s。定档配置在 9,169 与 33,269 两档比基线快 9% 与 6%；131,072 档（实际 66,512）基本持平——那一档受内存带宽与 PCIe 限制，显存余量帮不上。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>提示词元</th><th>基线</th><th>定档</th><th>小块 8192</th><th>CPU 分担</th></tr></thead>
+        <tbody>
+          <tr><td>1,320.0</td><td>182.0</td><td>192.8</td><td>191.4</td><td>380.3</td></tr>
+          <tr><td>9,169.0</td><td>1,380.4</td><td>1,507.0</td><td>1,025.3</td><td>555.8</td></tr>
+          <tr><td>33,269.0</td><td>1,994.8</td><td>2,117.8</td><td>1,325.7</td><td>577.9</td></tr>
+          <tr><td>66,512.0</td><td>2,164.9</td><td>2,156.3</td><td>1,354.8</td><td>571.5</td></tr>
+        </tbody>
+      </table>
+      <p>最后两列是两组判负的想法：预填充块从 auto:32768 降到 auto:8192，长提示预填充从 2,165 掉到 1,355；让 CPU 分担预填充（上限 3,072 词元）更糟，2,165 直接掉到 572——引擎为了喂 CPU 把常驻专家表缩到 40.7 GiB，显存与内存的交换次数从 3588 次涨到 22804 次。</p>
+
+      <h3 class="art-h2">五、为什么快：显存让给专家缓存</h3>
+      <p>为什么少留显存反而快：引擎先把常驻专家表放进内存（两档都固定 52 GiB 预算，实际常驻 45.6–45.8 GiB），再在显存里开一层专家缓存。显存预留是给系统兜底的余量，留 1500 MiB 时这层缓存只有 6.7 GiB；留 900 MiB 时涨到 7.4 GiB，显卡上多放约 367 个专家块，整个跑测期间与内存层交换的次数从 3588 次降到 3194 次，读文件的次数始终是 0 次。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>配置</th><th>显存占用</th><th>显存内专家缓存</th><th>与内存层交换</th><th>KV 块显存命中</th></tr></thead>
+        <tbody>
+          <tr><td>基线（预留 1500）</td><td>14,612.0 MiB</td><td>6.7 GiB</td><td>3588 次</td><td>98.72%</td></tr>
+          <tr><td>预留 900</td><td>15,218.0 MiB</td><td>7.4 GiB</td><td>3484 次</td><td>98.66%</td></tr>
+          <tr><td>定档（900＋KV 20480）</td><td>15,241.0 MiB</td><td>7.4 GiB</td><td>3194 次</td><td>98.57%</td></tr>
+        </tbody>
+      </table>
+      <p>KV 块的显存命中率两档都在 98.6% 上下，几乎没动——说明收益不来自 KV，而来自专家缓存放得更大。另外两行不变的量：常驻内存 45.6–45.8 GiB（pageable，锁页 0.00 GiB，锁页开关已按上次教训关掉），停引擎后显存回落到 880–925 MiB。</p>
+
+      <h3 class="art-h2">六、噪声底线：同配置两次差 2.0%</h3>
+      <p>同一个配置（预留 900＋KV 20480）在同晚测两次，四档平均分别是 81.6 与 80.0 tok/s，差 2.0%。所以本表里 +4%～+5% 的三项（草稿接受阈值 0.50、常驻重叠、KV 20480 单用）只能算「方向对、幅度存疑」，没有单独复测就不进定档配置；−0.1% 的阈值组算平手。</p>
+
+      <h3 class="art-h2">七、判负的三种想法</h3>
+      <p>旧探针（每长度一次取样）那批只跑了一次就换掉，但三个负结果幅度都在两位数，方向可信：</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>组名</th><th>改了什么（对旧基线 base2）</th><th>平均解码</th><th>vs 旧基线</th></tr></thead>
+        <tbody>
+          <tr><td>res900b</td><td>显存预留 1500→900</td><td>78.2</td><td>+10.8%</td></tr>
+          <tr><td>adaptb</td><td>开 ADAPT_OVERLAP_RESIDENT</td><td>73.4</td><td>+4.1%</td></tr>
+          <tr><td>kv20kb</td><td>KV 缓存单元 32768→20480</td><td>72.7</td><td>+3.0%</td></tr>
+          <tr><td>w14b</td><td>工作线程 7→14</td><td>68.8</td><td>-2.5%</td></tr>
+          <tr><td>spec6b</td><td>草稿深度 4→6</td><td>65.2</td><td>-7.6%</td></tr>
+          <tr><td>kvgrowb</td><td>KV 缓存单元 32768→0；加 kv-grow</td><td>64.4</td><td>-8.8%</td></tr>
+          <tr><td>base2（旧基线）</td><td>现行配方原样</td><td>70.6</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <ul class="art-tl">
+        <li>草稿深度 4→6：平均慢 7.6%，短提示最惨（38 对 48 tok/s）——草稿树越深，被拒的越多，白算的越多。</li>
+        <li>KV 改成动态增长（--kv-grow）：平均慢 8.8%，最长一档从 77.8 掉到 59.9——预分配换成边跑边长，长上下文时反复搬 KV。</li>
+        <li>工作线程 7→14：平均慢 2.5%。这台机器 20 核 28 线程，解码路径是单线程主导，多开只增调度。</li>
+        <li>第一批缺基线：只跑完 2 组就中止（20:16–20:21），20:21 起补了带基线的第二批重扫。</li>
+      </ul>
+
+      <h3 class="art-h2">八、定档上线与一条副作用</h3>
+      <p>21:20:39 起现网引擎换定档配置：ctx=262144 kv=k8v4/20480 reserve=900 workers=7 budget=52 spec=4/0.70 pcie=0.35 extra='无'。探针之外的第一条真实请求（输出 63 词元）53.2 tok/s，该请求专家缓存命中 58.8%——刚起步、缓存还没热，与跑测期间的稳态不可比。</p>
+      <p>副作用记一条：启动器等待就绪的上限是 420 秒，IQ3_S 冷加载（读 46.8 GiB 专家＋建常驻表）超过这个上限，启动器在引擎实际就绪前报了 rc=1 退出，实际服务已经起来并可用。待改：把就绪等待按档位分开，IQ3_S 这类大驻留档给到 8–10 分钟。</p>
+
+      <h3 class="art-h2">九、口径与边界</h3>
+      <p>口径与边界：一，全部数字来自本机单次跑测，同一台机器、同一引擎构建、同一份权重；换权重（例如正在准备的 NVFP4 档）需要重扫，参数结论不一定跟着搬。二，解码取中位、按长度分档报告，不给「平均 tok/s」这种掩盖分布的数。三，预填充只统计冷启动行。四，本机的显存预留降到 900 MiB 意味着兜底余量变薄——若同机再跑别的吃显存的进程，需要重新调这个值。五，旧探针批次的单发取样不足以定幅度，只用来定方向。</p>
+
+      <div class="kv-box">
+        <h3>这轮扫描的关键数</h3>
+        <p class="kv-sub">全部由脚本解析引擎日志现算（2026-11-09 20:16–21:19）</p>
+        <ul>
+          <li>扫描组数：20 组 ｜ 引擎冷启动 27 次 ｜ 请求行 219 条</li>
+          <li>解码中位平均：72.8 → 81.6 tok/s（+12.2%）</li>
+          <li>显存内专家缓存：6.7 → 7.4 GiB ｜ 交换 3588 → 3194 次 ｜ 读文件 0 次</li>
+          <li>同配置复测噪声：2.0% ｜ 对账 89 项最大偏差 0.0 tok/s</li>
+        </ul>
+      </div>
+      <p class="art-src">数据来自本机实测原始产物：引擎日志 /media/UOS/D/Strata/strata-iq3s-cuda.log、驱动脚本与探针记录 ~/bench/qwen38/iq3s_opt/（含 5 个批次日志、sweep 与 sweep3 两份 CSV），由 Tech/1109_agg_iq3s_opt.py 现算，汇总中间产物 /media/UOS/D/Strata/iq3s_opt_1109.json。硬件 i7-14700F / 125.6 GiB / RTX 5080 16 GB；模型为开放权重 Qwen3.8-Flash-Next。本篇按数据产生日 2026-11-09 归档。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-01-china-police-agent-eval-budget.html" title="中国省级公安第一次为「智能体测评工具」单独立项：1130.5 万元">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">测评工具单列立项</span>
+        <span class="pg-d">2026-11-01</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 141 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>想让这台机器再快一档？</h2>
+      <p>参数扫描这套方法（单变量、同文本三次取中位、日志现算）可以搬到你的机器上，量完给一张同样的对照表，告诉你哪两处改动值得留。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s」，机悟 JAVIS，2026-11-09，https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s](https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html)（机悟 JAVIS，2026-11-09）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

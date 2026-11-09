@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 07 Nov 2026 17:51:52 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 14:30:19 +0000</lastBuildDate>
+    <item>
+      <title>同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s</title>
+      <link>https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html</guid>
+      <pubDate>Mon, 09 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 参数调优</category>
+      <description>2026-11-09 晚 60 分钟，在一台 16 GB 显卡机器上对 Qwen3.8-Flash-Next 的 IQ3_S 档做 20 组单变量参数扫描：显存预留 1500→900 MiB、KV 缓存单元 32768→20480 两项入选，四档提示长度（1,320–66,512 词元）解码中位平均 72.8→81.6 tok/s（+12.2%），最长一档 75.0→81.0；显存内专家缓存 6.7→7.4 GiB、与内存层交换 3588→3194 次、读文件 0 次。深草稿、CPU 分担预填充、KV 动态增长判负。数字由脚本从引擎日志现算，89 项对账最大偏差 0.0。</description>
+    </item>
     <item>
       <title>中国省级公安第一次为「智能体测评工具」单独立项：1130.5 万元</title>
       <link>https://javis.org.cn/news-2026-11-01-china-police-agent-eval-budget.html</link>
