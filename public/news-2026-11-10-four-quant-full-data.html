@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="完整技术版：2026-11-10 下午四档终评的跑测时间线（14 次冷启动，含 2 次失败）、解码/预填充/命中率全表、六组 A/B（视觉通路、w4a4/w4a8、预填充块、尾路由跳过、CPU 亲和、双卡分层）、两次启动失败的日志原话与修法（STRATA_OWNED_PRICE=exact）、资源占用与终版定档参数。全部数字由脚本从探针 CSV 与引擎日志现算，60 组速度点逐行回查、0 脱靶；选型结论见同站结论版。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-10-four-quant-full-data.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-10-four-quant-full-data.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-10-four-quant-full-data.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-10-four-quant-full-data.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="完整技术版：2026-11-10 下午四档终评的跑测时间线（14 次冷启动，含 2 次失败）、解码/预填充/命中率全表、六组 A/B（视觉通路、w4a4/w4a8、预填充块、尾路由跳过、CPU 亲和、双卡分层）、两次启动失败的日志原话与修法（STRATA_OWNED_PRICE=exact）、资源占用与终版定档参数。全部数字由脚本从探针 CSV 与引擎日志现算，60 组速度点逐行回查、0 脱靶；选型结论见同站结论版。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-10-four-quant-full-data.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="完整技术版：2026-11-10 下午四档终评的跑测时间线（14 次冷启动，含 2 次失败）、解码/预填充/命中率全表、六组 A/B（视觉通路、w4a4/w4a8、预填充块、尾路由跳过、CPU 亲和、双卡分层）、两次启动失败的日志原话与修法（STRATA_OWNED_PRICE=exact）、资源占用与终版定档参数。全部数字由脚本从探针 CSV 与引擎日志现算，60 组速度点逐行回查、0 脱靶；选型结论见同站结论版。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方",
+      "description": "完整技术版：2026-11-10 下午四档终评的跑测时间线（14 次冷启动，含 2 次失败）、解码/预填充/命中率全表、六组 A/B（视觉通路、w4a4/w4a8、预填充块、尾路由跳过、CPU 亲和、双卡分层）、两次启动失败的日志原话与修法（STRATA_OWNED_PRICE=exact）、资源占用与终版定档参数。全部数字由脚本从探针 CSV 与引擎日志现算，60 组速度点逐行回查、0 脱靶；选型结论见同站结论版。",
+      "datePublished": "2026-11-10",
+      "dateModified": "2026-11-10",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-10-four-quant-full-data.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方",
+          "item": "https://javis.org.cn/news-2026-11-10-four-quant-full-data.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 144 条）</a>
+          <a href="news-2026-11-10-four-quant-verdict.html">四档终测 111.3</a>
+          <a href="news-2026-11-10-four-quant-full-data.html">四档全表 60 点</a>
+          <a href="news-2026-11-10-dual-gpu-5080-5070ti.html">双卡解码 114.8</a>
+          <a href="news-2026-11-09-iq3s-param-sweep.html">只改两处解码 81.6</a>
+          <a href="news-2026-11-01-china-police-agent-eval-budget.html">测评工具单列立项</a>
+          <a href="news-2026-11-01-china-gov-compute-lease-by-p.html">按 P 租算力</a>
+          <a href="news-2026-11-01-china-riscv-appliance-under-100k.html">一体机压到十万内</a>
+          <a href="news-2026-11-01-china-agent-platform-third-party-models.html">平台代供模型</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-10</span><span class="n-tag" style="margin-left:8px">本地实测 · 数据全表</span>
+    <h1 class="art-h1">四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方</h1>
+    <p class="art-lede">2026-11-10 下午，引擎升级 0.1.59 后对开放权重国产模型 Qwen3.8-Flash-Next 的四个量化档（IQ3_S / IQ4_XS / NVFP4 / Q4_K_XL）做终版重测，本篇是完整技术版：14 次冷启动的时间线、四档解码/预填充/命中率全表、六组 A/B 实验、两次启动失败的日志原话与修法、资源占用与终版定档参数。全部数字由聚合脚本从探针 CSV 与引擎日志现算，60 组速度点逐行回查引擎日志、0 脱靶。选型结论版见 <a href="news-2026-11-10-four-quant-verdict.html">《四种量化的国产大模型同机终测》</a>。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+<h3 class="art-h2">一、口径：为什么同一天要再测一轮</h3>
+<p>本篇是 <a href="news-2026-11-10-dual-gpu-5080-5070ti.html">同日早间发布的双卡改造篇</a>的续作。早间那轮跑在引擎 0.1.48 上；中午引擎升到 0.1.59（Strata 0.2.13 树，sm_120 构建）之后，预填充路径引入了新的「借槽」机制（日志里的 lend sizing / prompt path borrows），速度口径与旧版不可直接互比，所以四个量化档全部冷启动重测，并把上午新下完的 UD-Q4_K_XL（103.7 GiB，四档最重，专家 71.7 GiB）第一次拉进横评。</p>
+<p>两处口径修正先说清楚。其一，早间各表的「131K」档受语料长度所限实际只有 67,965 词元；本轮语料扩到 120 万字符，131,072 档是真跑（实到 132,505 词元），同时保留 67,965 词元档与早间对齐。其二，尾路由跳过（STRATA_ROUTE_TAIL_SKIP）按官方各档策略执行：IQ3_S 用引擎默认（开），NVFP4 引擎对 4 位浮点档默认关，IQ4_XS / Q4_K_XL 按官方对 Unsloth 全驻留档的规则显式关——跨档比较时这一列不同口径，第四节的表逐行标注。</p>
+<p>机器与早间同一台：i7-14700F、128 GB DDR4-3200、RTX 5080 16 GB（CPU 直连 x16，功耗墙 400 W）＋ RTX 5070 Ti 16 GB（芯片组 x4，320 W），UOS 25、驱动 595.71.05。跑测前统一切「大模型模式」：停矿、复位频率偏移、大页清零、governor=performance；每轮启动前断言显存 &lt;3 GiB、MemFree ≥40 GiB、GUP 钉页账本 &lt;8 GiB，跑完 SIGTERM 停止并复查三项。</p>
+<h3 class="art-h2">二、方法</h3>
+<p>探针与早间同一套方法：每个上下文档先发一次冷预填充，再对同一段自然文本连发三次解码取中位（生成长度固定 256 词元、温度 0）；速度不走 API 返回值，由脚本解析引擎日志的 serve 行（含草稿接受率与专家命中率），避免前缀缓存把预填充数字抬高。本轮共 14 次冷启动（12 次拿到数据、2 次启动失败，失败记录在第六节），60 组速度点，上下文五档 1,227 / 9,423 / 34,098 / 67,965 / 132,505 词元。</p>
+<p>交付前对账：CSV 里每一行的预填充与解码值都回到对应档位的引擎日志 serve 行逐条核对，60 行全命中、0 脱靶（对账脚本 agg_final4.py，中间产物 final4_2026-11-10.json）。</p>
+<h3 class="art-h2">三、跑测时间线（2026-11-10）</h3>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>时刻</th><th>配置（tag）</th><th>加载</th><th>状态</th></tr></thead><tbody><tr><td>14:52:49</td><td>nv4_final</td><td>56 秒</td><td>完成</td></tr><tr><td>15:02:31</td><td>nv4_novision</td><td>44 秒</td><td>完成</td></tr><tr><td>15:09:21</td><td>nv4_w4a8</td><td>44 秒</td><td>完成</td></tr><tr><td>15:21:50</td><td>iq3s_default</td><td>29 秒</td><td>完成</td></tr><tr><td>15:30:25</td><td>iq3s_skip0</td><td>28 秒</td><td>完成</td></tr><tr><td>15:35:21</td><td>iq3s_poolaff</td><td>28 秒</td><td>完成</td></tr><tr><td>15:40:08</td><td>iq4xs_skip0</td><td>46 秒</td><td>完成</td></tr><tr><td>15:45:32</td><td>q4kxl_single</td><td>70 秒</td><td>完成</td></tr><tr><td>15:52:48</td><td>q4kxl_dual</td><td>60 秒</td><td>完成</td></tr><tr><td>16:01:12</td><td>nv4_p16k</td><td>60 秒</td><td>完成</td></tr><tr><td>16:08:29</td><td>nv4_p32k</td><td>46 秒</td><td>完成</td></tr><tr><td>16:13:43</td><td>iq3s_p16k</td><td>—</td><td>启动失败（hand-off）</td></tr><tr><td>16:17:54</td><td>q4kxl_dual_k24</td><td>—</td><td>启动失败（hand-off）</td></tr><tr><td>16:21:28</td><td>q4kxl_dual_k12</td><td>59 秒</td><td>完成</td></tr></tbody></table>
+<p style="margin:8px 0 0;color:#5b6b7c;font-size:14px">每个 tag 冷启动一次引擎、跑完即停；iq3s_default 为手动轮（启动器前台启动，首验 OWNED_PRICE=exact 修复）。</p>
+<h3 class="art-h2">四、四档终版速度全表（各档最终默认配置）</h3>
+<p>解码（tok/s，三次中位）。尾路由跳过：开（引擎默认）；尾路由跳过：关（引擎默认）；尾路由跳过：关（官方规则）；尾路由跳过：关（官方规则）。</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>档位 · 最终配置</th><th>9,423 词元</th><th>34,098 词元</th><th>67,965 词元</th><th>132,505 词元</th></tr></thead><tbody><tr><td>IQ3_S · 双卡 ＋ 流水窗口 2</td><td>106.4</td><td>109.1</td><td>111.3</td><td>106.4</td></tr><tr><td>NVFP4 · 双卡 K=24 ＋ 块 16,384</td><td>80.4</td><td>85.2</td><td>79.6</td><td>124.9</td></tr><tr><td>IQ4_XS · 单卡 5080</td><td>45.8</td><td>45.9</td><td>49.5</td><td>78.6</td></tr><tr><td>Q4_K_XL · 单卡 5080</td><td>38.6</td><td>37.3</td><td>37.2</td><td>37.8</td></tr></tbody></table>
+<p>冷预填充（tok/s，reused=0）：</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>档位 · 最终配置</th><th>9,423 词元</th><th>34,098 词元</th><th>67,965 词元</th><th>132,505 词元</th></tr></thead><tbody><tr><td>IQ3_S · 双卡 ＋ 流水窗口 2</td><td>887.1</td><td>1,348.8</td><td>1,519.7</td><td>1,576.7</td></tr><tr><td>NVFP4 · 双卡 K=24 ＋ 块 16,384</td><td>955.2</td><td>1,217.2</td><td>1,480.4</td><td>1,620.1</td></tr><tr><td>IQ4_XS · 单卡 5080</td><td>1,205.9</td><td>1,486.6</td><td>1,621.5</td><td>1,734.1</td></tr><tr><td>Q4_K_XL · 单卡 5080</td><td>574.5</td><td>1,161.9</td><td>1,375.9</td><td>1,451.6</td></tr></tbody></table>
+<p>专家缓存命中率（%）：</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>档位 · 最终配置</th><th>9,423 词元</th><th>34,098 词元</th><th>67,965 词元</th><th>132,505 词元</th></tr></thead><tbody><tr><td>IQ3_S · 双卡 ＋ 流水窗口 2</td><td>86.9</td><td>90.9</td><td>90.8</td><td>88.2</td></tr><tr><td>NVFP4 · 双卡 K=24 ＋ 块 16,384</td><td>88.1</td><td>87.7</td><td>86.9</td><td>92.8</td></tr><tr><td>IQ4_XS · 单卡 5080</td><td>66.5</td><td>72.0</td><td>67.3</td><td>81.3</td></tr><tr><td>Q4_K_XL · 单卡 5080</td><td>57.6</td><td>57.6</td><td>62.8</td><td>54.8</td></tr></tbody></table>
+<p style="margin:8px 0 0;color:#5b6b7c;font-size:14px">最短档（1,227 词元）只作参考不进表：冷启动首轮波动大，四档该档解码中位分别为 109.3 / 73.5 / 46.8 / 32.7 tok/s。草稿接受率全天 77.9%–99.5%。</p>
+<ul class="art-tl"><li>解码全场最快单点：NVFP4 在真 131k 档 124.9 tok/s；全档最稳：IQ3_S 五个档位都落在 106.4–111.3 区间。</li><li>预填充全场最快单点：IQ4_XS 真 131k 冷读 1,734.1 tok/s；NVFP4 换大块后追到 1,620.1，两者长提示同量级。</li><li>Q4_K_XL 解码 37.2–38.6 tok/s 垫底，专家命中率 54.8%–62.8% 也是四档最低（专家总量 71.7 GiB 最重），但预填充长档仍有 1,451.6 tok/s——它慢在专家搬运，不慢在读提示。</li><li>长上下文不衰减是本轮共性：NVFP4 与 IQ4_XS 在真 131k 档解码反而反超自己的短档（大提示预热专家缓存），IQ3_S 全档持平，Q4_K_XL 的微差在三次重复的噪声内。</li></ul>
+<h3 class="art-h2">五、六组 A/B：哪些开关有收益，哪些是坑</h3>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>实验</th><th>结果</th><th>决定</th></tr></thead><tbody><tr><td>视觉通路（vision 段）</td><td>带 / 不带各跑一整轮：预填充、解码、显存分配全在噪声内</td><td>零成本，保留</td></tr><tr><td>NVFP4 预填充精度 w4a4 对 w4a8</td><td>预填充差 ≤0.9%（噪声内）；官方 KL 表 w4a8 精度近 4.5 倍于 w4a4（0.0018 对 0.008）</td><td>弃 w4a4，用引擎默认 w4a8</td></tr><tr><td>NVFP4 预填充块 8,192→16,384→32,768</td><td>16,384 比 8,192 快 37.6%–63.6%；32,768 与 16,384 打平</td><td>定档 16,384</td></tr><tr><td>IQ3_S 尾路由跳过 开/关</td><td>开比关快 7.3%–29.3%，预填充不变</td><td>GSQ 档保持引擎默认（开）；Unsloth 档按官方规则关</td></tr><tr><td>CPU 专家池亲和（--pool-affinity measure）</td><td>启动实测两布局 5.99 对 6.02 ms 平手；矩阵无差异</td><td>不采用（官方 +27% 案例是 15 线程溢出 E-core 场景，本机 7 线程无此问题）</td></tr><tr><td>Q4_K_XL 双卡分层 auto(K=5) / K=12 / K=24</td><td>K=12 比单卡解码 +15.3%–30.0%；K=24 启动崩；双卡预填充比单卡低 -116.0%–38.5%</td><td>默认单卡；双卡可选 K=12</td></tr></tbody></table>
+<h3 class="art-h2">六、两次启动失败：日志原话与修法</h3>
+<p>第一次失败最重要——它挡住了日常档的启动。引擎 0.1.59 上，IQ3_S 双卡＋流水窗口 2 用默认的缓存计价起不来，日志只留一行：</p>
+<p><code>strata serve: prefill: the layer split's hand-off buffers</code></p>
+<p>根因是新引擎默认按低价估算提示路径自己的缓冲，把显存超额分给了专家缓存，轮到分层交接缓冲时已经放不下。官方开关 <code>STRATA_OWNED_PRICE=exact</code>（按真实分配计价）加上即修复：同配置 29 秒加载成功，流水窗口照常生效。这条现在写进了启动器的全档默认环境。</p>
+<p>第二次失败在 Q4_K_XL 双卡 K=24（对半分层）：这一档专家总量 71.7 GiB 为四档之最、单个专家最大 4.0 MB（NVFP4 为 2.8 MB，约 1.45 倍），对半分给 5070 Ti 的 24 层把交接缓冲所需显存挤没了，同样死在 hand-off 一行。它不能照抄 NVFP4 的 K=24 定档；实测 K=12（5070 Ti 拿 12 层）可稳定运行（见第五节）。</p>
+<p>另有边界一条：IQ3_S 双卡在 exact 之后仍装不下 16,384 的块（借槽要每卡 6.61 GiB，流水窗口 2 ＋低显存预留吃不消），它的预填充块上限仍是 8,192——「加了 exact 就能无脑上大块」不成立，逐档实测才算数。</p>
+<h3 class="art-h2">七、资源占用</h3>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>档位</th><th>内存常驻（pageable，钉页 0）</th><th>加载（最终轮）</th></tr></thead><tbody><tr><td>IQ3_S</td><td>36.3–42.4 GiB</td><td>—</td></tr><tr><td>NVFP4</td><td>54.9–60.9 GiB</td><td>60 秒</td></tr><tr><td>IQ4_XS</td><td>54.2 GiB</td><td>46 秒</td></tr><tr><td>Q4_K_XL</td><td>65.1–70.6 GiB</td><td>70 秒</td></tr></tbody></table>
+<p>显存（加载后）：双卡档 5080 约 14,714–15,158 MiB、5070 Ti 约 14,364–15,260 MiB（桌面留在 5070 Ti 上）；单卡档 5080 约 15,016–15,020 MiB、5070 Ti 全空。全天加载区间 28–70 秒。解码后功耗快照：5080 59.5–82.6 W、5070 Ti（双卡轮）30.5–55.0 W，两卡温度 30–50 ℃——400 W/320 W 的功耗墙全程碰不到，解码是带宽受限不是功耗受限。GUP 钉页账本全天峰值 1.6 GiB（两次崩溃加载贡献的残留），远低于 8 GiB 的重启线，14 次启停无一泄漏事故。</p>
+<h3 class="art-h2">八、终版定档参数（已写进 ~/bin 启动器）</h3>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>档位</th><th>关键参数</th></tr></thead><tbody><tr><td>IQ3_S（日常）</td><td>双卡 1,0 · 分层 auto（5070 Ti 拿 11 层）· 流水窗口 2 · 块 8,192 · 预留 300/1,200 · 常驻预算 52 GiB</td></tr><tr><td>NVFP4（长上下文）</td><td>双卡 1,0 · 分层 K=24 · 块 16,384 · 预留 1,500/900 · 常驻预算 68 GiB · w4a8</td></tr><tr><td>IQ4_XS（预填充）</td><td>单卡 · 块 32,768 · 预留 900 · 常驻预算 90 GiB · 尾路由跳过关</td></tr><tr><td>Q4_K_XL（质量）</td><td>单卡 · 块 32,768 · 预留 900 · 常驻预算 90 GiB · 尾路由跳过关（双卡可选 K=12）</td></tr></tbody></table>
+<p>全档公共环境：THP 开、不注册钉页（规避 595 驱动的 GUP 泄漏）、<code>STRATA_OWNED_PRICE=exact</code>。上下文 262,144、KV k8v4/20,480、草稿 spec 4/0.70（MTP）。</p>
+<h3 class="art-h2">九、口径与边界</h3>
+<p>一，全部数字来自本机 2026-11-10 下午单轮跑测，引擎 0.1.59 ＋ exact 计价；换引擎版本、换驱动、换卡都要重扫（本轮与早间 0.1.48 的数字就不可互比）。二，解码取三次中位并保留逐次原始值，预填充只算冷启动行。三，尾路由跳过状态四档不一致（按官方策略），跨档比解码先看第四节的口径标注。四，Q4_K_XL 的 93.09% top-1 一致率引自官方 QUANTS 文档（对 Q8_0 参照），非本机实测；本机 304 题能力套件尚未对该档重跑（早间三档 221/227/224 为 0.1.48 时代数据）。五，单机单路请求，不代表服务端并发吞吐；并发两会话时每流明显变慢（早间实测），要并发按业务量重测。六，真 131k 档四档全通过，但 262,144 满上下文未测。</p><div class="kv-box">
+  <h3>只想挑档？</h3>
+  <p class="kv-sub">四个数字记住分工（全部脚本现算，2026-11-10 下午单轮）</p>
+  <ul>
+    <li>日常对话与 agent：IQ3_S 双卡，解码 106.4–111.3 tok/s 全档稳定</li>
+    <li>真 131k 长文：NVFP4 反超到 124.9 tok/s，预填充 1,620.1</li>
+    <li>批量灌文档：IQ4_XS 单卡预填充最高 1,734.1 tok/s，还空出整张副卡</li>
+    <li>质量优先：Q4_K_XL 官方一致率 93.09% 最高，代价解码 37.2–38.6 tok/s</li>
+  </ul>
+</div>
+      <p class="art-src">数据来自本机实测原始产物：探针与驱动脚本 /media/UOS/D/Strata-data/models/temp/{final_probe.py,run_final.sh,chain_final.sh}、扫描 CSV ~/bench/qwen38/results/2026-11-10_final4/sweep_final.csv（60 行）与各轮 run_*.log、引擎日志 /media/UOS/D/Strata-0.2.13/strata-*-cuda.log，由 ~/bench/qwen38/agg_final4.py 现算并逐行回查引擎日志（0 脱靶），中间产物 /media/UOS/D/qwen38/final4_2026-11-10.json。硬件 i7-14700F / 128 GB / RTX 5080 16 GB（x16）＋ RTX 5070 Ti 16 GB（x4）；模型为开放权重 Qwen3.8-Flash-Next 的四个量化档。本篇按数据产生日 2026-11-10 归档，选型结论见同站结论版。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-10-four-quant-verdict.html" title="四种量化的国产大模型同机终测：日常最快 111.3 tok/s，真 131k 长文反超到 124.9">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">四档终测 111.3</span>
+        <span class="pg-d">2026-11-10</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-10-dual-gpu-5080-5070ti.html" title="两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">双卡解码 114.8</span>
+        <span class="pg-d">2026-11-10</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 144 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>换卡、换版本，参数都要重扫</h2>
+      <p>本轮最大的教训：引擎升一个版本，上午的定档参数下午就起不来（hand-off 崩溃），而修好之后预填充块上限直接翻倍。你的机器上那套「实测最优参数」是什么时候、哪个版本扫的？把配置发来，我们按同一套探针替你重扫一遍再交付。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方」，机悟 JAVIS，2026-11-10，https://javis.org.cn/news-2026-11-10-four-quant-full-data.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[四档量化终版横评数据全表：14 次冷启动、60 组速度点、5 档上下文，附两次崩溃记录与复现配方](https://javis.org.cn/news-2026-11-10-four-quant-full-data.html)（机悟 JAVIS，2026-11-10）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>
