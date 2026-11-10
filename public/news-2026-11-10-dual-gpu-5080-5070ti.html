@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27% | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026-11-09 深夜到 11-10 上午，给开放权重 Qwen3.8-Flash-Next 加第二张 16 GB 显卡（RTX 5080 走 CPU 直连 x16，RTX 5070 Ti 挂在芯片组引出的 x4 槽），15 个配置拿到数据、另有 6 次启动失败：双卡＋流水窗口 2 解码 114.8 / 112.5 / 104.3 / 103.8 tok/s，对单卡 +48.7% / +44.6% / +24.2% / +28.1%；代价是长提示预填充慢 27–34%（双卡只能用小预填充块）。NVFP4 双卡分层 K=24 加尾路由跳过后 87.2–92.8 tok/s；304 题能力三档 221 / 227 / 224，agent 十项全通，总耗时 182.8 秒。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="stylesheet" href="assets/site.css?v=7.1.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026-11-09 深夜到 11-10 上午，给开放权重 Qwen3.8-Flash-Next 加第二张 16 GB 显卡（RTX 5080 走 CPU 直连 x16，RTX 5070 Ti 挂在芯片组引出的 x4 槽），15 个配置拿到数据、另有 6 次启动失败：双卡＋流水窗口 2 解码 114.8 / 112.5 / 104.3 / 103.8 tok/s，对单卡 +48.7% / +44.6% / +24.2% / +28.1%；代价是长提示预填充慢 27–34%（双卡只能用小预填充块）。NVFP4 双卡分层 K=24 加尾路由跳过后 87.2–92.8 tok/s；304 题能力三档 221 / 227 / 224，agent 十项全通，总耗时 182.8 秒。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026-11-09 深夜到 11-10 上午，给开放权重 Qwen3.8-Flash-Next 加第二张 16 GB 显卡（RTX 5080 走 CPU 直连 x16，RTX 5070 Ti 挂在芯片组引出的 x4 槽），15 个配置拿到数据、另有 6 次启动失败：双卡＋流水窗口 2 解码 114.8 / 112.5 / 104.3 / 103.8 tok/s，对单卡 +48.7% / +44.6% / +24.2% / +28.1%；代价是长提示预填充慢 27–34%（双卡只能用小预填充块）。NVFP4 双卡分层 K=24 加尾路由跳过后 87.2–92.8 tok/s；304 题能力三档 221 / 227 / 224，agent 十项全通，总耗时 182.8 秒。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%",
+      "description": "2026-11-09 深夜到 11-10 上午，给开放权重 Qwen3.8-Flash-Next 加第二张 16 GB 显卡（RTX 5080 走 CPU 直连 x16，RTX 5070 Ti 挂在芯片组引出的 x4 槽），15 个配置拿到数据、另有 6 次启动失败：双卡＋流水窗口 2 解码 114.8 / 112.5 / 104.3 / 103.8 tok/s，对单卡 +48.7% / +44.6% / +24.2% / +28.1%；代价是长提示预填充慢 27–34%（双卡只能用小预填充块）。NVFP4 双卡分层 K=24 加尾路由跳过后 87.2–92.8 tok/s；304 题能力三档 221 / 227 / 224，agent 十项全通，总耗时 182.8 秒。",
+      "datePublished": "2026-11-10",
+      "dateModified": "2026-11-10",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%",
+          "item": "https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 142 条）</a>
+          <a href="news-2026-11-10-dual-gpu-5080-5070ti.html">双卡解码 114.8</a>
+          <a href="news-2026-11-09-iq3s-param-sweep.html">只改两处解码 81.6</a>
+          <a href="news-2026-11-01-china-police-agent-eval-budget.html">测评工具单列立项</a>
+          <a href="news-2026-11-01-china-gov-compute-lease-by-p.html">按 P 租算力</a>
+          <a href="news-2026-11-01-china-riscv-appliance-under-100k.html">一体机压到十万内</a>
+          <a href="news-2026-11-01-china-agent-platform-third-party-models.html">平台代供模型</a>
+          <a href="news-2026-11-01-china-84-apps-personal-data-notice.html">84 款 App 通报</a>
+          <a href="news-2026-11-01-china-genai-filings-monthly-update.html">备案台账月更</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-10</span><span class="n-tag" style="margin-left:8px">本地实测 · 双卡横评</span>
+    <h1 class="art-h1">两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%</h1>
+    <p class="art-lede">2026-11-09 深夜到 11-10 上午，给开放权重 Qwen3.8-Flash-Next 加了第二张 16 GB 显卡（RTX 5080 走 CPU 直连 x16，新加的 RTX 5070 Ti 挂在芯片组引出的 x4 槽），跑了 15 个配置拿到数据、三个量化档（IQ3_S / IQ4_XS / NVFP4），另有 6 次启动当场失败（见第八节）。结论分场景：解码借第二张卡最多快 48.7%，最快一档 114.8 tok/s；但双卡只能用小预填充块，长提示预填充反而慢 27%–34%。NVFP4 档双卡开尾路由跳过后到 92.8 tok/s，304 题能力与单卡同档，10 项 agent 任务全通。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+<h3 class="art-h2">一、先交代家底：第二张卡挂在 x4 槽上</h3>
+<p>两张卡不是对等的。RTX 5080 16 GB 插在 CPU 直连的 PCIe 5.0 x16 槽，引擎每次启动现测一次主机到显存带宽，本轮读数落在 36.8–44.3 GB/s；新加的 RTX 5070 Ti 16 GB 挂在芯片组引出的 x4 槽，读数恒定 7.2 GB/s——差 5 倍上下。两卡同在一颗 CPU 下（<code>nvidia-smi topo -m</code> 显示 PHB），没有 NVLink，也没有卡间 P2P，数据只能经主机内存中转。</p>
+<p>所以真正要回答的不是「两张卡能不能快」，而是「x4 那张卡拿到多少层才值」。引擎的答案很直接：把 5070 Ti 当第一段、只给它 12 层，5080 拿剩下 36 层加输出头、草稿层与校验窗口——它依据实测的 PCIe 比值把 x4 那条链的权重折算成 0.20（默认 0.55），自动分层不是拍脑袋。</p>
+<p>跑法沿用上一轮定下的探针：每个提示长度先冷预填充一次，再对同一段文本连打三次解码取中位，生成长度固定 256 词元；四档请求目标是 1,024 / 8,192 / 32,768 / 131,072 词元，语料只凑到 1,320 / 9,169 / 33,269 / 66,512，后文一律按实际词元数写。每个配置冷启动一次引擎（就绪 29–52 秒），跑完即停、逐档记显存与内存水位；速度由脚本解析引擎日志的 serve 行重算，再与探针 CSV 逐档对账。</p>
+<p>三档权重摆在一起才有意义：IQ3_S 专家 46.8 GiB、IQ4_XS 专家 55.4 GiB（比 IQ3_S 大 18%）、NVFP4（4 位浮点 GPTQ 打包）专家 63.3 GiB。三档都是 262,144 上下文、同一份 k8v4 KV、同一套草稿层、同一个引擎构建 0.1.48。</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>时刻</th><th>配置</th><th>5070 Ti 分到</th><th>常驻内存专家</th></tr></thead><tbody><tr><td>02:09:35</td><td>IQ3_S 双卡，预填充块 4,096</td><td>5070 Ti 拿 12 层</td><td>32.30 GiB</td></tr><tr><td>02:13:40</td><td>IQ3_S 双卡，预填充块 8,192</td><td>5070 Ti 拿 12 层</td><td>35.48 GiB</td></tr><tr><td>02:17:14</td><td>IQ4_XS 单卡（对照）</td><td>单卡</td><td>54.36 GiB</td></tr><tr><td>02:21:01</td><td>IQ4_XS 双卡，块 8,192</td><td>5070 Ti 拿 8 层</td><td>46.07 GiB</td></tr><tr><td>02:25:08</td><td>IQ3_S 双卡，块 8,192 ＋ 流水窗口 2</td><td>5070 Ti 拿 12 层</td><td>35.59 GiB</td></tr><tr><td>02:34:24</td><td>NVFP4 单卡</td><td>单卡</td><td>62.23 GiB</td></tr><tr><td>02:46:45</td><td>NVFP4 双卡，分层 auto</td><td>5070 Ti 拿 7 层</td><td>60.85 GiB</td></tr><tr><td>02:54:07</td><td>NVFP4 双卡，分层 K=4</td><td>5070 Ti 拿 4 层</td><td>61.43 GiB</td></tr><tr><td>02:57:13</td><td>NVFP4 双卡，分层 K=12</td><td>5070 Ti 拿 12 层</td><td>60.86 GiB</td></tr><tr><td>02:59:52</td><td>NVFP4 双卡，分层 K=16</td><td>5070 Ti 拿 16 层</td><td>60.86 GiB</td></tr><tr><td>03:05:17</td><td>NVFP4 双卡，分层 K=20</td><td>5070 Ti 拿 20 层</td><td>60.87 GiB</td></tr><tr><td>03:07:57</td><td>NVFP4 双卡，分层 K=24</td><td>5070 Ti 拿 24 层</td><td>60.84 GiB</td></tr><tr><td>03:10:37</td><td>NVFP4 双卡，分层 K=28</td><td>5070 Ti 拿 28 层</td><td>60.88 GiB</td></tr><tr><td>03:16:59</td><td>NVFP4 双卡 K=24 ＋ 流水窗口 2</td><td>5070 Ti 拿 24 层</td><td>60.88 GiB</td></tr><tr><td>03:19:39</td><td>NVFP4 双卡 K=24 ＋ 尾路由跳过 7</td><td>5070 Ti 拿 24 层</td><td>60.87 GiB</td></tr></tbody></table><p style="margin:8px 0 0;color:#5b6b7c;font-size:14px">2026-11-10 凌晨双卡段共 15 个配置，每个配置冷启动一次引擎、跑完即停。</p>
+<h3 class="art-h2">二、横评总表：解码（tok/s，按实际提示词元分档）</h3>
+<p>六个配置摆在同一张表里，同一份探针、同一晚的机器状态。单卡基线是上一轮扫出来的定档配方（显存预留 900 MiB、KV 单元 20,480），IQ4_XS 用它自己那档的预算。</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>配置</th><th>1,320 词元</th><th>9,169 词元</th><th>33,269 词元</th><th>66,512 词元</th></tr></thead><tbody><tr><td>单卡 IQ3_S（定档）</td><td>77.2</td><td>77.8</td><td>84.0</td><td>81.0</td></tr><tr><td>双卡 IQ3_S · 块 4,096</td><td>98.7</td><td>101.4</td><td>98.4</td><td>95.0</td></tr><tr><td>双卡 IQ3_S · 块 8,192</td><td>92.1</td><td>91.2</td><td>95.6</td><td>96.6</td></tr><tr><td>双卡 IQ3_S ＋ 流水窗口 2</td><td>114.8</td><td>112.5</td><td>104.3</td><td>103.8</td></tr><tr><td>单卡 IQ4_XS（对照）</td><td>55.6</td><td>56.9</td><td>58.3</td><td>68.3</td></tr><tr><td>双卡 IQ4_XS · 块 8,192</td><td>69.0</td><td>68.9</td><td>72.0</td><td>75.6</td></tr></tbody></table>
+<ul class="art-tl"><li>解码最快的是「双卡 ＋ 流水窗口 2」：114.8 / 112.5 / 104.3 / 103.8，最高 114.8 tok/s 出现在 1,320 词元档；对单卡 +48.7% / +44.6% / +24.2% / +28.1%。</li><li>不开流水窗口，双卡只拿到 +19.3% / +17.2% / +13.8% / +19.3%（块 8,192）与 +27.8% / +30.3% / +17.1% / +17.3%（块 4,096）——第二张卡单独上阵，收益远小于加那个开关。</li><li>IQ4_XS 这颗更大的权重同样受益：双卡 69.0 / 68.9 / 72.0 / 75.6，对单卡 +24.1% / +21.1% / +23.5% / +10.7%；但绝对值仍低于 IQ3_S 单卡——少 18% 的专家比多一张 x4 卡更值。</li></ul>
+<h3 class="art-h2">三、真正的开关：pipeline-windows 2</h3>
+<p>双卡第一轮只到 96.6 tok/s，加一个参数再测就到 114.8 tok/s：<code>--pipeline-windows 2</code>。它让两张卡各持一个校验窗口，把「A 卡算完等 B 卡」的空转填掉。同一颗权重、同样的 8,192 块，只改这一处，四档分别 +24.6% / +23.4% / +9.1% / +7.5%。</p>
+<p>专家缓存命中率跟着一起上来：块 8,192 时四档 90.2 / 88.6 / 93.1 / 87.4%，加流水窗口后 93.9 / 91.6 / 93.2 / 92.4%，单卡是 79.4 / 84.0 / 83.4 / 84.0%。流水窗口让每个窗口的专家查找更集中在少数几层，命中率跟着涨——「快」不只来自并行，也来自更少的内存读。</p>
+<p>这条在公开记录里少见：流水窗口原来是给 AMD gfx12 默认开的开关，CUDA 上很少有人试。引擎仓库 issue 里的双卡实测（2×5070 Ti、x8/x8、DDR5-6000）报 IQ3_S 短提示解码 129.4、16K 档 116.2 tok/s；我们这套 x16＋x4 组合追到 103.8–114.8，差距主要在内存与链接宽度上，不在引擎参数上。</p>
+<h3 class="art-h2">四、代价：长提示预填充慢 27–60%</h3>
+<p>同一批配置的冷预填充（reused=0，tok/s）摆出来，双卡的短板就露了：</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>配置</th><th>1,320 词元</th><th>9,169 词元</th><th>33,269 词元</th><th>66,512 词元</th></tr></thead><tbody><tr><td>单卡 IQ3_S（定档，块 auto:32768）</td><td>193</td><td>1,507</td><td>2,118</td><td>2,156</td></tr><tr><td>双卡 IQ3_S，块 4,096</td><td>235</td><td>752</td><td>914</td><td>872</td></tr><tr><td>双卡 IQ3_S，块 8,192</td><td>228</td><td>900</td><td>1,230</td><td>1,400</td></tr><tr><td>双卡 IQ3_S ＋ 流水窗口 2</td><td>251</td><td>998</td><td>1,436</td><td>1,569</td></tr><tr><td>单卡 IQ4_XS（对照）</td><td>180</td><td>959</td><td>1,360</td><td>1,635</td></tr><tr><td>双卡 IQ4_XS，块 8,192</td><td>195</td><td>787</td><td>1,127</td><td>1,257</td></tr></tbody></table>
+<ul class="art-tl"><li>双卡只能用小预填充块：分层后两段之间要开 hand-off 缓冲，缓冲大小跟着块走。沿用单卡那套 auto:32768 会在启动时退出，日志只留一行 <code>prefill: the layer split's hand-off buffers</code>，降到 8,192 才起得来。</li><li>于是长提示预填充落到 998 / 1,436 / 1,569 tok/s，比单卡慢 33.7% / 32.2% / 27.2%；块再小到 4,096，还要再掉到 752 / 914 / 872。</li><li>唯一例外是最短档（1,320 词元）：双卡 250.7 对单卡 192.8，快 30.0%——这一档几乎全是固定开销，多一张卡直接摊薄。</li></ul>
+<p>换个角度看这笔账：一份 66,512 词元的文档，单卡预填充 2,156 词元/秒、双卡 1,569 词元/秒，读进去的墙钟时间差约 12 秒；解码那 256 词元的生成，双卡反而省约 1 秒。所以「灌文档」和「跟它聊」要用两套配置。</p>
+<h3 class="art-h2">五、换一个量化档：NVFP4 单卡更慢，双卡分层决定一切</h3>
+<p>NVFP4（4 位浮点、GPTQ 打包，专家常驻 60.8 GiB 内存）是这一夜最意外的一档。单卡 5080 上只有 44.2 / 45.8 / 48.5 / 46.5 tok/s，四档平均比 IQ3_S 单卡慢 73.0%——4 位浮点省的是显存占用，不是解码速度。双卡之后，同样是分到几层决定胜负：</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>5070 Ti 分到几层</th><th>9,169 词元</th><th>33,269 词元</th><th>66,512 词元</th></tr></thead><tbody><tr><td>auto（引擎自选）</td><td>56.2</td><td>57.3</td><td>59.3</td></tr><tr><td>K = 4（5070 Ti 拿 4 层）</td><td>52.6</td><td>54.2</td><td>53.8</td></tr><tr><td>K = 12（5070 Ti 拿 12 层）</td><td>68.3</td><td>63.5</td><td>67.0</td></tr><tr><td>K = 16（5070 Ti 拿 16 层）</td><td>67.4</td><td>77.1</td><td>71.5</td></tr><tr><td>K = 20（5070 Ti 拿 20 层）</td><td>69.8</td><td>75.8</td><td>76.9</td></tr><tr><td>K = 24（5070 Ti 拿 24 层）</td><td>71.8</td><td>79.0</td><td>80.1</td></tr><tr><td>K = 28（5070 Ti 拿 28 层）</td><td>70.5</td><td>69.0</td><td>71.4</td></tr></tbody></table>
+<ul class="art-tl"><li>给太少不行：K=4（4 层）时 52.6 / 54.2 / 53.8，比单卡只快一点——x4 链路上每搬一次专家都在等带宽。</li><li>给太多也不行：K=28（28 层）掉到 70.5 / 69.0 / 71.4——5080 那头的专家缓存被挤小，命中率跟着掉。</li><li>最优在 K=24（24 层）：71.8 / 79.0 / 80.1，比引擎自选的 auto 分层高 35.1%（按最高一档算）。auto 在 NVFP4 档判断偏保守，这档要手工指定。</li></ul>
+<h3 class="art-h2">六、尾路由跳过：NVFP4 再拿 10–21%</h3>
+<p>还有一个环境变量开关值得单独写：<code>STRATA_ROUTE_TAIL_SKIP=7</code>。它做的事是——一个校验窗口里所有词元都路由到第 7 名以后的专家，就跳过这次查表。对 12–16 GB 卡这种「专家装不下、每次要读内存」的形态，省下的正是最贵的那几次读。</p>
+<p>关键细节：这条在 IQ3_S 档上是<b>默认开</b>的，NVFP4 档默认关。引擎自己给的理由很直白——对 NVFP4 包，「它移动答案的距离和这一档量化本身差不多」。所以上面第五条的分层扫描、下面第七条的 304 题能力表，用的都是关掉它的配置：速度与精度不能在同一行里同时报。</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>NVFP4 双卡 K=24 的三种做法</th><th>9,169 词元</th><th>33,269 词元</th><th>66,512 词元</th></tr></thead><tbody><tr><td>基线（K=24，尾路由跳过关）</td><td>71.8</td><td>79.0</td><td>80.1</td></tr><tr><td>＋ 流水窗口 2</td><td>68.7</td><td>83.0</td><td>76.6</td></tr><tr><td>＋ 尾路由跳过 7（打开）</td><td>87.2</td><td>87.1</td><td>92.8</td></tr></tbody></table>
+<ul class="art-tl"><li>只加流水窗口：68.7 / 83.0 / 76.6，长档有收益、中档反而退了一点。</li><li>改成打开尾路由跳过：87.2 / 87.1 / 92.8，对基线 +21.4% / +10.3% / +15.9%，也超过 IQ3_S 单卡同档的 77.8 / 84.0 / 81.0。</li><li>代价是答案会略偏：这一档适合对话与检索改写，不适合要逐字可比对的结构化抽取。</li></ul>
+<h3 class="art-h2">七、能力与 agent：三档权重同一套题，agent 十项全通</h3>
+<p>速度快不等于能用。三个配置各跑同一套 304 题（MMLU 200 题抽样、小学应用题 40、数学 30、逻辑 12、格式指令 20、长文定位 6），判分用套件自带的原函数（首字母匹配、数值归一、<code>finish=length</code> 计截断）：</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>阶段</th><th>IQ3_S 单卡</th><th>IQ4_XS 单卡</th><th>NVFP4 双卡 K=24</th></tr></thead><tbody><tr><td>MMLU 200 题（四选一）</td><td>127/196</td><td>131/196</td><td>128/196</td></tr><tr><td>小学应用题 40 题</td><td>38/40</td><td>39/40</td><td>39/40</td></tr><tr><td>数学 30 题</td><td>20/30</td><td>20/30</td><td>20/30</td></tr><tr><td>逻辑推理 12 题</td><td>12/12</td><td>12/12</td><td>12/12</td></tr><tr><td>格式指令 20 题</td><td>18/20</td><td>19/20</td><td>19/20</td></tr><tr><td>长文定位 6 题</td><td>6/6</td><td>6/6</td><td>6/6</td></tr><tr><td>合计</td><td>221/304（72.7%）</td><td>227/304（74.7%）</td><td>224/304（73.7%）</td></tr></tbody></table>
+<p>三档合计 221 / 227 / 224（满分 304），差距在抽样误差量级（n=196 时一个标准差约 3.4 个百分点）。换句话说：换量化档、换单双卡，没在这一套题上换来可测的能力差异；要判「够不够用」得看具体业务回归，不是这张表。</p>
+<p>更贴近实际用法的是 agent 套件：本地引擎接上 Hermes 本体，10 个任务都要求真的写文件、跑 shell、读回校验，不是问答题。NVFP4 双卡 K=24（带流水窗口）配置下 10/10 全通，总耗时 182.8 秒：</p>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>#</th><th>任务</th><th>结果</th><th>耗时</th></tr></thead><tbody><tr><td>1</td><td>写一首三行诗进文件</td><td>通过</td><td>25.6 秒</td></tr><tr><td>2</td><td>用工具算 2^20 再写文件</td><td>通过</td><td>17.5 秒</td></tr><tr><td>3</td><td>文件不存在时先建再写</td><td>通过</td><td>15.4 秒</td></tr><tr><td>4</td><td>读文件、算两倍、写回</td><td>通过</td><td>16.9 秒</td></tr><tr><td>5</td><td>数目录里 *.json 个数写进文件</td><td>通过</td><td>19.9 秒</td></tr><tr><td>6</td><td>明确要求不调工具</td><td>通过</td><td>6.5 秒</td></tr><tr><td>7</td><td>按严格 JSON 格式建文件</td><td>通过</td><td>11.6 秒</td></tr><tr><td>8</td><td>shell 求和再落文件</td><td>通过</td><td>12.0 秒</td></tr><tr><td>9</td><td>25k 字长文里找唯一代号</td><td>通过</td><td>41.5 秒</td></tr><tr><td>10</td><td>多约束 Markdown 表格</td><td>通过</td><td>15.9 秒</td></tr></tbody></table><p style="margin:8px 0 0;color:#5b6b7c;font-size:14px">任务集与判分脚本 ~/bench/qwen38/agent_bench.py，每项由脚本读回产物判定；最慢一项是 25k 字长文里找唯一代号。</p>
+<h3 class="art-h2">八、六次没跑起来的情况（这一段比成绩表更有用）</h3>
+<table class="art-table" style="margin-top:14px"><thead><tr><th>现象</th><th>日志原话（节选）</th><th>改法</th></tr></thead><tbody><tr><td><code>--gpu 0,1</code> 直接退出</td><td><code>verify: the device arena (75 MiB) does not fit</code></td><td>主卡写在最后：<code>--gpu 1,0</code>，让输出头、草稿层、校验窗口都落在 5080 上</td></tr><tr><td>双卡沿用单卡的预填充块就起不来</td><td><code>prefill: the layer split's hand-off buffers</code></td><td>预填充块降到 8,192（4,096 也能跑，但预填充再掉三成）</td></tr><tr><td>NVFP4 打开就 503</td><td><code>14 MiB of VRAM free with everything loaded - LOW</code></td><td>显存预留从 300 / 1,200 MiB 改成 1,500 / 900 MiB，两卡各留富余</td></tr><tr><td>IQ4_XS 双卡＋流水窗口装不下</td><td>启动阶段退出，无更明确报错</td><td>这档只能不开流水窗口跑（专家与 dense 都更大，每卡 hand-off 缓冲多一份）</td></tr><tr><td>NVFP4 第一次启动就停</td><td><code>cannot open …/pack/dense.bin</code></td><td>权重包还不完整（dense 分片未生成），补齐后重跑即正常</td></tr></tbody></table>
+<p>还有一条不算失败但值得记：<code>--batch 1</code> 会把流水窗口关掉（引擎原话「not with --batch slots」），单路跑测时别传它。</p>
+<h3 class="art-h2">九、什么时候用双卡，什么时候回单卡</h3>
+<ul class="art-tl"><li><b>交互式对话、agent 干活</b>：双卡 ＋ 流水窗口 2。解码 103.8–114.8 tok/s，提示越短越明显；启动参数 <code>GPUS=1,0 LAYER_SPLIT=auto PIPELINE=2 PREFILL=auto:8192</code>。</li><li><b>批量灌长文档、做检索预处理</b>：回单卡。预填充 2,156 对 1,569 tok/s，长提示快 27%，一晚上能差出几十分钟。</li><li><b>NVFP4 档</b>：手工 <code>--layer-split 24</code>，需要速度再叠 <code>STRATA_ROUTE_TAIL_SKIP=7</code>，解码到 92.8 tok/s；要严格一致性的场景关掉后者。</li><li><b>只有一张卡</b>：IQ3_S 定档仍是这轮的天花板（四档 77.2 / 77.8 / 84.0 / 81.0），第二张卡的价值取决于提示有多长——长提示那三档，双卡的净收益会被预填充吃掉一部分。</li></ul>
+<h3 class="art-h2">十、口径与边界</h3>
+<p>口径与边界：一，全部数字来自本机单次跑测，同一台机器、同一份引擎构建、同一份权重；换卡、换驱动、换引擎版本都要重扫。二，解码取三次中位、按长度分档报告，不给掩盖分布的「平均 tok/s」；预填充只算冷启动行。三，双卡的预填充结论是「这套 hand-off 缓冲实现下」的结论，引擎若支持更大的块，这一节要重测。四，尾路由跳过会略改答案，本文的速度表与能力表刻意用不同配置测，两者不能互相引用。五，x4 槽上的卡在别的机箱里可能是 x8/x16，届时分层比与解码数字都会变，别把本文的 K=24 当通用值抄走。六，agent 套件 10 项只覆盖文件、shell、格式、长文召回，不等于业务全量回归。</p>
+<div class="kv-box">
+  <h3>这轮的关键数</h3>
+  <p class="kv-sub">全部由脚本解析引擎日志与探针 CSV 现算（02:09–03:19，共 15 个配置）</p>
+  <ul>
+    <li>解码最快：双卡 ＋ 流水窗口 2，114.8 tok/s（1,320 词元档），对单卡 +48.7%</li>
+    <li>预填充代价：长提示 1,569 对单卡 2,156 tok/s，慢 27%</li>
+    <li>NVFP4 双卡：分层 K=24 ＋ 尾路由跳过，87.2 / 87.1 / 92.8 tok/s</li>
+    <li>能力对账：304 题三档 221 / 227 / 224；agent 十项 10/10，182.8 秒</li>
+  </ul>
+</div>
+      <p class="art-src">数据来自本机实测原始产物：每个配置一份独立引擎日志 /media/UOS/D/Strata/strata-&lt;配置名&gt;-bench.log、探针与驱动脚本 ~/bench/qwen38/{iq3s_opt,nvfp4_opt}/（两份 sweep3.csv）、判分 jsonl ~/bench/qwen38/results/ 与 agent 记录 results/agent_nvfp4gptq.jsonl，由 ~/bench/qwen38/agg_dual_gpu.py 现算，中间产物 /media/UOS/D/qwen38/dual_gpu_2026-11-10.json。硬件 i7-14700F / 125.6 GiB / RTX 5080 16 GB（x16）＋ RTX 5070 Ti 16 GB（x4）；模型为开放权重 Qwen3.8-Flash-Next。本篇按数据产生日 2026-11-10 归档。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-09-iq3s-param-sweep.html" title="同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">只改两处解码 81.6</span>
+        <span class="pg-d">2026-11-09</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 142 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>你家那台机器，第二张卡值不值</h2>
+      <p>双卡能不能快，取决于第二张卡挂在哪条 PCIe 上、提示有多长。把机型与槽位发过来，我们先算一遍分层比与预填充代价，再决定要不要加卡。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%」，机悟 JAVIS，2026-11-10，https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%](https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html)（机悟 JAVIS，2026-11-10）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+</body>
+</html>

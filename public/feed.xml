@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 09 Nov 2026 14:43:29 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 10 Nov 2026 01:04:19 +0000</lastBuildDate>
+    <item>
+      <title>两张 16GB 显卡跑同一个国产模型：解码最快 114.8 tok/s，长提示预填充反慢 27%</title>
+      <link>https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-10-dual-gpu-5080-5070ti.html</guid>
+      <pubDate>Tue, 10 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 双卡横评</category>
+      <description>2026-11-09 深夜到 11-10 上午，给开放权重 Qwen3.8-Flash-Next 加第二张 16 GB 显卡（RTX 5080 走 CPU 直连 x16，RTX 5070 Ti 挂在芯片组引出的 x4 槽），15 个配置拿到数据、另有 6 次启动失败：双卡＋流水窗口 2 解码 114.8 / 112.5 / 104.3 / 103.8 tok/s，对单卡 +48.7% / +44.6% / +24.2% / +28.1%；代价是长提示预填充慢 27–34%（双卡只能用小预填充块）。NVFP4 双卡分层 K=24 加尾路由跳过后 87.2–92.8 tok/s；304 题能力三档 221 / 227 / 224，agent 十项全通，总耗时 182.8 秒。</description>
+    </item>
     <item>
       <title>同一个国产模型，只改两处引擎参数：16GB 显卡解码 72.8 → 81.6 tok/s</title>
       <link>https://javis.org.cn/news-2026-11-09-iq3s-param-sweep.html</link>
