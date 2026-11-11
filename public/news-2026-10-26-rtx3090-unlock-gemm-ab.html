@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6% | 机悟·政企超脑 · 甲维思 JAVIS</title>
 <meta name="description" content="完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。">
-<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="format-detection" content="telephone=no,email=no">
@@ -371,6 +371,10 @@
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 151 条）→</a></p>
 </section>
+
+
+
+
 
 
 
