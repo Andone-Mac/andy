@@ -462,7 +462,10 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
   .appbar a.appc.cur .circle{box-shadow:0 10px 22px rgba(4,10,28,.6),inset 0 0 0 2.5px #e6b34d,0 0 14px rgba(230,179,77,.5)}
   .film .snd{bottom:calc(116px + env(safe-area-inset-bottom))}
   .app-tip{display:block;margin-top:16px;background:var(--gold-bg);border:1px solid rgba(230,179,77,.85);
-    border-radius:12px;padding:13px 15px;color:var(--gold-ink);font-size:.9rem;line-height:1.7;font-weight:600}
+    border-radius:12px;padding:13px 15px;color:#20242b;font-size:.9rem;line-height:1.8}
+  .app-tip b{font-weight:700;color:#20242b}
+  .app-tip .g,.app-tip .tip-tail{color:var(--gold-ink);font-weight:700}
+  .app-tip .g2{font-weight:700}
 }
 @media(display-mode:standalone),(display-mode:minimal-ui){
   .app-tip{display:none!important}
