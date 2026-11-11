@@ -343,8 +343,15 @@
     try {
       v.setAttribute('controlslist', 'nodownload noplaybackrate noremoteplayback');
       v.setAttribute('disablepictureinpicture', '');
+      v.setAttribute('playsinline', '');
+      v.setAttribute('webkit-playsinline', '');
       v.setAttribute('draggable', 'false');
       v.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+      /* 长按 watchdog：部分第三方浏览器(微信/QQ 内核)不认 contextmenu 拦截，touch 层再兜一道 */
+      var lt = null;
+      v.addEventListener('touchstart', function () { lt = setTimeout(function () { v.blur(); }, 450); }, { passive: true });
+      v.addEventListener('touchend', function () { clearTimeout(lt); }, { passive: true });
+      v.addEventListener('touchmove', function () { clearTimeout(lt); }, { passive: true });
     } catch (err) { }
   };
   document.querySelectorAll('video').forEach(harden);

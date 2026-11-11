@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.1.5">
+<link rel="stylesheet" href="assets/site.css?v=7.1.6">
 <link rel="preload" as="image" href="assets/videos/hero126_1080p_poster_v4.jpg" fetchpriority="high">
 <!-- 首屏封面帧优先加载（LCP 元素）：影片本身延后起播，不抢首屏带宽 -->
 <meta property="og:type" content="website">
@@ -297,7 +297,7 @@
 <!-- ============ 首屏影片（Jarvis 品牌片 2:06，单支铺满） ============ -->
 <script>window.JAVIS_MEDIA_BASE='assets/videos/';</script>
 <section class="film" id="top" aria-label="机悟·政企超脑 品牌宣传片，全屏">
-  <video poster="assets/videos/hero126_1080p_poster_v4.jpg" autoplay muted playsinline preload="none" aria-hidden="true" tabindex="-1" disablepictureinpicture></video>
+  <video poster="assets/videos/hero126_1080p_poster_v4.jpg" autoplay muted playsinline preload="none" aria-hidden="true" tabindex="-1" disablepictureinpicture controlslist="nodownload noplaybackrate noremoteplayback" draggable="false"></video>
   <div class="shade" aria-hidden="true"></div>
   <button class="play" type="button" aria-label="播放品牌片"><span class="ptri" aria-hidden="true"></span></button>
   <div class="dots" id="filmDots" role="tablist" aria-label="切换影片"></div>
@@ -550,7 +550,7 @@
   <a class="appc" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
   <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
 </nav>
-<script src="assets/site.js?v=7.1.0"></script>
+<script src="assets/site.js?v=7.1.1"></script>
 <script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
 </body>
 </html>

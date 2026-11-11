@@ -470,3 +470,6 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 @media(display-mode:standalone),(display-mode:minimal-ui){
   .app-tip{display:none!important}
 }
+
+/* 移动端媒体防长按/防拖存（配合 site.js harden 与 controlslist） */
+video,img{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
