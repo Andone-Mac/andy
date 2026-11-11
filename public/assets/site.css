@@ -473,3 +473,9 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 
 /* 移动端媒体防长按/防拖存（配合 site.js harden 与 controlslist） */
 video,img{-webkit-touch-callout:none;-webkit-user-drag:none;user-select:none;-webkit-user-select:none}
+
+/* 一键安装按钮：仅支持 beforeinstallprompt 的浏览器（html.can-ip 由 site.js 打标）显示 */
+.ip-btn{display:none}
+html.can-ip .ip-btn{display:block;width:100%;margin:11px 0 9px;padding:13px 0;border-radius:11px;border:1px solid rgba(34,167,221,.85);background:linear-gradient(160deg,#1f4186,#12275a);color:#fff;font-size:1rem;font-weight:700;letter-spacing:.06em;text-align:center;cursor:pointer;box-shadow:0 6px 16px rgba(6,14,36,.35)}
+html.can-ip .ip-btn:active{transform:scale(.98)}
+.ip-btn.done{background:var(--gold-bg);border-color:rgba(230,179,77,.85);color:var(--gold-ink);box-shadow:none}

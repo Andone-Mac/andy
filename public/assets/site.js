@@ -364,3 +364,35 @@
   });
   try { mo.observe(document.documentElement, { childList: true, subtree: true }); } catch (err) { }
 })();
+
+/* ================= 一键安装「机悟JAVIS」（PWA beforeinstallprompt 驱动） ================= */
+(function () {
+  var deferred = null;
+  var standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone;
+  if (standalone) return;                       // 已装成 App：不显示按钮，也不打扰
+  window.addEventListener('beforeinstallprompt', function (e) {
+    e.preventDefault(); deferred = e;
+    document.documentElement.classList.add('can-ip');
+    var b = document.querySelector('.ip-btn');
+    if (b) b.addEventListener('click', install); // 只绑一次
+  });
+  window.addEventListener('appinstalled', function () {
+    document.documentElement.classList.remove('can-ip');
+    var b = document.querySelector('.ip-btn');
+    if (b) { b.classList.add('done'); b.textContent = '✓ 已加入桌面，从图标打开即是全屏 App'; b.removeEventListener('click', install); }
+  });
+  function install(ev) {
+    ev.preventDefault();
+    if (!deferred) return;
+    deferred.prompt();
+    deferred.userChoice.then(function (r) {
+      if (r && r.outcome === 'accepted') {
+        document.documentElement.classList.remove('can-ip');
+        var b = document.querySelector('.ip-btn');
+        if (b) { b.classList.add('done'); b.textContent = '✓ 已安装，回到桌面点「机悟JAVIS」图标'; }
+      }
+      deferred = null;
+    });
+  }
+  /* iOS Safari / 微信内核不发 beforeinstallprompt：按钮永远不显示，金框里的两步教程就是唯一路径 */
+})();
