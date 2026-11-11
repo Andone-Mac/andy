@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 11 Nov 2026 07:31:38 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 10:13:24 +0000</lastBuildDate>
+    <item>
+      <title>中国旗舰大模型换代：阿里 Qwen4 官宣，预览版先上线、限时最低 1 折</title>
+      <link>https://javis.org.cn/news-2026-11-11-qwen4-official-teaser.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-qwen4-official-teaser.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>模型发布 · 订阅定价</category>
+      <description>11 月 11 日上午，阿里千问官宣新一代 Qwen4 即将发布，方向是更深入的知识理解、更立体的世界感知，以及 Coding 与 Agentic 能力；旗舰 Qwen4-Max 的预览版当天首发上线阿里 Token Plan，限时最低 1 折（2 折叠加新客 5 折），千问办公、Qoder、千问 APP、QwenStudio 同步接入。官方未披露参数规模、上下文窗口、API 价格与是否开源。</description>
+    </item>
+    <item>
+      <title>中国两部门给行业大模型划了时间表：2028 年示范、2030 年全链条，五个中试平台</title>
+      <link>https://javis.org.cn/news-2026-11-11-ai-natural-resources-policy.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-ai-natural-resources-policy.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>政策 · 行业大模型</category>
+      <description>自然资源部、国家发展改革委 11 月 10 日发布《关于「人工智能+自然资源」的实施意见》：到 2028 年，建成时空地理信息、国土空间规划与治理、海洋、地质矿产、林业草原五个方向的高质量数据集、大模型和智能体；到 2030 年，人工智能深度融入管理全链条，关键核心技术与智能装备实现安全可控。文件同步统筹布局五个中试平台、推出八类应用场景。同日国家数据局披露，我国算力总规模达 310 万 PFLOPS、位居世界第二。</description>
+    </item>
+    <item>
+      <title>AI 编程助手把密码写进了公开仓库：31,088 个密钥，检出时 17% 还能用</title>
+      <link>https://javis.org.cn/news-2026-11-11-claude-code-credential-leak.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-claude-code-credential-leak.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>安全 · 智能体运维</category>
+      <description>安全公司 Apiiro 披露：Claude Code 的「是，且不再询问」授权会把整条命令（含密码、令牌）写进项目下的 .claude/settings.local.json；公开 GitHub 上 103,617 个仓库含该文件 104,185 份，其中 1,122 份含真实密钥，合并历史、共享设置与会话记录后共 2,539 个凭据、涉 63 家组织。GitGuardian 11 月 9 日独立复核把口径扩到 23,276 个仓库、31,088 个不同密钥，并实测 17% 在检出时仍然有效。</description>
+    </item>
+    <item>
+      <title>国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外</title>
+      <link>https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 许可门槛</category>
+      <description>MiniMax 11 月 10 日发布并开放 MiniMax-H3-Image 权重：单张 4096×4096、约 16MP，官方称 10 秒内出图、速度约为主流的 5 倍；模型卡写明 DiT 33.1B、蒸馏到 6 步采样、最多 16 张参考图。但《社区许可协议》把适用范围限定为全球除欧盟、英国、韩国、美国，且年化营收超过 100 万美元或对外提供托管服务须另行书面授权——这是「开放权重」，不是 OSI 意义上的开源。</description>
+    </item>
+    <item>
+      <title>1 分钱卖出 2 万亿词元：Token 第一次当商品上双 11 货架，实付约 1000 元</title>
+      <link>https://javis.org.cn/news-2026-11-11-double11-token-shelf.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-double11-token-shelf.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力消费 · 电商货架</category>
+      <description>11 月 2 日晚，李佳琦直播间上架千问办公个人会员月卡：原价 28 元、直播间 0.01 元、每 ID 限购一份，半小时售出近 10 万份，对应约 2 万亿词元，实付成交额约 1,000 元；整场计划发放 20 万亿词元。天猫 9 月 3 日上线 Token 充值中心「AI 空间站」，10 月 20 日双 11 开售首日该品类成交额环比增长 450%；京东同期上线「AI Token 服务站」。</description>
+    </item>
     <item>
       <title>跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路</title>
       <link>https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html</link>

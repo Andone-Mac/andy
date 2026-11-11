@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="MiniMax 11 月 10 日发布并开放 MiniMax-H3-Image 权重：单张 4096×4096、约 16MP，官方称 10 秒内出图、速度约为主流的 5 倍；模型卡写明 DiT 33.1B、蒸馏到 6 步采样、最多 16 张参考图。但《社区许可协议》把适用范围限定为全球除欧盟、英国、韩国、美国，且年化营收超过 100 万美元或对外提供托管服务须另行书面授权——这是「开放权重」，不是 OSI 意义上的开源。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.1.3">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="MiniMax 11 月 10 日发布并开放 MiniMax-H3-Image 权重：单张 4096×4096、约 16MP，官方称 10 秒内出图、速度约为主流的 5 倍；模型卡写明 DiT 33.1B、蒸馏到 6 步采样、最多 16 张参考图。但《社区许可协议》把适用范围限定为全球除欧盟、英国、韩国、美国，且年化营收超过 100 万美元或对外提供托管服务须另行书面授权——这是「开放权重」，不是 OSI 意义上的开源。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="MiniMax 11 月 10 日发布并开放 MiniMax-H3-Image 权重：单张 4096×4096、约 16MP，官方称 10 秒内出图、速度约为主流的 5 倍；模型卡写明 DiT 33.1B、蒸馏到 6 步采样、最多 16 张参考图。但《社区许可协议》把适用范围限定为全球除欧盟、英国、韩国、美国，且年化营收超过 100 万美元或对外提供托管服务须另行书面授权——这是「开放权重」，不是 OSI 意义上的开源。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外",
+      "description": "MiniMax 11 月 10 日发布并开放 MiniMax-H3-Image 权重：单张 4096×4096、约 16MP，官方称 10 秒内出图、速度约为主流的 5 倍；模型卡写明 DiT 33.1B、蒸馏到 6 步采样、最多 16 张参考图。但《社区许可协议》把适用范围限定为全球除欧盟、英国、韩国、美国，且年化营收超过 100 万美元或对外提供托管服务须另行书面授权——这是「开放权重」，不是 OSI 意义上的开源。",
+      "datePublished": "2026-11-11",
+      "dateModified": "2026-11-11",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外",
+          "item": "https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 151 条）</a>
+          <a href="news-2026-11-11-qwen4-official-teaser.html">Qwen4 官宣 1 折</a>
+          <a href="news-2026-11-11-ai-natural-resources-policy.html">2028 示范 2030 全链</a>
+          <a href="news-2026-11-11-claude-code-credential-leak.html">31,088 个密钥外泄</a>
+          <a href="news-2026-11-11-minimax-h3-image-open-4k.html">16MP 10 秒，四地除外</a>
+          <a href="news-2026-11-11-double11-token-shelf.html">1 分钱 2 万亿词元</a>
+          <a href="news-2026-11-11-platform-x8-arithmetic.html">该不该换 x8/x8</a>
+          <a href="news-2026-11-11-closure-iq3s-mainstay.html">终评 231 比 228</a>
+          <a href="news-2026-11-10-four-quant-verdict.html">四档终测 111.3</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-11</span><span class="n-tag" style="margin-left:8px">开放权重 · 许可门槛</span>
+    <h1 class="art-h1">国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外</h1>
+    <p class="art-lede">值得写的原因不在「又一个生图模型」，而在两个容易被忽略的细节：一是本地部署的真实体积（权重 68.65 GB，另需 66.7 GB 文本编码器，合计约 135 GB），二是许可把四个市场排除在外。前者决定你能不能在内网跑，后者决定你能不能拿它做生意。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、官方给了什么</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项</th><th>官方口径（模型卡 / 发布材料）</th></tr></thead>
+        <tbody>
+          <tr><td>输出规格</td><td>4096×4096（1:1）至 6272×2688（21:9），各比例约 16MP，不经超分</td></tr>
+          <tr><td>采样</td><td>蒸馏到 6 步（6 NFE），不使用 CFG</td></tr>
+          <tr><td>主干</td><td>33.1B 稠密单流 DiT，50 层，hidden 5376，56 个注意力头，FFN 14336</td></tr>
+          <tr><td>参考图</td><td>最多 16 张（支持参考图与图像编辑）</td></tr>
+          <tr><td>速度声明</td><td>10 秒内生成 16MP；标准模式约为主流 1.5–2 倍，Highspeed 3–4 倍</td></tr>
+        </tbody>
+      </table>
+      <p>官方把它定位为「开源图像模型 SOTA」，并强调速度、画质、指令遵循三个方向不偏科。需要提醒一句：10 秒这个数来自官方材料，未给出统一硬件条件——它说明「能做到」，不构成「你的机器也能做到」的保证。</p>
+
+      <h3 class="art-h2">二、本地部署的真实体积</h3>
+      <p>权重是放出来了，但仓库里没有文本编码器：model_index.json 会去 MiniMax-H3 的仓库里加载它。所以「下载一个 68 GB 的模型」是不够的，实际要备两套权重。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>组件</th><th>精度</th><th>体积</th></tr></thead>
+        <tbody>
+          <tr><td>DiT（transformer/）</td><td>BF16（嵌入、时间步、输出层为 FP32）</td><td>66.28 GB</td></tr>
+          <tr><td>图像 VAE</td><td>FP32</td><td>2.34 GB</td></tr>
+          <tr><td>文本编码器（来自 MiniMax-H3，不在本仓库）</td><td>—</td><td>66.7 GB</td></tr>
+          <tr><td>合计（本刊计算）</td><td>—</td><td>约 135.4 GB</td></tr>
+        </tbody>
+      </table>
+      <ul class="art-tl">
+        <li><b>推理框架</b>：官方推荐 SGLang，示例命令直接给到 30000 端口；要降延迟可按序列并行（Ulysses）拆到多卡，官方示例是 4 卡。</li>
+        <li><b>提示词要重写一遍</b>：模型吃的是详细的英文整图描述；官方 API 会先用 H3-Image-Context-IR 把短提示扩写成描述，本地可选 MiniMax-H3-Image-PE（17.9 GB，NVFP4）自己扩。</li>
+      </ul>
+
+      <h3 class="art-h2">三、许可是这件事的重点</h3>
+      <p>《MiniMax-H3-Image 社区许可协议》（2026-11-10 版）里有几条必须提前看：</p>
+      <ul class="art-tl">
+        <li><b>地域</b>：适用地域为全球，但排除欧盟、英国、韩国、美国四个地区；在排除地区部署需另行联系取得许可。</li>
+        <li><b>商用门槛</b>：你及关联方年化营收超过 100 万美元，或对外提供托管服务（含 API、网页等远程方式），须先经 platform.minimax.io/console/license 取得书面授权。</li>
+        <li><b>署名</b>：商用产品或服务的界面上要显著展示 MiniMax-H3-Image；分发时要附协议副本、修改文件要标注。</li>
+        <li><b>使用限制</b>：不得用其输出改进其他 AI 模型；须对下游用户施加同等约束。</li>
+      </ul>
+      <p>这和 Apache 2.0 / MIT 是两种东西：后者可以做商用、可以不再联系作者；前者是「权重开放 + 条件授权」。判断标准很简单——如果采购流程里有一栏叫「开源许可证类型」，这一栏不能填 MIT。</p>
+
+      <h3 class="art-h2">四、国产算力同步适配</h3>
+      <p>11 月 11 日，昆仑芯称已同步完成 MiniMax-H3-Image 的首发日适配与调优，成为首批完成适配的国产算力厂商之一，模型已在其平台稳定运行（据昆仑芯消息，观点网、东方财富转述）。对要按国产算力做方案的单位，这条比跑分更实用：它意味着至少有了一条已在国产卡上验证过的部署路径。</p>
+
+      <h3 class="art-h2">五、要在内网出图，先核四件事</h3>
+      <ul class="art-tl">
+        <li><b>显存与卡数</b>：135 GB 权重不是一张消费卡能装下的；按官方示例的多卡序列并行规划，或接受更长的单机出图时间。</li>
+        <li><b>许可与地域</b>：先确认使用主体的营收规模与是否对外提供托管服务，再决定要不要走书面授权流程。</li>
+        <li><b>文本编码器单独备</b>：只下 H3-Image 仓库会缺件，H3 的 text_encoder 要一起进内网。</li>
+        <li><b>商用界面与标识</b>：界面署名字样、生成内容标识两条都要落进产品需求，别等上线前才补。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>「开源」两个字，先看许可再看参数</h3>
+        <p class="kv-sub">按模型卡与许可原文记（2026-11-11）</p>
+        <ul>
+          <li>规格：16MP、4096×4096 到 6272×2688 原生直出，6 步采样，33.1B DiT，最多 16 张参考图。</li>
+          <li>体积：DiT 66.28 GB + VAE 2.34 GB + 文本编码器 66.7 GB，合计约 135.4 GB（本刊计算）。</li>
+          <li>许可：适用地域排除欧盟、英国、韩国、美国；年化营收超 100 万美元或提供托管服务须另行书面授权。</li>
+          <li>适配：昆仑芯称已完成首发日适配——国产算力路径上至少有一条已验证的部署路线。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：Hugging Face 模型卡 MiniMaxAI/MiniMax-H3-Image 与《MiniMax-H3-Image Community License Agreement》原文（2026-11-10）、IT之家（2026-11-10）、新浪科技（2026-11-11）、36氪·新智元（2026-11-11）、沙丘社区（2026-11-10，33.1B/6 步与许可要点）、观点网与东方财富（2026-11-11，昆仑芯适配）。体积合计与像素换算为本刊计算。本文仅转述公开报道与官方文档，不评判任何企业与产品，不构成投资建议。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-11-claude-code-credential-leak.html" title="AI 编程助手把密码写进了公开仓库：31,088 个密钥，检出时 17% 还能用">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">31,088 个密钥外泄</span>
+        <span class="pg-d">2026-11-11</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-11-double11-token-shelf.html" title="1 分钱卖出 2 万亿词元：Token 第一次当商品上双 11 货架，实付约 1000 元">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">1 分钱 2 万亿词元</span>
+        <span class="pg-d">2026-11-11</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 151 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>本地出图之前，先把许可与体积算清</h2>
+      <p>16MP 出图听起来很美，但 135 GB 权重、多卡并行、许可地域与营收门槛，任何一条没对上都会让项目卡在验收前。把你的场景（出图量、内容类型、是否对外提供）发来，我们按同一口径先算一遍可行性与边界。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外」，机悟 JAVIS，2026-11-11，https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[国产 4K 生图模型开源：16MP、10 秒出图，但许可把欧美韩排除在外](https://javis.org.cn/news-2026-11-11-minimax-h3-image-open-4k.html)（机悟 JAVIS，2026-11-11）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.0"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>
