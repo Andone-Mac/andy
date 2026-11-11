@@ -396,3 +396,45 @@
   }
   /* iOS Safari / 微信内核不发 beforeinstallprompt：按钮永远不显示，金框里的两步教程就是唯一路径 */
 })();
+
+/* ================= 行业动态留言（对接 api /api/comments：公开读、先审后展示） ================= */
+(function () {
+  var form = document.getElementById('cmtForm'), list = document.getElementById('cmtList');
+  if (!form || !list) return;
+  var API = 'https://api.javis.org.cn';
+  var slug = (location.pathname.split('/').pop() || '').slice(0, 80);
+  function el(t, c, txt) { var e = document.createElement(t); if (c) e.className = c; if (txt != null) e.textContent = txt; return e; }
+  function render(d) {
+    list.innerHTML = '';
+    if (!d || !d.ok) { list.appendChild(el('p', 'cmt-none', '留言暂时加载不出来，仍可以提交——我们会收到。')); return; }
+    var cs = d.comments || [];
+    if (!cs.length) { list.appendChild(el('p', 'cmt-none', '还没有留言——第一个说说您的看法？越具体，越有人接话。')); return; }
+    cs.forEach(function (c) {
+      var it = el('div', 'cmt-item');
+      var h = el('div', 'cmt-meta');
+      h.appendChild(el('b', null, c.name || '访客'));
+      h.appendChild(el('span', 'cmt-date', String(c.created || '').slice(0, 10)));
+      it.appendChild(h);
+      it.appendChild(el('p', 'cmt-txt', c.text));
+      list.appendChild(it);
+    });
+  }
+  fetch(API + '/api/comments?slug=' + encodeURIComponent(slug))
+    .then(function (r) { return r.json(); }).then(render)
+    .catch(function () { render(null); });
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var f = form.elements, msg = form.querySelector('.cmt-msg'), btn = form.querySelector('button[type=submit]');
+    if ((f.text.value || '').trim().length < 2) { msg.textContent = '请先写几个字'; return; }
+    btn.disabled = true; msg.textContent = '提交中…';
+    fetch(API + '/api/comments', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug, name: f.nick.value, contact: f.contact.value, text: f.text.value, website: f.website.value }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        btn.disabled = false;
+        if (d && d.ok) { form.reset(); msg.textContent = '✓ 已提交——通过后即显示在本页；留了联系方式的，我们会尽快回复'; }
+        else msg.textContent = (d && d.error) || '提交失败，稍后再试，或直接加官方微信';
+      })
+      .catch(function () { btn.disabled = false; msg.textContent = '网络不通，稍后再试'; });
+  });
+})();
