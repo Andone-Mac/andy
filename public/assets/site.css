@@ -439,19 +439,31 @@ footer .bottom{margin-top:12px;display:flex;justify-content:space-between;gap:12
 .prio a:hover{color:var(--cyan-deep)}
 @media(max-width:820px){.stats{grid-template-columns:repeat(2,1fr)}.stats b{font-size:1.45rem}}
 
-/* ===== 「机悟JAVIS」App（PWA）底部导航：仅移动端，中央圆形「行业动态」入口 ===== */
+/* ===== 「机悟JAVIS」App（PWA）底部导航 + 安装提示：仅移动端，中央圆形「行业动态」入口 ===== */
 .appbar{display:none}
+.app-tip{display:none}
 @media(max-width:820px){
-  body{padding-bottom:96px}
-  .appbar{display:flex;align-items:flex-end;justify-content:space-around;position:fixed;left:0;right:0;bottom:0;z-index:96;
-    background:rgba(14,28,66,.97);border-top:1px solid rgba(34,167,221,.4);
-    padding:8px 12px calc(10px + env(safe-area-inset-bottom))}
-  .appbar a.tab{color:#a8c4e4;text-decoration:none;font-size:.82rem;text-align:center;padding:6px 10px}
+  body{padding-bottom:104px}
+  .appbar{display:flex;align-items:center;justify-content:space-around;position:fixed;left:0;right:0;bottom:0;z-index:96;
+    background:#0c1836;border-top:1px solid rgba(34,167,221,.5);
+    box-shadow:0 -6px 24px rgba(6,12,32,.5);
+    padding:9px 16px calc(11px + env(safe-area-inset-bottom));
+    -webkit-touch-callout:none;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+  .appbar a.tab{display:flex;flex-direction:column;align-items:center;gap:4px;color:#8fa9cd;
+    text-decoration:none;font-size:.74rem;letter-spacing:.08em;padding:5px 18px}
+  .appbar a.tab svg{width:22px;height:22px}
   .appbar a.tab.cur{color:#fff}
-  .appbar a.appc{position:relative;top:-18px}
-  .appbar a.appc .circle{display:flex;align-items:center;justify-content:center;width:62px;height:62px;border-radius:50%;
-    background:linear-gradient(165deg,#1f4186,#12275a);border:2px solid #22a7dd;color:#fff;
-    font-size:.78rem;line-height:1.25;text-align:center;text-decoration:none;
-    box-shadow:0 8px 22px rgba(6,14,36,.5)}
-  .appbar a.appc.cur .circle{border-color:#e6b34d;box-shadow:0 0 0 3px rgba(230,179,77,.25),0 8px 22px rgba(6,14,36,.5)}
+  .appbar a.tab.cur svg{stroke:#5cc6ff}
+  .appbar a.appc{position:relative;top:-18px;flex:0 0 auto}
+  .appbar a.appc .circle{display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;
+    background:radial-gradient(circle at 32% 26%,#2e63aa,#101f47 72%);color:#fff;text-decoration:none;
+    font-size:.76rem;line-height:1.35;letter-spacing:.08em;text-align:center;
+    box-shadow:0 10px 22px rgba(4,10,28,.6),inset 0 0 0 2px rgba(34,167,221,.95)}
+  .appbar a.appc.cur .circle{box-shadow:0 10px 22px rgba(4,10,28,.6),inset 0 0 0 2.5px #e6b34d,0 0 14px rgba(230,179,77,.5)}
+  .film .snd{bottom:calc(116px + env(safe-area-inset-bottom))}
+  .app-tip{display:block;margin-top:16px;background:var(--gold-bg);border:1px solid rgba(230,179,77,.85);
+    border-radius:12px;padding:13px 15px;color:var(--gold-ink);font-size:.9rem;line-height:1.7;font-weight:600}
+}
+@media(display-mode:standalone),(display-mode:minimal-ui){
+  .app-tip{display:none!important}
 }
