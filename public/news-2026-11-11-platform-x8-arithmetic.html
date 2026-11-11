@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="双卡消费机跑本地大模型，日常档解码已到 106~114 tok/s——那么换 x8/x8 主板会「大幅提高」吗？把板级事实与引擎现测带宽摆齐：第一张卡的冷流已被 DDR4 双通道封顶（实测 36.8~44.3 GB/s），只有第二张卡的 7.2 GB/s 窄腿能修。换槽宽等于换整个平台，2026 内存/显卡超级周期把这笔账标到约两万元，而真正的大头杠杆在显存与内存通道。杠杆排序与两个不花钱的优化，本篇给全算式。">
+<meta name="keywords" content="私有化部署,企业与政企 AI 落地服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-11-platform-x8-arithmetic.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.1.2">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="双卡消费机跑本地大模型，日常档解码已到 106~114 tok/s——那么换 x8/x8 主板会「大幅提高」吗？把板级事实与引擎现测带宽摆齐：第一张卡的冷流已被 DDR4 双通道封顶（实测 36.8~44.3 GB/s），只有第二张卡的 7.2 GB/s 窄腿能修。换槽宽等于换整个平台，2026 内存/显卡超级周期把这笔账标到约两万元，而真正的大头杠杆在显存与内存通道。杠杆排序与两个不花钱的优化，本篇给全算式。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="双卡消费机跑本地大模型，日常档解码已到 106~114 tok/s——那么换 x8/x8 主板会「大幅提高」吗？把板级事实与引擎现测带宽摆齐：第一张卡的冷流已被 DDR4 双通道封顶（实测 36.8~44.3 GB/s），只有第二张卡的 7.2 GB/s 窄腿能修。换槽宽等于换整个平台，2026 内存/显卡超级周期把这笔账标到约两万元，而真正的大头杠杆在显存与内存通道。杠杆排序与两个不花钱的优化，本篇给全算式。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路",
+      "description": "双卡消费机跑本地大模型，日常档解码已到 106~114 tok/s——那么换 x8/x8 主板会「大幅提高」吗？把板级事实与引擎现测带宽摆齐：第一张卡的冷流已被 DDR4 双通道封顶（实测 36.8~44.3 GB/s），只有第二张卡的 7.2 GB/s 窄腿能修。换槽宽等于换整个平台，2026 内存/显卡超级周期把这笔账标到约两万元，而真正的大头杠杆在显存与内存通道。杠杆排序与两个不花钱的优化，本篇给全算式。",
+      "datePublished": "2026-11-11",
+      "dateModified": "2026-11-11",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路",
+          "item": "https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 146 条）</a>
+          <a href="news-2026-11-11-platform-x8-arithmetic.html">该不该换 x8/x8</a>
+          <a href="news-2026-11-11-closure-iq3s-mainstay.html">终评 231 比 228</a>
+          <a href="news-2026-11-10-four-quant-verdict.html">四档终测 111.3</a>
+          <a href="news-2026-11-10-four-quant-full-data.html">四档全表 60 点</a>
+          <a href="news-2026-11-10-dual-gpu-5080-5070ti.html">双卡解码 114.8</a>
+          <a href="news-2026-11-09-iq3s-param-sweep.html">只改两处解码 81.6</a>
+          <a href="news-2026-11-01-china-police-agent-eval-budget.html">测评工具单列立项</a>
+          <a href="news-2026-11-01-china-gov-compute-lease-by-p.html">按 P 租算力</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-11</span><span class="n-tag" style="margin-left:8px">本地实测 · 升级算术</span>
+    <h1 class="art-h1">跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路</h1>
+    <p class="art-lede">有人问：这台双卡机跑大模型，是不是该换一块 x8/x8 主板「大幅提高」性能？这个问题问得好，但它预设了瓶颈在槽宽。本文把本机三条已发布的实测链（11-08/09 单卡扫参、11-10 双卡改造与四档终版、11-11 三选项闭环）里的带宽读数，和今天用 dmidecode/lspci 取证的板级事实摆进同一张算式：谁在封顶、x8/x8 能修哪一段、修完值多少钱——顺带把 2026 年 11 月的配件行情贴进来，因为升级决策一半是技术问题、一半是周期问题。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+<h3 class="art-h2">一、问题与结论：先回答，再给算式</h3>
+<p>问题原样：这台双卡机（RTX 5080 16GB ＋ RTX 5070 Ti 16GB、128GB DDR4）经过三轮调优定型后，跑大模型要不要换一块能让两张卡两块卡都能各走 8 条 lane 的主板，以求「大幅提高」？</p>
+<ul class="art-tl"><li><b>结论：不换。</b>x8/x8 修的是本机<b>第三条</b>瓶颈——第二张卡那条 7.2 GB/s 的窄腿；它修不动前两条真正的大头（显存容量、内存通道数），而且在这颗 CPU 上「换 x8/x8 主板」实际等于换整个平台。</li><li>值多少：双卡长提示预填充的 37.8% 惩罚（本页第四节算式）会大幅收窄、高 miss 档与冷加载有感——但日常档解码收益接近零，因为那块<b>已经不看槽宽</b>。</li><li>多少钱：消费平台没有现成的 x8/x8（Intel 桌面根本不给），迁移要连 CPU＋主板＋DDR5 一起换——按 2026 年 11 月行情约 <b>两万元级</b>（第六节，含出处），相当于本机 GPU 部分重置成本的一半以上。</li><li>不花钱的同类收益还留着两个（第七节，已在跑）：热专家向快腿卡再平衡——用参数绕开窄腿，而不是花两万修它。</li></ul>
+<h3 class="art-h2">二、家底取证：板级事实与官方规格对质</h3>
+<p>先用 dmidecode 与 lspci 提权实读本机（2026-11-11），再对照华硕官网板规。一句话：<b>主板没有骗人，插槽也没插错——是平台没有更多 lane 可给</b>。</p>
+<table class="art-table"><thead><tr><th>项</th><th>实测读数</th></tr></thead><tbody><tr><td>主板（DMI）</td><td>ASUSTeK COMPUTER INC. PRIME Z790-P D4 (DMI baseboard)</td></tr><tr><td>CPU</td><td>Intel Core i7-14700F（LGA1700，16 lane Gen5 + 4 lane Gen4 CPU 侧 PCIe）</td></tr><tr><td>第一张卡链路（lspci 实读）</td><td>RTX 5080：32GT/s x16（CPU 直连满速）</td></tr><tr><td>第二张卡链路（lspci 实读）</td><td>RTX 5070 Ti：<b>16GT/s (downgraded) x4 (downgraded)</b>（芯片组引出）</td></tr><tr><td>内存（DMI）</td><td>4x Micron 18ASF4G72AZ-3G2BZ 32GB DDR4-3200 ECC RDIMM (2Rx8)</td></tr><tr><td>NVMe（lspci 实读）</td><td>系统盘：8.0 GT/s x4（Gen4 x4）</td></tr></tbody></table>
+<p>官网板规（ASUS baseboard)）：扩展槽为「1 x PCIe 5.0 x16 slot (CPU) / 3 x PCIe 4.0 x16 slots (support x4 mode) / 1 x PCIe 3.0 x1 slot / 4 x DIMM Max 128GB DDR4 双通道」——<b>除第一个槽外，其余全长槽全部只电气 x4</b>。也就是说：不换主板，本机无论如何到不了 x8；想 x8/x8，只有整平台搬迁一条路。这组板规还有第二个推论：三个 x16 外观槽都挤在芯片组（PCH）的管道上，而 PCH 与 CPU 之间只有固定的一条 DMI 总线——就算全插上，聚合带宽也不会叠加出奇迹。</p>
+<h3 class="art-h2">三、四条管路：谁在封顶，谁有余量</h3>
+<p>这台机器上「跑模型」的字节流只有四条管路。引擎每次冷启动会实测一次「主机→显存」带宽（11-10 双卡改造篇逐轮记录在案），理论值按协议公式现算，两相对照：</p>
+<table class="art-table"><thead><tr><th>管路</th><th>宽度（实测/理论）</th><th>谁说了算</th></tr></thead><tbody><tr><td>NVMe → 内存（加载模型文件）</td><td>Gen4 x4，理论 7.9 GB/s</td><td>冷启动头几秒；加载总时长里 NVMe＋解包占大头</td></tr><tr><td>内存 → 5080（第一腿）</td><td>引擎实测 <b>36.8~44.3 GB/s</b>（逐轮波动）</td><td>冷专家流主路——<b>瓶颈不在槽</b>：Gen5 x16 理论 63.0，实测只有它的 70% 上下；DDR4-3200 双通道理论 51.2 才是墙</td></tr><tr><td>内存 → 5070 Ti（第二腿）</td><td>引擎实测 <b>恒定 7.2 GB/s</b></td><td>x4 Gen4 理论 7.9——<b>槽就是墙</b>，这条腿是全场唯一「加宽即提速」的管段</td></tr><tr><td>卡 ↔ 卡</td><td>无 NVLink、无 P2P（nvidia-smi topo：PHB），全部经主机内存中转</td><td>双卡分工越「对半切」，中转账越贵——这是双卡长提示变慢的根</td></tr></tbody></table>
+<p>再加一条对照：w4a4 实验轮（11-11）在 NVFP4 双卡冷流下实测 PCIe 过卡 <b>41.0 GB/s</b>——同样贴着第一腿的内存墙。至此可以给出本节的判据式：<b>一条腿「带宽已满、加宽无用」，一条腿「槽宽即上限」，第三条腿走内存要交双份过路费。</b></p>
+<h3 class="art-h2">四、为什么日常解码「不关心」你加宽槽位</h3>
+<p>把 11-10 终版四档矩阵摊开看解码与命中率的对应（解码/命中率取 8k~131k 四个长度档，引擎 0.1.59）：</p>
+<table class="art-table"><thead><tr><th>档</th><th>命中率区间</th><th>解码 tok/s 区间</th><th>专家总量</th></tr></thead><tbody><tr><td>IQ3_S</td><td>86.9~90.9%</td><td>106.4~111.3</td><td>77.9 GiB</td></tr><tr><td>NVFP4</td><td>86.9~92.8%</td><td>79.6~124.9</td><td>72.3 GiB</td></tr><tr><td>IQ4_XS</td><td>66.5~81.3%</td><td>45.8~78.6</td><td>87.2 GiB</td></tr><tr><td>Q4_K_XL</td><td>54.8~62.8%</td><td>37.2~38.6</td><td>103.7 GiB</td></tr></tbody></table>
+<p>规律一眼可见：<b>解码跟着命中率走，命中率跟着「专家总量 vs 显存」走</b>。IQ3_S 专家最轻（77.9 GiB）、命中率 87~91%，日常解码 106.4~111.3 tok/s；Q4_K_XL 专家 103.7 GiB、命中率跌到 55~63%，解码就只剩 37~39。缓存命中意味着这一层的专家已经在卡上、根本<b>不用过任何管路</b>；miss 的那一小部分才轮到 PCIe——而它先撞的是内存墙。这也解释了 11-10 双卡 vs 单卡的账：就凭这条 x4 窄腿，双卡照样把单卡定档 81.6 tok/s 推到 106.4~111.3、命中率从 79.4% 抬到 87~93%——<b>窄腿不是没用，是「够用」</b>。</p>
+<h3 class="art-h2">五、把「换 x8/x8」逐项定价</h3>
+<p>能核实的实测锚先钉住：双卡对长提示的惩罚是现成的——同一探针、11-10 页记录，66,512 词元文档单卡预填充 2,156 tok/s、双卡 1,569 tok/s（<b>-27.2%</b>）；11-11 闭环轮里 Q4_K_XL 真 131k 单卡 1,451.6、双卡分层 903.0（<b>-37.8%</b>）。这两笔惩罚的根都在第二腿 7.2 GB/s 与内存中转上。把第二腿加宽到 Gen5 x8（理论 31.5 GB/s，现值约四倍）后，按搬运时间线性外推（<b>下表「估算」列，未实测</b>）：</p>
+<table class="art-table"><thead><tr><th>负载</th><th>现状（实测）</th><th>x8 Gen5 后</th><th>机理</th></tr></thead><tbody><tr><td>日常解码（IQ3_S/NVFP4 高命中档）</td><td>106~114 tok/s</td><td><3%（日常档 miss 流量小，瓶颈=命中率与 GPU 计算）</td><td>miss 流量小，宽窄腿都不在关键路径</td></tr><tr><td>双卡长提示预填充</td><td>惩罚 -27.2%~-37.8%</td><td>-27%~-38% 惩罚收窄到 -5%~-15%（第二卡腿 7.2→~28 线性外推，估算）</td><td>第二腿搬运收窄</td></tr><tr><td>高 miss 档（Q4_K_XL 类）</td><td>命中率 55~63%%</td><td>+10~20%（高 miss 档，带宽占比最大，估算）</td><td>miss 流比例最大、带宽占比最高</td></tr><tr><td>冷启动加载</td><td>29 秒 / 44~60 秒</td><td>-15~25%（加载大头在 NVMe 与打包，估算）</td><td>NVMe 与打包占大头</td></tr></tbody></table>
+<ul class="art-tl"><li>注意一个反直觉推论：<b>对「单卡常驻型」用法，x8/x8 收益恒等于零</b>——第一腿本来就用不满内存墙。换平台的钱，买的是「把第二腿从 7.2 修到 ~28」这一件事，外加（若迁 AM5）DDR5 双通道理论 96.0 GB/s 把内存墙本身抬高。</li><li>还有一个平台细节别漏：Intel 桌面 CPU 只有 16 条 GPU lane 且不给 x8/x8 拆分，「换 x8/x8 主板」在 LGA1700 上是伪选项；AMD X870E 系双 Gen5 槽同用各 x8 的机型也要看 M.2 占用（华硕规格页原文：启用 M.2_3 则退成 x8/x4）——升级清单里写「x8/x8」四个字，实际能拿到多少条，要逐板对表。</li></ul>
+<h3 class="art-h2">六、三条平台路线 × 2026 年 11 月行情</h3>
+<p>升级决策的另一半是周期。先把行情钉住（均带出处，正文逐处标注）：</p>
+<table class="art-table"><thead><tr><th>项</th><th>行情</th><th>出处</th></tr></thead><tbody><tr><td>RTX 5080（渠道，2026-11-10）</td><td>高点约1.8万回落至约1.4万</td><td>21世纪经济报道（南方财经）｜21世纪经济报道 华强北实地</td></tr><tr><td>RTX 5090 32GB（渠道）</td><td>高点约5万回落至约4.6万</td><td>同上（高点 5 万回落 4000，「现货仍紧」）</td></tr><tr><td>DDR5 32GB 单条</td><td>去年900今3800(+322%)</td><td>同上｜1TB SSD 也 +139%</td></tr><tr><td>DRAM 大盘</td><td>2026年底DRAM较2024涨约400%</td><td>快科技（转网易）｜快科技转引</td></tr><tr><td>供给侧</td><td>美光 2027 HBM 已订出 75%%；三星 2027 产能近 80%% 售出；AI 数据中心吃掉全球约 70%% DRAM；短缺或延续到 2028 下半年甚至 2030</td><td>快科技（转网易）</td></tr><tr><td>传闻（未官方证实）</td><td>传 NVIDIA 停产 5090、核心转更贵的专业卡；一年 N 卡均价 +66%</td><td>360游戏大厅科技转载（宪瑞）（据报道）</td></tr></tbody></table>
+<p>三条路线按当前行情重算：</p>
+<table class="art-table"><thead><tr><th>路线</th><th>要买什么</th><th>得到什么</th><th>当下总价</th></tr></thead><tbody><tr><td>A. AM5 全家桶（X870E/B850 双 Gen5 x8/x8）</td><td>主板约 全新最低约2550元、加 CPU 约 2000、<b>再加 DDR5 128GB 约 1.5 万</b>（4×32GB 按 3800(+322%) 现价）——本机 DDR4 全报废</td><td>双卡腿 ~28 GB/s×2；内存理论 96.0</td><td>≈ <b>两万元级</b></td></tr><tr><td>B. 二手 EPYC（SP3，32C 2.9/3.4GHz，128 lane PCIe Gen4，8通道 DDR4-3200 理论204.8 GB/s）</td><td>U 加板 5000~8000；<b>现有机内存可整套复用</b>——DMI 读出的料号是 Micron 32GB 2Rx8 <b>ECC RDIMM</b>（服务器条，消费板超规格点亮）</td><td>双卡 Gen4 x16 各 ~31.5——但第一腿从实测 44.3 <b>倒退到 26</b>：槽升、墙降，方向拧了</td><td>≈ 6000 元，收益存疑；二手也在被 AI 收（QS Compute / ServeTheHome 求购帖 帖有价无货）</td></tr><tr><td>C. 原地不动＋免费参数</td><td>0 元</td><td>热专家向快腿卡再平衡、缓存设备参数——用分工绕开窄腿</td><td>已在跑，数字出分即补录</td></tr></tbody></table>
+<p style="margin:8px 0 0;color:#5b6b7c;font-size:14px">路线 A 的隐藏条件：X870E 双 x8 的前提是第二个 M.2 不抢 lane（见第五节）；若为省内存钱改插 2×64GB DDR5 单条，理论带宽减半，「x8/x8＋半速内存」等于把钱花在了不封顶的那段管路上——升级清单要连内存条数一起对表。</p>
+<h3 class="art-h2">七、还不开钱包的话，先把免费的吃完</h3>
+<p>本机的窄腿是「第二卡上放了多少热专家」决定的——把分工改成「越热的层越往 Gen5 腿的卡上放」，同样的硬件就能少过窄腿。我们已在跑两组冷启动 A/B（探针与 11-10/11 同协议、现网实例全程分离）：</p>
+<ul class="art-tl"><li><code style="background:#eef3f9;padding:1px 6px;border-radius:4px;font-size:13px">K-split 不对称重平衡</code></li><li>：把双卡分层比例向快腿卡倾斜，测长提示预填充惩罚（-27.2%~-37.8%）能收窄多少——直接打第五节那两笔已核实的惩罚。</li><li><code style="background:#eef3f9;padding:1px 6px;border-radius:4px;font-size:13px">--expert-cache-device1</code></li><li>：引擎日志给过的备选架构，把专家缓存固定到指定卡上——若语义是「缓存跟快腿走」，高 miss 档（Q4_K_XL 类）应最先受益。</li><li>两组结果出分即按同一口径补录本报告与启动器默认；若实测收益 ≥ 一档惩罚的收窄，「换主板」的必要性会再降一层。</li></ul>
+<p>至于真正的下一跳，本号早已给过判据：这台机器的升级次序是<b>显存容量 → 内存通道数 → 槽宽</b>。第一位（48~64GB 显存把 NVFP4 的 72.3 GiB 专家基本装下）现在被周期锁着价——5090 渠道 高点约5万回落至约4.6万，比上市首发贵近两到三倍；最理性的动作是继续把参数和分工榨完，同时把「内存价格回落」设成盯梢项：按 快科技（转网易） 的口径，「2027 年趋稳」已是目前能找到的最乐观表述，而短缺信号指向 2028~2030。<b>结论不变：这台机器现在不该为 x8/x8 花那两万；该花的钱在三年周期的下半场。</b></p>
+<p>同系列阅读：<a href="news-2026-11-10-four-quant-verdict.html">11-10 四档终版结论</a>、<a href="news-2026-11-11-closure-iq3s-mainstay.html">11-11 三选项闭环与 304 题终评</a>。</p>
+<div class="kv-box">
+  <h3>要不要为 AI 换平台？</h3>
+  <p class="kv-sub">按实测算式记，不按传闻记（2026-11-11，全部数字脚本现取）</p>
+  <ul>
+    <li>先量瓶颈再谈升级：给第一张卡加 lane 是 0 收益——它的冷流实测 36.8~44.3 GB/s，已经贴着 DDR4 双通道 51.2 GB/s 理论值的墙；给它加宽内存通道才有效。</li>
+    <li>x8/x8 只修第二张卡的窄腿（实测 7.2 GB/s）：值「双卡长提示惩罚收窄、加载快两成」，不值「大幅」二字。</li>
+    <li>消费平台改 x8/x8＝整平台搬迁：Intel 桌面根本没有 GPU 用 x8/x8 拆分，要迁就得连 DDR5 一起重买——正处 DRAM 超级周期顶点（行情见文），约两万元。</li>
+    <li>这台机器真正的大头杠杆是显存容量与内存通道数；在那之前，还有两项不花钱的参数实验（热专家向快腿卡再平衡）正在跑。</li>
+  </ul>
+</div>
+      <p class="art-src">自有数字：板级取证 dmidecode/lspci（本机提权实读，硬件型号以 DMI 为准）；引擎现测带宽与单双卡对照引自本站 11-10 双卡改造篇（页内含 nvidia-smi topo 与逐轮读数）；四档命中率/解码矩阵、单卡 vs 双卡预填充、加载秒数、常驻内存，由 ~/bench/qwen38/agg_platform_1111.py 从 /media/UOS/D/qwen38/{platform_2026-11-11.json,final4_2026-11-10.json,closure_2026-11-11.json} 与逐轮日志现算；PCIe/DDR 理论值按协议公式现算（128b/130b、通道×位宽）。外部行情：21世纪经济报道（2026-11-10 华强北实地）、快科技（2026-11-09 摩根大通预测）、360科技转载（2026-10-11）、NGA 硬件实录帖（2026-10-26）、ASUS/微星官网规格页、ServeTheHome 求购区（2026-09）；正文已逐处标注日期与出处。标注「估算」的数字为线性外推，非实测。 本文仅转述自有设备实测记录与公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-11-closure-iq3s-mainstay.html" title="话接昨天：三个调优选项全部闭环，304 题终评 231 比 228——长期主力定为 IQ3_S">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">终评 231 比 228</span>
+        <span class="pg-d">2026-11-11</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 146 条）→</a></p>
+</section>
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>升级清单应该从瓶颈算式写起，而不是从传闻写起</h2>
+      <p>「换 x8/x8 主板就能大幅提速」这类说法，每台的机器答案都不一样——瓶颈可能在显存、在内存通道、也可能早已不在槽宽。把你的机器配置发来，我们按同一套取证＋探针流程替你算清楚：哪段管路在封顶、每一档升级花多少钱换几个百分点，再给结论。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路」，机悟 JAVIS，2026-11-11，https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路](https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html)（机悟 JAVIS，2026-11-11）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<div class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html">首页</a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html">联系</a>
+</div>
+<script src="assets/site.js?v=7.1.0"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

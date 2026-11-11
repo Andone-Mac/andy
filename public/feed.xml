@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 11 Nov 2026 06:51:42 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 07:13:03 +0000</lastBuildDate>
+    <item>
+      <title>跑大模型要不要换 x8/x8 主板？双卡 2×16G 实测机器，先算四条管路</title>
+      <link>https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-platform-x8-arithmetic.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 升级算术</category>
+      <description>双卡消费机跑本地大模型，日常档解码已到 106~114 tok/s——那么换 x8/x8 主板会「大幅提高」吗？把板级事实与引擎现测带宽摆齐：第一张卡的冷流已被 DDR4 双通道封顶（实测 36.8~44.3 GB/s），只有第二张卡的 7.2 GB/s 窄腿能修。换槽宽等于换整个平台，2026 内存/显卡超级周期把这笔账标到约两万元，而真正的大头杠杆在显存与内存通道。杠杆排序与两个不花钱的优化，本篇给全算式。</description>
+    </item>
     <item>
       <title>话接昨天：三个调优选项全部闭环，304 题终评 231 比 228——长期主力定为 IQ3_S</title>
       <link>https://javis.org.cn/news-2026-11-11-closure-iq3s-mainstay.html</link>
