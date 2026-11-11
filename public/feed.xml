@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Nov 2026 09:19:46 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 05:26:16 +0000</lastBuildDate>
+    <item>
+      <title>话接昨天：三个调优选项全部闭环，304 题终评 231 比 228——长期主力定为 IQ3_S</title>
+      <link>https://javis.org.cn/news-2026-11-11-closure-iq3s-mainstay.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-11-closure-iq3s-mainstay.html</guid>
+      <pubDate>Wed, 11 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 三选项闭环</category>
+      <description>话接 11-10 四档终版：batch 并发、对话停放、CUDA 13 重编三个调优选项全部本机冷启动 A/B 闭环——单流降 21~41%、停放门槛未达、w4a4 零提速，全部不入默认。IQ3_S 与 NVFP4 完成 304 题六阶段终评：231 比 228，配对 p=0.61，能力打平；长期主力定为日常解码 106~111 tok/s 的 IQ3_S。含一处历史分数勘误、现网实况截图与近期全部测试对比总表。</description>
+    </item>
     <item>
       <title>四种量化的国产大模型同机终测：日常最快 111.3 tok/s，真 131k 长文反超到 124.9</title>
       <link>https://javis.org.cn/news-2026-11-10-four-quant-verdict.html</link>
