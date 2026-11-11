@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12） | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="同一台 RTX 5080+5070 Ti 双卡机、同一份 unsloth UD 3.1 量化权重，推理引擎换用面向 Blackwell 的开源 Basalt（内存映射模式：MoE 专家权重留在系统内存页）后，IQ4_XS 质量档解码中位 88–116 tok/s——Strata 终版同档中短上下文只有 46–50（最长上下文档 78.6 反超）；Q4_K_XL 档 46–104。304 题逐题配对判分 235 分，创本机实测新高（主力 IQ3_S 231、NVFP4 228，对后者差异达统计显著 p=0.039）。跑测时间线、体积配方、30 行速度全表、配对统计、停止内存记录与五条边界一次摊开。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-12-basalt-mmap-full-data.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12） | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="同一台 RTX 5080+5070 Ti 双卡机、同一份 unsloth UD 3.1 量化权重，推理引擎换用面向 Blackwell 的开源 Basalt（内存映射模式：MoE 专家权重留在系统内存页）后，IQ4_XS 质量档解码中位 88–116 tok/s——Strata 终版同档中短上下文只有 46–50（最长上下文档 78.6 反超）；Q4_K_XL 档 46–104。304 题逐题配对判分 235 分，创本机实测新高（主力 IQ3_S 231、NVFP4 228，对后者差异达统计显著 p=0.039）。跑测时间线、体积配方、30 行速度全表、配对统计、停止内存记录与五条边界一次摊开。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12） | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="同一台 RTX 5080+5070 Ti 双卡机、同一份 unsloth UD 3.1 量化权重，推理引擎换用面向 Blackwell 的开源 Basalt（内存映射模式：MoE 专家权重留在系统内存页）后，IQ4_XS 质量档解码中位 88–116 tok/s——Strata 终版同档中短上下文只有 46–50（最长上下文档 78.6 反超）；Q4_K_XL 档 46–104。304 题逐题配对判分 235 分，创本机实测新高（主力 IQ3_S 231、NVFP4 228，对后者差异达统计显著 p=0.039）。跑测时间线、体积配方、30 行速度全表、配对统计、停止内存记录与五条边界一次摊开。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）",
+      "description": "同一台 RTX 5080+5070 Ti 双卡机、同一份 unsloth UD 3.1 量化权重，推理引擎换用面向 Blackwell 的开源 Basalt（内存映射模式：MoE 专家权重留在系统内存页）后，IQ4_XS 质量档解码中位 88–116 tok/s——Strata 终版同档中短上下文只有 46–50（最长上下文档 78.6 反超）；Q4_K_XL 档 46–104。304 题逐题配对判分 235 分，创本机实测新高（主力 IQ3_S 231、NVFP4 228，对后者差异达统计显著 p=0.039）。跑测时间线、体积配方、30 行速度全表、配对统计、停止内存记录与五条边界一次摊开。",
+      "datePublished": "2026-11-12",
+      "dateModified": "2026-11-12",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）",
+          "item": "https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 153 条）</a>
+          <a href="news-2026-11-12-basalt-mmap-full-data.html">全表 235/304</a>
+          <a href="news-2026-11-12-basalt-iq4xs-verdict.html">88–116 tok/s</a>
+          <a href="news-2026-11-11-qwen4-official-teaser.html">Qwen4 官宣 1 折</a>
+          <a href="news-2026-11-11-ai-natural-resources-policy.html">2028 示范 2030 全链</a>
+          <a href="news-2026-11-11-claude-code-credential-leak.html">31,088 个密钥外泄</a>
+          <a href="news-2026-11-11-minimax-h3-image-open-4k.html">16MP 10 秒，四地除外</a>
+          <a href="news-2026-11-11-double11-token-shelf.html">1 分钱 2 万亿词元</a>
+          <a href="news-2026-11-11-platform-x8-arithmetic.html">该不该换 x8/x8</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-12</span><span class="n-tag" style="margin-left:8px">实测数据</span>
+    <h1 class="art-h1">换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）</h1>
+    <p class="art-lede">同一台 5080+5070Ti 双卡机、同一份 unsloth UD 3.1 量化权重，推理引擎换用面向 Blackwell 的开源 Basalt 后，IQ4_XS 质量档解码中位从 46–50 提到 88–116 tok/s，304 题逐题配对 235 分新高。跑测时间线、体积配方、30 行速度全表、配对统计与边界一次摊开；取舍结论在<a href="news-2026-11-12-basalt-iq4xs-verdict.html">换引擎那篇</a>。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">跑测时间线</h3>
+      <p>时刻取自跑测链日志与逐题产物时间戳；两轮速度矩阵串行完成，能力跑测在同一开机周期、同一引擎服务内。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项目</th><th>开始</th><th>重复</th><th>最长上下文</th></tr></thead>
+        <tbody>
+          <tr><td>速度矩阵 · Q4_K_XL 档</td><td>[11-12 05:28:2</td><td>5 档 × 4 次</td><td>143,505</td></tr>
+          <tr><td>速度矩阵 · IQ4_XS 档</td><td>[11-12 05:35:3</td><td>5 档 × 4 次</td><td>143,505</td></tr>
+          <tr><td>304 题 · 同机同权重</td><td>04:47:23</td><td>304 题</td><td>逐题配对判分</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">引擎与配方</h3>
+      <p>对照基线是本站 2026-11-10 发布的 Strata 四档终版，数字直接复用当时的中间件，两篇可逐格对账。本次主角 Basalt 是面向 Blackwell 的开源推理引擎（Strata 分支）：MoE 专家权重留在系统内存映射页，双卡只常驻注意力与共享层。实测口径与终版一致：冷 prefill、同提示 3 次解码取中位、温度 0、关闭思考、单路。</p>
+      <p>上下文上限 256K、键值缓存 int8、推测解码强度 7；权重为 unsloth UD 3.1 的 GGUF 四分片（合计 87.2 GB），转入引擎自有包后 IQ4_XS 档 90.9 GB、Q4_K_XL 档 107.4 GB。</p>
+
+      <h3 class="art-h2">权重分片</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>UD-IQ4_XS V3.1 分片</th><th>体积</th></tr></thead>
+        <tbody>
+          <tr><td>UD-IQ4_XS-00001-of-00004.gguf</td><td>10.4 MB</td></tr>
+          <tr><td>UD-IQ4_XS-00002-of-00004.gguf</td><td>46.2 GB</td></tr>
+          <tr><td>UD-IQ4_XS-00003-of-00004.gguf</td><td>14.2 GB</td></tr>
+          <tr><td>UD-IQ4_XS-00004-of-00004.gguf</td><td>26.8 GB</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">速度全表（冷 prefill / decode 中位 · tok/s）</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>配置</th><th>上下文档</th><th>prefill</th><th>decode</th></tr></thead>
+        <tbody>
+          <tr><td>Strata 终版 IQ3_S</td><td>1k</td><td>208.8</td><td>109.3</td></tr>
+          <tr><td>Strata 终版 IQ3_S</td><td>8k</td><td>887.1</td><td>106.4</td></tr>
+          <tr><td>Strata 终版 IQ3_S</td><td>32k</td><td>1,348.8</td><td>109.1</td></tr>
+          <tr><td>Strata 终版 IQ3_S</td><td>66.5k</td><td>1,519.7</td><td>111.3</td></tr>
+          <tr><td>Strata 终版 IQ3_S</td><td>131k</td><td>1,576.7</td><td>106.4</td></tr>
+          <tr><td>Strata 终版 NVFP4</td><td>1k</td><td>163.8</td><td>73.5</td></tr>
+          <tr><td>Strata 终版 NVFP4</td><td>8k</td><td>955.2</td><td>80.4</td></tr>
+          <tr><td>Strata 终版 NVFP4</td><td>32k</td><td>1,217.2</td><td>85.2</td></tr>
+          <tr><td>Strata 终版 NVFP4</td><td>66.5k</td><td>1,480.4</td><td>79.6</td></tr>
+          <tr><td>Strata 终版 NVFP4</td><td>131k</td><td>1,620.1</td><td>124.9</td></tr>
+          <tr><td>Strata 终版 IQ4_XS</td><td>1k</td><td>264.9</td><td>46.8</td></tr>
+          <tr><td>Strata 终版 IQ4_XS</td><td>8k</td><td>1,205.9</td><td>45.8</td></tr>
+          <tr><td>Strata 终版 IQ4_XS</td><td>32k</td><td>1,486.6</td><td>45.9</td></tr>
+          <tr><td>Strata 终版 IQ4_XS</td><td>66.5k</td><td>1,621.5</td><td>49.5</td></tr>
+          <tr><td>Strata 终版 IQ4_XS</td><td>131k</td><td>1,734.1</td><td>78.6</td></tr>
+          <tr><td>Strata 终版 Q4_K_XL</td><td>1k</td><td>61.1</td><td>32.7</td></tr>
+          <tr><td>Strata 终版 Q4_K_XL</td><td>8k</td><td>574.5</td><td>38.6</td></tr>
+          <tr><td>Strata 终版 Q4_K_XL</td><td>32k</td><td>1,161.9</td><td>37.3</td></tr>
+          <tr><td>Strata 终版 Q4_K_XL</td><td>66.5k</td><td>1,375.9</td><td>37.2</td></tr>
+          <tr><td>Strata 终版 Q4_K_XL</td><td>131k</td><td>1,451.6</td><td>37.8</td></tr>
+          <tr><td>Basalt mmap IQ4_XS</td><td>1k</td><td>83</td><td>94.9</td></tr>
+          <tr><td>Basalt mmap IQ4_XS</td><td>8k</td><td>883</td><td>88.0</td></tr>
+          <tr><td>Basalt mmap IQ4_XS</td><td>32k</td><td>1,416.2</td><td>108.7</td></tr>
+          <tr><td>Basalt mmap IQ4_XS</td><td>66.5k</td><td>2,026.4</td><td>116.3</td></tr>
+          <tr><td>Basalt mmap IQ4_XS</td><td>131k</td><td>2,782.0</td><td>91.6</td></tr>
+          <tr><td>Basalt mmap Q4_K_XL</td><td>1k</td><td>45.9</td><td>46.2</td></tr>
+          <tr><td>Basalt mmap Q4_K_XL</td><td>8k</td><td>450.1</td><td>54.2</td></tr>
+          <tr><td>Basalt mmap Q4_K_XL</td><td>32k</td><td>480.7</td><td>103.3</td></tr>
+          <tr><td>Basalt mmap Q4_K_XL</td><td>66.5k</td><td>725.2</td><td>104.3</td></tr>
+          <tr><td>Basalt mmap Q4_K_XL</td><td>131k</td><td>1,031.0</td><td>98.9</td></tr>
+        </tbody>
+      </table>
+      <p>IQ4_XS 档换引擎后 decode 中位 88–116 tok/s（Strata 同档：中短上下文 46–50，最长上下文档 78.6 是该档历史反超点）；Q4_K_XL 档 46–104（Strata 同档 32.7–38.6）。1K 冷启动档只作参考，不计入区间下界。</p>
+
+      <h3 class="art-h2">能力全表（304 题逐题配对）</h3>
+      <p>同一套题、同一判分函数：MMLU-Pro 196（正确选项）、GSM8K 40、MATH-L5 30（提取末数）、纯逻辑链 12、IFEval 指令 20、大海捞针 6（16K–256K 探针）。表中为主角对现役主力的逐分项。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>分项</th><th>Basalt IQ4_XS</th><th>Strata IQ3_S</th></tr></thead>
+        <tbody>
+          <tr><td>MMLU-Pro</td><td>136/196</td><td>131/196</td></tr>
+          <tr><td>小学数学 GSM8K</td><td>40/40</td><td>40/40</td></tr>
+          <tr><td>中学数学 MATH</td><td>23/30</td><td>23/30</td></tr>
+          <tr><td>纯逻辑链</td><td>12/12</td><td>12/12</td></tr>
+          <tr><td>指令遵循 IFEval</td><td>18/20</td><td>19/20</td></tr>
+          <tr><td>大海捞针 16K–256K</td><td>6/6</td><td>6/6</td></tr>
+        </tbody>
+      </table>
+      <p>与三个 Strata 终版档位的配对统计（不一致格 a/b，精确 McNemar）：</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>对手</th><th>比分</th><th>不一致格</th><th>p 值</th></tr></thead>
+        <tbody>
+          <tr><td>Strata 主力 IQ3_S</td><td>235 : 231</td><td>8/4</td><td>0.3877</td></tr>
+          <tr><td>Strata IQ4_XS（V3.0 旧量化）</td><td>235 : 230</td><td>18/13</td><td>0.4731</td></tr>
+          <tr><td>Strata NVFP4</td><td>235 : 228</td><td>8/1</td><td>0.0391</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="art-h2">停止与内存</h3>
+      <p>引擎服务各起停一次，退出后显存清零、内存归还，随后的整机负载恢复正常——本配置没有出现常驻钉住不退的内存。对照记录：把专家权重常驻进显存页的另一模式，本机每次退出会遗留数十 GB 不归还（驱动记账异常），我们不用该模式；文中全部数字来自内存映射模式。</p>
+
+      <h3 class="art-h2">边界（必读）</h3>
+      <ul class="art-tl">
+        <li>304 题的可检下限约 2.2–3.6 个百分点：对主力 +4 分、对 V3.0 档 +5 分均未达显著（方向一致）；对 NVFP4 档 +7 分达显著（p=0.0391）。</li>
+        <li>单请求口径，不含并发与服务端吞吐；逐轮专家命中率日志未归档，正文不引用命中率数字。</li>
+        <li>主力 IQ3_S 与 NVFP4 档未转新引擎，本文不构成「全档位换引擎」依据。</li>
+        <li>真实工具序列的 agent 验收未跑，通过前不宣称换主力。</li>
+        <li>比分置信（Wilson 95%）：主角 72.3–81.7%；对手 IQ3_S 70.9–80.4%。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>本篇是什么</h3>
+        <p class="kv-sub">2026-11-12 单机实测的完整底账</p>
+        <ul>
+          <li>速度：IQ4_XS 档 decode 88–116 tok/s，中短上下文档较 Strata 同档约 +92%–+135%</li>
+          <li>能力：235/304 配对新高；显著差异仅对 NVFP4 档</li>
+          <li>边界：单路口径；agent 验收未跑；两档未转</li>
+        </ul>
+      </div>
+      <p class="art-src">数字全部由聚合脚本现算：中间件 basalt_mmap_2026-11-12.json（速度矩阵原始 JSON、逐题 jsonl、配对统计、文件体积逐项回读），未从手写汇总转抄。测试机：i7-14700F / 128GB / RTX 5080 16G + RTX 5070 Ti 16G；引擎：Basalt（Strata fork, CUDA 13.4, sm_120, mmap-experts）。 本文数据为同一台机器同一天的单机单路实测，环境不同绝对值不保证复现；不构成投资建议或产品评测结论。</p>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-12-basalt-iq4xs-verdict.html" title="同权重换引擎：质量档解码 88–116 tok/s，304 题 235 分新高">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">88–116 tok/s</span>
+        <span class="pg-d">2026-11-12</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 153 条）→</a></p>
+</section>
+
+
+
+
+
+
+
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>需要一份自己环境的底账？</h2>
+      <p>从选型、装机、量化档位取舍到复测出报告，我们按这套口径给客户做单机实测。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）」，机悟 JAVIS，2026-11-12，https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）](https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html)（机悟 JAVIS，2026-11-12）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

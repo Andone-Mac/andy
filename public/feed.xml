@@ -6,7 +6,23 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 11 Nov 2026 20:22:40 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Nov 2026 21:58:29 +0000</lastBuildDate>
+    <item>
+      <title>换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）</title>
+      <link>https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 数据全表</category>
+      <description>同一台 RTX 5080+5070 Ti 双卡机、同一份 unsloth UD 3.1 量化权重，推理引擎换用面向 Blackwell 的开源 Basalt（内存映射模式：MoE 专家权重留在系统内存页）后，IQ4_XS 质量档解码中位 88–116 tok/s——Strata 终版同档中短上下文只有 46–50（最长上下文档 78.6 反超）；Q4_K_XL 档 46–104。304 题逐题配对判分 235 分，创本机实测新高（主力 IQ3_S 231、NVFP4 228，对后者差异达统计显著 p=0.039）。跑测时间线、体积配方、30 行速度全表、配对统计、停止内存记录与五条边界一次摊开。</description>
+    </item>
+    <item>
+      <title>同权重换引擎：质量档解码 88–116 tok/s，304 题 235 分新高</title>
+      <link>https://javis.org.cn/news-2026-11-12-basalt-iq4xs-verdict.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-basalt-iq4xs-verdict.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 换引擎</category>
+      <description>11 月 10 日四档终版里，IQ4_XS 质量档中短上下文只有 46–50 tok/s（最长上下文档 78.6 是它唯一的反超点）——日常速度慢一倍多，只能当离线精读档。11 月 12 日凌晨换引擎 Basalt（内存映射模式）复测同一份权重：88–116 tok/s，追平原主力速度带；能力 235/304，对三个对手比分全胜（对主力 +4 分未达显著、对 NVFP4 +7 分达显著）。质量档第一次有日常速度。逐段对照、比分与 p 值、取舍建议与「agent 验收未跑」的边界在正文，完整底账见实测全表篇。</description>
+    </item>
     <item>
       <title>中国旗舰大模型换代：阿里 Qwen4 官宣，预览版先上线、限时最低 1 折</title>
       <link>https://javis.org.cn/news-2026-11-11-qwen4-official-teaser.html</link>

@@ -55,6 +55,18 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-12-basalt-iq4xs-verdict.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-11-11-qwen4-official-teaser.html</loc>
     <lastmod>2026-11-11</lastmod>
     <changefreq>monthly</changefreq>
