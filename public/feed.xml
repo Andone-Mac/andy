@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 11 Nov 2026 21:58:29 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Nov 2026 10:24:10 +0000</lastBuildDate>
+    <item>
+      <title>百度世界2026今天开幕：李彦宏提「智能组织」，内部日活智能体一年涨到3.7万，大模型交易平台「词元所」上线</title>
+      <link>https://javis.org.cn/news-2026-11-12-baidu-world-intelligent-organization.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-baidu-world-intelligent-organization.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>行业落地 · 组织进化</category>
+      <description>11 月 12 日百度世界 2026 在北京开幕，李彦宏判断「AI 的下一幕是智能组织」，首次提出组织进化三原则：打破岗位边界、沉淀隐性知识、设计流程闭环，并披露内部账本：日均活跃智能体从 0.5 万增至 3.7 万、智能体有效任务从每周 8.4 万个到一周超 100 万个、建成 4300 个 Workspace、沉淀组织 Skill 超 2 万个。同日百度推出大模型交易平台「词元所」，上线一个月入驻供应资源超 100 个，日均调用次数突破 5000 万、日均调用 Token 超 7000 亿；百度智能云发布天池 1024 卡超节点（2027 年上市），昆仑芯 M100 已上市、M300 明年推出、2028 年推 N 架构系列芯片。</description>
+    </item>
+    <item>
+      <title>中国文心发布 280B 预览版旗舰：激活 14B、百万上下文、生成超 200 tok/s，权重要求 11 月 25 日前开源</title>
+      <link>https://javis.org.cn/news-2026-11-12-ernie-5-5-flash-preview.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-ernie-5-5-flash-preview.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>模型发布 · 分时定价</category>
+      <description>11 月 11 日，百度文心发布 ERNIE 5.5 Flash Preview——总参数 280B、每 token 激活 14B 的稀疏 MoE，支持 100 万 token 上下文，官方口径生成速度超 200 tokens/秒，是 11 月 5 日开源 Base 模型的首个后训练版本。API 已在千帆平台上线，实行分时段定价：原价高峰每百万 token 输入 2 元、输出 8 元，闲时减半，缓存命中另有价，即日起至 11 月 30 日五折；权重将于 11 月 25 日前面向全球开源社区发布。官方同时提醒：Preview 是后训练中间版本，可能存在训练不充分导致的能力缺陷。同日百度还发布文心闪电深度思考与文心一镜微表情两款应用模型，已上线千帆开放企业 API。</description>
+    </item>
+    <item>
+      <title>阿里把「Agent 执行底座」开源了：Qwen Code 1.0 Preview 融合 Qoder 的 Harness，Apache-2.0 可嵌入自己的产品</title>
+      <link>https://javis.org.cn/news-2026-11-12-qwen-code-harness-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-qwen-code-harness-open.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源 · Agent 运行时</category>
+      <description>11 月 11 日阿里官宣推出 Qwen Code 1.0 版本，将 Qoder 编程产品中打磨的 Agent 执行基座（Harness）融入开源项目 Qwen Code，随 1.0 Preview 以独立分支开放，许可证 Apache-2.0，仓库 github.com/QwenLM/qwen-code，现有 0.27 稳定分支保留。架构上从进程内内存事件总线起步，沿统一事件模型向分布式演进：接入、调度、执行分层，「手脑分离」让推理编排与工具执行独立管理，从「一个进程多个会话」走向「多个节点更多会话」。官方列了四个效果：处理单元按需接入、模型接入集中管控配置授权与调用记录、沙箱在权限边界内复用、MCP 统一管理。官方明确 Preview 期间接口、配置和行为可变，未公布稳定版时间与基准成绩。</description>
+    </item>
+    <item>
+      <title>中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%</title>
+      <link>https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开放权重 · 智能体可靠性</category>
+      <description>11 月 11 日，上海创智学院（Shanghai Innovation Institute）旗下 Nex-AGI 团队发布并开源多模态智能体模型 Nex-N2.6：基于 GLM-5.3-Flash，放出约 321B 参数的 FP8 量化权重，支持文本、图片、视频输入，面向电脑操作（computer use）、编程与长程工具调用任务，API 开放 256K 上下文。与上一代 Nex-N2.5-Pro 相比，官方内部断点重放评测显示推理复读触发率从 16.0% 降至 1.6%（相对下降 90%），整体调用未循环率 97.8%，956 条真实上下文内工具调用实现 100% 清单内精准匹配；OSWorld 得分 83.0、Terminal-Bench 2.1 得分 84.1。团队注明以上为内部与模型级评测，非第三方基准。</description>
+    </item>
+    <item>
+      <title>马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无</title>
+      <link>https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html</guid>
+      <pubDate>Thu, 12 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国际模型 · 选型账本</category>
+      <description>11 月 10 日，马斯克在 X 宣布 Grok 4.8 预训练完成、已进入强化学习阶段且评测分数开始攀升，承诺本周晚些时候向 Grok Bot 用户软推出。他同时披露 xAI 已弃用 JAX/SGLang，用 C/C++ 从头重写整套 RL 与推理栈。但截至 11 月 11 日，开发者文档中没有 grok-4.8 标识符、没有价目表、没有公布的上下文窗口与参数规模、没有任何基准成绩——目前可调用与计价的仍是 9 月 21 日发布的 Grok 4.7（500K 上下文，每百万 token 输入 $2.00、输出 $6.00，第三方整理口径）。Grok 4.8 九月中旬的原定节点已滑期近两个月。</description>
+    </item>
     <item>
       <title>换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）</title>
       <link>https://javis.org.cn/news-2026-11-12-basalt-mmap-full-data.html</link>

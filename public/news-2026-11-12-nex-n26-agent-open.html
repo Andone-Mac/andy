@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6% | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="11 月 11 日，上海创智学院（Shanghai Innovation Institute）旗下 Nex-AGI 团队发布并开源多模态智能体模型 Nex-N2.6：基于 GLM-5.3-Flash，放出约 321B 参数的 FP8 量化权重，支持文本、图片、视频输入，面向电脑操作（computer use）、编程与长程工具调用任务，API 开放 256K 上下文。与上一代 Nex-N2.5-Pro 相比，官方内部断点重放评测显示推理复读触发率从 16.0% 降至 1.6%（相对下降 90%），整体调用未循环率 97.8%，956 条真实上下文内工具调用实现 100% 清单内精准匹配；OSWorld 得分 83.0、Terminal-Bench 2.1 得分 84.1。团队注明以上为内部与模型级评测，非第三方基准。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-12-nex-n26-agent-open.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="11 月 11 日，上海创智学院（Shanghai Innovation Institute）旗下 Nex-AGI 团队发布并开源多模态智能体模型 Nex-N2.6：基于 GLM-5.3-Flash，放出约 321B 参数的 FP8 量化权重，支持文本、图片、视频输入，面向电脑操作（computer use）、编程与长程工具调用任务，API 开放 256K 上下文。与上一代 Nex-N2.5-Pro 相比，官方内部断点重放评测显示推理复读触发率从 16.0% 降至 1.6%（相对下降 90%），整体调用未循环率 97.8%，956 条真实上下文内工具调用实现 100% 清单内精准匹配；OSWorld 得分 83.0、Terminal-Bench 2.1 得分 84.1。团队注明以上为内部与模型级评测，非第三方基准。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="11 月 11 日，上海创智学院（Shanghai Innovation Institute）旗下 Nex-AGI 团队发布并开源多模态智能体模型 Nex-N2.6：基于 GLM-5.3-Flash，放出约 321B 参数的 FP8 量化权重，支持文本、图片、视频输入，面向电脑操作（computer use）、编程与长程工具调用任务，API 开放 256K 上下文。与上一代 Nex-N2.5-Pro 相比，官方内部断点重放评测显示推理复读触发率从 16.0% 降至 1.6%（相对下降 90%），整体调用未循环率 97.8%，956 条真实上下文内工具调用实现 100% 清单内精准匹配；OSWorld 得分 83.0、Terminal-Bench 2.1 得分 84.1。团队注明以上为内部与模型级评测，非第三方基准。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%",
+      "description": "11 月 11 日，上海创智学院（Shanghai Innovation Institute）旗下 Nex-AGI 团队发布并开源多模态智能体模型 Nex-N2.6：基于 GLM-5.3-Flash，放出约 321B 参数的 FP8 量化权重，支持文本、图片、视频输入，面向电脑操作（computer use）、编程与长程工具调用任务，API 开放 256K 上下文。与上一代 Nex-N2.5-Pro 相比，官方内部断点重放评测显示推理复读触发率从 16.0% 降至 1.6%（相对下降 90%），整体调用未循环率 97.8%，956 条真实上下文内工具调用实现 100% 清单内精准匹配；OSWorld 得分 83.0、Terminal-Bench 2.1 得分 84.1。团队注明以上为内部与模型级评测，非第三方基准。",
+      "datePublished": "2026-11-12",
+      "dateModified": "2026-11-12",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%",
+          "item": "https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 158 条）</a>
+          <a href="news-2026-11-12-baidu-world-intelligent-organization.html">日活智能体3.7万</a>
+          <a href="news-2026-11-12-ernie-5-5-flash-preview.html">280B 25日前开源</a>
+          <a href="news-2026-11-12-qwen-code-harness-open.html">Qoder Harness 开源</a>
+          <a href="news-2026-11-12-nex-n26-agent-open.html">复读率降90%</a>
+          <a href="news-2026-11-12-grok-48-rl-no-api.html">无API无价目表</a>
+          <a href="news-2026-11-12-basalt-mmap-full-data.html">全表 235/304</a>
+          <a href="news-2026-11-12-basalt-iq4xs-verdict.html">88–116 tok/s</a>
+          <a href="news-2026-11-11-qwen4-official-teaser.html">Qwen4 官宣 1 折</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-12</span><span class="n-tag" style="margin-left:8px">开放权重 · 智能体可靠性</span>
+    <h1 class="art-h1">中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%</h1>
+    <p class="art-lede">11 月 11 日，上海创智学院 Nex-AGI 团队开源多模态智能体模型 Nex-N2.6：约 321B 参数的 FP8 权重、基于智谱 GLM-5.3-Flash，看屏幕、点鼠标、调工具都算本职。这轮发布最值得记的不是榜单分，而是两个「可靠性账」：推理复读触发率从 16.0% 降到 1.6%，956 条真实上下文里工具调用 100% 落在清单内。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、放出了什么</h3>
+      <ul class="art-tl">
+        <li><b>权重</b>：FP8 量化权重，约 321B 参数，GitHub（sii-nex/Nex-N2.6）与 Hugging Face 可取；官方部署指引走支持 GLM-5.3-Flash 的推理运行时（SGLang，选 FP8 兼容配置），要求保留随权重发布的 tokenizer、processor 与 chat template。</li>
+        <li><b>输入</b>：文本、图片、视频三类输入、文本输出；chat template 支持 reasoning_effort 低/高/max 三档，默认 max。</li>
+        <li><b>API</b>：256K 上下文窗口，经 OpenRouter 与 MOSS 提供调用；第三方价格库口径为输入 $0.12/百万 token、输出 $0.40/百万 token（OpenRouter 标价，2026-11-10）。</li>
+        <li><b>血统</b>：基于 GLM-5.3-Flash 后训练，主打 computer use（直接操作真实电脑界面）与长程工具任务；上代 Nex-N2.5 系列发布于 2026 年 9 月，团队称一经发布曾登上 OpenRouter 热门模型榜首（团队口径）。</li>
+      </ul>
+
+      <h3 class="art-h2">二、两个「生产级可靠性」指标，怎么测的</h3>
+      <p>智能体在长任务里最贵的失败不是答错，而是「原地打转」：模型陷入复读、反复调用同一工具、烧掉 Token 却不出活。Nex 团队为此建了一套内部评测：收集团队与合作伙伴在真实任务里踩过的 698 条 badcase，做「断点重放」（Checkpoint Replay）——完全冻结上一代模型出错或卡死前的历史上下文与工具返回，让新模型从同一个故障断点接续生成下一次响应。这种严格控制单一变量的方法排除了从头重跑的路径随机性，是团队为「故障修复效果」定的工程标尺。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>指标（内部评测口径）</th><th>Nex-N2.5-Pro</th><th>GLM-5.3-Flash</th><th>Nex-N2.6</th></tr></thead>
+        <tbody>
+          <tr><td>推理复读触发率（越低越好）</td><td>16.0%</td><td>6.0%</td><td>1.6%</td></tr>
+          <tr><td>整体调用未循环率</td><td>91.0%</td><td>96.2%</td><td>97.8%</td></tr>
+          <tr><td>有效工具选择率（整体）</td><td>82.2%</td><td>85.3%</td><td>100.0%</td></tr>
+          <tr><td>有效工具选择率（有工具调用时）</td><td>80.5%</td><td>84.1%</td><td>100.0%</td></tr>
+        </tbody>
+      </table>
+      <p>工具清单贴合率针对的是另一类生产事故：换一套框架，工具名字变了（read_file 变 open_file），模型照着旧名字调用就报错。团队保留 956 条来自 Claude Code、Codex、Cursor 及自研 Harness 的真实上下文测试，Nex-N2.6 在实际发起工具调用的响应中实现 100% 清单内精准匹配，团队称与 GPT-6-Sol 相当。需要说明：两个 100% 都是内部口径、样本有限，但「先冻结上下文再重放」这个方法本身，值得每个要上智能体的团队抄进自己的验收规程。</p>
+
+      <h3 class="art-h2">三、公开基准：涨的一面和没涨的一面</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>基准</th><th>GLM-5.3-Flash</th><th>DeepSeek-V4.1-Flash</th><th>Nex-N2.5-Pro</th><th>Nex-N2.6</th></tr></thead>
+        <tbody>
+          <tr><td>OSWorld（电脑操作）</td><td>78.0</td><td>71.7</td><td>82.2</td><td>83.0</td></tr>
+          <tr><td>Terminal-Bench 2.1</td><td>84.3</td><td>82.7</td><td>82.7</td><td>84.1</td></tr>
+          <tr><td>AutomationBench</td><td>48.8</td><td>54.8</td><td>44.2</td><td>45.7</td></tr>
+        </tbody>
+      </table>
+      <ul class="art-tl">
+        <li><b>涨的地方</b>：OSWorld 83.0 领先基座 78.0，比自家上代 82.2 再进一小步。</li>
+        <li><b>没涨的地方</b>：AutomationBench 45.7 不但低于 DeepSeek-V4.1-Flash 的 54.8，甚至低于基座 GLM-5.3-Flash 的 48.8——仓库把这张表原样放了出来，这份不藏拙值得记一笔。</li>
+        <li><b>口径</b>：仓库注明为团队报告的模型级结果，分数依评测框架与设置而变，且不是对这份 FP8 导出文件的单独评测。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟建议：把「会点鼠标」的模型放进流程前先做三件事</h3>
+        <p class="kv-sub">给考虑上电脑操作类智能体的政企团队（2026-11-12）</p>
+        <ul>
+          <li>抄它的断点重放法：把自家试点里卡死、跑偏的真实任务存成回放集，换模型、换档位都在同一起跑线上验——比公开榜单更接近您的生产事故。</li>
+          <li>三个必量指标：复读/循环触发率、工具清单贴合率、每任务 Token 成本。OSWorld 得 83 分，救不了一个卡在循环里的工单机器人。</li>
+          <li>321B FP8 落地有门槛：权重文件按每参数约 1 字节粗算在 321GB 量级（本刊计算），完整驻留显存需多卡拼接；内存卸载与更低位宽可行，但要以实测稳态吞吐为准再承诺时限。</li>
+          <li>先圈低风险流程：报表回填、批量核对这类可断点重试的任务先上；有人机确认环节的审批流，操作类智能体只能当「草拟手」，不能当「签字人」。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：GitHub 官方仓库 sii-nex/Nex-N2.6（权重规模、基准表、内部可靠性评测表与部署口径）、上海创智学院团队公告经 GitCode 开源社区转载（2026-11-11，698 条 badcase、断点重放方法、956 条上下文与 GPT-6-Sol 对比口径）、HuggingNews（2026-11-11，开源发布综述）、AgentBreaking 价格页（2026-11-10，OpenRouter 标价，第三方价格库口径）。权重体积粗算为本刊计算。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-12-qwen-code-harness-open.html" title="阿里把「Agent 执行底座」开源了：Qwen Code 1.0 Preview 融合 Qoder 的 Harness，Apache-2.0 可嵌入自己的产品">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">Qoder Harness 开源</span>
+        <span class="pg-d">2026-11-12</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-12-grok-48-rl-no-api.html" title="马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">无API无价目表</span>
+        <span class="pg-d">2026-11-12</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 158 条）→</a></p>
+</section>
+
+
+
+
+
+
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>电脑操作类智能体，验收集比榜单重要</h2>
+      <p>要不要在您的真实流程上跑一遍这套「断点重放」验收？40 分钟评估里，我们拿您两三个可回放的工单样本，把完成率、循环率和每任务成本摆成一张表。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%」，机悟 JAVIS，2026-11-12，https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%](https://javis.org.cn/news-2026-11-12-nex-n26-agent-open.html)（机悟 JAVIS，2026-11-12）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

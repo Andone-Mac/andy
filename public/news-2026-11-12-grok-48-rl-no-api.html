@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="11 月 10 日，马斯克在 X 宣布 Grok 4.8 预训练完成、已进入强化学习阶段且评测分数开始攀升，承诺本周晚些时候向 Grok Bot 用户软推出。他同时披露 xAI 已弃用 JAX/SGLang，用 C/C++ 从头重写整套 RL 与推理栈。但截至 11 月 11 日，开发者文档中没有 grok-4.8 标识符、没有价目表、没有公布的上下文窗口与参数规模、没有任何基准成绩——目前可调用与计价的仍是 9 月 21 日发布的 Grok 4.7（500K 上下文，每百万 token 输入 $2.00、输出 $6.00，第三方整理口径）。Grok 4.8 九月中旬的原定节点已滑期近两个月。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-12-grok-48-rl-no-api.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="11 月 10 日，马斯克在 X 宣布 Grok 4.8 预训练完成、已进入强化学习阶段且评测分数开始攀升，承诺本周晚些时候向 Grok Bot 用户软推出。他同时披露 xAI 已弃用 JAX/SGLang，用 C/C++ 从头重写整套 RL 与推理栈。但截至 11 月 11 日，开发者文档中没有 grok-4.8 标识符、没有价目表、没有公布的上下文窗口与参数规模、没有任何基准成绩——目前可调用与计价的仍是 9 月 21 日发布的 Grok 4.7（500K 上下文，每百万 token 输入 $2.00、输出 $6.00，第三方整理口径）。Grok 4.8 九月中旬的原定节点已滑期近两个月。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="11 月 10 日，马斯克在 X 宣布 Grok 4.8 预训练完成、已进入强化学习阶段且评测分数开始攀升，承诺本周晚些时候向 Grok Bot 用户软推出。他同时披露 xAI 已弃用 JAX/SGLang，用 C/C++ 从头重写整套 RL 与推理栈。但截至 11 月 11 日，开发者文档中没有 grok-4.8 标识符、没有价目表、没有公布的上下文窗口与参数规模、没有任何基准成绩——目前可调用与计价的仍是 9 月 21 日发布的 Grok 4.7（500K 上下文，每百万 token 输入 $2.00、输出 $6.00，第三方整理口径）。Grok 4.8 九月中旬的原定节点已滑期近两个月。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无",
+      "description": "11 月 10 日，马斯克在 X 宣布 Grok 4.8 预训练完成、已进入强化学习阶段且评测分数开始攀升，承诺本周晚些时候向 Grok Bot 用户软推出。他同时披露 xAI 已弃用 JAX/SGLang，用 C/C++ 从头重写整套 RL 与推理栈。但截至 11 月 11 日，开发者文档中没有 grok-4.8 标识符、没有价目表、没有公布的上下文窗口与参数规模、没有任何基准成绩——目前可调用与计价的仍是 9 月 21 日发布的 Grok 4.7（500K 上下文，每百万 token 输入 $2.00、输出 $6.00，第三方整理口径）。Grok 4.8 九月中旬的原定节点已滑期近两个月。",
+      "datePublished": "2026-11-12",
+      "dateModified": "2026-11-12",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无",
+          "item": "https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 158 条）</a>
+          <a href="news-2026-11-12-baidu-world-intelligent-organization.html">日活智能体3.7万</a>
+          <a href="news-2026-11-12-ernie-5-5-flash-preview.html">280B 25日前开源</a>
+          <a href="news-2026-11-12-qwen-code-harness-open.html">Qoder Harness 开源</a>
+          <a href="news-2026-11-12-nex-n26-agent-open.html">复读率降90%</a>
+          <a href="news-2026-11-12-grok-48-rl-no-api.html">无API无价目表</a>
+          <a href="news-2026-11-12-basalt-mmap-full-data.html">全表 235/304</a>
+          <a href="news-2026-11-12-basalt-iq4xs-verdict.html">88–116 tok/s</a>
+          <a href="news-2026-11-11-qwen4-official-teaser.html">Qwen4 官宣 1 折</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-12</span><span class="n-tag" style="margin-left:8px">国际模型 · 选型账本</span>
+    <h1 class="art-h1">马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无</h1>
+    <p class="art-lede">11 月 10 日，马斯克在 X 宣布 Grok 4.8 预训练完成、进入强化学习、评测开始攀升，本周晚些时候向 Grok Bot 用户软推出；同时披露 xAI 弃用 JAX/SGLang，整套 RL 与推理栈用 C/C++ 从头重写。但截至这篇稿子整理时，Grok 4.8 依然没有可调用 API 标识、没有价格、没有上下文窗口、没有基准——这恰恰是企业选型表里唯一需要的四列。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、马斯克说了什么</h3>
+      <ul class="art-tl">
+        <li><b>进度</b>：预训练已完成，SFT（监督微调）数据做了大量清理才基本到位；4.8 正处于 RL 阶段，「评测开始攀升」。</li>
+        <li><b>工程</b>：弃用 JAX 与 SGLang，整套 RL 与推理栈以 C/C++ 从头重写——他把这称为比预期多花时间的直接原因；被追问新栈语言时，答「C，加一点 C++，但不太多」，再补一些汇编、自写头文件。</li>
+        <li><b>预期管理</b>：他说 4.8「与 4.7 毫无相似之处」，但也直言「尚未到惊艳的程度」「地基打对了」——厂商在新模型发布前主动压低预期，这个动作本身就是信号。</li>
+        <li><b>推出方式</b>：本周晚些时候向 Grok Bot 用户「软推出，看看情况如何」——限量、只在自家产品界面、无公开接口。</li>
+      </ul>
+
+      <h3 class="art-h2">二、没说什么：四列全空</h3>
+      <p>第三方技术观察在 11 月 11 日逐项核过：开发者文档没有 grok-4.8 标识符，没有价目表，没公布上下文窗口，没有参数规模，没有任何形式的基准成绩；文档最新条目仍是 Grok 4.7。交付时间线也对不上过：9 月中旬按马斯克口径 4.8 约 2.5 万亿参数、节点定在 9 月 20 日前后——滑了；9 月 21 日交出的产品是 4.7。9 月底产品选择器里短暂出现过带 500K/256K 字样的 grok-4.8 配置串，第三方分析提醒：选择器里出现标识只说明有人配置了一个部署，不等于存在价目表——它随后消失，从未成为可调用的模型。</p>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项</th><th>Grok 4.7（在售）</th><th>Grok 4.8（口头）</th></tr></thead>
+        <tbody>
+          <tr><td>API 标识</td><td>有</td><td>无（截至 11 月 11 日）</td></tr>
+          <tr><td>每百万 token 价格</td><td>输入 $2.00 / 输出 $6.00</td><td>无价目表</td></tr>
+          <tr><td>上下文窗口</td><td>500K（发布口径）</td><td>未公布</td></tr>
+          <tr><td>独立基准</td><td>第三方有测（Artificial Analysis 指数 35、67 tokens/秒档，第三方整理）</td><td>无任何公布</td></tr>
+          <tr><td>可调用性</td><td>API 可调用</td><td>仅承诺 Bot 用户软推出</td></tr>
+        </tbody>
+      </table>
+      <p>「产品内灰度」与「公开 API」之间隔着一整套发布工程：限流、计费、文档、稳定性。第三方观察给的历史基率是：面向产品用户的灰度先于公开 API 数周而非数日——而这次推理栈刚从底层重写，稳定性还要自己消化。另需注意口径纯度：「与 4.7 毫无相似之处」出自最有动机夸大变化幅度的人之口，没有附带任何数字；RL 阶段叙述与软推出承诺均未经复现与独立审计，应当按时间表而非规格说明来读。</p>
+
+      <h3 class="art-h2">三、重写推理栈这件事，为什么值得算进成本账</h3>
+      <p>把叙事拆开看，真正可复用的信息是工程判断：xAI 认为训练框架与推理栈的自研程度直接决定单位算力产出，宁可滑期近两个月也要换地基。这与「执行层工程决定成本曲线」的判断互为印证——本站 11 月 12 日发布的同机换引擎实测给过一组参照数：同一份量化权重，仅更换推理引擎，质量档解码速度从 46–50 tokens/秒到 88–116 tokens/秒（见同站《同权重换引擎》篇）。对企业与政企内网，含义相同：评估「模型升级」时，先问引擎与推理栈动了什么，再问参数多了几亿。</p>
+      <ul class="art-tl">
+        <li><b>同一周的对照</b>：谷歌方面也被报道在内部测试面向速度的新模型（代号 Hydrogen，Business Insider 经内部消息转述、财联社 11 月 12 日简讯同样提到谷歌允许员工测试新版 Gemini 模型）——两家动作一致：先把「快档」打磨进产品内灰度，再谈公开接口。</li>
+        <li><b>泄漏数字要降温</b>：社区流传的 Hydrogen「300–500 tokens/秒」出自匿名帖且无一手来源；第三方分析指出 Artificial Analysis 实测同类 Flash 档约 113 tokens/秒——同一件事两套数字，差距近三倍，按传闻处理，不进选型依据。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟建议：把「没发布的模型」从选型表里请出去</h3>
+        <p class="kv-sub">给被供应商路线图牵着走的采购与技术负责人（2026-11-12）</p>
+        <ul>
+          <li>选型表只留四列硬信息：API 标识、价目表、上下文窗口、可复现基准——缺任何一列，模型只能进「观察名单」，不进合同。</li>
+          <li>路线图承诺写进备忘不写进预算：按本例，9 月节点滑到 11 月仍无公开标识；排期承诺与可调用之间的间隔，按季度留缓冲。</li>
+          <li>关注执行层多过参数：推理栈重写、量化档位、引擎选择才是决定每任务成本与速度的变量——本站同机换引擎实测给过同权重 2 倍速差的一组数。</li>
+          <li>国际新闻读成国内坐标：本周文心 5.5 Flash Preview 给出 200+ tok/s 与分时段定价、阿里开源了 Agent 执行底座——国产供给侧同样在提速，比价的参照系一直在动。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：马斯克 X 原帖（2026-11-10，经 The News International 与 Minute Mirror 转述引文核对）、OrcaRouter 技术观察（2026-11-11，逐项核对「无标识、无价目表、无窗口、无基准」与 Grok 4.7 在售参数整理）、Let's Data Science 转述 Business Insider（2026-11-10，Hydrogen 内部测试）、财联社（2026-11-12，谷歌允许员工测试新版 Gemini 简讯）、本站实测篇 news-2026-11-12-basalt-iq4xs-verdict.html（同权重换引擎速度对照）。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-12-nex-n26-agent-open.html" title="中国研究机构开源「会操作电脑」的模型：Nex-N2.6 放出约 321B FP8 权重，推理复读率 16% 降到 1.6%">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">复读率降90%</span>
+        <span class="pg-d">2026-11-12</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-12-basalt-mmap-full-data.html" title="换引擎不换权重：两档十组速度 + 304 题逐题配对，实测全表（2026-11-12）">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">全表 235/304</span>
+        <span class="pg-d">2026-11-12</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 158 条）→</a></p>
+</section>
+
+
+
+
+
+
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>新模型发布会再热闹，您的账只看四列</h2>
+      <p>API 标识、价目表、上下文、可复现基准——把现有供应商按这四列过一遍筛子，哪些能进合同、哪些只能留在观察名单，40 分钟评估给您一张一页纸的结论。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无」，机悟 JAVIS，2026-11-12，https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[马斯克确认 Grok 4.8 预训练完成进入强化学习：整套 RL 与推理栈弃用 JAX/SGLang 改写 C/C++——但 API、价格、基准仍全无](https://javis.org.cn/news-2026-11-12-grok-48-rl-no-api.html)（机悟 JAVIS，2026-11-12）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>
