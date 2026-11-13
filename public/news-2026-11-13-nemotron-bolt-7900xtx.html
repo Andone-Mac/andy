@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2% | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="2026-11-12 凌晨，自有机器 i9-12900H + RX 7900 XTX 24GB（eGPU）用 llama.cpp 本地 HIP 构建跑通 Nemotron-3.5-Bolt-74B-A9B 的 24GB 档（IQ2_XXS 权重 20.51 GiB）：上下文 128K、单槽，贪心 256 词元 ×3 取样，投机解码开均值 59.3 / 峰值 65.3 tok/s、关 49.2（+20.5%），代价是预填充 832→506（−39.2%）。10 道客观题加 42,533 词元长上下文检索得 10/11，唯一失败项是中文短答案被推理预算吃光。与 2026-10-13 RTX 3090 上同协议的 Qwen3.8-27B 记录对照：解码 59.3 对 56.8，MTP 自带头收益 +49.5%，高于外挂草稿的 +20.5%。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="2026-11-12 凌晨，自有机器 i9-12900H + RX 7900 XTX 24GB（eGPU）用 llama.cpp 本地 HIP 构建跑通 Nemotron-3.5-Bolt-74B-A9B 的 24GB 档（IQ2_XXS 权重 20.51 GiB）：上下文 128K、单槽，贪心 256 词元 ×3 取样，投机解码开均值 59.3 / 峰值 65.3 tok/s、关 49.2（+20.5%），代价是预填充 832→506（−39.2%）。10 道客观题加 42,533 词元长上下文检索得 10/11，唯一失败项是中文短答案被推理预算吃光。与 2026-10-13 RTX 3090 上同协议的 Qwen3.8-27B 记录对照：解码 59.3 对 56.8，MTP 自带头收益 +49.5%，高于外挂草稿的 +20.5%。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="2026-11-12 凌晨，自有机器 i9-12900H + RX 7900 XTX 24GB（eGPU）用 llama.cpp 本地 HIP 构建跑通 Nemotron-3.5-Bolt-74B-A9B 的 24GB 档（IQ2_XXS 权重 20.51 GiB）：上下文 128K、单槽，贪心 256 词元 ×3 取样，投机解码开均值 59.3 / 峰值 65.3 tok/s、关 49.2（+20.5%），代价是预填充 832→506（−39.2%）。10 道客观题加 42,533 词元长上下文检索得 10/11，唯一失败项是中文短答案被推理预算吃光。与 2026-10-13 RTX 3090 上同协议的 Qwen3.8-27B 记录对照：解码 59.3 对 56.8，MTP 自带头收益 +49.5%，高于外挂草稿的 +20.5%。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%",
+      "description": "2026-11-12 凌晨，自有机器 i9-12900H + RX 7900 XTX 24GB（eGPU）用 llama.cpp 本地 HIP 构建跑通 Nemotron-3.5-Bolt-74B-A9B 的 24GB 档（IQ2_XXS 权重 20.51 GiB）：上下文 128K、单槽，贪心 256 词元 ×3 取样，投机解码开均值 59.3 / 峰值 65.3 tok/s、关 49.2（+20.5%），代价是预填充 832→506（−39.2%）。10 道客观题加 42,533 词元长上下文检索得 10/11，唯一失败项是中文短答案被推理预算吃光。与 2026-10-13 RTX 3090 上同协议的 Qwen3.8-27B 记录对照：解码 59.3 对 56.8，MTP 自带头收益 +49.5%，高于外挂草稿的 +20.5%。",
+      "datePublished": "2026-11-13",
+      "dateModified": "2026-11-13",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%",
+          "item": "https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 159 条）</a>
+          <a href="news-2026-11-13-nemotron-bolt-7900xtx.html">24G卡跑74B实测</a>
+          <a href="news-2026-11-12-baidu-world-intelligent-organization.html">日活智能体3.7万</a>
+          <a href="news-2026-11-12-ernie-5-5-flash-preview.html">280B 25日前开源</a>
+          <a href="news-2026-11-12-qwen-code-harness-open.html">Qoder Harness 开源</a>
+          <a href="news-2026-11-12-nex-n26-agent-open.html">复读率降90%</a>
+          <a href="news-2026-11-12-grok-48-rl-no-api.html">无API无价目表</a>
+          <a href="news-2026-11-12-basalt-mmap-full-data.html">全表 235/304</a>
+          <a href="news-2026-11-12-basalt-iq4xs-verdict.html">88–116 tok/s</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-13</span><span class="n-tag" style="margin-left:8px">本地实测 · 投机解码</span>
+    <h1 class="art-h1">24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%</h1>
+    <p class="art-lede">11 月 12 日凌晨，一台 7900 XTX 24GB 外接显卡的自有机器把 Nemotron-3.5-Bolt-74B-A9B 的 24GB 档装了进去：权重 20.51 GiB，上下文 128K。同协议三次取样下，投机解码开着解码均值 59.3 tok/s、关掉 49.2——快 20.5%，代价是预填充从 832 掉到 506（−39.2%）。能力面 10 道客观题加一道 42,533 词元的长上下文检索拿了 10/11，唯一失败项不是知识，是中文短答案被推理预算吃光。对照列是 Qwen3.8-27B 在 RTX 3090 上的同协议旧记录——跨硬件，只比方向。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、跑的是什么、怎么算的</h3>
+      <ul class="art-tl">
+        <li>模型：Nemotron-3.5-Bolt-74B-A9B-24GB 档，74B 总参数 MoE（激活约 9B），单文件 GGUF 20.51 GiB（IQ2_XXS），另挂 0.93 GiB 的 DFlash 投机草稿模型。</li>
+        <li>机器：i9-12900H 笔记本、30 GiB 内存，RX 7900 XTX 24 GB 以 eGPU 接入，显卡处于计算档（功耗上限 402 W、COMPUTE 性能配置文件）。</li>
+        <li>引擎：llama.cpp 0.7.0-dev 本地 HIP 构建（gfx1100），上下文 131,072、预填充块 256、KV 缓存 q8_0、草稿模型 KV 压 q4_0，单槽串行。</li>
+        <li>协议：贪心解码 256 词元 × 3 次（均值与峰值都给）、预填充单发 3,151 词元；Qwen 对照列为 2026-10-13 同协议记录。</li>
+      </ul>
+
+      <h3 class="art-h2">二、性能：四行同协议对照</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>配置</th><th>解码 tok/s</th><th>峰值</th><th>预填充</th></tr></thead>
+        <tbody>
+          <tr><td>Nemotron-Bolt 7900XTX 投机开</td><td>59.3</td><td>65.3</td><td>506</td></tr>
+          <tr><td>同档 投机关</td><td>49.2</td><td>55.5</td><td>832</td></tr>
+          <tr><td>Qwen3.8-27B 3090 MTP 开</td><td>56.8</td><td>—</td><td>1,027</td></tr>
+          <tr><td>同档 MTP 关</td><td>38.0</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>解码 59.3 比 Qwen 的 56.8 高 4.4%，74B 对 27B 基本打平——但预填充 506 对 1,027 差出一倍，这是外部草稿模型常驻吃算力的代价。投机收益本身：Nemotron 的 DFlash drafter +20.5%，Qwen 的 MTP（模型自带头）+49.5%：自带头的收益接近前者的两倍多。投机开时草稿接受率 190/384。三次取样是 50.8 / 61.7 / 65.3，波动不小，单轮取样不等于长跑均值。24GB 卡跑 74B 级 MoE 这条路线，站上 10 月 23 日<a href="news-2026-10-23-local-llm-model-comparison.html">九配置横评</a>已给过全景，本篇是换 AMD 外接卡、换 74B 档的单点新证。</p>
+
+      <h3 class="art-h2">三、收益要看场景：另一套口径的单次值</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>典型场景</th><th>投机开</th><th>投机关</th></tr></thead>
+        <tbody>
+          <tr><td>JSON 改字段原样输出</td><td>102</td><td>50</td></tr>
+          <tr><td>应用题推导</td><td>93</td><td>47</td></tr>
+          <tr><td>通用英文说明</td><td>53</td><td>51</td></tr>
+        </tbody>
+      </table>
+      <p>同一台机器、分类提示词的单次实测：改代码类场景投机收益 +104%，推导类 +98%，通用叙述只有 +4%。这三行与第二节协议均值是两套口径，不能平均、不能互替；但方向一致——投机解码值不值，取决于你在跑什么。</p>
+
+      <h3 class="art-h2">四、深提示与显存账</h3>
+      <p>30K–50K 提示深度实测：预填充 543–611 tok/s、解码 62 tok/s，跑过 30K–60K 后显存余量只剩 259–272 MiB。24 GB 显存的构成：主权重 20.51 GiB、草稿权重 0.93 GiB、草稿自身上下文约 1.27 GiB、主 KV 约 0.1 GiB（混合架构仅约十层存 KV）、其余为计算缓冲——合计贴顶，没有叠加空间。</p>
+
+      <h3 class="art-h2">五、能力：10/11，唯一失败项是输出预算</h3>
+      <ul class="art-tl">
+        <li>10 道客观题（数学、算术链、逻辑、代码、严格 JSON、单位日期、阅读、约束、一致性）全过，生成速度 82.5–107.0 tok/s；另加一道 42,533 词元长上下文检索，通过。</li>
+        <li>唯一失败：「中文三条 ≤20 字要点」。复测给足 2,500 词元，输出仍全部耗在 reasoning_content、content 为空——按指令直接给短答案这件事没做到。实操口径：中文短输出要 max_tokens ≥1,500 并明确要求「直接给结果」。</li>
+      </ul>
+
+      <h3 class="art-h2">六、官方模型卡定位（非本机实测）</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>基准</th><th>Nemotron-Bolt</th><th>Qwen3.8-27B</th></tr></thead>
+        <tbody>
+          <tr><td>Terminal-Bench 2.1</td><td>50.98</td><td>73.0</td></tr>
+          <tr><td>GPQA</td><td>86.43</td><td>89.2</td></tr>
+          <tr><td>BrowseComp</td><td>66.75</td><td>—</td></tr>
+          <tr><td>WebArena</td><td>50.86</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <p>官方口径：Qwen 强在编码与推理，Nemotron 强在 agentic 与浏览类任务，互补而非替代；按任务分派，不做单模型统一。</p>
+
+      <h3 class="art-h2">七、再叠就爆：这版的四条边界</h3>
+      <ul class="art-tl">
+        <li>模型没有自带 MTP 头，走不了 Qwen 那条「自投机」路线，只能外挂草稿。</li>
+        <li>投机与视觉二选一：视觉适配器 1.61 GiB、当前余量 0.27 GiB；要视觉只能把上下文降到 8,192。</li>
+        <li>192K 上下文与投机互斥：开 192K 必须关草稿（解码约 51 tok/s）；128K + 投机是「双保」档。</li>
+        <li>n-gram 草稿不能与 DFlash 叠加：同开时改代码场景从 102 掉到 68。</li>
+      </ul>
+
+      <div class="kv-box">
+        <h3>机悟建议</h3>
+        <p class="kv-sub">24GB 级卡上的投机解码取舍</p>
+        <ul>
+          <li>长提示 / RAG 批处理：关投机——预填充 832 对 506，吞吐差 64%。</li>
+          <li>agent 短会话、代码改写：开投机——单次实测 102 对 50，接受率约一半。</li>
+          <li>74B 级塞进 24GB 的前提是接受「贴顶」：视觉、192K、双投机任选其一，不能都要。</li>
+          <li>本组数字为单机单路串行实测，且对照列跨硬件（3090 台式机）；换环境绝对值不保证复现。</li>
+        </ul>
+      </div>
+      <p class="art-src">原始产物为该机脚本生成的测试报告、逐次取样与逐题判分明细，全部百分比为脚本现算，未从手写汇总转抄；分类场景单次值与三次协议均值是两套口径，已在文中分开。Qwen 对照列为 2026-10-13 RTX 3090 同协议记录，跨机器只比方向。 本文数据为同一台机器同一天的单机单路实测，环境不同绝对值不保证复现；不构成投资建议或产品评测结论。</p>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-12-baidu-world-intelligent-organization.html" title="百度世界2026今天开幕：李彦宏提「智能组织」，内部日活智能体一年涨到3.7万，大模型交易平台「词元所」上线">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">日活智能体3.7万</span>
+        <span class="pg-d">2026-11-12</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 159 条）→</a></p>
+</section>
+
+
+
+
+
+
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>你那台机器该开哪档？</h2>
+      <p>同样的单机口径实测，40 分钟评估可以先聊起。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%」，机悟 JAVIS，2026-11-13，https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%](https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html)（机悟 JAVIS，2026-11-13）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

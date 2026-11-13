@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 12 Nov 2026 10:24:10 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 09:51:26 +0000</lastBuildDate>
+    <item>
+      <title>24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%</title>
+      <link>https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 投机解码</category>
+      <description>2026-11-12 凌晨，自有机器 i9-12900H + RX 7900 XTX 24GB（eGPU）用 llama.cpp 本地 HIP 构建跑通 Nemotron-3.5-Bolt-74B-A9B 的 24GB 档（IQ2_XXS 权重 20.51 GiB）：上下文 128K、单槽，贪心 256 词元 ×3 取样，投机解码开均值 59.3 / 峰值 65.3 tok/s、关 49.2（+20.5%），代价是预填充 832→506（−39.2%）。10 道客观题加 42,533 词元长上下文检索得 10/11，唯一失败项是中文短答案被推理预算吃光。与 2026-10-13 RTX 3090 上同协议的 Qwen3.8-27B 记录对照：解码 59.3 对 56.8，MTP 自带头收益 +49.5%，高于外挂草稿的 +20.5%。</description>
+    </item>
     <item>
       <title>百度世界2026今天开幕：李彦宏提「智能组织」，内部日活智能体一年涨到3.7万，大模型交易平台「词元所」上线</title>
       <link>https://javis.org.cn/news-2026-11-12-baidu-world-intelligent-organization.html</link>
