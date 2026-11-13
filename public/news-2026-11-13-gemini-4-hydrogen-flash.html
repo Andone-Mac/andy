@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="11 月 12 日（北京时间）谷歌正式发布 Gemini 4 Hydrogen，补齐 Gemini 4 家族：定位快速执行、接替 3.8 Flash。官方口径：默认 High 思考档任务完成速度为 3.8 Flash 的 2.5 倍、Terminal-Bench 4.1 得分 57%（3.8 Flash 为 18.2%）、虚构内容减少逾 5 倍，Artificial Analysis 智能指数默认档 51 分反超 Argon（50）、xhigh 档 54 分，API 定价每百万 token 输入 1.50/输出 7.50 美元，全窗口 1M 上下文统一定价、发布当天全渠道开放。另一侧，独立测试框架给出 190 对 112 tok/s（约 1.7 倍）与单任务用时 13.5 对 14.8 分钟（约快一成）的口径——两套数字都对，问题在量的是什么。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="11 月 12 日（北京时间）谷歌正式发布 Gemini 4 Hydrogen，补齐 Gemini 4 家族：定位快速执行、接替 3.8 Flash。官方口径：默认 High 思考档任务完成速度为 3.8 Flash 的 2.5 倍、Terminal-Bench 4.1 得分 57%（3.8 Flash 为 18.2%）、虚构内容减少逾 5 倍，Artificial Analysis 智能指数默认档 51 分反超 Argon（50）、xhigh 档 54 分，API 定价每百万 token 输入 1.50/输出 7.50 美元，全窗口 1M 上下文统一定价、发布当天全渠道开放。另一侧，独立测试框架给出 190 对 112 tok/s（约 1.7 倍）与单任务用时 13.5 对 14.8 分钟（约快一成）的口径——两套数字都对，问题在量的是什么。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="11 月 12 日（北京时间）谷歌正式发布 Gemini 4 Hydrogen，补齐 Gemini 4 家族：定位快速执行、接替 3.8 Flash。官方口径：默认 High 思考档任务完成速度为 3.8 Flash 的 2.5 倍、Terminal-Bench 4.1 得分 57%（3.8 Flash 为 18.2%）、虚构内容减少逾 5 倍，Artificial Analysis 智能指数默认档 51 分反超 Argon（50）、xhigh 档 54 分，API 定价每百万 token 输入 1.50/输出 7.50 美元，全窗口 1M 上下文统一定价、发布当天全渠道开放。另一侧，独立测试框架给出 190 对 112 tok/s（约 1.7 倍）与单任务用时 13.5 对 14.8 分钟（约快一成）的口径——两套数字都对，问题在量的是什么。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成",
+      "description": "11 月 12 日（北京时间）谷歌正式发布 Gemini 4 Hydrogen，补齐 Gemini 4 家族：定位快速执行、接替 3.8 Flash。官方口径：默认 High 思考档任务完成速度为 3.8 Flash 的 2.5 倍、Terminal-Bench 4.1 得分 57%（3.8 Flash 为 18.2%）、虚构内容减少逾 5 倍，Artificial Analysis 智能指数默认档 51 分反超 Argon（50）、xhigh 档 54 分，API 定价每百万 token 输入 1.50/输出 7.50 美元，全窗口 1M 上下文统一定价、发布当天全渠道开放。另一侧，独立测试框架给出 190 对 112 tok/s（约 1.7 倍）与单任务用时 13.5 对 14.8 分钟（约快一成）的口径——两套数字都对，问题在量的是什么。",
+      "datePublished": "2026-11-13",
+      "dateModified": "2026-11-13",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成",
+          "item": "https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 164 条）</a>
+          <a href="news-2026-11-13-nvidia-huang-ceo-resign.html">英伟达CEO辞任</a>
+          <a href="news-2026-11-13-claude-managed-agents-selfhost.html">Claude智能体自托管</a>
+          <a href="news-2026-11-13-nvidia-kimi-nvfp4-weights.html">英伟达配送Kimi量化权重</a>
+          <a href="news-2026-11-13-gemini-4-hydrogen-flash.html">Gemini 4 Hydrogen发布</a>
+          <a href="news-2026-11-13-xixuan-chip-angel-round.html">曦选创智5亿天使轮</a>
+          <a href="news-2026-11-13-nemotron-bolt-7900xtx.html">24G卡跑74B实测</a>
+          <a href="news-2026-11-12-baidu-world-intelligent-organization.html">日活智能体3.7万</a>
+          <a href="news-2026-11-12-ernie-5-5-flash-preview.html">280B 25日前开源</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head" id="top">
+  <div class="wrap art-wrap">
+    <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
+    <span class="n-date">2026-11-13</span><span class="n-tag" style="margin-left:8px">国际模型 · 榜单口径</span>
+    <h1 class="art-h1">谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成</h1>
+    <p class="art-lede">11 月 12 日（北京时间），谷歌正式发布 Gemini 4 Hydrogen，Gemini 4 家族至此集齐三位：Argon、Carbon 负责长程推理，Hydrogen 接替 3.8 Flash 干日常快活。官方给的头条数字是「任务提速 2.5 倍」；但在第三方测试框架 Artificial Analysis 的标准任务集上，它的完成时间只比被替代者快了约一成。两拨数字都真实——差在口径。这篇把两边的账都摆开，顺便看看轻量旗舰的价格表怎么被重写。</p>
+  </div>
+</section>
+
+<section class="art-sec">
+  <div class="wrap art-wrap">
+    <div class="art-body">
+      <h3 class="art-h2">一、官方口径的成绩</h3>
+      <table class="art-table" style="margin-top:14px">
+        <thead><tr><th>项目</th><th>Hydrogen</th><th>对照</th><th>口径</th></tr></thead>
+        <tbody>
+          <tr><td>任务完成速度（默认 High 档）</td><td>2.5 倍</td><td>Gemini 3.8 Flash</td><td>谷歌官方任务集</td></tr>
+          <tr><td>Terminal-Bench 4.1</td><td>57%</td><td>3.8 Flash 18.2%</td><td>谷歌官方；Sonnet 5.5 为 63.9%，仍更高</td></tr>
+          <tr><td>智能指数（AA 榜）</td><td>51（High）/ 54（xhigh）</td><td>Argon 50</td><td>谷歌援引 Artificial Analysis</td></tr>
+          <tr><td>虚构内容</td><td>减少逾 5 倍</td><td>3.8 Flash</td><td>谷歌官方</td></tr>
+          <tr><td>智能体越权</td><td>减少最多 81%；越权概率低最多 2 倍</td><td>上一代</td><td>谷歌官方安全指标</td></tr>
+          <tr><td>文档企业实测</td><td>准确率 74% → 79%，用时少一半，token 省约 12%</td><td>Box 智能体跑 Complex Work Eval</td><td>Box CEO 公开发帖</td></tr>
+          <tr><td>复杂图表/SQL 等企业任务</td><td>快 2–2.8 倍，token 省 12–23%</td><td>3.8 Flash</td><td>谷歌转述合作方测试</td></tr>
+        </tbody>
+      </table>
+      <p>产品形态上，Hydrogen 支持文本、图像、音频、视频输入，输入输出合计约 100 万 token 上下文，四档思考强度（low/medium/high/xhigh 为新增档）。</p>
+
+      <h3 class="art-h2">二、独立榜单的另一面</h3>
+      <ul class="art-tl">
+        <li><b>吞吐是真的</b>：Artificial Analysis 实测输出速度 190 tok/s，对 3.8 Flash 的 112 是约 1.7 倍（本刊计算），对 Argon 的 65 接近 3 倍。</li>
+        <li><b>但「完成更快」只快一成</b>：同一框架下完成一项智能指数任务，Hydrogen 平均 13.5 分钟、3.8 Flash 14.8 分钟——约 1.1 倍，不是 2.5 倍。</li>
+        <li><b>原因是话痨</b>：跑完整个指数它输出 3.04 亿 token，是 3.8 Flash（1.26 亿）的 2.4 倍（本刊计算），而全部参测模型中位数只有 7,280 万。生成快、说得长，两项相抵。</li>
+        <li><b>xhigh 档位性价比存疑</b>：在 Terminal-Bench 4.0 独立测试中 high 与 xhigh 同为 54%，但单任务估算成本从 1.87 美元涨到 3.16 美元。</li>
+      </ul>
+      <p>结论不是「官方造假」：2.5 倍来自官方特定任务集，第三方来自通用任务集，量的是不同东西。对企业选型的实际含义是——看你自己那类任务落在哪边。</p>
+
+      <h3 class="art-h2">三、价格与铺量：轻量档的牌桌重洗</h3>
+      <ul class="art-tl">
+        <li><b>API 定价</b>：每百万 token 输入 1.50 美元、输出 7.50 美元，1M 上下文窗口内统一价、不随长度分档；缓存输入 0.075 美元。这个价等于 3.8 Flash 原定的 2027 年 1 月 1 日标准价——即比现在挂着促销价的 Flash 贵一倍。</li>
+        <li><b>发布节奏罕见</b>：没走灰度内测（Carbon 和 Argon 都先内测），当天对 Gemini 应用、Search、AI Studio 全层级、Gemini API、Gemini for Business 开放；Antigravity 编码工具需 Pro/Ultra 订阅。</li>
+        <li><b>配套卖点是「大小模型编排」</b>：Antigravity 的 Orchestrator 在同一次会话里在 Carbon（定计划、解决歧义）与 Hydrogen（写码、更新依赖、跑测试）之间动态切换，官方称成功率接近 Carbon 而用量配额省 24%、平均快 19%。</li>
+      </ul>
+
+      <h3 class="art-h2">四、与国内买家有什么关系</h3>
+      <p>Hydrogen 面向国内企业没有直接可用通道，但这次发布给出的两个信号会外溢：其一，「轻量模型扛日常、旗舰模型管疑难」的分层编排正在成为大厂标准打法，同批<a href="news-2026-11-13-claude-managed-agents-selfhost.html">另一篇</a>里 Anthropic 也在把智能体执行层搬进企业机房——两条线合起来就是 2027 年企业 AI 预算的重心：不是买最强模型，是买最省的分派器。其二，「官方倍数 vs 第三方复现」的落差再次提醒：模型升级的收益必须用自己的任务集验收，任何「X 倍」都不例外。</p>
+
+      <div class="kv-box">
+        <h3>机悟建议</h3>
+        <p class="kv-sub">面对「提速 2.5 倍」的三条读法</p>
+        <ul>
+          <li><b>先问任务集</b>：倍数是谁的题——官方特定集、独立通用榜、你的业务集，三个答案可以完全不同。</li>
+          <li><b>吞吐与用时分开看</b>：token 出得快不等于事办得快，长任务要按「完成时间」而不是「生成速度」验收。</li>
+          <li><b>分层编排现在就排</b>：批量、重复、短平快的任务配轻量档，疑难与长程留给旗舰档——这套分派逻辑本地化部署同样适用，也正是评估会上该画清的图。</li>
+          <li><b>涨价窗口留意</b>：轻量档促销价向标准价回归是趋势，签年约前把 2027 年价格条款钉死。</li>
+        </ul>
+      </div>
+      <p class="art-src">来源：谷歌官方公告经 Interesting Engineering、SiliconANGLE、Ars Technica、VentureBeat、Digital Trends（2026-11-11 美东）及 C114 通信网、网易科技（2026-11-12/13 北京）报道；独立测试数字出自 Artificial Analysis 口径（经第三方汇总转述）；倍数换算为本刊计算。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-13-nvidia-kimi-nvfp4-weights.html" title="中国 2.8 万亿参数模型，芯片原厂替你把量化做完了：英伟达上线 Kimi K3.1 Pro 的 NVFP4 权重">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">英伟达配送Kimi量化权重</span>
+        <span class="pg-d">2026-11-13</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-13-xixuan-chip-angel-round.html" title="中国机器人与国产 GPU 厂商合资造「大小脑一体」芯片：曦选创智融资 5 亿元，明牌对标英伟达 Thor">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">曦选创智5亿天使轮</span>
+        <span class="pg-d">2026-11-13</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 164 条）→</a></p>
+</section>
+
+
+
+
+
+
+      <div class="art-foot">
+        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
+        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
+          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:8px">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>「大模型扛疑难、小模型干日常」——你的分派方案画好了吗？</h2>
+      <p>约 40 分钟评估，按业务任务集把模型分层与成本账一次算清。</p>
+      <div class="hero" style="padding:0;background:none"><div class="cta-row" style="margin-top:0">
+        <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成」，机悟 JAVIS，2026-11-13，https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成](https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html)（机悟 JAVIS，2026-11-13）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

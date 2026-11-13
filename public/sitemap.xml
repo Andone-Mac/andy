@@ -55,6 +55,36 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-11-13-nvidia-huang-ceo-resign.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-13-claude-managed-agents-selfhost.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-13-nvidia-kimi-nvfp4-weights.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-13-xixuan-chip-angel-round.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>monthly</changefreq>
@@ -1094,6 +1124,12 @@
   </url>
   <url>
     <loc>https://javis.org.cn/news-p16.html</loc>
+    <lastmod>2026-11-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-p17.html</loc>
     <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

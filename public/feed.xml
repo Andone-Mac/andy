@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Nov 2026 09:51:26 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 10:17:02 +0000</lastBuildDate>
+    <item>
+      <title>掌舵 33 年的黄仁勋辞任英伟达 CEO：CFO 暂代、首设董事会主席，市值一天蒸发 1.2 万亿元</title>
+      <link>https://javis.org.cn/news-2026-11-13-nvidia-huang-ceo-resign.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-nvidia-huang-ceo-resign.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>行业格局 · 算力供应链</category>
+      <description>11 月 12 日（美东）英伟达官网公告：董事会批准黄仁勋辞去总裁、首席执行官及董事职务，即刻生效，他自 1993 年创立公司掌舵 33 年。执行副总裁兼 CFO 科莱特·克雷斯出任临时 CEO（保留原职直至正式继任者到位），资深董事哈维·琼斯出任公司历史上首位董事会主席，正式遴选程序同步启动、内部外部候选人都在考虑之列。股价当日收跌 4.34%，市值缩水约 1,820 亿美元（媒体折人民币超 1.2 万亿元）；11 月 17 日盘后财报照常发布。</description>
+    </item>
+    <item>
+      <title>闭源大厂也把「内网运行」做成产品：Claude 智能体自托管版进私测，会话记录留在企业自己的机房</title>
+      <link>https://javis.org.cn/news-2026-11-13-claude-managed-agents-selfhost.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-claude-managed-agents-selfhost.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>智能体 · 私有化部署</category>
+      <description>11 月 12 日 Anthropic 官方宣布 Self-hosted Claude Managed Agents 进入私有测试：智能体的执行框架（harness）、运行沙箱与会话历史由企业自托管在自有云或本地机房，模型请求的去向由客户自己选——直连 Anthropic、走 Amazon Bedrock、Google 的 Agent Platform、Microsoft Foundry 或自建网关均可；组织若已签零数据保留（ZDR），发给 Claude 的请求同样适用。全部执行记录可经 OpenTelemetry 导出到企业现有监控系统。同日官方还发布了面向制造业的 Claude for Manufacturing 插件。</description>
+    </item>
+    <item>
+      <title>中国 2.8 万亿参数模型，芯片原厂替你把量化做完了：英伟达上线 Kimi K3.1 Pro 的 NVFP4 权重</title>
+      <link>https://javis.org.cn/news-2026-11-13-nvidia-kimi-nvfp4-weights.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-nvidia-kimi-nvfp4-weights.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产模型 · 本地部署</category>
+      <description>11 月 10 日（模型卡自署发布日），英伟达在 Hugging Face 上线 nvidia/Kimi-K3.1-Pro-NVFP4：基于月之暗面 Kimi K3.1 Pro（2.8T 总参数、每 token 激活 104B、1M 上下文的多模态 MoE），用 Model Optimizer 把路由专家权重从 MXFP4 转成 NVFP4、共享专家与 KDA 注意力层转 MXFP8、MLA 层保留 BF16，附 vLLM 官方容器与 TP8 部署配方，仓库含 96 个实际权重分片。许可证为 NVIDIA 开放模型协议叠加 Kimi 底座条款，不能简化为「Apache 开源」。</description>
+    </item>
+    <item>
+      <title>谷歌把轻量旗舰 Gemini 4 Hydrogen 放了满量：官方称任务提速 2.5 倍，独立榜单实测快约一成</title>
+      <link>https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-gemini-4-hydrogen-flash.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国际模型 · 榜单口径</category>
+      <description>11 月 12 日（北京时间）谷歌正式发布 Gemini 4 Hydrogen，补齐 Gemini 4 家族：定位快速执行、接替 3.8 Flash。官方口径：默认 High 思考档任务完成速度为 3.8 Flash 的 2.5 倍、Terminal-Bench 4.1 得分 57%（3.8 Flash 为 18.2%）、虚构内容减少逾 5 倍，Artificial Analysis 智能指数默认档 51 分反超 Argon（50）、xhigh 档 54 分，API 定价每百万 token 输入 1.50/输出 7.50 美元，全窗口 1M 上下文统一定价、发布当天全渠道开放。另一侧，独立测试框架给出 190 对 112 tok/s（约 1.7 倍）与单任务用时 13.5 对 14.8 分钟（约快一成）的口径——两套数字都对，问题在量的是什么。</description>
+    </item>
+    <item>
+      <title>中国机器人与国产 GPU 厂商合资造「大小脑一体」芯片：曦选创智融资 5 亿元，明牌对标英伟达 Thor</title>
+      <link>https://javis.org.cn/news-2026-11-13-xixuan-chip-angel-round.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-xixuan-chip-angel-round.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 融资</category>
+      <description>11 月 12 日消息：由优必选、沐曦股份、锋龙股份共同出资设立的具身智能端侧芯片公司曦选创智完成 5 亿元人民币天使轮，投后估值 40 亿元（本轮稀释约 12.5%，本刊计算），纪源资本与经纬创投联合领投。沐曦、优必选各持股 35.01% 并列第一大股东。公司今年 5 月成立，首颗自研芯片定位面向机器人的「大小脑一体」SoC，研发目标公开写明「全面超越 NVIDIA Thor」；计划 2027 年提供开发验证平台，2028 年推出首款 SoC 及配套整体解决方案。</description>
+    </item>
     <item>
       <title>24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%</title>
       <link>https://javis.org.cn/news-2026-11-13-nemotron-bolt-7900xtx.html</link>
