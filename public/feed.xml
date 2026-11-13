@@ -6,7 +6,15 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Nov 2026 10:17:02 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 14:35:41 +0000</lastBuildDate>
+    <item>
+      <title>llama.cpp v1.0.0 当日实测：74B 解码 62.6 tok/s，新旧量化打平</title>
+      <link>https://javis.org.cn/news-2026-11-13-llama-v100-matrix.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-13-llama-v100-matrix.html</guid>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 引擎升级</category>
+      <description>llama.cpp v1.0.0（b1b770d，HIP/ROCm 7.1）发布当天，同一台 7900 XTX 24GB eGPU 跑完八档速度矩阵：Nemotron-74B 解码均值 62.6 tok/s，较 11-12 同配置 v0.7.0 记录（59.3）+5.6%，关草稿档 49.2→58.6（+19.1%）；Qwen3.8 V3.1 新量化与旧版速度打平（48.8 对 48.4，均值差 0.8%），质量未测；MTP +56.4%、n2 优于 n3；视觉塔预分配 ~884 MiB 使 160K+视觉在 24GB 卡不可行（视觉限 ≤16K、实测 48.4 无衰减）；Q5_K_M 18.19 GiB 档两次挂死致整卡楔死冷启动——24GB 卡勿试 >17 GiB 非生产档。4060 8G 侧：SDXL 188.8 s/图、whisper int8 RTF 0.36、CLIP 39 图/s。</description>
+    </item>
     <item>
       <title>掌舵 33 年的黄仁勋辞任英伟达 CEO：CFO 暂代、首设董事会主席，市值一天蒸发 1.2 万亿元</title>
       <link>https://javis.org.cn/news-2026-11-13-nvidia-huang-ceo-resign.html</link>
