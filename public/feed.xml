@@ -6,7 +6,39 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 13 Nov 2026 14:35:41 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 14 Nov 2026 10:20:30 +0000</lastBuildDate>
+    <item>
+      <title>中国DeepSeek把App装进API：五类对话能力、五个独立接口，官方称可1:1复刻</title>
+      <link>https://javis.org.cn/news-2026-11-14-deepseek-app-api-bundle.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-14-deepseek-app-api-bundle.html</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <category>模型生态 · 应用底座</category>
+      <description>11月13日晚，DeepSeek公告开放「全家桶应用API」：联网搜索、深度思考搜索、文件输入、阅读链接、模型安全五项App交互能力整合进原有API（V4.1-Flash在Messages、Responses、Chat Completions三类接口下支持），Search/Fetch/OCR/ASR/TTS五类底层能力同步开放独立接口、分别计费。语音识别限时五折至0.39元/小时。官方称开发者甚至可1:1复刻出完整的DeepSeek App，并开源了演示前端。</description>
+    </item>
+    <item>
+      <title>中国算力芯片摆上台面：平头哥拟港股主板独立上市，真武系列累计出货 56 万片</title>
+      <link>https://javis.org.cn/news-2026-11-14-t-head-hk-ipo.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-14-t-head-hk-ipo.html</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 资本市场</category>
+      <description>11月10日晚，阿里巴巴港交所公告：拟分拆全资子公司平头哥（上海）技术股份有限公司于港股主板独立上市，联交所已确认可行；平头哥已于9月11日以保密形式递交A1表格。公告自述其为「中国领先的全栈数据中心芯片供应商」，据公告披露，截至2026年4月真武系列AI芯片累计出货56万片。分拆拟以H股全球发售进行，完成后平头哥预计仍为阿里子公司，尚需联交所上市委员会批准及中国证监会备案。</description>
+    </item>
+    <item>
+      <title>中国工信部给智能体终端立规矩：预置智能体要过进网检测，须配唯一身份码</title>
+      <link>https://javis.org.cn/news-2026-11-14-agent-terminal-license.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-14-agent-terminal-license.html</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <category>监管合规 · 智能体治理</category>
+      <description>工信部办公厅《关于加强智能体终端设备进网管理的通知》（工信厅信管〔2026〕42号）10月24日签发、11月6日公开：预置智能体的手机、平板、可穿戴设备纳入进网管理，进网检测加做智能体适配验证与涉诈风险评估；终端上使用的智能体「应参考」智能体互联系列国家标准配备唯一身份码；重大变化须报备并重新检测，OTA升级须先经专家评估。监管第一次给AI智能体装上「号牌」。</description>
+    </item>
+    <item>
+      <title>中国网信办备案四合一开闸：生成式AI、算法、深度合成、区块链并成一本账，企业有三张表要核</title>
+      <link>https://javis.org.cn/news-2026-11-14-genai-filing-one-door.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-14-genai-filing-one-door.html</guid>
+      <pubDate>Sat, 14 Nov 2026 00:00:00 +0000</pubDate>
+      <category>监管合规 · 备案实务</category>
+      <description>11月9日，国家网信办「互联网新技术新应用信息服务备案系统」正式上线（beian.cac.gov.cn），生成式人工智能、算法、深度合成、区块链四类备案一体化办理，原算法备案系统与区块链备案管理系统同日停用。监管台账从按技术形态分头管理改为按主体统一归集——产品里有推荐算法、合成功能或大模型入口的企业，无论是否自认AI公司，都在这张表上。存量备案无需重办，但公示信息核对、应用侧登记、台账一致性三件事要尽快办。</description>
+    </item>
     <item>
       <title>llama.cpp v1.0.0 当日实测：74B 解码 62.6 tok/s，新旧量化打平</title>
       <link>https://javis.org.cn/news-2026-11-13-llama-v100-matrix.html</link>
