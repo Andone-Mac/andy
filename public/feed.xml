@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 14 Nov 2026 10:20:30 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Nov 2026 10:18:38 +0000</lastBuildDate>
+    <item>
+      <title>中国华为把内部用了几个月的量化工具开了源：122B 模型 64 分钟量化完，产出的 GGUF 标准 llama.cpp 直接跑</title>
+      <link>https://javis.org.cn/news-2026-11-15-huawei-macaq-open-source.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-15-huawei-macaq-open-source.html</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地部署 · 模型量化</category>
+      <description>11 月 10 日，华为计算系统实验室（CSL）以 Apache-2.0 协议开源 MACaQ——团队称此前已在内部使用数月的量化工具。按论文口径：32.5 GB 设备内存、64 分钟完成一个 122B 模型的四位量化，MXFP4 产物 74 GB 装进一张 96 GB 显卡；对既有 GGUF 做精修的 MACaQ-R 保留原生格式与块标度，产出文件标准 llama.cpp 可直接加载。同等 22.36 GB 文件下，其 Q4_K_XL 对 FP16 的 KL 散度 0.013367，对比 Unsloth 同档 0.015731。所有数字为团队自报，第三方复现尚未出现。</description>
+    </item>
+    <item>
+      <title>中国买家的报价单又要改：存储新一轮涨价启动，企业级续涨、消费级「价格可谈」，回收芯片开始上整机</title>
+      <link>https://javis.org.cn/news-2026-11-15-storage-price-split-round.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-15-storage-price-split-round.html</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力硬件 · 存储价格</category>
+      <description>澎湃新闻、蓝鲸科技 11 月 11 日报道：部分头部存储原厂已向渠道口头告知企业级颗粒涨价意向，提价函未下发、渠道价先动。两侧行情分明——10 月通用型 DRAM 合约均价 27.5 美元、创近十年新高，TrendForce 预计四季度企业级 SSD 合约价再涨 15%–20%；消费级 NAND 现货近两周跌约两成，代理商直言「价格可谈」。HBM 挤占晶圆产能是最常被引用的根因，回收（拆机翻新）内存占手机市场的比例预计从 3%–4% 升到明年的 7%–9%。</description>
+    </item>
+    <item>
+      <title>OpenAI 给智能体发了个钱包：真实卡号不出库、每笔要人脸或指纹确认，三大卡组织同台背书</title>
+      <link>https://javis.org.cn/news-2026-11-15-openai-chatgpt-wallet.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-15-openai-chatgpt-wallet.html</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <category>智能体 · 支付基础设施</category>
+      <description>11 月 13 日 OpenAI 官宣 ChatGPT Wallet，与美国运通、万事达、Visa 共建，挂到旗下 dot 智能体上：用户录卡一次，智能体代买；每笔支付前用户核对商品、总额与所选卡，用 Face ID/指纹等安全校验批准；支付网络下发一次性令牌（限定用途卡号、安全码、有效期）完成扣款，真实卡信息不经手智能体与商家。首期只向美国 18 岁以上 ChatGPT Pro 订阅用户开放，初期不收交易佣金。官方口径 ChatGPT 每周使用者 12 亿人。</description>
+    </item>
+    <item>
+      <title>中国「星际之门」被美国研究机构实地拆解：800 兆瓦园区、首期 120 兆瓦一年交付、建设成本约美国五分之一</title>
+      <link>https://javis.org.cn/news-2026-11-15-semianalysis-ulanqab-galaxy.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-15-semianalysis-ulanqab-galaxy.html</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力供给 · 成本对标</category>
+      <description>美东 11 月 7 日（北京时间 11 月 8 日），研究机构 SemiAnalysis 发布《We Visited China's Stargate in Inner Mongolia》：团队 9 月实地探访远景能源在乌兰察布的「星河」（Galaxy）园区——规划最高 800 兆瓦 IT 容量，与为 OpenAI 供算力的得州阿比林核心园区约 820 兆瓦同一量级；首批 120 兆瓦一年内交付，机构估算建设成本约为美国同类项目五分之一（不含服务器等 IT 设备）；四期均为两家未具名互联网巨头定制。报告同时给出全市场口径：中国数据中心资本开支已降到每兆瓦 300 万美元以下。</description>
+    </item>
+    <item>
+      <title>中国麒麟 9050 官方底牌逐张亮出：「逻辑折叠」顶替制程迭代，NPU 算力 +140%，4K 实时处理时延压到 16.7 毫秒以内</title>
+      <link>https://javis.org.cn/news-2026-11-15-kirin-9050-tau-logic-fold.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-15-kirin-9050-tau-logic-fold.html</guid>
+      <pubDate>Sun, 15 Nov 2026 00:00:00 +0000</pubDate>
+      <category>端侧 AI · 芯片架构</category>
+      <description>11 月 14 日华为继续公开麒麟 9050 系列细节：新一代马良 GPU 第四代微架构，GPU 性能提升 40%、功耗降低 45%，第二代硬件光追性能提升 78%；AI ISP 集成像素专用 NPU 与通用 NPU 双引擎，支持 4K60 实时视频处理（官方称 4K AI 处理时延低于 16.7 毫秒）、首次实现 2 亿像素融合拍照。此前 11 月 11 日华为已系统解读这颗全球首款「逻辑折叠」τ 架构手机芯片：CPU 多核 +23%、NPU 算力 +140%、晶体管密度 +53.5%，方法论称「韬定律」。以上均为厂商口径，第三方实测尚未公开。</description>
+    </item>
     <item>
       <title>中国DeepSeek把App装进API：五类对话能力、五个独立接口，官方称可1:1复刻</title>
       <link>https://javis.org.cn/news-2026-11-14-deepseek-app-api-bundle.html</link>
