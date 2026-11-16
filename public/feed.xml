@@ -6,7 +6,39 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 15 Nov 2026 10:18:38 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 16 Nov 2026 10:25:12 +0000</lastBuildDate>
+    <item>
+      <title>中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六</title>
+      <link>https://javis.org.cn/news-2026-11-16-qwen4-max-release.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-16-qwen4-max-release.html</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 国产旗舰</category>
+      <description>11 月 16 日，阿里正式发布新一代基座大模型 Qwen4-Max：总参数 2.4 万亿、每次只激活 71B，原生视觉、百万 Token 上下文。基于 Qwen 稀疏注意力（QSA）的新 MoE 架构让思考更省——Terminal-Bench 4.0 同档每次尝试平均 Token 从 289K 降到 151K，得分从 38.9 升到 48.5；Work360 评测单任务平均费用从 26.58 元降到 11.16 元，降幅 58%，缓存命中每百万 Token 低至 0.5 元。CodeArena 前端编程盲测全球第六、刷新中国模型最好成绩。Max 本体不开源，中小尺寸将陆续开源。</description>
+    </item>
+    <item>
+      <title>腾讯混元 Hy4 flash 发布：单任务成本仅为 Hy4 的 1/20，输入每百万 Token 只要 0.5 元</title>
+      <link>https://javis.org.cn/news-2026-11-16-hy4-flash-cost.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-16-hy4-flash-cost.html</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 降本</category>
+      <description>11 月 16 日，腾讯混元发布 Hy4 flash：总参数 224B（含 64B Engram）、激活仅 12B，支持多模态与 1M 上下文。每百万 Token 输入 0.5 元、输出 2 元、缓存命中 0.02 元；按内部 WorkIndex 评测，单任务成本仅为 Hy4 的 1/20、Hy4 preview 的 1/13。KV cache 仅为 Hy3 的 1/24、Hy4 的 1/6，解码速度超 150 tps。已在腾讯云 TokenHub、WorkBuddy、元宝、企业微信、QQ 等上线，11 月 30 日前 WorkBuddy 限时免费。混元团队称计划开源。</description>
+    </item>
+    <item>
+      <title>国产开源盘古上新：华为云 openPangu-2.1-Pro 输出每百万 Token 3.2 元，主攻鸿蒙与昇腾</title>
+      <link>https://javis.org.cn/news-2026-11-16-openpangu-21-pro.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-16-openpangu-21-pro.html</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产开源 · 信创</category>
+      <description>11 月 15 日，华为云 MaaS 平台正式上线开源盘古模型 openPangu-2.1-Pro，围绕 Agent 开发、AI 编码、推理优化三大方向升级：基于 10 万余条专项数据强化工具调用，重点适配鸿蒙 ArkTS 与昇腾算子生成。定价输入 0.8 元、输出 3.2 元、缓存命中 0.016 元（每百万 Token），输出单价约为上代 2.0-Pro 的 18%–22%。上下文 512K，仅西南-贵阳一区域开通，将接入智果 AgentArts、码道 CodeArts、果办 OfficeAce。华为云未公布 2.1-Pro 参数规模。</description>
+    </item>
+    <item>
+      <title>中国首颗通用模拟计算芯片 AX100 量产流片：矩阵求解不到 100 纳秒、功耗约 80 毫瓦</title>
+      <link>https://javis.org.cn/news-2026-11-16-ax100-analog-chip.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-16-ax100-analog-chip.html</guid>
+      <pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力芯片 · 国产突破</category>
+      <description>据科技日报 11 月 16 日报道，中国首颗通用型模拟计算芯片 AX100 已完成量产流片并启动应用验证。它用物理定律直接求解矩阵方程，单次求解延迟低于 100 纳秒、功耗约 80 毫瓦，且基于成熟工艺而非先进制程。官方口径：训练场景提速 92%、能耗降 56%，机器人控制与自动驾驶等场景提速 200%–500%，通信吞吐提升 20–207 倍、能效提升 27.6–61.3 倍。技术源自北京大学孙仲团队 2025 年 10 月发表于《自然·电子学》的模拟矩阵计算成果。</description>
+    </item>
     <item>
       <title>中国华为把内部用了几个月的量化工具开了源：122B 模型 64 分钟量化完，产出的 GGUF 标准 llama.cpp 直接跑</title>
       <link>https://javis.org.cn/news-2026-11-15-huawei-macaq-open-source.html</link>

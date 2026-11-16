@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="11 月 16 日，阿里正式发布新一代基座大模型 Qwen4-Max：总参数 2.4 万亿、每次只激活 71B，原生视觉、百万 Token 上下文。基于 Qwen 稀疏注意力（QSA）的新 MoE 架构让思考更省——Terminal-Bench 4.0 同档每次尝试平均 Token 从 289K 降到 151K，得分从 38.9 升到 48.5；Work360 评测单任务平均费用从 26.58 元降到 11.16 元，降幅 58%，缓存命中每百万 Token 低至 0.5 元。CodeArena 前端编程盲测全球第六、刷新中国模型最好成绩。Max 本体不开源，中小尺寸将陆续开源。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-16-qwen4-max-release.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-16-qwen4-max-release.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-16-qwen4-max-release.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-16-qwen4-max-release.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="11 月 16 日，阿里正式发布新一代基座大模型 Qwen4-Max：总参数 2.4 万亿、每次只激活 71B，原生视觉、百万 Token 上下文。基于 Qwen 稀疏注意力（QSA）的新 MoE 架构让思考更省——Terminal-Bench 4.0 同档每次尝试平均 Token 从 289K 降到 151K，得分从 38.9 升到 48.5；Work360 评测单任务平均费用从 26.58 元降到 11.16 元，降幅 58%，缓存命中每百万 Token 低至 0.5 元。CodeArena 前端编程盲测全球第六、刷新中国模型最好成绩。Max 本体不开源，中小尺寸将陆续开源。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-16-qwen4-max-release.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="11 月 16 日，阿里正式发布新一代基座大模型 Qwen4-Max：总参数 2.4 万亿、每次只激活 71B，原生视觉、百万 Token 上下文。基于 Qwen 稀疏注意力（QSA）的新 MoE 架构让思考更省——Terminal-Bench 4.0 同档每次尝试平均 Token 从 289K 降到 151K，得分从 38.9 升到 48.5；Work360 评测单任务平均费用从 26.58 元降到 11.16 元，降幅 58%，缓存命中每百万 Token 低至 0.5 元。CodeArena 前端编程盲测全球第六、刷新中国模型最好成绩。Max 本体不开源，中小尺寸将陆续开源。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六",
+      "description": "11 月 16 日，阿里正式发布新一代基座大模型 Qwen4-Max：总参数 2.4 万亿、每次只激活 71B，原生视觉、百万 Token 上下文。基于 Qwen 稀疏注意力（QSA）的新 MoE 架构让思考更省——Terminal-Bench 4.0 同档每次尝试平均 Token 从 289K 降到 151K，得分从 38.9 升到 48.5；Work360 评测单任务平均费用从 26.58 元降到 11.16 元，降幅 58%，缓存命中每百万 Token 低至 0.5 元。CodeArena 前端编程盲测全球第六、刷新中国模型最好成绩。Max 本体不开源，中小尺寸将陆续开源。",
+      "datePublished": "2026-11-16",
+      "dateModified": "2026-11-16",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-16-qwen4-max-release.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六",
+          "item": "https://javis.org.cn/news-2026-11-16-qwen4-max-release.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 178 条）</a>
+          <a href="news-2026-11-16-qwen4-max-release.html">Qwen4-Max 正式发布</a>
+          <a href="news-2026-11-16-hy4-flash-cost.html">混元 Hy4 flash 降本</a>
+          <a href="news-2026-11-16-openpangu-21-pro.html">openPangu-2.1-Pro 上线</a>
+          <a href="news-2026-11-16-ax100-analog-chip.html">AX100 模拟芯片流片</a>
+          <a href="news-2026-11-15-huawei-macaq-open-source.html">华为开源MACaQ</a>
+          <a href="news-2026-11-15-storage-price-split-round.html">存储第二轮涨价</a>
+          <a href="news-2026-11-15-openai-chatgpt-wallet.html">ChatGPT Wallet</a>
+          <a href="news-2026-11-15-semianalysis-ulanqab-galaxy.html">美方测算乌兰察布</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-16</span><span class="n-tag">大模型 · 国产旗舰</span><h1 class="art-h1">中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六</h1><p class="art-lede">11 月 16 日上午，阿里把 11 月 11 日先行开放的限时预览版转正，正式发布新一代基座大模型 Qwen4-Max。这一代最突出的变化不是把参数堆得更高，而是把「完成一个任务要花多少钱」压了下来：总参数仍是 2.4 万亿，但每个 Token 实际激活的参数从 95B 降到 71B，配合稀疏注意力与缓存命中降价，官方口径单任务平均费用较上代下降 58%。对要把大模型接进生产流程的企业来说，这意味着同样的智能体与编程任务，账单可能直接砍掉一半多。本文梳理这次正式版的架构、跑分、定价与落地实证，并交代哪些数字是官方自报、哪些已有第三方榜单佐证。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、这次到底发布了什么</h3><p>与 11 月 11 日的限时预览版不同，此次是<b>正式版本</b>接入千问 AI 平台对外提供 API 服务。用户可通过阿里 Token Plan 调用，或在千问办公、Qoder、千问 App、Qwen Studio 等应用中直接体验。模型支持联网搜索、工具调用、结构化输出，兼容 OpenAI 与 Anthropic 两种 API 格式，输入模态覆盖文本、图像与视频。</p><ul class="art-tl"><li>总参数 <b>2.4 万亿（2.4T）</b>，每个 Token 激活 <b>71B</b>，较上代 95B 减少约 25%（本刊计算）。</li><li>原生视觉理解，<b>100 万 Token</b> 上下文窗口。</li><li>稀疏 MoE 架构，围绕 Attention、Residual、Embedding 三个方向做了系统性调整。</li><li>另有 328B 的 N-gram Embedding 参数，以查表方式引入局部 token 模式，不怎么吃计算量。</li></ul><h3 class="art-h2">二、省钱省在哪：架构与思考效率</h3><p>Qwen4-Max 采用基于 <b>Qwen 稀疏注意力（QSA）</b>的全新 MoE 架构：每四层里三层用 Gated DeltaNet 把历史信息压缩成固定大小的状态，剩下一层留给 QSA 按块挑选眼下用得上的上下文，以降低长序列的注意力开销；训练期叠了四条并行门控残差流稳住梯度。官方称整轮训练没出现过一次 loss 尖峰。思考效率的提升是这次降本的核心。</p><table class="art-table"><thead><tr><th>口径（均为官方披露）</th><th>上代 Qwen3.8-Max</th><th>Qwen4-Max</th></tr></thead><tbody><tr><td>Terminal-Bench 4.0 每次尝试平均 Token（Xhigh 档）</td><td>289K</td><td>151K（减少近 50%）</td></tr><tr><td>Terminal-Bench 4.0 得分（Xhigh 档）</td><td>38.9 分</td><td>48.5 分（提升近 25%）</td></tr><tr><td>Work360 系统评测得分</td><td>47.74 分</td><td>52.69 分（提升超 10%）</td></tr><tr><td>Work360 单任务平均费用</td><td>26.58 元</td><td>11.16 元（降 58%）</td></tr><tr><td>每 Token 激活参数</td><td>95B</td><td>71B</td></tr></tbody></table><ul class="art-tl"><li>Work360 是千问团队构建的全场景建模体系，覆盖 <b>721 个细分领域</b>。</li><li>同等性能下，Xhigh 与 High 两档推理强度的 Token 消耗分别减少约 24% 与 35%。</li><li>「单任务费用」（Cost per Task）取代「API 单价」成为这次发布的第一叙事。</li></ul><h3 class="art-h2">三、跑分与榜单：哪些有第三方佐证</h3><table class="art-table"><thead><tr><th>评测</th><th>Qwen4-Max 成绩</th><th>口径</th></tr></thead><tbody><tr><td>CodeArena 前端编程盲测（WebDev）</td><td>全球第 6、1750 分，刷新中国模型最好成绩</td><td>第三方盲测榜单</td></tr><tr><td>Agents' Last Exam（ALE）</td><td>46.7 分，较上代提升 18.8 分</td><td>官方披露</td></tr><tr><td>Chartography 专业图表理解与推理</td><td>54.2 分，较上代提升 12.2 分</td><td>官方披露</td></tr><tr><td>JobBench 专业工作评测</td><td>超过 GPT-6.1sol、次于 Claude Opus5.5</td><td>官方披露</td></tr></tbody></table><p>需要分清口径：CodeArena 是第三方全球盲测榜，Qwen4-Max 位列 GPT6-Astra 与 Claude Fable5.1 之间；ALE、Chartography、Work360 等分数为官方自报，第三方独立复现尚未普遍出现。引用时建议把「官方口径」与「第三方榜单」分开标注。</p><h3 class="art-h2">四、定价与落地实证</h3><table class="art-table"><thead><tr><th>计费项（每百万 Token）</th><th>国内</th><th>海外</th></tr></thead><tbody><tr><td>输入</td><td>10 元</td><td>1.5 美元</td></tr><tr><td>输出</td><td>30 元</td><td>4.5 美元</td></tr><tr><td>缓存命中输入</td><td>0.5 元（约为输入价的 1/20）</td><td>下调约 70%</td></tr></tbody></table><ul class="art-tl"><li>汽车制造：单个工件加工编程的人工用时从约 475 分钟降到二十几分钟，用时减少约 95%（不同报道口径为 24–26 分钟）。</li><li>游戏开发：可调用 Blender 等专业工具，一句话生成 3D 游戏。</li><li>金融投研：可调用 90 个 MCP 专业工具，产出 Excel 底稿与 PPT 报告。</li><li>科学发现：连续 48 小时自主运行，从 270 万个候选分子中合成一种新型冷却液材料；针对阿尔兹海默症靶点经 454 次工具调用优化出 24 个候选分子，优选分子结合亲和力较起点提升约 3.6 倍。</li></ul><p>给读者一个直观换算：缓存命中价 0.5 元/百万 Token，<b>100 元预算约可命中 2 亿 Token</b>（本刊计算）。这正是几十轮工具调用、百万上下文反复翻看的长任务最省钱的地方——塞进去过的底稿和代码库，后面重复读取基本只花零头。</p><h3 class="art-h2">五、开源与边界</h3><p>阿里<b>未将 Qwen4-Max 本体开源</b>，但表示 Qwen4 系列中的中小尺寸模型将陆续开源发布，沿袭同源技术路线。这与本站 11 月 11 日那篇「Qwen4 官宣、预览版先上线」的预告一脉相承——今天兑现的是正式版与降本承诺。对企业选型而言，旗舰降本利好云端长程任务，而真正要数据不出内网的场景，仍要等中小尺寸开源后再评估本地部署可行性。</p></div><div class="kv-box"><h3>机悟建议：旗舰降本，企业该怎么接</h3><p class="kv-sub">把「单任务费用」当成新的选型指标</p><ul class="art-tl"><li>长程智能体、编程、科研这类复杂任务，优先评估 Qwen4-Max 的 Cost per Task，而不是只看每百万 Token 单价。</li><li>高频重复读取同一份底稿/代码库的场景，把缓存命中率做上去，账单差距会被进一步放大。</li><li>涉及敏感数据、要求数据不出内网的业务，等 Qwen4 中小尺寸开源后再做本地化对照，别急着把旗舰搬上云。</li><li>官方自报跑分与第三方榜单分开看；落地前用自己的真实任务集复跑一遍，再决定切换。</li></ul></div><p class="art-src">来源：品玩《阿里正式发布Qwen4，智能体及编程能力进阶》（pingwest.com/w/319586）、i黑马《阿里发布新一代基座大模型Qwen4-Max》（iheima.com/article-404297.html）、观察者网《大降58%！阿里、腾讯猛卷模型单任务成本》、网易《阿里正式发布Qwen4，单任务平均费用降六成》（2026-11-16）。本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>想知道你的业务场景接 Qwen4-Max 还是本地开源模型更划算？我们可以在一次评估里把任务量、Token 消耗、缓存命中率与数据边界一起算清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-16-hy4-flash-cost.html" title="腾讯混元 Hy4 flash 发布：单任务成本仅为 Hy4 的 1/20，输入每百万 Token 只要 0.5 元">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">混元 Hy4 flash 降本</span>
+        <span class="pg-d">2026-11-16</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 178 条）→</a></p>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六」，机悟 JAVIS，2026-11-16，https://javis.org.cn/news-2026-11-16-qwen4-max-release.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六](https://javis.org.cn/news-2026-11-16-qwen4-max-release.html)（机悟 JAVIS，2026-11-16）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>
