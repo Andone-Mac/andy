@@ -6,7 +6,39 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 16 Nov 2026 10:25:12 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2026 10:32:42 +0000</lastBuildDate>
+    <item>
+      <title>中国 DeepSeek 周调用 59.2 万亿 Token 全球居首，免费端却开始限额：长对话受限、单次输入约 4 万字</title>
+      <link>https://javis.org.cn/news-2026-11-17-deepseek-free-quota-limit.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-17-deepseek-free-quota-limit.html</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 云端算力</category>
+      <description>11 月 16 日，据第一财经报道，DeepSeek 对 App 与网页版的使用额度作出调整：限制长对话、每日使用额度与单次文字输入长度，部分用户连续使用不到两小时就收到额度耗尽提示，单次输入上限缩短至约 4 万字。长对话限制口径不一，有用户被提示「超过 7 天不活跃」、也有「超过 72 小时未活跃」即无法继续，官方尚未发布统一规则。与此同时，OpenRouter 数据显示 11 月 9—15 日 DeepSeek V4.1 Flash 1017 周调用 59.2 万亿 Token、稳居全球首位。本次限额针对 C 端免费服务，开发者 API 独立计费、不是同一套规则。</description>
+    </item>
+    <item>
+      <title>中国 AI 海外租算力通道遭美国新规封堵：1200 万 TPP 红线约 750 颗 H100，国产替代再提速</title>
+      <link>https://javis.org.cn/news-2026-11-17-bis-remote-compute-rule.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-17-bis-remote-compute-rule.html</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力 · 出口管制</category>
+      <description>据央广网、IT之家等 11 月 16—17 日报道，美国商务部工业与安全局（BIS）发布临时最终规则（IFR），把「远程访问算力」纳入出口管制：位于 D:5 组及中国澳门以外第三国数据中心、向受限主体提供远程算力访问，达到 1200 万 TPP（总处理性能）阈值即需许可，约相当于 750 颗 H100/H200 或 334 颗 B200。规则 132 页、11 月 19 日生效，设 90 天过渡与 60 天评论期，新增 EAR 744.24 条，覆盖印尼、马来西亚、新加坡、泰国、巴西等。中国 AI 企业「海外训练、国内推理」路径收窄，国产算力替代窗口进一步打开。</description>
+    </item>
+    <item>
+      <title>中国国产开源科学多模态模型书生 S2.1 Flash：15 项基准 4 项第一超 Claude Opus 5，推理成本仅 1/10</title>
+      <link>https://javis.org.cn/news-2026-11-17-shusheng-s21-flash-opensource.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-17-shusheng-s21-flash-opensource.html</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产开源 · 科学智能</category>
+      <description>11 月 16 日，上海人工智能实验室开源书生科学多模态大模型 S2.1 Flash，采用 MIT 许可，权重上线 ModelScope 与 Hugging Face，提供 BF16 与 FP8 两种精度（FP8 面向显存受限部署）。它定位科研助手而非聊天模型，依托书生·元征统一表征架构理解分子、光谱、生物序列等十余类科学数据。据机器之心梳理，在 15 项通用智能体基准中取得 4 项第一、7 项第二，优于 Claude Opus 5、DeepSeek-V4.1 Flash 等；MLE-bench Lite 90.3 分。同一任务推理成本仅为书生·星河的十分之一。沐曦国产 GPU 已完成 Day 0 适配。</description>
+    </item>
+    <item>
+      <title>中国豆包工作上线 21 个专业工作台：金融医疗教育开箱即用，AI 办公走向职业化</title>
+      <link>https://javis.org.cn/news-2026-11-17-doubao-work-workbench.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-17-doubao-work-workbench.html</guid>
+      <pubDate>Tue, 17 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI 办公 · 场景化</category>
+      <description>据光明网、新华网等 11 月 16 日报道，豆包工作在电脑版上线「工作台」，首批覆盖 21 个专业场景，包括金融、医疗、教育、创意设计，以及营销、写作、人力资源、财务行政、求职发展、法律事务、数据分析等。据官方介绍，这是面向多个专业场景、不同职业人群定制的 AI 工作台：金融投研工作台连接万得、同花顺、国泰海通等插件（需授权账号），医生工作台提供循证参考，教师工作台可一键生成教案课件（与学科网合作），创意设计工作台自动创建画布。用户还可创建专属工作台并保存分享。</description>
+    </item>
     <item>
       <title>中国旗舰大模型正式换代：阿里 Qwen4-Max 单任务费用降 58%，前端编程盲测冲进全球前六</title>
       <link>https://javis.org.cn/news-2026-11-16-qwen4-max-release.html</link>
