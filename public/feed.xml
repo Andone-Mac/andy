@@ -6,7 +6,55 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 17 Nov 2026 10:32:42 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Nov 2026 10:37:26 +0000</lastBuildDate>
+    <item>
+      <title>中国腾讯开源 Hy4 flash 权重：220B 参数仅激活 12B，百万上下文，私有化先看许可第 10 条</title>
+      <link>https://javis.org.cn/news-2026-11-18-hy4-flash-weights-opensource.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-18-hy4-flash-weights-opensource.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产开源 · 私有化部署</category>
+      <description>腾讯混元 Hy4 flash 系列权重 11 月 18 日开源：官方模型卡总参数约 220B、每 token 激活约 12B、上下文最高 100 万 token，FP8 权重约 287GB。Tencent Hy License 第 10 条设收入与 MAU 红线，纯内部使用有豁免。</description>
+    </item>
+    <item>
+      <title>国产算力拿下总台 AI 语料项目：1.496 亿元、256 颗昇腾芯片液冷集群，第二包废标</title>
+      <link>https://javis.org.cn/news-2026-11-18-cctv-ai-corpus-ascend-cluster.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-18-cctv-ai-corpus-ascend-cluster.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 政企采购</category>
+      <description>中央广播电视总台 AI 语料库项目中标公告：上海华讯 1.496 亿元中标第一包，华为 Atlas 900 A3 SuperPoD 液冷集群 32 节点、256 颗昇腾 910、FP16 算力 192.512 PFlops；第二包因投标不足 3 家废标。</description>
+    </item>
+    <item>
+      <title>OpenAI 发布 GPT-6.2 双模型：旗舰 API 降价 20%，日常版 Sol 编码只差 0.5 分、成本约 1/5</title>
+      <link>https://javis.org.cn/news-2026-11-18-gpt62-astra-sol-price-cut.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-18-gpt62-astra-sol-price-cut.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 云端 API</category>
+      <description>OpenAI 发布 GPT-6.2 Astra 与 Sol：Astra API 降价 20%（输入 $8/输出 $40 每百万 token），Sol 维持 $2/$10；官方称 Sol 编码与 Astra 差 0.5 分、成本约 1/5。Artificial Analysis 指数 Astra 升至第 2。</description>
+    </item>
+    <item>
+      <title>微软一次发布六款专用 AI 模型：编码达 GPT-6.1 Sol 98% 性能，价格仅 40%</title>
+      <link>https://javis.org.cn/news-2026-11-18-microsoft-mai-six-models.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-18-microsoft-mai-six-models.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 成本效率</category>
+      <description>微软 Ignite 发布六款 MAI 专用模型：Code 2 称达 GPT-6.1 Sol 98% 性能、40% 价格，对 Opus 5.5 为 96% 性能、5% 成本（含 50% 促销折扣与自选基准限定）；两款编码模型已进 GitHub Copilot。</description>
+    </item>
+    <item>
+      <title>美团开源数字人模型 LongCat-Avatar 1.6：MIT 许可、一次生成 10 分钟视频，人类偏好榜第 2</title>
+      <link>https://javis.org.cn/news-2026-11-18-longcat-avatar16-mit-opensource.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-18-longcat-avatar16-mit-opensource.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产开源 · 数字人</category>
+      <description>美团开源 LongCat-Video-Avatar 1.6 数字人模型：MIT 许可、音频驱动、一次生成 10 分钟以上视频；官方人类偏好 Arena（33051 票）Elo 1068.1 排名第 2，底座 13.6B。</description>
+    </item>
+    <item>
+      <title>Qwen3.8-27B 迎来英伟达官方「草稿模型」：三款开源，接受长度最高提升 59%</title>
+      <link>https://javis.org.cn/news-2026-11-18-qwen38-nvidia-draft-models.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-18-qwen38-nvidia-draft-models.html</guid>
+      <pubDate>Wed, 18 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地推理 · 开源生态</category>
+      <description>英伟达开源三款 Qwen3.8-27B 外置草稿模型（4B/0.8B/Llama-1B）：官方离线评分 4B 草稿 unbounded 接受长度 6.13 对 MTP 3.85（+59%），拒绝采样保证输出分布不变；权重为 NVIDIA Open Model Agreement。</description>
+    </item>
     <item>
       <title>中国 DeepSeek 周调用 59.2 万亿 Token 全球居首，免费端却开始限额：长对话受限、单次输入约 4 万字</title>
       <link>https://javis.org.cn/news-2026-11-17-deepseek-free-quota-limit.html</link>
