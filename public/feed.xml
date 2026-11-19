@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 18 Nov 2026 10:37:26 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Nov 2026 10:42:02 +0000</lastBuildDate>
+    <item>
+      <title>Anthropic IPO 定价 83 美元：募资约 813 亿超越 SpaceX，今日纳斯达克挂牌</title>
+      <link>https://javis.org.cn/news-2026-11-19-anthropic-ipo-pricing.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-19-anthropic-ipo-pricing.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI 资本市场 · 行业格局</category>
+      <description>Anthropic IPO 定价每股 83 美元，高于 70–78 美元区间上限约 6.4%；发行约 9.8 亿股募资约 813 亿美元，叠加 260 亿美元私募合计约 1073 亿美元，超越 SpaceX 今年 6 月 IPO 成为史上最大；完全摊薄估值约 1.5 万亿美元，代码 ANT，美东 11 月 19 日（周四）纳斯达克挂牌。前九个月营收 332.4 亿美元、同比约增 1200%，净亏损 1040 亿美元主因会计处理。</description>
+    </item>
+    <item>
+      <title>中国范式智能发布 Phai 双模型：百万上下文可本地 PC 部署，昇腾全流程后训练</title>
+      <link>https://javis.org.cn/news-2026-11-19-phai-a1-m1-local-deploy.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-19-phai-a1-m1-local-deploy.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产模型 · 本地部署</category>
+      <description>范式智能（6682.HK，原第四范式）11 月 18 日 APEC 期间发布 Phai-A1（语言/代码）与 Phai-M1（真人影视视频）：A1 原生百万级 token 上下文、可在个人电脑本地部署，官方测试称同等 RTX 3090 代码智能体任务响应较 Qwen 27B 快约 8–10 倍；M1 音画同步生成、15 秒 720P 视频约需 3 分钟；依托 ModelHub XC 完成昇腾全流程后训练优化。官方称计划近期开放两款模型权重，参数规模与许可证尚未公布。</description>
+    </item>
+    <item>
+      <title>谷歌发布 Gemini 4 Neon：官方称快 3 倍便宜 60%，独立实测每任务省 17%</title>
+      <link>https://javis.org.cn/news-2026-11-19-gemini-4-neon-launch.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-19-gemini-4-neon-launch.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 云端 API</category>
+      <description>谷歌 11 月 18 日发布 Gemini 4 Neon：输入 3 美元/百万 token、输出 15 美元/百万 token、缓存输入 0.15 美元（95% 折扣），1M 上下文；官方初测称较 Carbon 快约 3 倍、便宜约 60%；Artificial Analysis 实测智能指数 61（xhigh 档）总榜第 3，每任务成本约 6.44 美元、较 Carbon 省约 17%、时间省约 40%。同日 Gemini App 下架 Argon 由 Neon 接替，Argon 保留在付费 API。</description>
+    </item>
+    <item>
+      <title>中国商汤「词元工厂」：同卡数吞吐约 5 倍，Q3 生成式 AI 收入翻倍，股价创 52 周新低</title>
+      <link>https://javis.org.cn/news-2026-11-19-sensetime-token-factory.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-19-sensetime-token-factory.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 财报观察</category>
+      <description>商汤 11 月 18 日晚自愿公告：前三季度收入 37.92 亿元（+30.4%）、毛利率 43.4%（+4.3 个百分点），Q3 生成式 AI 收入同比增超一倍；万卡级异构推理集群称同高端卡数同模型同配置下词元吞吐提升至约 5 倍，SenseCore 日均词元服务量从 7 月超 2.4 万亿增至 10 月 6 万亿。股价 11 月 18 日盘中创 52 周新低 1.02 港元。公告未经审核、未披露净利润。</description>
+    </item>
+    <item>
+      <title>vLLM v0.34.0 发布：同一张卡 KV 缓存最高 +55%，四项破坏性变更升级前先看清</title>
+      <link>https://javis.org.cn/news-2026-11-19-vllm-034-kv-cache.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-19-vllm-034-kv-cache.html</guid>
+      <pubDate>Thu, 19 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地推理 · 开源生态</category>
+      <description>vLLM v0.34.0 于 11 月 16 日（UTC）发布：1061 次提交、412 位贡献者；可扩展 KV 缓存默认开启，按预热后实际空闲显存定缓存大小，MiniMax-M3 在 H200 上 KV 容量 433k→672k token（+55%），多数模型 +4–10%；四项破坏性变更：Model Runner V1 移除、block-size 默认 64、gpu_memory_utilization 默认 1.0、ROCm 7.2 制品下架。部分场景每 token 延迟 +6–18%，官方给出回退开关。</description>
+    </item>
     <item>
       <title>中国腾讯开源 Hy4 flash 权重：220B 参数仅激活 12B，百万上下文，私有化先看许可第 10 条</title>
       <link>https://javis.org.cn/news-2026-11-18-hy4-flash-weights-opensource.html</link>
