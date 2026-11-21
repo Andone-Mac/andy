@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="谷歌 11 月 11 日官方博客发布决策专用模型 gemini-decision-1（Gemini API v1beta）：单次前向对最多 1000 道是否/选择/评分题打分，多模态输入不超过 256K token，端到端 150–250ms；$0.10/1M 输入、输出零计费，官方称比 Gemini 3.5 Flash-Lite 加 Interactions 便宜近 5 倍。题型 noul/choice（2–255 选项）/score，每题带 0–1 置信度可路由人审；Notebook 实时路由日常查询延迟最多降 40%。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-21-gemini-decisions-api.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="谷歌 11 月 11 日官方博客发布决策专用模型 gemini-decision-1（Gemini API v1beta）：单次前向对最多 1000 道是否/选择/评分题打分，多模态输入不超过 256K token，端到端 150–250ms；$0.10/1M 输入、输出零计费，官方称比 Gemini 3.5 Flash-Lite 加 Interactions 便宜近 5 倍。题型 noul/choice（2–255 选项）/score，每题带 0–1 置信度可路由人审；Notebook 实时路由日常查询延迟最多降 40%。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="谷歌 11 月 11 日官方博客发布决策专用模型 gemini-decision-1（Gemini API v1beta）：单次前向对最多 1000 道是否/选择/评分题打分，多模态输入不超过 256K token，端到端 150–250ms；$0.10/1M 输入、输出零计费，官方称比 Gemini 3.5 Flash-Lite 加 Interactions 便宜近 5 倍。题型 noul/choice（2–255 选项）/score，每题带 0–1 置信度可路由人审；Notebook 实时路由日常查询延迟最多降 40%。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元",
+      "description": "谷歌 11 月 11 日官方博客发布决策专用模型 gemini-decision-1（Gemini API v1beta）：单次前向对最多 1000 道是否/选择/评分题打分，多模态输入不超过 256K token，端到端 150–250ms；$0.10/1M 输入、输出零计费，官方称比 Gemini 3.5 Flash-Lite 加 Interactions 便宜近 5 倍。题型 noul/choice（2–255 选项）/score，每题带 0–1 置信度可路由人审；Notebook 实时路由日常查询延迟最多降 40%。",
+      "datePublished": "2026-11-21",
+      "dateModified": "2026-11-21",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元",
+          "item": "https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 207 条）</a>
+          <a href="news-2026-11-21-wemm-video-opensource.html">腾讯 WeMM-Video 开源</a>
+          <a href="news-2026-11-21-clover-35b-diffusion-report.html">Clover-35B 技术报告</a>
+          <a href="news-2026-11-21-beijing-embodied-ai-plan-2028.html">北京具身智能方案</a>
+          <a href="news-2026-11-21-seedrealtime-1-api.html">SeedRealtime 1.0 API</a>
+          <a href="news-2026-11-21-mofcom-smart-consumption-10m.html">商务部新型消费数据</a>
+          <a href="news-2026-11-21-agile-robots-softbank-500m.html">Agile Robots 融资</a>
+          <a href="news-2026-11-21-genie-4-gemini-api.html">Genie 4 上线 API</a>
+          <a href="news-2026-11-21-gpt-live-1-1-api-standby.html">GPT-Live-1.1 API</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-21</span><span class="n-tag">决策模型 · API</span><h1 class="art-h1">谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元</h1><p class="art-lede">「该不该调这个工具、这段上下文有没有用、这条回答合不合规」——这类判断题现在有了专用模型：谷歌 11 月 11 日在官方博客发布 <b>gemini-decision-1</b>，一次前向就能对最多 <b>1000 道</b>是否、选择、评分题打分，端到端 <b>150–250 毫秒</b>，输入每百万 token <b>$0.10</b>、输出零计费。官方称它比用 Gemini 3.5 Flash-Lite 加 Interactions API 做同样的事便宜近 5 倍，且「在整个评测套件中领先、校准误差最低」（官方口径，未逐项列名）。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、三种题型与置信度路由</h3><p>官方博客（11 月 11 日，产品经理 Min Choi、首席科学家 Felix Yu）：模型支持文本、图像、音频、视频、PDF 多模态输入（不超过 256K token），三种题型——noul（是否题，可给 true/false 描述判据）、choice（2–255 个选项，返回 winner 与归一化概率）、score（有序 rubric 从 0 起，返回加权连续分与每级概率）。每题附 0–1 置信度，低置信度可路由到人审。调用 client.decisions.create(model=gemini-decision-1)，http_options 指定 api_version v1beta。</p><table class="art-table"><thead><tr><th>题型</th><th>返回</th><th>典型用途（官方举例）</th></tr></thead><tbody><tr><td>noul</td><td>是否判断 + 置信度</td><td>政策检查 / 工具选择</td></tr><tr><td>choice</td><td>winner + 归一化概率</td><td>模型路由 / 选项排序</td></tr><tr><td>score</td><td>加权连续分 + 每级概率</td><td>rubric 评分 / 上下文分级</td></tr></tbody></table><h3 class="art-h2">二、延迟与价格：为判断题优化的成本结构</h3><p>官方口径：单次前向打分，端到端 150–250 ms，模型计算中位 50–100 ms（不超过 16K 上下文，1 到 100 题延迟几乎持平）；$0.10/1M 输入、输出零计费，比 Gemini 3.5 Flash-Lite 加 Interactions 便宜近 5 倍。算一笔账（本刊计算）：一份 1 万 token 的文档上跑 1000 道是否题，输入成本约 $0.001；打满 256K 上下文约 $0.026（本刊按 256K=262144 token 计算）——判断题的边际成本被压到厘级。官方点名四类用途：工具选择、政策检查、模型路由、上下文分级。</p><ul class="art-tl"><li>落地案例（官方）：Notebook 实时路由，日常查询延迟最多降 40%，复杂任务留给深推理模型。</li><li>Stitch rapid canvas 生成可玩线框；Labs CC 表情（200 多个选项）；Search 的 MCP 工具安全层。</li></ul><h3 class="art-h2">三、对政企的意义：把规则判定从大模型里拆出来</h3><p>政企系统里大量判断题（合规校验、工单分类、路由分发）过去要么写规则、要么让通用大模型逐条回答——前者维护贵，后者延迟与成本高。Decision 1 的启示是把判断层拆成专用小模型：批量打分、毫秒级、按输入计费、置信度兜底人审。私有化对标时，可以用「小模型批量判定 + 置信度路由 + 大模型兜底」的三层结构复现这个思路，而不必等一个同名国产模型（本刊观点）。</p></div><div class="kv-box"><h3>机悟建议：判断题拆出来，成本降一个量级</h3><p class="kv-sub">批量判定 + 置信度路由 + 人审兜底，三层结构可私有化复现</p><ul class="art-tl"><li>1000 题/次、150–250ms、$0.10/1M 输入均为官方口径，引用带来源。</li><li>置信度路由人审是合规兜底，低置信度样本必须留痕。</li><li>「便宜近 5 倍」的对比对象是 Flash-Lite 加 Interactions，不是所有模型。</li><li>判定层怎么拆、三层结构怎么搭，机悟可提供约 40 分钟评估。</li></ul></div><p class="art-src">来源：谷歌官方博客 2026-11-11（blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api，Min Choi、Felix Yu）、Gemini API decisions 文档（官方博文所链）。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>合规校验与路由判定怎么拆层、置信度兜底怎么留痕、成本怎么算，机悟用约 40 分钟帮你理清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-21-gpt-live-1-1-api-standby.html" title="OpenAI GPT-Live-1.1 进入 API：全双工语音，待机每分钟 0.02 美元">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">GPT-Live-1.1 API</span>
+        <span class="pg-d">2026-11-21</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-21-intel-18a-p-first-customer.html" title="英特尔 18A 工艺签下首家外部客户：18A-P 节点，客户名称未公布">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">英特尔 18A 客户</span>
+        <span class="pg-d">2026-11-21</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 207 条）→</a></p>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元」，机悟 JAVIS，2026-11-21，https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元](https://javis.org.cn/news-2026-11-21-gemini-decisions-api.html)（机悟 JAVIS，2026-11-21）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>
