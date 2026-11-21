@@ -6,7 +6,71 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Nov 2026 05:38:44 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 21 Nov 2026 15:13:13 +0000</lastBuildDate>
+    <item>
+      <title>中国国产大模型累计下载破 100 亿次：日均词元调用 500 万亿，开源权重可进私有云</title>
+      <link>https://javis.org.cn/news-2026-11-21-china-opensource-100b-downloads.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-china-opensource-100b-downloads.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 开源生态</category>
+      <description>人民日报 2026 年 11 月 21 日 05 版《国产大模型引领全球开源生态》：工信部数据显示我国 AI 开源大模型全球累计下载量突破 100 亿次；中央网信办副主任王京涛披露日均词元调用量突破 500 万亿；OpenRouter 11 月 9—15 日中国模型周调用量 119.1 万亿词元、连续 29 周全球首位。报道明确开源即开放权重、可在本地服务器或私有云部署，是数据隐私要求高的用户的关键选项。</description>
+    </item>
+    <item>
+      <title>中国最高法起草 AI 辅助审判意见：自主大模型进「一张网」内网，部分中院基层院试点</title>
+      <link>https://javis.org.cn/news-2026-11-21-spc-ai-trial-one-network.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-spc-ai-trial-one-network.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>政法 AI · 内网私有化</category>
+      <description>最高法官网 2026 年 11 月 21 日发布：最高法举行两场征求意见座谈会，张军主持，就起草中的《关于规范人工智能辅助审判工作的意见》广泛征求意见。会议披露已运用自主知识产权的大模型，以法律、司法解释、规范性文件与全国法院审理的大量案件为基础训练，依托「一张网」统一办案办公系统在部分中级、基层法院试点应用；共识为法官主导、技术辅助，自主、安全、可控贯穿始终，依托「一张网」内部环境运行。</description>
+    </item>
+    <item>
+      <title>中国国产 GPU「庐山」预告：AI 计算性能提升 64 倍、光追 50 倍，12 月底 MDC 揭晓</title>
+      <link>https://javis.org.cn/news-2026-11-21-moore-threads-lushan-gpu.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-moore-threads-lushan-gpu.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产 GPU · 信源A</category>
+      <description>据中关村科技园官网转北京日报 2026 年 11 月 19 日报道与 IT 之家同日转述：摩尔线程 11 月 18 日晚公告新一代消费级显卡「庐山」，据此前公布的技术资料，几何处理性能提升 16 倍、光线追踪性能提升 50 倍、AI 计算性能提升 64 倍（厂商口径），采用全新 UNITE 渲染架构、新一代自研硬件光追引擎并首次引入 AI 生成式渲染；完整规格将于 12 月 29—30 日 MDC 2026 揭晓。本条选题来自 AI 风向标 11 月 21 日日报视频，数字均回官方与主流媒体复核。</description>
+    </item>
+    <item>
+      <title>中国腾讯混元 AMA 首谈本地部署：Hy4 flash 可跑 128GB DGX Spark，单任务约 0.26 元</title>
+      <link>https://javis.org.cn/news-2026-11-21-hunyuan-ama-local-deploy.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-hunyuan-ama-local-deploy.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源大模型 · 本地部署</category>
+      <description>腾讯科技与 21 世纪经济报道 2026 年 11 月 21 日报道：11 月 21 日凌晨姚顺雨携混元团队在 Reddit 进行 120 分钟 AMA、回答近 100 个问题，首次面向开发者社区公开问答。本地部署口径：Hy4 flash 可在 M5 Max 与配 128GB 内存的 DGX Spark 上运行，提供 GGUF 版本，SWA 把 KV 缓存缩到原来约四分之一，正推进 llama.cpp 适配；Hy4-mini 已列入路线图、面向 24GB 显存的模型未来发布。性价比口径：WorkIndex 上 Hy4 flash 单任务成本约为 Hy4 的 1/20，85 名内部用户 259 项任务盲测单任务约 0.26 元。</description>
+    </item>
+    <item>
+      <title>中国央企算力服务框架浮出水面：魅视科技 11.64 亿元备忘录，租赁单价不高于 14657 元/P/月</title>
+      <link>https://javis.org.cn/news-2026-11-21-meishi-central-soe-compute.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-meishi-central-soe-compute.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力服务 · 央企采购</category>
+      <description>上海证券报 2026 年 11 月 21 日披露魅视科技（001229）公告（编号 2026-054，董事会 11 月 19 日通过）：公司就算力服务项目取得中选通知书，与央企控股上市公司分支机构 Z 公司签署销售备忘录，最高金额 1,164,155,942.99 元（含税，约 11.64 亿元），分两批交付；同步与上游 Y 公司签采购框架协议，单月不低于 1392P、单价不高于 14657 元/P/月（含税）、周期 36 个月、总价不高于 734,491,584 元。公告强调仅为框架协议与备忘录、暂未生效、以正式合同为准，不涉及算力新建或扩建，算力向上游租赁后整合提供服务。</description>
+    </item>
+    <item>
+      <title>中国国产本地算力终端亮相：4 升盒子 126 TOPS+128GB 跑 120B 模型，拔网线照样干活</title>
+      <link>https://javis.org.cn/news-2026-11-21-kunlun-agentcomputer-local.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-kunlun-agentcomputer-local.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地推理 · 数据不出域</category>
+      <description>湖南省工信厅官网 2026 年 11 月 20 日发布（红网采访昆仑元董事长曾婷）：11 月 19 日在长沙启幕的 2026 世界计算大会上，昆仑元展出 AgentComputer 系列本地算力终端，含 27 寸一体机、笔记本与 4 升桌面小盒子；其中小盒子提供 126 TOPS 算力与 128GB 统一内存，厂商称单机可流畅运行 35B—120B 大模型，模型、文件与对话记录全留本地、拔掉网线照样干活；一块专业服务器显卡的预算约可购 7 台本地终端，制造企业高频任务本地、超大任务云端，算力成本可降 60% 以上（均为厂商口径）。</description>
+    </item>
+    <item>
+      <title>中国国产 GPU 沐曦 C600 大规模出货：通过安全可靠测评，率先完成混元 Hy4 Day 0 适配</title>
+      <link>https://javis.org.cn/news-2026-11-21-muxi-c600-shipment-hy4.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-muxi-c600-shipment-hy4.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产 GPU · 训推一体</category>
+      <description>新华财经 2026 年 11 月 20 日报道沐曦股份投资者关系活动：新一代 AI 训推一体旗舰 GPU C600 已大规模出货，基于国产供应链，MXC600 通过国家安全可靠测评，面向智算中心、金融、能源、政务等场景；前三季度营收 28.24 亿元、同比增长 128.45%，归母净利润 6.39 亿元扭亏，第三季度营收 15 亿元、同比增长 367.12%，并拟回购 1 亿—2 亿元。证券时报·e 公司（人民财讯）11 月 21 日另讯：11 月 20 日腾讯混元开源 Hy4，沐曦曦云 C 系列 GPU 率先完成 Hy4 的 Day 0 适配，实现高吞吐、低延迟稳定运行。</description>
+    </item>
+    <item>
+      <title>中国生成式 AI 备案提速：9—10 月新增 133 款、累计 1245 款，手机端侧模型首次纳入</title>
+      <link>https://javis.org.cn/news-2026-11-21-cac-genai-filing-133.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-21-cac-genai-filing-133.html</guid>
+      <pubDate>Sat, 21 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI 合规 · 备案登记</category>
+      <description>据国家网信办 2026 年 11 月 20 日公告（央视网、光明网 11 月 20 日 17:16 转述）：2026 年 9 月至 10 月新增 133 款生成式人工智能服务完成备案，其中包括 3 款手机端侧生成式 AI 服务和 1 款拟人化互动生成式 AI 服务，1 款备案信息变更；对通过 API 或其他方式直接调用已备案模型能力的应用或功能，由地方网信办登记，新增 224 款完成登记。截至 10 月 31 日，累计 1245 款生成式 AI 服务完成备案、955 款应用或功能完成登记。依据为《生成式人工智能服务管理暂行办法》。</description>
+    </item>
     <item>
       <title>中国腾讯开源 WeMM-Video 全模态模型：四档 2B 到 35B，Apache 2.0 许可</title>
       <link>https://javis.org.cn/news-2026-11-21-wemm-video-opensource.html</link>
