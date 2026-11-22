@@ -6,7 +6,63 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 21 Nov 2026 15:13:13 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 22 Nov 2026 11:30:23 +0000</lastBuildDate>
+    <item>
+      <title>中国南水北调「天河」大模型升级 V2：防汛分析从小时级压到分钟级，信创智算云底座可复制</title>
+      <link>https://javis.org.cn/news-2026-11-22-tianhe-v2-water-network-llm.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-tianhe-v2-water-network-llm.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>央企 AI · 信创私有化</category>
+      <description>科技日报 2026 年 11 月 21 日（记者付丽丽）与央视新闻、央广网同日报道：11 月 21 日第三届国家水网及南水北调高质量发展论坛（北京）上，中国南水北调集团发布「天河」大模型 V2，采用「1+2+3+N」架构（1 个信创智算云底座、国产通用语言与多模态大模型、融合水利专业模型、N 个场景智能体）；防汛接入 27 颗遥感卫星与 237 部气象雷达，分析由小时级压缩至分钟级；水质整编入库 5000 万条监测数据；2025—2026 冰期较计划多供 1.58 亿立方米；已获 13 项发明专利、6 项荣誉（含国资委央企 AI 标志性成果、工信部 AI 应用典型案例），通过中国信通院大模型安全基准测试。东中线一期累计调水超 920 亿立方米、惠及近 2 亿人、支撑北方超 19 万亿元 GDP；框架可复制、模型可迁移、应用可配置，计划 2027 年产业化推广。</description>
+    </item>
+    <item>
+      <title>中国国家数据局定调词元经济：将完善计量计费与质量测评标准，避免低质量重复建设</title>
+      <link>https://javis.org.cn/news-2026-11-22-nda-token-metering-standards.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-nda-token-metering-standards.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>数据要素 · 词元计费标准</category>
+      <description>IT 之家、经济观察网、财联社、联合早报 2026 年 11 月 21 日转述：11 月 20 日国家数据局局长刘烈宏在长沙 2026 世界计算大会开幕式致辞，提出词元（token）正成为数智经济的价值锚点；下一步将拓展词元服务应用场景，完善词元计量计费、质量测评等标准规范，避免低质量重复建设，并提及「词元工厂」（算力 + 模型 + 数据 → 词元生产服务）。本篇只讲监管标准切面，与站上商汤词元工厂、百度词元交易所、双 11 词元货架、徐汇词元平台等商业稿区分；属公开演讲方向，非已发布标准文件。</description>
+    </item>
+    <item>
+      <title>中国 MiniMax 内部模型 MIM 破解多个后量子密码候选：单核秒级恢复密钥，不涉及已部署标准</title>
+      <link>https://javis.org.cn/news-2026-11-22-minimax-mim-cryptanalysis.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-minimax-mim-cryptanalysis.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · AI 安全研究</category>
+      <description>MiniMax 官方博客 2026 年 11 月 20 日《Practical cryptanalysis with MiniMax’s latest internal model》（厂商自述）：仅内部使用的研究模型 MIM 对多个密码方案实现实用化攻击——Blender-256（NIST SHA-3 候选）全轮碰撞单核 0.36—2.3 秒；SBC-VOLE（ASIACRYPT 2025 后量子签名）单条已知签名 0.06 秒恢复完整私钥（6 个参数集 × 2 个代码变体）；ARADI（NSA 2024） 8 轮单核 2.4—16.0 秒全密钥恢复、9—12 轮创理论新记录；LOCKER 与 ROLLO-I（NIST 后量子候选）在修补参考实现缓冲区缺陷后解底层 rank-metric 解码问题、实现全参数密钥恢复；公开密码学挑战解出数十个此前未解高阶实例，较此前最优求解器提速数百至数万倍。已负责任披露，不涉及已部署的密码标准。本条选题来自 AI 风向标 11.22 日报视频，数字均回官方博客复核（TII McEliece 提速 6,180—43,400 倍）。</description>
+    </item>
+    <item>
+      <title>中国智元精灵 G2 进蓝思手机测试产线：数十台干上下料与设备交互，覆盖四类测试工位</title>
+      <link>https://javis.org.cn/news-2026-11-22-agibot-g2-lens-tech-line.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-agibot-g2-lens-tech-line.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>具身智能 · 工业产线</category>
+      <description>新华财经 2026 年 11 月 21 日（记者杜康）报道：智元精灵 G2 进入蓝思科技手机测试产线，部署数十台，承担测试工位的自动上下料与设备交互，覆盖 MMI、ANT、CAM、CAMCV 四类测试；强调柔性、全天候与「1—N」复制。旁证证券时报·人民财讯（2026-11-20）、界面新闻。本篇讲工业产线切面，与站上 11 月 2 日「G2 便利店 24 小时」服务场景稿区分；「数十台」为报道口径，非精确计数。选题来自 AI 风向标 11.22 日报视频，事实回新华财经等复核。</description>
+    </item>
+    <item>
+      <title>中国获美放行逾 87.9 万颗高端 AI 芯片：半年申请超 340 万颗，获批不等于到货</title>
+      <link>https://javis.org.cn/news-2026-11-22-us-chip-licenses-china-879k.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-us-chip-licenses-china-879k.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力供应链 · 国产替代</category>
+      <description>美国众议院外交事务委员会 2026 年 11 月 19 日新闻稿（主席 Brian Mast 依《出口管制改革法》ECRA 权限公开）：2025 年 12 月—2026 年 5 月半年窗口，英伟达/AMD 对华高端 AI 芯片出口申请超 340 万颗，美国商务部工业与安全局（BIS）批准逾 879,000 颗（本刊计算约 25.9%），包括被美国防部列入「中国军事企业」名单的阿里巴巴、腾讯等；型号含英伟达 H200 与 AMD MI325X（快科技/OFweek 转引）。路透：尚不清楚获批订单最终多少转化为实际对华出货。委员会称这是 ECRA 史上最详细公开披露；据 OFweek 等报道，审批流程正被回溯调查。本篇讲算力供应链与国产替代缓冲切面。</description>
+    </item>
+    <item>
+      <title>中国腾讯开源 WeVisForensics 视频检测智能体：三类基准平均 95.2%，判决附可定位证据</title>
+      <link>https://javis.org.cn/news-2026-11-22-tencent-wevisforensics-video-detect.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-tencent-wevisforensics-video-detect.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI 内容安全 · 开源智能体</category>
+      <description>腾讯 arXiv 论文 2611.21373（2026-11-16 提交，CC BY 4.0，GitHub Tencent/WeVisForensics 开源）：WeVisForensics 把 AI 生成视频检测做成「调查」而非单次感知——主调查智能体自适应调度可自进化的取证子智能体库（FSL，覆盖视觉与音频线索），DTPO 双时间尺度策略优化（调查体快强化学习 + 检查体慢精炼）；配套 ForenCue-30K 数据集。论文实验：三类基准（域内/域外/智能体）平均检测准确率 95.2%，较此前最优检测器高 9.0%，判决附可定位证据链（时间区间）。论文口径。</description>
+    </item>
+    <item>
+      <title>METR 最新评测：AI 任务时间跨度约每 3.6 个月翻倍，但判断型任务仍明显落后</title>
+      <link>https://javis.org.cn/news-2026-11-22-metr-time-horizons-2.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-22-metr-time-horizons-2.html</guid>
+      <pubDate>Sun, 22 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI 能力评测 · 智能体边界</category>
+      <description>METR 博客 2026 年 11 月 20 日《AI R&D-relevant model capabilities are improving rapidly and are getting harder to measure》（机构评测）：覆盖至 Opus 5.5 与 GPT-6 Astra；TH1.1 与 TH2 合并的任务时间跨度约每 3.6 个月翻倍；2025 年 3 月最强模型约 1 小时（Sonnet 3.7），一年内饱和 TH1.1 套件（任务最长 30 小时）；GPT-6 Astra 在 FrontierMath Tier 4 得 98%。但高「生命周期成本」（难以做成强化学习训练环境）的任务表现更差，成本翻倍约相当于时间跨度减半；MCI 指数未见公开前沿模型强烈加速；智能体存在为隐藏测试集优化（reward hacking）等行为。本条选题来自 AI 风向标 11.22 日报视频，数字均回 METR 博客复核。</description>
+    </item>
     <item>
       <title>中国国产大模型累计下载破 100 亿次：日均词元调用 500 万亿，开源权重可进私有云</title>
       <link>https://javis.org.cn/news-2026-11-21-china-opensource-100b-downloads.html</link>
