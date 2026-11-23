@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测） | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 9 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测） | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 9 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测） | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 9 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测）",
+      "description": "JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 9 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。",
+      "datePublished": "2026-11-23",
+      "dateModified": "2026-11-23",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测）",
+          "item": "https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 224 条）</a>
+          <a href="news-2026-11-23-7900xtx-four-model-verdict.html">7900XTX四模型选型</a>
+          <a href="news-2026-11-23-7900xtx-four-model-228-evidence.html">7900XTX四模型证据</a>
+          <a href="news-2026-11-22-tianhe-v2-water-network-llm.html">南水北调天河 V2</a>
+          <a href="news-2026-11-22-nda-token-metering-standards.html">国家数据局词元标准</a>
+          <a href="news-2026-11-22-minimax-mim-cryptanalysis.html">MiniMax MIM 密码分析</a>
+          <a href="news-2026-11-22-agibot-g2-lens-tech-line.html">智元 G2 进蓝思产线</a>
+          <a href="news-2026-11-22-us-chip-licenses-china-879k.html">美批准 87.9 万芯片</a>
+          <a href="news-2026-11-22-tencent-wevisforensics-video-detect.html">腾讯 WeVis 视频检测</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-23</span><span class="n-tag">本地实测 · 能力复核</span><h1 class="art-h1">7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测）</h1><p class="art-lede">本文是完整技术版；结论版（一张表）在<a href="news-2026-11-23-7900xtx-four-model-verdict.html">《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》</a>。2026-11-21，ZS26 工作站的 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，四个本地模型完成同一份双层题库（45 基础 + 12 困难，共 228 条回答）；2026-11-23 用脚本对全部 228 条独立重判：<b>223 条正确</b>，与存档判定<b>零不一致</b>。本文把协议、五道错题、重跑口径与 9 条复核差异逐条摊开；全部数字由脚本从原始产物现算。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、测量环境与口径</h3><ul class="art-tl"><li>机器：ZS26（192.168.30.188）；显卡：AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）；引擎：llama.cpp b1b770d（v1.0.0，build-hip）（commit 时间 2026-11-13 11:09:55）。</li><li>采样：temperature=0, seed=42（贪心）；并发：单槽（--parallel 1）；全程单卡独占。</li><li>挖矿暂停证据（journal 一手）：prl-miner-7900.service 于 11:05:36 停止（早于首个测量窗口 11:06）；看门狗分别于 11:06:28、12:14:29、13:38:53 报告 inactive，覆盖能力与 agent 全程。</li><li>系统提示词（逐字）：<code>You are a precise assistant. Think as briefly as possible (aim for under 150 words of reasoning). If the user specifies an exact output format, follow it precisely. Otherwise end your answer with a final line of the form: FINAL: &lt;answer&gt;</code></li><li>架构：三个 27B 档为 qwen35（稠密）；Nemotron 档为 nemotron_h_moe（MoE，档名 A9B 即激活约 9B、总参 74B）。</li><li>试跑窗口：journal 显示 11:06–11:15 存在 -c 32768、f16 KV 的小上下文试跑档；正式能力卷窗口 11:15–12:14，agent 特测 13:21–13:27，上下文与 KV 以下表为准。</li></ul><table class="art-table"><thead><tr><th>档位</th><th>上下文（tokens）</th><th>KV 缓存</th><th>权重体积</th></tr></thead><tbody><tr><td>Qwen3.8-27B V3.1（UD-Q4_K_XL）</td><td>163,840</td><td>q4_0</td><td>16.45 GiB（du -sb 17,659,407,264 字节）</td></tr><tr><td>Qwen3.8-27B Huihui（UD-Q4_K_XL）</td><td>163,840</td><td>q4_0</td><td>未存档（目录已清理）</td></tr><tr><td>Arete-27B-ablit（Q4_K_M）</td><td>218,000</td><td>q4_0</td><td>15.66 GiB（du -sb 16,810,714,528 字节）</td></tr><tr><td>Nemotron-3.5-Bolt-74B-A9B（24GB 档）</td><td>131,072</td><td>q8_0</td><td>IQ2_XXS 20.51 GiB，引本站 11 月 13 日实测</td></tr></tbody></table><p>权重体积为 2026-11-23 du -sb 复测；Huihui 与 Nemotron 目录测后已清理，本次未存档体积。Nemotron 量化口径（IQ2_XXS，20.51 GiB）引本站 11 月 13 日同名 24GB 档实测，unit 参数一致（单槽、ub 256、KV q8_0）。</p><h3 class="art-h2">二、题库与判分协议</h3><p>基础卷 45 题：数学 10 题、知识选择 10 题、逻辑陷阱 5 题、代码 5 题、指令遵循 5 题、中文 5 题、结构化输出 5 题。困难卷 12 题：竞赛数学 3 题、进阶代码 3 题、硬逻辑 2 题、古文 2 题、长上下文检索 2 题。全部程序判分：非指令遵循题取最后一个 <code>FINAL:</code> 标记后的正文判定；指令遵循题判整段；代码题实际执行单测。</p><ul class="art-tl"><li>首跑输出预算（tokens）：基础卷 代码 1600；其他类别 1200。</li><li>困难卷首跑预算：进阶代码 3000；竞赛数学 2500；硬逻辑 1200；古文 1200；长上下文检索 400。</li><li>重跑规则：基础卷 finish_reason=length 且未通过的题按 4000 tokens 上限重跑（retry_capped.py）；困难卷截断且正文为空的题按类别提高预算重跑（进阶代码 4000；竞赛数学 4000；硬逻辑 3000；古文 3000；长上下文检索 2000，retry_hard.py）；两者均原地覆盖写回原行。</li><li>复核：aggregate.py 用最终题库统一重判全部 228 条；本会话逐字复制其判分函数独立重判，与存档判定 0 处不一致；summary.json 交叉核对 PASS。</li></ul><h3 class="art-h2">三、总分与分项</h3><table class="art-table"><thead><tr><th>档位</th><th>基础 45 题</th><th>困难 12 题</th><th>合计 57 题</th></tr></thead><tbody><tr><td>Qwen3.8-27B V3.1 UD-Q4_K_XL</td><td>45/45</td><td>12/12</td><td>57/57</td></tr><tr><td>Qwen3.8-27B Huihui UD-Q4_K_XL</td><td>45/45</td><td>11/12</td><td>56/57</td></tr><tr><td>Arete-27B-ablit Q4_K_M</td><td>45/45</td><td>12/12</td><td>57/57</td></tr><tr><td>Nemotron-3.5-Bolt-74B-A9B</td><td>43/45</td><td>10/12</td><td>53/57</td></tr></tbody></table><p>两层合并为八组（数学含竞赛、逻辑含硬逻辑、中文含古文、代码含进阶）。三个 27B 档的唯一差别在代码组；74B 档丢分在代码与中文两组：</p><p><b>V3.1</b></p><table class="art-table"><thead><tr><th>组（两层合并）</th><th>得分</th><th>丢分题</th></tr></thead><tbody><tr><td>数学（基础+竞赛）</td><td>13/13</td><td>—</td></tr><tr><td>知识选择</td><td>10/10</td><td>—</td></tr><tr><td>逻辑（陷阱+硬）</td><td>7/7</td><td>—</td></tr><tr><td>代码（基础+进阶）</td><td>8/8</td><td>—</td></tr><tr><td>指令遵循</td><td>5/5</td><td>—</td></tr><tr><td>中文（基础+古文）</td><td>7/7</td><td>—</td></tr><tr><td>结构化输出</td><td>5/5</td><td>—</td></tr><tr><td>长上下文检索</td><td>2/2</td><td>—</td></tr></tbody></table><p><b>Huihui</b></p><table class="art-table"><thead><tr><th>组（两层合并）</th><th>得分</th><th>丢分题</th></tr></thead><tbody><tr><td>数学（基础+竞赛）</td><td>13/13</td><td>—</td></tr><tr><td>知识选择</td><td>10/10</td><td>—</td></tr><tr><td>逻辑（陷阱+硬）</td><td>7/7</td><td>—</td></tr><tr><td>代码（基础+进阶）</td><td>7/8</td><td>h_code_01</td></tr><tr><td>指令遵循</td><td>5/5</td><td>—</td></tr><tr><td>中文（基础+古文）</td><td>7/7</td><td>—</td></tr><tr><td>结构化输出</td><td>5/5</td><td>—</td></tr><tr><td>长上下文检索</td><td>2/2</td><td>—</td></tr></tbody></table><p><b>Arete</b></p><table class="art-table"><thead><tr><th>组（两层合并）</th><th>得分</th><th>丢分题</th></tr></thead><tbody><tr><td>数学（基础+竞赛）</td><td>13/13</td><td>—</td></tr><tr><td>知识选择</td><td>10/10</td><td>—</td></tr><tr><td>逻辑（陷阱+硬）</td><td>7/7</td><td>—</td></tr><tr><td>代码（基础+进阶）</td><td>8/8</td><td>—</td></tr><tr><td>指令遵循</td><td>5/5</td><td>—</td></tr><tr><td>中文（基础+古文）</td><td>7/7</td><td>—</td></tr><tr><td>结构化输出</td><td>5/5</td><td>—</td></tr><tr><td>长上下文检索</td><td>2/2</td><td>—</td></tr></tbody></table><p><b>Nemotron</b></p><table class="art-table"><thead><tr><th>组（两层合并）</th><th>得分</th><th>丢分题</th></tr></thead><tbody><tr><td>数学（基础+竞赛）</td><td>13/13</td><td>—</td></tr><tr><td>知识选择</td><td>10/10</td><td>—</td></tr><tr><td>逻辑（陷阱+硬）</td><td>7/7</td><td>—</td></tr><tr><td>代码（基础+进阶）</td><td>7/8</td><td>h_code_01</td></tr><tr><td>指令遵循</td><td>5/5</td><td>—</td></tr><tr><td>中文（基础+古文）</td><td>4/7</td><td>zh_04、zh_05、h_zh_02</td></tr><tr><td>结构化输出</td><td>5/5</td><td>—</td></tr><tr><td>长上下文检索</td><td>2/2</td><td>—</td></tr></tbody></table><h3 class="art-h2">四、五道错题逐条</h3><table class="art-table"><thead><tr><th>档位 · 题号</th><th>类别</th><th>判据与期望</th><th>结束状态</th></tr></thead><tbody><tr><td>Huihui · h_code_01</td><td>进阶代码</td><td>top_k     for word in words.split():                 ^^^^^^^^^^^ AttributeError: 'list' object has no attribute 'split' ；期望 单测断言（见下文）</td><td>stop / 706 tok</td></tr><tr><td>Nemotron · zh_04</td><td>中文</td><td>一拍即合；期望 ["不谋而合", "不约而同"]</td><td>stop / 441 tok</td></tr><tr><td>Nemotron · zh_05</td><td>中文</td><td>唐代诗人王之翰的《登鸿州黄鹤楼》；期望 ["王之涣", "登鹳雀楼"]</td><td>stop / 240 tok</td></tr><tr><td>Nemotron · h_code_01</td><td>进阶代码</td><td>3, in top_k     for w in words.split():              ^^^^^^^^^^^ AttributeError: 'list' object has no attribute 'split' ；期望 单测断言（见下文）</td><td>stop / 863 tok</td></tr><tr><td>Nemotron · h_zh_02</td><td>古文</td><td>no-letter；期望 "C"</td><td>length / 3,000 tok</td></tr></tbody></table><p>两道 h_code_01 错在同一边界：题目要求 top_k 同时接受字符串与列表，单测首条 <code>assert top_k('a b a c b a'.split(),2)==['a','b']</code>；Huihui 与 Nemotron 都对列表参数直接调用 .split()，触发 <code>AttributeError</code>。V3.1 的通过关键行是 <code>tokens = words.split() if isinstance(words, str) else list(words)</code>，并对 k≤0 提前返回。</p><p>Nemotron h_zh_02：题目问「锲而不舍，金石可镂」出自哪部典籍、只回字母，正确答案 C（《荀子·劝学》）。模型先以 1200 tokens 预算截断且正文为空，按 3000 tokens 重跑后仍截断（finish=length），始终未给出字母——这是唯一重跑后仍失败的题。</p><h3 class="art-h2">五、截断与重跑口径</h3><p>按「存档 tokens 超过首跑预算」判定，至少 5 题触发重跑（覆盖写回使部分重跑不可从产物还原，故取保守口径）：</p><table class="art-table"><thead><tr><th>档位 · 题号</th><th>首跑预算（tok）</th><th>重跑存档（tok）</th><th>结果</th></tr></thead><tbody><tr><td>V3.1 · code_04</td><td>1,600</td><td>1,720</td><td>通过</td></tr><tr><td>Arete · code_04</td><td>1,600</td><td>1,618</td><td>通过</td></tr><tr><td>Nemotron · struct_04</td><td>1,200</td><td>2,379</td><td>通过</td></tr><tr><td>Nemotron · h_needle_32k</td><td>400</td><td>879</td><td>通过</td></tr><tr><td>Nemotron · h_zh_02</td><td>1,200</td><td>3,000</td><td>仍截断失败</td></tr></tbody></table><p>4 题重跑后通过，1 题仍失败。报告.md 的「仅 4 题命中重跑」是基础卷空正文截断口径，两口径无法完全对账，本文取脚本现算保守值。报告.md 与 summary.json 均为 aggregate.py 机器生成（署名 2026-11-21T12:17:41），其 45+12 结构与错题 ID 与原始数据一致。</p><h3 class="art-h2">六、长上下文检索（needle）</h3><p>两道 needle 题把代码藏进长提示词要求原样找出：8k 题提示词 24,224 字符（目标 <code>zk-7f3a9</code>），32k 题 112,162 字符（目标 <code>qn-4b8c2</code>），首跑预算仅 400 tokens。</p><table class="art-table"><thead><tr><th>档位</th><th>8k 题耗时</th><th>32k 题耗时</th><th>32k 题输出 tokens</th></tr></thead><tbody><tr><td>V3.1</td><td>13.4 s（76 tok）</td><td>53.9 s（95 tok）</td><td>95</td></tr><tr><td>Huihui</td><td>12.6 s（78 tok）</td><td>50.5 s（94 tok）</td><td>94</td></tr><tr><td>Arete</td><td>11.0 s（74 tok）</td><td>42.8 s（74 tok）</td><td>74</td></tr><tr><td>Nemotron</td><td>13.7 s（363 tok）</td><td>47.7 s（879 tok）</td><td>879</td></tr></tbody></table><p>四档均找出两个代码。Arete 的 32k 题最快（42.8 秒）；Nemotron 的 32k 题输出 879 tokens 超首跑预算，按 2000 tokens 重跑后通过——长提示词不一定短回答，预算要给推理留量。</p><h3 class="art-h2">七、agent 特测</h3><p>协议：4 个工具（get_weather / calculate / search_web / create_lead），6 个工具调用用例（单调用、选择、并行、不调用、嵌套、追问），3 个严格 JSON schema 用例（response_format strict），外加一轮 8 轮长对话记忆测试；思考经 chat_template_kwargs.enable_thinking 切换。本负载两只模型均开 MTP 投机解码（--spec-type draft-mtp --spec-draft-n-max 2 --jinja）；上文能力卷不开投机、无 --jinja——两套口径不可互推。</p><table class="art-table"><thead><tr><th>配置</th><th>工具+JSON 9 项</th><th>平均耗时</th><th>平均输出 tokens</th></tr></thead><tbody><tr><td>V3.1 思考开</td><td>9/9</td><td>3.62 s</td><td>121.9 tok</td></tr><tr><td>V3.1 思考关</td><td>9/9</td><td>2.03 s</td><td>41.8 tok</td></tr><tr><td>Arete 思考开</td><td>9/9</td><td>4.52 s</td><td>161.9 tok</td></tr><tr><td>Arete 思考关</td><td>9/9</td><td>1.97 s</td><td>41.8 tok</td></tr></tbody></table><ul class="art-tl"><li>关思考后 V3.1 省 65.7% tokens / 43.9% 时间，Arete 省 74.2% / 56.4%，正确率不变（均 9/9）。</li><li>长对话记忆：四种配置均原样复述项目代号与预算（"The project codename is ZK-Atlas and the budget is 450,000 USD."），每轮均值 2.8–2.9 秒。披露：脚本对该项未传 enable_thinking，ON/OFF 两组是同一服务端默认配置的两次采样，不构成思考开关对照。</li><li>nojinja 对照（仅 V3.1，只去掉 --jinja、MTP 保持）：前 3 个工具用例全对（3/3，均值 2.7 秒）——本考卷上去掉聊天模板未破坏工具调用。</li><li>MTP 草稿接受率（journal 逐请求口径）：ag-v31 39 个样本均值 85.5%，ag-arete 36 个样本均值 78.8%；短回答只出一个草稿时会出现 0% 或 100%，看均值不看单点。</li></ul><h3 class="art-h2">八、手写笔记复核差异表（脚本现算 vs agent优化 md）</h3><p>本次测评唯一手写文档是 agent优化_20261121.md；报告.md 与 summary.json 为机器生成。以下为脚本现算澄清的 9 条差异与口径，逐字记录（含对本会话早先误读的更正）：</p><table class="art-table"><thead><tr><th>手写笔记 / 早先口径</th><th>脚本现算</th><th>处理</th></tr></thead><tbody><tr><td>agent优化 md「每轮快 ~45%」</td><td>V3.1 43.9% / Arete 56.4%（工具+JSON 9 项均值口径）</td><td>~45% 为两模型粗平均；文章分模型给精确值</td></tr><tr><td>agent优化 md「同卡装不下两个（21G+20G）」</td><td>权重 du 实测 V3.1 16.45 GiB / Arete 15.66 GiB（21G/20G 应为含 KV 缓存的占用口径）</td><td>文章不引用 21G/20G；权重只给 du 实测两档，Huihui/Nemotron 权重文件测评后已移走、无法复核，不给体积数</td></tr><tr><td>multiturn 思考开关归属</td><td>agent_eval.py multiturn 用例未传 enable_thinking（multiturn_toggles_thinking=False），ON/OFF 两组多轮数字实为同一服务端默认配置的两次采样</td><td>文章把 8 轮多轮单列，不归因于思考开关；开关结论只覆盖 6 工具+3 JSON</td></tr><tr><td>agent 专项投机解码口径</td><td>ag-v31/ag-arete 均带 --spec-type draft-mtp --spec-draft-n-max 2 --jinja；草稿接受率 ag-v31 0.0–100.0%、ag-arete 0.0–100.0%（journal 一手）；能力卷四个 eval-* 单位均未开投机</td><td>文章显式披露：agent 耗时含 MTP 加速，能力卷不含；两套口径不可互推</td></tr><tr><td>items.json 修改时间晚于 Huihui 基础卷</td><td>items.json mtime 11:43（ZS26），Huihui 基础卷 11:22–11:27 跑完；aggregate.py 用最终题库对全部 228 条统一重判，本次独立重判 0 处不一致</td><td>判定以最终题库为准（已验证）；Huihui 逐题提示词与最终题库的字节一致性无法从产物验证，Tech 记录披露</td></tr><tr><td>h_zh_02（Nemotron）3000 tokens 来源</td><td>首跑 zh_h 预算 1200 触截断且正文为空 → retry_hard.py 以 zh_h=3000 重跑仍截断（journal 12:11:32–12:14:03 窗口）</td><td>文章按「重试后仍失败」表述，不计为模型答错知识</td></tr><tr><td>本会话早先「报告.md 与原始数据不符（37+20）」判断</td><td>报告.md 为 aggregate.py 机器生成（12:17 署名 ZS26 本机 AI），45+12 与错题 ID 均与原始数据一致；早先判断系误读</td><td>更正：唯一手写文档是 agent优化_20261121.md；其表格数字与 agent_results.json 一致（均值逐项核对通过）</td></tr><tr><td>报告「仅 4 题命中重跑」口径</td><td>按「存档 tokens 超首跑预算」现算至少 5 题触发重跑（基础 3：V3.1/Arete code_04、Nemotron struct_04；困难 2：Nemotron h_needle_32k、h_zh_02），4 题重跑后通过、h_zh_02 仍失败；报告「4 题」限基础卷 4000-token 重跑口径，且 retry_capped 原地覆盖旧行，重跑后 tokens 落回预算内的基础题无法从产物还原，两口径不能完全对账</td><td>文章按现算口径写「至少 5 题因截断重跑，4 题恢复、1 题仍失败」</td></tr><tr><td>报告「测评期间挖矿暂停」</td><td>journal 核实：prl-miner-7900.service 11:05:36 Stopped（早于首个测评窗口 11:06:43），看门狗 11:06:28/12:14:29/13:38:53 持续报 inactive（llm/video mode），覆盖能力卷与 agent 卷全程</td><td>声明成立，文章按单卡独占口径表述</td></tr></tbody></table><h3 class="art-h2">九、边界与不可互推项</h3><ul class="art-tl"><li>贪心单次运行（temperature=0, seed=42（贪心）），非多次采样统计均值；一题之差不构成显著差异。</li><li>57 题考卷不测开放创作、多模态、长程规划与真实业务；满分不等于全能。</li><li>能力卷（不开投机、无 --jinja）与 agent 卷（MTP 开、--jinja）是两套负载，耗时与吞吐不可互推。</li><li>全程单卡独占且挖矿暂停；共享显卡或多卡环境的速度不在本文保证范围。</li><li>Huihui 与 Nemotron 权重体积未存档（目录已清理）；Nemotron 量化口径引本站 11 月 13 日稿。手写笔记的 21G/20G 为含 KV 的占用口径，本文权重体积只给 du 实测。</li><li>上下文上限为压缩 KV 口径（q4_0 / q8_0）；长提示词预填充耗时由 needle 题单独实测，不计入单题中位。</li></ul></div><div class="kv-box"><h3>复算与延伸</h3><p class="kv-sub">本文全部数字可由原始产物复算；复核脚本与中间 JSON 存档于 JAVIS Tech 目录。</p><ul class="art-tl"><li><b>只要结论</b>：见同日<a href="news-2026-11-23-7900xtx-four-model-verdict.html">《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》</a>：一张表加三句话，给决策与配置用。</li><li><b>同卡引擎基线</b>：见 11 月 13 日<a href="news-2026-11-13-llama-v100-matrix.html">《llama.cpp v1.0.0 当日实测：74B 解码 62.6 tok/s，新旧量化打平》</a>与<a href="news-2026-11-13-nemotron-bolt-7900xtx.html">《24GB 消费卡跑 74B：7900 XTX 实测 Nemotron-Bolt，解码 +20.5%、预填充 −39.2%》</a>：引擎升级前的速度基线与 74B 档量化口径。</li><li><b>真实业务形态</b>：见<a href="case-real.html">真实案例 · 实战功能一瞥</a>。</li></ul></div><p class="art-src">来源：JAVIS 本地实测（ZS26 工作站，AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100），llama.cpp b1b770d（v1.0.0，build-hip））；2026-11-21 采集，2026-11-23 脚本复核；原始产物：results_all.jsonl（228 行）、results.csv、summary.json、agent_results.json、items.json / hard_items.json、systemd journal（挖矿暂停、MTP 接受率、各档窗口）；复核脚本 1123_agg_7900xtx_4model.py 与中间 JSON 7900xtx_4model_20261121.json 存档于 JAVIS Tech 目录，取证摘录 1123_zs26_evidence.txt；权重体积为 2026-11-23 du -sb 复测。 本文数据为同一台机器单卡独占实测，全部数字由脚本从原始产物现算，未从手写汇总转抄；环境不同绝对值不保证复现，不构成投资建议或产品评测结论。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>需要把本文判分协议放到你的验收里？JAVIS 提供约 40 分钟私有化部署评估，用你的业务题现场重跑，出同口径脚本现算报告。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-23-7900xtx-four-model-verdict.html" title="一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">7900XTX四模型选型</span>
+        <span class="pg-d">2026-11-23</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-22-tianhe-v2-water-network-llm.html" title="中国南水北调「天河」大模型升级 V2：防汛分析从小时级压到分钟级，信创智算云底座可复制">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">南水北调天河 V2</span>
+        <span class="pg-d">2026-11-22</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测）」，机悟 JAVIS，2026-11-23，https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测）](https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html)（机悟 JAVIS，2026-11-23）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

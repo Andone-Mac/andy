@@ -6,7 +6,23 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 22 Nov 2026 11:30:23 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 06:51:17 +0000</lastBuildDate>
+    <item>
+      <title>一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分</title>
+      <link>https://javis.org.cn/news-2026-11-23-7900xtx-four-model-verdict.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-23-7900xtx-four-model-verdict.html</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 选型结论</category>
+      <description>JAVIS 本地实测（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB eGPU 上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 四档本地模型同卷 57 题程序判分（45 基础 + 12 困难，共 228 条回答）：V3.1 与 Arete 均 57/57 满分，Huihui 56/57，74B 档 53/57、单题中位耗时比 Arete 慢约 42.0%；agent 工具特测 9/9 全对，关思考省 65.7%–74.2% tokens。本文为结论版，协议与错题见同日证据版。</description>
+    </item>
+    <item>
+      <title>7900 XTX 四模型 228 题全记录：判分协议、5 道错题与重跑口径（11 月 21 日实测）</title>
+      <link>https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html</guid>
+      <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 能力复核</category>
+      <description>JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 9 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。</description>
+    </item>
     <item>
       <title>中国南水北调「天河」大模型升级 V2：防汛分析从小时级压到分钟级，信创智算云底座可复制</title>
       <link>https://javis.org.cn/news-2026-11-22-tianhe-v2-water-network-llm.html</link>
