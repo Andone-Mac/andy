@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.2">
+<link rel="stylesheet" href="assets/site.css?v=7.2.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="豆包同款视频通话模型开放 API：火山 SeedRealtime 1.0 边看边听边说，还会主动开口 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -185,6 +185,7 @@
 <section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-21</span><span class="n-tag">多模态交互 · API</span><h1 class="art-h1">豆包同款视频通话模型开放 API：火山 SeedRealtime 1.0 边看边听边说，还会主动开口</h1><p class="art-lede">你在豆包 App 里点「打电话」用的那套视频通话能力，现在可以接进自己的产品了：火山引擎 11 月 19 日 14:36 在官方公众号宣布，SeedRealtime 1.0 API 全量上线（凤凰网科技当日 14:48 转载）。它把声音、画面、时序、表达放进一个端到端模型，「边看、边听、边说」，还会在合适的时机主动开口——官方称音视频对话节奏问题减少了一半（人工评测，样本量与评判标准未公开）。这套能力 8 月 5 日就进了豆包 App，到 API 开放已在 C 端跑了 106 天（本刊计算）。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、端到端对级联：延迟与信息损耗一起省</h3><p>官方口径：传统方案是 ASR（语音转文字）+ VLM（视觉语言模型）+ TTS（文字转语音）三段级联，延迟叠加、信息损耗；SeedRealtime 1.0 把声音、画面、时序、表达统一进一个端到端模型，持续理解场景、在合适时机主动开口。全双工建立在豆包实时语音模型 3.0（Seeduplex）之上（星河商业观察 11 月 20 日口径）。唯一量化结论：官方人工评测「音视频对话节奏问题减少了一半」「单次对话能够完整、顺畅交流的概率明显提升」——样本量与评判标准未公开，第三方未复测，引用须带此限定。</p><h3 class="art-h2">二、六个官方案例：它到底能干什么</h3><ul class="art-tl"><li>多人聚餐：区分不同说话人身份，按各自需求定制旅行方案。</li><li>咖啡制作：看到整豆倒入手柄，提醒先研磨；观察油脂出液量，建议缩短萃取时间。</li><li>学习陪读：翻页时识别章节，报出学习率、动量、权重衰减等参数含义。</li><li>机场出行：过滤背景闲聊，调取此前大屏上的航班信息，指引网约车上车点。</li><li>家庭陪学：英文实时纠音，背景里爸爸接电话不干扰主线对话。</li></ul><p>适用场景官方点名四类：语音助手、智能硬件、陪伴式应用、实时客服。案例的共同点是画面、声音、时序一起用：模型要记得刚才看到了什么、谁在说话、现在该不该插话——这正是级联方案最容易丢的信息（案例据驱动中国对官方发布的转述）。</p><h3 class="art-h2">三、计费与接入：按通话时长，单价看控制台</h3><p>计费口径：按通话时长结算，单价与配额以火山引擎控制台为准（官方公众号与多家转载一致；具体费率未在公开稿中给出，本刊不估算）。8 月 5 日豆包 App 上线（对话框点「打电话」进视频通话），11 月 19 日 API 全量开放——C 端验证三个多月后再开 B 端。对开发者的实际意义：实时客服与陪伴硬件不必再自己拼 ASR+VLM+TTS 三件套，但「节奏问题减半」是厂商评测口径，上线前要用自己的场景复测；长通话、高并发业务先把月账算出来再签约。</p></div><div class="kv-box"><h3>机悟建议：实时交互选型，先复测再签约</h3><p class="kv-sub">厂商评测是起点，自己的场景集才是验收依据</p><ul class="art-tl"><li>「节奏问题减半」是官方人工评测、样本量未公开，用自己的场景集复测后再写进方案。</li><li>按通话时长计费，长通话/高并发场景先算月账，单价与配额以控制台为准。</li><li>全双工不等于免级联：复杂业务逻辑仍要后端模型与工具链兜底。</li><li>实时客服/陪伴硬件的交互链路怎么搭，机悟可提供约 40 分钟演示。</li></ul></div><p class="art-src">来源：火山引擎官方公众号 2026-11-19 14:36（凤凰网科技 tech.ifeng.com/c/8yBDkaZU0eF 当日 14:48 转载、腾讯新闻 news.qq.com/rain/a/20261119A09GDX00）、驱动中国 app.qudong.com/article/530142.html（案例）、星河商业观察（腾讯新闻 news.qq.com/rain/a/20261120A0CTFK00，计费与 Seeduplex 口径）。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-11-21-beijing-embodied-ai-plan-2028.html" title="北京印发具身智能机器人三年方案：20 万台年产能，京津冀要占全国四分之一">
         <span class="pg-k">← 上一篇</span>
@@ -198,6 +199,7 @@
       </a>
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+  </div>
 </section>
 
 <section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>实时语音加视频的场景怎么落地、级联与端到端怎么选、通话月账怎么算，机悟用约 40 分钟帮你把交互方案理清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>

@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.2">
+<link rel="stylesheet" href="assets/site.css?v=7.2.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="中国范式智能发布 Phai 双模型：百万上下文可本地 PC 部署，昇腾全流程后训练 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -185,6 +185,7 @@
 <section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-19</span><span class="n-tag">国产模型 · 本地部署</span><h1 class="art-h1">中国范式智能发布 Phai 双模型：百万上下文可本地 PC 部署，昇腾全流程后训练</h1><p class="art-lede">11 月 18 日，范式智能技术集团股份有限公司（6682.HK，原第四范式）在 APEC 会议期间发布 Phai 系列两款自研模型：面向语言与代码的 Phai-A1、面向真人影视视频的 Phai-M1（InfoQ，11 月 19 日）。这是又一家中国企业级 AI 厂商下场做基础模型，卖点直接对准本地部署与国产算力：百万级上下文、个人电脑可跑、昇腾全流程后训练。需要说明：截至发稿两款模型权重尚未开放下载，官方称「计划未来不久开放」；文中速度数据均为厂商口径。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、Phai-A1：百万上下文 + 个人电脑本地部署</h3><p>Phai-A1 定位语言、代码与智能助手场景，覆盖代码编写、缺陷修复、工具调用与多步骤任务执行。两个硬指标：原生百万级 token 上下文（后训练覆盖超长文本场景，官方称可完整读取大型代码仓库与长文档）；支持个人电脑本地部署，用户可按硬件条件与数据合规要求选择本地运行（InfoQ）。对数据不能出域的场景，「PC 可跑」比跑分更值得注意。</p><ul class="art-tl"><li>速度口径（厂商测试）：同等单卡 RTX 3090、相同代码智能体任务下，响应速度较 Qwen 27B 提升约 8–10 倍；无第三方复现，采购前建议自测。</li><li>代码基准：官方称在 SWE-Bench-Verified、SWE-Bench-Pro、SWE-Bench-Multilingual 上表现良好、部分达到更大参数模型水平；具体分数未公布。</li><li>参数规模、许可证与权重体积均未公布——这是评估私有化显存账的前置信息，等权重开放才能算。</li></ul><h3 class="art-h2">二、Phai-M1：真人影视视频，音画同步生成</h3><p>Phai-M1 面向真人影视级视频生成，支持音画同步，针对人物表情、肢体动作与画面细节做了优化，目标场景包括短剧与内容工作室。官方实测口径：生成 15 秒 720P 视频约需 3 分钟——生成时长约为片长的 12 倍（本刊计算）。这个效率离「实时」还很远，但对离线内容生产管线已经可用；同样，该数字为厂商口径，硬件配置未完整披露。</p><h3 class="art-h2">三、昇腾全流程后训练与产品链条</h3><p>算力侧，范式依托 ModelHub XC 社区完成华为昇腾平台的全流程后训练优化，并已打通 ModelHub XC、HAMi、ModelSphere 等基础设施，向上接入 PhanthyCode（代码）与 PhanthyMovie（视频）两款应用，体验入口为 phai.phanthy.com（InfoQ）。CEO 戴文渊的表述是：基础模型竞争不只是参数规模竞争，而是算力、模型与应用协同能力的竞争。对信创路线的读者，「昇腾全流程后训练」意味着这条链条可以在国产算力上复现，而不只是推理适配。</p><h3 class="art-h2">四、开源时间表与三个待观察项</h3><p>InfoQ 标题写「开源模型」，但正文明确是「计划未来不久开放 Phai-A1 及 Phai-M1 模型权重」——截至发稿，权重尚不可下载，本文按「尚未开源、计划近期开放」表述。三个待观察项：许可证文本（开源不等于可自由商用）、参数规模与量化档位（决定显存账）、8–10 倍提速的第三方复现（厂商同卡对比口径）。在这三项落地之前，建议把它放进候选清单而不是采购清单。</p></div><div class="kv-box"><h3>机悟建议：权重开放前，先做三个核对</h3><p class="kv-sub">本地部署是亮点，口径要核</p><ul class="art-tl"><li>先核许可证：等权重与许可证文本公布再评估商用边界，「计划开源」不等于现在可以下载部署。</li><li>速度宣称要复测：8–10 倍是官方同卡（RTX 3090）对比 Qwen 27B 的口径，拿自己的硬件与任务复测后再下结论。</li><li>本地部署是核心看点：百万上下文 + PC 部署契合数据敏感场景，权重开放后重点看显存需求与量化档位。</li><li>昇腾链条可验证：全流程后训练在国产算力完成，可纳入信创候选清单与现有私有化方案做对照。</li></ul></div><p class="art-src">来源：InfoQ《范式智能下场做基础模型，发布 Phai 系列 2 款开源模型，原生百万上下文，国产算力全流程训练》（2026-11-19，作者 Emma；事件为 2026-11-18 北京 APEC 期间发布）。速度与生成效率数据均为厂商口径；截至发稿权重尚未开放，参数规模与许可证未公布。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-11-19-anthropic-ipo-pricing.html" title="Anthropic IPO 定价 83 美元：募资约 813 亿超越 SpaceX，今日纳斯达克挂牌">
         <span class="pg-k">← 上一篇</span>
@@ -198,6 +199,7 @@
       </a>
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+  </div>
 </section>
 
 <section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>想把百万上下文的模型装进自己的电脑或内网？我们可以帮你把硬件账算清楚：什么量化档位配什么卡、长上下文要吃多少显存、数据不出域的边界怎么画，权重开放后第一时间做适配评估。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>

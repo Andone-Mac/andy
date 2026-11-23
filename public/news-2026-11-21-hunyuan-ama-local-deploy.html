@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.2">
+<link rel="stylesheet" href="assets/site.css?v=7.2.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="中国腾讯混元 AMA 首谈本地部署：Hy4 flash 可跑 128GB DGX Spark，单任务约 0.26 元 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -185,6 +185,7 @@
 <section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-21</span><span class="n-tag">开源大模型 · 本地部署</span><h1 class="art-h1">中国腾讯混元 AMA 首谈本地部署：Hy4 flash 可跑 128GB DGX Spark，单任务约 0.26 元</h1><p class="art-lede">本站此前已分别讲过混元 Hy4 旗舰开源与 flash 的权重、许可和成本，本篇换一个切面——11 月 21 日凌晨那场 AMA 里<b>首次披露的本地部署门槛与端侧路线图</b>。据腾讯科技与 21 世纪经济报道 11 月 21 日报道，姚顺雨携混元团队在 Reddit 做了 <b>120 分钟</b> AMA、回答近 100 个问题，是团队首次面向开发者社区的公开问答。对想在自家硬件上跑模型的人，最实用的几句是：Hy4 flash 可以在 <b>M5 Max 和配 128GB 内存的 DGX Spark</b> 上运行，提供 GGUF 版本，SWA 把 KV 缓存缩到原来约<b>四分之一</b>，llama.cpp 适配正在推进。这些是「能不能在本地跑起来」的一手答案。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、本地部署门槛：哪些硬件能跑、怎么跑</h3><p>AMA 给出的本地运行口径相当具体：Hy4 flash 可以在 M5 Max 和配有 128GB 内存的 DGX Spark 上运行；官方提供 Hy4 与 Hy4 flash 的 GGUF 版本；通过 SWA（滑动窗口注意力）把 KV 缓存缩小到原来的约四分之一，并把 64B 的 Engram 参数卸载到主机内存，让激活的 12B 参数在 128GB 以上设备上跑得更快。但团队也划了红线：总参 220B 的模型即便 Q4 量化也需要 130GB 以上内存，多数单显卡和 64GB 内存的 Mac 跑不了；端侧模型会用不同的设计思路，而非简单缩小旗舰。</p><table class="art-table"><thead><tr><th>项目</th><th>AMA 口径</th></tr></thead><tbody><tr><td>可运行硬件（Hy4 flash）</td><td>M5 Max、配 128GB 内存的 DGX Spark</td></tr><tr><td>量化格式</td><td>提供 GGUF 版本（Hy4 与 Hy4 flash）</td></tr><tr><td>KV 缓存优化</td><td>SWA 缩到原来约 1/4；64B Engram 参数卸载主机内存</td></tr><tr><td>220B 总参 Q4 门槛</td><td>需 130GB 以上内存，多数单显卡与 64GB Mac 跑不了</td></tr><tr><td>llama.cpp</td><td>正在推进适配，近期由开源社区推动</td></tr><tr><td>NVFP4 / EXL3</td><td>暂未提供官方 NVFP4 量化（可参考社区）；无官方 EXL3 计划</td></tr></tbody></table><ul class="art-tl"><li>「能跑」与「跑得快」是两回事：128GB 设备可运行 flash，但吞吐与上下文长度仍要按量化档位实测。</li><li>官方量化暂未覆盖 NVFP4/EXL3，本地部署短期内更多依赖社区 GGUF 与 llama.cpp 生态。</li></ul><h3 class="art-h2">二、端侧路线图：Hy4-mini 与 24GB 显存模型</h3><p>对显存有限的本地用户，AMA 透露了明确的小模型路线：Hy4-mini 已列入路线图；24B—31B 的稠密模型在考虑之中；面向 24GB 显存的模型「有，未来会发布」；还有 Flash-Lite 模型「敬请期待」。团队同时表态会继续开源，并强调端侧模型会用不同于旗舰的设计思路。换句话说，本地推理的供给不会只有「跑不动的大旗舰」，更小、更省显存的档位正在路上——这对边缘与单机私有化是实质利好。</p><ul class="art-tl"><li>Hy4-mini：已列入路线图（具体规格未公布）。</li><li>24B—31B 稠密模型：在考虑中；面向 24GB 显存的模型未来发布。</li><li>Flash-Lite：敬请期待；团队承诺继续开源。</li></ul><h3 class="art-h2">三、性价比与迭代节奏：单任务约 0.26 元怎么读</h3><p>成本方面，21 世纪经济报道引 AMA 与官方口径：在 WorkIndex 上 Hy4 flash 的单任务成本约为 Hy4 的 1/20；85 名内部用户、259 项任务的盲测中，单任务成本约 0.26 元。这是「内部盲测 + 特定基准」口径，不等于任意场景的实际账单，引用时要带上限定。迭代节奏上，团队称平均约两个月一个大版本：2 月重建基础设施 → 4 月 Hy3 preview（2950 亿总参/210 亿激活）→ 7 月 Hy3 正式 → 8 月 Hy4 preview（770B/49B/1M 上下文）→ 11 月 Hy4 正式（加入视觉与电脑操作）→ Hy4 flash。团队还提出三条原则：能力体系化、评测真实性、性价比追求，并直言「不迷信单一榜单」。</p><ul class="art-tl"><li>0.26 元/任务是 85 人 259 项内部盲测口径，非通用报价；1/20 是 WorkIndex 上相对 Hy4 的成本比。</li><li>算力约束（刘炽平 Q3 电话会口径）：限制影响所有中国参与者，训练受影响但 Hy4 效率较高，推理侧国内供应链应能满足。</li><li>想读旗舰与 flash 的许可与权重细节，见本站 <a href="news-2026-11-20-hy4-flagship-opensource.html">Hy4 旗舰开源</a> 与 <a href="news-2026-11-18-hy4-flash-weights-opensource.html">Hy4 flash 权重开源</a> 两篇。</li></ul></div><div class="kv-box"><h3>机悟建议：本地跑混元，先对显存再等小档位</h3><p class="kv-sub">128GB 能跑 flash，24GB 档位还在路上</p><ul class="art-tl"><li>按显存对号：128GB 级设备可试 Hy4 flash（GGUF），220B 旗舰 Q4 需 130GB+，别硬上。</li><li>短期本地部署靠社区 GGUF + llama.cpp，官方 NVFP4/EXL3 暂未覆盖，量化档位以实测为准。</li><li>显存有限可等 Hy4-mini 与 24GB 显存档位，不必现在勉强跑大模型。</li><li>0.26 元/任务是内部盲测口径，落到自家场景要重新算账，机悟可做约 40 分钟选型评估。</li></ul></div><p class="art-src">来源：腾讯科技 2026 年 11 月 21 日《混元团队 120 分钟 AMA》（news.qq.com/rain/a/20261121A036ZO00）、21 世纪经济报道 2026 年 11 月 21 日 11:23 记者吴佳楠（sfccn.com/2026/11-21/0MMDE0NDlfMjMxMjk0Mg.html）；本地部署硬件、量化与路线图均为 AMA 现场口径，成本数字为内部盲测/特定基准口径。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-11-21-moore-threads-lushan-gpu.html" title="中国国产 GPU「庐山」预告：AI 计算性能提升 64 倍、光追 50 倍，12 月底 MDC 揭晓">
         <span class="pg-k">← 上一篇</span>
@@ -198,6 +199,7 @@
       </a>
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+  </div>
 </section>
 
 <section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>你的显存能跑哪一档混元、量化怎么选、成本怎么算，机悟用约 40 分钟帮你把本地部署的可行性与账目核清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>

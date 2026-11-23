@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.2">
+<link rel="stylesheet" href="assets/site.css?v=7.2.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="中国腾讯开源 WeVisForensics 视频检测智能体：三类基准平均 95.2%，判决附可定位证据 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -185,6 +185,7 @@
 <section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-22</span><span class="n-tag">AI 内容安全 · 开源智能体</span><h1 class="art-h1">中国腾讯开源 WeVisForensics 视频检测智能体：三类基准平均 95.2%，判决附可定位证据</h1><p class="art-lede">AI 生成视频越来越难辨真假，腾讯的一篇论文给出了一个新思路：把检测做成一次「调查」。这篇 11 月 16 日提交到 arXiv 的论文（编号 2611.21373，已在 GitHub 以 Tencent/WeVisForensics 开源）提出 WeVisForensics——一个主调查智能体自适应调度一群取证子智能体，覆盖视觉与音频线索，最终给出<b>附可定位证据</b>的判决。论文实验显示，它在三类基准上平均检测准确率 <b>95.2%</b>，较此前最优检测器高 <b>9.0%</b>。对政企内容安全场景，「判决附证据」比「给个真假标签」更有价值——它可审计、可申诉。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、它怎么工作：调查体 + 子智能体库</h3><p>论文把视频检测类比成人类取证分析师的工作流：先看整体形成假设，再放大到可检验的时刻与区域，咨询合适的专家，持续收集证据直到结论被支撑。WeVisForensics 把这套流程做成两层智能体系统。</p><ul class="art-tl"><li>主调查智能体（investigator）：决定查哪类伪影、查哪个时间窗口、何时下结论，自适应调度子智能体。</li><li>取证子智能体库（FSL）：可自进化的检查专家集合，覆盖视觉与音频线索，被调查体按需调用。</li><li>DTPO 双时间尺度优化：调查体做快强化学习、检查体做慢精炼，二者从共享交互中协同进化。</li><li>ForenCue-30K 数据集：含角色化取证标注与交互轨迹，监督单次检查及其协同，并配强化学习池。</li></ul><h3 class="art-h2">二、硬数字与口径</h3><p>下表数字均来自论文实验（arXiv:2611.21373），属论文口径，非第三方独立复测。</p><table class="art-table"><thead><tr><th>指标</th><th>数值</th><th>口径</th></tr></thead><tbody><tr><td>平均检测准确率</td><td>95.2%</td><td>三类基准（域内/域外/智能体）</td></tr><tr><td>较此前最优检测器</td><td>高 9.0%</td><td>论文实验对比</td></tr><tr><td>判决形式</td><td>附可定位证据链</td><td>含时间区间，非仅真假标签</td></tr></tbody></table><ul class="art-tl"><li>「三类基准」指域内（in-domain）、域外（out-of-domain）与智能体（agentic）基准，95.2% 是其平均。</li><li>证据可定位：判决给出支撑结论的时间区间与证据链，便于人工复核与申诉。</li></ul><h3 class="art-h2">三、对政企内容安全的含义</h3><p>对需要做 AI 生成视频鉴别的政企（舆情、内容审核、司法取证辅助等），这套方案有两点契合：其一，开源（GitHub Tencent/WeVisForensics，论文 CC BY 4.0）意味着可以私有化部署到内网，敏感视频不出域；其二，「判决附可定位证据」天然适配审计与申诉流程——不是黑箱给标签，而是能指出「哪一段、什么伪影」支撑结论。落地时建议把检测智能体与内网审核流程对接，判决证据留痕，人工复核兜底。本文仅转述公开论文，不评判任何企业与产品。</p><ul class="art-tl"><li>开源可私有化：权重与代码公开，可部署内网，敏感视频不出域。</li><li>证据可审计：可定位证据链适配审核留痕与申诉，优于黑箱标签。</li><li>人工复核兜底：检测智能体给证据，最终判定由人确认，符合内容安全合规要求。</li></ul></div><div class="kv-box"><h3>机悟建议：政企内容安全怎么落地视频检测</h3><p class="kv-sub">把开源检测智能体接进内网审核流程</p><ul class="art-tl"><li>私有化部署：开源方案可进内网，敏感视频与判决数据不出域。</li><li>证据留痕：把可定位证据链（时间区间）接入审核留痕，便于审计与申诉。</li><li>人工复核兜底：智能体给证据与建议，最终判定由人确认。</li><li>与内网大模型协同：检测、研判、报告生成可在同一私有化环境里串起来。</li></ul></div><p class="art-src">来源：腾讯 arXiv:2611.21373（2026-11-16 提交，CC BY 4.0）、GitHub Tencent/WeVisForensics；数字为论文实验口径，非第三方独立复测。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-11-22-us-chip-licenses-china-879k.html" title="中国获美放行逾 87.9 万颗高端 AI 芯片：半年申请超 340 万颗，获批不等于到货">
         <span class="pg-k">← 上一篇</span>
@@ -198,6 +199,7 @@
       </a>
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+  </div>
 </section>
 
 <section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>AI 生成视频鉴别要进内网、要留证据。机悟提供约 40 分钟的私有化部署评估，帮你把开源检测智能体与内网审核流程、数据不出域一次理清。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>

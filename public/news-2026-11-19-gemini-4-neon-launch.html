@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.2">
+<link rel="stylesheet" href="assets/site.css?v=7.2.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="谷歌发布 Gemini 4 Neon：官方称快 3 倍便宜 60%，独立实测每任务省 17% | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -185,6 +185,7 @@
 <section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-19</span><span class="n-tag">大模型 · 云端 API</span><h1 class="art-h1">谷歌发布 Gemini 4 Neon：官方称快 3 倍便宜 60%，独立实测每任务省 17%</h1><p class="art-lede">11 月 18 日，谷歌发布 Gemini 4 家族第四个模型 Neon（官方博客，作者 Koray Kavukcuoglu），输入 3 美元/百万 token、输出 15 美元/百万 token，1M 上下文。官方初测称质量持平或超过 Carbon 的同时快约 3 倍、便宜约 60%；独立机构 Artificial Analysis 的每任务口径则是省约 17%、时间省约 40%——两个口径差多少，下文算给你看。同日 Gemini App 下架 Argon、由 Neon 接替其位置。本站此前已报道 <a href="news-2026-10-29-gemini-4-carbon-price.html">Carbon 定价</a> 与 <a href="news-2026-11-13-gemini-4-hydrogen-flash.html">Hydrogen 满量上线</a>，本篇讲 Neon 的价格、两套基准与家族换防。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、价格：比 Carbon 标准价便宜 25%，比促销价贵 50%</h3><table class="art-table"><thead><tr><th>模型</th><th>输入（美元/百万 token）</th><th>输出（美元/百万 token）</th></tr></thead><tbody><tr><td>Gemini 4 Neon</td><td>3</td><td>15</td></tr><tr><td>Gemini 4 Carbon 标准价</td><td>4</td><td>20</td></tr><tr><td>Gemini 4 Carbon 促销价（至 11-30）</td><td>2</td><td>10</td></tr></tbody></table><p>Neon 输入/输出均比 Carbon 标准价便宜 25%（本刊计算），但比 Carbon 促销价贵 50%——促销 11 月 30 日截止，做长期预算别按促销价锁。缓存输入 0.15 美元/百万 token（95% 折扣）。上下文 1M token，同步输出上限 64K，后台长解码可至 1M（官方博客/模型卡）。思考档位 low/medium/high/xhigh 四档，Neon 默认 high；官方称 Neon 由 Carbon 适配而来，内部 Antigravity 测试虚构率（fabrication rate）为历史最低。</p><h3 class="art-h2">二、两套基准：官方 3 倍/60% vs 独立 17%/40%</h3><p>谷歌官方初测口径：质量持平或超过 Carbon，速度约 3 倍、成本约便宜 60%（Livemint 转引谷歌）。Artificial Analysis（11 月 18 日）的标准化口径：智能指数 61 分（xhigh 思考档）总榜第 3，比 Carbon（high 档）高 1 分；每任务成本约 6.44 美元 vs Carbon 约 7.76 美元，省约 17%（本刊计算）；每任务时间约 21 分钟 vs 约 36 分钟，省约 40%；输出速度约 110 vs 约 57 token/s，约 1.9 倍。两套数字都对，但口径不同：官方是初测，AA 是标准化每任务成本——采购预算建议按每任务口径算。</p><ul class="art-tl"><li>编码智能体指数（Coding Agent Index）：Neon 59 分（Antigravity CLI，xhigh 档），高于 Carbon 在榜最高档的 55 分（AA 口径）。</li><li>每编码任务成本约 6.86 美元，比 Claude Opus 5.5 的 12.61 美元省约 46%、比 Fable 5.2 的 15.47 美元省约 56%（本刊计算，AA 口径）。</li><li>Vals Index 第 2 且位于 Pareto 前沿；Agent Arena 可控性（steerability）第 2（官方博客转引）。</li></ul><h3 class="art-h2">三、家族换防：Argon 退出 App，保留在 API</h3><p>11 月 18 日起，Gemini App 模型列表只保留 Hydrogen（日常）、Neon（深度分析与复杂推理）、Carbon（高难编码），Neon 接替 Argon 的位置（AI Pro/Ultra 订阅档）；Gemini 3.1 Pro 也同步退出 App。关键澄清：Argon 只是退出消费端 App，付费 API 仍提供 gemini-4-argon，谷歌未宣布弃用或关停日期（Fello AI/Livemint，对照谷歌帮助页核验）——企业 API 集成不受影响，无需紧急迁移。视频信源里「全线下架」的说法不准确。</p><p>可用面：Gemini App（Pro/Ultra）、AI Studio、Antigravity、Gemini API 与 Gemini Enterprise（官方博客）。另有网络安全专用版 Neon for Cyber，将在近日通过 Fairwind 计划提供给防御方。从 9 月 30 日 Argon 宣布到 11 月 18 日 Neon，7 周内四个模型（Argon、Carbon 10-28、Hydrogen 11-12、Neon，AA 口径）——API 价格与能力的迭代速度，本身就是采购要管理的变量。</p><h3 class="art-h2">四、对企业采购的含义</h3><p>云端负载直接受益：同等智能水平下每任务成本与时间都在降。但对数据敏感的政企负载，前沿 API 再降价也不改变数据边界要求——私有化部署仍是必选项而非备选项。另注意两个预算变量：Carbon 促销价 11 月 30 日截止；App 侧模型换防不影响 API，但订阅制产品的可用模型清单会变，采购订阅档前先核对帮助页。</p></div><div class="kv-box"><h3>机悟建议：换 Neon 之前做三件事</h3><p class="kv-sub">按每任务成本做预算</p><ul class="art-tl"><li>按每任务成本做预算：官方「便宜 60%」与 AA「省 17%」口径不同，用自己的任务组合复测后再定迁移规模。</li><li>盯促销截止日：Carbon 促销价 2/10 美元 11 月 30 日截止，Neon 比促销价贵 50%，别按促销价锁长期预算。</li><li>App 下架不等于 API 关停：Argon 保留在付费 API 且无关停日期，现有企业集成无需紧急迁移。</li><li>私有化仍是兜底：数据敏感负载不因云端降价而改变边界要求，本地开源模型继续作为双轨的一轨。</li></ul></div><p class="art-src">来源：谷歌官方博客《Introducing Gemini 4 Neon》（2026-11-18，Koray Kavukcuoglu）、DeepMind 模型卡（2026-11-18）、Artificial Analysis《Gemini 4 Neon: intelligence gain at lower cost》（2026-11-18）、Livemint（2026-11-19，转引谷歌官方初测）、Fello AI（2026-11-18 更新，对照谷歌帮助页核验 Argon 下架范围）。官方速度/成本宣称为初测口径，AA 为独立每任务口径。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-11-19-phai-a1-m1-local-deploy.html" title="中国范式智能发布 Phai 双模型：百万上下文可本地 PC 部署，昇腾全流程后训练">
         <span class="pg-k">← 上一篇</span>
@@ -198,6 +199,7 @@
       </a>
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+  </div>
 </section>
 
 <section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>云端 API 的价格每个月都在变，哪些负载适合云端、哪些该留在内网？我们可以帮你建一套双轨成本模型：API 每任务成本、本地推理显存账、数据边界要求，一次评估算清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>

@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.2">
+<link rel="stylesheet" href="assets/site.css?v=7.2.3">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -185,6 +185,7 @@
 <section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-21</span><span class="n-tag">决策模型 · API</span><h1 class="art-h1">谷歌 Gemini Decision 1 上线：一次打分 1000 题，输入每百万 token 0.10 美元</h1><p class="art-lede">「该不该调这个工具、这段上下文有没有用、这条回答合不合规」——这类判断题现在有了专用模型：谷歌 11 月 11 日在官方博客发布 <b>gemini-decision-1</b>，一次前向就能对最多 <b>1000 道</b>是否、选择、评分题打分，端到端 <b>150–250 毫秒</b>，输入每百万 token <b>$0.10</b>、输出零计费。官方称它比用 Gemini 3.5 Flash-Lite 加 Interactions API 做同样的事便宜近 5 倍，且「在整个评测套件中领先、校准误差最低」（官方口径，未逐项列名）。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、三种题型与置信度路由</h3><p>官方博客（11 月 11 日，产品经理 Min Choi、首席科学家 Felix Yu）：模型支持文本、图像、音频、视频、PDF 多模态输入（不超过 256K token），三种题型——noul（是否题，可给 true/false 描述判据）、choice（2–255 个选项，返回 winner 与归一化概率）、score（有序 rubric 从 0 起，返回加权连续分与每级概率）。每题附 0–1 置信度，低置信度可路由到人审。调用 client.decisions.create(model=gemini-decision-1)，http_options 指定 api_version v1beta。</p><table class="art-table"><thead><tr><th>题型</th><th>返回</th><th>典型用途（官方举例）</th></tr></thead><tbody><tr><td>noul</td><td>是否判断 + 置信度</td><td>政策检查 / 工具选择</td></tr><tr><td>choice</td><td>winner + 归一化概率</td><td>模型路由 / 选项排序</td></tr><tr><td>score</td><td>加权连续分 + 每级概率</td><td>rubric 评分 / 上下文分级</td></tr></tbody></table><h3 class="art-h2">二、延迟与价格：为判断题优化的成本结构</h3><p>官方口径：单次前向打分，端到端 150–250 ms，模型计算中位 50–100 ms（不超过 16K 上下文，1 到 100 题延迟几乎持平）；$0.10/1M 输入、输出零计费，比 Gemini 3.5 Flash-Lite 加 Interactions 便宜近 5 倍。算一笔账（本刊计算）：一份 1 万 token 的文档上跑 1000 道是否题，输入成本约 $0.001；打满 256K 上下文约 $0.026（本刊按 256K=262144 token 计算）——判断题的边际成本被压到厘级。官方点名四类用途：工具选择、政策检查、模型路由、上下文分级。</p><ul class="art-tl"><li>落地案例（官方）：Notebook 实时路由，日常查询延迟最多降 40%，复杂任务留给深推理模型。</li><li>Stitch rapid canvas 生成可玩线框；Labs CC 表情（200 多个选项）；Search 的 MCP 工具安全层。</li></ul><h3 class="art-h2">三、对政企的意义：把规则判定从大模型里拆出来</h3><p>政企系统里大量判断题（合规校验、工单分类、路由分发）过去要么写规则、要么让通用大模型逐条回答——前者维护贵，后者延迟与成本高。Decision 1 的启示是把判断层拆成专用小模型：批量打分、毫秒级、按输入计费、置信度兜底人审。私有化对标时，可以用「小模型批量判定 + 置信度路由 + 大模型兜底」的三层结构复现这个思路，而不必等一个同名国产模型（本刊观点）。</p></div><div class="kv-box"><h3>机悟建议：判断题拆出来，成本降一个量级</h3><p class="kv-sub">批量判定 + 置信度路由 + 人审兜底，三层结构可私有化复现</p><ul class="art-tl"><li>1000 题/次、150–250ms、$0.10/1M 输入均为官方口径，引用带来源。</li><li>置信度路由人审是合规兜底，低置信度样本必须留痕。</li><li>「便宜近 5 倍」的对比对象是 Flash-Lite 加 Interactions，不是所有模型。</li><li>判定层怎么拆、三层结构怎么搭，机悟可提供约 40 分钟评估。</li></ul></div><p class="art-src">来源：谷歌官方博客 2026-11-11（blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api，Min Choi、Felix Yu）、Gemini API decisions 文档（官方博文所链）。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
 
 <section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
     <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
       <a class="pg prev" rel="prev" href="news-2026-11-21-gpt-live-1-1-api-standby.html" title="OpenAI GPT-Live-1.1 进入 API：全双工语音，待机每分钟 0.02 美元">
         <span class="pg-k">← 上一篇</span>
@@ -198,6 +199,7 @@
       </a>
     </nav>
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+  </div>
 </section>
 
 <section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>合规校验与路由判定怎么拆层、置信度兜底怎么留痕、成本怎么算，机悟用约 40 分钟帮你理清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
