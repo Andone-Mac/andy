@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨 | 机悟·政企超脑 · 甲维思 JAVIS</title>
-<meta name="description" content="gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%、挖矿 129.5→129.5 TH/s 零变化。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。">
+<title>3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。">
 <meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
 <meta name="author" content="甲维思 JAVIS">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
@@ -28,16 +28,16 @@
 <link rel="stylesheet" href="assets/site.css?v=7.2.1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
-<meta property="og:title" content="3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta property="og:description" content="gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%、挖矿 129.5→129.5 TH/s 零变化。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。">
+<meta property="og:title" content="3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。">
 <meta property="og:url" content="https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html">
 <meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta property="og:image:width" content="1280">
 <meta property="og:image:height" content="720">
 <meta property="og:locale" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨 | 机悟·政企超脑 · 甲维思 JAVIS">
-<meta name="twitter:description" content="gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%、挖矿 129.5→129.5 TH/s 零变化。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。">
+<meta name="twitter:title" content="3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。">
 <meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
 <meta name="theme-color" content="#16295e">
 <script type="application/ld+json">
@@ -46,8 +46,8 @@
   "@graph": [
     {
       "@type": "NewsArticle",
-      "headline": "3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨",
-      "description": "gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%、挖矿 129.5→129.5 TH/s 零变化。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。",
+      "headline": "3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨",
+      "description": "gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。",
       "datePublished": "2026-10-26",
       "dateModified": "2026-10-26",
       "author": {
@@ -81,7 +81,7 @@
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨",
+          "name": "3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨",
           "item": "https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html"
         }
       ]
@@ -186,8 +186,8 @@
   <div class="wrap art-wrap art-wide">
     <p class="crumb"><a href="news.html">行业动态</a> › 正文</p>
     <span class="n-date">2026-10-26</span><span class="n-tag" style="margin-left:8px">本地实测 · 算力解锁</span>
-    <h1 class="art-h1">3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨</h1>
-    <p class="art-lede">10 月 18 日开源的 gpu-unlock 解掉了 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。我们在另一台自有主机（外置 RTX 3090）上冷启动验证通过：稠密 BF16 从原厂约 <b>77.5</b> 跑到实测 <b>108.3 TFLOPS</b>（+40%），而出图之外的两类常驻负载——27B 量化 GGUF 推理与挖矿——实测<b>一动没动</b>。这是本次解锁最该先讲清的一句话。</p>
+    <h1 class="art-h1">3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨</h1>
+    <p class="art-lede">10 月 18 日开源的 gpu-unlock 解掉了 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。我们在另一台自有主机（外置 RTX 3090）上冷启动验证通过：稠密 BF16 从原厂约 <b>77.5</b> 跑到实测 <b>108.3 TFLOPS</b>（+40%），而出图之外的常驻负载——27B 量化 GGUF 推理——实测<b>一动没动</b>。这是本次解锁最该先讲清的一句话。</p>
   </div>
 </section>
 
@@ -196,7 +196,7 @@
     <div class="art-body">
       <h3 class="art-h2">一、先给结论：解锁是真的，但它只改一条路径</h3>
       <p>传闻属实，但不是「翻倍」。GitHub 用户 Zagitta 于 <b>2026-10-18</b> 发布的 gpu-unlock（GPL-2.0-only，v1.0.0）能移除 NVIDIA 在 GeForce Ampere 显卡上对「FP16/BF16 输入 + FP32 累加」Tensor Core 运算的指令发射速率限制。本机那张 RTX 3090（GA102）在受影响型号之内，冷启动一次成功，内核日志出现 <code>gpu_unlock: unlocked</code>，驱动正常接管，没有黑屏，也没有卡启动。</p>
-      <p>但收益要按负载分：下面这张表是本次三组 A-B 加一张社区实测拼出来的全景，四行里只有前两行吃得到增益。</p>
+      <p>但收益要按负载分：下面这张表是本次两组 A-B 加一张社区实测拼出来的全景，三行里只有前两行吃得到增益。</p>
       <table class="art-table is-fixed" style="margin-top:14px">
         <colgroup><col style="width:40%"><col style="width:36%"><col style="width:24%"></colgroup>
         <thead><tr><th>负载</th><th>解锁前 → 解锁后</th><th>结论</th></tr></thead>
@@ -204,7 +204,6 @@
           <tr><td><b>稠密 BF16 出图</b><br><small>ComfyUI / SDXL / Flux</small></td><td>——→ <b>+47%~59%</b><br><small>社区实测</small></td><td><b>吃得到</b></td></tr>
           <tr><td><b>稠密 BF16 矩阵乘</b><br><small>微调与训练的地基</small></td><td>约 77.5→<b>108.3 TFLOPS</b><br><small>TF32：40.2→59.6（+48%）</small></td><td><b>吃得到</b><br><small>本次实测</small></td></tr>
           <tr><td><b>27B 量化 GGUF 推理</b><br><small>Qwen3.8-27B Q5_K_M</small></td><td>pp2048 1250.51→1258.08 t/s<br><b>+0.6%</b></td><td>吃不到<br><small>噪声内</small></td></tr>
-          <tr><td><b>整数挖矿</b><br><small>Pearl / pearlhash</small></td><td>129.5→129.5 TH/s<br><small>拒绝份额 0</small></td><td>吃不到<br><small>零变化</small></td></tr>
         </tbody>
       </table>
       <p>换句话说：<b>手里这张卡会不会因此变快，取决于你的主负载走的是浮点稠密路径，还是整数量化路径。</b>前者提速 40% 上下，后者一分不涨——而后者恰恰是绝大多数人 24 GB 卡上干的事。</p>
@@ -216,9 +215,9 @@
         <li><b>不刷 vBIOS，也不跟驱动版本走。</b>所以没有砖机风险，也不需要每次升级驱动重新打补丁；代价是它只对「这一次启动」生效——命令行里没参数，就没有解锁。</li>
       </ul>
 
-      <h3 class="art-h2">三、为什么你的 27B 推理和挖矿一点没涨</h3>
-      <p>两个原因，一个都不玄：<b>量化 GGUF 推理</b>里 Q5_K 这类权重的矩阵乘在 ggml 里走的是 int8 量化 + dp4a 类整数累加，权重照样按字节从显存流一遍，被解锁的那条浮点路径根本没被调用；解码阶段本来就卡在显存带宽上。而 <b>pearlhash 挖矿</b>是纯矩阵乘但走整数 GEMM，INT8 tensor 速率在原厂 3090 上并没有被人为砍半，所以两个寄存器对它无效。</p>
-      <p>实测数字对得上：pp512 从 1239.86 到 1225.72 t/s（−1.1%，方差本身就有 68）、pp2048 从 1250.51 到 1258.08（+0.6%）、挖矿 129.5 → 129.5 TH/s、拒绝份额 0 → 0、功耗 249 → 244 W。全在测量噪声里。</p>
+      <h3 class="art-h2">三、为什么你的 27B 推理一点没涨</h3>
+      <p>原因不玄：<b>量化 GGUF 推理</b>里 Q5_K 这类权重的矩阵乘在 ggml 里走的是 int8 量化 + dp4a 类整数累加，权重照样按字节从显存流一遍，被解锁的那条浮点路径根本没被调用；解码阶段本来就卡在显存带宽上。</p>
+      <p>实测数字对得上：pp512 从 1239.86 到 1225.72 t/s（−1.1%，方差本身就有 68）、pp2048 从 1250.51 到 1258.08（+0.6%）。全在测量噪声里。</p>
 
       <h3 class="art-h2">四、代价：能拿到多少，以及三个必须接受的麻烦</h3>
       <ul class="art-tl">
@@ -236,14 +235,14 @@
 
       <div class="kv-box">
         <h3>想再往下看一层？</h3>
-        <p class="kv-sub">上面是能直接用的部分。完整技术版在这篇文章的下一篇（<a href="news-2026-10-26-rtx3090-unlock-gemm-ab.html">3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%</a>）里：实施时间线、7 条 initramfs 条目与 5 个固件字节数、17 行内核日志片段、三精度 GEMM 对照表、收益矩阵七行、五条风险与复现命令。</p>
+        <p class="kv-sub">上面是能直接用的部分。完整技术版在这篇文章的下一篇（<a href="news-2026-10-26-rtx3090-unlock-gemm-ab.html">3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%</a>）里：实施时间线、7 条 initramfs 条目与 5 个固件字节数、17 行内核日志片段、三精度 GEMM 对照表、收益矩阵六行、五条风险与复现命令。</p>
         <ul>
           <li><b>自己机器上试的顺序</b>：先记原厂基线（同一模型、同一批提示词），再解锁、冷启动、复测，最后对比——只看峰值不算验证。</li>
           <li><b>回滚成本很低</b>：一个脚本删 grub 入口、参数、DKMS 模块与固件，再冷启动一次就回原厂，所以值得在自己机器上试，不值得在交付环境里试。</li>
           <li><b>客户机房一律不动</b>：实验性内核模块、内核 taint、一次性启动参数，等于把「机器起不来」与「官方支持拒绝分析」两个风险绑在一起。</li>
         </ul>
       </div>
-      <p class="art-src">数据来源：本机命令输出（torch 2.13.0+cu130 的 8192³ 稠密 GEMM、llama.cpp CUDA build d59d455fd 的 A-B、PeakMiner 2.19.2 同矿池同钱包 A-B、journalctl -k -b 与 lspci 输出，2026-10-25 至 10-26）；工具与支持范围引自上游 Zagitta/gpu-unlock 仓库（GPL-2.0-only，v1.0.0，2026-10-18）README 与 issue 区；「出图 +47%~59%」为社区实测口径，非本机测量；原厂上限与社区成绩引自上游 README、Notebookcheck（2026-10-24）、Wccftech（2026-10-24）与 TechPowerUp 报道。结果只代表该台机器该次冷启动，不可外推到其他板卡。本文为自有设备实测记录，不评判任何企业与产品，不构成投资建议。</p>
+      <p class="art-src">数据来源：本机命令输出（torch 2.13.0+cu130 的 8192³ 稠密 GEMM、llama.cpp CUDA build d59d455fd 的 A-B、journalctl -k -b 与 lspci 输出，2026-10-25 至 10-26）；工具与支持范围引自上游 Zagitta/gpu-unlock 仓库（GPL-2.0-only，v1.0.0，2026-10-18）README 与 issue 区；「出图 +47%~59%」为社区实测口径，非本机测量；原厂上限与社区成绩引自上游 README、Notebookcheck（2026-10-24）、Wccftech（2026-10-24）与 TechPowerUp 报道。结果只代表该台机器该次冷启动，不可外推到其他板卡。本文为自有设备实测记录，不评判任何企业与产品，不构成投资建议。</p>
 
 
 <section class="art-cmt" id="comments">
@@ -410,6 +409,14 @@
 
 
 
+
+
+
+
+
+
+
+
       <div class="art-foot">
         <a class="btn btn-line" href="news.html">← 返回行业动态</a>
         <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
@@ -435,8 +442,8 @@
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
   <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
-  <div style="margin-top:8px;user-select:all">「3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨」，机悟 JAVIS，2026-10-26，https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</div>
-  <div style="margin-top:4px;opacity:.75">Markdown：<code>[3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨](https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html)（机悟 JAVIS，2026-10-26）</code></div>
+  <div style="margin-top:8px;user-select:all">「3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨」，机悟 JAVIS，2026-10-26，https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨](https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html)（机悟 JAVIS，2026-10-26）</code></div>
 </div></div></section><!-- cite:end -->
 
 <footer>

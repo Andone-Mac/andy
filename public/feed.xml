@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 23 Nov 2026 06:51:17 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 23 Nov 2026 07:21:07 +0000</lastBuildDate>
     <item>
       <title>一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分</title>
       <link>https://javis.org.cn/news-2026-11-23-7900xtx-four-model-verdict.html</link>
@@ -21,7 +21,7 @@
       <guid isPermaLink="true">https://javis.org.cn/news-2026-11-23-7900xtx-four-model-228-evidence.html</guid>
       <pubDate>Mon, 23 Nov 2026 00:00:00 +0000</pubDate>
       <category>本地实测 · 能力复核</category>
-      <description>JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 9 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。</description>
+      <description>JAVIS 本地实测全记录（2026-11-21 采集，2026-11-23 脚本复核）：同一张 AMD RX 7900 XTX 24GB（eGPU 单卡，ROCm/HIP gfx1100）上，Qwen3.8-27B V3.1 UD-Q4_K_XL、Huihui 去审查版、Arete-27B Q4_K_M 与 Nemotron-3.5-Bolt-74B-A9B 同卷 45 基础 + 12 困难程序判分，228 条回答 223 条正确；独立重判与存档判定零不一致。本文逐条披露各档上下文与 KV 口径、输出预算与重跑规则、五道错题、needle 长上下文检索、agent 工具特测与 MTP 接受率，以及 8 条手写笔记复核差异表；结论版为同日《一张 7900 XTX 该跑哪个本地模型？11 月 21 日四档 228 题实测：27B 满分、74B 丢 4 分》。</description>
     </item>
     <item>
       <title>中国南水北调「天河」大模型升级 V2：防汛分析从小时级压到分钟级，信创智算云底座可复制</title>
@@ -1144,12 +1144,12 @@
       <description>2026-10-26 中国政府采购网与国企采购平台同日挂出多个 AI 相关结果与公告：国家外汇管理局 AI 服务器采购中标、厦门出入境边防检查总站人工智能执法场景大模型招标、深圳宝安卫健局大模型平台密评与第三方检测招标、三峡集团 AI 管理平台成交、广药白云山 AI 算力建设中标、医渡科技中标重医附一院大数据平台约 1329 万元。含「算力—平台—场景—测评」四层拆解。</description>
     </item>
     <item>
-      <title>3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型和挖矿一分没涨</title>
+      <title>3090 被砍的 Tensor Core 解锁了：出图快 40%，跑大模型一分没涨</title>
       <link>https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</link>
       <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-rtx3090-tensor-core-unlock.html</guid>
       <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
       <category>本地实测 · 算力解锁</category>
-      <description>gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%、挖矿 129.5→129.5 TH/s 零变化。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。</description>
+      <description>gpu-unlock v1.0.0（GPL-2.0-only，2026-10-18 开源）解掉 NVIDIA 在 GeForce Ampere 上对 FP16/BF16 稠密算力的发射速率限制。另一台自有主机（i9-12900H + 外置 RTX 3090、Ubuntu 26.04、驱动 615.71.09）冷启动验证通过：稠密 BF16 从原厂约 77.5 到实测 108.3 TFLOPS（+40%）、TF32 59.6 TFLOPS（+48%）；而 Qwen3.8-27B Q5_K_M 量化推理 pp2048 仅 +0.6%。含功耗墙只剩社区峰值 72%、内核 taint、温重启静默失效三条代价。</description>
     </item>
     <item>
       <title>3090 解锁 A-B 实录：BF16 从 77.5 到 108.3 TFLOPS，pp2048 只动 0.6%</title>
@@ -1157,7 +1157,7 @@
       <guid isPermaLink="true">https://javis.org.cn/news-2026-10-26-rtx3090-unlock-gemm-ab.html</guid>
       <pubDate>Mon, 26 Oct 2026 00:00:00 +0000</pubDate>
       <category>本地实测 · 硬件调优</category>
-      <description>完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp 与挖矿 A-B（pp2048 +0.6%、129.5→129.5 TH/s）、收益矩阵七行、五条风险与复现命令。</description>
+      <description>完整技术记录：实施时间线（10-25 编译到 10-26 冷启动）、5 个固件文件的字节数与 initramfs 内 7 条条目、dracut 导致首次安装静默无效的坑、17 行内核日志片段、8192³ 稠密 GEMM 三精度对照（fp16 108.7 / bf16 108.3 / tf32 59.6 TFLOPS，原厂约 77.5 / 77.5 / 40.2）、llama.cpp A-B（pp2048 +0.6%）、收益矩阵六行、五条风险与复现命令。</description>
     </item>
     <item>
       <title>一张榜看懂 10 月的模型排位：前四名挤在 3 分内、开源旗舰 11 月补位、25 分那一档不是差生</title>
