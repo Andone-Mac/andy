@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<link rel="stylesheet" href="assets/site.css?v=7.2.2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="OpenAI 发布 GPT-6.2 双模型：旗舰 API 降价 20%，日常版 Sol 编码只差 0.5 分、成本约 1/5 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -182,7 +182,25 @@
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
-<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-18</span><span class="n-tag">大模型 · 云端 API</span><h1 class="art-h1">OpenAI 发布 GPT-6.2 双模型：旗舰 API 降价 20%，日常版 Sol 编码只差 0.5 分、成本约 1/5</h1><p class="art-lede">11 月 17 日，OpenAI 发布 GPT-6.2 Astra（旗舰，面向科学、法律、金融等专业工作）与 GPT-6.2 Sol（日常高效版），同步上线 ChatGPT Work、Codex 与 API。Astra API 价格较上代降 20%（输入 $8/百万 token、输出 $40/百万 token），Sol 维持 $2/$10 不变。官方称在 FrontierCode 2.0 编码基准上，Sol 与 Astra 仅差 0.5 分、成本约为其 1/5。云端 API 的「每任务成本」之战再升级，本站此前 GPT-6 与 GPT-6.1 两篇可作背景。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、价格表：旗舰降 20%，缓存输入降 60%</h3><table class="art-table"><thead><tr><th>模型</th><th>输入（$/百万 token）</th><th>缓存输入（$/百万 token）</th><th>输出（$/百万 token）</th></tr></thead><tbody><tr><td>GPT-6.2 Astra</td><td>8.00</td><td>0.40</td><td>40.00</td></tr><tr><td>GPT-6.2 Sol</td><td>2.00</td><td>0.10</td><td>10.00</td></tr></tbody></table><p>官方口径：Astra 标准输入/输出价较 GPT-6 Astra 降 20%；据 Artificial Analysis，缓存输入从 $1.00 降至 $0.40（降 60%）。Sol 沿用 GPT-6.1 Sol 价格。本刊计算：按「100 万输入 + 100 万输出」的粗账，Astra 一次 $48、Sol 一次 $12，Sol 是 Astra 的 25%。</p><ul class="art-tl"><li>可用范围：Plus/Pro/Enterprise/Edu 用户在 ChatGPT Work 与 Codex 可用；API 模型名 gpt-6.2-astra / gpt-6.2-sol。</li><li>Ultrafast 模式官方称最高 4.5 倍出字速度（9to5Mac 引 OpenAI），Pro-200 档首次开放（先 Sol），Pro-500 档双模型可用。</li><li>GitHub Copilot 同日上线双模型（Pro+/Max/Business/Enterprise，MLQ 引 GitHub changelog）。</li></ul><h3 class="art-h2">二、能力口径：Sol 逼近旗舰，Astra 主打专业交付</h3><p>官方给出的关键对照：FrontierCode 2.0（检验代码改动能否达到真实项目合并标准）上，Sol 与 Astra 差 0.5 分、成本约 1/5（双方均开最大推理档）；LifeVal 日常任务基准上，Sol 超过 GPT-6 Astra、成本约 1/7。Astra 主打专业交付物——幻灯片按模板复刻版式、配色与字号，表格与文档更贴合行业惯例；官方称其在 Vals Science Index 创新高。</p><p>第三方口径：Artificial Analysis 智力指数上，Astra 升至第 2（仅次于 Claude Fable 5.2），较 GPT-6 Astra 提高 5 分，超过 Gemini 4 Carbon（60）与 Claude Opus 5.5（59）；Sol 得 57 分（+2），每任务成本约为 GPT-6 Astra 的 15%。</p><h3 class="art-h2">三、网络安全能力与护栏同步收紧</h3><p>OpenAI 官方 X 账号称，Astra 在 ExploitBench Internal Port 上较 GPT-6 Astra 提高 22 分，是其「迄今最强的网络安全模型」；因能力增强，发布时同步收紧高风险网络安全协助的护栏，并计划通过 Daybreak 向经审核的防御方开放更少拒绝的访问。注意：公布的网安基准数字来自关闭护栏与分类器的内部测试（The Decoder 梳理），不能直接当作线上服务表现。</p><h3 class="art-h2">四、对企业的账：每任务成本，不是每 token 单价</h3><p>这轮发布的关键词是「用更少输出 token 完成同样任务」（官方口径）。对企业采购，比较口径应从「每百万 token 单价」转向「每任务成本」：Sol 用约 1/5 的钱拿到接近旗舰的编码质量，意味着大量日常开发与文案任务不必再为旗舰溢价买单。但云端 API 再便宜，数据出境与合规边界不变——涉密与核心业务数据仍要留在内网，云端适合做非敏感任务的效率补充。</p></div><div class="kv-box"><h3>机悟建议：GPT-6.2 时代的云端与内网分工</h3><p class="kv-sub">便宜的是 token，不变的是数据边界</p><ul class="art-tl"><li>日常任务换 Sol 档：编码/文案/摘要类非敏感任务，用 $2/$10 档先跑，旗舰留给硬骨头。</li><li>按任务算账：用真实任务统计「每任务输入/输出 token」，再比单价，别只看牌价。</li><li>缓存输入是大头：Agent 用法大量命中缓存（$0.40/$0.10），提示结构稳定能显著压成本。</li><li>敏感数据不出域：核心业务与涉密数据仍走内网私有化模型，云端只做非敏感补充。</li></ul></div><p class="art-src">来源：OpenAI 官方公告《Introducing GPT-6.2 Astra and Sol》（openai.com/index/introducing-gpt-6-2-astra-sol，2026-11-17）、OpenAI 官方 X 账号（2026-11-17）、The Decoder（2026-11-17）、Artificial Analysis（2026-11-17）、9to5Mac（2026-11-17）、MLQ.ai（2026-11-17，引 GitHub changelog）。网安基准为关闭护栏的内部测试口径；$48/$12 示例为本刊计算。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>云端 API 降价潮里，哪些任务该上云、哪些必须留内网？我们可以在一次评估里把任务分级、每任务成本与数据不出域方案算清楚，给出云端 + 私有化的混合路线。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-18</span><span class="n-tag">大模型 · 云端 API</span><h1 class="art-h1">OpenAI 发布 GPT-6.2 双模型：旗舰 API 降价 20%，日常版 Sol 编码只差 0.5 分、成本约 1/5</h1><p class="art-lede">11 月 17 日，OpenAI 发布 GPT-6.2 Astra（旗舰，面向科学、法律、金融等专业工作）与 GPT-6.2 Sol（日常高效版），同步上线 ChatGPT Work、Codex 与 API。Astra API 价格较上代降 20%（输入 $8/百万 token、输出 $40/百万 token），Sol 维持 $2/$10 不变。官方称在 FrontierCode 2.0 编码基准上，Sol 与 Astra 仅差 0.5 分、成本约为其 1/5。云端 API 的「每任务成本」之战再升级，本站此前 GPT-6 与 GPT-6.1 两篇可作背景。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、价格表：旗舰降 20%，缓存输入降 60%</h3><table class="art-table"><thead><tr><th>模型</th><th>输入（$/百万 token）</th><th>缓存输入（$/百万 token）</th><th>输出（$/百万 token）</th></tr></thead><tbody><tr><td>GPT-6.2 Astra</td><td>8.00</td><td>0.40</td><td>40.00</td></tr><tr><td>GPT-6.2 Sol</td><td>2.00</td><td>0.10</td><td>10.00</td></tr></tbody></table><p>官方口径：Astra 标准输入/输出价较 GPT-6 Astra 降 20%；据 Artificial Analysis，缓存输入从 $1.00 降至 $0.40（降 60%）。Sol 沿用 GPT-6.1 Sol 价格。本刊计算：按「100 万输入 + 100 万输出」的粗账，Astra 一次 $48、Sol 一次 $12，Sol 是 Astra 的 25%。</p><ul class="art-tl"><li>可用范围：Plus/Pro/Enterprise/Edu 用户在 ChatGPT Work 与 Codex 可用；API 模型名 gpt-6.2-astra / gpt-6.2-sol。</li><li>Ultrafast 模式官方称最高 4.5 倍出字速度（9to5Mac 引 OpenAI），Pro-200 档首次开放（先 Sol），Pro-500 档双模型可用。</li><li>GitHub Copilot 同日上线双模型（Pro+/Max/Business/Enterprise，MLQ 引 GitHub changelog）。</li></ul><h3 class="art-h2">二、能力口径：Sol 逼近旗舰，Astra 主打专业交付</h3><p>官方给出的关键对照：FrontierCode 2.0（检验代码改动能否达到真实项目合并标准）上，Sol 与 Astra 差 0.5 分、成本约 1/5（双方均开最大推理档）；LifeVal 日常任务基准上，Sol 超过 GPT-6 Astra、成本约 1/7。Astra 主打专业交付物——幻灯片按模板复刻版式、配色与字号，表格与文档更贴合行业惯例；官方称其在 Vals Science Index 创新高。</p><p>第三方口径：Artificial Analysis 智力指数上，Astra 升至第 2（仅次于 Claude Fable 5.2），较 GPT-6 Astra 提高 5 分，超过 Gemini 4 Carbon（60）与 Claude Opus 5.5（59）；Sol 得 57 分（+2），每任务成本约为 GPT-6 Astra 的 15%。</p><h3 class="art-h2">三、网络安全能力与护栏同步收紧</h3><p>OpenAI 官方 X 账号称，Astra 在 ExploitBench Internal Port 上较 GPT-6 Astra 提高 22 分，是其「迄今最强的网络安全模型」；因能力增强，发布时同步收紧高风险网络安全协助的护栏，并计划通过 Daybreak 向经审核的防御方开放更少拒绝的访问。注意：公布的网安基准数字来自关闭护栏与分类器的内部测试（The Decoder 梳理），不能直接当作线上服务表现。</p><h3 class="art-h2">四、对企业的账：每任务成本，不是每 token 单价</h3><p>这轮发布的关键词是「用更少输出 token 完成同样任务」（官方口径）。对企业采购，比较口径应从「每百万 token 单价」转向「每任务成本」：Sol 用约 1/5 的钱拿到接近旗舰的编码质量，意味着大量日常开发与文案任务不必再为旗舰溢价买单。但云端 API 再便宜，数据出境与合规边界不变——涉密与核心业务数据仍要留在内网，云端适合做非敏感任务的效率补充。</p></div><div class="kv-box"><h3>机悟建议：GPT-6.2 时代的云端与内网分工</h3><p class="kv-sub">便宜的是 token，不变的是数据边界</p><ul class="art-tl"><li>日常任务换 Sol 档：编码/文案/摘要类非敏感任务，用 $2/$10 档先跑，旗舰留给硬骨头。</li><li>按任务算账：用真实任务统计「每任务输入/输出 token」，再比单价，别只看牌价。</li><li>缓存输入是大头：Agent 用法大量命中缓存（$0.40/$0.10），提示结构稳定能显著压成本。</li><li>敏感数据不出域：核心业务与涉密数据仍走内网私有化模型，云端只做非敏感补充。</li></ul></div><p class="art-src">来源：OpenAI 官方公告《Introducing GPT-6.2 Astra and Sol》（openai.com/index/introducing-gpt-6-2-astra-sol，2026-11-17）、OpenAI 官方 X 账号（2026-11-17）、The Decoder（2026-11-17）、Artificial Analysis（2026-11-17）、9to5Mac（2026-11-17）、MLQ.ai（2026-11-17，引 GitHub changelog）。网安基准为关闭护栏的内部测试口径；$48/$12 示例为本刊计算。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-18-cctv-ai-corpus-ascend-cluster.html" title="国产算力拿下总台 AI 语料项目：1.496 亿元、256 颗昇腾芯片液冷集群，第二包废标">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">总台 AI 语料项目中标</span>
+        <span class="pg-d">2026-11-18</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-18-microsoft-mai-six-models.html" title="微软一次发布六款专用 AI 模型：编码达 GPT-6.1 Sol 98% 性能，价格仅 40%">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">微软六款 MAI 模型</span>
+        <span class="pg-d">2026-11-18</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>云端 API 降价潮里，哪些任务该上云、哪些必须留内网？我们可以在一次评估里把任务分级、每任务成本与数据不出域方案算清楚，给出云端 + 私有化的混合路线。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
 
 
 <section class="art-cmt" id="comments">
@@ -204,22 +222,6 @@
       <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
     </form>
   </div>
-</section>
-
-<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
-    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <a class="pg prev" rel="prev" href="news-2026-11-18-cctv-ai-corpus-ascend-cluster.html" title="国产算力拿下总台 AI 语料项目：1.496 亿元、256 颗昇腾芯片液冷集群，第二包废标">
-        <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">总台 AI 语料项目中标</span>
-        <span class="pg-d">2026-11-18</span>
-      </a>
-      <a class="pg next" rel="next" href="news-2026-11-18-microsoft-mai-six-models.html" title="微软一次发布六款专用 AI 模型：编码达 GPT-6.1 Sol 98% 性能，价格仅 40%">
-        <span class="pg-k">下一篇 →</span>
-        <span class="pg-t">微软六款 MAI 模型</span>
-        <span class="pg-d">2026-11-18</span>
-      </a>
-    </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
 </section>
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">

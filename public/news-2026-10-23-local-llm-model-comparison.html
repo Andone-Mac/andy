@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<link rel="stylesheet" href="assets/site.css?v=7.2.2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="消费硬件上的本地大模型实测：最快 130 tok/s、最慢 25 tok/s | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -291,25 +291,8 @@
       </div>
       <p class="art-src">数据来源：本机 benchmark 结果文件与运行日志（2026-08 ~ 2026-10-23：perf_*、mmlu_pro_*、gsm8k_*、math500_*、hermes_agent_tasks*、glm-sweep-*.log、mtp-ab-result-*.log、llama-bench-3090-*.log）、Qwen38-27B 单卡优化报告（2026-10-14）、Mesa 26.2.5 RADV 升级报告（2026-10-18）、双卡 GPU 优化报告（2026-09-19）、R9700 机型 daxing 37 题验收集（2026-08-31）、本地大模型选型报告（2026-09-16，Nemotron / GLM-5.3-Flash 尺寸评估）、Strata 会话日志 strata-unc-q5km.log（Q5_K_M，快照 2026-10-23 17:37）。所有数字均为自有设备自测记录，不同机器、引擎、量化与上下文口径互不可替代；GLM-4.7-Flash 为单条生成口径（385–391 token），与 pp512 类基准不可直接比较。本文仅陈述自测数据与公开技术口径，不评判任何企业与产品，不构成投资建议。</p>
 
-
-<section class="art-cmt" id="comments">
-  <div class="wrap art-wrap">
-    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
-    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
-    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
-    <form id="cmtForm" class="cmt-form" autocomplete="on">
-      <div class="cmt-row">
-        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
-        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
-      </div>
-      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
-      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
-      <div class="cmt-foot">
-        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
-        <span class="cmt-msg" role="status" aria-live="polite"></span>
-      </div>
-      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
-    </form>
+      
+    </div>
   </div>
 </section>
 
@@ -329,151 +312,6 @@
     <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <div class="art-foot">
-        <a class="btn btn-line" href="news.html">← 返回行业动态</a>
-        <div class="cta-row" style="margin:0;display:flex;gap:12px;flex-wrap:wrap">
-          <a class="btn btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a>
-          <a class="btn btn-line" href="contact.html" data-open="demo">预约演示 · 跑断网本地 AI</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <section id="contact" style="padding-top:8px">
   <div class="wrap">
     <div class="cta-band">
@@ -483,6 +321,28 @@
         <a class="btn btn-solid" style="background:#fff;color:var(--navy)" href="contact.html" data-open="eval">约 40 分钟评估</a>
       </div></div>
     </div>
+  </div>
+</section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
   </div>
 </section>
 

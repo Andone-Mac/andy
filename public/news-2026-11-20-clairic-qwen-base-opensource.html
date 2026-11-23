@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<link rel="stylesheet" href="assets/site.css?v=7.2.2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="中国千问底座出海：Cloudflare 开源 Clairic 27B/9B，Apache 2.0、输出免费 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -182,7 +182,25 @@
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
-<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-20</span><span class="n-tag">开源模型 · 结构化抽取</span><h1 class="art-h1">中国千问底座出海：Cloudflare 开源 Clairic 27B/9B，Apache 2.0、输出免费</h1><p class="art-lede">11 月 18 日，Cloudflare 新成立的 Workers AI Superintelligence 团队开放了 Clairic 与 Clairic-flash 两款模型的权重（官方博客当日发布，Apache 2.0）。值得中国读者注意的是底座：本刊查 Hugging Face 模型卡的 base_model 字段，27B 的 Clairic 基于 <b>Qwen/Qwen3.8-27B</b>、9B 的 Clairic-flash 基于 <b>Qwen/Qwen3.5-9B</b>——一款美国公司做的垂直抽取模型，底座来自中国千问。本篇讲三件事：底座与规格、它擅长的结构化抽取、以及「只收输入、按 pass 重发」的计费坑与私有化门槛。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、底座与规格：两个版本都来自千问</h3><p>本刊查 Hugging Face API 与模型卡：Cloudflare/clairic 的 base_model 为 Qwen/Qwen3.8-27B、license 为 apache-2.0、pipeline 为 image-text-to-text；Cloudflare/clairic-flash 的 base_model 为 Qwen/Qwen3.5-9B、license 同为 apache-2.0，模型卡自述「9B multimodal model」。权重体积经本刊对仓库文件逐项求和：clairic 约 55.9GB（19 个文件）、clairic-flash 约 19.6GB（5 个文件）。两款都带 custom-code 标签，自托管需运行仓库自带代码。</p><table class="art-table"><thead><tr><th>版本</th><th>底座（base_model）</th><th>权重体积</th><th>许可</th></tr></thead><tbody><tr><td>Clairic（27B）</td><td>Qwen/Qwen3.8-27B</td><td>约 55.9GB（19 文件）</td><td>Apache 2.0</td></tr><tr><td>Clairic-flash（9B）</td><td>Qwen/Qwen3.5-9B</td><td>约 19.6GB（5 文件）</td><td>Apache 2.0</td></tr></tbody></table><ul class="art-tl"><li>底座是千问、上层是 Cloudflare 的抽取微调——这是「中国底座 + 海外垂直应用」的一个具体样本，引用时把底座与微调方分开署名。</li><li>Apache 2.0 意味着可商用、可私有化，但仍需遵守仓库 custom-code 的运行要求与 Apache 2.0 的署名/免责条款。</li></ul><h3 class="art-h2">二、它做什么：结构化抽取 + 置信度</h3><p>Clairic 定位是「System One 式」抽取模型：给定一段 state（文本/JSON）加可选图片，再给一组字段规格，它输出强类型的值——文本、数字、日期、列表、空值、估计值，并附带置信度、空值概率与分位数（官方文档与 README）。典型场景是发票、合同、表单这类「从非结构化输入里抽结构化字段」的活。它支持多模态，每个请求最多 4 张图片（单张 4MiB、合计 8MiB）。</p><ul class="art-tl"><li>自托管延迟（官方自述，完整 HTTP 响应口径）：文本字段 Clairic 中位 358ms / p95 736ms，flash 155ms / 328ms；图像字段 Clairic 453ms / 976ms，flash 305ms / 605ms。</li><li>官方明确这是方向性自述，<b>尚无公开抽取基准</b>；官方文档仍把模型标为 preview。引用延迟与能力时带上「官方自述、preview」限定。</li><li>自托管入口 load_release_model / systemone，需 Python 3.11+ 与 xgrammar 做 schema 约束（README）。</li></ul><h3 class="art-h2">三、计费与部署：只收输入、按 pass 重发</h3><p>云端计费有个反直觉点：Clairic 把媒体输入折算成 input token 按输入价计费，<b>输出 token 不收费</b>（官方文档）。但每个 text 字段单独走一个 pass，每个 pass 都重发完整 state 与全部图片并各计一次费，usage.passes 报告 pass 数——字段越多，输入费越高。官方定价页口径：Clairic 27B 促销价 0.10 美元/百万输入（9091 neurons）至 2026 年 12 月 1 日，之后 0.24 美元/百万输入（21818 neurons）；flash 恒为 0.10 美元/百万输入。Workers AI 平台价为 0.011 美元/1000 neurons，免费额度 10000 neurons/天（00:00 UTC 重置）。</p><table class="art-table"><thead><tr><th>版本</th><th>促销价（至 12-1）</th><th>12 月后标准价</th></tr></thead><tbody><tr><td>Clairic 27B</td><td>$0.10/百万输入</td><td>$0.24/百万输入</td></tr><tr><td>Clairic-flash 9B</td><td>$0.10/百万输入</td><td>$0.10/百万输入</td></tr></tbody></table><p>算一笔账（本刊计算，假设 state + 图片合计约 2000 token）：抽 4 个 text 字段 = 4 个 pass × 2000 = 8000 计费输入 token，促销档约 $0.0008、12 月后约 $0.00192。图片 token 按官方规则约 (宽/32)×(高/32)+2：一张 1024×1024 图约 1026 token、256×256 约 66 token。免费额度 10000 neurons/天在促销档约合 110 万输入 token/天（本刊计算）。私有化侧：Apache 2.0 + custom-code，9B flash 权重 19.6GB 单张 24GB 卡可载，27B 55.9GB 需更大显存或多卡；这是「能装下」的口径，速度以实测为准。</p></div><div class="kv-box"><h3>机悟建议：抽取类任务先看底座与计费坑</h3><p class="kv-sub">千问底座可私有化，pass 重发会放大输入费</p><ul class="art-tl"><li>底座与微调分开看：Clairic 基于千问 Qwen3.8-27B / Qwen3.5-9B，Apache 2.0 可商用可私有化。</li><li>计费坑：每个 text 字段一个 pass、每 pass 重发 state 与全部图片，字段多则输入费翻倍，先估 pass 数再报价。</li><li>能力限定：官方自述延迟、尚无公开抽取基准、文档仍标 preview，选型要自己跑样本验证。</li><li>9B flash 19.6GB 单卡可载、27B 需多卡；内网抽取场景机悟可约 40 分钟评估部署与成本。</li></ul></div><p class="art-src">来源：Cloudflare 官方博客 2026-11-18（blog.cloudflare.com/open-clairic）、Workers AI 官方文档与定价页（developers.cloudflare.com/workers-ai/models/clairic/ 与 platform/pricing/）、Hugging Face Cloudflare/clairic 与 clairic-flash 模型卡（base_model/license，权重体积为本刊求和）；成本与 token 换算为本刊现算。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>发票合同表单的结构化抽取要不要私有化、9B/27B 怎么选、pass 计费怎么估，机悟用约 40 分钟帮你把部署与成本算清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-20</span><span class="n-tag">开源模型 · 结构化抽取</span><h1 class="art-h1">中国千问底座出海：Cloudflare 开源 Clairic 27B/9B，Apache 2.0、输出免费</h1><p class="art-lede">11 月 18 日，Cloudflare 新成立的 Workers AI Superintelligence 团队开放了 Clairic 与 Clairic-flash 两款模型的权重（官方博客当日发布，Apache 2.0）。值得中国读者注意的是底座：本刊查 Hugging Face 模型卡的 base_model 字段，27B 的 Clairic 基于 <b>Qwen/Qwen3.8-27B</b>、9B 的 Clairic-flash 基于 <b>Qwen/Qwen3.5-9B</b>——一款美国公司做的垂直抽取模型，底座来自中国千问。本篇讲三件事：底座与规格、它擅长的结构化抽取、以及「只收输入、按 pass 重发」的计费坑与私有化门槛。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、底座与规格：两个版本都来自千问</h3><p>本刊查 Hugging Face API 与模型卡：Cloudflare/clairic 的 base_model 为 Qwen/Qwen3.8-27B、license 为 apache-2.0、pipeline 为 image-text-to-text；Cloudflare/clairic-flash 的 base_model 为 Qwen/Qwen3.5-9B、license 同为 apache-2.0，模型卡自述「9B multimodal model」。权重体积经本刊对仓库文件逐项求和：clairic 约 55.9GB（19 个文件）、clairic-flash 约 19.6GB（5 个文件）。两款都带 custom-code 标签，自托管需运行仓库自带代码。</p><table class="art-table"><thead><tr><th>版本</th><th>底座（base_model）</th><th>权重体积</th><th>许可</th></tr></thead><tbody><tr><td>Clairic（27B）</td><td>Qwen/Qwen3.8-27B</td><td>约 55.9GB（19 文件）</td><td>Apache 2.0</td></tr><tr><td>Clairic-flash（9B）</td><td>Qwen/Qwen3.5-9B</td><td>约 19.6GB（5 文件）</td><td>Apache 2.0</td></tr></tbody></table><ul class="art-tl"><li>底座是千问、上层是 Cloudflare 的抽取微调——这是「中国底座 + 海外垂直应用」的一个具体样本，引用时把底座与微调方分开署名。</li><li>Apache 2.0 意味着可商用、可私有化，但仍需遵守仓库 custom-code 的运行要求与 Apache 2.0 的署名/免责条款。</li></ul><h3 class="art-h2">二、它做什么：结构化抽取 + 置信度</h3><p>Clairic 定位是「System One 式」抽取模型：给定一段 state（文本/JSON）加可选图片，再给一组字段规格，它输出强类型的值——文本、数字、日期、列表、空值、估计值，并附带置信度、空值概率与分位数（官方文档与 README）。典型场景是发票、合同、表单这类「从非结构化输入里抽结构化字段」的活。它支持多模态，每个请求最多 4 张图片（单张 4MiB、合计 8MiB）。</p><ul class="art-tl"><li>自托管延迟（官方自述，完整 HTTP 响应口径）：文本字段 Clairic 中位 358ms / p95 736ms，flash 155ms / 328ms；图像字段 Clairic 453ms / 976ms，flash 305ms / 605ms。</li><li>官方明确这是方向性自述，<b>尚无公开抽取基准</b>；官方文档仍把模型标为 preview。引用延迟与能力时带上「官方自述、preview」限定。</li><li>自托管入口 load_release_model / systemone，需 Python 3.11+ 与 xgrammar 做 schema 约束（README）。</li></ul><h3 class="art-h2">三、计费与部署：只收输入、按 pass 重发</h3><p>云端计费有个反直觉点：Clairic 把媒体输入折算成 input token 按输入价计费，<b>输出 token 不收费</b>（官方文档）。但每个 text 字段单独走一个 pass，每个 pass 都重发完整 state 与全部图片并各计一次费，usage.passes 报告 pass 数——字段越多，输入费越高。官方定价页口径：Clairic 27B 促销价 0.10 美元/百万输入（9091 neurons）至 2026 年 12 月 1 日，之后 0.24 美元/百万输入（21818 neurons）；flash 恒为 0.10 美元/百万输入。Workers AI 平台价为 0.011 美元/1000 neurons，免费额度 10000 neurons/天（00:00 UTC 重置）。</p><table class="art-table"><thead><tr><th>版本</th><th>促销价（至 12-1）</th><th>12 月后标准价</th></tr></thead><tbody><tr><td>Clairic 27B</td><td>$0.10/百万输入</td><td>$0.24/百万输入</td></tr><tr><td>Clairic-flash 9B</td><td>$0.10/百万输入</td><td>$0.10/百万输入</td></tr></tbody></table><p>算一笔账（本刊计算，假设 state + 图片合计约 2000 token）：抽 4 个 text 字段 = 4 个 pass × 2000 = 8000 计费输入 token，促销档约 $0.0008、12 月后约 $0.00192。图片 token 按官方规则约 (宽/32)×(高/32)+2：一张 1024×1024 图约 1026 token、256×256 约 66 token。免费额度 10000 neurons/天在促销档约合 110 万输入 token/天（本刊计算）。私有化侧：Apache 2.0 + custom-code，9B flash 权重 19.6GB 单张 24GB 卡可载，27B 55.9GB 需更大显存或多卡；这是「能装下」的口径，速度以实测为准。</p></div><div class="kv-box"><h3>机悟建议：抽取类任务先看底座与计费坑</h3><p class="kv-sub">千问底座可私有化，pass 重发会放大输入费</p><ul class="art-tl"><li>底座与微调分开看：Clairic 基于千问 Qwen3.8-27B / Qwen3.5-9B，Apache 2.0 可商用可私有化。</li><li>计费坑：每个 text 字段一个 pass、每 pass 重发 state 与全部图片，字段多则输入费翻倍，先估 pass 数再报价。</li><li>能力限定：官方自述延迟、尚无公开抽取基准、文档仍标 preview，选型要自己跑样本验证。</li><li>9B flash 19.6GB 单卡可载、27B 需多卡；内网抽取场景机悟可约 40 分钟评估部署与成本。</li></ul></div><p class="art-src">来源：Cloudflare 官方博客 2026-11-18（blog.cloudflare.com/open-clairic）、Workers AI 官方文档与定价页（developers.cloudflare.com/workers-ai/models/clairic/ 与 platform/pricing/）、Hugging Face Cloudflare/clairic 与 clairic-flash 模型卡（base_model/license，权重体积为本刊求和）；成本与 token 换算为本刊现算。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-20-deepseek-search-free-again.html" title="中国 DeepSeek 联网搜索恢复免费：按次收费 18 天即取消，独立接口仍 5 元/千次">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">DeepSeek 搜索恢复免费</span>
+        <span class="pg-d">2026-11-20</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-19-anthropic-ipo-pricing.html" title="Anthropic IPO 定价 83 美元：募资约 813 亿超越 SpaceX，今日纳斯达克挂牌">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">Anthropic IPO 定价</span>
+        <span class="pg-d">2026-11-19</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>发票合同表单的结构化抽取要不要私有化、9B/27B 怎么选、pass 计费怎么估，机悟用约 40 分钟帮你把部署与成本算清楚。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
 
 
 <section class="art-cmt" id="comments">
@@ -204,22 +222,6 @@
       <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
     </form>
   </div>
-</section>
-
-<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
-    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <a class="pg prev" rel="prev" href="news-2026-11-20-deepseek-search-free-again.html" title="中国 DeepSeek 联网搜索恢复免费：按次收费 18 天即取消，独立接口仍 5 元/千次">
-        <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">DeepSeek 搜索恢复免费</span>
-        <span class="pg-d">2026-11-20</span>
-      </a>
-      <a class="pg next" rel="next" href="news-2026-11-19-anthropic-ipo-pricing.html" title="Anthropic IPO 定价 83 美元：募资约 813 亿超越 SpaceX，今日纳斯达克挂牌">
-        <span class="pg-k">下一篇 →</span>
-        <span class="pg-t">Anthropic IPO 定价</span>
-        <span class="pg-d">2026-11-19</span>
-      </a>
-    </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
 </section>
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">

@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<link rel="stylesheet" href="assets/site.css?v=7.2.2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="中国 DeepSeek 周调用 59.2 万亿 Token 全球居首，免费端却开始限额：长对话受限、单次输入约 4 万字 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -182,7 +182,25 @@
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
-<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-17</span><span class="n-tag">大模型 · 云端算力</span><h1 class="art-h1">中国 DeepSeek 周调用 59.2 万亿 Token 全球居首，免费端却开始限额：长对话受限、单次输入约 4 万字</h1><p class="art-lede">一边是调用量冲到全球第一，一边是免费用户开始被限额——中国大模型 DeepSeek 在 11 月 16 日被用户反映调整了 App 与网页版的使用额度：长对话受限、每日额度收紧、单次文字输入缩到约 4 万字，有人用了不到两小时就收到「额度已达上限」。据第一财经报道，官方尚未发布统一的限额规则。这件事对把核心业务押在云端免费 AI 上的政企用户是个提醒：调用量再大，免费额度的规则与连续性也不由自己掌握。本文交代限制的具体口径、背后的算力成本，以及 C 端免费与开发者 API 的关键区别。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、发生了什么：三类限制同时出现</h3><p>据第一财经（记者刘晓洁）11 月 16 日报道，DeepSeek 对 App 及网页版的使用额度作出调整，用户反馈集中在三个方面：<b>长对话限制、每日使用额度、单次文字输入长度</b>。报道援引用户截图，部分用户在连续使用不到两小时后，就收到「因服务器繁忙，使用额度已达上限」的提示。</p><ul class="art-tl"><li>长对话：有用户被提示「不再支持超过 7 天不活跃的长对话」，也有用户被提示「超过 72 小时未活跃」就无法继续——<b>不同用户看到的口径并不一致</b>。</li><li>每日额度：连续使用不到两小时即收到额度耗尽提示。</li><li>单次输入：文字输入上限缩短至<b>约 4 万字</b>。</li></ul><p>需要强调：截至报道发出，<b>DeepSeek 官方尚未发布统一的限额规则与说明</b>，也未披露何时解除。上述口径来自用户反馈与产品内提示，属媒体报道范畴，本文逐字保留其不确定性，不把它当作官方正式公告。</p><h3 class="art-h2">二、限制口径一览（媒体报道，非官方统一规则）</h3><table class="art-table"><thead><tr><th>限制项</th><th>用户反馈口径</th><th>说明</th></tr></thead><tbody><tr><td>长对话</td><td>7 天 / 72 小时不活跃即受限</td><td>两种口径并存，官方未统一</td></tr><tr><td>每日额度</td><td>不到 2 小时即提示耗尽</td><td>提示语为「服务器繁忙，额度已达上限」</td></tr><tr><td>单次文字输入</td><td>上限约 4 万字</td><td>较此前明显缩短</td></tr><tr><td>适用范围</td><td>C 端 App / 网页版</td><td>开发者 API 不在此列</td></tr></tbody></table><p>口径说明：长对话「7 天」与「72 小时」两个数字来自不同用户截图，<b>彼此不一致</b>，本文并列呈现并标注差异，引用时建议注明出处；在官方给出统一规则前，不宜把任一数字当作确定阈值。</p><h3 class="art-h2">三、为什么限额：调用量暴涨与算力成本</h3><p>限额的另一面是调用量的快速攀升。据 OpenRouter 数据，11 月 9—15 日当周，DeepSeek V4.1 Flash 1017 完成 <b>59.2 万亿 Token</b> 调用，稳居全球调用榜首位；而 9 月 14 日那周（V4.1 Flash 9 月 10 日推出后）调用量为 <b>15.8 万亿</b>。本刊计算：59.2 ÷ 15.8 ≈ <b>3.7</b>，即两个月里周调用量涨到约 3.7 倍。</p><p>技术层面，长对话意味着上下文不断累积，每一轮都要把历史内容重新计入 Token，计算与缓存开销随之上升；而免费 C 端对话<b>对应真实算力成本却没有直接回报</b>。报道还提到，10 月以来 DeepSeek 至少出现 5 起部分服务中断或异常，其中 10 月 15 日一次崩溃长达约 5 小时。调用量越大，免费端的算力压力越直观。</p><h3 class="art-h2">四、关键区分：C 端免费 ≠ 开发者 API</h3><p>对企业用户最重要的一点：<b>本次限额针对的是 C 端 App 与网页版免费服务，开发者 API 是独立的调用限制与按量计费，不是同一套规则</b>。也就是说，通过 API 把 DeepSeek 接进自己业务系统的企业，走的是另一条计费与配额通道，不应把「免费端限额」直接等同于「API 不可用」。</p><ul class="art-tl"><li>免费 C 端：面向个人对话，额度规则不透明、可能随算力压力调整。</li><li>开发者 API：按量计费、有独立配额，企业接入应以其官方计费与 SLA 条款为准。</li><li>选型启示：把业务连续性建立在「免费额度」上是脆弱的；要么走付费 API 并看清条款，要么把关键负载放到自己可控的算力上。</li></ul><h3 class="art-h2">五、边界与对政企的启示</h3><p>本文仅转述公开报道：限额的具体阈值、解除时间、是否长期化，官方都尚未给出统一说明，存在变化可能。报道中也有用户希望推出月卡、季卡等付费选择，但目前官方未提供。对政企而言，这件事的价值不在评判某一家产品，而在看清一个共性——<b>云端免费或订阅服务的额度、规则与连续性，掌握在服务商手里</b>。</p><p>对依赖长上下文、高频调用、且要求业务连续与数据可控的场景，本地私有化部署提供的是另一种确定性：算力自有、配额自定、数据留在本地内网，不受云端免费额度波动影响。两条路线各有适用面，关键是把核心负载的「可控性」算进选型账里。</p></div><div class="kv-box"><h3>机悟建议：别把业务连续性押在云端免费额度上</h3><p class="kv-sub">免费额度是变量，可控算力才是常量</p><ul class="art-tl"><li>个人尝鲜用免费 C 端无妨；但政企核心业务不要依赖免费额度，规则与连续性都不由自己掌握。</li><li>走云端 API 的，先看清按量计费、配额与 SLA 条款，把「限额/宕机」纳入业务连续性预案。</li><li>长上下文、高频调用、数据敏感的场景，评估本地私有化部署：算力自有、配额自定、数据不出域。</li><li>云端与本地不是二选一——把难任务、敏感数据放本地，把弹性峰值放云端，做混合分层更稳。</li></ul></div><p class="art-src">来源：第一财经《DeepSeek 免费聊天开始限额，长对话及每日额度受限》（记者刘晓洁，2026-11-16，via 新浪财经 finance.sina.com.cn、凤凰网科技 tech.ifeng.com、中国金融信息网 cnfin.com）；OpenRouter 周调用数据转引自上述报道。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>你的核心 AI 负载该押云端免费额度、付费 API，还是本地算力？我们可以在一次评估里把调用频次、上下文长度、数据边界与连续性要求算清楚，给出云端 / 本地 / 混合的分层方案。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-17</span><span class="n-tag">大模型 · 云端算力</span><h1 class="art-h1">中国 DeepSeek 周调用 59.2 万亿 Token 全球居首，免费端却开始限额：长对话受限、单次输入约 4 万字</h1><p class="art-lede">一边是调用量冲到全球第一，一边是免费用户开始被限额——中国大模型 DeepSeek 在 11 月 16 日被用户反映调整了 App 与网页版的使用额度：长对话受限、每日额度收紧、单次文字输入缩到约 4 万字，有人用了不到两小时就收到「额度已达上限」。据第一财经报道，官方尚未发布统一的限额规则。这件事对把核心业务押在云端免费 AI 上的政企用户是个提醒：调用量再大，免费额度的规则与连续性也不由自己掌握。本文交代限制的具体口径、背后的算力成本，以及 C 端免费与开发者 API 的关键区别。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、发生了什么：三类限制同时出现</h3><p>据第一财经（记者刘晓洁）11 月 16 日报道，DeepSeek 对 App 及网页版的使用额度作出调整，用户反馈集中在三个方面：<b>长对话限制、每日使用额度、单次文字输入长度</b>。报道援引用户截图，部分用户在连续使用不到两小时后，就收到「因服务器繁忙，使用额度已达上限」的提示。</p><ul class="art-tl"><li>长对话：有用户被提示「不再支持超过 7 天不活跃的长对话」，也有用户被提示「超过 72 小时未活跃」就无法继续——<b>不同用户看到的口径并不一致</b>。</li><li>每日额度：连续使用不到两小时即收到额度耗尽提示。</li><li>单次输入：文字输入上限缩短至<b>约 4 万字</b>。</li></ul><p>需要强调：截至报道发出，<b>DeepSeek 官方尚未发布统一的限额规则与说明</b>，也未披露何时解除。上述口径来自用户反馈与产品内提示，属媒体报道范畴，本文逐字保留其不确定性，不把它当作官方正式公告。</p><h3 class="art-h2">二、限制口径一览（媒体报道，非官方统一规则）</h3><table class="art-table"><thead><tr><th>限制项</th><th>用户反馈口径</th><th>说明</th></tr></thead><tbody><tr><td>长对话</td><td>7 天 / 72 小时不活跃即受限</td><td>两种口径并存，官方未统一</td></tr><tr><td>每日额度</td><td>不到 2 小时即提示耗尽</td><td>提示语为「服务器繁忙，额度已达上限」</td></tr><tr><td>单次文字输入</td><td>上限约 4 万字</td><td>较此前明显缩短</td></tr><tr><td>适用范围</td><td>C 端 App / 网页版</td><td>开发者 API 不在此列</td></tr></tbody></table><p>口径说明：长对话「7 天」与「72 小时」两个数字来自不同用户截图，<b>彼此不一致</b>，本文并列呈现并标注差异，引用时建议注明出处；在官方给出统一规则前，不宜把任一数字当作确定阈值。</p><h3 class="art-h2">三、为什么限额：调用量暴涨与算力成本</h3><p>限额的另一面是调用量的快速攀升。据 OpenRouter 数据，11 月 9—15 日当周，DeepSeek V4.1 Flash 1017 完成 <b>59.2 万亿 Token</b> 调用，稳居全球调用榜首位；而 9 月 14 日那周（V4.1 Flash 9 月 10 日推出后）调用量为 <b>15.8 万亿</b>。本刊计算：59.2 ÷ 15.8 ≈ <b>3.7</b>，即两个月里周调用量涨到约 3.7 倍。</p><p>技术层面，长对话意味着上下文不断累积，每一轮都要把历史内容重新计入 Token，计算与缓存开销随之上升；而免费 C 端对话<b>对应真实算力成本却没有直接回报</b>。报道还提到，10 月以来 DeepSeek 至少出现 5 起部分服务中断或异常，其中 10 月 15 日一次崩溃长达约 5 小时。调用量越大，免费端的算力压力越直观。</p><h3 class="art-h2">四、关键区分：C 端免费 ≠ 开发者 API</h3><p>对企业用户最重要的一点：<b>本次限额针对的是 C 端 App 与网页版免费服务，开发者 API 是独立的调用限制与按量计费，不是同一套规则</b>。也就是说，通过 API 把 DeepSeek 接进自己业务系统的企业，走的是另一条计费与配额通道，不应把「免费端限额」直接等同于「API 不可用」。</p><ul class="art-tl"><li>免费 C 端：面向个人对话，额度规则不透明、可能随算力压力调整。</li><li>开发者 API：按量计费、有独立配额，企业接入应以其官方计费与 SLA 条款为准。</li><li>选型启示：把业务连续性建立在「免费额度」上是脆弱的；要么走付费 API 并看清条款，要么把关键负载放到自己可控的算力上。</li></ul><h3 class="art-h2">五、边界与对政企的启示</h3><p>本文仅转述公开报道：限额的具体阈值、解除时间、是否长期化，官方都尚未给出统一说明，存在变化可能。报道中也有用户希望推出月卡、季卡等付费选择，但目前官方未提供。对政企而言，这件事的价值不在评判某一家产品，而在看清一个共性——<b>云端免费或订阅服务的额度、规则与连续性，掌握在服务商手里</b>。</p><p>对依赖长上下文、高频调用、且要求业务连续与数据可控的场景，本地私有化部署提供的是另一种确定性：算力自有、配额自定、数据留在本地内网，不受云端免费额度波动影响。两条路线各有适用面，关键是把核心负载的「可控性」算进选型账里。</p></div><div class="kv-box"><h3>机悟建议：别把业务连续性押在云端免费额度上</h3><p class="kv-sub">免费额度是变量，可控算力才是常量</p><ul class="art-tl"><li>个人尝鲜用免费 C 端无妨；但政企核心业务不要依赖免费额度，规则与连续性都不由自己掌握。</li><li>走云端 API 的，先看清按量计费、配额与 SLA 条款，把「限额/宕机」纳入业务连续性预案。</li><li>长上下文、高频调用、数据敏感的场景，评估本地私有化部署：算力自有、配额自定、数据不出域。</li><li>云端与本地不是二选一——把难任务、敏感数据放本地，把弹性峰值放云端，做混合分层更稳。</li></ul></div><p class="art-src">来源：第一财经《DeepSeek 免费聊天开始限额，长对话及每日额度受限》（记者刘晓洁，2026-11-16，via 新浪财经 finance.sina.com.cn、凤凰网科技 tech.ifeng.com、中国金融信息网 cnfin.com）；OpenRouter 周调用数据转引自上述报道。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-18-qwen38-nvidia-draft-models.html" title="Qwen3.8-27B 迎来英伟达官方「草稿模型」：三款开源，接受长度最高提升 59%">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">Qwen3.8 草稿模型开源</span>
+        <span class="pg-d">2026-11-18</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-17-bis-remote-compute-rule.html" title="中国 AI 海外租算力通道遭美国新规封堵：1200 万 TPP 红线约 750 颗 H100，国产替代再提速">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">美国远程算力新规</span>
+        <span class="pg-d">2026-11-17</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>你的核心 AI 负载该押云端免费额度、付费 API，还是本地算力？我们可以在一次评估里把调用频次、上下文长度、数据边界与连续性要求算清楚，给出云端 / 本地 / 混合的分层方案。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
 
 
 <section class="art-cmt" id="comments">
@@ -204,22 +222,6 @@
       <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
     </form>
   </div>
-</section>
-
-<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
-    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <a class="pg prev" rel="prev" href="news-2026-11-18-qwen38-nvidia-draft-models.html" title="Qwen3.8-27B 迎来英伟达官方「草稿模型」：三款开源，接受长度最高提升 59%">
-        <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">Qwen3.8 草稿模型开源</span>
-        <span class="pg-d">2026-11-18</span>
-      </a>
-      <a class="pg next" rel="next" href="news-2026-11-17-bis-remote-compute-rule.html" title="中国 AI 海外租算力通道遭美国新规封堵：1200 万 TPP 红线约 750 颗 H100，国产替代再提速">
-        <span class="pg-k">下一篇 →</span>
-        <span class="pg-t">美国远程算力新规</span>
-        <span class="pg-d">2026-11-17</span>
-      </a>
-    </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
 </section>
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">

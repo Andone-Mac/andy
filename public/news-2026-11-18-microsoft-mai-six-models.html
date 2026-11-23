@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<link rel="stylesheet" href="assets/site.css?v=7.2.2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="微软一次发布六款专用 AI 模型：编码达 GPT-6.1 Sol 98% 性能，价格仅 40% | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -182,7 +182,25 @@
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
-<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-18</span><span class="n-tag">大模型 · 成本效率</span><h1 class="art-h1">微软一次发布六款专用 AI 模型：编码达 GPT-6.1 Sol 98% 性能，价格仅 40%</h1><p class="art-lede">11 月 17 日（旧金山），微软在 Ignite 大会发布六款自研 MAI 专用模型，覆盖编码、网络安全、图像与语音：MAI Code 2、Code 2 Flash、Cyber 2 Flash、Image 2.7、Realtime 1、Transcribe 2。微软称旗舰编码模型 Code 2 达到 GPT-6.1 Sol 98% 的性能、价格仅 40%；对 Claude Opus 5.5 则是 96% 性能、5% 成本。同日 OpenAI 发布 GPT-6.2，微软的对标对象已是上一代——专用小模型打旗舰的路线，正在成为大厂共识。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、六款模型与关键数字</h3><table class="art-table"><thead><tr><th>模型</th><th>定位</th><th>微软口径</th></tr></thead><tbody><tr><td>MAI Code 2</td><td>旗舰编码，跨文件/整项目</td><td>GPT-6.1 Sol 98% 性能、40% 价格；Opus 5.5 96% 性能、5% 成本</td></tr><tr><td>MAI Code 2 Flash</td><td>日常修复/快速编辑</td><td>约 Claude Haiku 5.5 性能、20% 价格</td></tr><tr><td>MAI Cyber 2 Flash</td><td>网络安全</td><td>CyberGym-E2E 92.3%（GPT-6 Astra 91.5%），每任务成本低于 2%</td></tr><tr><td>MAI Image 2.7</td><td>图像生成/编辑</td><td>Artificial Analysis 图像编辑榜第 1</td></tr><tr><td>MAI Realtime 1</td><td>实时语音</td><td>微软称优于 GPT-Realtime 2.1</td></tr><tr><td>MAI Transcribe 2</td><td>语音转写</td><td>专用转写模型</td></tr></tbody></table><p>两款编码模型已进 GitHub Copilot（Yahoo/Axios 报道）。微软 AI 负责人 Suleyman 称，公司在自研前沿通用模型上「正取得重大进展」，同时用专用模型以远低于 OpenAI/Anthropic 的成本提供可比性能。</p><h3 class="art-h2">二、数字的口径：促销折扣与自选基准</h3><p>这些百分比不是无条件成立的。据 Yahoo Tech 梳理 Axios 报道：Code 2 的对照是 4 个企业编码基准的平均，其中 3 个在微软自己的评测平台上跑；成本对比按 50% 促销折扣价计算。也就是说，「5% 成本」里有促销成分，基准选择权也在微软手里。引用时建议带上这两条限定，别把厂商口径当第三方定论。</p><ul class="art-tl"><li>98%/40% 与 96%/5% 均为微软自述、4 基准平均。</li><li>成本含 50% 促销折扣，促销结束后价差会收窄。</li><li>CyberGym-E2E 92.3% 对 91.5% 是单项安全测试，差 0.8 个百分点，成本差才是重点（低于 2%）。</li></ul><h3 class="art-h2">三、路线之争：专用小模型 vs 通用旗舰</h3><p>微软这次没有发布「什么都能干」的通用旗舰，而是六款各管一摊的专用模型——编码、网安、图像、语音分开训练、分开定价。逻辑很直白：企业里大量调用是重复的专项任务，用专用模型接住，旗舰只留给少数硬任务，总成本立刻下来。同日 OpenAI 的 GPT-6.2 Sol（日常版）与 Astra（旗舰）分层，走的是同一条路：按任务分层，而不是一个模型打天下。</p><p>对私有化部署的启示相同：内网不必只装一个最大的模型。编码、转写、图像各配一个够用的专用模型，显存与电费都能省；关键是先把自己的任务分布统计清楚。</p><h3 class="art-h2">四、采购提醒</h3><ul class="art-tl"><li>厂商对比数字要问三件事：哪些基准、谁跑的、价格含不含促销。</li><li>专用模型的「可比性能」限定在特定任务族，跨任务别外推。</li><li>本次发布未宣布开放权重，MAI 编码模型经 GitHub Copilot 渠道提供——云端专用模型不等于可私有化。</li></ul></div><div class="kv-box"><h3>机悟建议：专用模型路线怎么用到内网</h3><p class="kv-sub">先统计任务分布，再配模型</p><ul class="art-tl"><li>统计任务分布：把一周的 AI 调用按编码/转写/图像/问答分类，占比最高的任务优先配专用模型。</li><li>内网分层部署：日常任务用小模型，硬任务留给大模型，显存与电费双省。</li><li>厂商数字带限定引用：基准、评测方、促销折扣三问，写进选型报告。</li><li>云端专用模型不等于可私有化：MAI 未开放权重，涉密任务仍要选开源可下载模型。</li></ul></div><p class="art-src">来源：微软官方 Ignite 2026 MAI 主题演讲实录（microsoft.ai/news/microsoft-ignite-2026-mai-keynote，2026-11-17）、智通财经（2026-11-18）、金融界转 Axios（2026-11-18 02:17）、Yahoo Tech《Why Microsoft Thinks Smaller, Cheaper AI Can Beat Claude and GPT》（2026-11-17）。性能与价格对比均为微软自述口径，含 50% 促销折扣与自选基准限定。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>想在内网复制「专用模型分层」的成本优势？我们可以在一次评估里把你的任务分布、模型选型与显存预算算清楚，给出数据不出域的分层部署方案。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-18</span><span class="n-tag">大模型 · 成本效率</span><h1 class="art-h1">微软一次发布六款专用 AI 模型：编码达 GPT-6.1 Sol 98% 性能，价格仅 40%</h1><p class="art-lede">11 月 17 日（旧金山），微软在 Ignite 大会发布六款自研 MAI 专用模型，覆盖编码、网络安全、图像与语音：MAI Code 2、Code 2 Flash、Cyber 2 Flash、Image 2.7、Realtime 1、Transcribe 2。微软称旗舰编码模型 Code 2 达到 GPT-6.1 Sol 98% 的性能、价格仅 40%；对 Claude Opus 5.5 则是 96% 性能、5% 成本。同日 OpenAI 发布 GPT-6.2，微软的对标对象已是上一代——专用小模型打旗舰的路线，正在成为大厂共识。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、六款模型与关键数字</h3><table class="art-table"><thead><tr><th>模型</th><th>定位</th><th>微软口径</th></tr></thead><tbody><tr><td>MAI Code 2</td><td>旗舰编码，跨文件/整项目</td><td>GPT-6.1 Sol 98% 性能、40% 价格；Opus 5.5 96% 性能、5% 成本</td></tr><tr><td>MAI Code 2 Flash</td><td>日常修复/快速编辑</td><td>约 Claude Haiku 5.5 性能、20% 价格</td></tr><tr><td>MAI Cyber 2 Flash</td><td>网络安全</td><td>CyberGym-E2E 92.3%（GPT-6 Astra 91.5%），每任务成本低于 2%</td></tr><tr><td>MAI Image 2.7</td><td>图像生成/编辑</td><td>Artificial Analysis 图像编辑榜第 1</td></tr><tr><td>MAI Realtime 1</td><td>实时语音</td><td>微软称优于 GPT-Realtime 2.1</td></tr><tr><td>MAI Transcribe 2</td><td>语音转写</td><td>专用转写模型</td></tr></tbody></table><p>两款编码模型已进 GitHub Copilot（Yahoo/Axios 报道）。微软 AI 负责人 Suleyman 称，公司在自研前沿通用模型上「正取得重大进展」，同时用专用模型以远低于 OpenAI/Anthropic 的成本提供可比性能。</p><h3 class="art-h2">二、数字的口径：促销折扣与自选基准</h3><p>这些百分比不是无条件成立的。据 Yahoo Tech 梳理 Axios 报道：Code 2 的对照是 4 个企业编码基准的平均，其中 3 个在微软自己的评测平台上跑；成本对比按 50% 促销折扣价计算。也就是说，「5% 成本」里有促销成分，基准选择权也在微软手里。引用时建议带上这两条限定，别把厂商口径当第三方定论。</p><ul class="art-tl"><li>98%/40% 与 96%/5% 均为微软自述、4 基准平均。</li><li>成本含 50% 促销折扣，促销结束后价差会收窄。</li><li>CyberGym-E2E 92.3% 对 91.5% 是单项安全测试，差 0.8 个百分点，成本差才是重点（低于 2%）。</li></ul><h3 class="art-h2">三、路线之争：专用小模型 vs 通用旗舰</h3><p>微软这次没有发布「什么都能干」的通用旗舰，而是六款各管一摊的专用模型——编码、网安、图像、语音分开训练、分开定价。逻辑很直白：企业里大量调用是重复的专项任务，用专用模型接住，旗舰只留给少数硬任务，总成本立刻下来。同日 OpenAI 的 GPT-6.2 Sol（日常版）与 Astra（旗舰）分层，走的是同一条路：按任务分层，而不是一个模型打天下。</p><p>对私有化部署的启示相同：内网不必只装一个最大的模型。编码、转写、图像各配一个够用的专用模型，显存与电费都能省；关键是先把自己的任务分布统计清楚。</p><h3 class="art-h2">四、采购提醒</h3><ul class="art-tl"><li>厂商对比数字要问三件事：哪些基准、谁跑的、价格含不含促销。</li><li>专用模型的「可比性能」限定在特定任务族，跨任务别外推。</li><li>本次发布未宣布开放权重，MAI 编码模型经 GitHub Copilot 渠道提供——云端专用模型不等于可私有化。</li></ul></div><div class="kv-box"><h3>机悟建议：专用模型路线怎么用到内网</h3><p class="kv-sub">先统计任务分布，再配模型</p><ul class="art-tl"><li>统计任务分布：把一周的 AI 调用按编码/转写/图像/问答分类，占比最高的任务优先配专用模型。</li><li>内网分层部署：日常任务用小模型，硬任务留给大模型，显存与电费双省。</li><li>厂商数字带限定引用：基准、评测方、促销折扣三问，写进选型报告。</li><li>云端专用模型不等于可私有化：MAI 未开放权重，涉密任务仍要选开源可下载模型。</li></ul></div><p class="art-src">来源：微软官方 Ignite 2026 MAI 主题演讲实录（microsoft.ai/news/microsoft-ignite-2026-mai-keynote，2026-11-17）、智通财经（2026-11-18）、金融界转 Axios（2026-11-18 02:17）、Yahoo Tech《Why Microsoft Thinks Smaller, Cheaper AI Can Beat Claude and GPT》（2026-11-17）。性能与价格对比均为微软自述口径，含 50% 促销折扣与自选基准限定。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-18-gpt62-astra-sol-price-cut.html" title="OpenAI 发布 GPT-6.2 双模型：旗舰 API 降价 20%，日常版 Sol 编码只差 0.5 分、成本约 1/5">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">GPT-6.2 双模型发布</span>
+        <span class="pg-d">2026-11-18</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-18-longcat-avatar16-mit-opensource.html" title="美团开源数字人模型 LongCat-Avatar 1.6：MIT 许可、一次生成 10 分钟视频，人类偏好榜第 2">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">美团数字人 1.6 开源</span>
+        <span class="pg-d">2026-11-18</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>想在内网复制「专用模型分层」的成本优势？我们可以在一次评估里把你的任务分布、模型选型与显存预算算清楚，给出数据不出域的分层部署方案。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
 
 
 <section class="art-cmt" id="comments">
@@ -204,22 +222,6 @@
       <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
     </form>
   </div>
-</section>
-
-<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
-    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <a class="pg prev" rel="prev" href="news-2026-11-18-gpt62-astra-sol-price-cut.html" title="OpenAI 发布 GPT-6.2 双模型：旗舰 API 降价 20%，日常版 Sol 编码只差 0.5 分、成本约 1/5">
-        <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">GPT-6.2 双模型发布</span>
-        <span class="pg-d">2026-11-18</span>
-      </a>
-      <a class="pg next" rel="next" href="news-2026-11-18-longcat-avatar16-mit-opensource.html" title="美团开源数字人模型 LongCat-Avatar 1.6：MIT 许可、一次生成 10 分钟视频，人类偏好榜第 2">
-        <span class="pg-k">下一篇 →</span>
-        <span class="pg-t">美团数字人 1.6 开源</span>
-        <span class="pg-d">2026-11-18</span>
-      </a>
-    </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
 </section>
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">

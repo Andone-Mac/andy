@@ -25,7 +25,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="机悟JAVIS">
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="assets/site.css?v=7.2.1">
+<link rel="stylesheet" href="assets/site.css?v=7.2.2">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
 <meta property="og:title" content="中国国产开源科学多模态模型书生 S2.1 Flash：15 项基准 4 项第一超 Claude Opus 5，推理成本仅 1/10 | 机悟·政企超脑 · 甲维思 JAVIS">
@@ -182,7 +182,25 @@
     <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
   </div>
 </header>
-<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-17</span><span class="n-tag">国产开源 · 科学智能</span><h1 class="art-h1">中国国产开源科学多模态模型书生 S2.1 Flash：15 项基准 4 项第一超 Claude Opus 5，推理成本仅 1/10</h1><p class="art-lede">国产开源模型在「科学智能」这条赛道上又落一子。11 月 16 日，上海人工智能实验室开源书生科学多模态大模型 S2.1 Flash，采用可商用的 MIT 许可，权重同时上线 ModelScope 与 Hugging Face。它不是又一个聊天模型，而是面向科研场景的助手：能理解分子、光谱、生物序列等十余类科学数据，还能操控科研软件。据机器之心梳理，它在 15 项通用智能体基准里拿下 4 项第一、7 项第二，部分指标超过 Claude Opus 5，而同一任务的推理成本仅为书生·星河的十分之一。本文交代它的能力、开源门槛与国产算力适配。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、书生 S2.1 Flash 是什么：科研助手而非聊天模型</h3><p>据上海人工智能实验室与沐曦股份官方信息，书生 S2.1 Flash 是一款<b>科学多模态大模型</b>，定位是<b>科研助手</b>。它依托<b>书生·元征（Sage·SciPerception）统一表征架构</b>，把多种科学数据纳入同一套理解框架，并融合通用智能体能力，可依托视觉感知操控科研软件。</p><ul class="art-tl"><li>支持的科学数据类型包括：分子图、晶体结构、蛋白质序列与三维结构、DNA/RNA、光谱、质谱、X 射线衍射、心电、脑电、光变曲线等<b>十余类</b>。</li><li>合作单位包括复旦大学、中科院软件所、中国人民大学、中科院自动化所、华东师范大学、哈尔滨工业大学、北京大学等。</li><li>强调<b>递归式自我改进（RSI）</b>，形成「自进化飞轮」，并已上线书生·端砚科学发现平台（discovery.intern-ai.org.cn）。</li></ul><h3 class="art-h2">二、开源与部署门槛：MIT 许可 + BF16/FP8 双精度</h3><table class="art-table"><thead><tr><th>项目</th><th>口径</th></tr></thead><tbody><tr><td>许可</td><td>MIT（可商用）</td></tr><tr><td>权重平台</td><td>ModelScope、Hugging Face</td></tr><tr><td>精度</td><td>BF16 与 FP8 两种</td></tr><tr><td>FP8 用途</td><td>面向显存受限的部署场景</td></tr><tr><td>推理成本</td><td>同一任务约为书生·星河的 1/10</td></tr></tbody></table><p>对想在本地落地的团队，<b>MIT 许可</b>意味着可商用、可二次开发；<b>FP8 精度</b>则直接降低了显存门槛，让显存受限的环境也能部署。推理成本仅为书生·星河的十分之一（官方口径），对高频科研任务的成本控制是实打实的利好。具体显存需求与吞吐仍要以自己的硬件实测为准。</p><h3 class="art-h2">三、成绩：15 项基准 4 项第一、7 项第二</h3><p>据机器之心梳理，书生 S2.1 Flash 横向对比五款主流模型，在 <b>15 项通用智能体基准</b>中取得 <b>4 项第一、7 项第二</b>，整体优于 Claude Opus 5、DeepSeek-V4.1 Flash、GLM-5.3-Flash 等。四个第一如下：</p><table class="art-table"><thead><tr><th>基准（第一）</th><th>S2.1 Flash 得分</th><th>对比</th></tr></thead><tbody><tr><td>MLE-bench Lite</td><td>90.3</td><td>第二 DeepSeek-V4.1-Flash 89.2</td></tr><tr><td>OfficeQA Pro</td><td>72.2</td><td>—</td></tr><tr><td>Harvey LAB</td><td>25.0</td><td>—</td></tr><tr><td>SpreadsheetBench 2</td><td>37.1</td><td>—</td></tr></tbody></table><p>另有 7 项第二，覆盖 AutomationBench、ALE-CLI、BFCL V4、WebArena-Verified、DeepResearch Bench II、JobBench、OSWorld-Verified。本刊计算：MLE-bench Lite 上 90.3 − 89.2 = <b>1.1 分</b>领先第二名。口径说明：以上为<b>官方/媒体梳理的评测口径</b>，第三方独立复现尚未出现，引用时建议注明出处，不宜直接当作公开榜单的最终排名。</p><h3 class="art-h2">四、为什么能省：统一表征 + 成本降到 1/10</h3><p>科学数据形态各异——分子是图、光谱是曲线、蛋白质是序列加三维结构。书生·元征的统一表征架构把这些异构数据放进同一套理解框架，减少了为每类数据单独建模的开销；配合面向科研任务的优化，官方称<b>同一任务的推理成本仅为书生·星河的十分之一</b>。对需要反复跑实验、批量处理科学数据的科研场景，成本下降直接决定了「能不能天天用」。</p><p>报道还给出四个实操案例：CT 切片序恢复与三维骨骼重建（3D Slicer）、鄱阳湖遥感水域变化分析（QGIS）、航空发动机参数化建模与装配干涉检查（CAD）、脑电伪迹剔除（EEGLAB）——交付物是可重新打开的工程文件，而不只是一段文字回答。这正是「科研助手」与「聊天模型」的区别。</p><h3 class="art-h2">五、国产算力适配与本地落地</h3><p>据沐曦股份官方信息，其曦云 C 系列 GPU 已率先完成对书生 S2.1 Flash 的 <b>Day 0 深度适配</b>；MXMACA 软件栈兼容 40 余种 AI 框架、1000 多款模型、6000 多个开源项目，自 2025 年 12 月以来累计完成 49 个主流开源模型的 Day 0 适配。这意味着<b>国产开源模型 + 国产算力</b>的组合在科研场景已经跑通，而非停留在纸面。</p><p>对高校、科研院所与有研发数据保密要求的企业，这条路径的现实意义在于：科学数据往往敏感，<b>本地私有化部署 + 数据不出域</b>比把实验数据上传云端更稳妥。MIT 许可 + FP8 降显存 + 国产 GPU 适配，三者叠加，让科研 AI 的本地化门槛明显降低。落地前仍要用自己的真实任务与硬件做对照实测。</p></div><div class="kv-box"><h3>机悟建议：科研 AI 本地化的可行路径</h3><p class="kv-sub">国产开源 + 国产算力，数据留在本地</p><ul class="art-tl"><li>高校、科研院所与研发型企业，可评估书生 S2.1 Flash 这类 MIT 许可的科学多模态模型做本地科研助手。</li><li>显存受限就用 FP8 精度档先跑起来，再按真实任务测吞吐与质量，别只看峰值指标。</li><li>科学数据敏感，优先本地私有化部署、数据不出域，避免把实验数据上传云端。</li><li>国产 GPU 已 Day 0 适配，可在国产算力上做小规模对照实测，验证「模型 + 算力」组合再规模化。</li></ul></div><p class="art-src">来源：沐曦股份官方微信公众号《上海 AI 实验室开源书生 S2.1 Flash，沐曦 GPU 完成 Day 0 适配》（2026-11-16）、机器之心 via 网易《15 项基准 4 个第一 7 个第二》（163.com，2026-11-16）、上海人工智能实验室书生·端砚平台（discovery.intern-ai.org.cn）；权重见 ModelScope（Shanghai_AI_Laboratory/Sage-S2.1-Flash）与 Hugging Face（internlm/Sage-S2.1-Flash）。评测为官方/媒体口径，第三方复现尚未出现。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p><div class="art-foot"><a class="btn-line" href="news.html">← 返回行业动态</a><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a><a class="btn-line" href="contact.html" data-open="demo">约 40 分钟演示</a></div></div></section><section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>科研数据敏感、又想用上科学多模态 AI？我们可以在一次评估里把数据类型、显存预算、国产算力适配与本地部署方案算清楚，给出数据不出域的科研 AI 落地路线。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-17</span><span class="n-tag">国产开源 · 科学智能</span><h1 class="art-h1">中国国产开源科学多模态模型书生 S2.1 Flash：15 项基准 4 项第一超 Claude Opus 5，推理成本仅 1/10</h1><p class="art-lede">国产开源模型在「科学智能」这条赛道上又落一子。11 月 16 日，上海人工智能实验室开源书生科学多模态大模型 S2.1 Flash，采用可商用的 MIT 许可，权重同时上线 ModelScope 与 Hugging Face。它不是又一个聊天模型，而是面向科研场景的助手：能理解分子、光谱、生物序列等十余类科学数据，还能操控科研软件。据机器之心梳理，它在 15 项通用智能体基准里拿下 4 项第一、7 项第二，部分指标超过 Claude Opus 5，而同一任务的推理成本仅为书生·星河的十分之一。本文交代它的能力、开源门槛与国产算力适配。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、书生 S2.1 Flash 是什么：科研助手而非聊天模型</h3><p>据上海人工智能实验室与沐曦股份官方信息，书生 S2.1 Flash 是一款<b>科学多模态大模型</b>，定位是<b>科研助手</b>。它依托<b>书生·元征（Sage·SciPerception）统一表征架构</b>，把多种科学数据纳入同一套理解框架，并融合通用智能体能力，可依托视觉感知操控科研软件。</p><ul class="art-tl"><li>支持的科学数据类型包括：分子图、晶体结构、蛋白质序列与三维结构、DNA/RNA、光谱、质谱、X 射线衍射、心电、脑电、光变曲线等<b>十余类</b>。</li><li>合作单位包括复旦大学、中科院软件所、中国人民大学、中科院自动化所、华东师范大学、哈尔滨工业大学、北京大学等。</li><li>强调<b>递归式自我改进（RSI）</b>，形成「自进化飞轮」，并已上线书生·端砚科学发现平台（discovery.intern-ai.org.cn）。</li></ul><h3 class="art-h2">二、开源与部署门槛：MIT 许可 + BF16/FP8 双精度</h3><table class="art-table"><thead><tr><th>项目</th><th>口径</th></tr></thead><tbody><tr><td>许可</td><td>MIT（可商用）</td></tr><tr><td>权重平台</td><td>ModelScope、Hugging Face</td></tr><tr><td>精度</td><td>BF16 与 FP8 两种</td></tr><tr><td>FP8 用途</td><td>面向显存受限的部署场景</td></tr><tr><td>推理成本</td><td>同一任务约为书生·星河的 1/10</td></tr></tbody></table><p>对想在本地落地的团队，<b>MIT 许可</b>意味着可商用、可二次开发；<b>FP8 精度</b>则直接降低了显存门槛，让显存受限的环境也能部署。推理成本仅为书生·星河的十分之一（官方口径），对高频科研任务的成本控制是实打实的利好。具体显存需求与吞吐仍要以自己的硬件实测为准。</p><h3 class="art-h2">三、成绩：15 项基准 4 项第一、7 项第二</h3><p>据机器之心梳理，书生 S2.1 Flash 横向对比五款主流模型，在 <b>15 项通用智能体基准</b>中取得 <b>4 项第一、7 项第二</b>，整体优于 Claude Opus 5、DeepSeek-V4.1 Flash、GLM-5.3-Flash 等。四个第一如下：</p><table class="art-table"><thead><tr><th>基准（第一）</th><th>S2.1 Flash 得分</th><th>对比</th></tr></thead><tbody><tr><td>MLE-bench Lite</td><td>90.3</td><td>第二 DeepSeek-V4.1-Flash 89.2</td></tr><tr><td>OfficeQA Pro</td><td>72.2</td><td>—</td></tr><tr><td>Harvey LAB</td><td>25.0</td><td>—</td></tr><tr><td>SpreadsheetBench 2</td><td>37.1</td><td>—</td></tr></tbody></table><p>另有 7 项第二，覆盖 AutomationBench、ALE-CLI、BFCL V4、WebArena-Verified、DeepResearch Bench II、JobBench、OSWorld-Verified。本刊计算：MLE-bench Lite 上 90.3 − 89.2 = <b>1.1 分</b>领先第二名。口径说明：以上为<b>官方/媒体梳理的评测口径</b>，第三方独立复现尚未出现，引用时建议注明出处，不宜直接当作公开榜单的最终排名。</p><h3 class="art-h2">四、为什么能省：统一表征 + 成本降到 1/10</h3><p>科学数据形态各异——分子是图、光谱是曲线、蛋白质是序列加三维结构。书生·元征的统一表征架构把这些异构数据放进同一套理解框架，减少了为每类数据单独建模的开销；配合面向科研任务的优化，官方称<b>同一任务的推理成本仅为书生·星河的十分之一</b>。对需要反复跑实验、批量处理科学数据的科研场景，成本下降直接决定了「能不能天天用」。</p><p>报道还给出四个实操案例：CT 切片序恢复与三维骨骼重建（3D Slicer）、鄱阳湖遥感水域变化分析（QGIS）、航空发动机参数化建模与装配干涉检查（CAD）、脑电伪迹剔除（EEGLAB）——交付物是可重新打开的工程文件，而不只是一段文字回答。这正是「科研助手」与「聊天模型」的区别。</p><h3 class="art-h2">五、国产算力适配与本地落地</h3><p>据沐曦股份官方信息，其曦云 C 系列 GPU 已率先完成对书生 S2.1 Flash 的 <b>Day 0 深度适配</b>；MXMACA 软件栈兼容 40 余种 AI 框架、1000 多款模型、6000 多个开源项目，自 2025 年 12 月以来累计完成 49 个主流开源模型的 Day 0 适配。这意味着<b>国产开源模型 + 国产算力</b>的组合在科研场景已经跑通，而非停留在纸面。</p><p>对高校、科研院所与有研发数据保密要求的企业，这条路径的现实意义在于：科学数据往往敏感，<b>本地私有化部署 + 数据不出域</b>比把实验数据上传云端更稳妥。MIT 许可 + FP8 降显存 + 国产 GPU 适配，三者叠加，让科研 AI 的本地化门槛明显降低。落地前仍要用自己的真实任务与硬件做对照实测。</p></div><div class="kv-box"><h3>机悟建议：科研 AI 本地化的可行路径</h3><p class="kv-sub">国产开源 + 国产算力，数据留在本地</p><ul class="art-tl"><li>高校、科研院所与研发型企业，可评估书生 S2.1 Flash 这类 MIT 许可的科学多模态模型做本地科研助手。</li><li>显存受限就用 FP8 精度档先跑起来，再按真实任务测吞吐与质量，别只看峰值指标。</li><li>科学数据敏感，优先本地私有化部署、数据不出域，避免把实验数据上传云端。</li><li>国产 GPU 已 Day 0 适配，可在国产算力上做小规模对照实测，验证「模型 + 算力」组合再规模化。</li></ul></div><p class="art-src">来源：沐曦股份官方微信公众号《上海 AI 实验室开源书生 S2.1 Flash，沐曦 GPU 完成 Day 0 适配》（2026-11-16）、机器之心 via 网易《15 项基准 4 个第一 7 个第二》（163.com，2026-11-16）、上海人工智能实验室书生·端砚平台（discovery.intern-ai.org.cn）；权重见 ModelScope（Shanghai_AI_Laboratory/Sage-S2.1-Flash）与 Hugging Face（internlm/Sage-S2.1-Flash）。评测为官方/媒体口径，第三方复现尚未出现。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-17-bis-remote-compute-rule.html" title="中国 AI 海外租算力通道遭美国新规封堵：1200 万 TPP 红线约 750 颗 H100，国产替代再提速">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">美国远程算力新规</span>
+        <span class="pg-d">2026-11-17</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-17-doubao-work-workbench.html" title="中国豆包工作上线 21 个专业工作台：金融医疗教育开箱即用，AI 办公走向职业化">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">豆包工作上线工作台</span>
+        <span class="pg-d">2026-11-17</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>科研数据敏感、又想用上科学多模态 AI？我们可以在一次评估里把数据类型、显存预算、国产算力适配与本地部署方案算清楚，给出数据不出域的科研 AI 落地路线。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
 
 
 <section class="art-cmt" id="comments">
@@ -204,22 +222,6 @@
       <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
     </form>
   </div>
-</section>
-
-<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
-    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
-      <a class="pg prev" rel="prev" href="news-2026-11-17-bis-remote-compute-rule.html" title="中国 AI 海外租算力通道遭美国新规封堵：1200 万 TPP 红线约 750 颗 H100，国产替代再提速">
-        <span class="pg-k">← 上一篇</span>
-        <span class="pg-t">美国远程算力新规</span>
-        <span class="pg-d">2026-11-17</span>
-      </a>
-      <a class="pg next" rel="next" href="news-2026-11-17-doubao-work-workbench.html" title="中国豆包工作上线 21 个专业工作台：金融医疗教育开箱即用，AI 办公走向职业化">
-        <span class="pg-k">下一篇 →</span>
-        <span class="pg-t">豆包工作上线工作台</span>
-        <span class="pg-d">2026-11-17</span>
-      </a>
-    </nav>
-    <p class="pg-all"><a href="news.html">返回行业动态列表（共 224 条）→</a></p>
 </section>
 
 <!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
