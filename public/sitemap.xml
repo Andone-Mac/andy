@@ -55,6 +55,36 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://javis.org.cn/news-2026-11-24-chinatelecom-xing41-preview-open.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-24-tencent-wemm-ecom-open.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-24-openrouter-210t-china-30weeks.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-2026-11-24-nvidia-huang-reinstated-compute.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://javis.org.cn/news-2026-11-23-glm54-coding-plan-vision.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>monthly</changefreq>
@@ -1556,6 +1586,12 @@
   </url>
   <url>
     <loc>https://javis.org.cn/news-p23.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://javis.org.cn/news-p24.html</loc>
     <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

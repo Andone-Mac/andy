@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 24 Nov 2026 00:47:21 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 10:25:38 +0000</lastBuildDate>
+    <item>
+      <title>中国电信星辰Xing4.1开源：8192张昇腾910C训出285B，每token只激活17B、原生1M上下文</title>
+      <link>https://javis.org.cn/news-2026-11-24-chinatelecom-xing41-preview-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-24-chinatelecom-xing41-preview-open.html</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 开源模型</category>
+      <description>中国电信AI于11月23日开源星辰Xing4.1-Preview：285B总参/17B激活MoE、原生1M上下文、Apache 2.0；arXiv报告披露8192张昇腾910C预训练；沐曦曦云C系列Day 0适配。预览版，基准分数待技术报告。</description>
+    </item>
+    <item>
+      <title>蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61%</title>
+      <link>https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 多模态智能体</category>
+      <description>蚂蚁百灵Ling-3.2-air权重11月23日上架HF：124B总参/5.5B激活、原生多模态、MIT许可；官方模型卡AutomationBench-AA从15.7%升至61%、AA-Briefcase Elo+353；FP8权重约129GB，需多卡部署。</description>
+    </item>
+    <item>
+      <title>腾讯微信开源电商多模态WeMM-Ecom：35B-A3B电商基准均值74.35，最小只有0.8B</title>
+      <link>https://javis.org.cn/news-2026-11-24-tencent-wemm-ecom-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-24-tencent-wemm-ecom-open.html</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 电商AI</category>
+      <description>腾讯微信视觉团队开源电商多模态WeMM-Ecom：0.8B–9B四款稠密+35B-A3B MoE，官方自测28项电商基准均值74.35；Apache 2.0，BF16权重65.4 GiB（本刊核算）；与已发的WeMM-Video是不同模型。</description>
+    </item>
+    <item>
+      <title>一周210万亿Token：中国大模型调用量连续30周全球第一，但本周环比下滑6.67%</title>
+      <link>https://javis.org.cn/news-2026-11-24-openrouter-210t-china-30weeks.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-24-openrouter-210t-china-30weeks.html</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力市场 · Token经济</category>
+      <description>OpenRouter 11月16–22日周榜：全球210万亿Token（+8.25%），中国111.16万亿（-6.67%）、美国19.21万亿（+29.53%）；DeepSeek周调用65万亿连续五周第一；中信证券估2030年Token工厂+私有化市场约950亿元。</description>
+    </item>
+    <item>
+      <title>黄仁勋11天后复任英伟达CEO：股价盘中涨超30%，中国高端算力紧缺仍未解</title>
+      <link>https://javis.org.cn/news-2026-11-24-nvidia-huang-reinstated-compute.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-24-nvidia-huang-reinstated-compute.html</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +0000</pubDate>
+      <category>算力格局 · 出口管制</category>
+      <description>11月23日英伟达官网公告：董事会一致恢复黄仁勋总裁/CEO/董事职务，距11月12日辞任公告仅11天；盘中涨超30%、市值增超9000亿美元（财联社）；对华出口新规已生效，B300八卡服务器报价超2000万元；12月1日国会闭门问询。</description>
+    </item>
     <item>
       <title>智谱GLM-5.4今日上线：编程额度加50%、视觉随订阅附送，私有化还得看权重</title>
       <link>https://javis.org.cn/news-2026-11-23-glm54-coding-plan-vision.html</link>

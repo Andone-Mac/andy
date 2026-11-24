@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61% | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="蚂蚁百灵Ling-3.2-air权重11月23日上架HF：124B总参/5.5B激活、原生多模态、MIT许可；官方模型卡AutomationBench-AA从15.7%升至61%、AA-Briefcase Elo+353；FP8权重约129GB，需多卡部署。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.6">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="蚂蚁百灵Ling-3.2-air权重11月23日上架HF：124B总参/5.5B激活、原生多模态、MIT许可；官方模型卡AutomationBench-AA从15.7%升至61%、AA-Briefcase Elo+353；FP8权重约129GB，需多卡部署。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="蚂蚁百灵Ling-3.2-air权重11月23日上架HF：124B总参/5.5B激活、原生多模态、MIT许可；官方模型卡AutomationBench-AA从15.7%升至61%、AA-Briefcase Elo+353；FP8权重约129GB，需多卡部署。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61%",
+      "description": "蚂蚁百灵Ling-3.2-air权重11月23日上架HF：124B总参/5.5B激活、原生多模态、MIT许可；官方模型卡AutomationBench-AA从15.7%升至61%、AA-Briefcase Elo+353；FP8权重约129GB，需多卡部署。",
+      "datePublished": "2026-11-24",
+      "dateModified": "2026-11-24",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61%",
+          "item": "https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 234 条）</a>
+          <a href="news-2026-11-24-chinatelecom-xing41-preview-open.html">星辰Xing4.1国产算力开源</a>
+          <a href="news-2026-11-24-ant-ling32-air-multimodal-open.html">蚂蚁Ling-3.2-air开源</a>
+          <a href="news-2026-11-24-tencent-wemm-ecom-open.html">腾讯微信开源电商多模态</a>
+          <a href="news-2026-11-24-openrouter-210t-china-30weeks.html">全球周调用210万亿Token</a>
+          <a href="news-2026-11-24-nvidia-huang-reinstated-compute.html">黄仁勋复职与算力格局</a>
+          <a href="news-2026-11-23-glm54-coding-plan-vision.html">智谱GLM-5.4上线编程订阅</a>
+          <a href="news-2026-11-23-ant-lingsante-medical-open.html">蚂蚁开源四款医疗大模型</a>
+          <a href="news-2026-11-23-ai-server-reprice-45pct.html">AI服务器事后加价最高45%</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-24</span><span class="n-tag">开源模型 · 多模态智能体</span><h1 class="art-h1">蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61%</h1><p class="art-lede">蚂蚁百灵通用多模态主线迎来新版本：Ling-3.2-air权重11月23日上架Hugging Face，总参数1240亿、每token激活55亿，沿用Ling-3.0-flash-VL的原生多模态架构（文本/图像/视频），许可MIT。官方模型卡显示，工作流自动化基准AutomationBench-AA从15.7%升到61%。注意区分：这不是本站11月23日报道的LingSante-3.1医疗系列，而是通用主线Ling 3.2。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、发布了什么</h3><p>Ling-3.2-air是蚂蚁inclusionAI团队Ling 3.2系列的首个开放权重模型（HF「Ling 3.2 Collection」目前仅此一员）。它与11月23日蚂蚁阿福大会开源的<a href="news-2026-11-23-ant-lingsante-medical-open.html">LingSante-3.1医疗系列</a>参数规模相同（124B/5.5B），但定位不同：医疗系列面向诊疗场景，Ling-3.2-air面向通用工作流自动化与专业文档推理。</p><ul class="art-tl"><li>权重：13个FP8 safetensors分片，共120.4 GiB≈129.3 GB（本刊按HF文件清单核算）。</li><li>许可：MIT（模型卡标记；仓库文件列表未见独立LICENSE文本，商用前建议向官方确认）。</li><li>架构：与Ling-3.0-flash-VL相同的原生多模态，支持文本、图像、视频输入。</li><li>推理框架：官方给出SGLang（推荐）与vLLM两套服务命令，80GB显存卡（H100/H800）建议--tp 8。</li></ul><h3 class="art-h2">二、官方基准：自动化与文档是主攻方向</h3><p>以下数字全部来自官方模型卡自述对比（对照上一代Ling-3.0-flash-VL），为厂商自测口径，未经独立复现：</p><table class="art-table" style="margin-top:14px"><thead><tr><th>基准</th><th>Ling-3.0-flash-VL</th><th>Ling-3.2-air</th><th>变化</th></tr></thead><tbody><tr><td>AutomationBench-AA<br>（工作流自动化）</td><td>15.7%</td><td>61%</td><td>+45.3个百分点</td></tr><tr><td>GDP.pdf 全通过率<br>（专业文档）</td><td>8.4%</td><td>16%</td><td>接近翻倍</td></tr><tr><td>AA-Briefcase v1.1 Elo</td><td>987</td><td>1340</td><td>+353</td></tr><tr><td>Terminal-Bench 4.0<br>（终端任务）</td><td>0%</td><td>27%</td><td>从零到有</td></tr></tbody></table><p>另外，Artificial Analysis Intelligence Index v5.0.1得分23。媒体转述的完整对比表还显示SWE-bench Pro从26.40升至58.28、HLE从21.96升至31.42（DoNews/C114，11月24日）——总体方向一致：智能体与长程任务能力提升幅度最大。</p><h3 class="art-h2">三、法律评测的两级口径：87.7%与0.8%</h3><p>模型卡专门披露了Harvey LAB-AA v1.1法律评测的两级结果：按评分点（criterion）通过率87.7%；整任务全通过率在材料幻觉检查前为8.3%、检查后仅0.8%。</p><ul class="art-tl"><li>两级口径不可混用：87.7%是「单个评分点做对」，0.8%是「整个任务全部做对且无材料幻觉」。</li><li>对法律、合规这类高风险场景，整任务通过率才是可交付口径——模型卡自己把这条边界写得很清楚。</li><li>这也是本站反复提醒的：看基准先问「哪一级口径」，别拿评分点通过率当整案交付能力。</li></ul><h3 class="art-h2">四、部署门槛与「day-0支持」的真实状态</h3><ul class="art-tl"><li>硬件：FP8权重约129 GB，官方建议80GB显存卡×8（tp8）——这是机房级部署，不是笔记本方案。</li><li>vLLM支持状态：官方推荐SGLang；vLLM侧的recipes配方PR #1286截至发稿仍处open状态（未合并）。「day-0支持」更准确的说法是「配方可用」，生产接入前先在测试环境验证。</li><li>MIT许可宽松，但权重体积与多卡门槛决定了它适合有GPU集群的团队。</li></ul></div><div class="kv-box"><h3>机悟视角：多模态智能体进机房的门槛</h3><p class="kv-sub">能力跃升是真的，部署门槛也是真的。</p><ul class="art-tl"><li>文档/办公自动化是主战场：专业文档推理与工作流自动化提升最大，适合流程自动化升级类场景。</li><li>先算硬件账：129 GB FP8权重＋8卡建议，立项前先盘点现有GPU。</li><li>高风险场景看整任务口径：法律评测0.8%的全通过率提醒我们，交付标准要按整案定。</li><li>机悟可帮：按你的场景做「模型选型＋硬件配置＋验收口径」评估。</li></ul></div><p class="art-src">来源：Hugging Face inclusionAI/Ling-3.2-air官方模型卡（本刊2026-11-24核验，权重体积按文件清单核算）、DoNews（2026-11-24）、C114通信网（2026-11-24）、vLLM recipes PR #1286（open状态，本刊核验）。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-24-chinatelecom-xing41-preview-open.html" title="中国电信星辰Xing4.1开源：8192张昇腾910C训出285B，每token只激活17B、原生1M上下文">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">星辰Xing4.1国产算力开源</span>
+        <span class="pg-d">2026-11-24</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-24-tencent-wemm-ecom-open.html" title="腾讯微信开源电商多模态WeMM-Ecom：35B-A3B电商基准均值74.35，最小只有0.8B">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">腾讯微信开源电商多模态</span>
+        <span class="pg-d">2026-11-24</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 234 条）→</a></p>
+  </div>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>想把多模态智能体用在文档与办公自动化？先做一轮评估：场景匹配、硬件配置、验收口径——约40分钟，给出选型建议。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61%」，机悟 JAVIS，2026-11-24，https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[蚂蚁开源1240亿参数多模态Ling-3.2-air：每token激活55亿，智能体基准15.7%→61%](https://javis.org.cn/news-2026-11-24-ant-ling32-air-multimodal-open.html)（机悟 JAVIS，2026-11-24）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>
