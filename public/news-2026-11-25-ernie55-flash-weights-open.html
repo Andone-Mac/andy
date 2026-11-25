@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="11 月 23 日晚，百度文心官方公众号宣布 ERNIE 5.5 Flash Preview 正式开放模型权重：总参数 280B、每 token 激活 14B、支持 1M 上下文，Apache 2.0 协议允许下载、部署、微调与商业使用，vLLM/SGLang 及昆仑芯 Day-0 支持部署。这兑现了 11 月 11 日发布时「11 月 25 日前开源」的承诺，还提前了两天。本站 11 月 12 日已报道发布与 API 定价，本篇只讲权重开源与私有化部署这一面。官方同时提醒：Preview 是后训练中间检查点，部分能力尚未完成。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-25-ernie55-flash-weights-open.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.6">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="11 月 23 日晚，百度文心官方公众号宣布 ERNIE 5.5 Flash Preview 正式开放模型权重：总参数 280B、每 token 激活 14B、支持 1M 上下文，Apache 2.0 协议允许下载、部署、微调与商业使用，vLLM/SGLang 及昆仑芯 Day-0 支持部署。这兑现了 11 月 11 日发布时「11 月 25 日前开源」的承诺，还提前了两天。本站 11 月 12 日已报道发布与 API 定价，本篇只讲权重开源与私有化部署这一面。官方同时提醒：Preview 是后训练中间检查点，部分能力尚未完成。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="11 月 23 日晚，百度文心官方公众号宣布 ERNIE 5.5 Flash Preview 正式开放模型权重：总参数 280B、每 token 激活 14B、支持 1M 上下文，Apache 2.0 协议允许下载、部署、微调与商业使用，vLLM/SGLang 及昆仑芯 Day-0 支持部署。这兑现了 11 月 11 日发布时「11 月 25 日前开源」的承诺，还提前了两天。本站 11 月 12 日已报道发布与 API 定价，本篇只讲权重开源与私有化部署这一面。官方同时提醒：Preview 是后训练中间检查点，部分能力尚未完成。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地",
+      "description": "11 月 23 日晚，百度文心官方公众号宣布 ERNIE 5.5 Flash Preview 正式开放模型权重：总参数 280B、每 token 激活 14B、支持 1M 上下文，Apache 2.0 协议允许下载、部署、微调与商业使用，vLLM/SGLang 及昆仑芯 Day-0 支持部署。这兑现了 11 月 11 日发布时「11 月 25 日前开源」的承诺，还提前了两天。本站 11 月 12 日已报道发布与 API 定价，本篇只讲权重开源与私有化部署这一面。官方同时提醒：Preview 是后训练中间检查点，部分能力尚未完成。",
+      "datePublished": "2026-11-25",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地",
+          "item": "https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 238 条）</a>
+          <a href="news-2026-11-25-ernie55-flash-weights-open.html">文心280B权重开源</a>
+          <a href="news-2026-11-25-hymt3-translation-open.html">混元翻译102语种</a>
+          <a href="news-2026-11-25-wepm-pocket-multimodal-open.html">微信4B口袋多模态</a>
+          <a href="news-2026-11-25-oceanbase-oceanseek-open.html">蚂蚁AI数据库开源</a>
+          <a href="news-2026-11-24-chinatelecom-xing41-preview-open.html">星辰Xing4.1国产算力开源</a>
+          <a href="news-2026-11-24-ant-ling32-air-multimodal-open.html">蚂蚁Ling-3.2-air开源</a>
+          <a href="news-2026-11-24-tencent-wemm-ecom-open.html">腾讯微信开源电商多模态</a>
+          <a href="news-2026-11-24-openrouter-210t-china-30weeks.html">全球周调用210万亿Token</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-25</span><span class="n-tag">开源模型 · 私有化部署</span><h1 class="art-h1">中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地</h1><p class="art-lede">11 月 23 日晚，百度文心官方公众号宣布 ERNIE 5.5 Flash Preview 正式开放模型权重：总参数 280B、每 token 激活 14B、支持 1M 上下文，Apache 2.0 协议允许下载、部署、微调与商业使用，vLLM/SGLang 及昆仑芯 Day-0 支持部署。这兑现了 11 月 11 日发布时「11 月 25 日前开源」的承诺，还提前了两天。本站 11 月 12 日已报道发布与 API 定价，本篇只讲权重开源与私有化部署这一面。官方同时提醒：Preview 是后训练中间检查点，部分能力尚未完成。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、从承诺到兑现：这次开源了什么</h3><p>11 月 11 日百度发布 ERNIE 5.5 Flash Preview 时承诺「权重将于 11 月 25 日前面向全球开源社区发布」（见本站 <a href="news-2026-11-12-ernie-5-5-flash-preview.html">11 月 12 日报道</a>）。11 月 23 日晚，文心官方公众号宣布正式开放权重，11 月 24 日媒体集中报道。这是文心 Flash 系列首个开源的后训练版本——此前 11 月初开源的是 Base 模型。</p><ul class="art-tl"><li><b>Apache 2.0 许可</b>：官方公众号原文列明四项——下载模型、部署服务、模型微调、商业使用，政企内网私有化没有许可层面的障碍。</li><li><b>权重下载</b>：Hugging Face（baidu/ERNIE-5.5-Flash-Preview）与魔搭 ModelScope 双平台。</li><li><b>不想自建也有路</b>：千帆平台 API 已上线，OpenRouter 提供免费档。</li><li><b>国产芯片适配</b>：官方公众号写明 vLLM/SGLang 及昆仑芯 Day-0 支持部署。</li></ul><h3 class="art-h2">二、规格与推理优化（官方模型卡口径）</h3><table class="art-table" style="margin-top:14px"><thead><tr><th>项目</th><th>官方口径</th></tr></thead><tbody><tr><td>总参数 / 每 token 激活</td><td>280B / 14B（稀疏 MoE）</td></tr><tr><td>上下文</td><td>1M token（中期训练阶段从 128K 扩展而来）</td></tr><tr><td>注意力结构</td><td>43 层 = 37 层 HCA + 6 层 DSA；HCA 把 128 个 token 的 KV 压成 1 个条目</td></tr><tr><td>量化</td><td>W4A8 量化感知训练（QAT），FP8 KV 缓存</td></tr><tr><td>投机解码</td><td>DSpark：7 个草稿步，接受长度超过 5.5</td></tr><tr><td>长上下文提速</td><td>索引器只选 top-2048 位置，官方称 1M 上下文下约提速 40%</td></tr></tbody></table><p>对部署侧的含义：MoE 让「280B 旗舰」的每 token 计算量压在 14B 激活上，HCA/FP8 KV/索引器裁剪都是冲着长上下文的显存与速度去的。以上均为官方模型卡与发布页口径，本刊未独立复测。</p><h3 class="art-h2">三、怎么部署：官方给出的路径</h3><ul class="art-tl"><li><b>vLLM</b>：官方模型卡给出 vLLM 0.32.0 + 百度 vLLM-ERNIE 分支的安装命令。</li><li><b>SGLang</b>：官方 cookbook 提供部署文档。</li><li><b>昆仑芯</b>：Day-0 支持（官方公众号口径），信创栈多一个可评估项。</li><li><b>微调</b>：NVIDIA Megatron-Bridge，官方建议从 BF16 仓库起步。</li><li><b>输出格式</b>：模型默认「始终思考」，响应分 reasoning_content（思考）与 content（答案）两个字段，接入业务时注意解析。</li></ul><h3 class="art-h2">四、边界与部署提醒</h3><ul class="art-tl"><li><b>Preview ≠ 生产版</b>：官方原文「这是后训练过程中的中间检查点，部分能力仍在开发中，可能存在训练不充分导致的能力缺陷」。能力验证可以用它，生产上线建议等正式版或做充分回归。</li><li><b>硬件门槛</b>：280B 总参的权重体积决定了它是集群级部署对象，私有化前先做显存与负载评估，别按「14B 激活」误估整机需求。</li><li><b>1M 上下文的代价</b>：长上下文 KV 开销随长度增长，官方优化是缓解不是消除，按真实文档长度做压测。</li><li>本篇不引用第三方榜单分数；能力对比以官方技术报告为准。</li></ul></div><div class="kv-box"><h3>机悟视角：国产旗舰私有化的新选项</h3><p class="kv-sub">Apache 2.0 + 国产芯片 Day-0，可以进选型清单了。</p><ul class="art-tl"><li>许可放开：Apache 2.0 允许微调与商用，政企内网场景的合规顾虑先去掉一层。</li><li>昆仑芯 Day-0 让信创栈多一个旗舰级候选，值得做一轮实测对比。</li><li>Preview 用于能力验证与场景打样，生产版本等官方后续发布。</li><li>机悟可协助：负载评估 + 集群配置 + 量化方案 + 成本测算，约 40 分钟给出部署建议。</li></ul></div><p class="art-src">来源：百度文心官方公众号（2026-11-23）、ERNIE 官方模型卡（Hugging Face，本刊 2026-11-25 核验）、雷峰网（2026-11-24）、ERNIE 官方发布页。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-25-hymt3-translation-open.html" title="中国混元开源翻译模型 HyMT3：102 种语言、误译样本降 43%，最小 1.8B 端侧可跑">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">混元翻译102语种</span>
+        <span class="pg-d">2026-11-25</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 238 条）→</a></p>
+  </div>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>正在评估国产旗舰大模型私有化？先做一轮评估：负载选型、集群配置、量化方案与成本测算——约 40 分钟，给出可落地的部署建议。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地」，机悟 JAVIS，2026-11-25，https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地](https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html)（机悟 JAVIS，2026-11-25）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

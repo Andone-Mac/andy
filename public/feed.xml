@@ -6,7 +6,39 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 24 Nov 2026 10:25:38 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 25 Nov 2026 10:21:19 +0000</lastBuildDate>
+    <item>
+      <title>中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地</title>
+      <link>https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 私有化部署</category>
+      <description>11 月 23 日晚，百度文心官方公众号宣布 ERNIE 5.5 Flash Preview 正式开放模型权重：总参数 280B、每 token 激活 14B、支持 1M 上下文，Apache 2.0 协议允许下载、部署、微调与商业使用，vLLM/SGLang 及昆仑芯 Day-0 支持部署。这兑现了 11 月 11 日发布时「11 月 25 日前开源」的承诺，还提前了两天。本站 11 月 12 日已报道发布与 API 定价，本篇只讲权重开源与私有化部署这一面。官方同时提醒：Preview 是后训练中间检查点，部分能力尚未完成。</description>
+    </item>
+    <item>
+      <title>中国混元开源翻译模型 HyMT3：102 种语言、误译样本降 43%，最小 1.8B 端侧可跑</title>
+      <link>https://javis.org.cn/news-2026-11-25-hymt3-translation-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-25-hymt3-translation-open.html</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 端侧翻译</category>
+      <description>11 月 24 日，腾讯混元开源第三代翻译模型 HyMT3：支持语种从 38 种扩到 102 种，真实场景误译样本比例降 43%、漏译增译降 74%，提供 1.8B/7B/30B-A3B 三种尺寸与 FP8、GGUF 量化版。30B-A3B 运行时仅激活 3B 参数，官方口径在非思考模式模型中综合效果最佳；浏览器插件已登陆 Chrome 与 Edge，支持本地模型安装与离线使用。对跨境业务与文档翻译场景，这是「翻译能力私有化」的一个新选项。</description>
+    </item>
+    <item>
+      <title>中国微信团队开源「口袋多模态」WePM：一个 4B 模型干三类活，常驻内存省 61.9%</title>
+      <link>https://javis.org.cn/news-2026-11-25-wepm-pocket-multimodal-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-25-wepm-pocket-multimodal-open.html</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+      <category>开源模型 · 端侧多模态</category>
+      <description>腾讯微信团队开源端侧统一多模态模型 WePM 1.0（仓库 WePocketModel）：2B/4B 两个尺寸，一套视觉语言骨干同时做表征（图文检索/排序）、生成（OCR/描述/问答）与决策（打分/判断）三类任务。论文口径：相比能力密度最高的分离模型组合，常驻权重内存省 61.9%、异构能力密度提高 2.64 倍。Apache 2.0 许可，提供 GGUF（CPU）与 MLX（Apple 芯片）版本，4B BF16 权重约 8GB——敏感数据留在设备端的多模态能力，门槛又降了一截。</description>
+    </item>
+    <item>
+      <title>蚂蚁开源 AI 数据库 OceanSeek：专有云政企客户占比首次达 50%，AI 业务营收破亿</title>
+      <link>https://javis.org.cn/news-2026-11-25-oceanbase-oceanseek-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-25-oceanbase-oceanseek-open.html</guid>
+      <pubDate>Wed, 25 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI 数据底座 · 开源</category>
+      <description>11 月 24 日北京 AI 数据大会上，蚂蚁 OceanBase 发布湖库一体 AI 数据平台 OceanLake，并宣布向全球开源核心引擎 AI 数据库，项目代号 OceanSeek——面向 Agent 的数据基础设施，支持多模态管理、混合检索与数据沙箱。同日披露的经营数据：AI 业务营收超 1 亿元，专有云政企客户占比首次达到 50%。OceanBase CEO 杨冰的判断是：当模型越来越先进、Agent 基建越来越成熟，挑战终将回归数据。</description>
+    </item>
     <item>
       <title>中国电信星辰Xing4.1开源：8192张昇腾910C训出285B，每token只激活17B、原生1M上下文</title>
       <link>https://javis.org.cn/news-2026-11-24-chinatelecom-xing41-preview-open.html</link>
