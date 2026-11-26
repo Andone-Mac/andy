@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 25 Nov 2026 10:21:19 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 26 Nov 2026 10:52:37 +0000</lastBuildDate>
+    <item>
+      <title>国产8B图像模型学会自己改错字：商汤U1.6开源，信息图得分86.04升至92.28</title>
+      <link>https://javis.org.cn/news-2026-11-26-sensenova-u16-image-selfcorrect-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-26-sensenova-u16-image-selfcorrect-open.html</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+      <category>图像生成 · 开源</category>
+      <description>商汤11月24日发布并开源SenseNova U1.6，首次为U系列8B开源模型引入原生图像自修正；内部用户评测美学得分较上代提升约10%，UltraTextBench密集信息图开启自修正后由86.04升至92.28（相对约7%），权重已开源并上线ComfyUI。</description>
+    </item>
+    <item>
+      <title>小红书开源3D数据工厂：27B模型微调1轮，三项基准均分66.78反超2.4T旗舰</title>
+      <link>https://javis.org.cn/news-2026-11-26-xiaohongshu-3dcodefactory-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-26-xiaohongshu-3dcodefactory-open.html</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+      <category>数据合成 · 开源</category>
+      <description>小红书Dots Studio开源3DCodeFactory框架与5.52B tokens数据集3DCodeFactory-Data（5045个复杂3D任务）；官方技术报告称Qwen3.8-27B仅微调1轮，BlenderWorld/P3D-Bench/3DCodeBench三项均分66.78，超过同系2.4T旗舰Qwen3.8-Max的62.75。代码Apache-2.0。</description>
+    </item>
+    <item>
+      <title>5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6</title>
+      <link>https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地推理 · 智能体</category>
+      <description>PrismML 11月24日发布Ternary Bonsai 2.5 27B，基于Qwen3.8 27B三值压缩、保留5.9GB体积，主打本地智能体编程与私有知识工作；厂商白皮书SWE-bench Verified由上代60.8升至75.6（基座80.6），单张H100生成291 tokens/s、RTX 4090达204 tokens/s。</description>
+    </item>
+    <item>
+      <title>OpenAI开测私有推理：模型运行时隔离客户数据，内部员工也看不到（仍处Alpha）</title>
+      <link>https://javis.org.cn/news-2026-11-26-openai-private-inference-alpha.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-26-openai-private-inference-alpha.html</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+      <category>隐私架构 · 企业</category>
+      <description>OpenAI CEO奥尔特曼11月25日（北京时间26日凌晨）在X宣布，已邀请一小批客户测试Private Inference（Alpha）：以机密计算+可验证控制在模型运行期间隔离客户数据；配套ZDR与私有安全处理实现无需员工接触底层内容的自动安全审查。技术细节、客户名单、上线时间与定价均未公布。</description>
+    </item>
+    <item>
+      <title>国产27B机器人模型仿真超GPT-6 Astra：商汤RoboRSI开源，RoboDojo 34.7分</title>
+      <link>https://javis.org.cn/news-2026-11-26-sensenova-robrsi-27b-robot-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-26-sensenova-robrsi-27b-robot-open.html</guid>
+      <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
+      <category>具身智能 · 开源</category>
+      <description>商汤11月25日发布面向机器人操作的视觉语言模型SenseNova-RoboRSI-27B正式版，GitHub与Hugging Face开源、Apache 2.0许可；RoboDojo最新版仿真评测均分34.7（Preview版10.0），以27B体量超越官方团队测试的GPT-6 Astra；真机小样本Piper抓取6/10、Piper X堆叠9/10。</description>
+    </item>
     <item>
       <title>中国文心 280B 旗舰权重正式开源：Apache 2.0 可商用、激活仅 14B，比承诺提前两天落地</title>
       <link>https://javis.org.cn/news-2026-11-25-ernie55-flash-weights-open.html</link>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6 | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="PrismML 11月24日发布Ternary Bonsai 2.5 27B，基于Qwen3.8 27B三值压缩、保留5.9GB体积，主打本地智能体编程与私有知识工作；厂商白皮书SWE-bench Verified由上代60.8升至75.6（基座80.6），单张H100生成291 tokens/s、RTX 4090达204 tokens/s。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.6">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="PrismML 11月24日发布Ternary Bonsai 2.5 27B，基于Qwen3.8 27B三值压缩、保留5.9GB体积，主打本地智能体编程与私有知识工作；厂商白皮书SWE-bench Verified由上代60.8升至75.6（基座80.6），单张H100生成291 tokens/s、RTX 4090达204 tokens/s。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6 | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="PrismML 11月24日发布Ternary Bonsai 2.5 27B，基于Qwen3.8 27B三值压缩、保留5.9GB体积，主打本地智能体编程与私有知识工作；厂商白皮书SWE-bench Verified由上代60.8升至75.6（基座80.6），单张H100生成291 tokens/s、RTX 4090达204 tokens/s。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6",
+      "description": "PrismML 11月24日发布Ternary Bonsai 2.5 27B，基于Qwen3.8 27B三值压缩、保留5.9GB体积，主打本地智能体编程与私有知识工作；厂商白皮书SWE-bench Verified由上代60.8升至75.6（基座80.6），单张H100生成291 tokens/s、RTX 4090达204 tokens/s。",
+      "datePublished": "2026-11-26",
+      "dateModified": "2026-11-26",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6",
+          "item": "https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 243 条）</a>
+          <a href="news-2026-11-26-sensenova-u16-image-selfcorrect-open.html">商汤U1.6图像自修正开源</a>
+          <a href="news-2026-11-26-xiaohongshu-3dcodefactory-open.html">小红书3DCodeFactory开源</a>
+          <a href="news-2026-11-26-prismml-bonsai25-27b-local-agent.html">Bonsai 2.5本地编程智能体</a>
+          <a href="news-2026-11-26-openai-private-inference-alpha.html">OpenAI私有推理Alpha开测</a>
+          <a href="news-2026-11-26-sensenova-robrsi-27b-robot-open.html">商汤RoboRSI-27B机器人开源</a>
+          <a href="news-2026-11-25-ernie55-flash-weights-open.html">文心280B权重开源</a>
+          <a href="news-2026-11-25-hymt3-translation-open.html">混元翻译102语种</a>
+          <a href="news-2026-11-25-wepm-pocket-multimodal-open.html">微信4B口袋多模态</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-26</span><span class="n-tag">本地推理 · 智能体</span><h1 class="art-h1">5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6</h1><p class="art-lede">11月24日，PrismML发布Ternary Bonsai 2.5 27B，是上代Bonsai 2 27B的升级，基于Qwen3.8 27B做三值压缩，保留5.9GB模型体积，重点强化智能体编程、多轮工具调用与多步任务执行，面向「在设备本地处理私有文件与工具」的场景。据厂商白皮书，SWE-bench Verified从上代60.8升至75.6（全精度基座80.6），AppWorld从51.2升至90.5（基座93.2）；单张H100生成速度291 tokens/s（含MTP）、RTX 4090达204 tokens/s（均为厂商自述口径）。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、升级方向：让本地小模型把长任务跑完</h3><p>智能体工作流对模型退化很敏感：小错误会跨工具调用累积，最终让任务失败。Bonsai 2.5针对上代的过度思考与重复循环做了改进，用更少轮次、更少token完成任务，缩小与全精度基座的差距，同时保留5.9GB体积。</p><ul class="art-tl"><li><b>三值压缩</b>：基于Qwen3.8 27B，保留5.9GB模型文件体积。</li><li><b>智能体能力补强</b>：多轮工具调用、多步任务执行、终端环境操作。</li><li><b>更少轮次/token</b>：减少过度思考与重复循环，更快更准完成长任务。</li></ul><h3 class="art-h2">二、基准对照（厂商白皮书口径，版本号随表）</h3><table class="art-table" style="margin-top:14px"><thead><tr><th>基准（版本）</th><th>Qwen3.8 27B 基座</th><th>Bonsai 2</th><th>Bonsai 2.5</th></tr></thead><tbody><tr><td>SWE-bench Verified</td><td>80.6</td><td>60.8</td><td>75.6</td></tr><tr><td>Terminal-Bench 2.1</td><td>70.8</td><td>52.8</td><td>60.1</td></tr><tr><td>AppWorld</td><td>93.2</td><td>51.2</td><td>90.5</td></tr><tr><td>τ³-Bench</td><td>72.8</td><td>69.1</td><td>73.9</td></tr><tr><td>BigCodeBench</td><td>61.5</td><td>57.2</td><td>60.3</td></tr><tr><td>LiveCodeBench v6</td><td>87.6</td><td>83.8</td><td>83.0</td></tr></tbody></table><p>口径说明：全部为厂商白皮书自述，本刊未独立复测；不同基准版本不并排比较。提升最大的是智能体类任务（SWE-bench Verified 60.8→75.6、AppWorld 51.2→90.5），与「本地编程智能体」定位一致。</p><h3 class="art-h2">三、本地部署门槛：消费级显卡可跑</h3><table class="art-table" style="margin-top:14px"><thead><tr><th>硬件</th><th>生成速度（含MTP）</th><th>提示处理</th></tr></thead><tbody><tr><td>单张 H100</td><td>291 tokens/s</td><td>2000-token 提示约 3200 tokens/s</td></tr><tr><td>RTX 4090</td><td>204 tokens/s</td><td>约 3060 tokens/s</td></tr></tbody></table><p>5.9GB体积意味着模型可装进消费级显卡，在设备本地处理私有文件与工具，适合私有知识工作与本地智能体。速度数字为厂商自述（含MTP投机解码），实际部署需按硬件与量化档位复测。</p></div><div class="kv-box"><h3>机悟视角：私有知识工作的本地智能体</h3><p class="kv-sub">5.9GB跑27B编程智能体，数据留在本地。</p><ul class="art-tl"><li><b>私有化契合</b>：本地处理私有文件与工具，数据不出域，正是机悟核心场景。</li><li><b>消费级显卡可跑</b>：RTX 4090级即可，先盘点现有GPU再定档位。</li><li><b>智能体编程是主战场</b>：SWE-bench/AppWorld提升最大，适合自动化运维与代码任务。</li><li><b>机悟可帮</b>：本地智能体选型、硬件配置与任务验收口径评估。</li></ul></div><p class="art-src">来源：PrismML官方博客（2026-11-24）及Bonsai 2.5 27B白皮书（GitHub PrismML-Eng/Bonsai-demo）；全部基准与速度数字为厂商自述口径，本刊未独立复测；5.9GB为模型文件体积。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <a class="pg prev" rel="prev" href="news-2026-11-26-xiaohongshu-3dcodefactory-open.html" title="小红书开源3D数据工厂：27B模型微调1轮，三项基准均分66.78反超2.4T旗舰">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">小红书3DCodeFactory开源</span>
+        <span class="pg-d">2026-11-26</span>
+      </a>
+      <a class="pg next" rel="next" href="news-2026-11-26-openai-private-inference-alpha.html" title="OpenAI开测私有推理：模型运行时隔离客户数据，内部员工也看不到（仍处Alpha）">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">OpenAI私有推理Alpha开测</span>
+        <span class="pg-d">2026-11-26</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 243 条）→</a></p>
+  </div>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>想把编程智能体跑在本地、数据不出域？先做一轮评估：模型选型、显卡配置、任务验收口径——约40分钟，给出选型建议。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6」，机悟 JAVIS，2026-11-26，https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6](https://javis.org.cn/news-2026-11-26-prismml-bonsai25-27b-local-agent.html)（机悟 JAVIS，2026-11-26）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>
