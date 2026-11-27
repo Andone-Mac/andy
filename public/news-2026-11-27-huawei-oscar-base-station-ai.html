@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40% | 机悟·政企超脑 · 甲维思 JAVIS</title>
+<meta name="description" content="Counterpoint Research评估华为无线智能体OSCAR：自回归模型跑在基带板卡异构加速器上，现场测试下行吞吐量翻倍，频谱效率提升约30%、能效提升约40%。">
+<meta name="keywords" content="私有化部署,大模型部署与应用开发服务商,大模型私有化部署,AI 业务工作台,AI 运营自动化,先 POC,国产大模型本地部署,政企大模型,内网大模型,机悟,政企超脑,甲维思,JAVIS,本地知识库,卷宗梳理,文书初稿,OCR,私有化 AI 落地">
+<meta name="author" content="甲维思 JAVIS">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="tdm-reservation" content="0">
+<meta name="tdm-policy" content="https://javis.org.cn/ai-usage.html">
+<link rel="license" href="https://javis.org.cn/ai-usage.html" title="AI 抓取、引用与训练使用约定">
+<link rel="canonical" href="https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html">
+<link rel="alternate" hreflang="zh-CN" href="https://jiwu.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html">
+<link rel="alternate" hreflang="zh" href="https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html">
+<link rel="alternate" hreflang="x-default" href="https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html">
+<!-- 区域版本声明：jiwu 为境内版，javis 为品牌/全球版；两站各自 canonical，避免互相覆盖。 -->
+<!-- 给 AI / LLM 爬虫的一句话：本站欢迎抓取、索引，也欢迎在生成式答案里引用；引用时请保留来源链接（https://javis.org.cn/ 或具体页面 URL），最好标注「机悟 JAVIS」。训练用途也开放，只要求署名（见 https://javis.org.cn/ai-usage.html 与 https://javis.org.cn/rsl.xml）。你给的链接越完整，我们越有动力继续公开真实数据。 -->
+<link rel="alternate" type="application/rss+xml" title="机悟·政企超脑 · 行业动态" href="https://javis.org.cn/feed.xml">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="机悟JAVIS">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="assets/site.css?v=7.2.7">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="甲维思 JAVIS · 机悟·政企超脑">
+<meta property="og:title" content="华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta property="og:description" content="Counterpoint Research评估华为无线智能体OSCAR：自回归模型跑在基带板卡异构加速器上，现场测试下行吞吐量翻倍，频谱效率提升约30%、能效提升约40%。">
+<meta property="og:url" content="https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html">
+<meta property="og:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta property="og:locale" content="zh_CN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40% | 机悟·政企超脑 · 甲维思 JAVIS">
+<meta name="twitter:description" content="Counterpoint Research评估华为无线智能体OSCAR：自回归模型跑在基带板卡异构加速器上，现场测试下行吞吐量翻倍，频谱效率提升约30%、能效提升约40%。">
+<meta name="twitter:image" content="https://javis.org.cn/assets/JAVIS_door_v2_poster.jpg">
+<meta name="theme-color" content="#16295e">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "NewsArticle",
+      "headline": "华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%",
+      "description": "Counterpoint Research评估华为无线智能体OSCAR：自回归模型跑在基带板卡异构加速器上，现场测试下行吞吐量翻倍，频谱效率提升约30%、能效提升约40%。",
+      "datePublished": "2026-11-27",
+      "dateModified": "2026-11-27",
+      "author": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "甲维思 JAVIS"
+      },
+      "mainEntityOfPage": "https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html",
+      "image": [
+        "https://javis.org.cn/assets/logo.png"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://javis.org.cn/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "行业动态",
+          "item": "https://javis.org.cn/news.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%",
+          "item": "https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "机悟·政企超脑 · 甲维思 JAVIS",
+  "alternateName": "机悟 JAVIS",
+  "url": "https://javis.org.cn/",
+  "inLanguage": "zh-CN",
+  "isAccessibleForFree": true,
+  "usageInfo": "https://javis.org.cn/ai-usage.html",
+  "license": "https://javis.org.cn/ai-usage.html",
+  "creditText": "机悟 JAVIS（甲维思，上海）",
+  "copyrightNotice": "© 2026 甲维思（上海）智能科技有限公司",
+  "copyrightHolder": {"@type": "Organization", "name": "甲维思（上海）智能科技有限公司", "url": "https://javis.org.cn/"},
+  "publisher": {"@type": "Organization", "name": "甲维思 JAVIS", "url": "https://javis.org.cn/"}
+}
+</script>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html" aria-label="甲维思 JAVIS 首页"><img src="assets/logo.png" alt="甲维思 JAVIS"></a>
+    <nav class="links" id="menu">
+      <div class="nav-item">
+        <a href="index.html">首页</a>
+      </div>
+      <div class="nav-item">
+        <a href="product.html">产品与服务<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="product.html">产品与服务总览</a>
+          <a href="product.html#platform">机悟·政企超脑（安全底座）</a>
+          <a href="product.html#workbench">AI 业务工作台（高频场景）</a>
+          <a href="product.html#ops">AI 运营自动化（跨流程）</a>
+          <a href="product.html#poc">先 POC：五步</a>
+          <a href="product.html#acceptance">交付与验收</a>
+          <a href="product.html#ledger">算三年账</a>
+          <a href="product.html#faq">常见顾虑</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="case-real.html">真实案例</a>
+      </div>
+      <div class="nav-item">
+        <a href="scenes.html">适用场景<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="scenes.html">适用场景与行业</a>
+          <a href="scenes.html#gov-legal">政法（初创期滩头）</a>
+          <a href="scenes.html#government">政务与事业单位</a>
+          <a href="scenes.html#enterprise">国企 / 制造 / 科研</a>
+          <a href="scenes.html#sme">专业服务与中小企业</a>
+          <a href="scenes.html#others">其他行业（有单做单）</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="news.html" class="active">行业动态<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="news.html">全部动态（共 250 条）</a>
+          <a href="news-2026-11-27-huawei-oscar-base-station-ai.html">华为OSCAR基站AI</a>
+          <a href="news-2026-11-27-deepseek-app-cost-display.html">DeepSeek灰测消耗额度</a>
+          <a href="news-2026-11-27-huawei-hbm-isscc-2027.html">华为HBM入选ISSCC</a>
+          <a href="news-2026-11-27-ant-ming-image-02-design-open.html">蚂蚁Ming-Image开源</a>
+          <a href="news-2026-11-27-minimax-domestic-chip-migration.html">MiniMax国产芯片适配</a>
+          <a href="news-2026-11-26-sensenova-u16-image-selfcorrect-open.html">商汤U1.6图像自修正开源</a>
+          <a href="news-2026-11-26-xiaohongshu-3dcodefactory-open.html">小红书3DCodeFactory开源</a>
+          <a href="news-2026-11-27-bonsai-mtp-speculative-decoding.html">Bonsai 2.5 MTP 投机解码</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="about.html">关于我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="about.html">关于我们</a>
+          <a href="about.html#mission">使命 · 愿景 · 价值观</a>
+          <a href="about.html#roadmap">战略主线</a>
+          <a href="about.html#creed">行为五准则</a>
+          <a href="about.html#prio">决策取舍</a>
+          <a href="about.html#brand">品牌与定位</a>
+          <a href="about.html#founder">创始人出镜</a>
+          <a href="about.html#compliance">资质与合规表述</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <a href="contact.html">联系我们<span class="caret">▾</span></a>
+        <div class="nav-sub">
+          <a href="contact.html">联系方式 · 留言表单</a>
+          <a href="downloads.html">资料下载</a>
+          <a href="privacy.html">隐私政策</a>
+        </div>
+      </div>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="contact.html" data-open="eval">约 40 分钟评估</a>
+    <button class="menu-toggle" aria-label="菜单" onclick="var m=document.getElementById('menu');m.classList.toggle('open');document.body.classList.toggle('menu-open',m.classList.contains('open'))">☰</button>
+  </div>
+</header>
+<section class="art-head"><div class="wrap art-wrap"><p class="crumb"><a href="index.html">首页</a> / <a href="news.html">行业动态</a> / 正文</p><span class="n-date">2026-11-27</span><span class="n-tag">国产算力 · 无线AI</span><h1 class="art-h1">华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%</h1><p class="art-lede">2026年11月25日至26日，IT之家、快科技等媒体相继报道华为新一代无线解决方案OSCAR（Optimal Solution with Cross-Domain Autoregression for Radio）。Counterpoint Research于26日发布分析报告，评估该方案在无线物理层运行定制化高阶自回归模型的效果：现场测试频谱效率提升约30%，能效提升约40%，邻区干扰场景下各小区平均下行吞吐量翻倍。这是自回归模型范式从数据中心走向通信基础设施的标志性落地。</p></div></section><section class="art-sec"><div class="wrap art-wrap"><div class="art-body"><h3 class="art-h2">一、OSCAR解决什么问题</h3><p>移动网络长期存在三个容量损失来源：多变量小区干扰、不精确的信道估计、以及一次只优化一个小区的传统调度器。运营商传统扩容依赖购买频谱、新增站点和天线，资本开支高且受中频段资源与建站审批约束。OSCAR用自回归模型同时处理这三个环节。</p><table class="art-table" style="margin-top:14px"><thead><tr><th>环节</th><th>传统方式</th><th>OSCAR方式</th><th>提升幅度</th></tr></thead><tbody><tr><td>干扰消除</td><td>固定滤波</td><td>自回归分类+定制滤波，识别准确率&gt;99%</td><td>抑制比目标&gt;90%</td></tr><tr><td>信道估计</td><td>仅测1/20–1/10样本</td><td>从约1/10样本重建完整信道</td><td>NMSE 0.1→0.01，精度10倍</td></tr><tr><td>跨小区调度</td><td>单小区独立调度</td><td>多小区多频段联合优化</td><td>求解效率10倍</td></tr></tbody></table><ul class="art-tl"><li>历史先验数据可使模型收敛速度最高提升<b>100倍</b>。</li><li>跨小区联合调度须在<b>0.5 ms</b>传输时间间隔（TTI）内完成，OSCAR通过异构加速器上的高阶并行算法实现。</li><li>华为规划目标：上行流量增长约10倍、上行速率高于20 Mbps、99.9%可靠性下保持30–200 ms时延。</li></ul><h3 class="art-h2">二、硬件与现场测试</h3><p>OSCAR跑在通用基带处理（UBBP）板卡的异构计算加速器上，由华为SpiritPath高速互联架构连接。编码、解码和FFT等固定任务由专用芯片处理，调度与波束成形等灵活任务交给异构计算核心。官方称同等性能下计算效率约提升10倍、能耗降低约40%。SpiritPath以板上裸片间直接内存访问替代芯片间以太网交换，板内时延降至数百纳秒，板间带宽提升2倍。</p><table class="art-table" style="margin-top:14px"><thead><tr><th>测试项</th><th>参数</th></tr></thead><tbody><tr><td>地点</td><td>上海练秋湖</td></tr><tr><td>小区带宽</td><td>200 MHz</td></tr><tr><td>天线配置</td><td>64T64R大规模天线</td></tr><tr><td>商用设备</td><td>80台，近/中/远1:2:1分布</td></tr><tr><td>流量类型</td><td>短视频、流媒体、文件下载、Ping</td></tr><tr><td>结果</td><td>邻区干扰下各小区平均下行吞吐量翻倍</td></tr></tbody></table><p>以上现场测试数据来自华为公布、Counterpoint Research转引的第三方评估口径。频谱效率+30%与能效+40%为Counterpoint报告结论，非华为官方规格书承诺。</p><h3 class="art-h2">三、对政企私有化部署的启示</h3><ul class="art-tl"><li><b>自回归模型不只属于聊天</b>：OSCAR证明同一范式可在毫秒级实时约束下处理物理层信号，为工业控制、无线专网等场景打开想象空间。</li><li><b>异构加速是落地关键</b>：固定任务走专用芯片、灵活任务走通用计算核心的分工思路，与政企本地推理的GPU+NPU混合部署逻辑一致。</li><li><b>能效即成本</b>：同等性能能耗降40%，对7×24运行的基站和本地推理机房 alike，电费是长期TCO的大头。</li></ul></div><div class="kv-box"><h3>机悟视角</h3><p class="kv-sub">自回归模型从数据中心走进基站，毫秒级实时约束下的AI落地样本。</p><ul class="art-tl"><li><b>范式迁移</b>：OSCAR把LLM的自回归范式用于无线物理层，说明该架构的适用面远超对话与生成。</li><li><b>硬件分工</b>：专用芯片+异构核心的混合架构，与政企本地推理的GPU/NPU选型逻辑相通。</li><li><b>能效账</b>：能耗降40%意味着同等覆盖下电费近乎减半，长期运营价值显著。</li><li><b>机悟可帮</b>：无线专网与工业场景的本地AI推理选型、异构硬件适配评估。</li></ul></div><p class="art-src">来源：快科技（2026-11-26，Counterpoint Research分析报告转引）；IT之家（2026-11-25）；17173科技频道转载。 本文仅转述公开报道，不评判任何企业与产品，不构成投资建议。</p></div></section>
+
+<section class="art-pager-sec" style="padding:0;margin:22px 0 8px">
+  <div class="wrap art-wrap">
+    <nav class="art-pager" aria-label="行业动态：上一篇 / 下一篇">
+      <span class="pg pg-off">
+        <span class="pg-k">← 上一篇</span>
+        <span class="pg-t">已经是最新一篇</span>
+      </span>
+      <a class="pg next" rel="next" href="news-2026-11-27-deepseek-app-cost-display.html" title="DeepSeek App灰测「消耗额度」：一次对话约两分钱，C端仍免费">
+        <span class="pg-k">下一篇 →</span>
+        <span class="pg-t">DeepSeek灰测消耗额度</span>
+        <span class="pg-d">2026-11-27</span>
+      </a>
+    </nav>
+    <p class="pg-all"><a href="news.html">返回行业动态列表（共 250 条）→</a></p>
+  </div>
+</section>
+
+<section class="cta-band"><div class="wrap"><h2>把这条动态落到你的业务里</h2><p>无线专网与工业场景的本地AI推理选型、异构硬件适配——约 40 分钟评估，给出落地建议。</p><a class="btn-solid" href="contact.html" data-open="eval">约 40 分钟评估</a></div></section>
+
+
+<section class="art-cmt" id="comments">
+  <div class="wrap art-wrap">
+    <h2 class="cmt-h">留言 · 聊聊这一条</h2>
+    <p class="cmt-dek">您的看法、追问、以及同行实践里的对照——都欢迎写下来。留下邮箱或手机号，我们会回复；留言审核后公开展示在本页，精选观点我们还会写进后续动态。</p>
+    <div id="cmtList" class="cmt-list"><p class="cmt-none">正在加载留言…</p></div>
+    <form id="cmtForm" class="cmt-form" autocomplete="on">
+      <div class="cmt-row">
+        <input name="nick" maxlength="20" placeholder="昵称（可选，默认「访客」）">
+        <input name="contact" maxlength="80" placeholder="邮箱或手机（选填；希望回复请留）">
+      </div>
+      <textarea name="text" rows="4" maxlength="500" placeholder="您的留言（500 字以内）"></textarea>
+      <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
+      <div class="cmt-foot">
+        <button class="btn btn-solid cmt-sub" type="submit">提交留言</button>
+        <span class="cmt-msg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="cmt-pri">留言仅用于回复与联络，联系方式不会公开；详见<a href="privacy.html">隐私政策</a>。</p>
+    </form>
+  </div>
+</section>
+
+<!-- cite:begin --><section class="cite-sec"><div class="wrap"><div class="note" style="padding:14px 0 14px 14px;border-left:3px solid var(--cyan)">
+  <b>本页可引用</b>　引用或转载请保留来源链接与日期，下面两行可直接复制：
+  <div style="margin-top:8px;user-select:all">「华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%」，机悟 JAVIS，2026-11-27，https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html</div>
+  <div style="margin-top:4px;opacity:.75">Markdown：<code>[华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%](https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html)（机悟 JAVIS，2026-11-27）</code></div>
+</div></div></section><!-- cite:end -->
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <img class="logo-w" src="assets/logo_white.png" alt="甲维思 JAVIS">
+      <div class="slogan">让 AI 真正干活 · 数据不出域，单位有超脑，个人得助手。</div>
+    </div>
+    <p class="comply">本网站所述 AI 能力均为辅助、提效性质，不替代人工审核；未取得的资质不出现在对外材料中。案例信息已按合规要求脱敏：不出现客户单位名称、地域、人员与案由，脱敏后可远程演示；真实效果以远程接入演示（脱敏数据）复验。网站本身也不出域——无第三方埋点、无数据采集。转载、引用本站内容请保留来源链接（<a href="ai-usage.html">AI 抓取与引用约定</a>）；AI 训练亦开放，按约定署名即可。</p>
+    <div class="fnav"><a href="index.html">首页</a>　<a href="product.html">产品与服务</a>　<a href="case-real.html">真实案例</a>　<a href="scenes.html">适用场景</a>　<a href="about.html">关于我们</a>　<a href="downloads.html">资料下载</a>　<a href="news.html">行业动态</a>　<a href="contact.html">联系我们</a>　<a href="privacy.html">隐私政策</a>　<a href="ai-usage.html">AI 抓取与引用约定</a></div>
+    <div class="bottom">
+      <div>© 2026 甲维思（上海）智能科技有限公司 · 机悟·政企超脑　|　javis.org.cn</div>
+      <div>邮箱 info@javis.org.cn</div>
+      <div>电话 186-1655-9199</div>
+    </div>
+  </div>
+</footer>
+<!-- ============ 留资弹窗 ============ -->
+<div class="mback" id="mback" role="dialog" aria-modal="true" aria-label="40 分钟评估申请">
+  <div class="mcard">
+    <button class="m-close" id="mclose" aria-label="关闭">×</button>
+<div class="lead-wrap">
+      <h3 class="lw-title" id="mtitle">约 40 分钟评估</h3>
+      <p class="lw-sub">选一条最费人的流程，看看现有设备能跑什么、要补什么、怎么验——提交后 1 个工作日内联系您；也可以直接加下方企业微信，对接更快。</p>
+      <form class="lead-form" data-kind="eval" data-api="https://api.javis.org.cn/api/lead" novalidate>
+        <div class="mf">
+          <div class="fld full"><label>公司 / 单位 / 联系人 <em>*</em></label><input class="inp" name="cc" maxlength="120" placeholder="单位名称 + 联系人姓名，如：某某科技有限公司 王经理"></div>
+          <div class="fld"><label>电话 / 微信 <em>*</em></label><input class="inp" name="pw" maxlength="40" placeholder="手机号或微信号，填一项即可"></div>
+          <div class="fld"><label>职位 <span class="hint">（选填）</span></label><input class="inp" name="title" maxlength="30" placeholder="如：信息化负责人"></div>
+          <div class="fld full"><label>简单介绍需求 <em>*</em></label><textarea class="inp" name="need" maxlength="300" placeholder="例：想把大模型部署到单位内网，做本地知识库和文书写作，约 50 人用，现有 2 台旧服务器，想先做评估……"></textarea></div>
+        </div>
+        <div class="mqr">
+          <img src="assets/QR_official.png" alt="机悟企业微信二维码">
+          <div><b>不想等？直接加企业微信聊</b><p>备注「单位 + 需求」，安排专人对接与远程接入演示。</p><span class="go">扫一扫 / 长按识别 →（点击看大图）</span></div>
+        </div>
+        <div class="fld full consent-row">
+          <label class="chk" for="mconsent"><input type="checkbox" id="mconsent" name="consent" value="1">
+            <span>我已阅读并同意<a href="privacy.html" target="_blank" rel="noopener">《隐私政策》</a>，同意贵司通过我留下的方式与我联系；我不会提交涉密信息。</span></label>
+        </div>
+        <button class="msubmit" type="submit">提交申请</button>
+        <div class="mmsg" role="status"></div>
+      </form>
+      <div class="m-okcard">
+        <div class="big">✓</div>
+        <h4>已收到您的申请</h4>
+        <p>工作人员将在 1 个工作日内与您联系。急事请直接扫码加企业微信，备注「单位 + 需求」。</p>
+        <img class="qr2" src="assets/QR_official.png" alt="机悟企业微信二维码">
+        <p><span class="go">加企业微信更快对接</span></p>
+        <button class="msubmit" type="button" data-close="ok">好的</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ============ 二维码放大 ============ -->
+<div class="zoomer" id="zoomer" role="dialog" aria-modal="true" aria-label="二维码大图">
+  <button class="z-x" id="zclose" aria-label="关闭">×</button>
+  <img id="zimg" alt="机悟企业微信二维码（放大）">
+  <div class="z-tip">机悟企业微信 · 长按 / 截图保存后扫一扫即可添加</div>
+</div>
+<nav class="appbar" role="navigation" aria-label="App 底部导航">
+  <a class="tab" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9V21h13V9"/></svg><span>首页</span></a>
+  <a class="appc cur" href="news.html" aria-label="行业动态"><span class="circle">行业<br>动态</span></a>
+  <a class="tab" href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5h16v10.5H9.5L4.5 20z"/><path d="M8 10h8M8 13h5"/></svg><span>联系</span></a>
+</nav>
+<script src="assets/site.js?v=7.1.3"></script>
+<script>if("serviceWorker" in navigator){addEventListener("load",function(){navigator.serviceWorker.register("/sw.js").catch(function(){})});}</script>
+</body>
+</html>

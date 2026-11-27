@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Nov 2026 09:21:43 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 10:26:31 +0000</lastBuildDate>
+    <item>
+      <title>华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%</title>
+      <link>https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 无线AI</category>
+      <description>Counterpoint Research评估华为无线智能体OSCAR：自回归模型跑在基带板卡异构加速器上，现场测试下行吞吐量翻倍，频谱效率提升约30%、能效提升约40%。</description>
+    </item>
+    <item>
+      <title>DeepSeek App灰测「消耗额度」：一次对话约两分钱，C端仍免费</title>
+      <link>https://javis.org.cn/news-2026-11-27-deepseek-app-cost-display.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-deepseek-app-cost-display.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产大模型 · 计费透明</category>
+      <description>11月26日起部分用户在网页端和App内看到「显示本轮消耗额度」灰度功能，按API空闲价折算单次对话成本，C端对话服务依然免费。</description>
+    </item>
+    <item>
+      <title>华为HBM方案入选ISSCC 2027：4096个数据接口、五层晶圆对晶圆键合</title>
+      <link>https://javis.org.cn/news-2026-11-27-huawei-hbm-isscc-2027.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-huawei-hbm-isscc-2027.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产芯片 · 先进存储</category>
+      <description>据IEEE ISSCC 2027议程草案，华为将展示定制HBM方案：64通道、4096个DQ数据接口、五层晶圆对晶圆混合键合，数据引脚密度为当前量产HBM4的两倍。量产时间未定。</description>
+    </item>
+    <item>
+      <title>蚂蚁开源6B文生图模型Ming-Image-0.2-Design：开放权重榜单第一</title>
+      <link>https://javis.org.cn/news-2026-11-27-ant-ming-image-02-design-open.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-ant-ming-image-02-design-open.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产开源 · 图像生成</category>
+      <description>蚂蚁百灵开源设计场景专用文生图模型Ming-Image-0.2-Design，6B参数、MIT许可，Artificial Analysis文生图榜单开放权重第一，配套图层分解模型可拆到角色部件级。</description>
+    </item>
+    <item>
+      <title>据报道MiniMax加快采用华为与阿里AI芯片，港股大模型双雄盘中涨超20%</title>
+      <link>https://javis.org.cn/news-2026-11-27-minimax-domestic-chip-migration.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-minimax-domestic-chip-migration.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 芯片迁移</category>
+      <description>据The Information报道，MiniMax CEO闫俊杰在员工大会表示将加快采用华为与阿里巴巴AI芯片以减少对英伟达依赖。11月27日港股智谱与MiniMax盘中均涨超20%。</description>
+    </item>
     <item>
       <title>国产8B图像模型学会自己改错字：商汤U1.6开源，信息图得分86.04升至92.28</title>
       <link>https://javis.org.cn/news-2026-11-26-sensenova-u16-image-selfcorrect-open.html</link>
