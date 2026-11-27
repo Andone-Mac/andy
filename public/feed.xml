@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Nov 2026 07:15:34 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 09:21:43 +0000</lastBuildDate>
     <item>
       <title>国产8B图像模型学会自己改错字：商汤U1.6开源，信息图得分86.04升至92.28</title>
       <link>https://javis.org.cn/news-2026-11-26-sensenova-u16-image-selfcorrect-open.html</link>
@@ -22,6 +22,14 @@
       <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
       <category>数据合成 · 开源</category>
       <description>小红书Dots Studio开源3DCodeFactory框架与5.52B tokens数据集3DCodeFactory-Data（5045个复杂3D任务）；官方技术报告称Qwen3.8-27B仅微调1轮，BlenderWorld/P3D-Bench/3DCodeBench三项均分66.78，超过同系2.4T旗舰Qwen3.8-Max的62.75。代码Apache-2.0。</description>
+    </item>
+    <item>
+      <title>Ternary-Bonsai-2.5-27B 单卡开启 MTP：生成速度提升 16–29%</title>
+      <link>https://javis.org.cn/news-2026-11-27-bonsai-mtp-speculative-decoding.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-bonsai-mtp-speculative-decoding.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · MTP</category>
+      <description>2026-11-27 在 RX 7900 XTX 24GB 上为三值模型 Ternary-Bonsai-2.5-27B 开启 MTP 草稿头：decode 43.3→50.1 t/s（+16%，峰值 55.8 t/s +26%），16K 更达 56.1 t/s（+29%）。MTP 与 262K 上下文、视觉塔共存，显存仅增 2.1 GB，ROCm 标准 llama.cpp 无需补丁。</description>
     </item>
     <item>
       <title>24GB 单卡量化极限：Qwen3.8-27B 四比特 vs 三值 1.76bit 全项实测</title>
