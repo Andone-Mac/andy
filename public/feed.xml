@@ -6,7 +6,7 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 26 Nov 2026 10:52:37 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 27 Nov 2026 07:15:34 +0000</lastBuildDate>
     <item>
       <title>国产8B图像模型学会自己改错字：商汤U1.6开源，信息图得分86.04升至92.28</title>
       <link>https://javis.org.cn/news-2026-11-26-sensenova-u16-image-selfcorrect-open.html</link>
@@ -22,6 +22,14 @@
       <pubDate>Thu, 26 Nov 2026 00:00:00 +0000</pubDate>
       <category>数据合成 · 开源</category>
       <description>小红书Dots Studio开源3DCodeFactory框架与5.52B tokens数据集3DCodeFactory-Data（5045个复杂3D任务）；官方技术报告称Qwen3.8-27B仅微调1轮，BlenderWorld/P3D-Bench/3DCodeBench三项均分66.78，超过同系2.4T旗舰Qwen3.8-Max的62.75。代码Apache-2.0。</description>
+    </item>
+    <item>
+      <title>24GB 单卡量化极限：Qwen3.8-27B 四比特 vs 三值 1.76bit 全项实测</title>
+      <link>https://javis.org.cn/news-2026-11-27-7900xtx-bonsai-vs-q4kxl.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-27-7900xtx-bonsai-vs-q4kxl.html</guid>
+      <pubDate>Fri, 27 Nov 2026 00:00:00 +0000</pubDate>
+      <category>本地实测 · 量化</category>
+      <description>2026-11-27 在单张 RX 7900 XTX 24GB 上对比同一底座 Qwen3.8-27B 的三值 1.76bit（Ternary-Bonsai 2.5 27B，Q2_0，7.67GB）与约 4.5bit（UD-Q4_K_XL，17.6GB）：任务通过率完全一致（44/45），PPL 三值版 8.97 vs 四比特版 5.74（劣化约 56%），上下文超过 262,144 被拒绝。本篇结果由 Bonsai 2.5 27B 完成。</description>
     </item>
     <item>
       <title>5.9GB跑27B编程智能体：Bonsai 2.5发布，SWE-bench得分60.8→75.6</title>
