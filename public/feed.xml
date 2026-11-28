@@ -6,7 +6,47 @@
     <atom:link href="https://javis.org.cn/feed.xml" rel="self" type="application/rss+xml"/>
     <description>与数据安全、云端 AI 可用性、本地化部署密切相关的重大公开事件与合规解读。</description>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 27 Nov 2026 10:26:31 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 28 Nov 2026 10:23:42 +0000</lastBuildDate>
+    <item>
+      <title>中国运营商算力集采再加码：移动第二批52160卡约300亿元，两家合计超550亿元</title>
+      <link>https://javis.org.cn/news-2026-11-28-telecom-550b-supernode-batch2.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-28-telecom-550b-supernode-batch2.html</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 运营商集采</category>
+      <description>中国移动第二批超节点集采52160卡、券商测算约300亿元，中国电信高性能智算服务器最高限价257.88亿元，两家合计超550亿元；年内移动三批累计近8万卡。本篇只讲第二批与总量，第一批单价见更早发布的专稿。</description>
+    </item>
+    <item>
+      <title>中国国产大模型迭代承压：路透称GLM-5.5或延至2027年，智谱高管预计24个月内反超</title>
+      <link>https://javis.org.cn/news-2026-11-28-glm55-delay-us-compute-curbs.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-28-glm55-delay-us-compute-curbs.html</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+      <category>大模型 · 算力地缘</category>
+      <description>路透11月26日援引知情人士称智谱GLM-5.5（约3万亿参数）或推迟至2027年一季度甚至更晚，月之暗面Kimi大版本间隔可能从6个月拉长到一年以上；美国11月19日生效的海外算力许可新规与反蒸馏措施叠加。智谱董秘肖磊同期在港预计24个月内中美差距收窄。本文并列两种口径，传闻部分均标注。</description>
+    </item>
+    <item>
+      <title>中国月之暗面开放Kimi科研额度：单项目最高15万元、约70亿tokens</title>
+      <link>https://javis.org.cn/news-2026-11-28-kimi-for-science-credits.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-28-kimi-for-science-credits.html</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+      <category>科研算力 · AI4S</category>
+      <description>月之暗面11月27日开放Kimi for Science科研额度申请，首期面向自然科学、工程学及交叉学科，单个项目最高可获15万元Kimi API额度（官方口径约合70亿tokens），非现金资助、按评审确定，并提供技术支持与新模型优先体验。</description>
+    </item>
+    <item>
+      <title>中国豆包工作独家接入剪映：一句话剪辑加多轨编辑，可调用Seedance 2.5</title>
+      <link>https://javis.org.cn/news-2026-11-28-doubao-work-jianying-plugin.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-28-doubao-work-jianying-plugin.html</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+      <category>AI运营 · 内容生产</category>
+      <description>11月27日豆包官方宣布豆包工作独家接入剪映官方插件，支持一句话剪辑与多轨编辑，可去水词、修正口误、批量调整字幕，并经剪映Hub把文档/代码/图片转为科普动画、知识短视频、短漫剧与营销短片，素材生成可调用Seedance 2.5模型。</description>
+    </item>
+    <item>
+      <title>国产算力落地宜昌：宝德5890万元中标高性能算力集群，采购要求国产化适配</title>
+      <link>https://javis.org.cn/news-2026-11-28-yichang-baode-5890w-cluster.html</link>
+      <guid isPermaLink="true">https://javis.org.cn/news-2026-11-28-yichang-baode-5890w-cluster.html</guid>
+      <pubDate>Sat, 28 Nov 2026 00:00:00 +0000</pubDate>
+      <category>国产算力 · 政企落地</category>
+      <description>宜昌大数据集团高性能算力集群设备采购11月27日预成交公示，宝德计算机系统股份有限公司以58,900,639.25元（约5890万元）中标，评审11月25日进行；据云头条报道该集群为96卡AI超节点、用于支撑三峡水利大模型，采购要求国产化适配。</description>
+    </item>
     <item>
       <title>华为把自回归模型塞进基站：频谱效率提升约30%、能效提升40%</title>
       <link>https://javis.org.cn/news-2026-11-27-huawei-oscar-base-station-ai.html</link>
